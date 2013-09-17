@@ -7,8 +7,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Node" eSuperTypes="#//PObject">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="in" eType="#//Arc" eOpposite="#//Arc/target"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="out" eType="#//Arc" eOpposite="#//Arc/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="in" upperBound="-1" eType="#//Arc"
+        eOpposite="#//Arc/target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="out" upperBound="-1" eType="#//Arc"
+        eOpposite="#//Arc/source"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//Node"/>
   <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="#//Node">

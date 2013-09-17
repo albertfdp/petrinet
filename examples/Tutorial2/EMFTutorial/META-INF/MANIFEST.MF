@@ -12,5 +12,6 @@ Export-Package: petrinet,
  petrinet.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore,
- org.eclipse.ui;bundle-version="3.105.0"
+ org.eclipse.ui;bundle-version="3.105.0",
+ org.eclipse.emf.common
 Bundle-ActivationPolicy: lazy

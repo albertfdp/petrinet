@@ -159,7 +159,7 @@ public interface PetrinetPackage extends EPackage {
 	int NODE__NAME = POBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>In</b></em>' reference.
+	 * The feature id for the '<em><b>In</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -168,7 +168,7 @@ public interface PetrinetPackage extends EPackage {
 	int NODE__IN = POBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Out</b></em>' reference.
+	 * The feature id for the '<em><b>Out</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -223,7 +223,7 @@ public interface PetrinetPackage extends EPackage {
 	int TRANSITION__NAME = NODE__NAME;
 
 	/**
-	 * The feature id for the '<em><b>In</b></em>' reference.
+	 * The feature id for the '<em><b>In</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -232,7 +232,7 @@ public interface PetrinetPackage extends EPackage {
 	int TRANSITION__IN = NODE__IN;
 
 	/**
-	 * The feature id for the '<em><b>Out</b></em>' reference.
+	 * The feature id for the '<em><b>Out</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -287,7 +287,7 @@ public interface PetrinetPackage extends EPackage {
 	int PLACE__NAME = NODE__NAME;
 
 	/**
-	 * The feature id for the '<em><b>In</b></em>' reference.
+	 * The feature id for the '<em><b>In</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -296,7 +296,7 @@ public interface PetrinetPackage extends EPackage {
 	int PLACE__IN = NODE__IN;
 
 	/**
-	 * The feature id for the '<em><b>Out</b></em>' reference.
+	 * The feature id for the '<em><b>Out</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -458,10 +458,10 @@ public interface PetrinetPackage extends EPackage {
 	EAttribute getNode_Name();
 
 	/**
-	 * Returns the meta object for the reference '{@link petrinet.Node#getIn <em>In</em>}'.
+	 * Returns the meta object for the reference list '{@link petrinet.Node#getIn <em>In</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>In</em>'.
+	 * @return the meta object for the reference list '<em>In</em>'.
 	 * @see petrinet.Node#getIn()
 	 * @see #getNode()
 	 * @generated
@@ -469,10 +469,10 @@ public interface PetrinetPackage extends EPackage {
 	EReference getNode_In();
 
 	/**
-	 * Returns the meta object for the reference '{@link petrinet.Node#getOut <em>Out</em>}'.
+	 * Returns the meta object for the reference list '{@link petrinet.Node#getOut <em>Out</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Out</em>'.
+	 * @return the meta object for the reference list '<em>Out</em>'.
 	 * @see petrinet.Node#getOut()
 	 * @see #getNode()
 	 * @generated
@@ -633,7 +633,7 @@ public interface PetrinetPackage extends EPackage {
 		EAttribute NODE__NAME = eINSTANCE.getNode_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>In</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>In</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -641,7 +641,7 @@ public interface PetrinetPackage extends EPackage {
 		EReference NODE__IN = eINSTANCE.getNode_In();
 
 		/**
-		 * The meta object literal for the '<em><b>Out</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Out</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

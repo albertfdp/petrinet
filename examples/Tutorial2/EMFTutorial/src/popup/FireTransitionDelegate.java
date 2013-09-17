@@ -1,5 +1,7 @@
 package popup;
 
+import java.util.ArrayList;
+
 import org.eclipse.core.internal.runtime.Activator;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -11,6 +13,7 @@ import petrinet.*;
 
 public class FireTransitionDelegate implements IObjectActionDelegate {
 
+	//Private variable to store the current selected transition
 	private ISelection selection;
 
 	@Override
@@ -19,8 +22,10 @@ public class FireTransitionDelegate implements IObjectActionDelegate {
 		if (this.selection instanceof IStructuredSelection) {
 			IStructuredSelection structuredSelection = (IStructuredSelection) this.selection;
 			if (structuredSelection.getFirstElement() instanceof Transition) {
+				//The transition is the first element of the selection
 				Transition transition = (Transition) structuredSelection
 						.getFirstElement();
+
 				if (isTransitionEnabled(transition)) {
 					fireTransition(transition);
 				}
@@ -32,7 +37,7 @@ public class FireTransitionDelegate implements IObjectActionDelegate {
 
 	@Override
 	public void selectionChanged(IAction action, ISelection selection) {
-
+		//
 		this.selection = selection;
 	}
 
@@ -44,24 +49,34 @@ public class FireTransitionDelegate implements IObjectActionDelegate {
 
 	private boolean isTransitionEnabled(Transition transition) {
 
-		if (transition.getIn().getSource() instanceof Place) {
-			Place place = (Place) transition.getIn().getSource();
-			if (place.getTokens().size() != 0) {
-				return true;
+		for (Arc arc : transition.getIn()) {
+			Place place = (Place) arc.getSource();
+			if (place.getTokens().size() == 0) {
+				//If an incoming place hasn't got a token then the transition is not valid
+				return false;
 			}
 		}
 
-		return false;
+		return true;
 	}
 
 	private void fireTransition(Transition transition) {
-		Place source = (Place) transition.getIn().getSource();
-		Place target = (Place) transition.getOut().getTarget();
+		ArrayList<Token> tokens = new ArrayList<Token>();
 		
-		Token token = source.getTokens().get(0);
-		target.getTokens().add(token);
-		source.getTokens().remove(token);
+		//Run through all the incoming places and remove a token from them
+		for  (Arc arc : transition.getIn()) {
+			Place source = (Place) arc.getSource();
+
+			tokens.add(source.getTokens().remove(0));
+		}
+		//Give a token to each outgoing place
+		for  (Arc arc : transition.getOut()) {
+			Place target = (Place) arc.getTarget();
+			target.getTokens().add(tokens.remove(0));
+		}	
 		
+		//Clear the unused tokens of this transition (e.g: 3 tokens before, 2 tokens after.)
+		tokens.clear();
 	}
 
 }
