@@ -30,9 +30,7 @@ public class FireTransitionDelegate implements IObjectActionDelegate {
 					fireTransition(transition);
 				}
 			}
-
 		}
-
 	}
 
 	@Override
@@ -62,6 +60,9 @@ public class FireTransitionDelegate implements IObjectActionDelegate {
 
 	private void fireTransition(Transition transition) {
 		ArrayList<Token> tokens = new ArrayList<Token>();
+		
+		//Create tokens if more are required after the transition
+		for ( ; tokens.size() < transition.getOut().size() ; tokens.add(PetrinetFactory.eINSTANCE.createToken())); 
 		
 		//Run through all the incoming places and remove a token from them
 		for  (Arc arc : transition.getIn()) {
