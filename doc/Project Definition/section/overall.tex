@@ -18,8 +18,8 @@ Petri nets are a graphical and mathematical modelling tool for describing concur
 Figure \ref{fig:petrinet} presents an example of a basic Petri net. There are four different elements:
 
 \begin{itemize}
-\item Places: signified by circles, represent states.
-\item Transitions: signified by squares, represent conditions.
+\item Places: signified by circles, represent conditions.
+\item Transitions: signified by squares, represent events.
 \item Arcs: indicate which places are preconditions/postconditions for which transitions.
 \item Tokens: signified by the dots, represent the elements that move in the Petri net along the places through the transitions.
 \end{itemize}
@@ -32,7 +32,7 @@ In this scenario, the conditions are not met, as the required token in Place Ptl
 With the aim of creating a visualization of the scenarios for the above Petri net model, an application tool is needed in order to allow the user to define where each of the elements are represented in the 3D world (geometry editor) as well as how these elements are represented (shape) and how they behave (animation). 
 
 \subsection{Adding geometry to Petri nets}
-The problem this project is tackled with is simple: We need a way to link the Petri net model to a 3D visualisation. For this purpose, once a Petri net model is created and its real life design is well-designed in the user's mind, what we call a "Geometry" is created.
+The problem this project is tackled with is simple: We need a way to link the Petri net model to a 3D visualisation. Once a Petri net model is created and its real life design is well-designed in the user's mind, what we call a "Geometry" is created.
 
 For this purpose, there is a need of a geometry editor which will be used to assign a two dimensional location to the elements defined in the Petri net.
 
