@@ -33,10 +33,10 @@ Finally, a user can enable a place to receive input during runtime; this will en
 
 The Petri net editor is linked to the other editors, especially through labels. In the following, the Geometry editor will be described. 
 
-\section{Geometry editor}
+\subsection{Geometry editor}
 
 
-\subsection{Purpose}
+\subsubsection{Purpose}
 As it has been previously discussed in Section \ref{sec:overall}, in order to create a 3D representation of the Petri net model, we need to add some geometrical information to it.  For this purpose, the user will interact with a geometry editor to define the location of the objects defined by the Petri net editor. These objects on their location will later be displayed in the 3D visualisation model. 
 The geometry editor will allow the user to:
 \begin{itemize}
@@ -66,13 +66,13 @@ The main use cases of the Geometry editor are displayed in the following diagram
 \item \textbf{Create input point}: Input points will be created in a similar way from the editor menu and can be placed anywhere in the canvas. However, they will have a label and an appearance attached to them in order to define the link back to the Petri net.   
 \end{enumerate}
 
-\section{Appearance Editor}
-\subsection{Purpose}
+\subsection{Appearance Editor}
+\subsubsection{Purpose}
 The next step in reaching the 3D visualization of the Petri net model is to determine the visual characteristics for each element in the model. For this purpose, the appearance editor is used to define the shape, color, texture and any other information needed for a clear display of the initial model. 
-\subsection{Users}
+\subsubsection{Users}
 	The appearance editor can be used by any user both technical and nontechnical as it only implies linking the appearance labels defined in the Petri net model to a file containing all the information related to visual aspects: shape, texture, color. These can be .jpg files or special 3D documents whose structure is yet to be discussed.
 
-\subsection{Use cases}
+\subsubsection{Use cases}
 	The main use cases of the appearance editor are conveyed in the following diagram: 
 	
 	\begin{figure}[htp]
@@ -84,7 +84,7 @@ The next step in reaching the 3D visualization of the Petri net model is to dete
 \end{figure}
 
 
-\subsection{Use case description}
+%\subsection{Use case description}
 
 \begin{enumerate}
 \item \textbf{Select appearance label}: The user will be able to select one of the appearance labels previously defined in the Petri net editor from a pop-up menu. For example, if the user wants to add appearance information to a token which in the Petri net model has as appearance label "train", then his/her selection from the pop-up menu should also be "train". The next step is described in use case 2. 
