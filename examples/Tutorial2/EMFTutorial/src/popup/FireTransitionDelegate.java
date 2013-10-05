@@ -3,11 +3,15 @@ package popup;
 import java.util.ArrayList;
 
 import org.eclipse.core.internal.runtime.Activator;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+
+import commands.FireTransitionCommand;
 
 import petrinet.*;
 
@@ -59,25 +63,11 @@ public class FireTransitionDelegate implements IObjectActionDelegate {
 	}
 
 	private void fireTransition(Transition transition) {
-		ArrayList<Token> tokens = new ArrayList<Token>();
+		//Get the domain
+		EditingDomain domain = AdapterFactoryEditingDomain.getEditingDomainFor(transition);
+		//Fire transitions with commands
+		domain.getCommandStack().execute(new FireTransitionCommand(domain, transition));
 		
-		//Create tokens if more are required after the transition
-		for ( ; tokens.size() < transition.getOut().size() ; tokens.add(PetrinetFactory.eINSTANCE.createToken())); 
-		
-		//Run through all the incoming places and remove a token from them
-		for  (Arc arc : transition.getIn()) {
-			Place source = (Place) arc.getSource();
-
-			tokens.add(source.getTokens().remove(0));
-		}
-		//Give a token to each outgoing place
-		for  (Arc arc : transition.getOut()) {
-			Place target = (Place) arc.getTarget();
-			target.getTokens().add(tokens.remove(0));
-		}	
-		
-		//Clear the unused tokens of this transition (e.g: 3 tokens before, 2 tokens after.)
-		tokens.clear();
 	}
 
 }
