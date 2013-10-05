@@ -6,13 +6,13 @@ package petrinet.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -25,6 +25,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import petrinet.Petrinet;
 import petrinet.PetrinetFactory;
 import petrinet.PetrinetPackage;
+import petrinet.commands.CreatePObjectWIDCommand;
 
 /**
  * This is the item provider adapter for a {@link petrinet.Petrinet} object.
@@ -183,5 +184,22 @@ public class PetrinetItemProvider
 	public ResourceLocator getResourceLocator() {
 		return PetrinetEditPlugin.INSTANCE;
 	}
+	
+	/**
+	 *
+	 * 
+	 */
+	 @Override
+	 protected Command createAddCommand(EditingDomain domain, EObject owner, 
+			 				EStructuralFeature feature, Collection<?> collection, int index) {
+		 
+		 
+		 if (feature == PetrinetPackage.eINSTANCE.getPetrinet_Objects()) {
+			 return new CreatePObjectWIDCommand(domain, owner,
+			 super.createAddCommand(domain, owner, feature, collection, index));
+		 }
+		 
+		 return super.createAddCommand(domain, owner, feature, collection, index);
+	 }
 
 }
