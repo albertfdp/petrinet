@@ -5,16 +5,15 @@ import java.util.Collection;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import petrinet.PObject;
-import petrinet.Petrinet;
 import petrinet.PetrinetPackage;
-import petrinet.impl.PetrinetImpl;
-import petrinet.provider.PetrinetItemProvider;
 
+/*
+ * @tr: This class is used to automatically add IDs to Petrinet objects
+ */
 public class CreatePObjectWIDCommand extends CompoundCommand {
 
 	protected EditingDomain domain;
