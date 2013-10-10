@@ -190,7 +190,7 @@ public class GeometryItemProvider
 	public ResourceLocator getResourceLocator() {
 		return Geometry_modelEditPlugin.INSTANCE;
 	}
-	/*
+	/**
 	 * 
 	 * @not generated
 	 */
