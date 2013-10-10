@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Geometry_model -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="geometry_model.presentation.Geometry_modelModelWizardID"
+            name="%_UI_Geometry_modelModelWizard_label"
+            class="geometry_model.presentation.Geometry_modelModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/Geometry_modelModelFile.gif">
+         <description>%_UI_Geometry_modelModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Geometry_model -->
+      <editor
+            id="geometry_model.presentation.Geometry_modelEditorID"
+            name="%_UI_Geometry_modelEditor_label"
+            icon="icons/full/obj16/Geometry_modelModelFile.gif"
+            extensions="geometry_model"
+            class="geometry_model.presentation.Geometry_modelEditor"
+            contributorClass="geometry_model.presentation.Geometry_modelActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
