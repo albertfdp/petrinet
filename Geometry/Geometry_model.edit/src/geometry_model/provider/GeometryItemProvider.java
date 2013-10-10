@@ -190,7 +190,10 @@ public class GeometryItemProvider
 	public ResourceLocator getResourceLocator() {
 		return Geometry_modelEditPlugin.INSTANCE;
 	}
-	
+	/*
+	 * 
+	 * @not generated
+	 */
 	@Override
 	 protected Command createAddCommand(EditingDomain domain, EObject owner, 
 			 				EStructuralFeature feature, Collection<?> collection, int index) {
