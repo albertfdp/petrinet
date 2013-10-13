@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: dk.dtu.se2.petrinet
-Bundle-SymbolicName: dk.dtu.se2.petrinet; singleton:=true
-Bundle-Version: 0.1.0.qualifier
-Require-Bundle: org.eclipse.emf.ecore,
- org.pnml.tools.epnk;bundle-version="1.0.0"
