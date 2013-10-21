@@ -1,0 +1,53 @@
+\documentclass[11pt]{article}   % Mandatory
+\usepackage[T1]{fontenc}        % Support for fonts with æøå and other foreign characters.
+\usepackage[utf8]{inputenc}     % Support for UTF-8 encoded input documents
+\usepackage{fullpage}
+\usepackage{graphicx}           % Support for including graphics as png, gif, and jpeg
+\usepackage{amssymb}            % Support for alterantive symbols
+\usepackage{amsmath}            % Support for mathematical symbols
+\usepackage{listliketab}        % Support for tabulated lists
+\usepackage{enumitem}           % Support for indented description items and more
+\usepackage[parfill]{parskip}   % Support for American style paragraphs
+\usepackage{color}              % Support for colored text
+\usepackage{listings}           % Support for code listings
+\usepackage{nameref}            % Enables refernces to names.
+\usepackage{makeidx}            % For creating indexes
+\usepackage{wasysym}            % For symbols as \smiley
+\usepackage{hyperref}        	% For using URLs
+\usepackage{utility/petri}      % For doing petrinet vector graphics
+\usepackage{xspace}             % For adding a space only when necessary. See ePNS command below.
+\newcommand{\epns}{\textbf{Extended Petri net Simulator}\xspace}
+\newcommand\writer[1]{\nobreak\begin{flushright}\small\textbf{Author: \large\textit{#1}}\end{flushright}}
+\makeindex
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
+  \hbox{}\nobreak\hfil(#1)%
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quotation}}
+  {\signed{\usebox\mybox}\end{quotation}}
+
+\title{System Specification\\ \epns}
+\author{Group A}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document includes the requirements for the Software Engineering 2 project, which consists of an Extended Petri net software system.
+\end{abstract}
+
+\tableofcontents \newpage
+
+\input{section/introduction}
+\input{section/overall-description}
+\input{section/system-features}
+\input{section/non-functional-requirements}
+\input{section/glossary}
+\printindex
+
+\end{document}
+
