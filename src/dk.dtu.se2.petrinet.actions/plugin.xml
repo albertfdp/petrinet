@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.pnml.tools.epnk.pnmlcoremodel.Transition"
+            id="dk.dtu.se2.petrinet.actions.contribution1">
+         <menu
+               label="Extended Petri Net"
+               path="additions"
+               id="dk.dtu.se2.petrinet.actions.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Fire transition"
+               class="dk.dtu.se2.petrinet.actions.popup.actions.SimulatePetriNet"
+               menubarPath="dk.dtu.se2.petrinet.actions.menu1/group1"
+               enablesFor="1"
+               id="dk.dtu.se2.petrinet.actions.newAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

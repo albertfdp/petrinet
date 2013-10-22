@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Actions
+Bundle-SymbolicName: dk.dtu.se2.petrinet.actions;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.resources,
+ dk.dtu.se2.petrinet;bundle-version="0.1.0",
+ org.eclipse.emf.common
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: dk.dtu.se2.petrinet,
+ dk.dtu.se2.petrinet.command,
+ org.eclipse.emf.edit.domain,
+ org.pnml.tools.epnk.pnmlcoremodel
