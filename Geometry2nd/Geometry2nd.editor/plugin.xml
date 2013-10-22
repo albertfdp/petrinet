@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Geometry2nd -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="geometry2nd.presentation.Geometry2ndModelWizardID"
+            name="%_UI_Geometry2ndModelWizard_label"
+            class="geometry2nd.presentation.Geometry2ndModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/Geometry2ndModelFile.gif">
+         <description>%_UI_Geometry2ndModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Geometry2nd -->
+      <editor
+            id="geometry2nd.presentation.Geometry2ndEditorID"
+            name="%_UI_Geometry2ndEditor_label"
+            icon="icons/full/obj16/Geometry2ndModelFile.gif"
+            extensions="geometry2nd"
+            class="geometry2nd.presentation.Geometry2ndEditor"
+            contributorClass="geometry2nd.presentation.Geometry2ndActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
