@@ -1,7 +1,0 @@
-# Tracing options for the Geometry2nd.diagram plug-in
-
-# Common issues
-Geometry2nd.diagram/debug=false
-
-# Visual IDs
-Geometry2nd.diagram/debug/visualID=false
