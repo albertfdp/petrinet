@@ -100,7 +100,7 @@ public class GeometryFactoryImpl extends EFactoryImpl implements GeometryFactory
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Point createPoint() {
 		PointImpl point = new PointImpl();
