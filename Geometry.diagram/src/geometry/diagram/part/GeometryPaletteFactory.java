@@ -10,6 +10,7 @@ import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteGroup;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.ToolEntry;
+import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
 
 /**
@@ -43,10 +44,14 @@ public class GeometryPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createLine1CreationTool() {
-		ToolEntry entry = new ToolEntry(Messages.Line1CreationTool_title,
-				Messages.Line1CreationTool_desc, null, null) {
-		};
+		LinkToolEntry entry = new LinkToolEntry(
+				Messages.Line1CreationTool_title,
+				Messages.Line1CreationTool_desc,
+				Collections.singletonList(GeometryElementTypes.Line_4001));
 		entry.setId("createLine1CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(GeometryElementTypes
+				.getImageDescriptor(GeometryElementTypes.Line_4001));
+		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
 
@@ -121,6 +126,37 @@ public class GeometryPaletteFactory {
 		 */
 		public Tool createTool() {
 			Tool tool = new UnspecifiedTypeCreationTool(elementTypes);
+			tool.setProperties(getToolProperties());
+			return tool;
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	private static class LinkToolEntry extends ToolEntry {
+
+		/**
+		 * @generated
+		 */
+		private final List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/relationshipTypes;
+
+		/**
+		 * @generated
+		 */
+		private LinkToolEntry(
+				String title,
+				String description,
+				List/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/relationshipTypes) {
+			super(title, description, null, null);
+			this.relationshipTypes = relationshipTypes;
+		}
+
+		/**
+		 * @generated
+		 */
+		public Tool createTool() {
+			Tool tool = new UnspecifiedTypeConnectionTool(relationshipTypes);
 			tool.setProperties(getToolProperties());
 			return tool;
 		}

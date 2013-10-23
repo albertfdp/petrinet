@@ -126,13 +126,13 @@ public class GeometryVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case GeometryEditPart.VISUAL_ID:
-			if (GeometryPackage.eINSTANCE.getInputPoint().isSuperTypeOf(
-					domainElement.eClass())) {
-				return InputPointEditPart.VISUAL_ID;
-			}
 			if (GeometryPackage.eINSTANCE.getConnector().isSuperTypeOf(
 					domainElement.eClass())) {
 				return ConnectorEditPart.VISUAL_ID;
+			}
+			if (GeometryPackage.eINSTANCE.getInputPoint().isSuperTypeOf(
+					domainElement.eClass())) {
+				return InputPointEditPart.VISUAL_ID;
 			}
 			if (GeometryPackage.eINSTANCE.getBendPoint().isSuperTypeOf(
 					domainElement.eClass())) {
@@ -165,28 +165,13 @@ public class GeometryVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case GeometryEditPart.VISUAL_ID:
-			if (InputPointEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
 			if (ConnectorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (InputPointEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			if (BendPointEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
-		case InputPointEditPart.VISUAL_ID:
-			if (InputPointLabelEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
-		case ConnectorEditPart.VISUAL_ID:
-			if (ConnectorLabelEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
-		case BendPointEditPart.VISUAL_ID:
-			if (BendPointLabelEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;

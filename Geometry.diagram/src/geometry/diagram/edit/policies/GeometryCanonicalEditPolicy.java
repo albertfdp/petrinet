@@ -96,8 +96,8 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 	 */
 	private boolean isMyDiagramElement(View view) {
 		int visualID = GeometryVisualIDRegistry.getVisualID(view);
-		return visualID == InputPointEditPart.VISUAL_ID
-				|| visualID == ConnectorEditPart.VISUAL_ID
+		return visualID == ConnectorEditPart.VISUAL_ID
+				|| visualID == InputPointEditPart.VISUAL_ID
 				|| visualID == BendPointEditPart.VISUAL_ID;
 	}
 
@@ -262,18 +262,18 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case InputPointEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(GeometryDiagramUpdater
-						.getInputPoint_2001ContainedLinks(view));
-			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
 		case ConnectorEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(GeometryDiagramUpdater
 						.getConnector_2002ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case InputPointEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(GeometryDiagramUpdater
+						.getInputPoint_2001ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

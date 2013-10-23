@@ -29,11 +29,11 @@ public class GeometryItemSemanticEditPolicy extends
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (GeometryElementTypes.InputPoint_2001 == req.getElementType()) {
-			return getGEFWrapper(new InputPointCreateCommand(req));
-		}
 		if (GeometryElementTypes.Connector_2002 == req.getElementType()) {
 			return getGEFWrapper(new ConnectorCreateCommand(req));
+		}
+		if (GeometryElementTypes.InputPoint_2001 == req.getElementType()) {
+			return getGEFWrapper(new InputPointCreateCommand(req));
 		}
 		if (GeometryElementTypes.BendPoint_2003 == req.getElementType()) {
 			return getGEFWrapper(new BendPointCreateCommand(req));

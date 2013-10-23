@@ -1,5 +1,8 @@
 package geometry.diagram.navigator;
 
+import geometry.BendPoint;
+import geometry.Connector;
+import geometry.InputPoint;
 import geometry.Line;
 import geometry.diagram.edit.parts.BendPointEditPart;
 import geometry.diagram.edit.parts.BendPointLabelEditPart;
@@ -181,18 +184,12 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getInputPoint_2001Text(View view) {
-		IParser parser = GeometryParserProvider.getParser(
-				GeometryElementTypes.InputPoint_2001,
-				view.getElement() != null ? view.getElement() : view,
-				GeometryVisualIDRegistry
-						.getType(InputPointLabelEditPart.VISUAL_ID));
-		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
-					ParserOptions.NONE.intValue());
+		InputPoint domainModelElement = (InputPoint) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.getId());
 		} else {
 			GeometryDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5001); //$NON-NLS-1$
+					"No domain element for view with visualID = " + 2001); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -201,18 +198,12 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getConnector_2002Text(View view) {
-		IParser parser = GeometryParserProvider.getParser(
-				GeometryElementTypes.Connector_2002,
-				view.getElement() != null ? view.getElement() : view,
-				GeometryVisualIDRegistry
-						.getType(ConnectorLabelEditPart.VISUAL_ID));
-		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
-					ParserOptions.NONE.intValue());
+		Connector domainModelElement = (Connector) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.getId());
 		} else {
 			GeometryDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5002); //$NON-NLS-1$
+					"No domain element for view with visualID = " + 2002); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -221,18 +212,12 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getBendPoint_2003Text(View view) {
-		IParser parser = GeometryParserProvider.getParser(
-				GeometryElementTypes.BendPoint_2003,
-				view.getElement() != null ? view.getElement() : view,
-				GeometryVisualIDRegistry
-						.getType(BendPointLabelEditPart.VISUAL_ID));
-		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
-					ParserOptions.NONE.intValue());
+		BendPoint domainModelElement = (BendPoint) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.getId());
 		} else {
 			GeometryDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5003); //$NON-NLS-1$
+					"No domain element for view with visualID = " + 2003); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

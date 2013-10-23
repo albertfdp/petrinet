@@ -37,6 +37,7 @@ import org.eclipse.gmf.runtime.notation.DecorationNode;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.FontStyle;
+import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.MeasurementUnit;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
@@ -143,8 +144,8 @@ public class GeometryViewProvider extends AbstractProvider implements
 					return false; // foreign diagram
 				}
 				switch (visualID) {
-				case InputPointEditPart.VISUAL_ID:
 				case ConnectorEditPart.VISUAL_ID:
+				case InputPointEditPart.VISUAL_ID:
 				case BendPointEditPart.VISUAL_ID:
 					if (domainElement == null
 							|| visualID != GeometryVisualIDRegistry
@@ -158,8 +159,8 @@ public class GeometryViewProvider extends AbstractProvider implements
 				}
 			}
 		}
-		return InputPointEditPart.VISUAL_ID == visualID
-				|| ConnectorEditPart.VISUAL_ID == visualID
+		return ConnectorEditPart.VISUAL_ID == visualID
+				|| InputPointEditPart.VISUAL_ID == visualID
 				|| BendPointEditPart.VISUAL_ID == visualID;
 	}
 
@@ -217,11 +218,11 @@ public class GeometryViewProvider extends AbstractProvider implements
 			visualID = GeometryVisualIDRegistry.getVisualID(semanticHint);
 		}
 		switch (visualID) {
-		case InputPointEditPart.VISUAL_ID:
-			return createInputPoint_2001(domainElement, containerView, index,
-					persisted, preferencesHint);
 		case ConnectorEditPart.VISUAL_ID:
 			return createConnector_2002(domainElement, containerView, index,
+					persisted, preferencesHint);
+		case InputPointEditPart.VISUAL_ID:
+			return createInputPoint_2001(domainElement, containerView, index,
 					persisted, preferencesHint);
 		case BendPointEditPart.VISUAL_ID:
 			return createBendPoint_2003(domainElement, containerView, index,
@@ -289,9 +290,6 @@ public class GeometryViewProvider extends AbstractProvider implements
 		ViewUtil.setStructuralFeatureValue(node,
 				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5001 = createLabel(node,
-				GeometryVisualIDRegistry
-						.getType(InputPointLabelEditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -335,9 +333,6 @@ public class GeometryViewProvider extends AbstractProvider implements
 		ViewUtil.setStructuralFeatureValue(node,
 				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5002 = createLabel(node,
-				GeometryVisualIDRegistry
-						.getType(ConnectorLabelEditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -381,9 +376,6 @@ public class GeometryViewProvider extends AbstractProvider implements
 		ViewUtil.setStructuralFeatureValue(node,
 				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5003 = createLabel(node,
-				GeometryVisualIDRegistry
-						.getType(BendPointLabelEditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -451,16 +443,6 @@ public class GeometryViewProvider extends AbstractProvider implements
 					"modelID", GeometryEditPart.MODEL_ID); //$NON-NLS-1$
 			target.getEAnnotations().add(shortcutAnnotation);
 		}
-	}
-
-	/**
-	 * @generated
-	 */
-	private Node createLabel(View owner, String hint) {
-		DecorationNode rv = NotationFactory.eINSTANCE.createDecorationNode();
-		rv.setType(hint);
-		ViewUtil.insertChildView(owner, rv, ViewUtil.APPEND, true);
-		return rv;
 	}
 
 	/**

@@ -29,55 +29,37 @@ public class GeometryParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	private IParser inputPointLabel_5001Parser;
+	private IParser connectorLabel_5001Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getInputPointLabel_5001Parser() {
-		if (inputPointLabel_5001Parser == null) {
+	private IParser getConnectorLabel_5001Parser() {
+		if (connectorLabel_5001Parser == null) {
 			EAttribute[] features = new EAttribute[] { GeometryPackage.eINSTANCE
 					.getGObject_Label() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			inputPointLabel_5001Parser = parser;
+			connectorLabel_5001Parser = parser;
 		}
-		return inputPointLabel_5001Parser;
+		return connectorLabel_5001Parser;
 	}
 
 	/**
 	 * @generated
 	 */
-	private IParser connectorLabel_5002Parser;
+	private IParser inputPointLabel_5002Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getConnectorLabel_5002Parser() {
-		if (connectorLabel_5002Parser == null) {
+	private IParser getInputPointLabel_5002Parser() {
+		if (inputPointLabel_5002Parser == null) {
 			EAttribute[] features = new EAttribute[] { GeometryPackage.eINSTANCE
 					.getGObject_Label() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			connectorLabel_5002Parser = parser;
+			inputPointLabel_5002Parser = parser;
 		}
-		return connectorLabel_5002Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	private IParser bendPointLabel_5003Parser;
-
-	/**
-	 * @generated
-	 */
-	private IParser getBendPointLabel_5003Parser() {
-		if (bendPointLabel_5003Parser == null) {
-			EAttribute[] features = new EAttribute[] { GeometryPackage.eINSTANCE
-					.getGObject_Label() };
-			MessageFormatParser parser = new MessageFormatParser(features);
-			bendPointLabel_5003Parser = parser;
-		}
-		return bendPointLabel_5003Parser;
+		return inputPointLabel_5002Parser;
 	}
 
 	/**
@@ -85,12 +67,10 @@ public class GeometryParserProvider extends AbstractProvider implements
 	 */
 	protected IParser getParser(int visualID) {
 		switch (visualID) {
-		case InputPointLabelEditPart.VISUAL_ID:
-			return getInputPointLabel_5001Parser();
 		case ConnectorLabelEditPart.VISUAL_ID:
-			return getConnectorLabel_5002Parser();
-		case BendPointLabelEditPart.VISUAL_ID:
-			return getBendPointLabel_5003Parser();
+			return getConnectorLabel_5001Parser();
+		case InputPointLabelEditPart.VISUAL_ID:
+			return getInputPointLabel_5002Parser();
 		}
 		return null;
 	}

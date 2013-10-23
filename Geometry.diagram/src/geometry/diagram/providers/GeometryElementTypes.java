@@ -111,11 +111,11 @@ public class GeometryElementTypes {
 
 			elements.put(Geometry_1000, GeometryPackage.eINSTANCE.getGeometry());
 
-			elements.put(InputPoint_2001,
-					GeometryPackage.eINSTANCE.getInputPoint());
-
 			elements.put(Connector_2002,
 					GeometryPackage.eINSTANCE.getConnector());
+
+			elements.put(InputPoint_2001,
+					GeometryPackage.eINSTANCE.getInputPoint());
 
 			elements.put(BendPoint_2003,
 					GeometryPackage.eINSTANCE.getBendPoint());
@@ -139,8 +139,8 @@ public class GeometryElementTypes {
 		if (KNOWN_ELEMENT_TYPES == null) {
 			KNOWN_ELEMENT_TYPES = new HashSet/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/();
 			KNOWN_ELEMENT_TYPES.add(Geometry_1000);
-			KNOWN_ELEMENT_TYPES.add(InputPoint_2001);
 			KNOWN_ELEMENT_TYPES.add(Connector_2002);
+			KNOWN_ELEMENT_TYPES.add(InputPoint_2001);
 			KNOWN_ELEMENT_TYPES.add(BendPoint_2003);
 			KNOWN_ELEMENT_TYPES.add(Line_4001);
 		}
@@ -154,10 +154,10 @@ public class GeometryElementTypes {
 		switch (visualID) {
 		case GeometryEditPart.VISUAL_ID:
 			return Geometry_1000;
-		case InputPointEditPart.VISUAL_ID:
-			return InputPoint_2001;
 		case ConnectorEditPart.VISUAL_ID:
 			return Connector_2002;
+		case InputPointEditPart.VISUAL_ID:
+			return InputPoint_2001;
 		case BendPointEditPart.VISUAL_ID:
 			return BendPoint_2003;
 		case LineEditPart.VISUAL_ID:

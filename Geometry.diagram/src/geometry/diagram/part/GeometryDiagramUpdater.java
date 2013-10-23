@@ -56,11 +56,11 @@ public class GeometryDiagramUpdater {
 			GObject childElement = (GObject) it.next();
 			int visualID = GeometryVisualIDRegistry.getNodeVisualID(view,
 					childElement);
-			if (visualID == InputPointEditPart.VISUAL_ID) {
+			if (visualID == ConnectorEditPart.VISUAL_ID) {
 				result.add(new GeometryNodeDescriptor(childElement, visualID));
 				continue;
 			}
-			if (visualID == ConnectorEditPart.VISUAL_ID) {
+			if (visualID == InputPointEditPart.VISUAL_ID) {
 				result.add(new GeometryNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -80,10 +80,10 @@ public class GeometryDiagramUpdater {
 		switch (GeometryVisualIDRegistry.getVisualID(view)) {
 		case GeometryEditPart.VISUAL_ID:
 			return getGeometry_1000ContainedLinks(view);
-		case InputPointEditPart.VISUAL_ID:
-			return getInputPoint_2001ContainedLinks(view);
 		case ConnectorEditPart.VISUAL_ID:
 			return getConnector_2002ContainedLinks(view);
+		case InputPointEditPart.VISUAL_ID:
+			return getInputPoint_2001ContainedLinks(view);
 		case BendPointEditPart.VISUAL_ID:
 			return getBendPoint_2003ContainedLinks(view);
 		case LineEditPart.VISUAL_ID:
@@ -98,10 +98,10 @@ public class GeometryDiagramUpdater {
 	public static List/*[geometry.diagram.part.GeometryLinkDescriptor]*/getIncomingLinks(
 			View view) {
 		switch (GeometryVisualIDRegistry.getVisualID(view)) {
-		case InputPointEditPart.VISUAL_ID:
-			return getInputPoint_2001IncomingLinks(view);
 		case ConnectorEditPart.VISUAL_ID:
 			return getConnector_2002IncomingLinks(view);
+		case InputPointEditPart.VISUAL_ID:
+			return getInputPoint_2001IncomingLinks(view);
 		case BendPointEditPart.VISUAL_ID:
 			return getBendPoint_2003IncomingLinks(view);
 		case LineEditPart.VISUAL_ID:
@@ -116,10 +116,10 @@ public class GeometryDiagramUpdater {
 	public static List/*[geometry.diagram.part.GeometryLinkDescriptor]*/getOutgoingLinks(
 			View view) {
 		switch (GeometryVisualIDRegistry.getVisualID(view)) {
-		case InputPointEditPart.VISUAL_ID:
-			return getInputPoint_2001OutgoingLinks(view);
 		case ConnectorEditPart.VISUAL_ID:
 			return getConnector_2002OutgoingLinks(view);
+		case InputPointEditPart.VISUAL_ID:
+			return getInputPoint_2001OutgoingLinks(view);
 		case BendPointEditPart.VISUAL_ID:
 			return getBendPoint_2003OutgoingLinks(view);
 		case LineEditPart.VISUAL_ID:

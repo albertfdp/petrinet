@@ -41,8 +41,8 @@ public class GeometryModelingAssistantProvider extends
 		if (editPart instanceof GeometryEditPart) {
 			ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/types = new ArrayList/*[org.eclipse.gmf.runtime.emf.type.core.IElementType]*/(
 					3);
-			types.add(GeometryElementTypes.InputPoint_2001);
 			types.add(GeometryElementTypes.Connector_2002);
+			types.add(GeometryElementTypes.InputPoint_2001);
 			types.add(GeometryElementTypes.BendPoint_2003);
 			return types;
 		}
