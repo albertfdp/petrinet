@@ -16,6 +16,10 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
 
+import org.eclipse.gmf.runtime.diagram.ui.providers.internal.DefaultProvider;
+import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.draw2d.geometry.Point;
+
 /**
  * @generated
  */
@@ -50,11 +54,14 @@ public class BendPointCreateCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
 			IAdaptable info) throws ExecutionException {
 		BendPoint newElement = GeometryFactory.eINSTANCE.createBendPoint();
+		
+		//Rectangle rectangle = newElement.eGet(Rectangle);
+		//newElement.setXLocation(5);
 
 		Geometry owner = (Geometry) getElementToEdit();
 		owner.getGObject().add(newElement);
