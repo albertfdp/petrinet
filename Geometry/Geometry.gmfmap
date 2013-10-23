@@ -11,34 +11,7 @@
         href="Geometry.ecore#//Geometry/gObject"/>
     <ownedChild>
       <domainMetaElement
-          href="Geometry.ecore#//InputPoint"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="Geometry.gmfgraph#InputPointLabel"/>
-        <features
-            href="Geometry.ecore#//GObject/label"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="Geometry.gmftool#//@palette/@tools.0/@tools.1"/>
-      <diagramNode
-          href="Geometry.gmfgraph#InputPoint"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="Geometry.ecore#//Geometry/gObject"/>
-    <ownedChild>
-      <domainMetaElement
           href="Geometry.ecore#//Connector"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="Geometry.gmfgraph#ConnectorLabel"/>
-        <features
-            href="Geometry.ecore#//GObject/label"/>
-      </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
           href="Geometry.gmftool#//@palette/@tools.0/@tools.2"/>
@@ -51,14 +24,20 @@
         href="Geometry.ecore#//Geometry/gObject"/>
     <ownedChild>
       <domainMetaElement
+          href="Geometry.ecore#//InputPoint"/>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="Geometry.gmftool#//@palette/@tools.0/@tools.1"/>
+      <diagramNode
+          href="Geometry.gmfgraph#InputPoint"/>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="Geometry.ecore#//Geometry/gObject"/>
+    <ownedChild>
+      <domainMetaElement
           href="Geometry.ecore#//BendPoint"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="Geometry.gmfgraph#BendPointLabel"/>
-        <features
-            href="Geometry.ecore#//GObject/label"/>
-      </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
           href="Geometry.gmftool#//@palette/@tools.0/@tools.3"/>
@@ -71,6 +50,9 @@
         href="Geometry.ecore#//Line"/>
     <containmentFeature
         href="Geometry.ecore#//Geometry/gObject"/>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="Geometry.gmftool#//@palette/@tools.0/@tools.0"/>
     <diagramLink
         href="Geometry.gmfgraph#Line"/>
     <sourceMetaFeature
