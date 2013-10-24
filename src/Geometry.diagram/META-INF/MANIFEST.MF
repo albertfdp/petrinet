@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: Geometry.diagram; singleton:=true
+Bundle-SymbolicName: dk.dtu.se2.geometry.diagram;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: geometry.diagram.part.GeometryDiagramEditorPlugin
@@ -34,8 +34,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.gmf.tooling.runtime;visibility:=reexport,
  org.eclipse.draw2d;visibility:=reexport,
  org.eclipse.gmf.runtime.draw2d.ui;visibility:=reexport,
- Geometry;visibility:=reexport,
- Geometry.edit;visibility:=reexport,
+ dk.dtu.se2.geometry;visibility:=reexport,
+ dk.dtu.se2.geometry.edit;visibility:=reexport,
  org.eclipse.gef;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.4
