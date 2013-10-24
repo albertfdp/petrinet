@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.10.13)  24 OCT 2013 21:28
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.10.13)  24 OCT 2013 22:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -941,29 +941,76 @@ File: image/petrinet5.png Graphic file (type png)
 <use image/petrinet5.png>
 Package pdftex.def Info: image/petrinet5.png used on input line 37.
 (pdftex.def)             Requested size: 375.80544pt x 214.89986pt.
-) (./section/geometry.tex) (./section/simulator.tex)
+) (./section/geometry.tex
+<image/geometry1.png, id=32, 395.22656pt x 454.69875pt>
+File: image/geometry1.png Graphic file (type png)
+
+<use image/geometry1.png>
+Package pdftex.def Info: image/geometry1.png used on input line 6.
+(pdftex.def)             Requested size: 375.80544pt x 432.35683pt.
+
+<image/geometry2.png, id=33, 555.57562pt x 324.46219pt>
+File: image/geometry2.png Graphic file (type png)
+
+<use image/geometry2.png>
+Package pdftex.def Info: image/geometry2.png used on input line 14.
+(pdftex.def)             Requested size: 375.80544pt x 219.4778pt.
+
+<image/geometry3.png, id=34, 557.08125pt x 325.96782pt>
+File: image/geometry3.png Graphic file (type png)
+
+<use image/geometry3.png>
+Package pdftex.def Info: image/geometry3.png used on input line 22.
+(pdftex.def)             Requested size: 375.80544pt x 219.8994pt.
+ <image/geometry4.png, id=35, 554.07pt x 161.85469pt>
+File: image/geometry4.png Graphic file (type png)
+
+<use image/geometry4.png>
+Package pdftex.def Info: image/geometry4.png used on input line 30.
+(pdftex.def)             Requested size: 375.80544pt x 109.78064pt.
+
+<image/geometry5.png, id=36, 555.57562pt x 161.10187pt>
+File: image/geometry5.png Graphic file (type png)
+
+<use image/geometry5.png>
+Package pdftex.def Info: image/geometry5.png used on input line 38.
+(pdftex.def)             Requested size: 375.80544pt x 108.97505pt.
+
+<image/geometry6.png, id=37, 552.56438pt x 160.34906pt>
+File: image/geometry6.png Graphic file (type png)
+
+<use image/geometry6.png>
+Package pdftex.def Info: image/geometry6.png used on input line 46.
+(pdftex.def)             Requested size: 375.80544pt x 109.05304pt.
+
+<image/geometry7.png, id=38, 554.82281pt x 161.85469pt>
+File: image/geometry7.png Graphic file (type png)
+
+<use image/geometry7.png>
+Package pdftex.def Info: image/geometry7.png used on input line 54.
+(pdftex.def)             Requested size: 375.80544pt x 109.63246pt.
+ [2 <./image/petrinet1.png>] [3 <./image/petrinet2.png>] [4 <./image/petrinet3.
+png>] [5 <./image/petrinet4.png> <./image/petrinet5.png>] [6 <./image/geometry1
+.png>] [7 <./image/geometry2.png> <./image/geometry3.png>] [8 <./image/geometry
+4.png> <./image/geometry5.png> <./image/geometry6.png> <./image/geometry7.png>]
+) (./section/simulator.tex)
 No file Handbook.ind.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 58.
-[2 <./image/petrinet1.png>] [3 <./image/petrinet2.png>] [4 <./image/petrinet3.p
-ng>] [5 <./image/petrinet4.png> <./image/petrinet5.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 58.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 55.
+[9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 55.
  (./Handbook.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 58.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 58.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 55.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 55.
 Package rerunfilecheck Info: File `Handbook.out' has not changed.
 (rerunfilecheck)             Checksum: A02D95553E30B97FF125B1AA17CF9044;47.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 58.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 55.
  ) 
 Here is how much of TeX's memory you used:
- 16493 strings out of 495059
- 280446 string characters out of 3182029
- 345463 words of memory out of 3000000
- 19306 multiletter control sequences out of 15000+200000
- 16169 words of font info for 45 fonts, out of 3000000 for 9000
+ 16552 strings out of 495059
+ 281490 string characters out of 3182029
+ 352153 words of memory out of 3000000
+ 19347 multiletter control sequences out of 15000+200000
+ 17630 words of font info for 51 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  63i,6n,57p,519b,326s stack positions out of 5000i,500n,10000p,200000b,50000s
  </home/albert/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/
@@ -973,11 +1020,12 @@ nts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/albert/.texmf-var/fonts/pk/ljf
 our/jknappen/ec/ecbx1000.600pk> </home/albert/.texmf-var/fonts/pk/ljfour/jknapp
 en/ec/ecrm1200.600pk> </home/albert/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx
 1728.600pk> </home/albert/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk
->
-Output written on Handbook.pdf (5 pages, 314185 bytes).
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Handbook.pdf (9 pages, 408915 bytes).
 PDF statistics:
- 241 PDF objects out of 1000 (max. 8388607)
- 72 compressed objects within 1 object stream
- 13 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 304 PDF objects out of 1000 (max. 8388607)
+ 100 compressed objects within 1 object stream
+ 24 named destinations out of 1000 (max. 500000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
