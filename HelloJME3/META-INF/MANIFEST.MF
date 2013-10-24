@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: HelloJME3
+Bundle-SymbolicName: HelloJME3
+Bundle-Version: 1.0.0.qualifier
+Export-Package: jme3Test.helloWorld
+Require-Bundle: jMonkeyEclipse;bundle-version="1.0.0"
