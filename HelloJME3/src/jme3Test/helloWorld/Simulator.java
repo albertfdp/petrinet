@@ -5,6 +5,7 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.cinematic.MotionPath;
 import com.jme3.cinematic.PlayState;
 import com.jme3.cinematic.events.MotionEvent;
+import com.jme3.font.BitmapFont.Align;
 import com.jme3.font.BitmapText;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
@@ -27,6 +28,8 @@ public class Simulator extends SimpleApplication{
 	}
 
 	protected BitmapText hudText;
+	protected BitmapText[] hudTexts = new BitmapText[50];
+	
     protected double timeAtSystemStart;
     protected Geometry groundGeo;
  
@@ -47,11 +50,9 @@ public class Simulator extends SimpleApplication{
 		//
 		
 		// Temporary:
-		for (int index = 0; index < 4; index++) {
-
-			allSObjects[index] = new SObject(new Vector2f((index*6), (index*6)), new Vector2f((index*6)+2, (index*6)+2), new Vector2f((index*6)+4, (index*6)+4), false, "ID" + Integer.toString(index), 4f);
-		}
-		
+		allSObjects[0] = new SObject(new Vector2f(30, 10), new Vector2f(30, 30), new Vector2f(30, 50), false, "ID00", 5f);
+		allSObjects[1] = new SObject(new Vector2f(30, 50), new Vector2f(10, 30), new Vector2f(30, 10), false, "ID01", 5f);
+		allSObjects[2] = new SObject(new Vector2f(30, 50), new Vector2f(50, 30), new Vector2f(30, 10), false, "ID02", 5f);
 	}
 	
 	public void setupTokens() {
@@ -63,7 +64,7 @@ public class Simulator extends SimpleApplication{
 		//
 				
 		// Temporary:
-		for (int index = 0; index < 4; index++) {
+		for (int index = 0; index < 3; index++) {
 		
 			allTokens[index] = new Geometry("Box", new Box(0.25f, 0.10f, 0.5f)); // create cube geometry from with box shape        
 	
@@ -84,7 +85,7 @@ public class Simulator extends SimpleApplication{
 		
 		// for the number of SObjects, do the following:
 			
-		for (int index = 0; index < 4; index++) {
+		for (int index = 0; index < 3; index++) {
 			allMotionPaths[index] = new MotionPath(); // adding way points
 			allMotionPaths[index].setCycle(false); // this will make sure the path doesn't loop 
        
@@ -123,13 +124,22 @@ public class Simulator extends SimpleApplication{
 	    	setDisplayFps(false);
 	    	setDisplayStatView(false);
 	    	
-	    // AP: setting up a basic HUD
+	    // AP: setting up a hud text
 	    	hudText = new BitmapText(guiFont, false);          
 	    	hudText.setSize(guiFont.getCharSet().getRenderedSize());      // font size
-	    	hudText.setColor(ColorRGBA.Blue);                             // font color
-	    	hudText.setText("Press '1', '2', '3' or '4' to trigger play/pause of token animations");             // the text
-	    	hudText.setLocalTranslation(10, hudText.getLineHeight(), 0); // position
+	    	hudText.setColor(ColorRGBA.White);                             // font color
+	    	hudText.setText("Press '1', '2' or '3' to trigger play/pause of token animations");    // the text
+	    	hudText.setLocalTranslation(5, hudText.getLineHeight(), 0); // position
 	    	guiNode.attachChild(hudText);
+	    	
+	    	for (int index = 0; index < 3; index++){
+	    		hudTexts[index] = new BitmapText(guiFont, false);
+	    		hudTexts[index].setAlignment(Align.Left);
+	    		hudTexts[index].setLocalTranslation(5, hudTexts[index].getLineHeight() * (index+10), 0);
+	    		hudTexts[index].setText("This is text field " + Integer.toString(index));
+	    		
+	    		guiNode.attachChild(hudTexts[index]);
+	    	}
 	    	
 	    // AP: create ground with volume
 	        float groundWidthX = 30;
@@ -148,12 +158,10 @@ public class Simulator extends SimpleApplication{
 	        inputManager.addMapping("1",  new KeyTrigger(KeyInput.KEY_1));
 	        inputManager.addMapping("2",  new KeyTrigger(KeyInput.KEY_2));
 	        inputManager.addMapping("3",  new KeyTrigger(KeyInput.KEY_3));
-	        inputManager.addMapping("4",  new KeyTrigger(KeyInput.KEY_4));
 	        
 	        inputManager.addListener(actionListener, new String[]{"1"});
 	        inputManager.addListener(actionListener, new String[]{"2"});
 	        inputManager.addListener(actionListener, new String[]{"3"});
-	        inputManager.addListener(actionListener, new String[]{"4"});
 	        
 	   // AP: Run setups to prepare the layout of the paths etc.
 
@@ -169,47 +177,55 @@ public class Simulator extends SimpleApplication{
 			
 			if (name.equals("1") && !keyPressed) { // test?
 
-		        PlayState playing = allMotionEvents[0].getPlayState();
+		        PlayState state = allMotionEvents[0].getPlayState();
 		        
-		        if (playing == PlayState.Playing)
+		        if (state == PlayState.Playing)
 		        	allMotionEvents[0].pause();
 		        else
 		        	allMotionEvents[0].play();
 		    } 
 			if (name.equals("2") && !keyPressed) { // test?
 				
-				PlayState playing = allMotionEvents[1].getPlayState();
+				PlayState state = allMotionEvents[1].getPlayState();
 		        
-		        if (playing == PlayState.Playing)
+		        if (state == PlayState.Playing)
 		        	allMotionEvents[1].pause();
 		        else
 		        	allMotionEvents[1].play();
 		    }
 			if (name.equals("3") && !keyPressed) { // test?
 				
-				PlayState playing = allMotionEvents[2].getPlayState();
+				PlayState state = allMotionEvents[2].getPlayState();
 		        
-		        if (playing == PlayState.Playing)
+		        if (state == PlayState.Playing)
 		        	allMotionEvents[2].pause();
 		        else
 		        	allMotionEvents[2].play();
 		    }
-			if (name.equals("4") && !keyPressed) { // test?
-				
-				PlayState playing = allMotionEvents[3].getPlayState();
-		        
-		        if (playing == PlayState.Playing)
-		        	allMotionEvents[3].pause();
-		        else
-		        	allMotionEvents[3].play();
-		    }
+
 		}
 		
 	};
 	
 	@Override 
     public void simpleUpdate(float tpf) {
-    	//double timeElapsedSinceStart = System.currentTimeMillis() - timeAtSystemStart; // Time elapsed since program start.  
+    	//double timeElapsedSinceStart = System.currentTimeMillis() - timeAtSystemStart; // Time elapsed since program start. 
+		
+		
+		for (int index = 0; index < 3; index++){
+			
+			PlayState state = allMotionEvents[index].getPlayState();
+			if (state == PlayState.Playing){
+				hudTexts[index].setText(allSObjects[index].name + " : Playing");
+			}
+			if (state == PlayState.Paused){
+				hudTexts[index].setText(allSObjects[index].name + " : Paused");
+			}
+			if (state == PlayState.Stopped){
+				hudTexts[index].setText(allSObjects[index].name + " : Stopped");
+			}
+		}
+		
 
 		
     }
