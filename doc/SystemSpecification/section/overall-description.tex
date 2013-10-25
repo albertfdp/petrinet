@@ -75,4 +75,43 @@ Figure \ref{fig:3steps}  shows how a simple 3D simulation of a train track and a
 
 \subsection{General product description}
 
+The overall description is a brief introduction to how our software is designed. For this purpose, it contains a description of the actors involved in its use, and also a description of how the software works. \newline
+
+The following persons are all actors of our software:
+
+\begin{itemize}
+  \item Petri net engineer: An engineer whose role is to design and develop a Petri net which suits the company needs. \newline
+  For instance, this could be an engineer working at a railway company and in charge of modelling the railway system using Petri nets.
+  \item End user: An actor to whom the Petri net 3D-Visualization would be presented, or an actor who is in charge of presenting the Petri net to another. \newline
+	For instance, this could be a manager wanting to see what a Petri net represents. 
+\end{itemize}
+
+The software is built around three different concepts: 
+
+\begin{itemize}
+  \item Editors: A component responsible for handling the creation and design of one of our models. \newline
+	For example: A Petri net editor to create a Petri net model. \newline
+	An editor is presented to the user as a GUI in an Eclipse window.
+  \item Simulator: A simulator is, as its name says, a component capable of simulating a Petri net.
+	The simulator is handling all the decisions regarding the Petri net and its behaviour. 
+	It then communicates the decisions to a 3D Engine responsible for the visualization.
+  \item 3D Engine: A 3D Engine is responsible for the visualization of a Petri net in three dimensions.
+	It receives input from the Petri net simulator, and also communicates to the simulator when a user performs a certain type of action. \newline
+	For example: the user clicks on a specific Place of the Petri net, this triggers a message from the 3D Engine to the Petri net simulator 
+\end{itemize}
+
 \subsection{Basic functionality}
+
+
+This software allows the engineers to create a Petri net 3D Visualization using a combination of the different editors built for this project.
+The files created with each of the following editors are to be combined using the configuration editor: \newline
+Petri net editor, Geometry editor, Appearance editor. 
+
+Once the files are linked together in the configuration editor, a 3D Visualization can be launched in the workbench. \newline
+
+The simulator then initializes the 3D Engine with all the informations needed for the visualization. The 3D Engine then relies on the simulator to know which next move it should perform on the Petri net. \newline
+To interact with the simulation, the user can either click or press certain keyboard buttons in the GUI for the visualization. \newline
+
+Figure 1. shows the different components of our system and their connections.
+
+Figure 2. shows a simple case of how the system could be used.
