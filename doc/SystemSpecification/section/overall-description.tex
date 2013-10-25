@@ -99,6 +99,16 @@ The software is built around three different concepts:
 	It receives input from the Petri net simulator, and also communicates to the simulator when a user performs a certain type of action. \newline
 	For example: the user clicks on a specific Place of the Petri net, this triggers a message from the 3D Engine to the Petri net simulator 
 \end{itemize}
+\newpage
+Figure \ref{fig:system_diagram}. shows the different components of our system and their connections.
+
+\begin{figure}[htp]
+\begin{center}
+  \includegraphics[width=0.6\textwidth]{image/system_design.png}
+  \caption{System design}
+  \label{fig:system_diagram}
+\end{center}
+\end{figure}
 
 \subsection{Basic functionality}
 
@@ -112,13 +122,4 @@ Once the files are linked together in the configuration editor, a 3D Visualizati
 The simulator then initializes the 3D Engine with all the informations needed for the visualization. The 3D Engine then relies on the simulator to know which next move it should perform on the Petri net. \newline
 To interact with the simulation, the user can either click or press certain keyboard buttons in the GUI for the visualization. \newline
 
-Figure \ref{fig:system_diagram}. shows the different components of our system and their connections.
-
-\begin{figure}[htp]
-\begin{center}
-  \includegraphics[width=0.6\textwidth]{image/system_design.png}
-  \caption{System design}
-  \label{fig:system_diagram}
-\end{center}
-\end{figure}
 
