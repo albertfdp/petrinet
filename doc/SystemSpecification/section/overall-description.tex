@@ -53,25 +53,51 @@ Before running the simulation, a definition of how the previous models are conne
 \subsection{Simulating Petri nets}
 The next step in visualizing Petri nets is add descriptive visuals. With the information provided by the Petri net, geometry and appearance as defined in the configuration file, the simulation is set up.
 
-\begin{figure}[htp]
-\begin{center}
-  \includegraphics[width=0.4\textwidth]{image/example_petrinet.png}
-  \caption{A simple extended Petri net}
-  \label{fig:example_petrinet}
-\end{center}
+\begin{figure}[ht]
+	\begin{minipage}[b]{0.45\linewidth}
+	\centering
+		\includegraphics[width=1\textwidth]{image/example_petrinet.png}
+		\caption{A simple extended Petri net}
+		\label{fig:example_petrinet}
+	\end{minipage}
+\hspace{0.5cm}
+	\begin{minipage}[b]{0.45\linewidth}
+	\centering
+		\includegraphics[width=1\textwidth]{image/example_petrinet_geometry.png}
+		\caption{A simple geometry}
+		\label{fig:example_petrinet_geometry}
+	\end{minipage}
+
 \end{figure}
+
 
 \begin{figure}[htp]
 \begin{center}
-  \includegraphics[width=0.4\textwidth]{image/example_petrinet_geometry.png}
-  \caption{A simple geometry}
-  \label{fig:example_petrinet_geometry}
+  \includegraphics[width=0.4\textwidth]{image/3d.png}
+  \caption{A simple 3D visualization}
+  \label{fig:example_3d}
 \end{center}
 \end{figure}
+
+%\begin{figure}[htp]
+%\begin{center}
+%  \includegraphics[width=0.4\textwidth]{image/example_petrinet.png}
+%  \caption{A simple extended Petri net}
+%  \label{fig:example_petrinet}
+%\end{center}
+%\end{figure}
+%
+%\begin{figure}[htp]
+%\begin{center}
+%  \includegraphics[width=0.4\textwidth]{image/example_petrinet_geometry.png}
+%  \caption{A simple geometry}
+%  \label{fig:example_petrinet_geometry}
+%\end{center}
+%\end{figure}
 
 Using 3D models, textures and animations, the Petri net becomes easier to understand for the user. Continuing with the railway example, tokens become trains that move on tracks, which are places. As the tokens move from place to place, the train is animated in the 3D visualization along the tracks.
 
-Figure \ref{fig:3steps}  shows how a simple 3D simulation of a train track and a train is made out of Petri net model and a simple geometry. Place P1 references L1 as its geometry and also has the shape of a track. The token on place P1 has the shape of a train and it moves with an animation defined by the place P1.
+Figures \ref{fig:example_petrinet} and \ref{fig:example_petrinet_geometry} show how a simple 3D simulation of a train track and a train (Figure \ref{fig:example_3d}) is made out of Petri net model and a simple geometry. For example, in the Petri net model (Figure \ref{fig:example_petrinet}), Place P1 contains a geometry label that references its geometry location L1 in the geometry model (Figure \ref{fig:example_petrinet_geometry}).
 
 \subsection{General product description}
 
