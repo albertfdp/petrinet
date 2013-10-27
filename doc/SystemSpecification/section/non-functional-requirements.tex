@@ -1,10 +1,41 @@
 \section{Non functional requirements}
+In addition to programming related requirements, number of requirements is identified in the following sections.
+=======
 \label{sec:non-functional}
-%\writer{Thibaud}
-
 
 \subsection{Implementation constraints}
+The software must be implemented as plug-in to the Eclipse framework. The software is based on following technologies:
+\begin{enumerate}
+	\item Eclipse Modeling Framework, EMF v. 2.91
+	\item Graphical Modeling Framework, GMF 3.91
+	\item Graphical Editing Framework, GEF 1.70
+	\item JMonkey v. 3.0
+\end{enumerate}
 
 \subsection{Documentation}
+Development must be documented and documentations must be delivered according to following delivery deadlines
+\begin{enumerate}
+	\item Project definition, week 39
+	\item UML diagrams, week 41
+	\item System specification, week 44
+	\item Handbook, draft, 47
+	\item Test documentation, 51
+	\item Final documentation, 51
+\end{enumerate}
 
 \subsection{Quality Assurance}
+Procedures insuring the quality of this software project are presented in the following segment.
+\begin{enumerate}
+	\item Quality of documentation
+	\begin{enumerate}
+		\item Each part of the document is produced by multiple persons to decrease amount of typical errors.
+		\item Each part of documentation is reviewed for feedback. Depending on feedback appropriate measures are taken to edit the documentation.
+		\item Internal deadlines for documentation are set couple days in advance to the real deadline to give time to make feedback.
+	\end{enumerate}
+	\item Quality of implementation
+	\begin{enumerate}
+		\item Each implementation is produced by multiple persons to decrease amount of typical errors.
+		\item Commenting on manually generated code shall use javadoc standard.
+		\item A test strategy shall be developed to test the implementation. The strategy consists of unit test, acceptance test and system testing. Manually made code should have good results with these tests.
+	\end{enumerate}
+\end{enumerate}
