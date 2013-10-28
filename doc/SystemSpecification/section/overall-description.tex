@@ -138,6 +138,27 @@ Figure \ref{fig:system_diagram}. shows the different components of our system an
 \end{center}
 \end{figure}
 
+Moreover, this project also introduces new concepts related to Petri nets, because as it has been said, we are creating an extension to Petri nets.
+
+Regarding \textbf{Petri nets}:
+\begin{itemize}
+  \item \textbf{Input Places}: An Input place is a place on which a user can create a token on Runtime, by interacting with the GUI in the form of a mouseclick. This token can then be used to trigger a transition for instance.
+  \item \textbf{Geometry label}: A geometry label maps a place to a corresponding Geometry, defined later.
+  A geometry label simply consists of an id.
+
+  \item \textbf{Animation label}: An animation label describes the event happening on a place when a token is present.
+Animation labels refer to either movement actions or trigger actions.\end{itemize}
+
+A \textbf{Geometry} allows user to specify details about the 3D Space in which the Petri net is going to be rendered. It must present informations about the positions of the objects in the space but also informations about their looks.
+
+\begin{itemize}
+  \item \textbf{Appearance Label}: An appearance label maps a Geometry to a 3D model. One can find informations about appearances by reading further in this section.
+  \item \textbf{A position}: The position of a geometry is deduced by the relative positions of the geometry objects in the editor. 
+\end{itemize}
+
+Finally, an \textbf{Appearance} file maps \textbf{Appearance Labels} to \textbf{3D models}.
+To this end, each appearance label used by a Geometry corresponds to a file on the file system. The file is expected to be a 3D model.
+
 \subsection{Basic functionality}
 
 
@@ -160,4 +181,4 @@ To run the simulation, a specific "Run" button is added to the Configuration edi
 The simulator then initializes the \textbf{3D Engine} with all the informations needed for the visualization. The 3D Engine then relies on the simulator to know which next move it should perform on the Petri net. \newline
 To interact with the simulation, the user can either click or press certain keyboard buttons in the GUI for the visualization. \newline
 
-
+\newpage
