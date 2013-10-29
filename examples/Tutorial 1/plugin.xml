@@ -12,7 +12,7 @@
             name="Filetype View"
             icon="icons/sample.gif"
             category="dk.dtu.imm.se2.tutorials"
-            class="dk.dtu.imm.se2.filetypeview.views.FileTypeView"
+            class="dk.dtu.se2.tutorials.tutorial1.filetypeview.views.FileTypeView"
             id="dk.dtu.imm.se2.filetypeview.views.FileTypeView">
       </view>
    </extension>
