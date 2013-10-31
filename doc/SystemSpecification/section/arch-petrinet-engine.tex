@@ -1,16 +1,9 @@
 \subsection{Petri net engine}
+\writer{Thibaud}
 
 Figure \ref{fig:uml-petrinet-engine} shows the model behind the Petri net Engine.
 
 The \textbf{Petri net engine} is responsible for handling the behaviour of a Petri net at Runtime. 
- 
-\begin{figure}[htp]
-\begin{center}
-  \includegraphics[width=0.8\textwidth]{image/petrinet_engine.png}
-  \caption{UML for the Petrinet Engine}
-  \label{fig:uml-petrinet-engine}
-\end{center}
-\end{figure}
 
 The engine is initialized by the Simulator when a Simulation is launched, using a Petri net model passed as an argument in the Petri net Engine's constructor.
 
@@ -24,5 +17,15 @@ The simulator can then interact with the engine by calling one these three metho
   \item \textbf{markTokenAsFinished}: This method is called once an animation corresponding to a Token is finished. It is therefore marked as finished so that the method \textbf{fireTransitions} can know which transitions are possible to execute right away.
   \item \textbf{createToken}: This method is called by the simulator after an user input on an InputPlace. It creates a Token on the Place clicked by the user.
 \end{itemize}
+ 
+\begin{figure}[htp]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{image/petrinet_engine.png}
+  \caption{UML for the Petrinet Engine}
+  \label{fig:uml-petrinet-engine}
+\end{center}
+\end{figure}
+
+
  
 
