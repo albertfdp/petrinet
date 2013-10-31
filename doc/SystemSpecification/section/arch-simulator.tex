@@ -2,5 +2,16 @@
 
 The simulator is the main component of the system, it reads the initial configuration and works as a controller between the Petri net engine and the 3D engine.
 
-The simulator starts by reading the configuration, and initializing the Petri net engine with the initial Petri net model and the 3D engine with the geometry and the appearance. 
+Figure \ref{fig:sd-engines} shows the interaction between the three components involved. The simulator starts by reading the configuration, and initializing the Petri net engine with the initial Petri net model as well as the 3D engine with the geometry and the appearance. 
 
+\begin{figure}[htp]
+\begin{center}
+  \includegraphics[width=0.5\textwidth]{image/sd-engines.png}
+  \caption{Sequence diagram of the Simulator, Petri net Engine and 3D engine}
+  \label{fig:sd-engines}
+\end{center}
+\end{figure}
+
+Then, the 3D engine tells the Simulator that has received a \textit{start simulation} input from the user, and thus, awaits for new animations to be played. The simulator asks the Petri net engine to fire transitions and to give back the next sequence of animations to be played by the 3D engine.
+
+The simulator also has listeners for other interactions, such as pausing/stopping the simulation, animations finished and the user dropping new tokens on \textit{Input places}.
