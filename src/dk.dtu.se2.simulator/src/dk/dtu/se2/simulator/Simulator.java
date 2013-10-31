@@ -3,19 +3,18 @@ package dk.dtu.se2.simulator;
 
 import geometry.Geometry;
 
-import java.util.List;
+import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
 
-import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.appearance.Appearance;
 import dk.dtu.se2.engine3d.Engine3D;
-import dk.dtu.se2.engine3d.Engine3DFactory;
-import dk.dtu.se2.petrinet.ExtendedPetriNet;
+import dk.dtu.se2.engine3d.Engine3DListener;
+import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine3D;
 import dk.dtu.se2.simulator.petrinet.PetriNetEngine;
 
 
-public class Simulator {
+public class Simulator implements Engine3DListener {
 	
-	private ExtendedPetriNet petrinet;
+	private PetriNetDoc petrinet;
 	private Geometry geometry;
 	private Appearance appearance;
 	
@@ -23,22 +22,50 @@ public class Simulator {
 	
 	Engine3D engine;
 	
-	public Simulator (ExtendedPetriNet petrinet, Geometry geometry, Appearance appearance) {
+	public Simulator (PetriNetDoc petrinet, Geometry geometry, Appearance appearance) {
 		
 		this.petrinet = petrinet;
 		this.geometry = geometry;
 		this.appearance = appearance;
 		
 		this.petrinetEngine = new PetriNetEngine();
+		
+		JMonkeyEngine3D jmon = new JMonkeyEngine3D();
+		jmon.init(geometry, appearance);
+		
 	}
-	
-	
-	public void startSimulation() {
+
+	@Override
+	public void onStart() {
+		// TODO Auto-generated method stub
 		
-		List<Animation> animations = petrinetEngine.init(petrinet);
-		engine = Engine3DFactory.getEngine3D(Engine3DFactory.JMONKEY);
+	}
+
+
+	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
 		
-		engine.init(geometry, appearance);
+	}
+
+
+	@Override
+	public void onStop() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onAnimationFinished() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onUserClick() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

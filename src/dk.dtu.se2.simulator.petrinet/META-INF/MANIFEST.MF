@@ -5,5 +5,6 @@ Bundle-SymbolicName: dk.dtu.se2.simulator.petrinet
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: dk.dtu.se2.animation,
- dk.dtu.se2.petrinet
+ dk.dtu.se2.petrinet,
+ org.pnml.tools.epnk.pnmlcoremodel
 Export-Package: dk.dtu.se2.simulator.petrinet

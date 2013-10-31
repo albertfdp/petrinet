@@ -11,16 +11,6 @@ public interface Engine3D {
 	
 	public void init (Geometry geometry, Appearance appearance);
 	
-	public void onStart();
-	
-	public void onPause();
-	
-	public void onStop();
-	
-	public void onUserClick();
-	
 	public void animate(List<Animation> animations);
-	
-	public void onAnimationFinished(Animation animation);
 
 }

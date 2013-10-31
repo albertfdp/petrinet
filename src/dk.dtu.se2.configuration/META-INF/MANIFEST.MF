@@ -7,4 +7,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: dk.dtu.se2.geometry
 Export-Package: dk.dtu.se2.configuration
 Import-Package: dk.dtu.se2.appearance,
- dk.dtu.se2.petrinet
+ dk.dtu.se2.petrinet,
+ org.pnml.tools.epnk.pnmlcoremodel

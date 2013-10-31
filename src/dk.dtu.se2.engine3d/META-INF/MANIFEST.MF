@@ -5,6 +5,8 @@ Bundle-SymbolicName: dk.dtu.se2.engine3d
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: dk.dtu.se2.geometry;bundle-version="1.0.0"
-Export-Package: dk.dtu.se2.engine3d
-Import-Package: dk.dtu.se2.animation,
+Export-Package: dk.dtu.se2.engine3d,
+ dk.dtu.se2.engine3d.jmonkey
+Import-Package: com.jme3.app,
+ dk.dtu.se2.animation,
  dk.dtu.se2.appearance
