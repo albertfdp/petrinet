@@ -29,12 +29,12 @@ The Engine3DFactory class will be in charge of creating 3D Engine classes accord
 
 \paragraph{Engine3D}
 
-Engine3D is an Interface which will be implemented by the actual 3D Engine of the applicaton, in our case \textbf{JMonkey}. The following methods will be provided by the Engine3D interface: 
+Engine3D is an Interface which will be implemented by the actual 3D Engine of the applicaton, in our case \textbf{JMonkeyEngine}. The following methods will be provided by the Engine3D interface: 
 \begin{itemize}
 \item \textit{init(Geometry geometry, Appearance appearance)} - used to initialize the geometry and appearance models;
-\item \textit{startAnimation(List<Animation> aniamtions} - used by the Simulator to send the list of animations to be performed by the 3D Engine; 
+\item \textit{startAnimation(List<Animation> animations} - used by the Simulator to send the list of animations to be performed by the 3D Engine; 
 \end{itemize}
 
 \paragraph{JMonkeyEngine3D}
 
-As stated before, the JMonkeyEngine3D class will implement all the methods of the Engine3D interface and will perform all the animations using the \textbf{jMonkeyengine 3.0} technology.  
+As stated before, the JMonkeyEngine3D class will implement all the methods of the Engine3D interface and will perform all the animations. This class will be described into more details in the next section.
