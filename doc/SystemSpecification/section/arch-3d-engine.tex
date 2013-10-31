@@ -1,6 +1,6 @@
 \subsection{3D Engine}
 
-The 3D Engine is the component of the application that handles the animation of objects and displays it on the screen for the user. It's main functionalities are: 
+The 3D Engine is the component of the application that handles the animation of objects and displays it on the screen for the user. It's main functions are: 
 
 \begin{itemize}
 \item handling the window in which the graphical simulation is shown to the user
@@ -11,3 +11,34 @@ The 3D Engine is the component of the application that handles the animation of 
 \item update the animations according to the information sent by the \textit{Simulator}
 \end{itemize}
 
+In order to build a system that is not technology dependent in terms of its 3D visualization, Interfaces and the Factory design pattern are employed. In this way, the 3D Engine can be easily changed from \textbf{jMonkey} to \textbf{Java3D} or any other technology desired at some point by the customer. 
+
+Figure \ref{fig:factory} shows the defined classes in the implementation of the Factory pattern.
+
+\begin{figure}[htp]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{image/engine_factory.png}
+  \caption{3D Engine Factory Pattern}
+  \label{fig:factory}
+\end{center}
+\end{figure} 
+
+\paragraph{Engine3DFactory}
+
+The Engine3DFactory class will be in charge of creating 3D Engine classes according to the engine name sent as a parameter of the method \textit{getEngine3D()}. This method will be called from the Simulator in the initialization phase, when both the 3D Engine and the Petri net Engine are created. 
+
+\paragraph{Engine3D}
+
+Engine3D is an Interface which will be implemented by the actual 3D Engine of the applicaton, in our case \textbf{JMonkey}. The following methods will be provided by the Engine3D interface: 
+\begin{itemize}
+\item \textit{init(Geometry geometry, Appearance appearance)} - used to initialize the geometry and appearance models;
+\item \textit{onStart()} - called when the START button is pressed;
+\item \textit{onStop()} - called when the STOP button is pressed;
+\item \textit{onUserClick()} - called when the user clicks on an Input Place;
+\item \textit{animate(List<Animation> aniamtions} - used by the Simulator to send the list of animations to be performed by the 3D Engine;
+\item \textit{onAnimationFinished(Animation animation} - used by the 3D Engine to let the Simulator know an animation has finished. 
+\end{itemize}
+
+\paragraph{JMonkeyEngine3D}
+
+As stated before, the JMonkeyEngine3D class will implement all the methods of the Engine3D interface and will perform all the animations using the \textbf{jMonkeyengine 3.0} technology.  
