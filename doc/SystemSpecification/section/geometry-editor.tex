@@ -1,43 +1,40 @@
 \subsection{Geometry editor}
 \label{sec:sf-geometry}
+\writer{Mikko}
 
-Geometry editor is a tool to create and edit geometry. Geometry consists of geometry objects. They are either lines or points. Geometry editor has following requirements.
+The Geometry Editor is a component that will allow the user to create and edit geometry models. Such models consist of geometry objects, namely \textit{lines} and \textit{points} and are defined as a two dimensional representation of the Petri net objects to be simulated. The connection between the geometry and the Petri net objects will be done via the \textit{geometry labels}.
 
 \subsubsection{Functional Requirements}
 
 \begin{enumerate}
-	\item Geometry editor \textbf{shall} allow user to create, edit and delete points.
-	\item Geometry editor \textbf{shall} allow user to create, edit and delete define point as inputPoint, Connector or bendPoint.
-	\item Geometry editor \textbf{shall} allow user to create, edit and delete lines by using connectors and bendPoints.
-	\item Geometry editor \textbf{shall} allow user to load and save geometry file.
-	\item Geometry editor \textbf{shall} allow user to define labels for geometry objects.
-	\item Geometry editor \textbf{shall} create unique IDs for geometry objects.
-	\item Geometry editor \textbf{should} allow user to create parametric curved lines.
-	\item Geometry editor \textbf{should} allow user to use undo and redo.
-	\item Geometry editor \textbf{should} allow user to use copy, paste and cut geometry objects.
-	\item Geometry editor \textbf{should} have a Graphical User Interface.
-	\begin{enumerate}
-		\item Geometry editor \textbf{should} have drag and drop interface.
-		\item Geometry editor \textbf{should} enable editing of geometries with a text input.
-		\item It \textbf{would be nice} if the geometry editor allows user to create different kinds of parametric curved lines, such as Catmull-rom spline and Bézier-curves.
-		\item It \textbf{would be nice} if the geometry editor allows user to zoom and pan the geometry canvas.
-		\item It \textbf{would be nice} if the geometry editor allows user select multiple geometry objects simultaneously.
-		\item It \textbf{would be nice} if the geometry editor allows user to load multiple geometries on same canvas.
-		\item It \textbf{would be nice} if the geometry editor allows user select multiple geometry objects simultaneously.
-		\item It \textbf{would be nice} if the geometry editor allows user to rotate and scale geometry objects.
-		\item It \textbf{would be nice} if the geometry editor allows user to toggle visibility of geometry objects while using geometry editor.
-	\end{enumerate}
-	\item It \textbf{would be nice} if you could specify a Petri ned model from which the geometry is being specified from and it is validated.
+	\item The Geometry Editor \textbf{shall} allow the user to create, edit and delete points.
+	\item The Geometry Editor \textbf{shall} allow the user to define points as Input Point, Connector or Bend Point.
+	\item The Geometry Editor \textbf{shall} allow the user to create, edit and delete lines.
+	\item The Geometry Editor \textbf{shall} allow the user to load and save geometry files.
+	\item The Geometry Editor \textbf{shall} allow the user to define labels for geometry objects.
+	\item The Geometry Editor \textbf{shall} create unique IDs for geometry objects.
+	\item The Geometry Editor \textbf{should} allow the user to create parametric curved lines.
+	\item The Geometry Editor \textbf{should} allow the user to use undo and redo.
+	\item The Geometry Editor \textbf{should} allow user to use copy, paste and cut geometry objects.
+	\item The Geometry Editor \textbf{should} have drag and drop interface.
+	\item The Geometry Editor \textbf{should} enable editing of geometries with a text input.
+	\item It \textbf{would be nice} if the Geometry Editor allowed the user to create different kinds of parametric curved lines, such as Catmull-rom spline and Bézier-curves.
+	\item It \textbf{would be nice} if the Geometry Editor allowed the user to zoom and pan the geometry canvas.
+	\item It \textbf{would be nice} if the Geometry Editor allowed the user select multiple geometry objects simultaneously.
+	\item It \textbf{would be nice} if the Geometry Editor allowed the user to load multiple geometries on same canvas.
+	\item It \textbf{would be nice} if the Geometry Editor allowed the user select multiple geometry objects simultaneously.
+	\item It \textbf{would be nice} if the Geometry Editor allowed the user to rotate and scale geometry objects.
+	\item It \textbf{would be nice} if the user could specify a Petri net model to which the geometry is connected and validated.
 \end{enumerate}
 
 \subsubsection{Use cases}
 
-The uses of geometry editor is summed up in the use case diagram in Figure~\ref{fig:use-cases-geometry-editor}.
+The features described above are shown in Figure~\ref{fig:use-cases-geometry-editor}.
 
 \begin{figure}[htp]
 \begin{center}
   \includegraphics[width=0.5\textwidth]{image/uc-geometry.png}
-  \caption{Use cases for the Geometry editor}
+  \caption{Use cases for the Geometry Editor }
   \label{fig:use-cases-geometry-editor}
 \end{center}
 \end{figure}

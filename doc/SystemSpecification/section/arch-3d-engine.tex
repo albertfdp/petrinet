@@ -32,11 +32,7 @@ The Engine3DFactory class will be in charge of creating 3D Engine classes accord
 Engine3D is an Interface which will be implemented by the actual 3D Engine of the applicaton, in our case \textbf{JMonkey}. The following methods will be provided by the Engine3D interface: 
 \begin{itemize}
 \item \textit{init(Geometry geometry, Appearance appearance)} - used to initialize the geometry and appearance models;
-\item \textit{onStart()} - called when the START button is pressed;
-\item \textit{onStop()} - called when the STOP button is pressed;
-\item \textit{onUserClick()} - called when the user clicks on an Input Place;
-\item \textit{animate(List<Animation> aniamtions} - used by the Simulator to send the list of animations to be performed by the 3D Engine;
-\item \textit{onAnimationFinished(Animation animation} - used by the 3D Engine to let the Simulator know an animation has finished. 
+\item \textit{startAnimation(List<Animation> aniamtions} - used by the Simulator to send the list of animations to be performed by the 3D Engine; 
 \end{itemize}
 
 \paragraph{JMonkeyEngine3D}
