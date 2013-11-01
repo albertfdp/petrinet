@@ -13,7 +13,8 @@ Require-Bundle: org.eclipse.core.runtime,
  dk.dtu.se2.tutorials.tutorial5.extendedpetrinet;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
  org.pnml.tools.epnk;visibility:=reexport,
- org.pnml.tools.epnk.edit;visibility:=reexport
+ org.pnml.tools.epnk.edit;visibility:=reexport,
+ org.antlr.runtime
 Bundle-ActivationPolicy: lazy
 Import-Package: animation,
  com.google.inject;version="1.3.0",
@@ -22,4 +23,6 @@ Import-Package: animation,
  dk.dtu.se2.tutorials.tutorial6.animationTest.language.services,
  org.eclipse.emf.mwe.internal.core.ast.util,
  org.eclipse.xtext,
- org.eclipse.xtext.parser
+ org.eclipse.xtext.nodemodel,
+ org.eclipse.xtext.parser,
+ org.eclipse.xtext.parser.antlr
