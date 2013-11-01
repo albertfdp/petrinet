@@ -4,7 +4,10 @@ package dk.dtu.se2.petrinet.provider;
 
 
 import dk.dtu.se2.petrinet.AnimationLabel;
+import dk.dtu.se2.tutorials.tutorial6.animationTest.language.AnimationLanguageStandaloneSetup;
+import dk.dtu.se2.tutorials.tutorial6.animationTest.language.parser.antlr.AnimationLanguageParser;
 
+import java.io.StringReader;
 import java.util.Collection;
 import java.util.List;
 
@@ -18,7 +21,12 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.mwe.internal.core.ast.util.Injector;
+import org.eclipse.xtext.ParserRule;
+import org.eclipse.xtext.parser.IParseResult;
 import org.pnml.tools.epnk.structuredpntypemodel.provider.StructuredLabelItemProvider;
+
+import animation.Animation;
 
 /**
  * This is the item provider adapter for a {@link dk.dtu.se2.petrinet.AnimationLabel} object.
@@ -34,6 +42,10 @@ public class AnimationLabelItemProvider
 		ITreeItemContentProvider,
 		IItemLabelProvider,
 		IItemPropertySource {
+	
+	 Injector guiceInjector;	
+	 AnimationLanguageParser parser;
+	
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -42,6 +54,9 @@ public class AnimationLabelItemProvider
 	 */
 	public AnimationLabelItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
+		
+		guiceInjector  = (Injector) new AnimationLanguageStandaloneSetup().createInjector();
+		parser  = ((com.google.inject.Injector) guiceInjector).getInstance(AnimationLanguageParser.class);
 	}
 
 	/**
@@ -121,9 +136,18 @@ public class AnimationLabelItemProvider
 	}
 	
 	public EObject parse(String input) {
+		  Animation result = null;
+		  ParserRule rule = parser.getGrammarAccess().getAnimationRule();
+		  IParseResult parseResult = parser.parse(rule, new StringReader(input));
+		  Iterable<INode> errors = parseResult.getSyntaxErrors();
+		  if (!errors.iterator().hasNext())  {
+		    EObject object = parseResult.getRootASTElement();
+		    if (object instanceof Animation) {
+		      result = (Animation) object;
+		    }
+		  }
 		
-		
-		return null;
+		return result;
 	}
 	
 

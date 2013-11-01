@@ -15,4 +15,6 @@ import org.pnml.tools.epnk.structuredpntypemodel.StructuredLabel;
  * @generated
  */
 public interface AnimationLabel extends StructuredLabel {
+	
+	
 } // AnimationLabel
