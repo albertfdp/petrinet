@@ -1,0 +1,7 @@
+# Tracing options for the Geometry.diagram plug-in
+
+# Common issues
+Geometry.diagram/debug=false
+
+# Visual IDs
+Geometry.diagram/debug/visualID=false
