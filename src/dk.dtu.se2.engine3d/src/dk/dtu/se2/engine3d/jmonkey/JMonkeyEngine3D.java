@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import animation.Animation;
 
 import com.jme3.animation.LoopMode;
 import com.jme3.app.SimpleApplication;
@@ -25,7 +26,6 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.shape.Box;
 import com.jme3.texture.Texture;
 
-import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.appearance.Appearance;
 import dk.dtu.se2.engine3d.Engine3D;
 import dk.dtu.se2.engine3d.Engine3DListener;
@@ -58,8 +58,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     public State engineState;
 	
     public static void main(String[] args){
-		JMonkeyEngine3D app = new JMonkeyEngine3D();
-        app.start(); 
+		
 	}
     
     public void setupSObjects() {
@@ -166,14 +165,10 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	@Override // referring to Geometry as geometry.Geometry to avoid confusing it with jMonkey Geometry
 	public void init(geometry.Geometry geometry, Appearance appearance, List<Animation> animations) { 	
 		
+		this.start();         
 		this.geometry = geometry;
 		this.appearance = appearance;
-		
-		setupSObjects();
-		setupTokens();
-		setupMotionEvents();
-		setupTextFields();
-		
+				
 	}
 	
 	@Override

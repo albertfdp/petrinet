@@ -17,8 +17,10 @@ public class Engine3DFactory {
 	 * @return the engine
 	 */
 	public static Engine3D getEngine3D(String engineName) {
-		if (engineName.equals(JMONKEY))
+		if (engineName.equals(JMONKEY)) {
 			return new JMonkeyEngine3D();
+		}
+			
 		else
 			// FIXME
 			return new JMonkeyEngine3D();
