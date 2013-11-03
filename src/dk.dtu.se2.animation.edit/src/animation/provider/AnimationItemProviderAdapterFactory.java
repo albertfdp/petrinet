@@ -1,8 +1,6 @@
 /**
  */
-package dk.dtu.se2.tutorials.tutorial6.animation.animation.provider;
-
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.util.AnimationAdapterFactory;
+package animation.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,7 +8,6 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -22,6 +19,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
+import animation.util.AnimationAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -72,7 +71,7 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Animation} instances.
+	 * This keeps track of the one adapter used for all {@link animation.Animation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -80,7 +79,7 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	protected AnimationItemProvider animationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Animation}.
+	 * This creates an adapter for a {@link animation.Animation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -95,7 +94,7 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Sequence} instances.
+	 * This keeps track of the one adapter used for all {@link animation.Sequence} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -103,7 +102,7 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	protected SequenceItemProvider sequenceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Sequence}.
+	 * This creates an adapter for a {@link animation.Sequence}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -118,7 +117,7 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Move} instances.
+	 * This keeps track of the one adapter used for all {@link animation.Move} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -126,7 +125,7 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	protected MoveItemProvider moveItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Move}.
+	 * This creates an adapter for a {@link animation.Move}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -141,7 +140,7 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Show} instances.
+	 * This keeps track of the one adapter used for all {@link animation.Show} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -149,7 +148,7 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	protected ShowItemProvider showItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Show}.
+	 * This creates an adapter for a {@link animation.Show}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -164,7 +163,7 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Hide} instances.
+	 * This keeps track of the one adapter used for all {@link animation.Hide} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -172,7 +171,7 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	protected HideItemProvider hideItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Hide}.
+	 * This creates an adapter for a {@link animation.Hide}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -187,7 +186,7 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Stop} instances.
+	 * This keeps track of the one adapter used for all {@link animation.Stop} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -195,7 +194,7 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	protected StopItemProvider stopItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Stop}.
+	 * This creates an adapter for a {@link animation.Stop}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -210,7 +209,7 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationObject} instances.
+	 * This keeps track of the one adapter used for all {@link animation.AnimationObject} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -218,7 +217,7 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	protected AnimationObjectItemProvider animationObjectItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationObject}.
+	 * This creates an adapter for a {@link animation.AnimationObject}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

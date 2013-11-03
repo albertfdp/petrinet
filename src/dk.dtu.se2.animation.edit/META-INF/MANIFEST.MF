@@ -4,11 +4,11 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: dk.dtu.se2.animation.edit;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: dk.dtu.se2.tutorials.tutorial6.animation.animation.provider.AnimationEditPlugin$Implementation
+Bundle-Activator: animation.provider.AnimationEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: dk.dtu.se2.tutorials.tutorial6.animation.animation.provider
+Export-Package: animation.provider
 Require-Bundle: org.eclipse.core.runtime,
  dk.dtu.se2.animation;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport

@@ -1,6 +1,6 @@
 /**
  */
-package dk.dtu.se2.tutorials.tutorial6.animation.animation.provider;
+package animation.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
 

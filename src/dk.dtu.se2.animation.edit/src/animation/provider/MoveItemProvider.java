@@ -1,30 +1,33 @@
 /**
  */
-package dk.dtu.se2.tutorials.tutorial6.animation.animation.provider;
+package animation.provider;
 
-
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.Show;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import animation.AnimationPackage;
+import animation.Move;
 
 /**
- * This is the item provider adapter for a {@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Show} object.
+ * This is the item provider adapter for a {@link animation.Move} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ShowItemProvider
+public class MoveItemProvider
 	extends AnimationObjectItemProvider
 	implements
 		IEditingDomainItemProvider,
@@ -38,7 +41,7 @@ public class ShowItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ShowItemProvider(AdapterFactory adapterFactory) {
+	public MoveItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -53,19 +56,42 @@ public class ShowItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addSpeedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This returns Show.gif.
+	 * This adds a property descriptor for the Speed feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSpeedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Move_speed_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Move_speed_feature", "_UI_Move_type"),
+				 AnimationPackage.Literals.MOVE__SPEED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns Move.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Show"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Move"));
 	}
 
 	/**
@@ -76,10 +102,10 @@ public class ShowItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Show)object).getName();
+		String label = ((Move)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Show_type") :
-			getString("_UI_Show_type") + " " + label;
+			getString("_UI_Move_type") :
+			getString("_UI_Move_type") + " " + label;
 	}
 
 	/**
@@ -92,6 +118,12 @@ public class ShowItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Move.class)) {
+			case AnimationPackage.MOVE__SPEED:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

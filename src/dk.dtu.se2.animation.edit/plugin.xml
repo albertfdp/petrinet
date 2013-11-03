@@ -10,7 +10,7 @@
       <!-- @generated Animation -->
       <factory
             uri="http://animation/1.0"
-            class="dk.dtu.se2.tutorials.tutorial6.animation.animation.provider.AnimationItemProviderAdapterFactory"
+            class="animation.provider.AnimationItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
