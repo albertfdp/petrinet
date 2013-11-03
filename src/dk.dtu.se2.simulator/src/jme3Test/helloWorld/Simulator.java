@@ -47,7 +47,7 @@ public class Simulator extends SimpleApplication{
     public ArrayList<MotionEvent> allMotionEvents = new ArrayList<MotionEvent>();
 	
 	
-	public State simulatorState;
+	public State simulatorState; // rename to engine state or similar
 	
 	public void setupSObjects() {
 		
@@ -58,19 +58,15 @@ public class Simulator extends SimpleApplication{
 		//
 		
 		// Temporary:
-		allSObjects.add(new SObject(new Vector2f(30, 10), new Vector2f(30, 30), new Vector2f(30, 50), false, "ID00", 2f));
+		allSObjects.add(new SObject(new Vector2f(30, 10), new Vector2f(30, 30), new Vector2f(30, 50), false, "ID00", 2f)); // need to calculate the time of the animation based on the speed (in this case: 2f should be changed to something else)
 		allSObjects.add(new SObject(new Vector2f(30, 50), new Vector2f(10, 30), new Vector2f(30, 10), false, "ID01", 2f));
 		allSObjects.add(new SObject(new Vector2f(30, 50), new Vector2f(50, 30), new Vector2f(30, 10), false, "ID02", 2f));
 	}
 	
-	public void setupTokens() {
+	public void setupTokens() { // happens in the engine, gets information from the simulator (from the config file)
 		
-		// Take info from XML files and arrange it neatly into the allTokens array
-		//
-		// insert XML parsing here
-		//
-		//
-				
+		// get info about token appearance from the simulator
+		
 		// Temporary:
 		for (int index = 0; index < allSObjects.size() ; index++) { // create the same number of tokens as there are SObjects
 		
@@ -89,7 +85,7 @@ public class Simulator extends SimpleApplication{
 		}	
 	}
 	
-	public void setupMotionEvents() {
+	public void setupMotionEvents() { // happens in the engine
 		
 		// for the number of SObjects, do the following:
 
@@ -109,7 +105,6 @@ public class Simulator extends SimpleApplication{
 			
 			MotionEvent event = new MotionEvent(allTokens.get(index), path, allSObjects.get(index).speed, LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (dont loop).
 			event.setDirectionType(MotionEvent.Direction.Path); // AP: The spatial always faces in the direction of the path while moving.
-			//event.onStop( );
 			allMotionEvents.add(event);
 		}
 	}
@@ -276,11 +271,11 @@ public class Simulator extends SimpleApplication{
 				hudText.setText("Play state: " + simulatorState); 
 				for (MotionEvent events : allMotionEvents) {
 					events.stop();
-					events.play();
+					// remove tokens
 					// 
 					// This needs to be done differently: it should load the original configuration and remove all tokens.
 				}
-				simulatorState = State.PAUSED;
+				simulatorState = State.PAUSED; // perhaps the state should be 'stopped'
 			}
 			
 			if (name.equals("1") && !keyPressed) { 
@@ -321,8 +316,8 @@ public class Simulator extends SimpleApplication{
 					allMotionEvents.get(listOfWaitingAnimations.get(index)).play();
 				}
 				if (state == PlayState.Playing) {
-					allMotionEvents.get(listOfWaitingAnimations.get(index)).stop();
-					allMotionEvents.get(listOfWaitingAnimations.get(index)).play();
+					allMotionEvents.get(listOfWaitingAnimations.get(index)).stop(); // if we need several tokens on one place, this is where it has to happen.
+					allMotionEvents.get(listOfWaitingAnimations.get(index)).play(); // right now, it just restarts the animation.
 				}
 			}
 			
@@ -340,8 +335,7 @@ public class Simulator extends SimpleApplication{
 				
 				if (currentState == PlayState.Stopped) {  // if the state has changed to Stopped
 					
-					int num = index;
-					listOfInts.add(0, num);
+					listOfInts.add(0, index);
 					// Report Finished Animation to simulator
 				}
 			}
