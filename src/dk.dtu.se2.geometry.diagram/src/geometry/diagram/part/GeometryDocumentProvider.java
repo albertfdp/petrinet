@@ -894,8 +894,7 @@ public class GeometryDocumentProvider extends AbstractDocumentProvider
 		public void dispose() {
 			stopResourceListening();
 			getResourceSet().eAdapters().remove(myResourceSetListener);
-			for (Iterator/*[org.eclipse.emf.ecore.resource.Resource]*/it = getLoadedResourcesIterator(); it
-					.hasNext();) {
+			for (Iterator/*[org.eclipse.emf.ecore.resource.Resource]*/it = getLoadedResourcesIterator(); it.hasNext();) {
 				Resource resource = (Resource) it.next();
 				resource.unload();
 			}
