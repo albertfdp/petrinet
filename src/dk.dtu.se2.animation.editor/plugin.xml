@@ -14,7 +14,7 @@
       <wizard
             id="dk.dtu.se2.tutorials.tutorial6.animation.animation.presentation.AnimationModelWizardID"
             name="%_UI_AnimationModelWizard_label"
-            class="dk.dtu.se2.tutorials.tutorial6.animation.animation.presentation.AnimationModelWizard"
+            class="animation.presentation.AnimationModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/AnimationModelFile.gif">
          <description>%_UI_AnimationModelWizard_description</description>
@@ -29,8 +29,8 @@
             name="%_UI_AnimationEditor_label"
             icon="icons/full/obj16/AnimationModelFile.gif"
             extensions="animation"
-            class="dk.dtu.se2.tutorials.tutorial6.animation.animation.presentation.AnimationEditor"
-            contributorClass="dk.dtu.se2.tutorials.tutorial6.animation.animation.presentation.AnimationActionBarContributor">
+            class="animation.presentation.AnimationEditor"
+            contributorClass="animation.presentation.AnimationActionBarContributor">
       </editor>
    </extension>
 

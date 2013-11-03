@@ -1,6 +1,6 @@
 /**
  */
-package dk.dtu.se2.tutorials.tutorial6.animation.animation.presentation;
+package animation.presentation;
 
 import java.util.ArrayList;
 import java.util.Collection;
