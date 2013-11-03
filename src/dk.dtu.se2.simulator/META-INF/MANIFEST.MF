@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: HelloJME3
 Bundle-SymbolicName: dk.dtu.se2.simulator
 Bundle-Version: 1.0.0.qualifier
-Export-Package: jme3Test.helloWorld
 Require-Bundle: jMonkeyEclipse;bundle-version="1.0.0"
 Import-Package: dk.dtu.se2.animation,
  dk.dtu.se2.appearance,

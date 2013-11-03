@@ -1,10 +1,14 @@
 package dk.dtu.se2.simulator;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import geometry.Geometry;
 
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
 
+import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.appearance.Appearance;
 import dk.dtu.se2.engine3d.Engine3D;
 import dk.dtu.se2.engine3d.Engine3DListener;
@@ -30,8 +34,10 @@ public class Simulator implements Engine3DListener {
 		
 		this.petrinetEngine = new PetriNetEngine();
 		
+		List<Animation> animations = new ArrayList<Animation>();
+		
 		JMonkeyEngine3D jmon = new JMonkeyEngine3D();
-		jmon.init(geometry, appearance);
+		jmon.init(geometry, appearance, animations);
 		
 	}
 
