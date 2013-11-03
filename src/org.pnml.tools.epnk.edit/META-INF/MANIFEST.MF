@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.emf.edit;visibili
+ ty:=reexport,org.eclipse.emf.ecore;visibility:=reexport,org.eclipse.e
+ mf.ecore.edit;visibility:=reexport,org.eclipse.gmf.runtime.notation;v
+ isibility:=reexport,org.eclipse.gmf.runtime.notation.edit;visibility:
+ =reexport,org.pnml.tools.epnk;bundle-version="1.0.0";visibility:=reex
+ port,org.pnml.tools.epnk.edit;bundle-version="1.0.0";visibility:=reex
+ port
+Export-Package: org.pnml.tools.epnk.datatypes.pnmldatatypes.provider,o
+ rg.pnml.tools.epnk.pnmlcoremodel.provider,org.pnml.tools.epnk.structu
+ redpntypemodel.provider,org.pnml.tools.epnk.toolspecific.diagraminfo.
+ provider
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-Version: 1.0.1.201306211857
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Bundle-Activator: org.pnml.tools.epnk.pnmlcoremodel.provider.PNMLCoreM
+ odelEditPlugin$Implementation
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.pnml.tools.epnk.edit;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+
+
