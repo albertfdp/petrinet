@@ -62,19 +62,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
         app.start(); 
 	}
     
-	@Override
-	public void init(geometry.Geometry geometry, Appearance appearance, List<Animation> animations) {
-		this.geometry = geometry;
-		this.appearance = appearance;
-		
-		setupSObjects();
-		setupTokens();
-		setupMotionEvents();
-		setupTextFields();
-		
-	}
-	
-	public void setupSObjects() {
+    public void setupSObjects() {
 		
 		// Take info from XML files and arrange it neatly into the allSObjects array
 		//
@@ -88,7 +76,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		allSObjects.add(new SObject(new Vector2f(30, 50), new Vector2f(50, 30), new Vector2f(30, 10), false, "ID02", 2f));
 	}
 	
-	public void setupTokens() { // happens in the engine, gets information from the simulator (from the config file)
+	public void setupTokens() { // happens in the engine, gets information from the simulator (from the configuration file)
 		
 		// get info about token appearance from the simulator
 		
@@ -134,7 +122,6 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		}
 	}
 	
-
 	public void setupTextFields() {
 		
 		for (int index = 0; index < allSObjects.size(); index++) {
@@ -164,94 +151,31 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     		guiNode.attachChild(text);
     	}
 	}
-	
-
+    
 	@Override
 	public void animate(List<Animation> animations) {
 		
-//		for(Animation animation : animations)
-//			listOfWaitingAnimations.add(animation.getId());
-		
+		// for(Animation animation : animations)
+			// listOfWaitingAnimations.add(animation.getId());	
 	}
 	
 	public void setEngine3DListener(Engine3DListener engine3DListener) {
 		this.engine3DListener = engine3DListener;
 	}
 	
-	@Override 
-    public void simpleUpdate(float tpf) {
-    	//double timeElapsedSinceStart = System.currentTimeMillis() - timeAtSystemStart; // Time elapsed since program start. 
+	@Override // referring to Geometry as geometry.Geometry to avoid confusing it with jMonkey Geometry
+	public void init(geometry.Geometry geometry, Appearance appearance, List<Animation> animations) { 	
 		
-		// update play state HUD
-		hudText.setText("Press 'p' to play/pause, press 'r' to reset - " + engineState);  
+		this.geometry = geometry;
+		this.appearance = appearance;
 		
+		setupSObjects();
+		setupTokens();
+		setupMotionEvents();
+		setupTextFields();
 		
-		// play waiting animations
-		if (engineState == State.PLAYING) {
-			for (int index = 0; index < listOfWaitingAnimations.size(); index++) {
-			
-				PlayState state = allMotionEvents.get(listOfWaitingAnimations.get(index)).getPlayState();
-			
-				if (state == PlayState.Stopped) {
-					allMotionEvents.get(listOfWaitingAnimations.get(index)).play();
-				}
-				if (state == PlayState.Playing) {
-					allMotionEvents.get(listOfWaitingAnimations.get(index)).stop(); // if we need several tokens on one place, this is where it has to happen.
-					allMotionEvents.get(listOfWaitingAnimations.get(index)).play(); // right now, it just restarts the animation.
-				}
-			}
-			
-			listOfWaitingAnimations.clear();
-		}
-		
-		
-		// check for recently finished animations
-		for (int index = 0; index < allMotionEvents.size(); index++) {
-			
-			PlayState currentState = allMotionEvents.get(index).getPlayState();
-			PlayState previousState = previousAnimationStates.get(index);
-  		
-			if (currentState != previousState) { // if the state changed
-				
-				if (currentState == PlayState.Stopped) {  // if the state has changed to Stopped
-					
-					listOfInts.add(0, index);
-					// Report Finished Animation to simulator
-					// when animation finished;
-//					this.engine3DListener.onAnimationFinished();
-				}
-			}
-			
-			previousAnimationStates.set(index, allMotionEvents.get(index).getPlayState());
-		}
-		
-		
-		// Debug: update petri net message console
-		for (int index = 0; index < messageToPetriNet.size(); index++) {
-					
-			String number = listOfInts.get(index).toString();
-			messageToPetriNet.get(index).setText("Animation finished in: " + number); 
-							
-		}
-		
-		// Debug: update the text fields that display the play state of each animation/MotionEvent
-		for (int index = 0; index < allTextFields.size(); index++){
-			
-			PlayState state = allMotionEvents.get(index).getPlayState();
-			if (state == PlayState.Playing){
-				allTextFields.get(index).setText(allSObjects.get(index).getName() + " : Playing");
-			}
-			if (state == PlayState.Paused){
-				allTextFields.get(index).setText(allSObjects.get(index).getName() + " : Paused");
-			}
-			if (state == PlayState.Stopped){
-				allTextFields.get(index).setText(allSObjects.get(index).getName() + " : Stopped");
-			}
-		}
-		
-		
-    }
-
+	}
+	
 	@Override
 	public void simpleInitApp() {  // keep in mind that we don't have the size of the allSObjects list yet.
 
@@ -270,8 +194,6 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		// toggle statistics window in bottom left
 		setDisplayFps(false);
 		setDisplayStatView(false);
-		    	
-		    
 		    	
 		// AP: setting up a hud text
 		hudText = new BitmapText(guiFont, false);          
@@ -324,69 +246,140 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		}	
 	}
 	
-private ActionListener actionListener = new ActionListener() {
-	 
-	public void onAction(String name, boolean keyPressed, float tpf) {
-		
-		if (name.equals("p") && !keyPressed) { 
+	private ActionListener actionListener = new ActionListener() {
+		 
+		public void onAction(String name, boolean keyPressed, float tpf) {
 			
-			switch (engineState) {
-			
-			case PLAYING: 	for (MotionEvent event : allMotionEvents) { // only pause the playing motionEvents
-								
-								PlayState playState = event.getPlayState();
-								if (playState == PlayState.Playing)
-									event.pause();
-        					}	
-							engineState = State.PAUSED;
-							break;
-			
-			case PAUSED: 	for (MotionEvent event : allMotionEvents) { // only play the paused motionEvents
-								
-								PlayState playState = event.getPlayState();
-								if (playState == PlayState.Paused)
-									event.play();	
-							}	
-							engineState = State.PLAYING;
-							break;
-							
-			case RESETTING:	// do nothing
-							break;
-							
-			}
+			if (name.equals("p") && !keyPressed) { 
 				
-	    }
-		
-		if (name.equals("r") && !keyPressed) { 
+				switch (engineState) {
+				
+				case PLAYING: 	for (MotionEvent event : allMotionEvents) { // only pause the playing motionEvents
+									
+									PlayState playState = event.getPlayState();
+									if (playState == PlayState.Playing)
+										event.pause();
+	        					}	
+								engineState = State.PAUSED;
+								break;
+				
+				case PAUSED: 	for (MotionEvent event : allMotionEvents) { // only play the paused motionEvents
+									
+									PlayState playState = event.getPlayState();
+									if (playState == PlayState.Paused)
+										event.play();	
+								}	
+								engineState = State.PLAYING;
+								break;
+								
+				case RESETTING:	// do nothing
+								break;
+								
+				}
+					
+		    }
 			
-			hudText.setText("Play state: " + engineState); 
-			for (MotionEvent events : allMotionEvents) {
-				events.stop();
-				// remove tokens
-				// 
-				// This needs to be done differently: it should load the original configuration and remove all tokens.
+			if (name.equals("r") && !keyPressed) { 
+				
+				hudText.setText("Play state: " + engineState); 
+				for (MotionEvent events : allMotionEvents) {
+					events.stop();
+					// remove tokens
+					// 
+					// This needs to be done differently: it should load the original configuration and remove all tokens.
+				}
+				
+				engineState = State.PAUSED; // perhaps the state should be 'stopped'
 			}
-			engineState = State.PAUSED; // perhaps the state should be 'stopped'
+			
+			if (name.equals("1") && !keyPressed) { 
+				
+				listOfWaitingAnimations.add(0); // adds the ID of the animation to the list 
+
+		    } 
+			if (name.equals("2") && !keyPressed) { 
+				
+				listOfWaitingAnimations.add(1); // adds the ID of the animation to the list
+				
+		    }
+			if (name.equals("3") && !keyPressed) {
+				
+				listOfWaitingAnimations.add(2); // adds the ID of the animation to the list
+
+		    }
+
 		}
 		
-		if (name.equals("1") && !keyPressed) { 
-			
-			listOfWaitingAnimations.add(0); // adds the ID of the animation to the list 
-
-	    } 
-		if (name.equals("2") && !keyPressed) { 
-			
-			listOfWaitingAnimations.add(1); // adds the ID of the animation to the list
-			
-	    }
-		if (name.equals("3") && !keyPressed) {
-			
-			listOfWaitingAnimations.add(2); // adds the ID of the animation to the list
-
-	    }
-
-	}
+	};
 	
-};
-
+	@Override 
+    public void simpleUpdate(float tpf) {
+    	//double timeElapsedSinceStart = System.currentTimeMillis() - timeAtSystemStart; // Time elapsed since program start. 
+		
+		// update play state HUD
+		hudText.setText("Press 'p' to play/pause, press 'r' to reset - " + engineState);  
+		
+		
+		// play waiting animations
+		if (engineState == State.PLAYING) {
+			for (int index = 0; index < listOfWaitingAnimations.size(); index++) {
+			
+				PlayState state = allMotionEvents.get(listOfWaitingAnimations.get(index)).getPlayState();
+			
+				if (state == PlayState.Stopped) {
+					allMotionEvents.get(listOfWaitingAnimations.get(index)).play();
+				}
+				if (state == PlayState.Playing) {
+					allMotionEvents.get(listOfWaitingAnimations.get(index)).stop(); // if we need several tokens on one place, this is where it has to happen.
+					allMotionEvents.get(listOfWaitingAnimations.get(index)).play(); // right now, it just restarts the animation.
+				}
+			}
+			
+			listOfWaitingAnimations.clear();
+		}
+		
+		
+		// check for recently finished animations
+		for (int index = 0; index < allMotionEvents.size(); index++) {
+			
+			PlayState currentState = allMotionEvents.get(index).getPlayState();
+			PlayState previousState = previousAnimationStates.get(index);
+  		
+			if (currentState != previousState) { // if the state changed
+				
+				if (currentState == PlayState.Stopped) {  // if the state has changed to Stopped
+					
+					listOfInts.add(0, index);
+					this.engine3DListener.onAnimationFinished(allSObjects.get(index).getName());
+				}
+			}
+			
+			previousAnimationStates.set(index, allMotionEvents.get(index).getPlayState());
+		}
+		
+		
+		// Debug: update petri net message console
+		for (int index = 0; index < messageToPetriNet.size(); index++) {
+					
+			String number = listOfInts.get(index).toString();
+			messageToPetriNet.get(index).setText("Animation finished in: " + number); 
+							
+		}
+		
+		// Debug: update the text fields that display the play state of each animation/MotionEvent
+		for (int index = 0; index < allTextFields.size(); index++){
+			
+			PlayState state = allMotionEvents.get(index).getPlayState();
+			if (state == PlayState.Playing){
+				allTextFields.get(index).setText(allSObjects.get(index).getName() + " : Playing");
+			}
+			if (state == PlayState.Paused){
+				allTextFields.get(index).setText(allSObjects.get(index).getName() + " : Paused");
+			}
+			if (state == PlayState.Stopped){
+				allTextFields.get(index).setText(allSObjects.get(index).getName() + " : Stopped");
+			}
+		}	
+    }
+	
 }

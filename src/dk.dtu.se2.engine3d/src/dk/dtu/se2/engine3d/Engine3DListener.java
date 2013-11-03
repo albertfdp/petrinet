@@ -40,6 +40,7 @@ public interface Engine3DListener {
 	/**
 	 * On animation finished.
 	 */
-	public void onAnimationFinished();
+	public void onAnimationFinished(String geometryLabel);
 	
+		
 }
