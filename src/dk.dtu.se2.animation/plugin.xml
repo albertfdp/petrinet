@@ -10,7 +10,7 @@
       <!-- @generated Animation -->
       <package
             uri="http://animation/1.0"
-            class="dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationPackage"
+            class="animation.AnimationPackage"
             genModel="model/Animation.genmodel"/>
    </extension>
 

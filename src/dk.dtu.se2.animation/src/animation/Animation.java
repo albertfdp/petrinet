@@ -1,6 +1,6 @@
 /**
  */
-package dk.dtu.se2.tutorials.tutorial6.animation.animation;
+package animation;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationPackage#getAnimation()
+ * @see animation.AnimationPackage#getAnimation()
  * @model
  * @generated
  */

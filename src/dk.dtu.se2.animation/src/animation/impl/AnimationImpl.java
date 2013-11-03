@@ -1,13 +1,12 @@
 /**
  */
-package dk.dtu.se2.tutorials.tutorial6.animation.animation.impl;
-
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.Animation;
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationPackage;
+package animation.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import animation.Animation;
+import animation.AnimationPackage;
 
 /**
  * <!-- begin-user-doc -->

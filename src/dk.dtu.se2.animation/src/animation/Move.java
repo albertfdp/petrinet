@@ -1,6 +1,6 @@
 /**
  */
-package dk.dtu.se2.tutorials.tutorial6.animation.animation;
+package animation;
 
 
 /**
@@ -11,11 +11,11 @@ package dk.dtu.se2.tutorials.tutorial6.animation.animation;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Move#getSpeed <em>Speed</em>}</li>
+ *   <li>{@link animation.Move#getSpeed <em>Speed</em>}</li>
  * </ul>
  * </p>
  *
- * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationPackage#getMove()
+ * @see animation.AnimationPackage#getMove()
  * @model
  * @generated
  */
@@ -30,14 +30,14 @@ public interface Move extends AnimationObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Speed</em>' attribute.
 	 * @see #setSpeed(String)
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationPackage#getMove_Speed()
+	 * @see animation.AnimationPackage#getMove_Speed()
 	 * @model
 	 * @generated
 	 */
 	String getSpeed();
 
 	/**
-	 * Sets the value of the '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Move#getSpeed <em>Speed</em>}' attribute.
+	 * Sets the value of the '{@link animation.Move#getSpeed <em>Speed</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Speed</em>' attribute.

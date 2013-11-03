@@ -1,11 +1,11 @@
 /**
  */
-package dk.dtu.se2.tutorials.tutorial6.animation.animation.impl;
-
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationPackage;
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.Hide;
+package animation.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
+import animation.AnimationPackage;
+import animation.Hide;
 
 /**
  * <!-- begin-user-doc -->

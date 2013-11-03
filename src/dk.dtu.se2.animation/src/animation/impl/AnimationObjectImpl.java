@@ -1,15 +1,13 @@
 /**
  */
-package dk.dtu.se2.tutorials.tutorial6.animation.animation.impl;
-
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationObject;
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationPackage;
+package animation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import animation.AnimationObject;
+import animation.AnimationPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,7 +16,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationObjectImpl#getName <em>Name</em>}</li>
+ *   <li>{@link animation.impl.AnimationObjectImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *

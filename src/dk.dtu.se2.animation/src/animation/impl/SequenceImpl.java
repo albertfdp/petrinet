@@ -1,22 +1,19 @@
 /**
  */
-package dk.dtu.se2.tutorials.tutorial6.animation.animation.impl;
-
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationObject;
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationPackage;
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.Sequence;
+package animation.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import animation.AnimationObject;
+import animation.AnimationPackage;
+import animation.Sequence;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,8 +22,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.SequenceImpl#getAnimations <em>Animations</em>}</li>
- *   <li>{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.SequenceImpl#getAnimationObjects <em>Animation Objects</em>}</li>
+ *   <li>{@link animation.impl.SequenceImpl#getAnimations <em>Animations</em>}</li>
+ *   <li>{@link animation.impl.SequenceImpl#getAnimationObjects <em>Animation Objects</em>}</li>
  * </ul>
  * </p>
  *

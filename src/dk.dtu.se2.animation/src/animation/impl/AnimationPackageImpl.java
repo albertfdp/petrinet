@@ -1,23 +1,22 @@
 /**
  */
-package dk.dtu.se2.tutorials.tutorial6.animation.animation.impl;
-
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.Animation;
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationFactory;
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationObject;
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationPackage;
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.Hide;
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.Move;
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.Sequence;
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.Show;
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.Stop;
+package animation.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import animation.Animation;
+import animation.AnimationFactory;
+import animation.AnimationObject;
+import animation.AnimationPackage;
+import animation.Hide;
+import animation.Move;
+import animation.Sequence;
+import animation.Show;
+import animation.Stop;
 
 /**
  * <!-- begin-user-doc -->
@@ -86,7 +85,7 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationPackage#eNS_URI
+	 * @see animation.AnimationPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */

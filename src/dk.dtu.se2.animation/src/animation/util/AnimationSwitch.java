@@ -1,13 +1,12 @@
 /**
  */
-package dk.dtu.se2.tutorials.tutorial6.animation.animation.util;
-
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.*;
+package animation.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
+
+import animation.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +18,7 @@ import org.eclipse.emf.ecore.util.Switch;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationPackage
+ * @see animation.AnimationPackage
  * @generated
  */
 public class AnimationSwitch<T> extends Switch<T> {

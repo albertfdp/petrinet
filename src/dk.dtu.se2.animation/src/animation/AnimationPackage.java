@@ -1,6 +1,6 @@
 /**
  */
-package dk.dtu.se2.tutorials.tutorial6.animation.animation;
+package animation;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationFactory
+ * @see animation.AnimationFactory
  * @model kind="package"
  * @generated
  */
@@ -54,14 +54,14 @@ public interface AnimationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	AnimationPackage eINSTANCE = dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationPackageImpl.init();
+	AnimationPackage eINSTANCE = animation.impl.AnimationPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationImpl <em>Animation</em>}' class.
+	 * The meta object id for the '{@link animation.impl.AnimationImpl <em>Animation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationImpl
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationPackageImpl#getAnimation()
+	 * @see animation.impl.AnimationImpl
+	 * @see animation.impl.AnimationPackageImpl#getAnimation()
 	 * @generated
 	 */
 	int ANIMATION = 0;
@@ -85,11 +85,11 @@ public interface AnimationPackage extends EPackage {
 	int ANIMATION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.SequenceImpl <em>Sequence</em>}' class.
+	 * The meta object id for the '{@link animation.impl.SequenceImpl <em>Sequence</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.SequenceImpl
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationPackageImpl#getSequence()
+	 * @see animation.impl.SequenceImpl
+	 * @see animation.impl.AnimationPackageImpl#getSequence()
 	 * @generated
 	 */
 	int SEQUENCE = 1;
@@ -131,11 +131,11 @@ public interface AnimationPackage extends EPackage {
 	int SEQUENCE_OPERATION_COUNT = ANIMATION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationObjectImpl <em>Object</em>}' class.
+	 * The meta object id for the '{@link animation.impl.AnimationObjectImpl <em>Object</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationObjectImpl
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationPackageImpl#getAnimationObject()
+	 * @see animation.impl.AnimationObjectImpl
+	 * @see animation.impl.AnimationPackageImpl#getAnimationObject()
 	 * @generated
 	 */
 	int ANIMATION_OBJECT = 6;
@@ -168,11 +168,11 @@ public interface AnimationPackage extends EPackage {
 	int ANIMATION_OBJECT_OPERATION_COUNT = ANIMATION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.MoveImpl <em>Move</em>}' class.
+	 * The meta object id for the '{@link animation.impl.MoveImpl <em>Move</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.MoveImpl
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationPackageImpl#getMove()
+	 * @see animation.impl.MoveImpl
+	 * @see animation.impl.AnimationPackageImpl#getMove()
 	 * @generated
 	 */
 	int MOVE = 2;
@@ -214,11 +214,11 @@ public interface AnimationPackage extends EPackage {
 	int MOVE_OPERATION_COUNT = ANIMATION_OBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.ShowImpl <em>Show</em>}' class.
+	 * The meta object id for the '{@link animation.impl.ShowImpl <em>Show</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.ShowImpl
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationPackageImpl#getShow()
+	 * @see animation.impl.ShowImpl
+	 * @see animation.impl.AnimationPackageImpl#getShow()
 	 * @generated
 	 */
 	int SHOW = 3;
@@ -251,11 +251,11 @@ public interface AnimationPackage extends EPackage {
 	int SHOW_OPERATION_COUNT = ANIMATION_OBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.HideImpl <em>Hide</em>}' class.
+	 * The meta object id for the '{@link animation.impl.HideImpl <em>Hide</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.HideImpl
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationPackageImpl#getHide()
+	 * @see animation.impl.HideImpl
+	 * @see animation.impl.AnimationPackageImpl#getHide()
 	 * @generated
 	 */
 	int HIDE = 4;
@@ -288,11 +288,11 @@ public interface AnimationPackage extends EPackage {
 	int HIDE_OPERATION_COUNT = ANIMATION_OBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.StopImpl <em>Stop</em>}' class.
+	 * The meta object id for the '{@link animation.impl.StopImpl <em>Stop</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.StopImpl
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationPackageImpl#getStop()
+	 * @see animation.impl.StopImpl
+	 * @see animation.impl.AnimationPackageImpl#getStop()
 	 * @generated
 	 */
 	int STOP = 5;
@@ -326,114 +326,114 @@ public interface AnimationPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Animation <em>Animation</em>}'.
+	 * Returns the meta object for class '{@link animation.Animation <em>Animation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Animation</em>'.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.Animation
+	 * @see animation.Animation
 	 * @generated
 	 */
 	EClass getAnimation();
 
 	/**
-	 * Returns the meta object for class '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Sequence <em>Sequence</em>}'.
+	 * Returns the meta object for class '{@link animation.Sequence <em>Sequence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Sequence</em>'.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.Sequence
+	 * @see animation.Sequence
 	 * @generated
 	 */
 	EClass getSequence();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Sequence#getAnimations <em>Animations</em>}'.
+	 * Returns the meta object for the containment reference list '{@link animation.Sequence#getAnimations <em>Animations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Animations</em>'.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.Sequence#getAnimations()
+	 * @see animation.Sequence#getAnimations()
 	 * @see #getSequence()
 	 * @generated
 	 */
 	EReference getSequence_Animations();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Sequence#getAnimationObjects <em>Animation Objects</em>}'.
+	 * Returns the meta object for the containment reference list '{@link animation.Sequence#getAnimationObjects <em>Animation Objects</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Animation Objects</em>'.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.Sequence#getAnimationObjects()
+	 * @see animation.Sequence#getAnimationObjects()
 	 * @see #getSequence()
 	 * @generated
 	 */
 	EReference getSequence_AnimationObjects();
 
 	/**
-	 * Returns the meta object for class '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Move <em>Move</em>}'.
+	 * Returns the meta object for class '{@link animation.Move <em>Move</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Move</em>'.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.Move
+	 * @see animation.Move
 	 * @generated
 	 */
 	EClass getMove();
 
 	/**
-	 * Returns the meta object for the attribute '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Move#getSpeed <em>Speed</em>}'.
+	 * Returns the meta object for the attribute '{@link animation.Move#getSpeed <em>Speed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Speed</em>'.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.Move#getSpeed()
+	 * @see animation.Move#getSpeed()
 	 * @see #getMove()
 	 * @generated
 	 */
 	EAttribute getMove_Speed();
 
 	/**
-	 * Returns the meta object for class '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Show <em>Show</em>}'.
+	 * Returns the meta object for class '{@link animation.Show <em>Show</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Show</em>'.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.Show
+	 * @see animation.Show
 	 * @generated
 	 */
 	EClass getShow();
 
 	/**
-	 * Returns the meta object for class '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Hide <em>Hide</em>}'.
+	 * Returns the meta object for class '{@link animation.Hide <em>Hide</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Hide</em>'.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.Hide
+	 * @see animation.Hide
 	 * @generated
 	 */
 	EClass getHide();
 
 	/**
-	 * Returns the meta object for class '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Stop <em>Stop</em>}'.
+	 * Returns the meta object for class '{@link animation.Stop <em>Stop</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Stop</em>'.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.Stop
+	 * @see animation.Stop
 	 * @generated
 	 */
 	EClass getStop();
 
 	/**
-	 * Returns the meta object for class '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationObject <em>Object</em>}'.
+	 * Returns the meta object for class '{@link animation.AnimationObject <em>Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Object</em>'.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationObject
+	 * @see animation.AnimationObject
 	 * @generated
 	 */
 	EClass getAnimationObject();
 
 	/**
-	 * Returns the meta object for the attribute '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationObject#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link animation.AnimationObject#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationObject#getName()
+	 * @see animation.AnimationObject#getName()
 	 * @see #getAnimationObject()
 	 * @generated
 	 */
@@ -463,21 +463,21 @@ public interface AnimationPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationImpl <em>Animation</em>}' class.
+		 * The meta object literal for the '{@link animation.impl.AnimationImpl <em>Animation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationImpl
-		 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationPackageImpl#getAnimation()
+		 * @see animation.impl.AnimationImpl
+		 * @see animation.impl.AnimationPackageImpl#getAnimation()
 		 * @generated
 		 */
 		EClass ANIMATION = eINSTANCE.getAnimation();
 
 		/**
-		 * The meta object literal for the '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.SequenceImpl <em>Sequence</em>}' class.
+		 * The meta object literal for the '{@link animation.impl.SequenceImpl <em>Sequence</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.SequenceImpl
-		 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationPackageImpl#getSequence()
+		 * @see animation.impl.SequenceImpl
+		 * @see animation.impl.AnimationPackageImpl#getSequence()
 		 * @generated
 		 */
 		EClass SEQUENCE = eINSTANCE.getSequence();
@@ -499,11 +499,11 @@ public interface AnimationPackage extends EPackage {
 		EReference SEQUENCE__ANIMATION_OBJECTS = eINSTANCE.getSequence_AnimationObjects();
 
 		/**
-		 * The meta object literal for the '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.MoveImpl <em>Move</em>}' class.
+		 * The meta object literal for the '{@link animation.impl.MoveImpl <em>Move</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.MoveImpl
-		 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationPackageImpl#getMove()
+		 * @see animation.impl.MoveImpl
+		 * @see animation.impl.AnimationPackageImpl#getMove()
 		 * @generated
 		 */
 		EClass MOVE = eINSTANCE.getMove();
@@ -517,41 +517,41 @@ public interface AnimationPackage extends EPackage {
 		EAttribute MOVE__SPEED = eINSTANCE.getMove_Speed();
 
 		/**
-		 * The meta object literal for the '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.ShowImpl <em>Show</em>}' class.
+		 * The meta object literal for the '{@link animation.impl.ShowImpl <em>Show</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.ShowImpl
-		 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationPackageImpl#getShow()
+		 * @see animation.impl.ShowImpl
+		 * @see animation.impl.AnimationPackageImpl#getShow()
 		 * @generated
 		 */
 		EClass SHOW = eINSTANCE.getShow();
 
 		/**
-		 * The meta object literal for the '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.HideImpl <em>Hide</em>}' class.
+		 * The meta object literal for the '{@link animation.impl.HideImpl <em>Hide</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.HideImpl
-		 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationPackageImpl#getHide()
+		 * @see animation.impl.HideImpl
+		 * @see animation.impl.AnimationPackageImpl#getHide()
 		 * @generated
 		 */
 		EClass HIDE = eINSTANCE.getHide();
 
 		/**
-		 * The meta object literal for the '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.StopImpl <em>Stop</em>}' class.
+		 * The meta object literal for the '{@link animation.impl.StopImpl <em>Stop</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.StopImpl
-		 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationPackageImpl#getStop()
+		 * @see animation.impl.StopImpl
+		 * @see animation.impl.AnimationPackageImpl#getStop()
 		 * @generated
 		 */
 		EClass STOP = eINSTANCE.getStop();
 
 		/**
-		 * The meta object literal for the '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationObjectImpl <em>Object</em>}' class.
+		 * The meta object literal for the '{@link animation.impl.AnimationObjectImpl <em>Object</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationObjectImpl
-		 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.impl.AnimationPackageImpl#getAnimationObject()
+		 * @see animation.impl.AnimationObjectImpl
+		 * @see animation.impl.AnimationPackageImpl#getAnimationObject()
 		 * @generated
 		 */
 		EClass ANIMATION_OBJECT = eINSTANCE.getAnimationObject();

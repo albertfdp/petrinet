@@ -1,6 +1,6 @@
 /**
  */
-package dk.dtu.se2.tutorials.tutorial6.animation.animation;
+package animation;
 
 
 /**
@@ -9,7 +9,7 @@ package dk.dtu.se2.tutorials.tutorial6.animation.animation;
  * <!-- end-user-doc -->
  *
  *
- * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationPackage#getShow()
+ * @see animation.AnimationPackage#getShow()
  * @model
  * @generated
  */

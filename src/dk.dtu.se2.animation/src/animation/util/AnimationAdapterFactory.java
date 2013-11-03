@@ -1,22 +1,20 @@
 /**
  */
-package dk.dtu.se2.tutorials.tutorial6.animation.animation.util;
-
-import dk.dtu.se2.tutorials.tutorial6.animation.animation.*;
+package animation.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import animation.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationPackage
+ * @see animation.AnimationPackage
  * @generated
  */
 public class AnimationAdapterFactory extends AdapterFactoryImpl {
@@ -116,13 +114,13 @@ public class AnimationAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Animation <em>Animation</em>}'.
+	 * Creates a new adapter for an object of class '{@link animation.Animation <em>Animation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.Animation
+	 * @see animation.Animation
 	 * @generated
 	 */
 	public Adapter createAnimationAdapter() {
@@ -130,13 +128,13 @@ public class AnimationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Sequence <em>Sequence</em>}'.
+	 * Creates a new adapter for an object of class '{@link animation.Sequence <em>Sequence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.Sequence
+	 * @see animation.Sequence
 	 * @generated
 	 */
 	public Adapter createSequenceAdapter() {
@@ -144,13 +142,13 @@ public class AnimationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Move <em>Move</em>}'.
+	 * Creates a new adapter for an object of class '{@link animation.Move <em>Move</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.Move
+	 * @see animation.Move
 	 * @generated
 	 */
 	public Adapter createMoveAdapter() {
@@ -158,13 +156,13 @@ public class AnimationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Show <em>Show</em>}'.
+	 * Creates a new adapter for an object of class '{@link animation.Show <em>Show</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.Show
+	 * @see animation.Show
 	 * @generated
 	 */
 	public Adapter createShowAdapter() {
@@ -172,13 +170,13 @@ public class AnimationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Hide <em>Hide</em>}'.
+	 * Creates a new adapter for an object of class '{@link animation.Hide <em>Hide</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.Hide
+	 * @see animation.Hide
 	 * @generated
 	 */
 	public Adapter createHideAdapter() {
@@ -186,13 +184,13 @@ public class AnimationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.Stop <em>Stop</em>}'.
+	 * Creates a new adapter for an object of class '{@link animation.Stop <em>Stop</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.Stop
+	 * @see animation.Stop
 	 * @generated
 	 */
 	public Adapter createStopAdapter() {
@@ -200,13 +198,13 @@ public class AnimationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationObject <em>Object</em>}'.
+	 * Creates a new adapter for an object of class '{@link animation.AnimationObject <em>Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dk.dtu.se2.tutorials.tutorial6.animation.animation.AnimationObject
+	 * @see animation.AnimationObject
 	 * @generated
 	 */
 	public Adapter createAnimationObjectAdapter() {
