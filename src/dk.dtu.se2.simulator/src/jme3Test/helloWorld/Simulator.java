@@ -1,5 +1,6 @@
 package jme3Test.helloWorld;
 
+import java.util.ArrayList;
 import com.jme3.animation.LoopMode;
 import com.jme3.app.SimpleApplication;
 import com.jme3.cinematic.MotionPath;
@@ -26,20 +27,27 @@ public class Simulator extends SimpleApplication{
 		Simulator app = new Simulator();
         app.start(); 
 	}
-
-	protected BitmapText hudText;
-	protected BitmapText[] hudTexts = new BitmapText[50];
 	
-    protected double timeAtSystemStart;
-    protected Geometry groundGeo;
- 
-    protected Geometry[] allTokens = new Geometry[100]; // This needs to be dynamic
-    protected SObject[] allSObjects = new SObject[100]; // This needs to be dynamic
-	protected MotionPath[] allMotionPaths = new MotionPath[100]; // This needs to be dynamic
-	protected MotionEvent[] allMotionEvents = new MotionEvent[100]; // This needs to be dynamic
+	public enum State {
+		PLAYING,
+		PAUSED,
+		RESETTING
+	}
+	
+	public double timeAtSystemStart;
+	public Geometry groundGeo;
+    public BitmapText hudText;
+    public ArrayList<Integer> listOfWaitingAnimations = new ArrayList<>(); // holds all the animations that the Petri Net has asked the 3D Engine to play
+    public ArrayList<Integer> listOfInts = new ArrayList<>();
+    public ArrayList<PlayState> previousAnimationStates = new ArrayList<PlayState>();
+    public ArrayList<BitmapText> messageToPetriNet = new ArrayList<BitmapText>();
+    public ArrayList<BitmapText> allTextFields = new ArrayList<BitmapText>();
+    public ArrayList<Geometry> allTokens = new ArrayList<Geometry>();
+    public ArrayList<SObject> allSObjects = new ArrayList<SObject>();
+    public ArrayList<MotionEvent> allMotionEvents = new ArrayList<MotionEvent>();
 	
 	
-		
+	public State simulatorState;
 	
 	public void setupSObjects() {
 		
@@ -50,9 +58,9 @@ public class Simulator extends SimpleApplication{
 		//
 		
 		// Temporary:
-		allSObjects[0] = new SObject(new Vector2f(30, 10), new Vector2f(30, 30), new Vector2f(30, 50), false, "ID00", 5f);
-		allSObjects[1] = new SObject(new Vector2f(30, 50), new Vector2f(10, 30), new Vector2f(30, 10), false, "ID01", 5f);
-		allSObjects[2] = new SObject(new Vector2f(30, 50), new Vector2f(50, 30), new Vector2f(30, 10), false, "ID02", 5f);
+		allSObjects.add(new SObject(new Vector2f(30, 10), new Vector2f(30, 30), new Vector2f(30, 50), false, "ID00", 2f));
+		allSObjects.add(new SObject(new Vector2f(30, 50), new Vector2f(10, 30), new Vector2f(30, 10), false, "ID01", 2f));
+		allSObjects.add(new SObject(new Vector2f(30, 50), new Vector2f(50, 30), new Vector2f(30, 10), false, "ID02", 2f));
 	}
 	
 	public void setupTokens() {
@@ -64,9 +72,9 @@ public class Simulator extends SimpleApplication{
 		//
 				
 		// Temporary:
-		for (int index = 0; index < 3; index++) {
+		for (int index = 0; index < allSObjects.size() ; index++) { // create the same number of tokens as there are SObjects
 		
-			allTokens[index] = new Geometry("Box", new Box(0.25f, 0.10f, 0.5f)); // create cube geometry from with box shape        
+			Geometry token = new Geometry("Box", new Box(0.25f, 0.10f, 0.5f)); // create cube geometry from with box shape        
 	
 			Texture tokenTex = assetManager.loadTexture("Interface/Logo/Monkey.jpg"); // create a texture
 			
@@ -74,39 +82,89 @@ public class Simulator extends SimpleApplication{
 			tokenMat.setTexture("ColorMap", tokenTex);
 			tokenMat.setColor("Color", ColorRGBA.Blue); // set the base color   
 			
-			allTokens[index].setMaterial(tokenMat); // apply the material to the geometry           
-			     
-			rootNode.attachChild(allTokens[index]); // put this node in the scene, attached to the root.
-		}
-		
+			token.setMaterial(tokenMat); // apply the material to the geometry
+			
+			allTokens.add(token);
+			rootNode.attachChild(token); // put this node in the scene, attached to the root.
+		}	
 	}
 	
 	public void setupMotionEvents() {
 		
 		// for the number of SObjects, do the following:
-			
-		for (int index = 0; index < 3; index++) {
-			allMotionPaths[index] = new MotionPath(); // adding way points
-			allMotionPaths[index].setCycle(false); // this will make sure the path doesn't loop 
-       
-			allMotionPaths[index].addWayPoint(new Vector3f(allSObjects[index].begin.x, 0f, allSObjects[index].begin.y));
-			allMotionPaths[index].addWayPoint(new Vector3f(allSObjects[index].bend.x,  0f, allSObjects[index].bend.y));
-			allMotionPaths[index].addWayPoint(new Vector3f(allSObjects[index].end.x,   0f, allSObjects[index].end.y));
 
-			allMotionPaths[index].setPathSplineType(SplineType.CatmullRom);
-			allMotionPaths[index].setCurveTension(1f);        
-			allMotionPaths[index].enableDebugShape(assetManager, rootNode); // AP: this is to make the path visible
-        
-			allMotionEvents[index] = new MotionEvent(allTokens[index], allMotionPaths[index], allSObjects[index].speed, LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (dont loop).
-			allMotionEvents[index].setDirectionType(MotionEvent.Direction.Path); // AP: The spatial always faces in the direction of the path while moving.
+		for (int index = 0; index < allSObjects.size(); index++){
+			
+			MotionPath path = new MotionPath();
+			
+			path.setCycle(false); // this will make sure the path doesn't loop 
+       
+			path.addWayPoint(new Vector3f(allSObjects.get(index).begin.x, 0f, allSObjects.get(index).begin.y));
+			path.addWayPoint(new Vector3f(allSObjects.get(index).bend.x,  0f, allSObjects.get(index).bend.y));
+			path.addWayPoint(new Vector3f(allSObjects.get(index).end.x,   0f, allSObjects.get(index).end.y));
+
+			path.setPathSplineType(SplineType.CatmullRom);
+			path.setCurveTension(1f);        
+			path.enableDebugShape(assetManager, rootNode); // AP: this is to make the path visible
+			
+			MotionEvent event = new MotionEvent(allTokens.get(index), path, allSObjects.get(index).speed, LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (dont loop).
+			event.setDirectionType(MotionEvent.Direction.Path); // AP: The spatial always faces in the direction of the path while moving.
+			//event.onStop( );
+			allMotionEvents.add(event);
 		}
+	}
 	
+
+	public void setupTextFields() {
+		
+		for (int index = 0; index < allSObjects.size(); index++) {
+			   
+    		BitmapText text = new BitmapText(guiFont, false);
+    		text.setAlignment(Align.Left);
+    		text.setLocalTranslation(5, text.getLineHeight() * (index+10), 0);
+    		text.setText("This is text field " + Integer.toString(index));
+
+    		allTextFields.add(text);
+    		guiNode.attachChild(text);
+    	}
+		
+		// AP: set up Petri net message "console"
+    	for (int index = 0; index < 5; index++) {
+			   
+    		BitmapText text = new BitmapText(guiFont, false);
+    		text.setAlignment(Align.Left);
+    		if (index == 0)
+    			text.setColor(ColorRGBA.White);
+    		else
+    			text.setColor(ColorRGBA.DarkGray);
+    		text.setLocalTranslation(450, text.getLineHeight() * (index+10), 0);
+    		text.setText("This is text field " + Integer.toString(index));
+
+    		messageToPetriNet.add(text);
+    		guiNode.attachChild(text);
+    	}
 	}
 	
 	
-
+	
+	public void addPetriNetMessage (String name) {
+	
+		BitmapText text = new BitmapText(guiFont, false);
+		text.setText(name + " finished.");    // the text
+		messageToPetriNet.add(0, text); // add at beginning
+		
+	}
+	
+	public void reportFinishedAnimation (String name) {
+		
+		// send name to Petri net runtime
+		addPetriNetMessage(name);
+		
+	}
+	
+	
 	@Override
-	public void simpleInitApp() {
+	public void simpleInitApp() {  // keep in mind that we don't have the size of the allSObjects list yet.
 
 	    // AP: setting up miscellaneous stuff
 	    	timeAtSystemStart = System.currentTimeMillis();
@@ -124,27 +182,20 @@ public class Simulator extends SimpleApplication{
 	    	setDisplayFps(false);
 	    	setDisplayStatView(false);
 	    	
+	    
+	    	
 	    // AP: setting up a hud text
 	    	hudText = new BitmapText(guiFont, false);          
 	    	hudText.setSize(guiFont.getCharSet().getRenderedSize());      // font size
 	    	hudText.setColor(ColorRGBA.White);                             // font color
-	    	hudText.setText("Press '1', '2' or '3' to trigger play/pause of token animations");    // the text
+	    	hudText.setText("Play state: " + simulatorState);    // the text
 	    	hudText.setLocalTranslation(5, hudText.getLineHeight(), 0); // position
-	    	guiNode.attachChild(hudText);
-	    	
-	    	for (int index = 0; index < 3; index++){
-	    		hudTexts[index] = new BitmapText(guiFont, false);
-	    		hudTexts[index].setAlignment(Align.Left);
-	    		hudTexts[index].setLocalTranslation(5, hudTexts[index].getLineHeight() * (index+10), 0);
-	    		hudTexts[index].setText("This is text field " + Integer.toString(index));
-	    		
-	    		guiNode.attachChild(hudTexts[index]);
-	    	}
+	    	guiNode.attachChild(hudText);    	
 	    	
 	    // AP: create ground with volume
-	        float groundWidthX = 30;
+	        float groundWidthX  = 30;
 	        float groundHeightY = 1;
-	        float groundDepthZ = 30;
+	        float groundDepthZ  = 30;
 	        groundGeo = new Geometry("Box", new Box(groundWidthX, groundHeightY, groundDepthZ)); 
 	        Material groundMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
 	        com.jme3.texture.Texture groundTex = assetManager.loadTexture("SE2_ground.jpg"); 
@@ -153,21 +204,37 @@ public class Simulator extends SimpleApplication{
 	        groundGeo.setLocalTranslation(groundWidthX, (-groundHeightY)-0.1f, groundDepthZ);
 	        
 	        rootNode.attachChild(groundGeo);
-
 	        
 	        inputManager.addMapping("1",  new KeyTrigger(KeyInput.KEY_1));
 	        inputManager.addMapping("2",  new KeyTrigger(KeyInput.KEY_2));
 	        inputManager.addMapping("3",  new KeyTrigger(KeyInput.KEY_3));
+	        inputManager.addMapping("p",  new KeyTrigger(KeyInput.KEY_P));
+	        inputManager.addMapping("r",  new KeyTrigger(KeyInput.KEY_R));
 	        
 	        inputManager.addListener(actionListener, new String[]{"1"});
 	        inputManager.addListener(actionListener, new String[]{"2"});
 	        inputManager.addListener(actionListener, new String[]{"3"});
+	        inputManager.addListener(actionListener, new String[]{"p"});
+	        inputManager.addListener(actionListener, new String[]{"r"});
 	        
 	   // AP: Run setups to prepare the layout of the paths etc.
 
 	        setupSObjects();
 	    	setupTokens();
 	        setupMotionEvents();
+	        setupTextFields();
+	        
+	        simulatorState = State.PAUSED;
+	        
+	        for (int index = 0; index < 5; index++) {
+	        	listOfInts.add(-1);
+	        }
+	        
+	        // initialize previous play state list
+	        for (int index = 0; index < allSObjects.size(); index++) {
+	        	previousAnimationStates.add(PlayState.Stopped);
+	        }
+	    	
 	
 	}
 	
@@ -175,32 +242,61 @@ public class Simulator extends SimpleApplication{
 		 
 		public void onAction(String name, boolean keyPressed, float tpf) {
 			
-			if (name.equals("1") && !keyPressed) { // test?
-
-		        PlayState state = allMotionEvents[0].getPlayState();
-		        
-		        if (state == PlayState.Playing)
-		        	allMotionEvents[0].pause();
-		        else
-		        	allMotionEvents[0].play();
-		    } 
-			if (name.equals("2") && !keyPressed) { // test?
+			if (name.equals("p") && !keyPressed) { 
 				
-				PlayState state = allMotionEvents[1].getPlayState();
-		        
-		        if (state == PlayState.Playing)
-		        	allMotionEvents[1].pause();
-		        else
-		        	allMotionEvents[1].play();
+				switch (simulatorState) {
+				
+				case PLAYING: 	for (MotionEvent event : allMotionEvents) { // only pause the playing motionEvents
+									
+									PlayState playState = event.getPlayState();
+									if (playState == PlayState.Playing)
+										event.pause();
+	        					}	
+								simulatorState = State.PAUSED;
+								break;
+				
+				case PAUSED: 	for (MotionEvent event : allMotionEvents) { // only play the paused motionEvents
+									
+									PlayState playState = event.getPlayState();
+									if (playState == PlayState.Paused)
+										event.play();	
+								}	
+								simulatorState = State.PLAYING;
+								break;
+								
+				case RESETTING:	// do nothing
+								break;
+								
+				}
+					
 		    }
-			if (name.equals("3") && !keyPressed) { // test?
+			
+			if (name.equals("r") && !keyPressed) { 
 				
-				PlayState state = allMotionEvents[2].getPlayState();
-		        
-		        if (state == PlayState.Playing)
-		        	allMotionEvents[2].pause();
-		        else
-		        	allMotionEvents[2].play();
+				hudText.setText("Play state: " + simulatorState); 
+				for (MotionEvent events : allMotionEvents) {
+					events.stop();
+					events.play();
+					// 
+					// This needs to be done differently: it should load the original configuration and remove all tokens.
+				}
+				simulatorState = State.PAUSED;
+			}
+			
+			if (name.equals("1") && !keyPressed) { 
+				
+				listOfWaitingAnimations.add(0); // adds the ID of the animation to the list 
+
+		    } 
+			if (name.equals("2") && !keyPressed) { 
+				
+				listOfWaitingAnimations.add(1); // adds the ID of the animation to the list
+				
+		    }
+			if (name.equals("3") && !keyPressed) {
+				
+				listOfWaitingAnimations.add(2); // adds the ID of the animation to the list
+
 		    }
 
 		}
@@ -211,22 +307,72 @@ public class Simulator extends SimpleApplication{
     public void simpleUpdate(float tpf) {
     	//double timeElapsedSinceStart = System.currentTimeMillis() - timeAtSystemStart; // Time elapsed since program start. 
 		
+		// update play state HUD
+		hudText.setText("Press 'p' to play/pause, press 'r' to reset - " + simulatorState);  
 		
-		for (int index = 0; index < 3; index++){
+		
+		// play waiting animations
+		if (simulatorState == State.PLAYING) {
+			for (int index = 0; index < listOfWaitingAnimations.size(); index++) {
 			
-			PlayState state = allMotionEvents[index].getPlayState();
+				PlayState state = allMotionEvents.get(listOfWaitingAnimations.get(index)).getPlayState();
+			
+				if (state == PlayState.Stopped) {
+					allMotionEvents.get(listOfWaitingAnimations.get(index)).play();
+				}
+				if (state == PlayState.Playing) {
+					allMotionEvents.get(listOfWaitingAnimations.get(index)).stop();
+					allMotionEvents.get(listOfWaitingAnimations.get(index)).play();
+				}
+			}
+			
+			listOfWaitingAnimations.clear();
+		}
+		
+		
+		// check for recently finished animations
+		for (int index = 0; index < allMotionEvents.size(); index++) {
+			
+			PlayState currentState = allMotionEvents.get(index).getPlayState();
+			PlayState previousState = previousAnimationStates.get(index);
+  		
+			if (currentState != previousState) { // if the state changed
+				
+				if (currentState == PlayState.Stopped) {  // if the state has changed to Stopped
+					
+					int num = index;
+					listOfInts.add(0, num);
+					// Report Finished Animation to simulator
+				}
+			}
+			
+			previousAnimationStates.set(index, allMotionEvents.get(index).getPlayState());
+		}
+		
+		
+		// Debug: update petri net message console
+		for (int index = 0; index < messageToPetriNet.size(); index++) {
+					
+			String number = listOfInts.get(index).toString();
+			messageToPetriNet.get(index).setText("Animation finished in: " + number); 
+							
+		}
+		
+		// Debug: update the text fields that display the play state of each animation/MotionEvent
+		for (int index = 0; index < allTextFields.size(); index++){
+			
+			PlayState state = allMotionEvents.get(index).getPlayState();
 			if (state == PlayState.Playing){
-				hudTexts[index].setText(allSObjects[index].name + " : Playing");
+				allTextFields.get(index).setText(allSObjects.get(index).name + " : Playing");
 			}
 			if (state == PlayState.Paused){
-				hudTexts[index].setText(allSObjects[index].name + " : Paused");
+				allTextFields.get(index).setText(allSObjects.get(index).name + " : Paused");
 			}
 			if (state == PlayState.Stopped){
-				hudTexts[index].setText(allSObjects[index].name + " : Stopped");
+				allTextFields.get(index).setText(allSObjects.get(index).name + " : Stopped");
 			}
 		}
 		
-
 		
     }
 	 
