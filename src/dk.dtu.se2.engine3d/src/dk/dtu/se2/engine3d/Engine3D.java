@@ -9,7 +9,7 @@ import dk.dtu.se2.appearance.Appearance;
 
 public interface Engine3D {
 	
-	public void init (Geometry geometry, Appearance appearance);
+	public void init (Geometry geometry, Appearance appearance, List<Animation> animations);
 	
 	public void animate(List<Animation> animations);
 
