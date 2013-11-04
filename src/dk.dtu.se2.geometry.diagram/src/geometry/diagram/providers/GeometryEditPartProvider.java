@@ -15,9 +15,7 @@ public class GeometryEditPartProvider extends DefaultEditPartProvider {
 	 * @generated
 	 */
 	public GeometryEditPartProvider() {
-		super(new GeometryEditPartFactory(),
-				GeometryVisualIDRegistry.TYPED_INSTANCE,
-				GeometryEditPart.MODEL_ID);
+		super(new GeometryEditPartFactory(), GeometryVisualIDRegistry.TYPED_INSTANCE, GeometryEditPart.MODEL_ID);
 	}
 
 }

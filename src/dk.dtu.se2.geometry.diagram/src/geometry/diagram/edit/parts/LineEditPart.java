@@ -3,6 +3,7 @@ package geometry.diagram.edit.parts;
 import geometry.diagram.edit.policies.LineItemSemanticEditPolicy;
 
 import org.eclipse.draw2d.Connection;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITreeBranchEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
@@ -33,8 +34,7 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new LineItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new LineItemSemanticEditPolicy());
 	}
 
 	/**
@@ -61,7 +61,17 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	 * @generated
 	 */
 	public class LineFigure extends PolylineConnectionEx {
+		
+		/**
+		 * @generated NOT
+		 */
+		public void setPoints(PointList points) {
+	        super.setPoints(points);
 
+	        dirtyAllJumpLinks();
+	        refreshLine();
+	    }
+		
 		/**
 		 * @generated
 		 */

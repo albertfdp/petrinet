@@ -71,9 +71,7 @@ public class LineReorientCommand extends EditElementCommand {
 			return false;
 		}
 		Geometry container = (Geometry) getLink().eContainer();
-		return GeometryBaseItemSemanticEditPolicy
-				.getLinkConstraints()
-				.canExistLine_4001(container, getLink(), getNewSource(), target);
+		return GeometryBaseItemSemanticEditPolicy.getLinkConstraints().canExistLine_4001(container, getLink(), getNewSource(), target);
 	}
 
 	/**
@@ -88,9 +86,7 @@ public class LineReorientCommand extends EditElementCommand {
 			return false;
 		}
 		Geometry container = (Geometry) getLink().eContainer();
-		return GeometryBaseItemSemanticEditPolicy
-				.getLinkConstraints()
-				.canExistLine_4001(container, getLink(), source, getNewTarget());
+		return GeometryBaseItemSemanticEditPolicy.getLinkConstraints().canExistLine_4001(container, getLink(), source, getNewTarget());
 	}
 
 	/**

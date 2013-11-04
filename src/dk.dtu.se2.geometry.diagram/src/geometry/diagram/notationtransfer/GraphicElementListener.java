@@ -1,24 +1,36 @@
 package geometry.diagram.notationtransfer;
 
+import java.util.List;
+import java.util.ArrayList;
+
+import org.eclipse.draw2d.Connection;
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.gmf.runtime.notation.Bendpoints;
+import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
+import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 
-import geometry.Point;
+import geometry.Connector;
 import geometry.impl.PointImpl;
 import geometry.impl.InputPointImpl;
 import geometry.impl.ConnectorImpl;
 import geometry.impl.BendPointImpl;
 import geometry.impl.LineImpl;
+
+import org.eclipse.gmf.runtime.notation.impl.RelativeBendpointsImpl;
 
 
 public class GraphicElementListener extends EContentAdapter {
@@ -47,6 +59,21 @@ public class GraphicElementListener extends EContentAdapter {
 			
 			if (NotationPackage.eINSTANCE.getLocation().isSuperTypeOf(eNotifier.eClass()))
 				updateNodeBounds(eNotification, eNotifier);
+			
+			else if (eNotifier instanceof RelativeBendpointsImpl)
+			{
+				EObject object = eNotifier.eContainer();
+				if (object instanceof Edge) 
+				{
+					Edge edge = (Edge) object;
+					object = edge.getElement();
+					if (object != null && object instanceof LineImpl) 
+					{
+						LineImpl lineImpl = (LineImpl) object;
+						updateLine(eNotification, eNotifier, lineImpl, edge);
+					}
+				}
+			}
 		}
 	}
 	
@@ -73,9 +100,9 @@ public class GraphicElementListener extends EContentAdapter {
 				Location newPosition = getNodePosition(viewNode);
 				if(modelNode instanceof Point)
 				{
-					modelNode = (Point) modelNode;
-					((Point) modelNode).setXLocation(newPosition.getX());
-					((Point) modelNode).setYLocation(newPosition.getY());
+					modelNode = (geometry.Point) modelNode;
+					((geometry.Point) modelNode).setXLocation(newPosition.getX());
+					((geometry.Point) modelNode).setYLocation(newPosition.getY());
 				}
 			}
 			
@@ -85,9 +112,9 @@ public class GraphicElementListener extends EContentAdapter {
 				Location newPosition = getNodePosition(viewNode);
 				if(modelNode instanceof Point)
 				{
-					modelNode = (Point) modelNode;
-					((Point) modelNode).setXLocation(newPosition.getX());
-					((Point) modelNode).setYLocation(newPosition.getY());
+					modelNode = (geometry.Point) modelNode;
+					((geometry.Point) modelNode).setXLocation(newPosition.getX());
+					((geometry.Point) modelNode).setYLocation(newPosition.getY());
 				}
 			}
 			
@@ -97,9 +124,9 @@ public class GraphicElementListener extends EContentAdapter {
 				Location newPosition = getNodePosition(viewNode);
 				if(modelNode instanceof Point)
 				{
-					modelNode = (Point) modelNode;
-					((Point) modelNode).setXLocation(newPosition.getX());
-					((Point) modelNode).setYLocation(newPosition.getY());
+					modelNode = (geometry.Point) modelNode;
+					((geometry.Point) modelNode).setXLocation(newPosition.getX());
+					((geometry.Point) modelNode).setYLocation(newPosition.getY());
 				}
 			}
 		}
@@ -128,6 +155,13 @@ public class GraphicElementListener extends EContentAdapter {
 			location.setY(viewLocation.getY());
 		}
 		return location;
+	}
+	
+	private void updateLine(ENotificationImpl eNotification, EObject eNotifier, LineImpl lineImpl, Edge edge)
+	{
+		Bendpoints bendpoints = edge.getBendpoints();
+		
+		return;
 	}
 }
 	
