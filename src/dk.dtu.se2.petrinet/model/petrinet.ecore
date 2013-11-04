@@ -11,7 +11,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tokens" upperBound="-1"
         eType="#//Token" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputPlaceLabel" eType="#//InputPlaceLabel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputPlaceLabel" lowerBound="1"
+        eType="#//InputPlace" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GeometryLabel" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute ../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Label">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -20,9 +21,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="AppearanceLabel" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Label">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Token" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="appearanceLabel" eType="#//AppearanceLabel"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Token" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute ../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Label">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Arc" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Arc">
     <eStructuralFeatures xsi:type="ecore:EReference" name="identity" eType="#//Identity"
@@ -31,7 +31,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="Identity" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InputPlaceLabel" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputPlace" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute"/>
 </ecore:EPackage>

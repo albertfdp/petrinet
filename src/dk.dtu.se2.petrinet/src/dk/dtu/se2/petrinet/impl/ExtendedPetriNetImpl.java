@@ -2,11 +2,12 @@
  */
 package dk.dtu.se2.petrinet.impl;
 
-import dk.dtu.se2.petrinet.ExtendedPetriNet;
-import dk.dtu.se2.petrinet.PetrinetPackage;
-
 import org.eclipse.emf.ecore.EClass;
 import org.pnml.tools.epnk.pnmlcoremodel.impl.PetriNetTypeImpl;
+
+import dk.dtu.se2.petrinet.ExtendedPetriNet;
+import dk.dtu.se2.petrinet.PetrinetPackage;
+import dk.dtu.se2.tutorials.tutorial6.animationTest.language.AnimationParser;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,6 +19,10 @@ import org.pnml.tools.epnk.pnmlcoremodel.impl.PetriNetTypeImpl;
  * @generated
  */
 public class ExtendedPetriNetImpl extends PetriNetTypeImpl implements ExtendedPetriNet {
+	
+	/** @generated NOT **/
+	final AnimationParser animationParser;
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -26,6 +31,7 @@ public class ExtendedPetriNetImpl extends PetriNetTypeImpl implements ExtendedPe
 	 */
 	public ExtendedPetriNetImpl() {
 		super();
+		this.animationParser = new AnimationParser();
 	}
 
 	/**

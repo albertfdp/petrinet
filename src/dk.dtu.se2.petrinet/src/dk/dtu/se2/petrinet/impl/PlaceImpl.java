@@ -5,23 +5,17 @@ package dk.dtu.se2.petrinet.impl;
 import dk.dtu.se2.petrinet.AnimationLabel;
 import dk.dtu.se2.petrinet.AppearanceLabel;
 import dk.dtu.se2.petrinet.GeometryLabel;
-import dk.dtu.se2.petrinet.InputPlaceLabel;
+import dk.dtu.se2.petrinet.InputPlace;
 import dk.dtu.se2.petrinet.PetrinetPackage;
 import dk.dtu.se2.petrinet.Place;
 import dk.dtu.se2.petrinet.Token;
-
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -84,14 +78,14 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	protected EList<Token> tokens;
 
 	/**
-	 * The cached value of the '{@link #getInputPlaceLabel() <em>Input Place Label</em>}' reference.
+	 * The cached value of the '{@link #getInputPlaceLabel() <em>Input Place Label</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getInputPlaceLabel()
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPlaceLabel inputPlaceLabel;
+	protected InputPlace inputPlaceLabel;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -258,15 +252,7 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPlaceLabel getInputPlaceLabel() {
-		if (inputPlaceLabel != null && inputPlaceLabel.eIsProxy()) {
-			InternalEObject oldInputPlaceLabel = (InternalEObject)inputPlaceLabel;
-			inputPlaceLabel = (InputPlaceLabel)eResolveProxy(oldInputPlaceLabel);
-			if (inputPlaceLabel != oldInputPlaceLabel) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PetrinetPackage.PLACE__INPUT_PLACE_LABEL, oldInputPlaceLabel, inputPlaceLabel));
-			}
-		}
+	public InputPlace getInputPlaceLabel() {
 		return inputPlaceLabel;
 	}
 
@@ -275,20 +261,33 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPlaceLabel basicGetInputPlaceLabel() {
-		return inputPlaceLabel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInputPlaceLabel(InputPlaceLabel newInputPlaceLabel) {
-		InputPlaceLabel oldInputPlaceLabel = inputPlaceLabel;
+	public NotificationChain basicSetInputPlaceLabel(InputPlace newInputPlaceLabel, NotificationChain msgs) {
+		InputPlace oldInputPlaceLabel = inputPlaceLabel;
 		inputPlaceLabel = newInputPlaceLabel;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.PLACE__INPUT_PLACE_LABEL, oldInputPlaceLabel, inputPlaceLabel));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PetrinetPackage.PLACE__INPUT_PLACE_LABEL, oldInputPlaceLabel, newInputPlaceLabel);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInputPlaceLabel(InputPlace newInputPlaceLabel) {
+		if (newInputPlaceLabel != inputPlaceLabel) {
+			NotificationChain msgs = null;
+			if (inputPlaceLabel != null)
+				msgs = ((InternalEObject)inputPlaceLabel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PetrinetPackage.PLACE__INPUT_PLACE_LABEL, null, msgs);
+			if (newInputPlaceLabel != null)
+				msgs = ((InternalEObject)newInputPlaceLabel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PetrinetPackage.PLACE__INPUT_PLACE_LABEL, null, msgs);
+			msgs = basicSetInputPlaceLabel(newInputPlaceLabel, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.PLACE__INPUT_PLACE_LABEL, newInputPlaceLabel, newInputPlaceLabel));
 	}
 
 	/**
@@ -307,6 +306,8 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 				return basicSetAppearanceLabel(null, msgs);
 			case PetrinetPackage.PLACE__TOKENS:
 				return ((InternalEList<?>)getTokens()).basicRemove(otherEnd, msgs);
+			case PetrinetPackage.PLACE__INPUT_PLACE_LABEL:
+				return basicSetInputPlaceLabel(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -328,8 +329,7 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 			case PetrinetPackage.PLACE__TOKENS:
 				return getTokens();
 			case PetrinetPackage.PLACE__INPUT_PLACE_LABEL:
-				if (resolve) return getInputPlaceLabel();
-				return basicGetInputPlaceLabel();
+				return getInputPlaceLabel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -357,7 +357,7 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 				getTokens().addAll((Collection<? extends Token>)newValue);
 				return;
 			case PetrinetPackage.PLACE__INPUT_PLACE_LABEL:
-				setInputPlaceLabel((InputPlaceLabel)newValue);
+				setInputPlaceLabel((InputPlace)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -384,7 +384,7 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 				getTokens().clear();
 				return;
 			case PetrinetPackage.PLACE__INPUT_PLACE_LABEL:
-				setInputPlaceLabel((InputPlaceLabel)null);
+				setInputPlaceLabel((InputPlace)null);
 				return;
 		}
 		super.eUnset(featureID);

@@ -2,12 +2,15 @@
  */
 package dk.dtu.se2.petrinet.impl;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.pnml.tools.epnk.helpers.NetFunctions;
+import org.pnml.tools.epnk.pnmlcoremodel.PetriNetType;
+import org.pnml.tools.epnk.structuredpntypemodel.impl.StructuredLabelImpl;
+
+import animation.Animation;
 import dk.dtu.se2.petrinet.AnimationLabel;
 import dk.dtu.se2.petrinet.PetrinetPackage;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.pnml.tools.epnk.structuredpntypemodel.impl.StructuredLabelImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,6 +22,7 @@ import org.pnml.tools.epnk.structuredpntypemodel.impl.StructuredLabelImpl;
  * @generated
  */
 public class AnimationLabelImpl extends StructuredLabelImpl implements AnimationLabel {
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36,6 +40,30 @@ public class AnimationLabelImpl extends StructuredLabelImpl implements Animation
 	@Override
 	protected EClass eStaticClass() {
 		return PetrinetPackage.Literals.ANIMATION_LABEL;
+	}
+	
+	/**
+	 * Parse a structured label according to the defined language.
+	 * @generated NOT
+	 * @author thibaud
+	 */
+	@Override
+	public EObject parse(String input) {
+		
+		Animation result = null;
+		
+		if (input != null) {
+			PetriNetType petriNetType = NetFunctions.getPetriNetType(this);
+			if (petriNetType instanceof ExtendedPetriNetImpl) {
+				ExtendedPetriNetImpl epni = (ExtendedPetriNetImpl) petriNetType;
+				if (epni.animationParser != null) {
+					return epni.animationParser.parse(input);
+				}
+			}			
+		}
+		
+		return result;
+		
 	}
 
 } //AnimationLabelImpl

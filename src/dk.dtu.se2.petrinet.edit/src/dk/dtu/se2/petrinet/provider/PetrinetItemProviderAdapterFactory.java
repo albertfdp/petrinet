@@ -256,26 +256,26 @@ public class PetrinetItemProviderAdapterFactory extends PetrinetAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.petrinet.InputPlaceLabel} instances.
+	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.petrinet.InputPlace} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InputPlaceLabelItemProvider inputPlaceLabelItemProvider;
+	protected InputPlaceItemProvider inputPlaceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dk.dtu.se2.petrinet.InputPlaceLabel}.
+	 * This creates an adapter for a {@link dk.dtu.se2.petrinet.InputPlace}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createInputPlaceLabelAdapter() {
-		if (inputPlaceLabelItemProvider == null) {
-			inputPlaceLabelItemProvider = new InputPlaceLabelItemProvider(this);
+	public Adapter createInputPlaceAdapter() {
+		if (inputPlaceItemProvider == null) {
+			inputPlaceItemProvider = new InputPlaceItemProvider(this);
 		}
 
-		return inputPlaceLabelItemProvider;
+		return inputPlaceItemProvider;
 	}
 
 	/**
@@ -385,7 +385,7 @@ public class PetrinetItemProviderAdapterFactory extends PetrinetAdapterFactory i
 		if (tokenItemProvider != null) tokenItemProvider.dispose();
 		if (arcItemProvider != null) arcItemProvider.dispose();
 		if (identityItemProvider != null) identityItemProvider.dispose();
-		if (inputPlaceLabelItemProvider != null) inputPlaceLabelItemProvider.dispose();
+		if (inputPlaceItemProvider != null) inputPlaceItemProvider.dispose();
 	}
 
 }

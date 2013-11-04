@@ -3,9 +3,6 @@
 package dk.dtu.se2.petrinet.provider;
 
 
-import dk.dtu.se2.petrinet.InputPlaceLabel;
-import dk.dtu.se2.petrinet.PetrinetPackage;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -14,25 +11,22 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.pnml.tools.epnk.pnmlcoremodel.provider.AttributeItemProvider;
 
 /**
- * This is the item provider adapter for a {@link dk.dtu.se2.petrinet.InputPlaceLabel} object.
+ * This is the item provider adapter for a {@link dk.dtu.se2.petrinet.InputPlace} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class InputPlaceLabelItemProvider
+public class InputPlaceItemProvider
 	extends AttributeItemProvider
 	implements
 		IEditingDomainItemProvider,
@@ -46,7 +40,7 @@ public class InputPlaceLabelItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPlaceLabelItemProvider(AdapterFactory adapterFactory) {
+	public InputPlaceItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -61,42 +55,19 @@ public class InputPlaceLabelItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTextPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Text feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTextPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InputPlaceLabel_text_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InputPlaceLabel_text_feature", "_UI_InputPlaceLabel_type"),
-				 PetrinetPackage.Literals.INPUT_PLACE_LABEL__TEXT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This returns InputPlaceLabel.gif.
+	 * This returns InputPlace.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/InputPlaceLabel"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/InputPlace"));
 	}
 
 	/**
@@ -107,10 +78,7 @@ public class InputPlaceLabelItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((InputPlaceLabel)object).getText();
-		return label == null || label.length() == 0 ?
-			getString("_UI_InputPlaceLabel_type") :
-			getString("_UI_InputPlaceLabel_type") + " " + label;
+		return getString("_UI_InputPlace_type");
 	}
 
 	/**
@@ -123,12 +91,6 @@ public class InputPlaceLabelItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(InputPlaceLabel.class)) {
-			case PetrinetPackage.INPUT_PLACE_LABEL__TEXT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 

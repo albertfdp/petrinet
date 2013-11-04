@@ -188,7 +188,7 @@ public interface PetrinetPackage extends EPackage {
 	int PLACE__TOKENS = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Input Place Label</b></em>' reference.
+	 * The feature id for the '<em><b>Input Place Label</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -408,13 +408,13 @@ public interface PetrinetPackage extends EPackage {
 	int TOKEN__UNKNOWN = PnmlcoremodelPackage.ATTRIBUTE__UNKNOWN;
 
 	/**
-	 * The feature id for the '<em><b>Appearance Label</b></em>' containment reference.
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOKEN__APPEARANCE_LABEL = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
+	int TOKEN__TEXT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Token</em>' class.
@@ -572,14 +572,14 @@ public interface PetrinetPackage extends EPackage {
 	int IDENTITY_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link dk.dtu.se2.petrinet.impl.InputPlaceLabelImpl <em>Input Place Label</em>}' class.
+	 * The meta object id for the '{@link dk.dtu.se2.petrinet.impl.InputPlaceImpl <em>Input Place</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dk.dtu.se2.petrinet.impl.InputPlaceLabelImpl
-	 * @see dk.dtu.se2.petrinet.impl.PetrinetPackageImpl#getInputPlaceLabel()
+	 * @see dk.dtu.se2.petrinet.impl.InputPlaceImpl
+	 * @see dk.dtu.se2.petrinet.impl.PetrinetPackageImpl#getInputPlace()
 	 * @generated
 	 */
-	int INPUT_PLACE_LABEL = 8;
+	int INPUT_PLACE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
@@ -588,7 +588,7 @@ public interface PetrinetPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INPUT_PLACE_LABEL__TOOLSPECIFIC = PnmlcoremodelPackage.ATTRIBUTE__TOOLSPECIFIC;
+	int INPUT_PLACE__TOOLSPECIFIC = PnmlcoremodelPackage.ATTRIBUTE__TOOLSPECIFIC;
 
 	/**
 	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
@@ -597,7 +597,7 @@ public interface PetrinetPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INPUT_PLACE_LABEL__GRAPHICS = PnmlcoremodelPackage.ATTRIBUTE__GRAPHICS;
+	int INPUT_PLACE__GRAPHICS = PnmlcoremodelPackage.ATTRIBUTE__GRAPHICS;
 
 	/**
 	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
@@ -606,26 +606,16 @@ public interface PetrinetPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INPUT_PLACE_LABEL__UNKNOWN = PnmlcoremodelPackage.ATTRIBUTE__UNKNOWN;
+	int INPUT_PLACE__UNKNOWN = PnmlcoremodelPackage.ATTRIBUTE__UNKNOWN;
 
 	/**
-	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * The number of structural features of the '<em>Input Place</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INPUT_PLACE_LABEL__TEXT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Input Place Label</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_PLACE_LABEL_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
+	int INPUT_PLACE_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link dk.dtu.se2.petrinet.ExtendedPetriNet <em>Extended Petri Net</em>}'.
@@ -692,10 +682,10 @@ public interface PetrinetPackage extends EPackage {
 	EReference getPlace_Tokens();
 
 	/**
-	 * Returns the meta object for the reference '{@link dk.dtu.se2.petrinet.Place#getInputPlaceLabel <em>Input Place Label</em>}'.
+	 * Returns the meta object for the containment reference '{@link dk.dtu.se2.petrinet.Place#getInputPlaceLabel <em>Input Place Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Input Place Label</em>'.
+	 * @return the meta object for the containment reference '<em>Input Place Label</em>'.
 	 * @see dk.dtu.se2.petrinet.Place#getInputPlaceLabel()
 	 * @see #getPlace()
 	 * @generated
@@ -765,15 +755,15 @@ public interface PetrinetPackage extends EPackage {
 	EClass getToken();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link dk.dtu.se2.petrinet.Token#getAppearanceLabel <em>Appearance Label</em>}'.
+	 * Returns the meta object for the attribute '{@link dk.dtu.se2.petrinet.Token#getText <em>Text</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Appearance Label</em>'.
-	 * @see dk.dtu.se2.petrinet.Token#getAppearanceLabel()
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see dk.dtu.se2.petrinet.Token#getText()
 	 * @see #getToken()
 	 * @generated
 	 */
-	EReference getToken_AppearanceLabel();
+	EAttribute getToken_Text();
 
 	/**
 	 * Returns the meta object for class '{@link dk.dtu.se2.petrinet.Arc <em>Arc</em>}'.
@@ -818,25 +808,14 @@ public interface PetrinetPackage extends EPackage {
 	EAttribute getIdentity_Text();
 
 	/**
-	 * Returns the meta object for class '{@link dk.dtu.se2.petrinet.InputPlaceLabel <em>Input Place Label</em>}'.
+	 * Returns the meta object for class '{@link dk.dtu.se2.petrinet.InputPlace <em>Input Place</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Input Place Label</em>'.
-	 * @see dk.dtu.se2.petrinet.InputPlaceLabel
+	 * @return the meta object for class '<em>Input Place</em>'.
+	 * @see dk.dtu.se2.petrinet.InputPlace
 	 * @generated
 	 */
-	EClass getInputPlaceLabel();
-
-	/**
-	 * Returns the meta object for the attribute '{@link dk.dtu.se2.petrinet.InputPlaceLabel#getText <em>Text</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see dk.dtu.se2.petrinet.InputPlaceLabel#getText()
-	 * @see #getInputPlaceLabel()
-	 * @generated
-	 */
-	EAttribute getInputPlaceLabel_Text();
+	EClass getInputPlace();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -913,7 +892,7 @@ public interface PetrinetPackage extends EPackage {
 		EReference PLACE__TOKENS = eINSTANCE.getPlace_Tokens();
 
 		/**
-		 * The meta object literal for the '<em><b>Input Place Label</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Input Place Label</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -977,12 +956,12 @@ public interface PetrinetPackage extends EPackage {
 		EClass TOKEN = eINSTANCE.getToken();
 
 		/**
-		 * The meta object literal for the '<em><b>Appearance Label</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TOKEN__APPEARANCE_LABEL = eINSTANCE.getToken_AppearanceLabel();
+		EAttribute TOKEN__TEXT = eINSTANCE.getToken_Text();
 
 		/**
 		 * The meta object literal for the '{@link dk.dtu.se2.petrinet.impl.ArcImpl <em>Arc</em>}' class.
@@ -1021,22 +1000,14 @@ public interface PetrinetPackage extends EPackage {
 		EAttribute IDENTITY__TEXT = eINSTANCE.getIdentity_Text();
 
 		/**
-		 * The meta object literal for the '{@link dk.dtu.se2.petrinet.impl.InputPlaceLabelImpl <em>Input Place Label</em>}' class.
+		 * The meta object literal for the '{@link dk.dtu.se2.petrinet.impl.InputPlaceImpl <em>Input Place</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dk.dtu.se2.petrinet.impl.InputPlaceLabelImpl
-		 * @see dk.dtu.se2.petrinet.impl.PetrinetPackageImpl#getInputPlaceLabel()
+		 * @see dk.dtu.se2.petrinet.impl.InputPlaceImpl
+		 * @see dk.dtu.se2.petrinet.impl.PetrinetPackageImpl#getInputPlace()
 		 * @generated
 		 */
-		EClass INPUT_PLACE_LABEL = eINSTANCE.getInputPlaceLabel();
-
-		/**
-		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INPUT_PLACE_LABEL__TEXT = eINSTANCE.getInputPlaceLabel_Text();
+		EClass INPUT_PLACE = eINSTANCE.getInputPlace();
 
 	}
 

@@ -24,7 +24,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute petrinet.ecore#//AppearanceLabel/text"/>
     </genClasses>
     <genClasses ecoreClass="petrinet.ecore#//Token">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference petrinet.ecore#//Token/appearanceLabel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute petrinet.ecore#//Token/text"/>
     </genClasses>
     <genClasses ecoreClass="petrinet.ecore#//Arc">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference petrinet.ecore#//Arc/identity"/>
@@ -32,8 +32,6 @@
     <genClasses ecoreClass="petrinet.ecore#//Identity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute petrinet.ecore#//Identity/text"/>
     </genClasses>
-    <genClasses ecoreClass="petrinet.ecore#//InputPlaceLabel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute petrinet.ecore#//InputPlaceLabel/text"/>
-    </genClasses>
+    <genClasses ecoreClass="petrinet.ecore#//InputPlace"/>
   </genPackages>
 </genmodel:GenModel>

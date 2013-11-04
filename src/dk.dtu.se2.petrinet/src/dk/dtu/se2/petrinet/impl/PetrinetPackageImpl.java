@@ -8,21 +8,17 @@ import dk.dtu.se2.petrinet.Arc;
 import dk.dtu.se2.petrinet.ExtendedPetriNet;
 import dk.dtu.se2.petrinet.GeometryLabel;
 import dk.dtu.se2.petrinet.Identity;
-import dk.dtu.se2.petrinet.InputPlaceLabel;
+import dk.dtu.se2.petrinet.InputPlace;
 import dk.dtu.se2.petrinet.PetrinetFactory;
 import dk.dtu.se2.petrinet.PetrinetPackage;
 import dk.dtu.se2.petrinet.Place;
 import dk.dtu.se2.petrinet.Token;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
-
 import org.pnml.tools.epnk.structuredpntypemodel.StructuredpntypemodelPackage;
 
 /**
@@ -93,7 +89,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass inputPlaceLabelEClass = null;
+	private EClass inputPlaceEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -281,8 +277,8 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getToken_AppearanceLabel() {
-		return (EReference)tokenEClass.getEStructuralFeatures().get(0);
+	public EAttribute getToken_Text() {
+		return (EAttribute)tokenEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -326,17 +322,8 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getInputPlaceLabel() {
-		return inputPlaceLabelEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getInputPlaceLabel_Text() {
-		return (EAttribute)inputPlaceLabelEClass.getEStructuralFeatures().get(0);
+	public EClass getInputPlace() {
+		return inputPlaceEClass;
 	}
 
 	/**
@@ -385,7 +372,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		createEAttribute(appearanceLabelEClass, APPEARANCE_LABEL__TEXT);
 
 		tokenEClass = createEClass(TOKEN);
-		createEReference(tokenEClass, TOKEN__APPEARANCE_LABEL);
+		createEAttribute(tokenEClass, TOKEN__TEXT);
 
 		arcEClass = createEClass(ARC);
 		createEReference(arcEClass, ARC__IDENTITY);
@@ -393,8 +380,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		identityEClass = createEClass(IDENTITY);
 		createEAttribute(identityEClass, IDENTITY__TEXT);
 
-		inputPlaceLabelEClass = createEClass(INPUT_PLACE_LABEL);
-		createEAttribute(inputPlaceLabelEClass, INPUT_PLACE_LABEL__TEXT);
+		inputPlaceEClass = createEClass(INPUT_PLACE);
 	}
 
 	/**
@@ -436,9 +422,10 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		animationLabelEClass.getESuperTypes().add(theStructuredpntypemodelPackage.getStructuredLabel());
 		appearanceLabelEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		tokenEClass.getESuperTypes().add(thePnmlcoremodelPackage.getAttribute());
+		tokenEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		arcEClass.getESuperTypes().add(thePnmlcoremodelPackage.getArc());
 		identityEClass.getESuperTypes().add(thePnmlcoremodelPackage.getAttribute());
-		inputPlaceLabelEClass.getESuperTypes().add(thePnmlcoremodelPackage.getAttribute());
+		inputPlaceEClass.getESuperTypes().add(thePnmlcoremodelPackage.getAttribute());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(extendedPetriNetEClass, ExtendedPetriNet.class, "ExtendedPetriNet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -448,7 +435,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		initEReference(getPlace_AnimationLabel(), this.getAnimationLabel(), null, "animationLabel", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlace_AppearanceLabel(), this.getAppearanceLabel(), null, "appearanceLabel", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlace_Tokens(), this.getToken(), null, "tokens", null, 0, -1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPlace_InputPlaceLabel(), this.getInputPlaceLabel(), null, "inputPlaceLabel", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPlace_InputPlaceLabel(), this.getInputPlace(), null, "inputPlaceLabel", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(geometryLabelEClass, GeometryLabel.class, "GeometryLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGeometryLabel_Text(), ecorePackage.getEString(), "text", null, 0, 1, GeometryLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -459,7 +446,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		initEAttribute(getAppearanceLabel_Text(), ecorePackage.getEString(), "text", null, 0, 1, AppearanceLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tokenEClass, Token.class, "Token", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getToken_AppearanceLabel(), this.getAppearanceLabel(), null, "appearanceLabel", null, 0, 1, Token.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getToken_Text(), ecorePackage.getEString(), "text", null, 0, 1, Token.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(arcEClass, Arc.class, "Arc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getArc_Identity(), this.getIdentity(), null, "identity", null, 0, 1, Arc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -467,8 +454,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		initEClass(identityEClass, Identity.class, "Identity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIdentity_Text(), ecorePackage.getEString(), "text", null, 0, 1, Identity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(inputPlaceLabelEClass, InputPlaceLabel.class, "InputPlaceLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getInputPlaceLabel_Text(), ecorePackage.getEString(), "text", null, 0, 1, InputPlaceLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(inputPlaceEClass, InputPlace.class, "InputPlace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -94,13 +94,13 @@ public interface PetrinetFactory extends EFactory {
 	Identity createIdentity();
 
 	/**
-	 * Returns a new object of class '<em>Input Place Label</em>'.
+	 * Returns a new object of class '<em>Input Place</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Input Place Label</em>'.
+	 * @return a new object of class '<em>Input Place</em>'.
 	 * @generated
 	 */
-	InputPlaceLabel createInputPlaceLabel();
+	InputPlace createInputPlace();
 
 	/**
 	 * Returns the package supported by this factory.

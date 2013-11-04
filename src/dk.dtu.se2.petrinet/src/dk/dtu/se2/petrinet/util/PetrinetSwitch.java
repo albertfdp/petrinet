@@ -141,11 +141,11 @@ public class PetrinetSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PetrinetPackage.INPUT_PLACE_LABEL: {
-				InputPlaceLabel inputPlaceLabel = (InputPlaceLabel)theEObject;
-				T result = caseInputPlaceLabel(inputPlaceLabel);
-				if (result == null) result = caseAttribute(inputPlaceLabel);
-				if (result == null) result = caseLabel(inputPlaceLabel);
+			case PetrinetPackage.INPUT_PLACE: {
+				InputPlace inputPlace = (InputPlace)theEObject;
+				T result = caseInputPlace(inputPlace);
+				if (result == null) result = caseAttribute(inputPlace);
+				if (result == null) result = caseLabel(inputPlace);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -274,17 +274,17 @@ public class PetrinetSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Input Place Label</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Input Place</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Input Place Label</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Input Place</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseInputPlaceLabel(InputPlaceLabel object) {
+	public T caseInputPlace(InputPlace object) {
 		return null;
 	}
 

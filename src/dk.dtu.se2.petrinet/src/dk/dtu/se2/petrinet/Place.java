@@ -120,29 +120,29 @@ public interface Place extends org.pnml.tools.epnk.pnmlcoremodel.Place {
 	EList<Token> getTokens();
 
 	/**
-	 * Returns the value of the '<em><b>Input Place Label</b></em>' reference.
+	 * Returns the value of the '<em><b>Input Place Label</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Input Place Label</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Input Place Label</em>' reference.
-	 * @see #setInputPlaceLabel(InputPlaceLabel)
+	 * @return the value of the '<em>Input Place Label</em>' containment reference.
+	 * @see #setInputPlaceLabel(InputPlace)
 	 * @see dk.dtu.se2.petrinet.PetrinetPackage#getPlace_InputPlaceLabel()
-	 * @model
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	InputPlaceLabel getInputPlaceLabel();
+	InputPlace getInputPlaceLabel();
 
 	/**
-	 * Sets the value of the '{@link dk.dtu.se2.petrinet.Place#getInputPlaceLabel <em>Input Place Label</em>}' reference.
+	 * Sets the value of the '{@link dk.dtu.se2.petrinet.Place#getInputPlaceLabel <em>Input Place Label</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Input Place Label</em>' reference.
+	 * @param value the new value of the '<em>Input Place Label</em>' containment reference.
 	 * @see #getInputPlaceLabel()
 	 * @generated
 	 */
-	void setInputPlaceLabel(InputPlaceLabel value);
+	void setInputPlaceLabel(InputPlace value);
 
 } // Place

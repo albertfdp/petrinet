@@ -109,8 +109,8 @@ public class PetrinetAdapterFactory extends AdapterFactoryImpl {
 				return createIdentityAdapter();
 			}
 			@Override
-			public Adapter caseInputPlaceLabel(InputPlaceLabel object) {
-				return createInputPlaceLabelAdapter();
+			public Adapter caseInputPlace(InputPlace object) {
+				return createInputPlaceAdapter();
 			}
 			@Override
 			public Adapter casePetriNetType(PetriNetType object) {
@@ -285,16 +285,16 @@ public class PetrinetAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.petrinet.InputPlaceLabel <em>Input Place Label</em>}'.
+	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.petrinet.InputPlace <em>Input Place</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dk.dtu.se2.petrinet.InputPlaceLabel
+	 * @see dk.dtu.se2.petrinet.InputPlace
 	 * @generated
 	 */
-	public Adapter createInputPlaceLabelAdapter() {
+	public Adapter createInputPlaceAdapter() {
 		return null;
 	}
 
