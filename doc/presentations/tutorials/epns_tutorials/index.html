@@ -75,16 +75,130 @@
 				</section>
 
 				<section>
-					<h2>T 1, 2 and 3: Basic eclipse functionality</h2>
+					<h2>Tutorial 1: The beginning of a long journey.</h2>
 					<p>
-						We created the first Eclipse plugins. It looks awesome dude!
+						A view which presents informations about the file extension of the currently selected file.
 					</p>
-					<ul>
-					<li>Tutorial 1: easy</li>
-					<li>Tutorial 2: damn easy</li>
-					</ul>
 				</section>
 
+				<section>
+					<h2>Behind the scenes:</h2>
+					<pre><code data-trim contenteditable>
+						public class FileTypeView extends ViewPart implements ISelectionListener
+						</pre></code>
+					<p>
+						Register the view as a listener to the workbench and this method will be called everytime 
+						the selection changes :
+
+						<pre><code data-trim contenteditable>
+						public void selectionChanged(IWorkbenchPart part, ISelection selection) 
+						</pre></code>
+					</p>
+				</section>
+
+				<section>
+					<h2>The core method.</h2>
+						<pre><code data-trim contenteditable>
+						public String[] getFileExtension(ISelection selection) {
+    if ( !(selection instanceof IStructuredSelection)) {
+        return null;
+    }
+
+    IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+    
+    String[] result = new String[structuredSelection.size()];
+    int i = 0;
+    for(Object o : structuredSelection.toArray()) {
+        if (o instanceof IFile) {
+            IFile file = (IFile) o;
+            result[i] = file.getName() + " is a " + file.getFileExtension() + "file";
+        } else if (o instanceof IFolder) {
+            IFolder folder = (IFolder) o;
+            result[i] = "Selected folder: " + folder.getName();
+        } else if (o instanceof IProject) {
+            IProject project = (IProject) o;
+            result[i] = "Selected project: " + project.getName();
+        }
+        i++;
+    }
+    return result;
+}
+						</pre></code>
+				</section>
+				<section>
+					<h2>Tutorials 2 &amp; 3: A Petri Net Tree Editor</h2>
+					<p>
+						<strong>Simple. Clean. Intuitive.</strong>
+					</p>
+				</section>
+				<section>
+					<h2>Based on the following model:</h2>
+					<p>
+						<img src="img/petrinet.png" alt="Petrinet model"/>
+					</p>
+				</section>
+
+				<section>
+					<h2>Enhanced with the Undo/Redo mechanism...</h2>
+					<pre><code data-trim contenteditable>
+						public FireTransitionCommand(EditingDomain domain, Transition transition) {
+
+    this.transition = transition;
+
+    // Run through all the incoming places and remove a token from them
+    for (Arc arc : transition.getIn()) {
+        Place source = (Place) arc.getSource();
+
+        //Here we create a Remove Command to remove one token from each source
+        append(new RemoveCommand(domain, source,
+                PetrinetPackage.eINSTANCE.getPlace_Tokens(), source
+                        .getTokens().get(0)));
+    }
+    // Give a token to each outgoing place
+    for (Arc arc : transition.getOut()) {
+        Place target = (Place) arc.getTarget();
+        Token token = PetrinetFactory.eINSTANCE.createToken();
+        
+        //Here we create a CreateChildCommand to add a token to each target
+        append(new CreateChildCommand(domain, target,
+                PetrinetPackage.eINSTANCE.getPlace_Tokens(), token, null));
+    }
+}
+					</pre></code>
+				</section>
+
+				<section>
+					<h2>..and the automatic identity</h2>
+					<pre><code data-trim contenteditable>
+						public CreatePObjectWIDCommand(EditingDomain domain, 
+            EObject owner,
+            Command command) {
+    
+    super(0);
+    this.domain = domain;
+    
+    this.append(command);
+    
+    Collection<&#63;> collection = this.getResult();
+    PObject resultObject = null;
+    if (collection.iterator().next() instanceof PObject) {
+        resultObject = (PObject) collection.iterator().next();
+    }
+    
+    int max = -1;
+    for (Object object: owner.eContents()) {
+        if (object instanceof petrinet.PObject) {
+            int currentId = ((petrinet.PObject) object).getId();
+            
+            max = Math.max(max, currentId);
+        }
+    }
+    max = max + 1;
+    
+    this.append(new SetCommand(domain, resultObject, PetrinetPackage.eINSTANCE.getPObject_Id(), max));      
+}
+					</pre></code>
+				</section>
 				<section>
 					<h2>Tutorials 5 &amp; 6: Extending ePNK</h2>
 					<p>
