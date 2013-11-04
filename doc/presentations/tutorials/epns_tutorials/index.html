@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -327,6 +327,35 @@ public class ArcValidator extends AbstractModelConstraint {
 			});
 
 		</script>
-
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+function currentPageFormatter(event) {
+        var formattedStr;
+        
+        if (event.indexh === 0) {
+                return "";
+        }
+ 
+        formattedStr = event.indexh;
+ 
+        if (event.indexv) {
+            formattedStr += "/" + event.indexv;
+        }
+ 
+        return formattedStr;
+    }
+ 
+    Reveal.addEventListener( 'ready', function( event ) {
+        $('<aside class="controls slide-number" style="display: block; left: 10px; right: initial;bottom: -30px; text-align: center;"></aside>')
+            .text(currentPageFormatter(event))
+            .appendTo('.reveal.center');
+    } );
+ 
+    // Fires each time a new slide is activated
+    Reveal.addEventListener( 'slidechanged', function( event ) {
+        // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+        $(".slide-number").text(currentPageFormatter(event));
+    } );
+</script>
 	</body>
 </html>
