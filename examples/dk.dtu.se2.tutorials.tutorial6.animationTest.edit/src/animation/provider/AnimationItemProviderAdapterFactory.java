@@ -95,29 +95,6 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link animation.AnimationObject} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AnimationObjectItemProvider animationObjectItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link animation.AnimationObject}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAnimationObjectAdapter() {
-		if (animationObjectItemProvider == null) {
-			animationObjectItemProvider = new AnimationObjectItemProvider(this);
-		}
-
-		return animationObjectItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link animation.Move} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -207,6 +184,29 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 		}
 
 		return stopItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link animation.Sequence} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SequenceItemProvider sequenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link animation.Sequence}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSequenceAdapter() {
+		if (sequenceItemProvider == null) {
+			sequenceItemProvider = new SequenceItemProvider(this);
+		}
+
+		return sequenceItemProvider;
 	}
 
 	/**
@@ -309,11 +309,11 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	 */
 	public void dispose() {
 		if (animationItemProvider != null) animationItemProvider.dispose();
-		if (animationObjectItemProvider != null) animationObjectItemProvider.dispose();
 		if (moveItemProvider != null) moveItemProvider.dispose();
 		if (showItemProvider != null) showItemProvider.dispose();
 		if (hideItemProvider != null) hideItemProvider.dispose();
 		if (stopItemProvider != null) stopItemProvider.dispose();
+		if (sequenceItemProvider != null) sequenceItemProvider.dispose();
 	}
 
 }

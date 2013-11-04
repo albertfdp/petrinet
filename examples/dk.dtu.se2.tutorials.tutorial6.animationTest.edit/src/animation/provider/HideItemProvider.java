@@ -3,14 +3,10 @@
 package animation.provider;
 
 
-import animation.Hide;
-
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -25,7 +21,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * @generated
  */
 public class HideItemProvider
-	extends AnimationObjectItemProvider
+	extends AnimationItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -76,10 +72,7 @@ public class HideItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Hide)object).getLabel();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Hide_type") :
-			getString("_UI_Hide_type") + " " + label;
+		return getString("_UI_Hide_type");
 	}
 
 	/**

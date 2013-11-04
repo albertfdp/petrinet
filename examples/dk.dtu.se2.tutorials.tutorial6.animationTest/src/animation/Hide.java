@@ -13,5 +13,5 @@ package animation;
  * @model
  * @generated
  */
-public interface Hide extends AnimationObject {
+public interface Hide extends Animation {
 } // Hide

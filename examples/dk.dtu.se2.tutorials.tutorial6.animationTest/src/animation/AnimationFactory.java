@@ -31,15 +31,6 @@ public interface AnimationFactory extends EFactory {
 	Animation createAnimation();
 
 	/**
-	 * Returns a new object of class '<em>Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Object</em>'.
-	 * @generated
-	 */
-	AnimationObject createAnimationObject();
-
-	/**
 	 * Returns a new object of class '<em>Move</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -74,6 +65,15 @@ public interface AnimationFactory extends EFactory {
 	 * @generated
 	 */
 	Stop createStop();
+
+	/**
+	 * Returns a new object of class '<em>Sequence</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sequence</em>'.
+	 * @generated
+	 */
+	Sequence createSequence();
 
 	/**
 	 * Returns the package supported by this factory.

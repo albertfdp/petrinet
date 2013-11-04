@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class MoveImpl extends AnimationObjectImpl implements Move {
+public class MoveImpl extends AnimationImpl implements Move {
 	/**
 	 * The default value of the '{@link #getSpeed() <em>Speed</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -33,7 +33,7 @@ public class MoveImpl extends AnimationObjectImpl implements Move {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SPEED_EDEFAULT = null;
+	protected static final int SPEED_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getSpeed() <em>Speed</em>}' attribute.
@@ -43,7 +43,7 @@ public class MoveImpl extends AnimationObjectImpl implements Move {
 	 * @generated
 	 * @ordered
 	 */
-	protected String speed = SPEED_EDEFAULT;
+	protected int speed = SPEED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -69,7 +69,7 @@ public class MoveImpl extends AnimationObjectImpl implements Move {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getSpeed() {
+	public int getSpeed() {
 		return speed;
 	}
 
@@ -78,8 +78,8 @@ public class MoveImpl extends AnimationObjectImpl implements Move {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSpeed(String newSpeed) {
-		String oldSpeed = speed;
+	public void setSpeed(int newSpeed) {
+		int oldSpeed = speed;
 		speed = newSpeed;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AnimationPackage.MOVE__SPEED, oldSpeed, speed));
@@ -108,7 +108,7 @@ public class MoveImpl extends AnimationObjectImpl implements Move {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AnimationPackage.MOVE__SPEED:
-				setSpeed((String)newValue);
+				setSpeed((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -138,7 +138,7 @@ public class MoveImpl extends AnimationObjectImpl implements Move {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AnimationPackage.MOVE__SPEED:
-				return SPEED_EDEFAULT == null ? speed != null : !SPEED_EDEFAULT.equals(speed);
+				return speed != SPEED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

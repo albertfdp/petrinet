@@ -72,10 +72,6 @@ public class AnimationAdapterFactory extends AdapterFactoryImpl {
 				return createAnimationAdapter();
 			}
 			@Override
-			public Adapter caseAnimationObject(AnimationObject object) {
-				return createAnimationObjectAdapter();
-			}
-			@Override
 			public Adapter caseMove(Move object) {
 				return createMoveAdapter();
 			}
@@ -90,6 +86,10 @@ public class AnimationAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseStop(Stop object) {
 				return createStopAdapter();
+			}
+			@Override
+			public Adapter caseSequence(Sequence object) {
+				return createSequenceAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -122,20 +122,6 @@ public class AnimationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAnimationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link animation.AnimationObject <em>Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see animation.AnimationObject
-	 * @generated
-	 */
-	public Adapter createAnimationObjectAdapter() {
 		return null;
 	}
 
@@ -192,6 +178,20 @@ public class AnimationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStopAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link animation.Sequence <em>Sequence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see animation.Sequence
+	 * @generated
+	 */
+	public Adapter createSequenceAdapter() {
 		return null;
 	}
 

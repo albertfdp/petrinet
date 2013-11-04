@@ -6,17 +6,17 @@
     complianceLevel="6.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>animation.ecore</foreignModel>
   <genPackages prefix="Animation" disposableProviderFactory="true" ecorePackage="animation.ecore#/">
-    <genClasses ecoreClass="animation.ecore#//Animation">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//Animation/animationObjects"/>
-    </genClasses>
-    <genClasses ecoreClass="animation.ecore#//AnimationObject">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//AnimationObject/label"/>
-    </genClasses>
+    <genClasses ecoreClass="animation.ecore#//Animation"/>
     <genClasses ecoreClass="animation.ecore#//Move">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//Move/speed"/>
     </genClasses>
-    <genClasses ecoreClass="animation.ecore#//Show"/>
+    <genClasses ecoreClass="animation.ecore#//Show">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//Show/name"/>
+    </genClasses>
     <genClasses ecoreClass="animation.ecore#//Hide"/>
     <genClasses ecoreClass="animation.ecore#//Stop"/>
+    <genClasses ecoreClass="animation.ecore#//Sequence">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//Sequence/animations"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

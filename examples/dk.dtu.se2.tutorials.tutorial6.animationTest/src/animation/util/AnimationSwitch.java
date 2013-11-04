@@ -72,37 +72,38 @@ public class AnimationSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnimationPackage.ANIMATION_OBJECT: {
-				AnimationObject animationObject = (AnimationObject)theEObject;
-				T result = caseAnimationObject(animationObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AnimationPackage.MOVE: {
 				Move move = (Move)theEObject;
 				T result = caseMove(move);
-				if (result == null) result = caseAnimationObject(move);
+				if (result == null) result = caseAnimation(move);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AnimationPackage.SHOW: {
 				Show show = (Show)theEObject;
 				T result = caseShow(show);
-				if (result == null) result = caseAnimationObject(show);
+				if (result == null) result = caseAnimation(show);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AnimationPackage.HIDE: {
 				Hide hide = (Hide)theEObject;
 				T result = caseHide(hide);
-				if (result == null) result = caseAnimationObject(hide);
+				if (result == null) result = caseAnimation(hide);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AnimationPackage.STOP: {
 				Stop stop = (Stop)theEObject;
 				T result = caseStop(stop);
-				if (result == null) result = caseAnimationObject(stop);
+				if (result == null) result = caseAnimation(stop);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnimationPackage.SEQUENCE: {
+				Sequence sequence = (Sequence)theEObject;
+				T result = caseSequence(sequence);
+				if (result == null) result = caseAnimation(sequence);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -122,21 +123,6 @@ public class AnimationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAnimation(Animation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Object</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAnimationObject(AnimationObject object) {
 		return null;
 	}
 
@@ -197,6 +183,21 @@ public class AnimationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStop(Stop object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sequence</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sequence</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSequence(Sequence object) {
 		return null;
 	}
 

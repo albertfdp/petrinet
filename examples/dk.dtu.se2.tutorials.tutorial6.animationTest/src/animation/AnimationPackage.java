@@ -67,22 +67,13 @@ public interface AnimationPackage extends EPackage {
 	int ANIMATION = 0;
 
 	/**
-	 * The feature id for the '<em><b>Animation Objects</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANIMATION__ANIMATION_OBJECTS = 0;
-
-	/**
 	 * The number of structural features of the '<em>Animation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANIMATION_FEATURE_COUNT = 1;
+	int ANIMATION_FEATURE_COUNT = 0;
 
 	/**
 	 * The number of operations of the '<em>Animation</em>' class.
@@ -94,43 +85,6 @@ public interface AnimationPackage extends EPackage {
 	int ANIMATION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link animation.impl.AnimationObjectImpl <em>Object</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see animation.impl.AnimationObjectImpl
-	 * @see animation.impl.AnimationPackageImpl#getAnimationObject()
-	 * @generated
-	 */
-	int ANIMATION_OBJECT = 1;
-
-	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANIMATION_OBJECT__LABEL = 0;
-
-	/**
-	 * The number of structural features of the '<em>Object</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANIMATION_OBJECT_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Object</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANIMATION_OBJECT_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link animation.impl.MoveImpl <em>Move</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -138,16 +92,7 @@ public interface AnimationPackage extends EPackage {
 	 * @see animation.impl.AnimationPackageImpl#getMove()
 	 * @generated
 	 */
-	int MOVE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MOVE__LABEL = ANIMATION_OBJECT__LABEL;
+	int MOVE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
@@ -156,7 +101,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MOVE__SPEED = ANIMATION_OBJECT_FEATURE_COUNT + 0;
+	int MOVE__SPEED = ANIMATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Move</em>' class.
@@ -165,7 +110,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MOVE_FEATURE_COUNT = ANIMATION_OBJECT_FEATURE_COUNT + 1;
+	int MOVE_FEATURE_COUNT = ANIMATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Move</em>' class.
@@ -174,7 +119,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MOVE_OPERATION_COUNT = ANIMATION_OBJECT_OPERATION_COUNT + 0;
+	int MOVE_OPERATION_COUNT = ANIMATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link animation.impl.ShowImpl <em>Show</em>}' class.
@@ -184,16 +129,16 @@ public interface AnimationPackage extends EPackage {
 	 * @see animation.impl.AnimationPackageImpl#getShow()
 	 * @generated
 	 */
-	int SHOW = 3;
+	int SHOW = 2;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SHOW__LABEL = ANIMATION_OBJECT__LABEL;
+	int SHOW__NAME = ANIMATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Show</em>' class.
@@ -202,7 +147,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SHOW_FEATURE_COUNT = ANIMATION_OBJECT_FEATURE_COUNT + 0;
+	int SHOW_FEATURE_COUNT = ANIMATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Show</em>' class.
@@ -211,7 +156,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SHOW_OPERATION_COUNT = ANIMATION_OBJECT_OPERATION_COUNT + 0;
+	int SHOW_OPERATION_COUNT = ANIMATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link animation.impl.HideImpl <em>Hide</em>}' class.
@@ -221,16 +166,7 @@ public interface AnimationPackage extends EPackage {
 	 * @see animation.impl.AnimationPackageImpl#getHide()
 	 * @generated
 	 */
-	int HIDE = 4;
-
-	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HIDE__LABEL = ANIMATION_OBJECT__LABEL;
+	int HIDE = 3;
 
 	/**
 	 * The number of structural features of the '<em>Hide</em>' class.
@@ -239,7 +175,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HIDE_FEATURE_COUNT = ANIMATION_OBJECT_FEATURE_COUNT + 0;
+	int HIDE_FEATURE_COUNT = ANIMATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Hide</em>' class.
@@ -248,7 +184,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HIDE_OPERATION_COUNT = ANIMATION_OBJECT_OPERATION_COUNT + 0;
+	int HIDE_OPERATION_COUNT = ANIMATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link animation.impl.StopImpl <em>Stop</em>}' class.
@@ -258,16 +194,7 @@ public interface AnimationPackage extends EPackage {
 	 * @see animation.impl.AnimationPackageImpl#getStop()
 	 * @generated
 	 */
-	int STOP = 5;
-
-	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STOP__LABEL = ANIMATION_OBJECT__LABEL;
+	int STOP = 4;
 
 	/**
 	 * The number of structural features of the '<em>Stop</em>' class.
@@ -276,7 +203,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STOP_FEATURE_COUNT = ANIMATION_OBJECT_FEATURE_COUNT + 0;
+	int STOP_FEATURE_COUNT = ANIMATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Stop</em>' class.
@@ -285,7 +212,45 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STOP_OPERATION_COUNT = ANIMATION_OBJECT_OPERATION_COUNT + 0;
+	int STOP_OPERATION_COUNT = ANIMATION_OPERATION_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link animation.impl.SequenceImpl <em>Sequence</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see animation.impl.SequenceImpl
+	 * @see animation.impl.AnimationPackageImpl#getSequence()
+	 * @generated
+	 */
+	int SEQUENCE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Animations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE__ANIMATIONS = ANIMATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Sequence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_FEATURE_COUNT = ANIMATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Sequence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_OPERATION_COUNT = ANIMATION_OPERATION_COUNT + 0;
 
 
 	/**
@@ -297,38 +262,6 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAnimation();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link animation.Animation#getAnimationObjects <em>Animation Objects</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Animation Objects</em>'.
-	 * @see animation.Animation#getAnimationObjects()
-	 * @see #getAnimation()
-	 * @generated
-	 */
-	EReference getAnimation_AnimationObjects();
-
-	/**
-	 * Returns the meta object for class '{@link animation.AnimationObject <em>Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Object</em>'.
-	 * @see animation.AnimationObject
-	 * @generated
-	 */
-	EClass getAnimationObject();
-
-	/**
-	 * Returns the meta object for the attribute '{@link animation.AnimationObject#getLabel <em>Label</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Label</em>'.
-	 * @see animation.AnimationObject#getLabel()
-	 * @see #getAnimationObject()
-	 * @generated
-	 */
-	EAttribute getAnimationObject_Label();
 
 	/**
 	 * Returns the meta object for class '{@link animation.Move <em>Move</em>}'.
@@ -362,6 +295,17 @@ public interface AnimationPackage extends EPackage {
 	EClass getShow();
 
 	/**
+	 * Returns the meta object for the attribute '{@link animation.Show#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see animation.Show#getName()
+	 * @see #getShow()
+	 * @generated
+	 */
+	EAttribute getShow_Name();
+
+	/**
 	 * Returns the meta object for class '{@link animation.Hide <em>Hide</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -380,6 +324,27 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getStop();
+
+	/**
+	 * Returns the meta object for class '{@link animation.Sequence <em>Sequence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sequence</em>'.
+	 * @see animation.Sequence
+	 * @generated
+	 */
+	EClass getSequence();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link animation.Sequence#getAnimations <em>Animations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Animations</em>'.
+	 * @see animation.Sequence#getAnimations()
+	 * @see #getSequence()
+	 * @generated
+	 */
+	EReference getSequence_Animations();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -415,32 +380,6 @@ public interface AnimationPackage extends EPackage {
 		EClass ANIMATION = eINSTANCE.getAnimation();
 
 		/**
-		 * The meta object literal for the '<em><b>Animation Objects</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANIMATION__ANIMATION_OBJECTS = eINSTANCE.getAnimation_AnimationObjects();
-
-		/**
-		 * The meta object literal for the '{@link animation.impl.AnimationObjectImpl <em>Object</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see animation.impl.AnimationObjectImpl
-		 * @see animation.impl.AnimationPackageImpl#getAnimationObject()
-		 * @generated
-		 */
-		EClass ANIMATION_OBJECT = eINSTANCE.getAnimationObject();
-
-		/**
-		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ANIMATION_OBJECT__LABEL = eINSTANCE.getAnimationObject_Label();
-
-		/**
 		 * The meta object literal for the '{@link animation.impl.MoveImpl <em>Move</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -469,6 +408,14 @@ public interface AnimationPackage extends EPackage {
 		EClass SHOW = eINSTANCE.getShow();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHOW__NAME = eINSTANCE.getShow_Name();
+
+		/**
 		 * The meta object literal for the '{@link animation.impl.HideImpl <em>Hide</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -487,6 +434,24 @@ public interface AnimationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass STOP = eINSTANCE.getStop();
+
+		/**
+		 * The meta object literal for the '{@link animation.impl.SequenceImpl <em>Sequence</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see animation.impl.SequenceImpl
+		 * @see animation.impl.AnimationPackageImpl#getSequence()
+		 * @generated
+		 */
+		EClass SEQUENCE = eINSTANCE.getSequence();
+
+		/**
+		 * The meta object literal for the '<em><b>Animations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEQUENCE__ANIMATIONS = eINSTANCE.getSequence_Animations();
 
 	}
 

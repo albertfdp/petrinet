@@ -62,7 +62,7 @@ public interface Place extends org.pnml.tools.epnk.pnmlcoremodel.Place {
 	 * @return the value of the '<em>Animation Label</em>' containment reference.
 	 * @see #setAnimationLabel(AnimationLabel)
 	 * @see dk.dtu.se2.petrinet.PetrinetPackage#getPlace_AnimationLabel()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	AnimationLabel getAnimationLabel();

@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class StopImpl extends AnimationObjectImpl implements Stop {
+public class StopImpl extends AnimationImpl implements Stop {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

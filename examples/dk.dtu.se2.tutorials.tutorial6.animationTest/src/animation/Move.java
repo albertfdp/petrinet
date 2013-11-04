@@ -19,7 +19,7 @@ package animation;
  * @model
  * @generated
  */
-public interface Move extends AnimationObject {
+public interface Move extends Animation {
 	/**
 	 * Returns the value of the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -29,12 +29,12 @@ public interface Move extends AnimationObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Speed</em>' attribute.
-	 * @see #setSpeed(String)
+	 * @see #setSpeed(int)
 	 * @see animation.AnimationPackage#getMove_Speed()
 	 * @model
 	 * @generated
 	 */
-	String getSpeed();
+	int getSpeed();
 
 	/**
 	 * Sets the value of the '{@link animation.Move#getSpeed <em>Speed</em>}' attribute.
@@ -44,6 +44,6 @@ public interface Move extends AnimationObject {
 	 * @see #getSpeed()
 	 * @generated
 	 */
-	void setSpeed(String value);
+	void setSpeed(int value);
 
 } // Move

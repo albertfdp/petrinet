@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class HideImpl extends AnimationObjectImpl implements Hide {
+public class HideImpl extends AnimationImpl implements Hide {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

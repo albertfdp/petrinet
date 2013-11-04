@@ -57,11 +57,11 @@ public class AnimationFactoryImpl extends EFactoryImpl implements AnimationFacto
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case AnimationPackage.ANIMATION: return createAnimation();
-			case AnimationPackage.ANIMATION_OBJECT: return createAnimationObject();
 			case AnimationPackage.MOVE: return createMove();
 			case AnimationPackage.SHOW: return createShow();
 			case AnimationPackage.HIDE: return createHide();
 			case AnimationPackage.STOP: return createStop();
+			case AnimationPackage.SEQUENCE: return createSequence();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -75,16 +75,6 @@ public class AnimationFactoryImpl extends EFactoryImpl implements AnimationFacto
 	public Animation createAnimation() {
 		AnimationImpl animation = new AnimationImpl();
 		return animation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AnimationObject createAnimationObject() {
-		AnimationObjectImpl animationObject = new AnimationObjectImpl();
-		return animationObject;
 	}
 
 	/**
@@ -125,6 +115,16 @@ public class AnimationFactoryImpl extends EFactoryImpl implements AnimationFacto
 	public Stop createStop() {
 		StopImpl stop = new StopImpl();
 		return stop;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Sequence createSequence() {
+		SequenceImpl sequence = new SequenceImpl();
+		return sequence;
 	}
 
 	/**

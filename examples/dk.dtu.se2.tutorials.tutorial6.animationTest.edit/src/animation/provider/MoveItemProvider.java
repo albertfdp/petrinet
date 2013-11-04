@@ -29,7 +29,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class MoveItemProvider
-	extends AnimationObjectItemProvider
+	extends AnimationItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -79,7 +79,7 @@ public class MoveItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -103,10 +103,8 @@ public class MoveItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Move)object).getLabel();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Move_type") :
-			getString("_UI_Move_type") + " " + label;
+		Move move = (Move)object;
+		return getString("_UI_Move_type") + " " + move.getSpeed();
 	}
 
 	/**

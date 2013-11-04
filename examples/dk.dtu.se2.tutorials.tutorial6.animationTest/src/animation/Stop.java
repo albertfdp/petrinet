@@ -13,5 +13,5 @@ package animation;
  * @model
  * @generated
  */
-public interface Stop extends AnimationObject {
+public interface Stop extends Animation {
 } // Stop
