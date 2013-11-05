@@ -1,0 +1,7 @@
+# Tracing options for the EMFTutorial.diagram plug-in
+
+# Common issues
+EMFTutorial.diagram/debug=false
+
+# Visual IDs
+EMFTutorial.diagram/debug/visualID=false

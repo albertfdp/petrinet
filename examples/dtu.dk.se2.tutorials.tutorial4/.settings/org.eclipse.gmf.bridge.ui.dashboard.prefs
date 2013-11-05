@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+gmf_dashboard/domainGenerationModel=platform\:/resource/dk.dtu.se2.tutorials.tutorial2-3/model/Petrinet.genmodel
+gmf_dashboard/domainModel=platform\:/resource/dk.dtu.se2.tutorials.tutorial2-3/model/Petrinet.ecore
+gmf_dashboard/generationModel=platform\:/resource/dtu.dk.se2.tutorials.tutorial4/model/Petrinet.gmfgen
+gmf_dashboard/graphicalDefinitionModel=platform\:/resource/dtu.dk.se2.tutorials.tutorial4/model/Petrinet.gmfgraph
+gmf_dashboard/mappingModel=platform\:/resource/dtu.dk.se2.tutorials.tutorial4/model/Petrinet.gmfmap
+gmf_dashboard/toolingDefinitionModel=platform\:/resource/dtu.dk.se2.tutorials.tutorial4/model/Petrinet.gmftool
