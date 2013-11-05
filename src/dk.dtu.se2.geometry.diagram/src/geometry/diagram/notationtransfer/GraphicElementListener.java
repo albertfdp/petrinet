@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import org.eclipse.draw2d.Connection;
-import org.eclipse.draw2d.geometry.Point;
+//import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -23,6 +23,8 @@ import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 
+import geometry.Point;
+import geometry.BendPoint;
 import geometry.Connector;
 import geometry.impl.PointImpl;
 import geometry.impl.InputPointImpl;
@@ -158,9 +160,39 @@ public class GraphicElementListener extends EContentAdapter {
 	}
 	
 	private void updateLine(ENotificationImpl eNotification, EObject eNotifier, LineImpl lineImpl, Edge edge)
-	{
-		Bendpoints bendpoints = edge.getBendpoints();
+	{	
+		Object object = ((RelativeBendpoints)edge.getBendpoints()).getPoints().get(1);	
 		
+		if(object instanceof RelativeBendpoint)
+		{
+			object = (RelativeBendpoint) object;
+			int x = ((RelativeBendpoint) object).getSourceX();
+			int y = ((RelativeBendpoint) object).getSourceY();
+			Point point = null;
+			//point.setXLocation(x);
+			//point.setYLocation(y);
+			return;
+		}
+		/*
+		if(lineImpl.getBendPoint() instanceof BendPoint)
+		{
+			
+			RelativeBendpoints bendpoints = NotationFactory.eINSTANCE.createRelativeBendpoints();
+		
+			edge.setBendpoints(bendpoints);
+			List<RelativeBendpoint> points = new ArrayList<RelativeBendpoint>();
+			
+			int sourcex = lineImpl.getBendPoint().getXLocation() - lineImpl.getBegin().getXLocation();
+			int sourcey = lineImpl.getBendPoint().getYLocation() - lineImpl.getBegin().getYLocation();
+			
+			int targetx = lineImpl.getBendPoint().getXLocation() - lineImpl.get
+			
+			RelativeBendpoint bendPoint = new RelativeBendpoint(1, 2, 3, 4);
+			points.add(bendPoint);
+			    
+			bendpoints.setPoints(points);
+			edge.setBendpoints(bendpoints);
+		}*/
 		return;
 	}
 }
