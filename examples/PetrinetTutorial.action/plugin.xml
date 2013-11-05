@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+
+<extension point = "org.eclipse.ui.popupMenus">
+     <objectContribution
+        id="PetrinetTutorial.command.fireTransition"
+        objectClass="petrinet.diagram.edit.parts.TransitionEditPart">
+        <menu id="PetrinetMenu"
+         label="Petrinets"
+         path="additions">
+         <separator name="group1" >         </separator>
+       </menu>
+	    <action id="PetrinetTutorial.fireTransition"
+	       label="Fire transition"
+	       enablesFor="1"
+	       class="command.FireTransitionDelegate"
+	       menuPath="PetrinetMenu/group1">	
+	    </action>
+	    
+	 </objectContribution>
+	</extension>
+	
+</plugin>
