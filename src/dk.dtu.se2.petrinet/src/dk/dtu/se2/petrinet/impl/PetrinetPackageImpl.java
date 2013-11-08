@@ -2,7 +2,15 @@
  */
 package dk.dtu.se2.petrinet.impl;
 
-import animation.AnimationPackage;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
+import org.pnml.tools.epnk.structuredpntypemodel.StructuredpntypemodelPackage;
+
+import dk.dtu.se2.animation.AnimationPackage;
 import dk.dtu.se2.petrinet.AnimationLabel;
 import dk.dtu.se2.petrinet.AppearanceLabel;
 import dk.dtu.se2.petrinet.Arc;
@@ -14,13 +22,6 @@ import dk.dtu.se2.petrinet.PetrinetFactory;
 import dk.dtu.se2.petrinet.PetrinetPackage;
 import dk.dtu.se2.petrinet.Place;
 import dk.dtu.se2.petrinet.Token;
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
-import org.pnml.tools.epnk.structuredpntypemodel.StructuredpntypemodelPackage;
 
 /**
  * <!-- begin-user-doc -->

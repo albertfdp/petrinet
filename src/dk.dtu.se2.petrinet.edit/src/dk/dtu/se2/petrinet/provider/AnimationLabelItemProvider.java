@@ -3,18 +3,12 @@
 package dk.dtu.se2.petrinet.provider;
 
 
-import animation.AnimationFactory;
-import dk.dtu.se2.petrinet.AnimationLabel;
-
-import dk.dtu.se2.petrinet.PetrinetPackage;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -22,9 +16,12 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.pnml.tools.epnk.structuredpntypemodel.provider.StructuredLabelItemProvider;
+
+import dk.dtu.se2.animation.AnimationFactory;
+import dk.dtu.se2.petrinet.AnimationLabel;
+import dk.dtu.se2.petrinet.PetrinetPackage;
 
 /**
  * This is the item provider adapter for a {@link dk.dtu.se2.petrinet.AnimationLabel} object.

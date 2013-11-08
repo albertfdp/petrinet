@@ -2,14 +2,12 @@
  */
 package dk.dtu.se2.petrinet.provider;
 
-import animation.provider.AnimationEditPlugin;
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.pnml.tools.epnk.pnmlcoremodel.provider.PNMLCoreModelEditPlugin;
-
 import org.pnml.tools.epnk.structuredpntypemodel.provider.PNMLStructuredPNTypeModelEditPlugin;
+
+import dk.dtu.se2.animation.provider.AnimationEditPlugin;
 
 /**
  * This is the central singleton for the Petrinet edit plugin.

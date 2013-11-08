@@ -2,6 +2,8 @@
  */
 package dk.dtu.se2.petrinet.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -10,11 +12,9 @@ import org.pnml.tools.epnk.helpers.NetFunctions;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetType;
 import org.pnml.tools.epnk.structuredpntypemodel.impl.StructuredLabelImpl;
 
-import animation.Animation;
+import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.petrinet.AnimationLabel;
 import dk.dtu.se2.petrinet.PetrinetPackage;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 /**
  * <!-- begin-user-doc -->

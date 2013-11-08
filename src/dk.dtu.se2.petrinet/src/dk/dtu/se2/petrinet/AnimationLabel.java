@@ -2,8 +2,9 @@
  */
 package dk.dtu.se2.petrinet;
 
-import animation.Animation;
 import org.pnml.tools.epnk.structuredpntypemodel.StructuredLabel;
+
+import dk.dtu.se2.animation.Animation;
 
 /**
  * <!-- begin-user-doc -->

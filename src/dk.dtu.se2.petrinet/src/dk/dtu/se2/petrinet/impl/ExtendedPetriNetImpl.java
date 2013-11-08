@@ -5,9 +5,9 @@ package dk.dtu.se2.petrinet.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.pnml.tools.epnk.pnmlcoremodel.impl.PetriNetTypeImpl;
 
+import dk.dtu.se2.animation.AnimationParser;
 import dk.dtu.se2.petrinet.ExtendedPetriNet;
 import dk.dtu.se2.petrinet.PetrinetPackage;
-import dk.dtu.se2.tutorials.tutorial6.animation.language.AnimationParser;
 
 /**
  * <!-- begin-user-doc -->

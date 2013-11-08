@@ -4,7 +4,7 @@ import geometry.Geometry;
 
 import java.util.List;
 
-import animation.Animation;
+import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.appearance.Appearance;
 
 public interface Engine3D {
