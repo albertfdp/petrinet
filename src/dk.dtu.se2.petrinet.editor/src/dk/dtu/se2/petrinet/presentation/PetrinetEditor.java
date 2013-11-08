@@ -156,6 +156,7 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import dk.dtu.se2.petrinet.provider.PetrinetItemProviderAdapterFactory;
 
+import animation.provider.AnimationItemProviderAdapterFactory;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 import org.pnml.tools.epnk.pnmlcoremodel.provider.PnmlcoremodelItemProviderAdapterFactory;
@@ -706,6 +707,7 @@ public class PetrinetEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new PetrinetItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new AnimationItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new PnmlcoremodelItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new StructuredpntypemodelItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());

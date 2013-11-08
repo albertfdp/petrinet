@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/dk.dtu.se2.petrinet/src" modelPluginID="dk.dtu.se2.petrinet"
     modelName="Petrinet" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
-    usedGenPackages="../../org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel ../../org.pnml.tools.epnk/model/PNMLStructuredPNTypeModel.genmodel#//structuredpntypemodel"
+    usedGenPackages="../../dk.dtu.se2.tutorials.tutorial6.animationTest/model/animation.genmodel#//animation ../../org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel ../../org.pnml.tools.epnk/model/PNMLStructuredPNTypeModel.genmodel#//structuredpntypemodel"
     importOrganizing="true">
   <foreignModel>petrinet.ecore</foreignModel>
   <genPackages prefix="Petrinet" basePackage="dk.dtu.se2" resource="XML" disposableProviderFactory="true"
@@ -19,7 +19,9 @@
     <genClasses ecoreClass="petrinet.ecore#//GeometryLabel">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute petrinet.ecore#//GeometryLabel/text"/>
     </genClasses>
-    <genClasses ecoreClass="petrinet.ecore#//AnimationLabel"/>
+    <genClasses ecoreClass="petrinet.ecore#//AnimationLabel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference petrinet.ecore#//AnimationLabel/structure"/>
+    </genClasses>
     <genClasses ecoreClass="petrinet.ecore#//AppearanceLabel">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute petrinet.ecore#//AppearanceLabel/text"/>
     </genClasses>

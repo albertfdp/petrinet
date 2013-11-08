@@ -2,6 +2,7 @@
  */
 package dk.dtu.se2.petrinet.impl;
 
+import animation.AnimationPackage;
 import dk.dtu.se2.petrinet.AnimationLabel;
 import dk.dtu.se2.petrinet.AppearanceLabel;
 import dk.dtu.se2.petrinet.Arc;
@@ -138,6 +139,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		isInited = true;
 
 		// Initialize simple dependencies
+		AnimationPackage.eINSTANCE.eClass();
 		StructuredpntypemodelPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -243,6 +245,15 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 */
 	public EClass getAnimationLabel() {
 		return animationLabelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAnimationLabel_Structure() {
+		return (EReference)animationLabelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -367,6 +378,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		createEAttribute(geometryLabelEClass, GEOMETRY_LABEL__TEXT);
 
 		animationLabelEClass = createEClass(ANIMATION_LABEL);
+		createEReference(animationLabelEClass, ANIMATION_LABEL__STRUCTURE);
 
 		appearanceLabelEClass = createEClass(APPEARANCE_LABEL);
 		createEAttribute(appearanceLabelEClass, APPEARANCE_LABEL__TEXT);
@@ -409,6 +421,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		// Obtain other dependent packages
 		PnmlcoremodelPackage thePnmlcoremodelPackage = (PnmlcoremodelPackage)EPackage.Registry.INSTANCE.getEPackage(PnmlcoremodelPackage.eNS_URI);
 		StructuredpntypemodelPackage theStructuredpntypemodelPackage = (StructuredpntypemodelPackage)EPackage.Registry.INSTANCE.getEPackage(StructuredpntypemodelPackage.eNS_URI);
+		AnimationPackage theAnimationPackage = (AnimationPackage)EPackage.Registry.INSTANCE.getEPackage(AnimationPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -422,7 +435,6 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		animationLabelEClass.getESuperTypes().add(theStructuredpntypemodelPackage.getStructuredLabel());
 		appearanceLabelEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		tokenEClass.getESuperTypes().add(thePnmlcoremodelPackage.getAttribute());
-		tokenEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		arcEClass.getESuperTypes().add(thePnmlcoremodelPackage.getArc());
 		identityEClass.getESuperTypes().add(thePnmlcoremodelPackage.getAttribute());
 		inputPlaceEClass.getESuperTypes().add(thePnmlcoremodelPackage.getAttribute());
@@ -441,6 +453,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		initEAttribute(getGeometryLabel_Text(), ecorePackage.getEString(), "text", null, 0, 1, GeometryLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(animationLabelEClass, AnimationLabel.class, "AnimationLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAnimationLabel_Structure(), theAnimationPackage.getAnimation(), null, "structure", null, 1, 1, AnimationLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(appearanceLabelEClass, AppearanceLabel.class, "AppearanceLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAppearanceLabel_Text(), ecorePackage.getEString(), "text", null, 0, 1, AppearanceLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -2,6 +2,7 @@
  */
 package dk.dtu.se2.petrinet.provider;
 
+import animation.provider.AnimationEditPlugin;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -42,6 +43,7 @@ public final class PetrinetEditPlugin extends EMFPlugin {
 	public PetrinetEditPlugin() {
 		super
 		  (new ResourceLocator [] {
+		     AnimationEditPlugin.INSTANCE,
 		     PNMLCoreModelEditPlugin.INSTANCE,
 		     PNMLStructuredPNTypeModelEditPlugin.INSTANCE,
 		   });

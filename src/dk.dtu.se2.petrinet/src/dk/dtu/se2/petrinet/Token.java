@@ -3,7 +3,6 @@
 package dk.dtu.se2.petrinet;
 
 import org.pnml.tools.epnk.pnmlcoremodel.Attribute;
-import org.pnml.tools.epnk.pnmlcoremodel.Label;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +20,7 @@ import org.pnml.tools.epnk.pnmlcoremodel.Label;
  * @model
  * @generated
  */
-public interface Token extends Attribute, Label {
+public interface Token extends Attribute {
 
 	/**
 	 * Returns the value of the '<em><b>Text</b></em>' attribute.

@@ -307,13 +307,22 @@ public interface PetrinetPackage extends EPackage {
 	int ANIMATION_LABEL__TEXT = StructuredpntypemodelPackage.STRUCTURED_LABEL__TEXT;
 
 	/**
+	 * The feature id for the '<em><b>Structure</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANIMATION_LABEL__STRUCTURE = StructuredpntypemodelPackage.STRUCTURED_LABEL_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Animation Label</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANIMATION_LABEL_FEATURE_COUNT = StructuredpntypemodelPackage.STRUCTURED_LABEL_FEATURE_COUNT + 0;
+	int ANIMATION_LABEL_FEATURE_COUNT = StructuredpntypemodelPackage.STRUCTURED_LABEL_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link dk.dtu.se2.petrinet.impl.AppearanceLabelImpl <em>Appearance Label</em>}' class.
@@ -724,6 +733,17 @@ public interface PetrinetPackage extends EPackage {
 	EClass getAnimationLabel();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link dk.dtu.se2.petrinet.AnimationLabel#getStructure <em>Structure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Structure</em>'.
+	 * @see dk.dtu.se2.petrinet.AnimationLabel#getStructure()
+	 * @see #getAnimationLabel()
+	 * @generated
+	 */
+	EReference getAnimationLabel_Structure();
+
+	/**
 	 * Returns the meta object for class '{@link dk.dtu.se2.petrinet.AppearanceLabel <em>Appearance Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -926,6 +946,14 @@ public interface PetrinetPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ANIMATION_LABEL = eINSTANCE.getAnimationLabel();
+
+		/**
+		 * The meta object literal for the '<em><b>Structure</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANIMATION_LABEL__STRUCTURE = eINSTANCE.getAnimationLabel_Structure();
 
 		/**
 		 * The meta object literal for the '{@link dk.dtu.se2.petrinet.impl.AppearanceLabelImpl <em>Appearance Label</em>}' class.
