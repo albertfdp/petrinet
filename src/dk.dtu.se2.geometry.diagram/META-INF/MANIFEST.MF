@@ -38,5 +38,5 @@ Require-Bundle: org.eclipse.core.runtime,
  dk.dtu.se2.geometry.edit;visibility:=reexport,
  org.eclipse.gef;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.eclipse.gmf.runtime.notation

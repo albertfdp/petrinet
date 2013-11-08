@@ -63,7 +63,7 @@ public class Simulator implements Engine3DListener {
 
 
 	@Override
-	public void onAnimationFinished() {
+	public void onAnimationFinished(String geometryLabel) {
 		// TODO Auto-generated method stub
 		
 	}

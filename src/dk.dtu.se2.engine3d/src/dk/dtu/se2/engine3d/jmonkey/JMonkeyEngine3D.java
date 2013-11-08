@@ -39,8 +39,8 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	public double timeAtSystemStart;
 	public Geometry groundGeo;
     public BitmapText hudText;
-    public static ArrayList<Integer> listOfWaitingAnimations = new ArrayList<>(); // holds all the animations that the Petri Net has asked the 3D Engine to play
-    public ArrayList<Integer> listOfInts = new ArrayList<>();
+    public static ArrayList<Integer> listOfWaitingAnimations = new ArrayList<Integer>(); // holds all the animations that the Petri Net has asked the 3D Engine to play
+    public ArrayList<Integer> listOfInts = new ArrayList<Integer>();
     public ArrayList<PlayState> previousAnimationStates = new ArrayList<PlayState>();
     public ArrayList<BitmapText> messageToPetriNet = new ArrayList<BitmapText>();
     public ArrayList<BitmapText> allTextFields = new ArrayList<BitmapText>();

@@ -14,5 +14,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.pnml.tools.epnk;bundle-version="1.0.0",
+ dk.dtu.se2.animation;bundle-version="0.1.0",
  dk.dtu.se2.animation.language;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy

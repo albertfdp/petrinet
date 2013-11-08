@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: dk.dtu.se2.animation.provider.AnimationEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: dk.dtu.se2.animation.provider
 Require-Bundle: org.eclipse.core.runtime,
  dk.dtu.se2.animation;visibility:=reexport,

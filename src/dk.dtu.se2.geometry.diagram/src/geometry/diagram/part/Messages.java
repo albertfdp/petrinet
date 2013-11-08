@@ -7,6 +7,8 @@ import org.eclipse.osgi.util.NLS;
  */
 public class Messages extends NLS {
 
+	public static final String MessageFormatParser_InvalidInputError = null;
+
 	/**
 	 * @generated
 	 */

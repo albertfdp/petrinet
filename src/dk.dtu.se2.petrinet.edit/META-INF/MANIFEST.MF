@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.core.runtime,
  dk.dtu.se2.petrinet;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
  org.pnml.tools.epnk;visibility:=reexport,
- org.pnml.tools.epnk.edit;visibility:=reexport,
- dk.dtu.se2.animation.language
+ org.pnml.tools.epnk.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Import-Package: dk.dtu.se2.animation.provider
+Import-Package: dk.dtu.se2.animation,
+ dk.dtu.se2.animation.provider
