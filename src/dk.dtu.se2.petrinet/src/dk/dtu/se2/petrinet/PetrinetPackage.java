@@ -618,13 +618,22 @@ public interface PetrinetPackage extends EPackage {
 	int INPUT_PLACE__UNKNOWN = PnmlcoremodelPackage.ATTRIBUTE__UNKNOWN;
 
 	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PLACE__TEXT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Input Place</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INPUT_PLACE_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
+	int INPUT_PLACE_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * Returns the meta object for class '{@link dk.dtu.se2.petrinet.ExtendedPetriNet <em>Extended Petri Net</em>}'.
@@ -838,6 +847,17 @@ public interface PetrinetPackage extends EPackage {
 	EClass getInputPlace();
 
 	/**
+	 * Returns the meta object for the attribute '{@link dk.dtu.se2.petrinet.InputPlace#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see dk.dtu.se2.petrinet.InputPlace#getText()
+	 * @see #getInputPlace()
+	 * @generated
+	 */
+	EAttribute getInputPlace_Text();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1036,6 +1056,14 @@ public interface PetrinetPackage extends EPackage {
 		 * @generated
 		 */
 		EClass INPUT_PLACE = eINSTANCE.getInputPlace();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INPUT_PLACE__TEXT = eINSTANCE.getInputPlace_Text();
 
 	}
 

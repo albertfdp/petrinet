@@ -343,6 +343,15 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getInputPlace_Text() {
+		return (EAttribute)inputPlaceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public PetrinetFactory getPetrinetFactory() {
 		return (PetrinetFactory)getEFactoryInstance();
 	}
@@ -394,6 +403,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		createEAttribute(identityEClass, IDENTITY__TEXT);
 
 		inputPlaceEClass = createEClass(INPUT_PLACE);
+		createEAttribute(inputPlaceEClass, INPUT_PLACE__TEXT);
 	}
 
 	/**
@@ -469,6 +479,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		initEAttribute(getIdentity_Text(), ecorePackage.getEString(), "text", null, 0, 1, Identity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inputPlaceEClass, InputPlace.class, "InputPlace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getInputPlace_Text(), ecorePackage.getEString(), "text", null, 0, 1, InputPlace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

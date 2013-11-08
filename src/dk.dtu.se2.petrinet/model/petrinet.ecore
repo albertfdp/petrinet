@@ -19,7 +19,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AnimationLabel" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLStructuredPNTypeModel.ecore#//StructuredLabel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="structure" lowerBound="1"
-        eType="ecore:EClass ../../dk.dtu.se2.tutorials.tutorial6.animationTest/model/animation.ecore#//Animation"
+        eType="ecore:EClass ../../dk.dtu.se2.animation/model/animation.ecore#//Animation"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AppearanceLabel" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Label">
@@ -35,5 +35,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Identity" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InputPlace" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InputPlace" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Attribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>
