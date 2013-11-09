@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/dk.dtu.se2.configurator/src" modelPluginID="dk.dtu.se2.configurator"
+    modelName="Configuration" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>Configuration.ecore</foreignModel>
+  <genPackages prefix="Configuration" disposableProviderFactory="true" ecorePackage="Configuration.ecore#/">
+    <genClasses ecoreClass="Configuration.ecore#//Configuration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Configuration.ecore#//Configuration/petriNetModel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Configuration.ecore#//Configuration/geometryModel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Configuration.ecore#//Configuration/appearanceModel"/>
+    </genClasses>
+    <genClasses ecoreClass="Configuration.ecore#//PetriNetModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Configuration.ecore#//PetriNetModel/petriNet"/>
+    </genClasses>
+    <genClasses ecoreClass="Configuration.ecore#//GeometryModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Configuration.ecore#//GeometryModel/geometry"/>
+    </genClasses>
+    <genClasses ecoreClass="Configuration.ecore#//AppearanceModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Configuration.ecore#//AppearanceModel/appearance"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
