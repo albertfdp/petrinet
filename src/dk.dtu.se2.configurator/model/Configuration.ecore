@@ -2,23 +2,9 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="configuration" nsURI="http://configuration/1.0" nsPrefix="configuration">
   <eClassifiers xsi:type="ecore:EClass" name="Configuration">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="petriNetModel" lowerBound="1"
-        eType="#//PetriNetModel" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="geometryModel" lowerBound="1"
-        eType="#//GeometryModel" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="appearanceModel" lowerBound="1"
-        eType="#//AppearanceModel" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PetriNetModel">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="petriNet" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EResource"
-        transient="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GeometryModel">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="geometry" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EResource"
-        transient="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AppearanceModel">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="appearance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EResource"
-        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="petrinet" lowerBound="1"
+        eType="ecore:EClass ../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//PetriNetDoc"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="geometry" lowerBound="1"
+        eType="ecore:EClass ../../dk.dtu.se2.geometry/Geometry.ecore#//Geometry"/>
   </eClassifiers>
 </ecore:EPackage>

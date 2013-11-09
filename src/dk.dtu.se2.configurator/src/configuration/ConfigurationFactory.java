@@ -31,33 +31,6 @@ public interface ConfigurationFactory extends EFactory {
 	Configuration createConfiguration();
 
 	/**
-	 * Returns a new object of class '<em>Petri Net Model</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Petri Net Model</em>'.
-	 * @generated
-	 */
-	PetriNetModel createPetriNetModel();
-
-	/**
-	 * Returns a new object of class '<em>Geometry Model</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Geometry Model</em>'.
-	 * @generated
-	 */
-	GeometryModel createGeometryModel();
-
-	/**
-	 * Returns a new object of class '<em>Appearance Model</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Appearance Model</em>'.
-	 * @generated
-	 */
-	AppearanceModel createAppearanceModel();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

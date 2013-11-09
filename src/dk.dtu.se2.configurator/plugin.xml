@@ -14,4 +14,11 @@
             genModel="model/Configuration.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Configuration -->
+      <parser
+            type="configuration"
+            class="configuration.util.ConfigurationResourceFactoryImpl"/>
+   </extension>
+
 </plugin>
