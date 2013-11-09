@@ -3,13 +3,10 @@ Bundle-ManifestVersion: 2
 Bundle-Name: HelloJME3
 Bundle-SymbolicName: dk.dtu.se2.simulator
 Bundle-Version: 1.0.0.qualifier
-Require-Bundle: jMonkeyEclipse;bundle-version="1.0.0"
-Import-Package: dk.dtu.se2.animation,
- dk.dtu.se2.appearance,
- dk.dtu.se2.configuration,
- dk.dtu.se2.engine3d,
- dk.dtu.se2.engine3d.jmonkey,
- dk.dtu.se2.petrinet,
+Require-Bundle: jMonkeyEclipse;bundle-version="1.0.0",
+ dk.dtu.se2.engine3d;bundle-version="1.0.0",
+ dk.dtu.se2.appearance;bundle-version="1.0.0",
+ org.pnml.tools.epnk;bundle-version="1.0.1",
+ dk.dtu.se2.geometry;bundle-version="1.0.0",
  dk.dtu.se2.simulator.petrinet,
- geometry,
- org.pnml.tools.epnk.pnmlcoremodel
+ dk.dtu.se2.animation.language
