@@ -33,18 +33,18 @@ public class Simulator implements Engine3DListener {
 		this.appearance = appearance;
 		
 		this.petrinetEngine = new PetriNetEngine();
+			
+	}
+
+	@Override
+	public void onStart() {
+		
+		this.petrinetEngine.init(petrinet);
 		
 		List<Animation> animations = new ArrayList<Animation>();
 		
 		JMonkeyEngine3D jmon = new JMonkeyEngine3D();
 		jmon.init(geometry, appearance, animations);
-		
-	}
-
-	@Override
-	public void onStart() {
-		// TODO Auto-generated method stub
-		
 	}
 
 

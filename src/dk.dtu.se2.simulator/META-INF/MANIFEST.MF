@@ -10,3 +10,4 @@ Require-Bundle: jMonkeyEclipse;bundle-version="1.0.0",
  dk.dtu.se2.geometry;bundle-version="1.0.0",
  dk.dtu.se2.simulator.petrinet,
  dk.dtu.se2.animation.language
+Export-Package: dk.dtu.se2.simulator
