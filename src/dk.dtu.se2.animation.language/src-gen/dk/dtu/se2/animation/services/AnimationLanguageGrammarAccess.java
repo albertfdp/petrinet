@@ -111,16 +111,13 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cShowAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cShowKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cNameEStringParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cLeftParenthesisRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//Show:
-		//	{Show} "show" "(" name=EString ")";
+		//	{Show} "show" "()";
 		public ParserRule getRule() { return rule; }
 
-		//{Show} "show" "(" name=EString ")"
+		//{Show} "show" "()"
 		public Group getGroup() { return cGroup; }
 
 		//{Show}
@@ -129,17 +126,8 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//"show"
 		public Keyword getShowKeyword_1() { return cShowKeyword_1; }
 
-		//"("
-		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
-
-		//name=EString
-		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
-
-		//EString
-		public RuleCall getNameEStringParserRuleCall_3_0() { return cNameEStringParserRuleCall_3_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+		//"()"
+		public Keyword getLeftParenthesisRightParenthesisKeyword_2() { return cLeftParenthesisRightParenthesisKeyword_2; }
 	}
 
 	public class HideElements extends AbstractParserRuleElementFinder {
@@ -148,13 +136,15 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final Action cHideAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cHideKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cLabelAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cLabelEStringParserRuleCall_3_0 = (RuleCall)cLabelAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Hide:
-		//	{Hide} "hide" "(" ")";
+		//	{Hide} "hide" "(" label=EString ")";
 		public ParserRule getRule() { return rule; }
 
-		//{Hide} "hide" "(" ")"
+		//{Hide} "hide" "(" label=EString ")"
 		public Group getGroup() { return cGroup; }
 
 		//{Hide}
@@ -166,8 +156,14 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//"("
 		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 
+		//label=EString
+		public Assignment getLabelAssignment_3() { return cLabelAssignment_3; }
+
+		//EString
+		public RuleCall getLabelEStringParserRuleCall_3_0() { return cLabelEStringParserRuleCall_3_0; }
+
 		//")"
-		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 	}
 
 	public class StopElements extends AbstractParserRuleElementFinder {
@@ -388,7 +384,7 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 	}
 
 	//Show:
-	//	{Show} "show" "(" name=EString ")";
+	//	{Show} "show" "()";
 	public ShowElements getShowAccess() {
 		return (pShow != null) ? pShow : (pShow = new ShowElements());
 	}
@@ -398,7 +394,7 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 	}
 
 	//Hide:
-	//	{Hide} "hide" "(" ")";
+	//	{Hide} "hide" "(" label=EString ")";
 	public HideElements getHideAccess() {
 		return (pHide != null) ? pHide : (pHide = new HideElements());
 	}

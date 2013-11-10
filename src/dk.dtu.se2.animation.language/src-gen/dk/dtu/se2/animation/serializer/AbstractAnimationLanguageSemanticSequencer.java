@@ -92,10 +92,17 @@ public abstract class AbstractAnimationLanguageSemanticSequencer extends Abstrac
 	
 	/**
 	 * Constraint:
-	 *     {Hide}
+	 *     label=EString
 	 */
 	protected void sequence_Hide(EObject context, Hide semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, AnimationPackage.Literals.HIDE__LABEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AnimationPackage.Literals.HIDE__LABEL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getHideAccess().getLabelEStringParserRuleCall_3_0(), semanticObject.getLabel());
+		feeder.finish();
 	}
 	
 	
@@ -126,17 +133,10 @@ public abstract class AbstractAnimationLanguageSemanticSequencer extends Abstrac
 	
 	/**
 	 * Constraint:
-	 *     name=EString
+	 *     {Show}
 	 */
 	protected void sequence_Show(EObject context, Show semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, AnimationPackage.Literals.SHOW__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AnimationPackage.Literals.SHOW__NAME));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getShowAccess().getNameEStringParserRuleCall_3_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

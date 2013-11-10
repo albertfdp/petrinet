@@ -15,11 +15,11 @@ Move returns Move:
 
 Show returns Show:
 	{Show}
-	'show' '(' name=EString ')';
+	'show' '()';
 
 Hide returns Hide:
 	{Hide}
-	'hide' '('')';
+	'hide' '(' label=EString ')';
 
 Stop returns Stop:
 	{Stop}

@@ -22,10 +22,16 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalAnimationLanguageParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "';'", "'move'", "'('", "')'", "'show'", "'hide'", "'stop'", "'['", "']'", "'-'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "';'", "'move'", "'('", "')'", "'show'", "'()'", "'hide'", "'stop'", "'['", "']'", "'-'"
     };
-    public static final int T__19=19;
     public static final int RULE_ID=5;
+    public static final int RULE_ANY_OTHER=10;
+    public static final int T__21=21;
+    public static final int T__20=20;
+    public static final int RULE_SL_COMMENT=8;
+    public static final int EOF=-1;
+    public static final int RULE_ML_COMMENT=7;
+    public static final int T__19=19;
     public static final int RULE_STRING=4;
     public static final int T__16=16;
     public static final int T__15=15;
@@ -35,13 +41,8 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
     public static final int T__11=11;
     public static final int T__14=14;
     public static final int T__13=13;
-    public static final int RULE_ANY_OTHER=10;
-    public static final int T__20=20;
     public static final int RULE_INT=6;
     public static final int RULE_WS=9;
-    public static final int RULE_SL_COMMENT=8;
-    public static final int EOF=-1;
-    public static final int RULE_ML_COMMENT=7;
 
     // delegates
     // delegators
@@ -793,17 +794,17 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
                 alt1=2;
                 }
                 break;
-            case 16:
+            case 17:
                 {
                 alt1=3;
                 }
                 break;
-            case 17:
+            case 18:
                 {
                 alt1=4;
                 }
                 break;
-            case 18:
+            case 19:
                 {
                 alt1=5;
                 }
@@ -2188,22 +2189,17 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Show__Group__2"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:851:1: rule__Show__Group__2 : rule__Show__Group__2__Impl rule__Show__Group__3 ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:851:1: rule__Show__Group__2 : rule__Show__Group__2__Impl ;
     public final void rule__Show__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:855:1: ( rule__Show__Group__2__Impl rule__Show__Group__3 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:856:2: rule__Show__Group__2__Impl rule__Show__Group__3
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:855:1: ( rule__Show__Group__2__Impl )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:856:2: rule__Show__Group__2__Impl
             {
             pushFollow(FollowSets000.FOLLOW_rule__Show__Group__2__Impl_in_rule__Show__Group__21687);
             rule__Show__Group__2__Impl();
-
-            state._fsp--;
-
-            pushFollow(FollowSets000.FOLLOW_rule__Show__Group__3_in_rule__Show__Group__21690);
-            rule__Show__Group__3();
 
             state._fsp--;
 
@@ -2226,21 +2222,21 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Show__Group__2__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:863:1: rule__Show__Group__2__Impl : ( '(' ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:862:1: rule__Show__Group__2__Impl : ( '()' ) ;
     public final void rule__Show__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:867:1: ( ( '(' ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:868:1: ( '(' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:866:1: ( ( '()' ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:867:1: ( '()' )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:868:1: ( '(' )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:869:1: '('
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:867:1: ( '()' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:868:1: '()'
             {
-             before(grammarAccess.getShowAccess().getLeftParenthesisKeyword_2()); 
-            match(input,13,FollowSets000.FOLLOW_13_in_rule__Show__Group__2__Impl1718); 
-             after(grammarAccess.getShowAccess().getLeftParenthesisKeyword_2()); 
+             before(grammarAccess.getShowAccess().getLeftParenthesisRightParenthesisKeyword_2()); 
+            match(input,16,FollowSets000.FOLLOW_16_in_rule__Show__Group__2__Impl1715); 
+             after(grammarAccess.getShowAccess().getLeftParenthesisRightParenthesisKeyword_2()); 
 
             }
 
@@ -2262,177 +2258,22 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
     // $ANTLR end "rule__Show__Group__2__Impl"
 
 
-    // $ANTLR start "rule__Show__Group__3"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:882:1: rule__Show__Group__3 : rule__Show__Group__3__Impl rule__Show__Group__4 ;
-    public final void rule__Show__Group__3() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:886:1: ( rule__Show__Group__3__Impl rule__Show__Group__4 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:887:2: rule__Show__Group__3__Impl rule__Show__Group__4
-            {
-            pushFollow(FollowSets000.FOLLOW_rule__Show__Group__3__Impl_in_rule__Show__Group__31749);
-            rule__Show__Group__3__Impl();
-
-            state._fsp--;
-
-            pushFollow(FollowSets000.FOLLOW_rule__Show__Group__4_in_rule__Show__Group__31752);
-            rule__Show__Group__4();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Show__Group__3"
-
-
-    // $ANTLR start "rule__Show__Group__3__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:894:1: rule__Show__Group__3__Impl : ( ( rule__Show__NameAssignment_3 ) ) ;
-    public final void rule__Show__Group__3__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:898:1: ( ( ( rule__Show__NameAssignment_3 ) ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:899:1: ( ( rule__Show__NameAssignment_3 ) )
-            {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:899:1: ( ( rule__Show__NameAssignment_3 ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:900:1: ( rule__Show__NameAssignment_3 )
-            {
-             before(grammarAccess.getShowAccess().getNameAssignment_3()); 
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:901:1: ( rule__Show__NameAssignment_3 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:901:2: rule__Show__NameAssignment_3
-            {
-            pushFollow(FollowSets000.FOLLOW_rule__Show__NameAssignment_3_in_rule__Show__Group__3__Impl1779);
-            rule__Show__NameAssignment_3();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getShowAccess().getNameAssignment_3()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Show__Group__3__Impl"
-
-
-    // $ANTLR start "rule__Show__Group__4"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:911:1: rule__Show__Group__4 : rule__Show__Group__4__Impl ;
-    public final void rule__Show__Group__4() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:915:1: ( rule__Show__Group__4__Impl )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:916:2: rule__Show__Group__4__Impl
-            {
-            pushFollow(FollowSets000.FOLLOW_rule__Show__Group__4__Impl_in_rule__Show__Group__41809);
-            rule__Show__Group__4__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Show__Group__4"
-
-
-    // $ANTLR start "rule__Show__Group__4__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:922:1: rule__Show__Group__4__Impl : ( ')' ) ;
-    public final void rule__Show__Group__4__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:926:1: ( ( ')' ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:927:1: ( ')' )
-            {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:927:1: ( ')' )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:928:1: ')'
-            {
-             before(grammarAccess.getShowAccess().getRightParenthesisKeyword_4()); 
-            match(input,14,FollowSets000.FOLLOW_14_in_rule__Show__Group__4__Impl1837); 
-             after(grammarAccess.getShowAccess().getRightParenthesisKeyword_4()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Show__Group__4__Impl"
-
-
     // $ANTLR start "rule__Hide__Group__0"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:951:1: rule__Hide__Group__0 : rule__Hide__Group__0__Impl rule__Hide__Group__1 ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:887:1: rule__Hide__Group__0 : rule__Hide__Group__0__Impl rule__Hide__Group__1 ;
     public final void rule__Hide__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:955:1: ( rule__Hide__Group__0__Impl rule__Hide__Group__1 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:956:2: rule__Hide__Group__0__Impl rule__Hide__Group__1
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:891:1: ( rule__Hide__Group__0__Impl rule__Hide__Group__1 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:892:2: rule__Hide__Group__0__Impl rule__Hide__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__0__Impl_in_rule__Hide__Group__01878);
+            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__0__Impl_in_rule__Hide__Group__01752);
             rule__Hide__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__1_in_rule__Hide__Group__01881);
+            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__1_in_rule__Hide__Group__01755);
             rule__Hide__Group__1();
 
             state._fsp--;
@@ -2456,21 +2297,21 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Hide__Group__0__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:963:1: rule__Hide__Group__0__Impl : ( () ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:899:1: rule__Hide__Group__0__Impl : ( () ) ;
     public final void rule__Hide__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:967:1: ( ( () ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:968:1: ( () )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:903:1: ( ( () ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:904:1: ( () )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:968:1: ( () )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:969:1: ()
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:904:1: ( () )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:905:1: ()
             {
              before(grammarAccess.getHideAccess().getHideAction_0()); 
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:970:1: ()
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:972:1: 
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:906:1: ()
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:908:1: 
             {
             }
 
@@ -2493,21 +2334,21 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Hide__Group__1"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:982:1: rule__Hide__Group__1 : rule__Hide__Group__1__Impl rule__Hide__Group__2 ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:918:1: rule__Hide__Group__1 : rule__Hide__Group__1__Impl rule__Hide__Group__2 ;
     public final void rule__Hide__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:986:1: ( rule__Hide__Group__1__Impl rule__Hide__Group__2 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:987:2: rule__Hide__Group__1__Impl rule__Hide__Group__2
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:922:1: ( rule__Hide__Group__1__Impl rule__Hide__Group__2 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:923:2: rule__Hide__Group__1__Impl rule__Hide__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__1__Impl_in_rule__Hide__Group__11939);
+            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__1__Impl_in_rule__Hide__Group__11813);
             rule__Hide__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__2_in_rule__Hide__Group__11942);
+            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__2_in_rule__Hide__Group__11816);
             rule__Hide__Group__2();
 
             state._fsp--;
@@ -2531,20 +2372,20 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Hide__Group__1__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:994:1: rule__Hide__Group__1__Impl : ( 'hide' ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:930:1: rule__Hide__Group__1__Impl : ( 'hide' ) ;
     public final void rule__Hide__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:998:1: ( ( 'hide' ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:999:1: ( 'hide' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:934:1: ( ( 'hide' ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:935:1: ( 'hide' )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:999:1: ( 'hide' )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1000:1: 'hide'
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:935:1: ( 'hide' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:936:1: 'hide'
             {
              before(grammarAccess.getHideAccess().getHideKeyword_1()); 
-            match(input,16,FollowSets000.FOLLOW_16_in_rule__Hide__Group__1__Impl1970); 
+            match(input,17,FollowSets000.FOLLOW_17_in_rule__Hide__Group__1__Impl1844); 
              after(grammarAccess.getHideAccess().getHideKeyword_1()); 
 
             }
@@ -2568,21 +2409,21 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Hide__Group__2"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1013:1: rule__Hide__Group__2 : rule__Hide__Group__2__Impl rule__Hide__Group__3 ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:949:1: rule__Hide__Group__2 : rule__Hide__Group__2__Impl rule__Hide__Group__3 ;
     public final void rule__Hide__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1017:1: ( rule__Hide__Group__2__Impl rule__Hide__Group__3 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1018:2: rule__Hide__Group__2__Impl rule__Hide__Group__3
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:953:1: ( rule__Hide__Group__2__Impl rule__Hide__Group__3 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:954:2: rule__Hide__Group__2__Impl rule__Hide__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__2__Impl_in_rule__Hide__Group__22001);
+            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__2__Impl_in_rule__Hide__Group__21875);
             rule__Hide__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__3_in_rule__Hide__Group__22004);
+            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__3_in_rule__Hide__Group__21878);
             rule__Hide__Group__3();
 
             state._fsp--;
@@ -2606,20 +2447,20 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Hide__Group__2__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1025:1: rule__Hide__Group__2__Impl : ( '(' ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:961:1: rule__Hide__Group__2__Impl : ( '(' ) ;
     public final void rule__Hide__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1029:1: ( ( '(' ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1030:1: ( '(' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:965:1: ( ( '(' ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:966:1: ( '(' )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1030:1: ( '(' )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1031:1: '('
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:966:1: ( '(' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:967:1: '('
             {
              before(grammarAccess.getHideAccess().getLeftParenthesisKeyword_2()); 
-            match(input,13,FollowSets000.FOLLOW_13_in_rule__Hide__Group__2__Impl2032); 
+            match(input,13,FollowSets000.FOLLOW_13_in_rule__Hide__Group__2__Impl1906); 
              after(grammarAccess.getHideAccess().getLeftParenthesisKeyword_2()); 
 
             }
@@ -2643,17 +2484,22 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Hide__Group__3"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1044:1: rule__Hide__Group__3 : rule__Hide__Group__3__Impl ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:980:1: rule__Hide__Group__3 : rule__Hide__Group__3__Impl rule__Hide__Group__4 ;
     public final void rule__Hide__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1048:1: ( rule__Hide__Group__3__Impl )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1049:2: rule__Hide__Group__3__Impl
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:984:1: ( rule__Hide__Group__3__Impl rule__Hide__Group__4 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:985:2: rule__Hide__Group__3__Impl rule__Hide__Group__4
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__3__Impl_in_rule__Hide__Group__32063);
+            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__3__Impl_in_rule__Hide__Group__31937);
             rule__Hide__Group__3__Impl();
+
+            state._fsp--;
+
+            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__4_in_rule__Hide__Group__31940);
+            rule__Hide__Group__4();
 
             state._fsp--;
 
@@ -2676,21 +2522,31 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Hide__Group__3__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1055:1: rule__Hide__Group__3__Impl : ( ')' ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:992:1: rule__Hide__Group__3__Impl : ( ( rule__Hide__LabelAssignment_3 ) ) ;
     public final void rule__Hide__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1059:1: ( ( ')' ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1060:1: ( ')' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:996:1: ( ( ( rule__Hide__LabelAssignment_3 ) ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:997:1: ( ( rule__Hide__LabelAssignment_3 ) )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1060:1: ( ')' )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1061:1: ')'
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:997:1: ( ( rule__Hide__LabelAssignment_3 ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:998:1: ( rule__Hide__LabelAssignment_3 )
             {
-             before(grammarAccess.getHideAccess().getRightParenthesisKeyword_3()); 
-            match(input,14,FollowSets000.FOLLOW_14_in_rule__Hide__Group__3__Impl2091); 
-             after(grammarAccess.getHideAccess().getRightParenthesisKeyword_3()); 
+             before(grammarAccess.getHideAccess().getLabelAssignment_3()); 
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:999:1: ( rule__Hide__LabelAssignment_3 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:999:2: rule__Hide__LabelAssignment_3
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__Hide__LabelAssignment_3_in_rule__Hide__Group__3__Impl1967);
+            rule__Hide__LabelAssignment_3();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getHideAccess().getLabelAssignment_3()); 
 
             }
 
@@ -2712,22 +2568,92 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
     // $ANTLR end "rule__Hide__Group__3__Impl"
 
 
+    // $ANTLR start "rule__Hide__Group__4"
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1009:1: rule__Hide__Group__4 : rule__Hide__Group__4__Impl ;
+    public final void rule__Hide__Group__4() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1013:1: ( rule__Hide__Group__4__Impl )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1014:2: rule__Hide__Group__4__Impl
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__Hide__Group__4__Impl_in_rule__Hide__Group__41997);
+            rule__Hide__Group__4__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Hide__Group__4"
+
+
+    // $ANTLR start "rule__Hide__Group__4__Impl"
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1020:1: rule__Hide__Group__4__Impl : ( ')' ) ;
+    public final void rule__Hide__Group__4__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1024:1: ( ( ')' ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1025:1: ( ')' )
+            {
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1025:1: ( ')' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1026:1: ')'
+            {
+             before(grammarAccess.getHideAccess().getRightParenthesisKeyword_4()); 
+            match(input,14,FollowSets000.FOLLOW_14_in_rule__Hide__Group__4__Impl2025); 
+             after(grammarAccess.getHideAccess().getRightParenthesisKeyword_4()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Hide__Group__4__Impl"
+
+
     // $ANTLR start "rule__Stop__Group__0"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1082:1: rule__Stop__Group__0 : rule__Stop__Group__0__Impl rule__Stop__Group__1 ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1049:1: rule__Stop__Group__0 : rule__Stop__Group__0__Impl rule__Stop__Group__1 ;
     public final void rule__Stop__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1086:1: ( rule__Stop__Group__0__Impl rule__Stop__Group__1 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1087:2: rule__Stop__Group__0__Impl rule__Stop__Group__1
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1053:1: ( rule__Stop__Group__0__Impl rule__Stop__Group__1 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1054:2: rule__Stop__Group__0__Impl rule__Stop__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Stop__Group__0__Impl_in_rule__Stop__Group__02130);
+            pushFollow(FollowSets000.FOLLOW_rule__Stop__Group__0__Impl_in_rule__Stop__Group__02066);
             rule__Stop__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Stop__Group__1_in_rule__Stop__Group__02133);
+            pushFollow(FollowSets000.FOLLOW_rule__Stop__Group__1_in_rule__Stop__Group__02069);
             rule__Stop__Group__1();
 
             state._fsp--;
@@ -2751,21 +2677,21 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Stop__Group__0__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1094:1: rule__Stop__Group__0__Impl : ( () ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1061:1: rule__Stop__Group__0__Impl : ( () ) ;
     public final void rule__Stop__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1098:1: ( ( () ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1099:1: ( () )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1065:1: ( ( () ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1066:1: ( () )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1099:1: ( () )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1100:1: ()
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1066:1: ( () )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1067:1: ()
             {
              before(grammarAccess.getStopAccess().getStopAction_0()); 
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1101:1: ()
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1103:1: 
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1068:1: ()
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1070:1: 
             {
             }
 
@@ -2788,21 +2714,21 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Stop__Group__1"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1113:1: rule__Stop__Group__1 : rule__Stop__Group__1__Impl rule__Stop__Group__2 ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1080:1: rule__Stop__Group__1 : rule__Stop__Group__1__Impl rule__Stop__Group__2 ;
     public final void rule__Stop__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1117:1: ( rule__Stop__Group__1__Impl rule__Stop__Group__2 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1118:2: rule__Stop__Group__1__Impl rule__Stop__Group__2
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1084:1: ( rule__Stop__Group__1__Impl rule__Stop__Group__2 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1085:2: rule__Stop__Group__1__Impl rule__Stop__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Stop__Group__1__Impl_in_rule__Stop__Group__12191);
+            pushFollow(FollowSets000.FOLLOW_rule__Stop__Group__1__Impl_in_rule__Stop__Group__12127);
             rule__Stop__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Stop__Group__2_in_rule__Stop__Group__12194);
+            pushFollow(FollowSets000.FOLLOW_rule__Stop__Group__2_in_rule__Stop__Group__12130);
             rule__Stop__Group__2();
 
             state._fsp--;
@@ -2826,20 +2752,20 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Stop__Group__1__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1125:1: rule__Stop__Group__1__Impl : ( 'stop' ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1092:1: rule__Stop__Group__1__Impl : ( 'stop' ) ;
     public final void rule__Stop__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1129:1: ( ( 'stop' ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1130:1: ( 'stop' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1096:1: ( ( 'stop' ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1097:1: ( 'stop' )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1130:1: ( 'stop' )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1131:1: 'stop'
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1097:1: ( 'stop' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1098:1: 'stop'
             {
              before(grammarAccess.getStopAccess().getStopKeyword_1()); 
-            match(input,17,FollowSets000.FOLLOW_17_in_rule__Stop__Group__1__Impl2222); 
+            match(input,18,FollowSets000.FOLLOW_18_in_rule__Stop__Group__1__Impl2158); 
              after(grammarAccess.getStopAccess().getStopKeyword_1()); 
 
             }
@@ -2863,21 +2789,21 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Stop__Group__2"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1144:1: rule__Stop__Group__2 : rule__Stop__Group__2__Impl rule__Stop__Group__3 ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1111:1: rule__Stop__Group__2 : rule__Stop__Group__2__Impl rule__Stop__Group__3 ;
     public final void rule__Stop__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1148:1: ( rule__Stop__Group__2__Impl rule__Stop__Group__3 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1149:2: rule__Stop__Group__2__Impl rule__Stop__Group__3
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1115:1: ( rule__Stop__Group__2__Impl rule__Stop__Group__3 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1116:2: rule__Stop__Group__2__Impl rule__Stop__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Stop__Group__2__Impl_in_rule__Stop__Group__22253);
+            pushFollow(FollowSets000.FOLLOW_rule__Stop__Group__2__Impl_in_rule__Stop__Group__22189);
             rule__Stop__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Stop__Group__3_in_rule__Stop__Group__22256);
+            pushFollow(FollowSets000.FOLLOW_rule__Stop__Group__3_in_rule__Stop__Group__22192);
             rule__Stop__Group__3();
 
             state._fsp--;
@@ -2901,20 +2827,20 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Stop__Group__2__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1156:1: rule__Stop__Group__2__Impl : ( '(' ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1123:1: rule__Stop__Group__2__Impl : ( '(' ) ;
     public final void rule__Stop__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1160:1: ( ( '(' ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1161:1: ( '(' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1127:1: ( ( '(' ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1128:1: ( '(' )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1161:1: ( '(' )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1162:1: '('
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1128:1: ( '(' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1129:1: '('
             {
              before(grammarAccess.getStopAccess().getLeftParenthesisKeyword_2()); 
-            match(input,13,FollowSets000.FOLLOW_13_in_rule__Stop__Group__2__Impl2284); 
+            match(input,13,FollowSets000.FOLLOW_13_in_rule__Stop__Group__2__Impl2220); 
              after(grammarAccess.getStopAccess().getLeftParenthesisKeyword_2()); 
 
             }
@@ -2938,16 +2864,16 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Stop__Group__3"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1175:1: rule__Stop__Group__3 : rule__Stop__Group__3__Impl ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1142:1: rule__Stop__Group__3 : rule__Stop__Group__3__Impl ;
     public final void rule__Stop__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1179:1: ( rule__Stop__Group__3__Impl )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1180:2: rule__Stop__Group__3__Impl
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1146:1: ( rule__Stop__Group__3__Impl )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1147:2: rule__Stop__Group__3__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Stop__Group__3__Impl_in_rule__Stop__Group__32315);
+            pushFollow(FollowSets000.FOLLOW_rule__Stop__Group__3__Impl_in_rule__Stop__Group__32251);
             rule__Stop__Group__3__Impl();
 
             state._fsp--;
@@ -2971,20 +2897,20 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Stop__Group__3__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1186:1: rule__Stop__Group__3__Impl : ( ')' ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1153:1: rule__Stop__Group__3__Impl : ( ')' ) ;
     public final void rule__Stop__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1190:1: ( ( ')' ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1191:1: ( ')' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1157:1: ( ( ')' ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1158:1: ( ')' )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1191:1: ( ')' )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1192:1: ')'
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1158:1: ( ')' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1159:1: ')'
             {
              before(grammarAccess.getStopAccess().getRightParenthesisKeyword_3()); 
-            match(input,14,FollowSets000.FOLLOW_14_in_rule__Stop__Group__3__Impl2343); 
+            match(input,14,FollowSets000.FOLLOW_14_in_rule__Stop__Group__3__Impl2279); 
              after(grammarAccess.getStopAccess().getRightParenthesisKeyword_3()); 
 
             }
@@ -3008,21 +2934,21 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Sequence__Group__0"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1213:1: rule__Sequence__Group__0 : rule__Sequence__Group__0__Impl rule__Sequence__Group__1 ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1180:1: rule__Sequence__Group__0 : rule__Sequence__Group__0__Impl rule__Sequence__Group__1 ;
     public final void rule__Sequence__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1217:1: ( rule__Sequence__Group__0__Impl rule__Sequence__Group__1 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1218:2: rule__Sequence__Group__0__Impl rule__Sequence__Group__1
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1184:1: ( rule__Sequence__Group__0__Impl rule__Sequence__Group__1 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1185:2: rule__Sequence__Group__0__Impl rule__Sequence__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__0__Impl_in_rule__Sequence__Group__02382);
+            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__0__Impl_in_rule__Sequence__Group__02318);
             rule__Sequence__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__1_in_rule__Sequence__Group__02385);
+            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__1_in_rule__Sequence__Group__02321);
             rule__Sequence__Group__1();
 
             state._fsp--;
@@ -3046,21 +2972,21 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Sequence__Group__0__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1225:1: rule__Sequence__Group__0__Impl : ( () ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1192:1: rule__Sequence__Group__0__Impl : ( () ) ;
     public final void rule__Sequence__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1229:1: ( ( () ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1230:1: ( () )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1196:1: ( ( () ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1197:1: ( () )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1230:1: ( () )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1231:1: ()
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1197:1: ( () )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1198:1: ()
             {
              before(grammarAccess.getSequenceAccess().getSequenceAction_0()); 
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1232:1: ()
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1234:1: 
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1199:1: ()
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1201:1: 
             {
             }
 
@@ -3083,21 +3009,21 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Sequence__Group__1"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1244:1: rule__Sequence__Group__1 : rule__Sequence__Group__1__Impl rule__Sequence__Group__2 ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1211:1: rule__Sequence__Group__1 : rule__Sequence__Group__1__Impl rule__Sequence__Group__2 ;
     public final void rule__Sequence__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1248:1: ( rule__Sequence__Group__1__Impl rule__Sequence__Group__2 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1249:2: rule__Sequence__Group__1__Impl rule__Sequence__Group__2
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1215:1: ( rule__Sequence__Group__1__Impl rule__Sequence__Group__2 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1216:2: rule__Sequence__Group__1__Impl rule__Sequence__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__1__Impl_in_rule__Sequence__Group__12443);
+            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__1__Impl_in_rule__Sequence__Group__12379);
             rule__Sequence__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__2_in_rule__Sequence__Group__12446);
+            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__2_in_rule__Sequence__Group__12382);
             rule__Sequence__Group__2();
 
             state._fsp--;
@@ -3121,20 +3047,20 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Sequence__Group__1__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1256:1: rule__Sequence__Group__1__Impl : ( '[' ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1223:1: rule__Sequence__Group__1__Impl : ( '[' ) ;
     public final void rule__Sequence__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1260:1: ( ( '[' ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1261:1: ( '[' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1227:1: ( ( '[' ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1228:1: ( '[' )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1261:1: ( '[' )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1262:1: '['
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1228:1: ( '[' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1229:1: '['
             {
              before(grammarAccess.getSequenceAccess().getLeftSquareBracketKeyword_1()); 
-            match(input,18,FollowSets000.FOLLOW_18_in_rule__Sequence__Group__1__Impl2474); 
+            match(input,19,FollowSets000.FOLLOW_19_in_rule__Sequence__Group__1__Impl2410); 
              after(grammarAccess.getSequenceAccess().getLeftSquareBracketKeyword_1()); 
 
             }
@@ -3158,21 +3084,21 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Sequence__Group__2"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1275:1: rule__Sequence__Group__2 : rule__Sequence__Group__2__Impl rule__Sequence__Group__3 ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1242:1: rule__Sequence__Group__2 : rule__Sequence__Group__2__Impl rule__Sequence__Group__3 ;
     public final void rule__Sequence__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1279:1: ( rule__Sequence__Group__2__Impl rule__Sequence__Group__3 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1280:2: rule__Sequence__Group__2__Impl rule__Sequence__Group__3
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1246:1: ( rule__Sequence__Group__2__Impl rule__Sequence__Group__3 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1247:2: rule__Sequence__Group__2__Impl rule__Sequence__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__2__Impl_in_rule__Sequence__Group__22505);
+            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__2__Impl_in_rule__Sequence__Group__22441);
             rule__Sequence__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__3_in_rule__Sequence__Group__22508);
+            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__3_in_rule__Sequence__Group__22444);
             rule__Sequence__Group__3();
 
             state._fsp--;
@@ -3196,23 +3122,23 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Sequence__Group__2__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1287:1: rule__Sequence__Group__2__Impl : ( ( rule__Sequence__AnimationsAssignment_2 ) ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1254:1: rule__Sequence__Group__2__Impl : ( ( rule__Sequence__AnimationsAssignment_2 ) ) ;
     public final void rule__Sequence__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1291:1: ( ( ( rule__Sequence__AnimationsAssignment_2 ) ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1292:1: ( ( rule__Sequence__AnimationsAssignment_2 ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1258:1: ( ( ( rule__Sequence__AnimationsAssignment_2 ) ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1259:1: ( ( rule__Sequence__AnimationsAssignment_2 ) )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1292:1: ( ( rule__Sequence__AnimationsAssignment_2 ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1293:1: ( rule__Sequence__AnimationsAssignment_2 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1259:1: ( ( rule__Sequence__AnimationsAssignment_2 ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1260:1: ( rule__Sequence__AnimationsAssignment_2 )
             {
              before(grammarAccess.getSequenceAccess().getAnimationsAssignment_2()); 
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1294:1: ( rule__Sequence__AnimationsAssignment_2 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1294:2: rule__Sequence__AnimationsAssignment_2
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1261:1: ( rule__Sequence__AnimationsAssignment_2 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1261:2: rule__Sequence__AnimationsAssignment_2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Sequence__AnimationsAssignment_2_in_rule__Sequence__Group__2__Impl2535);
+            pushFollow(FollowSets000.FOLLOW_rule__Sequence__AnimationsAssignment_2_in_rule__Sequence__Group__2__Impl2471);
             rule__Sequence__AnimationsAssignment_2();
 
             state._fsp--;
@@ -3243,21 +3169,21 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Sequence__Group__3"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1304:1: rule__Sequence__Group__3 : rule__Sequence__Group__3__Impl rule__Sequence__Group__4 ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1271:1: rule__Sequence__Group__3 : rule__Sequence__Group__3__Impl rule__Sequence__Group__4 ;
     public final void rule__Sequence__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1308:1: ( rule__Sequence__Group__3__Impl rule__Sequence__Group__4 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1309:2: rule__Sequence__Group__3__Impl rule__Sequence__Group__4
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1275:1: ( rule__Sequence__Group__3__Impl rule__Sequence__Group__4 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1276:2: rule__Sequence__Group__3__Impl rule__Sequence__Group__4
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__3__Impl_in_rule__Sequence__Group__32565);
+            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__3__Impl_in_rule__Sequence__Group__32501);
             rule__Sequence__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__4_in_rule__Sequence__Group__32568);
+            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__4_in_rule__Sequence__Group__32504);
             rule__Sequence__Group__4();
 
             state._fsp--;
@@ -3281,20 +3207,20 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Sequence__Group__3__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1316:1: rule__Sequence__Group__3__Impl : ( ( rule__Sequence__Group_3__0 )* ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1283:1: rule__Sequence__Group__3__Impl : ( ( rule__Sequence__Group_3__0 )* ) ;
     public final void rule__Sequence__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1320:1: ( ( ( rule__Sequence__Group_3__0 )* ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1321:1: ( ( rule__Sequence__Group_3__0 )* )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1287:1: ( ( ( rule__Sequence__Group_3__0 )* ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1288:1: ( ( rule__Sequence__Group_3__0 )* )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1321:1: ( ( rule__Sequence__Group_3__0 )* )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1322:1: ( rule__Sequence__Group_3__0 )*
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1288:1: ( ( rule__Sequence__Group_3__0 )* )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1289:1: ( rule__Sequence__Group_3__0 )*
             {
              before(grammarAccess.getSequenceAccess().getGroup_3()); 
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1323:1: ( rule__Sequence__Group_3__0 )*
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1290:1: ( rule__Sequence__Group_3__0 )*
             loop5:
             do {
                 int alt5=2;
@@ -3307,9 +3233,9 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
                 switch (alt5) {
             	case 1 :
-            	    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1323:2: rule__Sequence__Group_3__0
+            	    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1290:2: rule__Sequence__Group_3__0
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group_3__0_in_rule__Sequence__Group__3__Impl2595);
+            	    pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group_3__0_in_rule__Sequence__Group__3__Impl2531);
             	    rule__Sequence__Group_3__0();
 
             	    state._fsp--;
@@ -3346,16 +3272,16 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Sequence__Group__4"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1333:1: rule__Sequence__Group__4 : rule__Sequence__Group__4__Impl ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1300:1: rule__Sequence__Group__4 : rule__Sequence__Group__4__Impl ;
     public final void rule__Sequence__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1337:1: ( rule__Sequence__Group__4__Impl )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1338:2: rule__Sequence__Group__4__Impl
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1304:1: ( rule__Sequence__Group__4__Impl )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1305:2: rule__Sequence__Group__4__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__4__Impl_in_rule__Sequence__Group__42626);
+            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group__4__Impl_in_rule__Sequence__Group__42562);
             rule__Sequence__Group__4__Impl();
 
             state._fsp--;
@@ -3379,20 +3305,20 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Sequence__Group__4__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1344:1: rule__Sequence__Group__4__Impl : ( ']' ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1311:1: rule__Sequence__Group__4__Impl : ( ']' ) ;
     public final void rule__Sequence__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1348:1: ( ( ']' ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1349:1: ( ']' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1315:1: ( ( ']' ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1316:1: ( ']' )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1349:1: ( ']' )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1350:1: ']'
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1316:1: ( ']' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1317:1: ']'
             {
              before(grammarAccess.getSequenceAccess().getRightSquareBracketKeyword_4()); 
-            match(input,19,FollowSets000.FOLLOW_19_in_rule__Sequence__Group__4__Impl2654); 
+            match(input,20,FollowSets000.FOLLOW_20_in_rule__Sequence__Group__4__Impl2590); 
              after(grammarAccess.getSequenceAccess().getRightSquareBracketKeyword_4()); 
 
             }
@@ -3416,21 +3342,21 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Sequence__Group_3__0"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1373:1: rule__Sequence__Group_3__0 : rule__Sequence__Group_3__0__Impl rule__Sequence__Group_3__1 ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1340:1: rule__Sequence__Group_3__0 : rule__Sequence__Group_3__0__Impl rule__Sequence__Group_3__1 ;
     public final void rule__Sequence__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1377:1: ( rule__Sequence__Group_3__0__Impl rule__Sequence__Group_3__1 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1378:2: rule__Sequence__Group_3__0__Impl rule__Sequence__Group_3__1
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1344:1: ( rule__Sequence__Group_3__0__Impl rule__Sequence__Group_3__1 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1345:2: rule__Sequence__Group_3__0__Impl rule__Sequence__Group_3__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group_3__0__Impl_in_rule__Sequence__Group_3__02695);
+            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group_3__0__Impl_in_rule__Sequence__Group_3__02631);
             rule__Sequence__Group_3__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group_3__1_in_rule__Sequence__Group_3__02698);
+            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group_3__1_in_rule__Sequence__Group_3__02634);
             rule__Sequence__Group_3__1();
 
             state._fsp--;
@@ -3454,20 +3380,20 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Sequence__Group_3__0__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1385:1: rule__Sequence__Group_3__0__Impl : ( ';' ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1352:1: rule__Sequence__Group_3__0__Impl : ( ';' ) ;
     public final void rule__Sequence__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1389:1: ( ( ';' ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1390:1: ( ';' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1356:1: ( ( ';' ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1357:1: ( ';' )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1390:1: ( ';' )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1391:1: ';'
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1357:1: ( ';' )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1358:1: ';'
             {
              before(grammarAccess.getSequenceAccess().getSemicolonKeyword_3_0()); 
-            match(input,11,FollowSets000.FOLLOW_11_in_rule__Sequence__Group_3__0__Impl2726); 
+            match(input,11,FollowSets000.FOLLOW_11_in_rule__Sequence__Group_3__0__Impl2662); 
              after(grammarAccess.getSequenceAccess().getSemicolonKeyword_3_0()); 
 
             }
@@ -3491,16 +3417,16 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Sequence__Group_3__1"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1404:1: rule__Sequence__Group_3__1 : rule__Sequence__Group_3__1__Impl ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1371:1: rule__Sequence__Group_3__1 : rule__Sequence__Group_3__1__Impl ;
     public final void rule__Sequence__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1408:1: ( rule__Sequence__Group_3__1__Impl )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1409:2: rule__Sequence__Group_3__1__Impl
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1375:1: ( rule__Sequence__Group_3__1__Impl )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1376:2: rule__Sequence__Group_3__1__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group_3__1__Impl_in_rule__Sequence__Group_3__12757);
+            pushFollow(FollowSets000.FOLLOW_rule__Sequence__Group_3__1__Impl_in_rule__Sequence__Group_3__12693);
             rule__Sequence__Group_3__1__Impl();
 
             state._fsp--;
@@ -3524,23 +3450,23 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Sequence__Group_3__1__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1415:1: rule__Sequence__Group_3__1__Impl : ( ( rule__Sequence__AnimationsAssignment_3_1 ) ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1382:1: rule__Sequence__Group_3__1__Impl : ( ( rule__Sequence__AnimationsAssignment_3_1 ) ) ;
     public final void rule__Sequence__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1419:1: ( ( ( rule__Sequence__AnimationsAssignment_3_1 ) ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1420:1: ( ( rule__Sequence__AnimationsAssignment_3_1 ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1386:1: ( ( ( rule__Sequence__AnimationsAssignment_3_1 ) ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1387:1: ( ( rule__Sequence__AnimationsAssignment_3_1 ) )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1420:1: ( ( rule__Sequence__AnimationsAssignment_3_1 ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1421:1: ( rule__Sequence__AnimationsAssignment_3_1 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1387:1: ( ( rule__Sequence__AnimationsAssignment_3_1 ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1388:1: ( rule__Sequence__AnimationsAssignment_3_1 )
             {
              before(grammarAccess.getSequenceAccess().getAnimationsAssignment_3_1()); 
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1422:1: ( rule__Sequence__AnimationsAssignment_3_1 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1422:2: rule__Sequence__AnimationsAssignment_3_1
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1389:1: ( rule__Sequence__AnimationsAssignment_3_1 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1389:2: rule__Sequence__AnimationsAssignment_3_1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Sequence__AnimationsAssignment_3_1_in_rule__Sequence__Group_3__1__Impl2784);
+            pushFollow(FollowSets000.FOLLOW_rule__Sequence__AnimationsAssignment_3_1_in_rule__Sequence__Group_3__1__Impl2720);
             rule__Sequence__AnimationsAssignment_3_1();
 
             state._fsp--;
@@ -3571,21 +3497,21 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__EInt__Group__0"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1436:1: rule__EInt__Group__0 : rule__EInt__Group__0__Impl rule__EInt__Group__1 ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1403:1: rule__EInt__Group__0 : rule__EInt__Group__0__Impl rule__EInt__Group__1 ;
     public final void rule__EInt__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1440:1: ( rule__EInt__Group__0__Impl rule__EInt__Group__1 )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1441:2: rule__EInt__Group__0__Impl rule__EInt__Group__1
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1407:1: ( rule__EInt__Group__0__Impl rule__EInt__Group__1 )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1408:2: rule__EInt__Group__0__Impl rule__EInt__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__EInt__Group__0__Impl_in_rule__EInt__Group__02818);
+            pushFollow(FollowSets000.FOLLOW_rule__EInt__Group__0__Impl_in_rule__EInt__Group__02754);
             rule__EInt__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__EInt__Group__1_in_rule__EInt__Group__02821);
+            pushFollow(FollowSets000.FOLLOW_rule__EInt__Group__1_in_rule__EInt__Group__02757);
             rule__EInt__Group__1();
 
             state._fsp--;
@@ -3609,31 +3535,31 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__EInt__Group__0__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1448:1: rule__EInt__Group__0__Impl : ( ( '-' )? ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1415:1: rule__EInt__Group__0__Impl : ( ( '-' )? ) ;
     public final void rule__EInt__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1452:1: ( ( ( '-' )? ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1453:1: ( ( '-' )? )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1419:1: ( ( ( '-' )? ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1420:1: ( ( '-' )? )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1453:1: ( ( '-' )? )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1454:1: ( '-' )?
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1420:1: ( ( '-' )? )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1421:1: ( '-' )?
             {
              before(grammarAccess.getEIntAccess().getHyphenMinusKeyword_0()); 
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1455:1: ( '-' )?
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1422:1: ( '-' )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( (LA6_0==20) ) {
+            if ( (LA6_0==21) ) {
                 alt6=1;
             }
             switch (alt6) {
                 case 1 :
-                    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1456:2: '-'
+                    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1423:2: '-'
                     {
-                    match(input,20,FollowSets000.FOLLOW_20_in_rule__EInt__Group__0__Impl2850); 
+                    match(input,21,FollowSets000.FOLLOW_21_in_rule__EInt__Group__0__Impl2786); 
 
                     }
                     break;
@@ -3663,16 +3589,16 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__EInt__Group__1"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1467:1: rule__EInt__Group__1 : rule__EInt__Group__1__Impl ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1434:1: rule__EInt__Group__1 : rule__EInt__Group__1__Impl ;
     public final void rule__EInt__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1471:1: ( rule__EInt__Group__1__Impl )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1472:2: rule__EInt__Group__1__Impl
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1438:1: ( rule__EInt__Group__1__Impl )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1439:2: rule__EInt__Group__1__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__EInt__Group__1__Impl_in_rule__EInt__Group__12883);
+            pushFollow(FollowSets000.FOLLOW_rule__EInt__Group__1__Impl_in_rule__EInt__Group__12819);
             rule__EInt__Group__1__Impl();
 
             state._fsp--;
@@ -3696,20 +3622,20 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__EInt__Group__1__Impl"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1478:1: rule__EInt__Group__1__Impl : ( RULE_INT ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1445:1: rule__EInt__Group__1__Impl : ( RULE_INT ) ;
     public final void rule__EInt__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1482:1: ( ( RULE_INT ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1483:1: ( RULE_INT )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1449:1: ( ( RULE_INT ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1450:1: ( RULE_INT )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1483:1: ( RULE_INT )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1484:1: RULE_INT
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1450:1: ( RULE_INT )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1451:1: RULE_INT
             {
              before(grammarAccess.getEIntAccess().getINTTerminalRuleCall_1()); 
-            match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_rule__EInt__Group__1__Impl2910); 
+            match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_rule__EInt__Group__1__Impl2846); 
              after(grammarAccess.getEIntAccess().getINTTerminalRuleCall_1()); 
 
             }
@@ -3733,20 +3659,20 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Animation_Impl__AnimationsAssignment_1_2"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1500:1: rule__Animation_Impl__AnimationsAssignment_1_2 : ( ruleAnimation ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1467:1: rule__Animation_Impl__AnimationsAssignment_1_2 : ( ruleAnimation ) ;
     public final void rule__Animation_Impl__AnimationsAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1504:1: ( ( ruleAnimation ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1505:1: ( ruleAnimation )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1471:1: ( ( ruleAnimation ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1472:1: ( ruleAnimation )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1505:1: ( ruleAnimation )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1506:1: ruleAnimation
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1472:1: ( ruleAnimation )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1473:1: ruleAnimation
             {
              before(grammarAccess.getAnimation_ImplAccess().getAnimationsAnimationParserRuleCall_1_2_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleAnimation_in_rule__Animation_Impl__AnimationsAssignment_1_22948);
+            pushFollow(FollowSets000.FOLLOW_ruleAnimation_in_rule__Animation_Impl__AnimationsAssignment_1_22884);
             ruleAnimation();
 
             state._fsp--;
@@ -3774,20 +3700,20 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Animation_Impl__AnimationsAssignment_1_3_1"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1515:1: rule__Animation_Impl__AnimationsAssignment_1_3_1 : ( ruleAnimation ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1482:1: rule__Animation_Impl__AnimationsAssignment_1_3_1 : ( ruleAnimation ) ;
     public final void rule__Animation_Impl__AnimationsAssignment_1_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1519:1: ( ( ruleAnimation ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1520:1: ( ruleAnimation )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1486:1: ( ( ruleAnimation ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1487:1: ( ruleAnimation )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1520:1: ( ruleAnimation )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1521:1: ruleAnimation
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1487:1: ( ruleAnimation )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1488:1: ruleAnimation
             {
              before(grammarAccess.getAnimation_ImplAccess().getAnimationsAnimationParserRuleCall_1_3_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleAnimation_in_rule__Animation_Impl__AnimationsAssignment_1_3_12979);
+            pushFollow(FollowSets000.FOLLOW_ruleAnimation_in_rule__Animation_Impl__AnimationsAssignment_1_3_12915);
             ruleAnimation();
 
             state._fsp--;
@@ -3815,20 +3741,20 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Move__SpeedAssignment_3"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1530:1: rule__Move__SpeedAssignment_3 : ( ruleEInt ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1497:1: rule__Move__SpeedAssignment_3 : ( ruleEInt ) ;
     public final void rule__Move__SpeedAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1534:1: ( ( ruleEInt ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1535:1: ( ruleEInt )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1501:1: ( ( ruleEInt ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1502:1: ( ruleEInt )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1535:1: ( ruleEInt )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1536:1: ruleEInt
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1502:1: ( ruleEInt )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1503:1: ruleEInt
             {
              before(grammarAccess.getMoveAccess().getSpeedEIntParserRuleCall_3_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_rule__Move__SpeedAssignment_33010);
+            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_rule__Move__SpeedAssignment_32946);
             ruleEInt();
 
             state._fsp--;
@@ -3855,26 +3781,26 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
     // $ANTLR end "rule__Move__SpeedAssignment_3"
 
 
-    // $ANTLR start "rule__Show__NameAssignment_3"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1545:1: rule__Show__NameAssignment_3 : ( ruleEString ) ;
-    public final void rule__Show__NameAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__Hide__LabelAssignment_3"
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1512:1: rule__Hide__LabelAssignment_3 : ( ruleEString ) ;
+    public final void rule__Hide__LabelAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1549:1: ( ( ruleEString ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1550:1: ( ruleEString )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1516:1: ( ( ruleEString ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1517:1: ( ruleEString )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1550:1: ( ruleEString )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1551:1: ruleEString
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1517:1: ( ruleEString )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1518:1: ruleEString
             {
-             before(grammarAccess.getShowAccess().getNameEStringParserRuleCall_3_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Show__NameAssignment_33041);
+             before(grammarAccess.getHideAccess().getLabelEStringParserRuleCall_3_0()); 
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Hide__LabelAssignment_32977);
             ruleEString();
 
             state._fsp--;
 
-             after(grammarAccess.getShowAccess().getNameEStringParserRuleCall_3_0()); 
+             after(grammarAccess.getHideAccess().getLabelEStringParserRuleCall_3_0()); 
 
             }
 
@@ -3893,24 +3819,24 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
         }
         return ;
     }
-    // $ANTLR end "rule__Show__NameAssignment_3"
+    // $ANTLR end "rule__Hide__LabelAssignment_3"
 
 
     // $ANTLR start "rule__Sequence__AnimationsAssignment_2"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1560:1: rule__Sequence__AnimationsAssignment_2 : ( ruleAnimation ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1527:1: rule__Sequence__AnimationsAssignment_2 : ( ruleAnimation ) ;
     public final void rule__Sequence__AnimationsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1564:1: ( ( ruleAnimation ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1565:1: ( ruleAnimation )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1531:1: ( ( ruleAnimation ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1532:1: ( ruleAnimation )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1565:1: ( ruleAnimation )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1566:1: ruleAnimation
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1532:1: ( ruleAnimation )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1533:1: ruleAnimation
             {
              before(grammarAccess.getSequenceAccess().getAnimationsAnimationParserRuleCall_2_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleAnimation_in_rule__Sequence__AnimationsAssignment_23072);
+            pushFollow(FollowSets000.FOLLOW_ruleAnimation_in_rule__Sequence__AnimationsAssignment_23008);
             ruleAnimation();
 
             state._fsp--;
@@ -3938,20 +3864,20 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
 
 
     // $ANTLR start "rule__Sequence__AnimationsAssignment_3_1"
-    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1575:1: rule__Sequence__AnimationsAssignment_3_1 : ( ruleAnimation ) ;
+    // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1542:1: rule__Sequence__AnimationsAssignment_3_1 : ( ruleAnimation ) ;
     public final void rule__Sequence__AnimationsAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1579:1: ( ( ruleAnimation ) )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1580:1: ( ruleAnimation )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1546:1: ( ( ruleAnimation ) )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1547:1: ( ruleAnimation )
             {
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1580:1: ( ruleAnimation )
-            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1581:1: ruleAnimation
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1547:1: ( ruleAnimation )
+            // ../dk.dtu.se2.animation.language.ui/src-gen/dk/dtu/se2/animation/ui/contentassist/antlr/internal/InternalAnimationLanguage.g:1548:1: ruleAnimation
             {
              before(grammarAccess.getSequenceAccess().getAnimationsAnimationParserRuleCall_3_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleAnimation_in_rule__Sequence__AnimationsAssignment_3_13103);
+            pushFollow(FollowSets000.FOLLOW_ruleAnimation_in_rule__Sequence__AnimationsAssignment_3_13039);
             ruleAnimation();
 
             state._fsp--;
@@ -4023,17 +3949,17 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
         public static final BitSet FOLLOW_ruleAnimation_in_rule__Animation_Impl__Group__0__Impl787 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Animation_Impl__Group__1__Impl_in_rule__Animation_Impl__Group__1816 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Animation_Impl__Group_1__0_in_rule__Animation_Impl__Group__1__Impl843 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Animation_Impl__Group_1__0__Impl_in_rule__Animation_Impl__Group_1__0878 = new BitSet(new long[]{0x0000000000079000L});
+        public static final BitSet FOLLOW_rule__Animation_Impl__Group_1__0__Impl_in_rule__Animation_Impl__Group_1__0878 = new BitSet(new long[]{0x00000000000E9000L});
         public static final BitSet FOLLOW_rule__Animation_Impl__Group_1__1_in_rule__Animation_Impl__Group_1__0881 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_11_in_rule__Animation_Impl__Group_1__0__Impl909 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Animation_Impl__Group_1__1__Impl_in_rule__Animation_Impl__Group_1__1940 = new BitSet(new long[]{0x0000000000079000L});
+        public static final BitSet FOLLOW_rule__Animation_Impl__Group_1__1__Impl_in_rule__Animation_Impl__Group_1__1940 = new BitSet(new long[]{0x00000000000E9000L});
         public static final BitSet FOLLOW_rule__Animation_Impl__Group_1__2_in_rule__Animation_Impl__Group_1__1943 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Animation_Impl__Group_1__2__Impl_in_rule__Animation_Impl__Group_1__21001 = new BitSet(new long[]{0x0000000000000800L});
         public static final BitSet FOLLOW_rule__Animation_Impl__Group_1__3_in_rule__Animation_Impl__Group_1__21004 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Animation_Impl__AnimationsAssignment_1_2_in_rule__Animation_Impl__Group_1__2__Impl1031 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Animation_Impl__Group_1__3__Impl_in_rule__Animation_Impl__Group_1__31061 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Animation_Impl__Group_1_3__0_in_rule__Animation_Impl__Group_1__3__Impl1088 = new BitSet(new long[]{0x0000000000000802L});
-        public static final BitSet FOLLOW_rule__Animation_Impl__Group_1_3__0__Impl_in_rule__Animation_Impl__Group_1_3__01127 = new BitSet(new long[]{0x0000000000079000L});
+        public static final BitSet FOLLOW_rule__Animation_Impl__Group_1_3__0__Impl_in_rule__Animation_Impl__Group_1_3__01127 = new BitSet(new long[]{0x00000000000E9000L});
         public static final BitSet FOLLOW_rule__Animation_Impl__Group_1_3__1_in_rule__Animation_Impl__Group_1_3__01130 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_11_in_rule__Animation_Impl__Group_1_3__0__Impl1158 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Animation_Impl__Group_1_3__1__Impl_in_rule__Animation_Impl__Group_1_3__11189 = new BitSet(new long[]{0x0000000000000002L});
@@ -4043,7 +3969,7 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
         public static final BitSet FOLLOW_rule__Move__Group__1__Impl_in_rule__Move__Group__11311 = new BitSet(new long[]{0x0000000000002000L});
         public static final BitSet FOLLOW_rule__Move__Group__2_in_rule__Move__Group__11314 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_12_in_rule__Move__Group__1__Impl1342 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Move__Group__2__Impl_in_rule__Move__Group__21373 = new BitSet(new long[]{0x0000000000100040L});
+        public static final BitSet FOLLOW_rule__Move__Group__2__Impl_in_rule__Move__Group__21373 = new BitSet(new long[]{0x0000000000200040L});
         public static final BitSet FOLLOW_rule__Move__Group__3_in_rule__Move__Group__21376 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_13_in_rule__Move__Group__2__Impl1404 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Move__Group__3__Impl_in_rule__Move__Group__31435 = new BitSet(new long[]{0x0000000000004000L});
@@ -4053,66 +3979,63 @@ public class InternalAnimationLanguageParser extends AbstractInternalContentAssi
         public static final BitSet FOLLOW_14_in_rule__Move__Group__4__Impl1523 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Show__Group__0__Impl_in_rule__Show__Group__01564 = new BitSet(new long[]{0x0000000000008000L});
         public static final BitSet FOLLOW_rule__Show__Group__1_in_rule__Show__Group__01567 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Show__Group__1__Impl_in_rule__Show__Group__11625 = new BitSet(new long[]{0x0000000000002000L});
+        public static final BitSet FOLLOW_rule__Show__Group__1__Impl_in_rule__Show__Group__11625 = new BitSet(new long[]{0x0000000000010000L});
         public static final BitSet FOLLOW_rule__Show__Group__2_in_rule__Show__Group__11628 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_15_in_rule__Show__Group__1__Impl1656 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Show__Group__2__Impl_in_rule__Show__Group__21687 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_rule__Show__Group__3_in_rule__Show__Group__21690 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_13_in_rule__Show__Group__2__Impl1718 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Show__Group__3__Impl_in_rule__Show__Group__31749 = new BitSet(new long[]{0x0000000000004000L});
-        public static final BitSet FOLLOW_rule__Show__Group__4_in_rule__Show__Group__31752 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Show__NameAssignment_3_in_rule__Show__Group__3__Impl1779 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Show__Group__4__Impl_in_rule__Show__Group__41809 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_14_in_rule__Show__Group__4__Impl1837 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Hide__Group__0__Impl_in_rule__Hide__Group__01878 = new BitSet(new long[]{0x0000000000010000L});
-        public static final BitSet FOLLOW_rule__Hide__Group__1_in_rule__Hide__Group__01881 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Hide__Group__1__Impl_in_rule__Hide__Group__11939 = new BitSet(new long[]{0x0000000000002000L});
-        public static final BitSet FOLLOW_rule__Hide__Group__2_in_rule__Hide__Group__11942 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_16_in_rule__Hide__Group__1__Impl1970 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Hide__Group__2__Impl_in_rule__Hide__Group__22001 = new BitSet(new long[]{0x0000000000004000L});
-        public static final BitSet FOLLOW_rule__Hide__Group__3_in_rule__Hide__Group__22004 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_13_in_rule__Hide__Group__2__Impl2032 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Hide__Group__3__Impl_in_rule__Hide__Group__32063 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_14_in_rule__Hide__Group__3__Impl2091 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Stop__Group__0__Impl_in_rule__Stop__Group__02130 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_rule__Stop__Group__1_in_rule__Stop__Group__02133 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Stop__Group__1__Impl_in_rule__Stop__Group__12191 = new BitSet(new long[]{0x0000000000002000L});
-        public static final BitSet FOLLOW_rule__Stop__Group__2_in_rule__Stop__Group__12194 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_17_in_rule__Stop__Group__1__Impl2222 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Stop__Group__2__Impl_in_rule__Stop__Group__22253 = new BitSet(new long[]{0x0000000000004000L});
-        public static final BitSet FOLLOW_rule__Stop__Group__3_in_rule__Stop__Group__22256 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_13_in_rule__Stop__Group__2__Impl2284 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Stop__Group__3__Impl_in_rule__Stop__Group__32315 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_14_in_rule__Stop__Group__3__Impl2343 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Sequence__Group__0__Impl_in_rule__Sequence__Group__02382 = new BitSet(new long[]{0x0000000000079000L});
-        public static final BitSet FOLLOW_rule__Sequence__Group__1_in_rule__Sequence__Group__02385 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Sequence__Group__1__Impl_in_rule__Sequence__Group__12443 = new BitSet(new long[]{0x0000000000079000L});
-        public static final BitSet FOLLOW_rule__Sequence__Group__2_in_rule__Sequence__Group__12446 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_18_in_rule__Sequence__Group__1__Impl2474 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Sequence__Group__2__Impl_in_rule__Sequence__Group__22505 = new BitSet(new long[]{0x0000000000080800L});
-        public static final BitSet FOLLOW_rule__Sequence__Group__3_in_rule__Sequence__Group__22508 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Sequence__AnimationsAssignment_2_in_rule__Sequence__Group__2__Impl2535 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Sequence__Group__3__Impl_in_rule__Sequence__Group__32565 = new BitSet(new long[]{0x0000000000080800L});
-        public static final BitSet FOLLOW_rule__Sequence__Group__4_in_rule__Sequence__Group__32568 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Sequence__Group_3__0_in_rule__Sequence__Group__3__Impl2595 = new BitSet(new long[]{0x0000000000000802L});
-        public static final BitSet FOLLOW_rule__Sequence__Group__4__Impl_in_rule__Sequence__Group__42626 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_19_in_rule__Sequence__Group__4__Impl2654 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Sequence__Group_3__0__Impl_in_rule__Sequence__Group_3__02695 = new BitSet(new long[]{0x0000000000079000L});
-        public static final BitSet FOLLOW_rule__Sequence__Group_3__1_in_rule__Sequence__Group_3__02698 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_11_in_rule__Sequence__Group_3__0__Impl2726 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Sequence__Group_3__1__Impl_in_rule__Sequence__Group_3__12757 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Sequence__AnimationsAssignment_3_1_in_rule__Sequence__Group_3__1__Impl2784 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__EInt__Group__0__Impl_in_rule__EInt__Group__02818 = new BitSet(new long[]{0x0000000000100040L});
-        public static final BitSet FOLLOW_rule__EInt__Group__1_in_rule__EInt__Group__02821 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_20_in_rule__EInt__Group__0__Impl2850 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__EInt__Group__1__Impl_in_rule__EInt__Group__12883 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_INT_in_rule__EInt__Group__1__Impl2910 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleAnimation_in_rule__Animation_Impl__AnimationsAssignment_1_22948 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleAnimation_in_rule__Animation_Impl__AnimationsAssignment_1_3_12979 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEInt_in_rule__Move__SpeedAssignment_33010 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__Show__NameAssignment_33041 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleAnimation_in_rule__Sequence__AnimationsAssignment_23072 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleAnimation_in_rule__Sequence__AnimationsAssignment_3_13103 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Show__Group__2__Impl_in_rule__Show__Group__21687 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_16_in_rule__Show__Group__2__Impl1715 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Hide__Group__0__Impl_in_rule__Hide__Group__01752 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_rule__Hide__Group__1_in_rule__Hide__Group__01755 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Hide__Group__1__Impl_in_rule__Hide__Group__11813 = new BitSet(new long[]{0x0000000000002000L});
+        public static final BitSet FOLLOW_rule__Hide__Group__2_in_rule__Hide__Group__11816 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_17_in_rule__Hide__Group__1__Impl1844 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Hide__Group__2__Impl_in_rule__Hide__Group__21875 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__Hide__Group__3_in_rule__Hide__Group__21878 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_13_in_rule__Hide__Group__2__Impl1906 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Hide__Group__3__Impl_in_rule__Hide__Group__31937 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_rule__Hide__Group__4_in_rule__Hide__Group__31940 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Hide__LabelAssignment_3_in_rule__Hide__Group__3__Impl1967 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Hide__Group__4__Impl_in_rule__Hide__Group__41997 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_14_in_rule__Hide__Group__4__Impl2025 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Stop__Group__0__Impl_in_rule__Stop__Group__02066 = new BitSet(new long[]{0x0000000000040000L});
+        public static final BitSet FOLLOW_rule__Stop__Group__1_in_rule__Stop__Group__02069 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Stop__Group__1__Impl_in_rule__Stop__Group__12127 = new BitSet(new long[]{0x0000000000002000L});
+        public static final BitSet FOLLOW_rule__Stop__Group__2_in_rule__Stop__Group__12130 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_18_in_rule__Stop__Group__1__Impl2158 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Stop__Group__2__Impl_in_rule__Stop__Group__22189 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_rule__Stop__Group__3_in_rule__Stop__Group__22192 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_13_in_rule__Stop__Group__2__Impl2220 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Stop__Group__3__Impl_in_rule__Stop__Group__32251 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_14_in_rule__Stop__Group__3__Impl2279 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Sequence__Group__0__Impl_in_rule__Sequence__Group__02318 = new BitSet(new long[]{0x00000000000E9000L});
+        public static final BitSet FOLLOW_rule__Sequence__Group__1_in_rule__Sequence__Group__02321 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Sequence__Group__1__Impl_in_rule__Sequence__Group__12379 = new BitSet(new long[]{0x00000000000E9000L});
+        public static final BitSet FOLLOW_rule__Sequence__Group__2_in_rule__Sequence__Group__12382 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_19_in_rule__Sequence__Group__1__Impl2410 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Sequence__Group__2__Impl_in_rule__Sequence__Group__22441 = new BitSet(new long[]{0x0000000000100800L});
+        public static final BitSet FOLLOW_rule__Sequence__Group__3_in_rule__Sequence__Group__22444 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Sequence__AnimationsAssignment_2_in_rule__Sequence__Group__2__Impl2471 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Sequence__Group__3__Impl_in_rule__Sequence__Group__32501 = new BitSet(new long[]{0x0000000000100800L});
+        public static final BitSet FOLLOW_rule__Sequence__Group__4_in_rule__Sequence__Group__32504 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Sequence__Group_3__0_in_rule__Sequence__Group__3__Impl2531 = new BitSet(new long[]{0x0000000000000802L});
+        public static final BitSet FOLLOW_rule__Sequence__Group__4__Impl_in_rule__Sequence__Group__42562 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_20_in_rule__Sequence__Group__4__Impl2590 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Sequence__Group_3__0__Impl_in_rule__Sequence__Group_3__02631 = new BitSet(new long[]{0x00000000000E9000L});
+        public static final BitSet FOLLOW_rule__Sequence__Group_3__1_in_rule__Sequence__Group_3__02634 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_11_in_rule__Sequence__Group_3__0__Impl2662 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Sequence__Group_3__1__Impl_in_rule__Sequence__Group_3__12693 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Sequence__AnimationsAssignment_3_1_in_rule__Sequence__Group_3__1__Impl2720 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__EInt__Group__0__Impl_in_rule__EInt__Group__02754 = new BitSet(new long[]{0x0000000000200040L});
+        public static final BitSet FOLLOW_rule__EInt__Group__1_in_rule__EInt__Group__02757 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_21_in_rule__EInt__Group__0__Impl2786 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__EInt__Group__1__Impl_in_rule__EInt__Group__12819 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_INT_in_rule__EInt__Group__1__Impl2846 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAnimation_in_rule__Animation_Impl__AnimationsAssignment_1_22884 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAnimation_in_rule__Animation_Impl__AnimationsAssignment_1_3_12915 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEInt_in_rule__Move__SpeedAssignment_32946 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__Hide__LabelAssignment_32977 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAnimation_in_rule__Sequence__AnimationsAssignment_23008 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAnimation_in_rule__Sequence__AnimationsAssignment_3_13039 = new BitSet(new long[]{0x0000000000000002L});
     }
 
 

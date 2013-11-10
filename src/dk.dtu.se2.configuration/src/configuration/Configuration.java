@@ -5,7 +5,6 @@ package configuration;
 import geometry.Geometry;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
 
 /**

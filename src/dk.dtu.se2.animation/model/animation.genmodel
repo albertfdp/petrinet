@@ -11,10 +11,10 @@
     <genClasses ecoreClass="animation.ecore#//Move">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//Move/speed"/>
     </genClasses>
-    <genClasses ecoreClass="animation.ecore#//Show">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//Show/name"/>
+    <genClasses ecoreClass="animation.ecore#//Show"/>
+    <genClasses ecoreClass="animation.ecore#//Hide">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//Hide/label"/>
     </genClasses>
-    <genClasses ecoreClass="animation.ecore#//Hide"/>
     <genClasses ecoreClass="animation.ecore#//Stop"/>
     <genClasses ecoreClass="animation.ecore#//Sequence">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//Sequence/animations"/>

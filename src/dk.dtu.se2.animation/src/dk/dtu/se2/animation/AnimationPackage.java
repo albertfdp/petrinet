@@ -132,22 +132,13 @@ public interface AnimationPackage extends EPackage {
 	int SHOW = 2;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SHOW__NAME = ANIMATION_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Show</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SHOW_FEATURE_COUNT = ANIMATION_FEATURE_COUNT + 1;
+	int SHOW_FEATURE_COUNT = ANIMATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Show</em>' class.
@@ -169,13 +160,22 @@ public interface AnimationPackage extends EPackage {
 	int HIDE = 3;
 
 	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HIDE__LABEL = ANIMATION_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Hide</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HIDE_FEATURE_COUNT = ANIMATION_FEATURE_COUNT + 0;
+	int HIDE_FEATURE_COUNT = ANIMATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Hide</em>' class.
@@ -294,17 +294,6 @@ public interface AnimationPackage extends EPackage {
 	EClass getShow();
 
 	/**
-	 * Returns the meta object for the attribute '{@link dk.dtu.se2.animation.Show#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see dk.dtu.se2.animation.Show#getName()
-	 * @see #getShow()
-	 * @generated
-	 */
-	EAttribute getShow_Name();
-
-	/**
 	 * Returns the meta object for class '{@link dk.dtu.se2.animation.Hide <em>Hide</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -313,6 +302,17 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getHide();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dk.dtu.se2.animation.Hide#getLabel <em>Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Label</em>'.
+	 * @see dk.dtu.se2.animation.Hide#getLabel()
+	 * @see #getHide()
+	 * @generated
+	 */
+	EAttribute getHide_Label();
 
 	/**
 	 * Returns the meta object for class '{@link dk.dtu.se2.animation.Stop <em>Stop</em>}'.
@@ -407,14 +407,6 @@ public interface AnimationPackage extends EPackage {
 		EClass SHOW = eINSTANCE.getShow();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SHOW__NAME = eINSTANCE.getShow_Name();
-
-		/**
 		 * The meta object literal for the '{@link dk.dtu.se2.animation.impl.HideImpl <em>Hide</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -423,6 +415,14 @@ public interface AnimationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass HIDE = eINSTANCE.getHide();
+
+		/**
+		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HIDE__LABEL = eINSTANCE.getHide_Label();
 
 		/**
 		 * The meta object literal for the '{@link dk.dtu.se2.animation.impl.StopImpl <em>Stop</em>}' class.

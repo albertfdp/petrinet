@@ -55,6 +55,10 @@
   <children xmi:type="notation:Node" xmi:id="_e_0ycEMHEeOY07ueFxGxyA" type="1001">
     <children xmi:type="notation:Node" xmi:id="_e_1ZgEMHEeOY07ueFxGxyA" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_e_1ZgUMHEeOY07ueFxGxyA" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_uGliYEn7EeOdM6HPrnF-Ug" type="2001">
+        <element xmi:type="ecore:EAttribute" href="animation.ecore#//Hide/label"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_uGliYUn7EeOdM6HPrnF-Ug"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_e_1ZgkMHEeOY07ueFxGxyA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_e_1Zg0MHEeOY07ueFxGxyA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_e_1ZhEMHEeOY07ueFxGxyA"/>

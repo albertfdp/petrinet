@@ -224,31 +224,9 @@ ruleShow returns [EObject current=null]
     {
     	newLeafNode(otherlv_1, grammarAccess.getShowAccess().getShowKeyword_1());
     }
-	otherlv_2='(' 
+	otherlv_2='()' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getShowAccess().getLeftParenthesisKeyword_2());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getShowAccess().getNameEStringParserRuleCall_3_0()); 
-	    }
-		lv_name_3_0=ruleEString		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getShowRule());
-	        }
-       		set(
-       			$current, 
-       			"name",
-        		lv_name_3_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)	otherlv_4=')' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getShowAccess().getRightParenthesisKeyword_4());
+    	newLeafNode(otherlv_2, grammarAccess.getShowAccess().getLeftParenthesisRightParenthesisKeyword_2());
     }
 )
 ;
@@ -285,9 +263,27 @@ ruleHide returns [EObject current=null]
     {
     	newLeafNode(otherlv_2, grammarAccess.getHideAccess().getLeftParenthesisKeyword_2());
     }
-	otherlv_3=')' 
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getHideAccess().getLabelEStringParserRuleCall_3_0()); 
+	    }
+		lv_label_3_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getHideRule());
+	        }
+       		set(
+       			$current, 
+       			"label",
+        		lv_label_3_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_4=')' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getHideAccess().getRightParenthesisKeyword_3());
+    	newLeafNode(otherlv_4, grammarAccess.getHideAccess().getRightParenthesisKeyword_4());
     }
 )
 ;

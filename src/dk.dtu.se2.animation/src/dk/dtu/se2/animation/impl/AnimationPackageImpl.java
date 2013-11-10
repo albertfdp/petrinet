@@ -169,8 +169,8 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getShow_Name() {
-		return (EAttribute)showEClass.getEStructuralFeatures().get(0);
+	public EClass getHide() {
+		return hideEClass;
 	}
 
 	/**
@@ -178,8 +178,8 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getHide() {
-		return hideEClass;
+	public EAttribute getHide_Label() {
+		return (EAttribute)hideEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -243,9 +243,9 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 		createEAttribute(moveEClass, MOVE__SPEED);
 
 		showEClass = createEClass(SHOW);
-		createEAttribute(showEClass, SHOW__NAME);
 
 		hideEClass = createEClass(HIDE);
+		createEAttribute(hideEClass, HIDE__LABEL);
 
 		stopEClass = createEClass(STOP);
 
@@ -294,9 +294,9 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 		initEAttribute(getMove_Speed(), ecorePackage.getEInt(), "speed", null, 0, 1, Move.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(showEClass, Show.class, "Show", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getShow_Name(), ecorePackage.getEString(), "name", null, 0, 1, Show.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hideEClass, Hide.class, "Hide", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getHide_Label(), ecorePackage.getEString(), "label", null, 0, 1, Hide.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stopEClass, Stop.class, "Stop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
