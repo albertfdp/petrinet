@@ -12,7 +12,7 @@ import org.pnml.tools.epnk.pnmlcoremodel.Attribute;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link dk.dtu.se2.petrinet.InputPlace#getText <em>Text</em>}</li>
+ *   <li>{@link dk.dtu.se2.petrinet.InputPlace#isText <em>Text</em>}</li>
  * </ul>
  * </p>
  *
@@ -31,20 +31,20 @@ public interface InputPlace extends Attribute {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Text</em>' attribute.
-	 * @see #setText(String)
+	 * @see #setText(boolean)
 	 * @see dk.dtu.se2.petrinet.PetrinetPackage#getInputPlace_Text()
 	 * @model
 	 * @generated
 	 */
-	String getText();
+	boolean isText();
 
 	/**
-	 * Sets the value of the '{@link dk.dtu.se2.petrinet.InputPlace#getText <em>Text</em>}' attribute.
+	 * Sets the value of the '{@link dk.dtu.se2.petrinet.InputPlace#isText <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Text</em>' attribute.
-	 * @see #getText()
+	 * @see #isText()
 	 * @generated
 	 */
-	void setText(String value);
+	void setText(boolean value);
 } // InputPlace

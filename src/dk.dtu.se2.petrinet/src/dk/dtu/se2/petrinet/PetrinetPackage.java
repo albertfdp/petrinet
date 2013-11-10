@@ -847,11 +847,11 @@ public interface PetrinetPackage extends EPackage {
 	EClass getInputPlace();
 
 	/**
-	 * Returns the meta object for the attribute '{@link dk.dtu.se2.petrinet.InputPlace#getText <em>Text</em>}'.
+	 * Returns the meta object for the attribute '{@link dk.dtu.se2.petrinet.InputPlace#isText <em>Text</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see dk.dtu.se2.petrinet.InputPlace#getText()
+	 * @see dk.dtu.se2.petrinet.InputPlace#isText()
 	 * @see #getInputPlace()
 	 * @generated
 	 */

@@ -82,7 +82,7 @@ public class InputPlaceItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -106,10 +106,8 @@ public class InputPlaceItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((InputPlace)object).getText();
-		return label == null || label.length() == 0 ?
-			getString("_UI_InputPlace_type") :
-			getString("_UI_InputPlace_type") + " " + label;
+		InputPlace inputPlace = (InputPlace)object;
+		return getString("_UI_InputPlace_type") + " " + inputPlace.isText();
 	}
 
 	/**
