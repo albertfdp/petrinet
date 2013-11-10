@@ -1,5 +1,3 @@
-/**
- */
 package dk.dtu.se2.petrinet.presentation;
 
 
