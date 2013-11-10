@@ -19,7 +19,7 @@ import dk.dtu.se2.simulator.petrinet.runtime.RTToken;
 public class PetriNetEngine {
 	
 	private HashMap<Place, ArrayList<RTToken>> marking = new HashMap<Place, ArrayList<RTToken>>();
-	private ArrayList<Transition> transitions;
+	private ArrayList<Transition> transitions = new ArrayList<Transition>();
 	
 	public ArrayList<String> init (PetriNetDoc petrinet) {
 		
