@@ -3,28 +3,27 @@ package dk.dtu.se2.simulator.petrinet.runtime;
 import java.util.ArrayList;
 
 import dk.dtu.se2.petrinet.Place;
-import dk.dtu.se2.petrinet.Token;
 
 public class RTPlace {
 
 	private Place place;
-	private ArrayList<RToken> tokens;
+	private ArrayList<RTToken> tokens;
 	
 	public RTPlace (Place place) {
 		this.place = place;
-		tokens = new ArrayList<RToken>();
+		tokens = new ArrayList<RTToken>();
 		
-		for (Token token : this.place.getTokens()) {
-			tokens.add(new RToken());
+		for (int i = 0; i < this.place.getTokens().size(); i++) {
+			tokens.add(new RTToken());
 		}
 				
 	}
 
-	public ArrayList<RToken> getTokens() {
+	public ArrayList<RTToken> getTokens() {
 		return tokens;
 	}
 
-	public void setTokens(ArrayList<RToken> tokens) {
+	public void setTokens(ArrayList<RTToken> tokens) {
 		this.tokens = tokens;
 	}
 	

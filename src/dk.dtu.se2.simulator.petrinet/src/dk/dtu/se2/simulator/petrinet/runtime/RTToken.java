@@ -1,10 +1,10 @@
 package dk.dtu.se2.simulator.petrinet.runtime;
 
-public class RToken {
+public class RTToken {
 	
 	private boolean finished;
 	
-	public RToken () {
+	public RTToken () {
 		this.finished = false;
 	}
 
