@@ -4,10 +4,9 @@ package dk.dtu.se2.simulator;
 import java.util.ArrayList;
 import java.util.List;
 
-import geometry.Geometry;
-
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
 
+import geometry.Geometry;
 import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.appearance.Appearance;
 import dk.dtu.se2.engine3d.Engine3D;
