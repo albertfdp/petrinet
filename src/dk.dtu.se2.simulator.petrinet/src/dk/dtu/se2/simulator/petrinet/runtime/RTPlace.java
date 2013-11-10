@@ -13,6 +13,10 @@ public class RTPlace {
 	public RTPlace (Place place) {
 		this.place = place;
 		tokens = new ArrayList<RToken>();
+		
+		for (Token token : this.place.getTokens()) {
+			tokens.add(new RToken());
+		}
 				
 	}
 
