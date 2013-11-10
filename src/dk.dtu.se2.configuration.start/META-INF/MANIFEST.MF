@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Start
+Bundle-SymbolicName: dk.dtu.se2.configuration.start;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.eclipse.emf;bundle-version="2.6.0",
+ dk.dtu.se2.configuration,
+ org.eclipse.ui.workbench,
+ org.eclipse.jface,
+ dk.dtu.se2.geometry,
+ org.pnml.tools.epnk;bundle-version="1.0.1",
+ dk.dtu.se2.simulator;bundle-version="1.0.0",
+ dk.dtu.se2.appearance;bundle-version="1.0.0"
