@@ -9,6 +9,6 @@ Require-Bundle: org.eclipse.emf;bundle-version="2.6.0",
  org.eclipse.ui.workbench,
  org.eclipse.jface,
  dk.dtu.se2.geometry,
- org.pnml.tools.epnk;bundle-version="1.0.1",
  dk.dtu.se2.simulator;bundle-version="1.0.0",
- dk.dtu.se2.appearance;bundle-version="1.0.0"
+ dk.dtu.se2.appearance;bundle-version="1.0.0",
+ org.pnml.tools.epnk;bundle-version="1.0.0"
