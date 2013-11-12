@@ -11,6 +11,6 @@ public interface Engine3D {
 	
 	public void init (Geometry geometry, Appearance appearance, List<Animation> animations);
 	
-	public void animate(List<Animation> animations);
+	public void addToAnimationQueue(String geometryLabel);
 
 }

@@ -1,12 +1,17 @@
 package dk.dtu.se2.engine3d.jmonkey;
 
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
+
+
 
 import com.jme3.animation.LoopMode;
 import com.jme3.app.SimpleApplication;
+import com.jme3.bounding.BoundingVolume.Type;
 import com.jme3.cinematic.MotionPath;
 import com.jme3.cinematic.PlayState;
 import com.jme3.cinematic.events.MotionEvent;
@@ -21,8 +26,12 @@ import com.jme3.math.Spline.SplineType;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
+import com.jme3.scene.Mesh;
 import com.jme3.scene.shape.Box;
+import com.jme3.scene.VertexBuffer;
+import com.jme3.system.AppSettings;
 import com.jme3.texture.Texture;
+import com.jme3.util.BufferUtils;
 
 import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.appearance.Appearance;
@@ -34,12 +43,16 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	private Engine3DListener engine3DListener;
 	private geometry.Geometry geometry; 
 	private Appearance appearance;
-	private HashMap<Animation, MotionEvent> animations;
+	private HashMap <Animation, MotionEvent> animations;
 	
 	public double timeAtSystemStart;
+	public Mesh testMesh = new Mesh();
+	public Vector3f[] verts = new Vector3f[16];
+	public Vector2f[] texCoord = new Vector2f[16];
+	public int[] indices = new int[24];
 	public Geometry groundGeo;
     public BitmapText hudText;
-    public static ArrayList<Integer> listOfWaitingAnimations = new ArrayList<Integer>(); // holds all the animations that the Petri Net has asked the 3D Engine to play
+    public static ArrayList<Integer> animationQueue = new ArrayList<Integer>(); // holds all the animations that the Petri Net has asked the 3D Engine to play
     public ArrayList<Integer> listOfInts = new ArrayList<Integer>();
     public ArrayList<PlayState> previousAnimationStates = new ArrayList<PlayState>();
     public ArrayList<BitmapText> messageToPetriNet = new ArrayList<BitmapText>();
@@ -47,6 +60,9 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     public ArrayList<Geometry> allTokens = new ArrayList<Geometry>();
     public ArrayList<SObject> allSObjects = new ArrayList<SObject>();
     public static ArrayList<MotionEvent> allMotionEvents = new ArrayList<MotionEvent>();
+    public double timeSinceLastTrigger;
+    public double timeAtLastTrigger;
+    public Random rand = new Random();
     
     public enum State {
     	PLAYING,
@@ -57,8 +73,73 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     public State engineState;
 	
     public static void main(String[] args){
-		
+    	JMonkeyEngine3D app = new JMonkeyEngine3D();
+    	
+    	//--- This part removes the splash screen
+    	app.setShowSettings(false);
+    	AppSettings settings = new AppSettings(true);
+    	settings.setResolution(800, 600);
+    	settings.setBitsPerPixel(32);
+    	app.setSettings(settings);
+    	//---
+    	
+    	app.start();
 	}
+    
+    public void setupModelMeshes() {
+    	
+    	System.out.println("Running setup of model meshes.");
+    	
+    	/*
+    	Vector3f startPoint = new Vector3f(0, 1, -5); // some combinations of coordinates don't work: (1) when it is parallel to the x axis (angle = 0/180)
+    	Vector3f endPoint =   new Vector3f(0, 1, 0 );	
+    	float radius = 1;
+    	double angle = Math.atan2((endPoint.z - startPoint.z), (endPoint.x - startPoint.x));
+    	//angle = Math.toRadians(angle); // converting angle from deg to rad
+    	System.out.println("Angle in rad: " + angle);
+    	System.out.println("Angle in deg: " + Math.toDegrees(angle));
+    	
+    	// top side
+    	verts[0] = new Vector3f((startPoint.x - radius)*(float)(Math.sin(angle)),  (startPoint.y + radius) , startPoint.z + ((startPoint.x - radius) * -((float)(Math.cos(angle))))   );
+    	verts[1] = new Vector3f((startPoint.x + radius)*(float)(Math.sin(angle)),  (startPoint.y + radius) , startPoint.z + ((startPoint.x + radius) * -((float)(Math.cos(angle))))   );
+    	verts[2] = new Vector3f((endPoint.x + radius)*(float)(Math.sin(angle)),    (endPoint.y + radius)   , endPoint.z +   ((startPoint.x + radius) * -((float)(Math.cos(angle))))   );
+    	verts[3] = new Vector3f((endPoint.x - radius)*(float)(Math.sin(angle)),    (endPoint.y + radius)   , endPoint.z +   ((startPoint.x - radius) * -((float)(Math.cos(angle))))   );
+    	
+    	// 3--2
+    	// |  |
+    	// 0--1
+    	
+    	texCoord[0] = new Vector2f(0,0);
+    	texCoord[0] = new Vector2f(1,0);
+    	texCoord[0] = new Vector2f(1,1);
+    	texCoord[0] = new Vector2f(0,1);
+    	
+    	indices[0] = 1; // defining triangle 1
+    	indices[1] = 0; // 
+    	indices[2] = 3; // 
+    	
+    	indices[3] = 3; // defining triangle 2
+    	indices[4] = 2;
+    	indices[5] = 1;
+    	
+    	// 3--2
+    	// |  |
+    	// 0--1
+    	
+    	testMesh.setBuffer(com.jme3.scene.VertexBuffer.Type.Position , 3, BufferUtils.createFloatBuffer(verts));
+    	testMesh.setBuffer(com.jme3.scene.VertexBuffer.Type.TexCoord,  2, BufferUtils.createFloatBuffer(texCoord));
+    	testMesh.setBuffer(com.jme3.scene.VertexBuffer.Type.Index,     3, BufferUtils.createIntBuffer(indices));
+    	
+    	testMesh.updateBound();
+    	
+    	Geometry testMeshGeo = new Geometry("OurMesh", testMesh);
+    	Material testMeshMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+    	testMeshMat.setColor("Color", ColorRGBA.Blue);
+    	testMeshGeo.setMaterial(testMeshMat);
+    	
+    	rootNode.attachChild(testMeshGeo);
+    	*/
+    }
     
     public void setupSObjects() {
 		
@@ -95,7 +176,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 			rootNode.attachChild(token); // put this node in the scene, attached to the root.
 		}	
 	}
-	
+
 	public void setupMotionEvents() { // happens in the engine
 		
 		// for the number of SObjects, do the following:
@@ -151,10 +232,14 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	}
     
 	@Override
-	public void animate(List<Animation> animations) {
+	public void addToAnimationQueue(String geometryLabel) {
 		
-		// for(Animation animation : animations)
-			// listOfWaitingAnimations.add(animation.getId());	
+		for (SObject object : allSObjects) {
+			
+			if (object.getName() == geometryLabel) {
+				animationQueue.add(allSObjects.indexOf(object));
+			}
+		}
 	}
 	
 	public void setEngine3DListener(Engine3DListener engine3DListener) {
@@ -166,8 +251,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		
 		this.start();         
 		this.geometry = geometry;
-		this.appearance = appearance;
-				
+		this.appearance = appearance;		
 	}
 	
 	@Override
@@ -179,7 +263,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		viewPort.setBackgroundColor(ColorRGBA.Gray);
 		// AP: disable camera fly - the ability to move the camera with keyboard and mouse
 		flyCam.setEnabled(false); 
-		flyCam.setMoveSpeed(15);
+		flyCam.setMoveSpeed(25);
 		// AP: set camera position (off center)
 		Vector3f camPos = new Vector3f(0, 90, 30);
 		cam.setLocation(camPos);
@@ -223,6 +307,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		inputManager.addListener(actionListener, new String[]{"r"});
 		        
 		// AP: Run setups to prepare the layout of the paths etc.
+		setupModelMeshes();
 		setupSObjects();
 		setupTokens();
 		setupMotionEvents();
@@ -288,17 +373,17 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 			
 			if (name.equals("1") && !keyPressed) { 
 				
-				listOfWaitingAnimations.add(0); // adds the ID of the animation to the list 
+				animationQueue.add(0); // adds the ID of the animation to the list 
 
 		    } 
 			if (name.equals("2") && !keyPressed) { 
 				
-				listOfWaitingAnimations.add(1); // adds the ID of the animation to the list
+				animationQueue.add(1); // adds the ID of the animation to the list
 				
 		    }
 			if (name.equals("3") && !keyPressed) {
 				
-				listOfWaitingAnimations.add(2); // adds the ID of the animation to the list
+				animationQueue.add(2); // adds the ID of the animation to the list
 
 		    }
 
@@ -308,28 +393,50 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	
 	@Override 
     public void simpleUpdate(float tpf) {
-    	//double timeElapsedSinceStart = System.currentTimeMillis() - timeAtSystemStart; // Time elapsed since program start. 
+    	
+		double timeElapsedSinceStart = System.currentTimeMillis() - timeAtSystemStart; // Time elapsed since program start. 
+		
+		timeSinceLastTrigger += timeElapsedSinceStart - timeAtLastTrigger;
+		
+		// add a random motion event to the animation queue
+		if ((timeElapsedSinceStart/1000)%5 == 0 && timeSinceLastTrigger/1000 > 0.1f) { // do this every 5 seconds
+			
+			int randomNum = rand.nextInt(3);
+			
+			if (randomNum == 0) {
+				addToAnimationQueue("ID00");
+			}
+			if (randomNum == 1) {
+				addToAnimationQueue("ID01");
+			}
+			if (randomNum == 2) {
+				addToAnimationQueue("ID02");
+			}
+			
+			timeAtLastTrigger = timeElapsedSinceStart; // we need to ensure that some time has passed before running this function again, otherwise we might get (time%5 == 0) true several times in a row.
+			timeSinceLastTrigger = 0;
+		}
 		
 		// update play state HUD
-		hudText.setText("Press 'p' to play/pause, press 'r' to reset - " + engineState);  
+		hudText.setText("Press 'p' to play/pause, press 'r' to reset - " + engineState + " - time: " + timeElapsedSinceStart/1000);  
 		
 		
 		// play waiting animations
 		if (engineState == State.PLAYING) {
-			for (int index = 0; index < listOfWaitingAnimations.size(); index++) {
+			for (int index = 0; index < animationQueue.size(); index++) {
 			
-				PlayState state = allMotionEvents.get(listOfWaitingAnimations.get(index)).getPlayState();
+				PlayState state = allMotionEvents.get(animationQueue.get(index)).getPlayState();
 			
 				if (state == PlayState.Stopped) {
-					allMotionEvents.get(listOfWaitingAnimations.get(index)).play();
+					allMotionEvents.get(animationQueue.get(index)).play();
 				}
 				if (state == PlayState.Playing) {
-					allMotionEvents.get(listOfWaitingAnimations.get(index)).stop(); // if we need several tokens on one place, this is where it has to happen.
-					allMotionEvents.get(listOfWaitingAnimations.get(index)).play(); // right now, it just restarts the animation.
+					allMotionEvents.get(animationQueue.get(index)).stop(); // if we need several tokens on one place, this is where it has to happen.
+					allMotionEvents.get(animationQueue.get(index)).play(); // right now, it just restarts the animation.
 				}
 			}
 			
-			listOfWaitingAnimations.clear();
+			animationQueue.clear();
 		}
 		
 		
@@ -344,7 +451,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 				if (currentState == PlayState.Stopped) {  // if the state has changed to Stopped
 					
 					listOfInts.add(0, index);
-					this.engine3DListener.onAnimationFinished(allSObjects.get(index).getName());
+					//this.engine3DListener.onAnimationFinished(allSObjects.get(index).getName());
 				}
 			}
 			
@@ -361,7 +468,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		}
 		
 		// Debug: update the text fields that display the play state of each animation/MotionEvent
-		for (int index = 0; index < allTextFields.size(); index++){
+		for (int index = 0; index < allTextFields.size(); index++) {
 			
 			PlayState state = allMotionEvents.get(index).getPlayState();
 			if (state == PlayState.Playing){
