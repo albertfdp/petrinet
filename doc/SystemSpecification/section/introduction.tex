@@ -2,26 +2,19 @@
 \writer{Thibaud, Albert}
 
 \begin{quotation}
-Petri nets, as graphical and mathematical tools, provide a uniform environment for modelling, formal analysis, and design of discrete event systems. \footnote{Petri Nets and Industrial Applications: A Tutorial. Richard Zurawski, MengChu Zhou.}
+Petri nets, as graphical and mathematical tools, provide a uniform environment for modelling, formal analysis, and design of discrete event systems. \cite{Zurawski:1994}
 \end{quotation}
 
-Petri nets are used as a means to model systems, but, as they are a mathematical concept, they are not always easy to understand for the ordinary user. Complex systems can be modelled with Petri nets, and usually, this would be an engineer's job. Even though engineers can easily create and understand their own Petri nets, every team member in a company would like to be able to understand what a Petri net is about without having any knowledge of the concepts behind them.
+Petri nets are used as a means to model systems, but, as they are a mathematical concept, they are not always easy to understand for the ordinary user. Complex systems can be modelled with Petri nets, and usually, this would be an engineer's job. Even though engineers can easily create and understand their own Petri nets, every team member in a company would like to be able to understand what a Petri net is about without having a
+ny knowledge of the concepts behind them.
 
-Therefore, the project aims at creating a 3D visualisation from a Petri net, to allow non-Petri net experts to actually to understand how the model works and validate a system.
+Therefore, the project aims at creating a 3D visualisation from a Petri net, to allow non-Petri net experts to actually understand how the model works and validate a system.
 
 However, Petri nets were not intended to have a 3D representation. For instance, there is no graphical concept or way to say that a particular Petri net would look like a train track because it was used to model a railway system. 
 
-Thus, our goal for this project is the following: Providing an extension to Petri net models to make their 3D visualisation possible. For this purpose, we have imagined a simple link between a Petri net and a 3D visualisation.
+Thus, our goal for this project is the following: Providing an extension to Petri net models to make their 3D visualisation possible. For this purpose, we have thought of a software solution that creates a simple link between a Petri net and a 3D visualisation.
 
-\subsection{Conventions}
-
-The priority of the requirements in Section \ref{sec:system-features} and \ref{sec:non-functional} will be indicated by the keywords \textbf{shall}, \textbf{should} and \textbf{would be nice}:
-
-\begin{itemize}
-	\item \textbf{Shall}: Requirements that must be implemented as a minimum, resources must be allocated to these requirements.
-	\item \textbf{Should}: Requirements that add more functionality to the software, but are not the core required to work, if possible, resources will be allocated.
-	\item \textbf{Would be nice}: Requirements considered good ideas and would be implemented if there are sufficient resources or in later versions of the software.
-\end{itemize}
+This document will describe in details how we are going to make this software. The next section will describe the overall purpose of the software and explain further about Petri nets. In section 3 and 4 the features of the system, with requirements for these, will be described. Section 5 will describe how the user interface of the software is going to be and how the user will use the software. Lastly, section 6 will provide the reader with information about the architecture of the product and the models for the different parts of the final product are shown an explained. 
 
 \subsection{Audience}
 
