@@ -7,6 +7,9 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: jMonkeyEclipse,
  dk.dtu.se2.animation;bundle-version="0.1.0",
  dk.dtu.se2.appearance;bundle-version="1.0.0",
- dk.dtu.se2.geometry;bundle-version="0.1.0"
+ dk.dtu.se2.geometry;bundle-version="0.1.0",
+ org.eclipse.emf.common,
+ org.eclipse.emf.ecore.xmi;bundle-version="2.9.0",
+ org.eclipse.emf.mapping.ecore2xml;bundle-version="2.7.0"
 Export-Package: dk.dtu.se2.engine3d,
  dk.dtu.se2.engine3d.jmonkey
