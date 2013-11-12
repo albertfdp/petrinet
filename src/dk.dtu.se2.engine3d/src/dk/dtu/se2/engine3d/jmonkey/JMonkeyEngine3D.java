@@ -72,19 +72,19 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     
     public State engineState;
 	
-    public static void main(String[] args){
-    	JMonkeyEngine3D app = new JMonkeyEngine3D();
-    	
-    	//--- This part removes the splash screen
-    	app.setShowSettings(false);
-    	AppSettings settings = new AppSettings(true);
-    	settings.setResolution(800, 600);
-    	settings.setBitsPerPixel(32);
-    	app.setSettings(settings);
-    	//---
-    	
-    	app.start();
-	}
+//    public static void main(String[] args){
+//    	JMonkeyEngine3D app = new JMonkeyEngine3D();
+//    	
+//    	//--- This part removes the splash screen
+//    	app.setShowSettings(false);
+//    	AppSettings settings = new AppSettings(true);
+//    	settings.setResolution(800, 600);
+//    	settings.setBitsPerPixel(32);
+//    	app.setSettings(settings);
+//    	//---
+//    	
+//    	app.start();
+//	}
     
     public void setupModelMeshes() {
     	
@@ -249,9 +249,19 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	@Override // referring to Geometry as geometry.Geometry to avoid confusing it with jMonkey Geometry
 	public void init(geometry.Geometry geometry, Appearance appearance, List<Animation> animations) { 	
 		
+		//--- This part removes the splash screen
+    	this.setShowSettings(false);
+    	AppSettings settings = new AppSettings(true);
+    	settings.setResolution(800, 600);
+    	settings.setBitsPerPixel(32);
+    	this.setSettings(settings);
+    	//---
+		
 		this.start();         
 		this.geometry = geometry;
-		this.appearance = appearance;		
+		this.appearance = appearance;
+		
+		
 	}
 	
 	@Override
