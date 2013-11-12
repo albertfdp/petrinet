@@ -152,7 +152,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		// insert XML parsing here
 		//
 		//
-    	
+    	/*
     	EList<GObject> gObjects = this.geometry.getGObjects();
 		for (GObject gObject:gObjects) {
 			if (gObject instanceof InputPoint) {
@@ -167,7 +167,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 			}
 						
 		}
-					
+		*/
 		// Temporary:
 		allSObjects.add(new SObject(new Vector2f(30, 10), new Vector2f(30, 30), new Vector2f(30, 50), false, "ID00", 2f)); // need to calculate the time of the animation based on the speed (in this case: 2f should be changed to something else)
 		allSObjects.add(new SObject(new Vector2f(30, 50), new Vector2f(10, 30), new Vector2f(30, 10), false, "ID01", 2f));
@@ -455,6 +455,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		else
 			hudText.setColor(ColorRGBA.Red);
 		
+		hudText.setText("" + engineState);
 		
 		// play waiting animations
 		if (engineState == State.PLAYING) {
