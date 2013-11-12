@@ -1,6 +1,5 @@
 package dk.dtu.se2.engine3d.jmonkey;
 
-
 import geometry.GObject;
 import geometry.InputPoint;
 import geometry.Line;
@@ -11,13 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
-
-
-
-
-
-
-
 
 import org.eclipse.emf.common.util.EList;
 
@@ -84,19 +76,19 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     
     public State engineState;
 	
-//    public static void main(String[] args){
-//    	JMonkeyEngine3D app = new JMonkeyEngine3D();
-//    	
-//    	//--- This part removes the splash screen
-//    	app.setShowSettings(false);
-//    	AppSettings settings = new AppSettings(true);
-//    	settings.setResolution(800, 600);
-//    	settings.setBitsPerPixel(32);
-//    	app.setSettings(settings);
-//    	//---
-//    	
-//    	app.start();
-//	}
+    public static void main(String[] args){
+    	JMonkeyEngine3D app = new JMonkeyEngine3D();
+    	
+    	//--- This part removes the splash screen
+    	app.setShowSettings(false);
+    	AppSettings settings = new AppSettings(true);
+    	settings.setResolution(800, 600);
+    	settings.setBitsPerPixel(32);
+    	app.setSettings(settings);
+    	//---
+    	
+    	app.start();
+	}
     
     public void setupModelMeshes() {
     	
@@ -161,7 +153,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		//
 		//
     	
-    	EList<GObject> gObjects = this.geometry.getGObject();
+    	EList<GObject> gObjects = this.geometry.getGObjects();
 		for (GObject gObject:gObjects) {
 			if (gObject instanceof InputPoint) {
 				
@@ -219,7 +211,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 			path.addWayPoint(new Vector3f(allSObjects.get(index).getEnd().x,   0f, allSObjects.get(index).getEnd().y));
 
 			path.setPathSplineType(SplineType.CatmullRom);
-			path.setCurveTension(1f);        
+			path.setCurveTension(0);        
 			path.enableDebugShape(assetManager, rootNode); // AP: this is to make the path visible
 			
 			MotionEvent event = new MotionEvent(allTokens.get(index), path, allSObjects.get(index).getSpeed(), LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (dont loop).
@@ -250,7 +242,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     			text.setColor(ColorRGBA.White);
     		else
     			text.setColor(ColorRGBA.DarkGray);
-    		text.setLocalTranslation(450, text.getLineHeight() * (index+10), 0);
+    		text.setLocalTranslation(600, text.getLineHeight() * (index+10), 0);
     		text.setText("This is text field " + Integer.toString(index));
 
     		messageToPetriNet.add(text);
@@ -313,8 +305,9 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		hudText = new BitmapText(guiFont, false);          
 		hudText.setSize(guiFont.getCharSet().getRenderedSize());      // font size
 		hudText.setColor(ColorRGBA.White);                             // font color
-		hudText.setText("Play state: " + engineState);    // the text
-		hudText.setLocalTranslation(5, hudText.getLineHeight(), 0); // position
+		hudText.setText("" + engineState);  
+		hudText.setSize(25);
+		hudText.setLocalTranslation(350, 580, 0); // position
 		guiNode.attachChild(hudText);    	
 		    	
 		// AP: create ground with volume
@@ -453,8 +446,14 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 			timeSinceLastTrigger = 0;
 		}
 		
+		
 		// update play state HUD
-		hudText.setText("Press 'p' to play/pause, press 'r' to reset - " + engineState + " - time: " + timeElapsedSinceStart/1000);  
+		//hudText.setText("Press 'p' to play/pause, press 'r' to reset - " + engineState + " - time: " + timeElapsedSinceStart/1000);  
+		
+		if (engineState == State.PLAYING)
+			hudText.setColor(ColorRGBA.Green);
+		else
+			hudText.setColor(ColorRGBA.Red);
 		
 		
 		// play waiting animations
