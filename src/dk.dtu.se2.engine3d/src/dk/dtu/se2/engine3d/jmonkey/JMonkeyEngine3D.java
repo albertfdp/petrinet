@@ -1,6 +1,11 @@
 package dk.dtu.se2.engine3d.jmonkey;
 
 
+import geometry.GObject;
+import geometry.InputPoint;
+import geometry.Line;
+import geometry.Point;
+
 import java.io.Console;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +13,13 @@ import java.util.List;
 import java.util.Random;
 
 
+
+
+
+
+
+
+import org.eclipse.emf.common.util.EList;
 
 import com.jme3.animation.LoopMode;
 import com.jme3.app.SimpleApplication;
@@ -148,7 +160,22 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		// insert XML parsing here
 		//
 		//
-		
+    	
+    	EList<GObject> gObjects = this.geometry.getGObject();
+		for (GObject gObject:gObjects) {
+			if (gObject instanceof InputPoint) {
+				
+			}
+				
+			else if(gObject instanceof Line) {
+				Point start = ((Line) gObject).getBegin();
+				start.getXLocation();
+				start.getYLocation();
+				
+			}
+						
+		}
+					
 		// Temporary:
 		allSObjects.add(new SObject(new Vector2f(30, 10), new Vector2f(30, 30), new Vector2f(30, 50), false, "ID00", 2f)); // need to calculate the time of the animation based on the speed (in this case: 2f should be changed to something else)
 		allSObjects.add(new SObject(new Vector2f(30, 50), new Vector2f(10, 30), new Vector2f(30, 10), false, "ID01", 2f));
@@ -261,7 +288,6 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		this.geometry = geometry;
 		this.appearance = appearance;
 		
-		
 	}
 	
 	@Override
@@ -297,8 +323,8 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		float groundDepthZ  = 30;
 		groundGeo = new Geometry("Box", new Box(groundWidthX, groundHeightY, groundDepthZ)); 
 		Material groundMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-		Texture groundTex = assetManager.loadTexture("SE2_ground.jpg"); 
-		groundMat.setTexture("ColorMap", groundTex);
+//		Texture groundTex = assetManager.loadTexture("SE2_ground.jpg"); 
+//		groundMat.setTexture("ColorMap", groundTex);
 		groundGeo.setMaterial(groundMat);
 		groundGeo.setLocalTranslation(groundWidthX, (-groundHeightY)-0.1f, groundDepthZ);
 		        
