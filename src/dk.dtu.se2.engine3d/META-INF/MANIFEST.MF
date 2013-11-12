@@ -4,9 +4,9 @@ Bundle-Name: 3dengine
 Bundle-SymbolicName: dk.dtu.se2.engine3d;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Require-Bundle: dk.dtu.se2.geometry;bundle-version="1.0.0",
- jMonkeyEclipse,
+Require-Bundle: jMonkeyEclipse,
  dk.dtu.se2.animation;bundle-version="0.1.0",
- dk.dtu.se2.appearance;bundle-version="1.0.0"
+ dk.dtu.se2.appearance;bundle-version="1.0.0",
+ dk.dtu.se2.geometry;bundle-version="0.1.0"
 Export-Package: dk.dtu.se2.engine3d,
  dk.dtu.se2.engine3d.jmonkey
