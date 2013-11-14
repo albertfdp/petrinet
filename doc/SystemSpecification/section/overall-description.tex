@@ -103,8 +103,27 @@ Figures \ref{fig:example_petrinet} and \ref{fig:example_petrinet_geometry} show 
 
 \newpage
 
-\subsection{General product overview \& use}
+\subsection{Basic functionality}
+This software allows the engineers to create a Petri net 3D Visualization using a combination of the different editors built for this project.
+The files created with each of the following editors are to be combined using the configuration editor: \newline
+Petri net editor, Geometry editor, Appearance editor. 
 
+In order to launch a simulation, an user should perform the following actions:
+
+\begin{itemize}
+  \item Create a Petri net model using the \textbf{Petri net Editor}. This editor is used to configure the Petri net.
+  \item Create a Geometry model using the \textbf{Geometry editor}. This editor is used to map objects from the Petri net model to a corresponding Geometry. Geometries include informations about positions/paths in the 3D space. They may also keep a reference to an Appearance to define their texture and shape.
+  \item Create an Appearance file using the \textbf{Appearance editor}. This editor is used to link appearance labels to 3D models. A label corresponds to a specific 3D model file. 
+\end{itemize}
+
+Once these three models have been created, the \textbf{Configuration editor} is used by the user to connect every model file previously created in order to be able to start a Simulation. 
+To run the simulation, a specific "Run" button is added to the Configuration editor, which starts the Simulator.
+\newline
+
+The simulator then initializes the \textbf{3D Engine} with all the informations needed for the visualization. The 3D Engine then relies on the simulator to know which next move it should perform on the Petri net. \newline
+To interact with the simulation, the user can either click or press certain keyboard buttons in the GUI for the visualization or click on some elements in the 3D visualization.
+
+\subsection{General product overview and use}
 The overall description is a brief introduction to how our software is designed. For this purpose, it contains a description of the actors involved in its use, and also a description of how the software works. \newline
 
 The following persons are all actors of our software:
@@ -134,12 +153,12 @@ The software is built around three different concepts:
 	It receives input from the Petri net simulator, and also communicates to the simulator when a user performs a certain type of action. \newline
 	For example: the user clicks on a specific Place of the Petri net, this triggers a message from the 3D Engine to the Petri net simulator 
 \end{itemize}
-\newpage
+
 Figure \ref{fig:system_diagram}. shows the different components of our system and their connections.
 
 \begin{figure}[htp]
 \begin{center}
-  \includegraphics[width=0.6\textwidth]{image/system_design.png}
+  \includegraphics[width=0.8\textwidth]{image/system_design.png}
   \caption{System design}
   \label{fig:system_diagram}
 \end{center}
@@ -156,36 +175,13 @@ Regarding \textbf{Petri nets}:
   \item \textbf{Animation label}: An animation label describes the event happening on a place when a token is present.
 Animation labels refer to either movement actions or trigger actions.\end{itemize}
 
-A \textbf{Geometry} allows user to specify details about the 3D Space in which the Petri net is going to be rendered. It must present informations about the positions of the objects in the space but also informations about their looks.
+A \textbf{Geometry} allows the user to specify details about the 3D Space, in which the Petri net is going to be rendered. It must present informations about the positions of the objects but also informations about their looks. For example when the user creates a line in the geometry editor, the line will have the same position in the 3D simulation.
 
 \begin{itemize}
-  \item \textbf{Appearance Label}: An appearance label maps a Geometry to a 3D model. One can find informations about appearances by reading further in this section.
-  \item \textbf{A position}: The position of a geometry is deduced by the relative positions of the geometry objects in the editor. 
+  \item \textbf{Appearance Label}: An appearance label gives the Geometry object a label that provides information about the appearance of the object in the 3D simulation. The label is used to specify which 3D object should represent the Geometry object. One can find informations about appearances by reading further in this section.
 \end{itemize}
 
 Finally, an \textbf{Appearance} file maps \textbf{Appearance Labels} to \textbf{3D models}.
 To this end, each appearance label used by a Geometry corresponds to a file on the file system. The file is expected to be a 3D model.
-
-\subsection{Basic functionality}
-
-
-This software allows the engineers to create a Petri net 3D Visualization using a combination of the different editors built for this project.
-The files created with each of the following editors are to be combined using the configuration editor: \newline
-Petri net editor, Geometry editor, Appearance editor. 
-
-In order to launch a simulation, an user should perform the following actions:
-
-\begin{itemize}
-  \item Create a Petri net model using the \textbf{Petri net Editor}. This editor is used to configure the Petri net.
-  \item Create a Geometry model using the \textbf{Geometry editor}. This editor is used to map objects from the Petri net model to a corresponding Geometry. Geometries include informations about positions/paths in the 3D space. They may also keep a reference to an Appearance to define their texture and shape.
-  \item Create an Appearance file using the \textbf{Appearance editor}. This editor is used to link appearance labels to 3D models. A label corresponds to a specific 3D model file. 
-\end{itemize}
-
-Once these three models have been created, the \textbf{Configuration editor} is used by the user to connect every model file previously created in order to be able to start a Simulation. 
-To run the simulation, a specific "Run" button is added to the Configuration editor, which loads the Simulator.
-\newline
-
-The simulator then initializes the \textbf{3D Engine} with all the informations needed for the visualization. The 3D Engine then relies on the simulator to know which next move it should perform on the Petri net. \newline
-To interact with the simulation, the user can either click or press certain keyboard buttons in the GUI for the visualization. \newline
 
 \newpage
