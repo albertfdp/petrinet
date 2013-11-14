@@ -4,7 +4,6 @@ import geometry.diagram.edit.parts.ConnectorEditPart;
 import geometry.diagram.edit.parts.GeometryEditPart;
 import geometry.diagram.edit.parts.InputPointEditPart;
 import geometry.diagram.edit.parts.LineEditPart;
-import geometry.diagram.edit.parts.LineBendpointEditPart;
 import geometry.diagram.part.GeometryVisualIDRegistry;
 
 import java.util.ArrayList;

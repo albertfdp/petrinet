@@ -41,6 +41,7 @@ import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.appearance.Appearance;
 import dk.dtu.se2.engine3d.Engine3D;
 import dk.dtu.se2.engine3d.Engine3DListener;
+import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
 public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 
@@ -266,7 +267,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	}
 	
 	@Override // referring to Geometry as geometry.Geometry to avoid confusing it with jMonkey Geometry
-	public void init(geometry.Geometry geometry, Appearance appearance, List<Animation> animations) { 	
+	public void init(geometry.Geometry geometry, Appearance appearance, List<RTAnimation> animations) { 	
 		
 		//--- This part removes the splash screen
     	this.setShowSettings(false);

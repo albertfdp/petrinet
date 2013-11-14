@@ -10,6 +10,7 @@ import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
 import org.pnml.tools.epnk.pnmlcoremodel.Transition;
 
 import dk.dtu.se2.petrinet.Place;
+import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 import dk.dtu.se2.simulator.petrinet.runtime.RTToken;
 
 /**
@@ -28,10 +29,10 @@ public class PetriNetEngine {
 	 * @param petrinet : The Petri net page
 	 * @return A list of geometry label of places to animate in the 3D Engine
 	 */
-	public ArrayList<String> init (PetriNetDoc petrinet) {
+	public ArrayList<RTAnimation> init (PetriNetDoc petrinet) {
 		
 		Iterator<Object> iterator = petrinet.getNet().get(0).getPage().get(0).getObject().iterator();
-		ArrayList<String> animations = new ArrayList<String>();
+		ArrayList<RTAnimation> animations = new ArrayList<RTAnimation>();
 		
 		while (iterator.hasNext()) {
 			//Iterate through all the objects in the Petri net
@@ -48,7 +49,7 @@ public class PetriNetEngine {
 				for (int i = 0; i < newPlace.getTokens().size(); i++) {
 					RTToken runtimeToken = new RTToken();
 					tokens.add(runtimeToken);
-					animations.add(newPlace.getGeometryLabel().getText());
+					animations.add(new RTAnimation(newPlace.getId(), newPlace.getGeometryLabel().getText(), newPlace.getAnimationLabel().getStructure()));
 				}
 				marking.put(newPlace, tokens);
 			}
@@ -61,14 +62,14 @@ public class PetriNetEngine {
 	 * Fires all the possible transitions in the petri net
 	 * @return A list of the geometry labels of places to animate
 	 */
-	public ArrayList<String> fireTransitions() {
-		ArrayList<String> animations = new ArrayList<String>();
+	public ArrayList<RTAnimation> fireTransitions() {
+		ArrayList<RTAnimation> animations = new ArrayList<RTAnimation>();
 		
 		//Iterate through each transition
 		for (Transition transition : transitions) {
 			if (isTransitionEnabled(transition)) {
 				//The transition is enabled, fire it and get its labels
-				ArrayList<String> newAnimations = fireTransition(transition);
+				ArrayList<RTAnimation> newAnimations = fireTransition(transition);
 				animations.addAll(newAnimations);
 			}
 		}
@@ -108,8 +109,8 @@ public class PetriNetEngine {
 	 * @param transition The transition to be fired
 	 * @return A list of geometry labels corresponding to the places to animate 
 	 */
-	private ArrayList<String> fireTransition(Transition transition) {
-		ArrayList<String> transitionAnimations = new ArrayList<String>();
+	private ArrayList<RTAnimation> fireTransition(Transition transition) {
+		ArrayList<RTAnimation> transitionAnimations = new ArrayList<RTAnimation>();
 		//Iterate through each incoming place and remove ONE finished token.
 		for (Arc arc: transition.getIn()) {
 			if (arc.getSource() instanceof Place) {
@@ -129,7 +130,7 @@ public class PetriNetEngine {
 				Place place = (Place)arc.getTarget();
 				RTToken newToken = new RTToken();
 				marking.get(place).add(newToken);
-				transitionAnimations.add(place.getGeometryLabel().getText());
+				transitionAnimations.add(new RTAnimation(place.getId(), place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure()));
 			}
 		}
 		

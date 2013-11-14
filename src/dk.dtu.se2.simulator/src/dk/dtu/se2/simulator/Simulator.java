@@ -1,18 +1,19 @@
 package dk.dtu.se2.simulator;
 
 
+import geometry.Geometry;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
 
-import geometry.Geometry;
 import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.appearance.Appearance;
-import dk.dtu.se2.engine3d.Engine3D;
 import dk.dtu.se2.engine3d.Engine3DListener;
 import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine3D;
 import dk.dtu.se2.simulator.petrinet.PetriNetEngine;
+import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
 
 public class Simulator implements Engine3DListener {
@@ -23,8 +24,8 @@ public class Simulator implements Engine3DListener {
 	
 	private PetriNetEngine petrinetEngine;
 	
-	Engine3D engine;
-	
+	private List<RTAnimation> nextAnimations;
+		
 	public Simulator (PetriNetDoc petrinet, Geometry geometry, Appearance appearance) {
 		
 		this.petrinet = petrinet;
@@ -38,12 +39,10 @@ public class Simulator implements Engine3DListener {
 	@Override
 	public void onStart() {
 		
-		this.petrinetEngine.init(petrinet);
-		
-		List<Animation> animations = new ArrayList<Animation>();
+		this.nextAnimations = this.petrinetEngine.init(petrinet);
 		
 		JMonkeyEngine3D jmon = new JMonkeyEngine3D();
-		jmon.init(geometry, appearance, animations);
+		jmon.init(geometry, appearance, nextAnimations);
 	}
 
 
