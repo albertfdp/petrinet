@@ -41,20 +41,10 @@
 
    <extension point="org.eclipse.ui.newWizards" id="creation-wizard">
       <?gmfgen generated="true"?>
-      <category 
-        id="root_category" 
-        name="PetriNet Simulator"> 
-      </category>
-      <!-- FIRST SUB CATEGORY -->   
-      <category 
-        id="first_sub_category"
-        name="First Sub Category"
-        parentCategory="root_category"> 
-      </category>   
   	  <wizard
   	     name="%newWizardName"
   	     icon="icons/obj16/GeometryDiagramFile.gif"
-  	     category="root_category/first_sub_category"
+  	     category="org.eclipse.ui.Examples"
   	     class="geometry.diagram.part.GeometryCreationWizard"
   	     id="geometry.diagram.part.GeometryCreationWizardID">
   	  	 <description>%newWizardDesc</description>  

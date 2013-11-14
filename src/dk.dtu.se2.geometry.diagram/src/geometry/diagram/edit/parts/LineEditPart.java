@@ -3,6 +3,9 @@ package geometry.diagram.edit.parts;
 import geometry.diagram.edit.policies.LineItemSemanticEditPolicy;
 
 import org.eclipse.draw2d.Connection;
+import org.eclipse.draw2d.PolygonDecoration;
+import org.eclipse.draw2d.RotatableDecoration;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITreeBranchEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
@@ -32,7 +35,8 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new LineItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
+				new LineItemSemanticEditPolicy());
 	}
 
 	/**
@@ -44,15 +48,44 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	 * @generated
 	 */
 	protected Connection createConnectionFigure() {
-		return new PolylineConnectionEx();
+		return new LineFigure();
 	}
 
 	/**
 	 * @generated
 	 */
-	public PolylineConnectionEx getPrimaryShape() {
-		return (PolylineConnectionEx) getFigure();
+	public LineFigure getPrimaryShape() {
+		return (LineFigure) getFigure();
 	}
 
-	
+	/**
+	 * @generated
+	 */
+	public class LineFigure extends PolylineConnectionEx {
+
+		/**
+		 * @generated
+		 */
+		public LineFigure() {
+
+			setTargetDecoration(createTargetDecoration());
+		}
+
+		/**
+		 * @generated NOT
+		 */
+		private RotatableDecoration createTargetDecoration() {
+			PolygonDecoration df = new PolygonDecoration();
+			df.setFill(true);
+			PointList pl = new PointList();
+			pl.addPoint(getMapMode().DPtoLP(-2), getMapMode().DPtoLP(-1));
+			pl.addPoint(getMapMode().DPtoLP(0), getMapMode().DPtoLP(0));
+			pl.addPoint(getMapMode().DPtoLP(-2), getMapMode().DPtoLP(1));
+			df.setTemplate(pl);
+			df.setScale(getMapMode().DPtoLP(7), getMapMode().DPtoLP(3));
+			return df;
+		}
+
+	}
+
 }

@@ -11,7 +11,20 @@
         name="LineFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
-          name="LineFigure"/>
+          name="LineFigure"
+          targetDecoration="//@figures.0/@descriptors.0/@actualFigure/@children.0">
+        <children
+            xsi:type="gmfgraph:PolygonDecoration"
+            name="targetDecoration">
+          <template
+              x="-6"
+              y="-4"/>
+          <template/>
+          <template
+              x="-6"
+              y="4"/>
+        </children>
+      </actualFigure>
     </descriptors>
     <descriptors
         name="ConnectorFigure">
