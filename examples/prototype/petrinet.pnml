@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pnml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:animation="http://animation/1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net type="ExtendedPetriNet">
+    <page>
+      <toolspecific tool="org.pnml.tools.epnk.diagraminfo" version="0.9.2">
+        <diagram visible="true" type="PNMLCoreModel" element="//@net.0/@page.0" name="Page null" measurementUnit="Pixel">
+          <children xsi:type="notation:Shape" visible="true" type="2001" element="P1" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false" description="" fillColor="16777215" transparency="-1" lineColor="11579568" lineWidth="-1" roundedBendpointsRadius="0">
+            <layoutConstraint xsi:type="notation:Bounds" x="600" y="78" width="-1" height="-1"/>
+          </children>
+          <children xsi:type="notation:Shape" visible="true" type="2001" element="P2" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false" description="" fillColor="16777215" transparency="-1" lineColor="11579568" lineWidth="-1" roundedBendpointsRadius="0">
+            <layoutConstraint xsi:type="notation:Bounds" x="612" y="282" width="-1" height="-1"/>
+          </children>
+          <children xsi:type="notation:Shape" visible="true" type="2003" element="//@net.0/@page.0/@object.2" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false" description="" fillColor="16777215" transparency="-1" lineColor="11579568" lineWidth="-1" roundedBendpointsRadius="0">
+            <layoutConstraint xsi:type="notation:Bounds" x="732" y="200" width="-1" height="-1"/>
+          </children>
+          <children xsi:type="notation:Shape" visible="true" type="2003" element="//@net.0/@page.0/@object.3" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false" description="" fillColor="16777215" transparency="-1" lineColor="11579568" lineWidth="-1" roundedBendpointsRadius="0">
+            <layoutConstraint xsi:type="notation:Bounds" x="476" y="193" width="-1" height="-1"/>
+          </children>
+          <children visible="true" type="2009" element="//@net.0/@page.0/@labelproxy.0">
+            <children xsi:type="notation:DecorationNode" visible="true" type="5004"/>
+            <styles xsi:type="notation:DescriptionStyle" description=""/>
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <styles xsi:type="notation:FillStyle" fillColor="16777215" transparency="-1"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="698" y="68" width="-1" height="-1"/>
+          </children>
+          <children visible="true" type="2009" element="//@net.0/@page.0/@labelproxy.1">
+            <children xsi:type="notation:DecorationNode" visible="true" type="5004"/>
+            <styles xsi:type="notation:DescriptionStyle" description=""/>
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <styles xsi:type="notation:FillStyle" fillColor="16777215" transparency="-1"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="775" y="300" width="-1" height="-1"/>
+          </children>
+          <children visible="true" type="2009" element="//@net.0/@page.0/@labelproxy.2">
+            <children xsi:type="notation:DecorationNode" visible="true" type="5004"/>
+            <styles xsi:type="notation:DescriptionStyle" description=""/>
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <styles xsi:type="notation:FillStyle" fillColor="16777215" transparency="-1"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="639" y="17" width="-1" height="-1"/>
+          </children>
+          <children visible="true" type="2009" element="//@net.0/@page.0/@labelproxy.3">
+            <children xsi:type="notation:DecorationNode" visible="true" type="5004"/>
+            <styles xsi:type="notation:DescriptionStyle" description=""/>
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <styles xsi:type="notation:FillStyle" fillColor="16777215" transparency="-1"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="659" y="360" width="-1" height="-1"/>
+          </children>
+          <children visible="true" type="2009" element="//@net.0/@page.0/@labelproxy.4">
+            <children xsi:type="notation:DecorationNode" visible="true" type="5004"/>
+            <styles xsi:type="notation:DescriptionStyle" description=""/>
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <styles xsi:type="notation:FillStyle" fillColor="16777215" transparency="-1"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="430" y="35" width="-1" height="-1"/>
+          </children>
+          <children visible="true" type="2009" element="//@net.0/@page.0/@labelproxy.5">
+            <children xsi:type="notation:DecorationNode" visible="true" type="5004"/>
+            <styles xsi:type="notation:DescriptionStyle" description=""/>
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <styles xsi:type="notation:FillStyle" fillColor="16777215" transparency="-1"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="564" y="359" width="-1" height="-1"/>
+          </children>
+          <styles xsi:type="notation:DiagramStyle" pageX="0" pageY="0" pageWidth="100" pageHeight="100" description=""/>
+          <edges xsi:type="notation:Connector" visible="true" type="4001" element="//@net.0/@page.0/@object.4" source="//@net.0/@page.0/@toolspecific.0/@diagram/@children.0" target="//@net.0/@page.0/@toolspecific.0/@diagram/@children.2" roundedBendpointsRadius="0" routing="Manual" smoothness="None" avoidObstructions="false" closestDistance="false" jumpLinkStatus="None" jumpLinkType="Semicircle" jumpLinksReverse="false" lineColor="11579568" lineWidth="-1">
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <bendpoints xsi:type="notation:RelativeBendpoints" points="[14, 13, -118, -109]$[128, 102, -4, -20]"/>
+          </edges>
+          <edges xsi:type="notation:Connector" visible="true" type="4001" element="//@net.0/@page.0/@object.5" source="//@net.0/@page.0/@toolspecific.0/@diagram/@children.2" target="//@net.0/@page.0/@toolspecific.0/@diagram/@children.1" roundedBendpointsRadius="0" routing="Manual" smoothness="None" avoidObstructions="false" closestDistance="false" jumpLinkStatus="None" jumpLinkType="Semicircle" jumpLinksReverse="false" lineColor="11579568" lineWidth="-1">
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <bendpoints xsi:type="notation:RelativeBendpoints" points="[-20, 14, 100, -68]$[-124, 101, -4, 19]"/>
+          </edges>
+          <edges xsi:type="notation:Connector" visible="true" type="4001" element="//@net.0/@page.0/@object.6" source="//@net.0/@page.0/@toolspecific.0/@diagram/@children.1" target="//@net.0/@page.0/@toolspecific.0/@diagram/@children.3" roundedBendpointsRadius="0" routing="Manual" smoothness="None" avoidObstructions="false" closestDistance="false" jumpLinkStatus="None" jumpLinkType="Semicircle" jumpLinksReverse="false" lineColor="11579568" lineWidth="-1">
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <bendpoints xsi:type="notation:RelativeBendpoints" points="[-17, -11, 119, 78]$[-143, -109, -7, -20]"/>
+          </edges>
+          <edges xsi:type="notation:Connector" visible="true" type="4001" element="//@net.0/@page.0/@object.7" source="//@net.0/@page.0/@toolspecific.0/@diagram/@children.3" target="//@net.0/@page.0/@toolspecific.0/@diagram/@children.0" roundedBendpointsRadius="0" routing="Manual" smoothness="None" avoidObstructions="false" closestDistance="false" jumpLinkStatus="None" jumpLinkType="Semicircle" jumpLinksReverse="false" lineColor="11579568" lineWidth="-1">
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <bendpoints xsi:type="notation:RelativeBendpoints" points="[20, -20, -104, 95]$[126, -135, 2, -20]"/>
+          </edges>
+          <edges xsi:type="notation:Connector" visible="true" type="4004" source="//@net.0/@page.0/@toolspecific.0/@diagram/@children.4" target="//@net.0/@page.0/@toolspecific.0/@diagram/@children.0" roundedBendpointsRadius="0" routing="Manual" smoothness="None" avoidObstructions="false" closestDistance="false" jumpLinkStatus="None" jumpLinkType="Semicircle" jumpLinksReverse="false" lineColor="11579568" lineWidth="-1">
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <element xsi:nil="true"/>
+            <bendpoints xsi:type="notation:RelativeBendpoints" points="[-116, -1, 78, -16]$[-197, -5, -3, -20]"/>
+            <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.8721804511278195,1.0)"/>
+          </edges>
+          <edges xsi:type="notation:Connector" visible="true" type="4004" source="//@net.0/@page.0/@toolspecific.0/@diagram/@children.5" target="//@net.0/@page.0/@toolspecific.0/@diagram/@children.1" roundedBendpointsRadius="0" routing="Manual" smoothness="None" avoidObstructions="false" closestDistance="false" jumpLinkStatus="None" jumpLinkType="Semicircle" jumpLinksReverse="false" lineColor="11579568" lineWidth="-1">
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <element xsi:nil="true"/>
+            <bendpoints xsi:type="notation:RelativeBendpoints" points="[-45, -15, 71, 26]$[-136, -41, -20, 0]"/>
+            <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.42857142857142855,1.0)"/>
+          </edges>
+          <edges xsi:type="notation:Connector" visible="true" type="4004" source="//@net.0/@page.0/@toolspecific.0/@diagram/@children.6" target="//@net.0/@page.0/@toolspecific.0/@diagram/@children.0" roundedBendpointsRadius="0" routing="Manual" smoothness="None" avoidObstructions="false" closestDistance="false" jumpLinkStatus="None" jumpLinkType="Semicircle" jumpLinksReverse="false" lineColor="11579568" lineWidth="-1">
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <element xsi:nil="true"/>
+            <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 0, 56, -66]$[-36, 66, 20, 0]"/>
+            <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.2781954887218045,1.0)"/>
+          </edges>
+          <edges xsi:type="notation:Connector" visible="true" type="4004" source="//@net.0/@page.0/@toolspecific.0/@diagram/@children.7" target="//@net.0/@page.0/@toolspecific.0/@diagram/@children.1" roundedBendpointsRadius="0" routing="Manual" smoothness="None" avoidObstructions="false" closestDistance="false" jumpLinkStatus="None" jumpLinkType="Semicircle" jumpLinksReverse="false" lineColor="11579568" lineWidth="-1">
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <element xsi:nil="true"/>
+            <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 0, 72, 58]$[-77, -78, -5, -20]"/>
+            <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.3383458646616541,0.0)"/>
+          </edges>
+          <edges xsi:type="notation:Connector" visible="true" type="4004" source="//@net.0/@page.0/@toolspecific.0/@diagram/@children.8" target="//@net.0/@page.0/@toolspecific.0/@diagram/@children.0" roundedBendpointsRadius="0" routing="Manual" smoothness="None" avoidObstructions="false" closestDistance="false" jumpLinkStatus="None" jumpLinkType="Semicircle" jumpLinksReverse="false" lineColor="11579568" lineWidth="-1">
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <element xsi:nil="true"/>
+            <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 0, -115, -48]$[111, 28, -4, -20]"/>
+            <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5639097744360902,1.0)"/>
+          </edges>
+          <edges xsi:type="notation:Connector" visible="true" type="4004" source="//@net.0/@page.0/@toolspecific.0/@diagram/@children.9" target="//@net.0/@page.0/@toolspecific.0/@diagram/@children.1" roundedBendpointsRadius="0" routing="Manual" smoothness="None" avoidObstructions="false" closestDistance="false" jumpLinkStatus="None" jumpLinkType="Semicircle" jumpLinksReverse="false" lineColor="11579568" lineWidth="-1">
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Lucida Grande" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <element xsi:nil="true"/>
+            <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 0, -22, 57]$[2, -57, -20, 0]"/>
+            <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.3458646616541353,0.0)"/>
+          </edges>
+        </diagram>
+        <labelProxy label="//@net.0/@page.0/@object.0/@geometryLabel"/>
+        <labelProxy label="//@net.0/@page.0/@object.1/@geometryLabel"/>
+        <labelProxy label="//@net.0/@page.0/@object.0/@animationLabel"/>
+        <labelProxy label="//@net.0/@page.0/@object.1/@animationLabel"/>
+        <labelProxy label="//@net.0/@page.0/@object.0/@appearanceLabel"/>
+        <labelProxy label="//@net.0/@page.0/@object.1/@appearanceLabel"/>
+      </toolspecific>
+      <place id="P1">
+        <graphics>
+          <position x="620.0" y="98.0"/>
+          <dimension x="40.0" y="40.0"/>
+          <line shape="line" color="#b0b0b0" width="1.0"/>
+          <fill color="#ffffff"/>
+        </graphics>
+        <geometryLabel>
+          <graphics>
+            <offset x="78.0" y="-30.0"/>
+          </graphics>
+          <text>L1</text>
+        </geometryLabel>
+        <animationLabel>
+          <graphics>
+            <offset x="19.0" y="-81.0"/>
+          </graphics>
+          <structure xsi:type="animation:Move" speed="1"/>
+          <text>move(1)</text>
+        </animationLabel>
+        <appearanceLabel>
+          <graphics>
+            <offset x="-190.0" y="-63.0"/>
+          </graphics>
+          <text>railroad</text>
+        </appearanceLabel>
+        <tokens>
+          <text>T1</text>
+        </tokens>
+      </place>
+      <place id="P2">
+        <graphics>
+          <position x="632.0" y="302.0"/>
+          <dimension x="40.0" y="40.0"/>
+          <line shape="line" color="#b0b0b0" width="1.0"/>
+          <fill color="#ffffff"/>
+        </graphics>
+        <geometryLabel>
+          <graphics>
+            <offset x="143.0" y="-2.0"/>
+          </graphics>
+          <text>L2</text>
+        </geometryLabel>
+        <animationLabel>
+          <graphics>
+            <offset x="27.0" y="58.0"/>
+          </graphics>
+          <structure xsi:type="animation:Move" speed="1"/>
+          <text>move(1)</text>
+        </animationLabel>
+        <appearanceLabel>
+          <graphics>
+            <offset x="-68.0" y="57.0"/>
+          </graphics>
+          <text>railroad</text>
+        </appearanceLabel>
+        <inputPlaceLabel/>
+      </place>
+      <transition>
+        <graphics>
+          <position x="752.0" y="220.0"/>
+          <dimension x="40.0" y="40.0"/>
+          <line shape="line" color="#b0b0b0" width="1.0"/>
+          <fill color="#ffffff"/>
+        </graphics>
+      </transition>
+      <transition>
+        <graphics>
+          <position x="496.0" y="213.0"/>
+          <dimension x="40.0" y="40.0"/>
+          <line shape="line" color="#b0b0b0" width="1.0"/>
+          <fill color="#ffffff"/>
+        </graphics>
+      </transition>
+      <arc source="P1" target="//@net.0/@page.0/@object.2">
+        <graphics>
+          <line shape="line" color="#b0b0b0" width="1.0"/>
+          <position x="634.0" y="111.0"/>
+          <position x="748.0" y="200.0"/>
+        </graphics>
+      </arc>
+      <arc source="//@net.0/@page.0/@object.2" target="P2">
+        <graphics>
+          <line shape="line" color="#b0b0b0" width="1.0"/>
+          <position x="732.0" y="234.0"/>
+          <position x="628.0" y="321.0"/>
+        </graphics>
+      </arc>
+      <arc source="P2" target="//@net.0/@page.0/@object.3">
+        <graphics>
+          <line shape="line" color="#b0b0b0" width="1.0"/>
+          <position x="615.0" y="291.0"/>
+          <position x="489.0" y="193.0"/>
+        </graphics>
+      </arc>
+      <arc source="//@net.0/@page.0/@object.3" target="P1">
+        <graphics>
+          <line shape="line" color="#b0b0b0" width="1.0"/>
+          <position x="516.0" y="193.0"/>
+          <position x="622.0" y="78.0"/>
+        </graphics>
+      </arc>
+    </page>
+  </net>
+</pnml>
