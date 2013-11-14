@@ -24,6 +24,7 @@ import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
+import com.jme3.math.Quaternion;
 import com.jme3.math.Spline.SplineType;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
@@ -166,7 +167,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 				Point bendPoint = line.getBendPoint();
 				allSObjects.add(new SObject(new Vector2f(start.getXLocation(), start.getYLocation()), 
 						new Vector2f(bendPoint.getXLocation(), bendPoint.getYLocation()), new Vector2f(end.getXLocation(), end.getYLocation()), 
-						false, line.getLabel(), 2f)); // TODO: Change the speed
+						false, line.getLabel(), 3f)); // TODO: Change the speed
 			}
 						
 		}
@@ -179,7 +180,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		// Temporary:
 		for (int index = 0; index < allSObjects.size() ; index++) { // create the same number of tokens as there are SObjects
 		
-			Geometry token = new Geometry("Box", new Box(0.25f, 0.10f, 0.5f)); // create cube geometry from with box shape        
+			Geometry token = new Geometry("Box", new Box(3f, 2f, 7f)); // create cube geometry from with box shape        
 	
 			Texture tokenTex = assetManager.loadTexture("Interface/Logo/Monkey.jpg"); // create a texture
 			
@@ -209,7 +210,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 			path.addWayPoint(new Vector3f(allSObjects.get(index).getEnd().x,   0f, allSObjects.get(index).getEnd().y));
 
 			path.setPathSplineType(SplineType.CatmullRom);
-			path.setCurveTension(0);        
+			path.setCurveTension(0.5f);        
 			path.enableDebugShape(assetManager, rootNode); // AP: this is to make the path visible
 			
 			MotionEvent event = new MotionEvent(allTokens.get(index), path, allSObjects.get(index).getSpeed(), LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (dont loop).
@@ -247,18 +248,20 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     		guiNode.attachChild(text);
     	}
     	
-    	// AP: set up text field for displaying camera position
-    	for (int index = 0; index < 2; index++) {
+    	// AP: set up text field for displaying misc info
+    	for (int index = 0; index < 5; index++) {
 			   
     		BitmapText text = new BitmapText(guiFont, false);
     		text.setAlignment(Align.Left);
-    		text.setColor(ColorRGBA.Black);
-    		text.setLocalTranslation(200, text.getLineHeight() * (index+10), 0);
-    		text.setText("This is text field " + Integer.toString(index));
+    		text.setColor(ColorRGBA.White);
+    		text.setLocalTranslation(60, text.getLineHeight() * (index+26), 0);
+    		text.setText(" ");
 
     		infoText.add(text);
     		guiNode.attachChild(text);
     	}
+    	
+    	infoText.get(0).setText("Press 'p' to play & pause, press 'r' to reset - use '1' and '2' to add token animations to the queue");
 	}
     
 	@Override
@@ -297,8 +300,11 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	
 	public void updateCameraPosition() {
 		
-		infoText.get(0).setText("Cam height: " + cam.getHeight());
+		/*
+		infoText.get(0).setText("Cam location: " + cam.getLocation());
 		infoText.get(1).setText("Cam dir: " + cam.getDirection());
+		infoText.get(2).setText("Cam dir 2: " + cam.getRotation());
+		*/
 		
 		/*
 		int lowestX = ;
@@ -323,13 +329,18 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		// AP: set the background color
 		viewPort.setBackgroundColor(ColorRGBA.Gray);
 		// AP: disable camera fly - the ability to move the camera with keyboard and mouse
-		flyCam.setEnabled(true); 
+		flyCam.setEnabled(false); 
 		flyCam.setMoveSpeed(25);
 		// AP: set camera position (off center)
-		Vector3f camPos = new Vector3f(0, 90, 30);
+		//Vector3f camPos = new Vector3f(0, 90, 30);
+		Vector3f camPos = new Vector3f(387.2f, 290, 393.1f);
 		cam.setLocation(camPos);
 		// AP: make the camera look at the center
-		cam.lookAt(new Vector3f(30, 0, 30), cam.getUp());
+		//cam.lookAt(new Vector3f(30, 0, 30), cam.getUp());
+		//cam.lookAt(new Vector3f(0, -0.9f, -0.4f), cam.getUp());
+		Quaternion rotation = new Quaternion(0.001803f, 0.848513f, -0.529162f, 0.002892f);
+		cam.setRotation(rotation);
+		
 		// toggle statistics window in bottom left
 		setDisplayFps(false);
 		setDisplayStatView(false);
@@ -344,6 +355,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		guiNode.attachChild(hudText);    	
 		    	
 		// AP: create ground with volume
+		/*
 		float groundWidthX  = 30;
 		float groundHeightY = 1;
 		float groundDepthZ  = 30;
@@ -355,7 +367,8 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		groundGeo.setLocalTranslation(groundWidthX, (-groundHeightY)-0.1f, groundDepthZ);
 		        
 		rootNode.attachChild(groundGeo);
-		        
+		  */
+		
 		inputManager.addMapping("1",  new KeyTrigger(KeyInput.KEY_1));
 		inputManager.addMapping("2",  new KeyTrigger(KeyInput.KEY_2));
 		inputManager.addMapping("3",  new KeyTrigger(KeyInput.KEY_3));
@@ -456,11 +469,11 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	@Override 
     public void simpleUpdate(float tpf) {
 		
-		updateCameraPosition();
+		//updateCameraPosition();
     	
-		double timeElapsedSinceStart = System.currentTimeMillis() - timeAtSystemStart; // Time elapsed since program start. 
+		//double timeElapsedSinceStart = System.currentTimeMillis() - timeAtSystemStart; // Time elapsed since program start. 
 		
-		timeSinceLastTrigger += timeElapsedSinceStart - timeAtLastTrigger;
+		//timeSinceLastTrigger += timeElapsedSinceStart - timeAtLastTrigger;
 		
 //		// add a random motion event to the animation queue
 //		if ((timeElapsedSinceStart/1000)%5 == 0 && timeSinceLastTrigger/1000 > 0.1f) { // do this every 5 seconds
