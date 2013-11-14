@@ -32,8 +32,7 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new LineItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new LineItemSemanticEditPolicy());
 	}
 
 	/**
@@ -55,4 +54,5 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		return (PolylineConnectionEx) getFigure();
 	}
 
+	
 }

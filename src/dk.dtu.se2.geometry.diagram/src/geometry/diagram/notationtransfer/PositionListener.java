@@ -1,21 +1,10 @@
 package geometry.diagram.notationtransfer;
 
-import java.util.List;
-import java.util.ArrayList;
-
-import org.eclipse.draw2d.Connection;
-import org.eclipse.draw2d.geometry.PointList;
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EContentAdapter;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.NotificationFilter;
-import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
-import org.eclipse.gmf.runtime.notation.Bendpoints;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -26,21 +15,14 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
-import org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeRequest;
 
 import geometry.GeometryFactory;
-import geometry.GeometryPackage;
-import geometry.Line;
 import geometry.Point;
 import geometry.BendPoint;
-import geometry.Connector;
-import geometry.impl.PointImpl;
 import geometry.impl.InputPointImpl;
 import geometry.impl.ConnectorImpl;
 import geometry.impl.BendPointImpl;
 import geometry.impl.LineImpl;
-import geometry.diagram.edit.commands.BendPointCreateCommand;
-
 import org.eclipse.gmf.runtime.notation.impl.RelativeBendpointsImpl;
 
 
@@ -202,6 +184,7 @@ public class PositionListener extends EContentAdapter {
 		BendPoint bendPoint = GeometryFactory.eINSTANCE.createBendPoint();
 		bendPoint.setXLocation(x);
 		bendPoint.setYLocation(y);
+		bendPoint.setLabel(lineImpl.getLabel() + "_Bendpoint");
 		lineImpl.setBendPoint(bendPoint);
 		
 		return;
