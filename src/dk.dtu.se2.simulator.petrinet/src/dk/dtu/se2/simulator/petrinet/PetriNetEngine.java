@@ -20,7 +20,7 @@ import dk.dtu.se2.simulator.petrinet.runtime.RTToken;
  * @generated NOT
  */
 public class PetriNetEngine {
-	
+		
 	private HashMap<Place, ArrayList<RTToken>> marking = new HashMap<Place, ArrayList<RTToken>>();
 	private ArrayList<Transition> transitions = new ArrayList<Transition>();
 	
@@ -53,6 +53,23 @@ public class PetriNetEngine {
 				}
 				marking.put(newPlace, tokens);
 			}
+		}
+		
+		return animations;
+	}
+	
+	public ArrayList<RTAnimation> getAllPossibleAnimations(PetriNetDoc petrinet) {
+		ArrayList<RTAnimation> animations = new ArrayList<RTAnimation>();
+		
+		Iterator<Object> iterator = petrinet.getNet().get(0).getPage().get(0).getObject().iterator();
+		
+		while(iterator.hasNext()) {
+			Object item = iterator.next();
+			if (item instanceof Place) {
+				Place place = (Place) item;
+				animations.add(new RTAnimation(place.getId(), place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure()));
+			}
+			
 		}
 		
 		return animations;

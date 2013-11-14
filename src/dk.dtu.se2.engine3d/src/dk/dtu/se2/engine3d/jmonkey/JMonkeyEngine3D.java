@@ -5,7 +5,6 @@ import geometry.InputPoint;
 import geometry.Line;
 import geometry.Point;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
 
 import com.jme3.animation.LoopMode;
 import com.jme3.app.SimpleApplication;
-import com.jme3.bounding.BoundingVolume.Type;
 import com.jme3.cinematic.MotionPath;
 import com.jme3.cinematic.PlayState;
 import com.jme3.cinematic.events.MotionEvent;
@@ -32,10 +30,8 @@ import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.shape.Box;
-import com.jme3.scene.VertexBuffer;
 import com.jme3.system.AppSettings;
 import com.jme3.texture.Texture;
-import com.jme3.util.BufferUtils;
 
 import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.appearance.Appearance;
@@ -146,33 +142,32 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     	*/
     }
     
+    /**
+     * TODO
+     */
     public void setupSObjects() {
-		
-		// Take info from XML files and arrange it neatly into the allSObjects array
-		//
-		// insert XML parsing here
-		//
-		//
-    	/*
+    	
     	EList<GObject> gObjects = this.geometry.getGObjects();
 		for (GObject gObject:gObjects) {
 			if (gObject instanceof InputPoint) {
-				
+				InputPoint point = (InputPoint) gObject;
+				allSObjects.add(new SObject(new Vector2f(point.getXLocation(), point.getYLocation()), 
+						new Vector2f(point.getXLocation(), point.getYLocation()), 
+						new Vector2f(point.getXLocation(), point.getYLocation()), 
+						true, point.getLabel(), 0f)); // TODO: Handle InputPoint
 			}
 				
 			else if(gObject instanceof Line) {
-				Point start = ((Line) gObject).getBegin();
-				start.getXLocation();
-				start.getYLocation();
-				
+				Line line = (Line) gObject;
+				Point start = line.getBegin();
+				Point end = line.getEnd();
+				Point bendPoint = line.getBendPoint();
+				allSObjects.add(new SObject(new Vector2f(start.getXLocation(), start.getYLocation()), 
+						new Vector2f(bendPoint.getXLocation(), bendPoint.getYLocation()), new Vector2f(end.getXLocation(), end.getYLocation()), 
+						false, line.getLabel(), 2f)); // TODO: Change the speed
 			}
 						
 		}
-		*/
-		// Temporary:
-		allSObjects.add(new SObject(new Vector2f(30, 10), new Vector2f(30, 30), new Vector2f(30, 50), false, "ID00", 2f)); // need to calculate the time of the animation based on the speed (in this case: 2f should be changed to something else)
-		allSObjects.add(new SObject(new Vector2f(30, 50), new Vector2f(10, 30), new Vector2f(30, 10), false, "ID01", 2f));
-		allSObjects.add(new SObject(new Vector2f(30, 50), new Vector2f(50, 30), new Vector2f(30, 10), false, "ID02", 2f));
 	}
 	
 	public void setupTokens() { // happens in the engine, gets information from the simulator (from the configuration file)
@@ -252,12 +247,13 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	}
     
 	@Override
-	public void addToAnimationQueue(String ID) {
+	public void addToAnimationQueue(List<RTAnimation> animations) {
 		
-		for (SObject object : allSObjects) {
-			
-			if (object.getName() == ID) {
-				animationQueue.add(allSObjects.indexOf(object));
+		for (RTAnimation animation : animations) {
+			for (SObject object : allSObjects) {
+				if (object.getName().equals(animation.getGeometryLabel())) {
+					animationQueue.add(allSObjects.indexOf(object)); // TODO: Change to object
+				}
 			}
 		}
 	}
@@ -280,6 +276,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		this.start();         
 		this.geometry = geometry;
 		this.appearance = appearance;
+		
 		
 	}
 	
@@ -426,29 +423,27 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     	
 		double timeElapsedSinceStart = System.currentTimeMillis() - timeAtSystemStart; // Time elapsed since program start. 
 		
-		
-		/*
 		timeSinceLastTrigger += timeElapsedSinceStart - timeAtLastTrigger;
 		
-		// add a random motion event to the animation queue
-		if ((timeElapsedSinceStart/1000)%5 == 0 && timeSinceLastTrigger/1000 > 0.1f) { // do this every 5 seconds
-			
-			int randomNum = rand.nextInt(3);
-			
-			if (randomNum == 0) {
-				addToAnimationQueue("ID00");
-			}
-			if (randomNum == 1) {
-				addToAnimationQueue("ID01");
-			}
-			if (randomNum == 2) {
-				addToAnimationQueue("ID02");
-			}
-			
-			timeAtLastTrigger = timeElapsedSinceStart; // we need to ensure that some time has passed before running this function again, otherwise we might get (time%5 == 0) true several times in a row.
-			timeSinceLastTrigger = 0;
-		}
-		*/
+//		// add a random motion event to the animation queue
+//		if ((timeElapsedSinceStart/1000)%5 == 0 && timeSinceLastTrigger/1000 > 0.1f) { // do this every 5 seconds
+//			
+//			int randomNum = rand.nextInt(3);
+//			
+//			if (randomNum == 0) {
+//				addToAnimationQueue("ID00");
+//			}
+//			if (randomNum == 1) {
+//				addToAnimationQueue("ID01");
+//			}
+//			if (randomNum == 2) {
+//				addToAnimationQueue("ID02");
+//			}
+//			
+//			timeAtLastTrigger = timeElapsedSinceStart; // we need to ensure that some time has passed before running this function again, otherwise we might get (time%5 == 0) true several times in a row.
+//			timeSinceLastTrigger = 0;
+//		}
+//		
 		
 		// update play state HUD
 		//hudText.setText("Press 'p' to play/pause, press 'r' to reset - " + engineState + " - time: " + timeElapsedSinceStart/1000);  

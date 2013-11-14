@@ -33,16 +33,19 @@ public class Simulator implements Engine3DListener {
 		this.appearance = appearance;
 		
 		this.petrinetEngine = new PetriNetEngine();
+		
+		this.nextAnimations = this.petrinetEngine.init(petrinet);
+		
+		JMonkeyEngine3D jmon = new JMonkeyEngine3D();
+		jmon.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
+
+		jmon.addToAnimationQueue(this.nextAnimations);
 			
 	}
 
 	@Override
 	public void onStart() {
 		
-		this.nextAnimations = this.petrinetEngine.init(petrinet);
-		
-		JMonkeyEngine3D jmon = new JMonkeyEngine3D();
-		jmon.init(geometry, appearance, nextAnimations);
 	}
 
 
