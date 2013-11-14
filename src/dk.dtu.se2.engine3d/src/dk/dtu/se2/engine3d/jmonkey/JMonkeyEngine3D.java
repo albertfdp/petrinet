@@ -73,6 +73,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     
     public State engineState;
 	
+    /*
     public static void main(String[] args){
     	JMonkeyEngine3D app = new JMonkeyEngine3D();
     	
@@ -86,7 +87,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     	
     	app.start();
 	}
-    
+    */
     public void setupModelMeshes() {
     	
     	System.out.println("Running setup of model meshes.");
@@ -288,7 +289,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		// AP: set the background color
 		viewPort.setBackgroundColor(ColorRGBA.Gray);
 		// AP: disable camera fly - the ability to move the camera with keyboard and mouse
-		flyCam.setEnabled(false); 
+		flyCam.setEnabled(true); 
 		flyCam.setMoveSpeed(25);
 		// AP: set camera position (off center)
 		Vector3f camPos = new Vector3f(0, 90, 30);
