@@ -4,14 +4,10 @@ package dk.dtu.se2.petrinet.impl;
 
 import dk.dtu.se2.petrinet.GeometryLabel;
 import dk.dtu.se2.petrinet.PetrinetPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.pnml.tools.epnk.pnmlcoremodel.impl.AttributeImpl;
+import org.pnml.tools.epnk.pnmlcoremodel.impl.LabelImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +22,7 @@ import org.pnml.tools.epnk.pnmlcoremodel.impl.AttributeImpl;
  *
  * @generated
  */
-public class GeometryLabelImpl extends AttributeImpl implements GeometryLabel {
+public class GeometryLabelImpl extends LabelImpl implements GeometryLabel {
 	/**
 	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->

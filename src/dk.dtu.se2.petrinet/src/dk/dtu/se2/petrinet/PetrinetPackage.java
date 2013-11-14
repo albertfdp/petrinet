@@ -222,7 +222,7 @@ public interface PetrinetPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEOMETRY_LABEL__TOOLSPECIFIC = PnmlcoremodelPackage.ATTRIBUTE__TOOLSPECIFIC;
+	int GEOMETRY_LABEL__TOOLSPECIFIC = PnmlcoremodelPackage.LABEL__TOOLSPECIFIC;
 
 	/**
 	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
@@ -231,7 +231,7 @@ public interface PetrinetPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEOMETRY_LABEL__GRAPHICS = PnmlcoremodelPackage.ATTRIBUTE__GRAPHICS;
+	int GEOMETRY_LABEL__GRAPHICS = PnmlcoremodelPackage.LABEL__GRAPHICS;
 
 	/**
 	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
@@ -240,7 +240,7 @@ public interface PetrinetPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEOMETRY_LABEL__UNKNOWN = PnmlcoremodelPackage.ATTRIBUTE__UNKNOWN;
+	int GEOMETRY_LABEL__UNKNOWN = PnmlcoremodelPackage.LABEL__UNKNOWN;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -249,7 +249,7 @@ public interface PetrinetPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEOMETRY_LABEL__TEXT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
+	int GEOMETRY_LABEL__TEXT = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Geometry Label</em>' class.
@@ -258,7 +258,7 @@ public interface PetrinetPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEOMETRY_LABEL_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
+	int GEOMETRY_LABEL_FEATURE_COUNT = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link dk.dtu.se2.petrinet.impl.AnimationLabelImpl <em>Animation Label</em>}' class.

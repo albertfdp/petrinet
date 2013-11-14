@@ -2,7 +2,6 @@
  */
 package dk.dtu.se2.petrinet;
 
-import org.pnml.tools.epnk.pnmlcoremodel.Attribute;
 import org.pnml.tools.epnk.pnmlcoremodel.Label;
 
 /**
@@ -21,7 +20,7 @@ import org.pnml.tools.epnk.pnmlcoremodel.Label;
  * @model
  * @generated
  */
-public interface GeometryLabel extends Attribute, Label {
+public interface GeometryLabel extends Label {
 	/**
 	 * Returns the value of the '<em><b>Text</b></em>' attribute.
 	 * <!-- begin-user-doc -->

@@ -141,12 +141,12 @@ public class PetrinetAdapterFactory extends AdapterFactoryImpl {
 				return createLabelAdapter();
 			}
 			@Override
-			public Adapter caseAttribute(Attribute object) {
-				return createAttributeAdapter();
-			}
-			@Override
 			public Adapter caseStructuredLabel(StructuredLabel object) {
 				return createStructuredLabelAdapter();
+			}
+			@Override
+			public Adapter caseAttribute(Attribute object) {
+				return createAttributeAdapter();
 			}
 			@Override
 			public Adapter casePnmlcoremodel_Arc(org.pnml.tools.epnk.pnmlcoremodel.Arc object) {

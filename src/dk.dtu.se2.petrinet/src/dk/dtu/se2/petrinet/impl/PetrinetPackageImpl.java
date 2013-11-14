@@ -441,7 +441,6 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		// Add supertypes to classes
 		extendedPetriNetEClass.getESuperTypes().add(thePnmlcoremodelPackage.getPetriNetType());
 		placeEClass.getESuperTypes().add(thePnmlcoremodelPackage.getPlace());
-		geometryLabelEClass.getESuperTypes().add(thePnmlcoremodelPackage.getAttribute());
 		geometryLabelEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		animationLabelEClass.getESuperTypes().add(theStructuredpntypemodelPackage.getStructuredLabel());
 		appearanceLabelEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());

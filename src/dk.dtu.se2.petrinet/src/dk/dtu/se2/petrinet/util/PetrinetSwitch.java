@@ -96,7 +96,6 @@ public class PetrinetSwitch<T> extends Switch<T> {
 			case PetrinetPackage.GEOMETRY_LABEL: {
 				GeometryLabel geometryLabel = (GeometryLabel)theEObject;
 				T result = caseGeometryLabel(geometryLabel);
-				if (result == null) result = caseAttribute(geometryLabel);
 				if (result == null) result = caseLabel(geometryLabel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
