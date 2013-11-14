@@ -57,6 +57,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     public ArrayList<Integer> listOfInts = new ArrayList<Integer>();
     public ArrayList<PlayState> previousAnimationStates = new ArrayList<PlayState>();
     public ArrayList<BitmapText> messageToPetriNet = new ArrayList<BitmapText>();
+    public ArrayList<BitmapText> infoText = new ArrayList<BitmapText>();
     public ArrayList<BitmapText> allTextFields = new ArrayList<BitmapText>();
     public ArrayList<Geometry> allTokens = new ArrayList<Geometry>();
     public ArrayList<SObject> allSObjects = new ArrayList<SObject>();
@@ -245,6 +246,19 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     		messageToPetriNet.add(text);
     		guiNode.attachChild(text);
     	}
+    	
+    	// AP: set up text field for displaying camera position
+    	for (int index = 0; index < 2; index++) {
+			   
+    		BitmapText text = new BitmapText(guiFont, false);
+    		text.setAlignment(Align.Left);
+    		text.setColor(ColorRGBA.Black);
+    		text.setLocalTranslation(200, text.getLineHeight() * (index+10), 0);
+    		text.setText("This is text field " + Integer.toString(index));
+
+    		infoText.add(text);
+    		guiNode.attachChild(text);
+    	}
 	}
     
 	@Override
@@ -278,6 +292,26 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		this.geometry = geometry;
 		this.appearance = appearance;
 		
+		
+	}
+	
+	public void updateCameraPosition() {
+		
+		infoText.get(0).setText("Cam height: " + cam.getHeight());
+		infoText.get(1).setText("Cam dir: " + cam.getDirection());
+		
+		/*
+		int lowestX = ;
+		int lowestY = 0;
+		int highestX = 0;
+		int highestY = 0;
+		
+		for (SObject object : allSObjects) {
+			
+			if (object.getBegin().getX() < 
+			
+		}
+		*/	
 		
 	}
 	
@@ -421,6 +455,8 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	
 	@Override 
     public void simpleUpdate(float tpf) {
+		
+		updateCameraPosition();
     	
 		double timeElapsedSinceStart = System.currentTimeMillis() - timeAtSystemStart; // Time elapsed since program start. 
 		
