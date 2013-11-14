@@ -44,7 +44,7 @@
   	  <wizard
   	     name="%newWizardName"
   	     icon="icons/obj16/GeometryDiagramFile.gif"
-  	     category="org.eclipse.ui.Examples"
+  	     category="org.eclipse.ui.ePNK"
   	     class="geometry.diagram.part.GeometryCreationWizard"
   	     id="geometry.diagram.part.GeometryCreationWizardID">
   	  	 <description>%newWizardDesc</description>  
