@@ -252,11 +252,11 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	}
     
 	@Override
-	public void addToAnimationQueue(String geometryLabel) {
+	public void addToAnimationQueue(String ID) {
 		
 		for (SObject object : allSObjects) {
 			
-			if (object.getName() == geometryLabel) {
+			if (object.getName() == ID) {
 				animationQueue.add(allSObjects.indexOf(object));
 			}
 		}
@@ -426,6 +426,8 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     	
 		double timeElapsedSinceStart = System.currentTimeMillis() - timeAtSystemStart; // Time elapsed since program start. 
 		
+		
+		/*
 		timeSinceLastTrigger += timeElapsedSinceStart - timeAtLastTrigger;
 		
 		// add a random motion event to the animation queue
@@ -446,7 +448,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 			timeAtLastTrigger = timeElapsedSinceStart; // we need to ensure that some time has passed before running this function again, otherwise we might get (time%5 == 0) true several times in a row.
 			timeSinceLastTrigger = 0;
 		}
-		
+		*/
 		
 		// update play state HUD
 		//hudText.setText("Press 'p' to play/pause, press 'r' to reset - " + engineState + " - time: " + timeElapsedSinceStart/1000);  
