@@ -53,8 +53,6 @@ public class StartSimulation implements IObjectActionDelegate {
 			simulator = new Simulator (selectedConfiguration.getPetrinet(), 
 									   selectedConfiguration.getGeometry(),
 									   null);
-//			Start simulation
-			simulator.onStart();
 			
 		}
 		
