@@ -14,3 +14,4 @@ Require-Bundle: jMonkeyEclipse,
  dk.dtu.se2.simulator.petrinet
 Export-Package: dk.dtu.se2.engine3d,
  dk.dtu.se2.engine3d.jmonkey
+Import-Package: org.eclipse.draw2d.geometry
