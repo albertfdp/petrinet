@@ -16,7 +16,11 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.Request;
+import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
+import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
+import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
@@ -71,14 +75,23 @@ public class ConnectorEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected LayoutEditPolicy createLayoutEditPolicy() {
-		XYLayoutEditPolicy lep = new XYLayoutEditPolicy() {
+		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = super.createChildEditPolicy(child);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
-					return new ResizableShapeEditPolicy();
+					result = new NonResizableEditPolicy();
 				}
 				return result;
+			}
+
+			protected Command getMoveChildrenCommand(Request request) {
+				return null;
+			}
+
+			protected Command getCreateCommand(CreateRequest request) {
+				return null;
 			}
 		};
 		return lep;
@@ -88,21 +101,21 @@ public class ConnectorEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new ConnectorFigure();
+		return primaryShape = new RectangleFigure();
 	}
 
 	/**
 	 * @generated
 	 */
-	public ConnectorFigure getPrimaryShape() {
-		return (ConnectorFigure) primaryShape;
+	public RectangleFigure getPrimaryShape() {
+		return (RectangleFigure) primaryShape;
 	}
 
 	/**
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(12, 12);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
 		return result;
 	}
 
@@ -229,24 +242,6 @@ public class ConnectorEditPart extends ShapeNodeEditPart {
 			types.add(GeometryElementTypes.Connector_2001);
 		}
 		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public class ConnectorFigure extends RectangleFigure {
-
-		/**
-		 * @generated
-		 */
-		public ConnectorFigure() {
-			this.setLayoutManager(new XYLayout());
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
-					getMapMode().DPtoLP(12)));
-			this.setLocation(new Point(getMapMode().DPtoLP(0), getMapMode()
-					.DPtoLP(0)));
-		}
-
 	}
 
 }

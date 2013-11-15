@@ -68,14 +68,23 @@ public class InputPointEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected LayoutEditPolicy createLayoutEditPolicy() {
-		XYLayoutEditPolicy lep = new XYLayoutEditPolicy() {
+		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = super.createChildEditPolicy(child);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
-					return new ResizableShapeEditPolicy();
+					result = new NonResizableEditPolicy();
 				}
 				return result;
+			}
+
+			protected Command getMoveChildrenCommand(Request request) {
+				return null;
+			}
+
+			protected Command getCreateCommand(CreateRequest request) {
+				return null;
 			}
 		};
 		return lep;
@@ -85,21 +94,21 @@ public class InputPointEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new InputPointFigure();
+		return primaryShape = new Ellipse();
 	}
 
 	/**
 	 * @generated
 	 */
-	public InputPointFigure getPrimaryShape() {
-		return (InputPointFigure) primaryShape;
+	public Ellipse getPrimaryShape() {
+		return (Ellipse) primaryShape;
 	}
 
 	/**
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(12, 12);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
 		return result;
 	}
 
@@ -174,24 +183,6 @@ public class InputPointEditPart extends ShapeNodeEditPart {
 		if (primaryShape instanceof Shape) {
 			((Shape) primaryShape).setLineStyle(style);
 		}
-	}
-
-	/**
-	 * @generated
-	 */
-	public class InputPointFigure extends Ellipse {
-
-		/**
-		 * @generated
-		 */
-		public InputPointFigure() {
-			this.setLayoutManager(new XYLayout());
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
-					getMapMode().DPtoLP(12)));
-			this.setLocation(new Point(getMapMode().DPtoLP(0), getMapMode()
-					.DPtoLP(0)));
-		}
-
 	}
 
 }

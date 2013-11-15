@@ -1,5 +1,7 @@
 package geometry.diagram.notationtransfer;
 
+import java.util.Vector;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -23,6 +25,7 @@ import geometry.impl.InputPointImpl;
 import geometry.impl.ConnectorImpl;
 import geometry.impl.BendPointImpl;
 import geometry.impl.LineImpl;
+
 import org.eclipse.gmf.runtime.notation.impl.RelativeBendpointsImpl;
 
 
@@ -155,22 +158,33 @@ public class PositionListener extends EContentAdapter {
 	 */
 	private void updateLine(ENotificationImpl eNotification, EObject eNotifier, LineImpl lineImpl, Edge edge)
 	{	
-		Object object = ((RelativeBendpoints)edge.getBendpoints()).getPoints().get(1);
+		//TODO: Update to case of multiple bendpoints within line
+		//Object object = ((RelativeBendpoints)edge.getBendpoints()).getPoints().get(1);
 		int amount = ((RelativeBendpoints)edge.getBendpoints()).getPoints().size();
-		
-		if(object instanceof RelativeBendpoint && amount == 3)
+		// Is array<RelativeBendpoint> bigger than lineImpl.getBendPoint():
+		if(lineImpl.getBendPoints().size() + 2 == amount && amount > 2)
+			updateBendPoints(lineImpl, edge);
+		else if(lineImpl.getBendPoints().size() + 2 < amount && amount > 2)
+			addBendPoint(lineImpl, edge);
+		else if(lineImpl.getBendPoints().size() + 2 > amount && amount >= 2)
+			removeBendPoint(lineImpl, edge);
+		return;
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	private void updateBendPoints(LineImpl lineImpl, Edge edge)
+	{
+		for(int i = 1; i < ((RelativeBendpoints)edge.getBendpoints()).getPoints().size() - 1; i++)
 		{
-			object = (RelativeBendpoint) object;
-			int x = lineImpl.getBegin().getXLocation() + ((RelativeBendpoint) object).getSourceX();
-			int y = lineImpl.getBegin().getYLocation() + ((RelativeBendpoint) object).getSourceY();
-			if(lineImpl.getBendPoint() instanceof BendPoint)
+			Vector<Integer> loc =  calculateAbsoluteLocationAtIndex(i, lineImpl, edge);
+			
+			if(loc.get(0) != lineImpl.getBendPoints().get(i-1).getXLocation() || loc.get(0) != lineImpl.getBendPoints().get(i-1).getYLocation())
 			{
-				lineImpl.getBendPoint().setXLocation(x);
-				lineImpl.getBendPoint().setYLocation(y);
-			}
-			else if(lineImpl.getBendPoint() == null)
-			{
-				addBendPoint(x, y, lineImpl, eNotifier);
+				lineImpl.getBendPoints().get(i-1).setXLocation(loc.get(0));
+				lineImpl.getBendPoints().get(i-1).setYLocation(loc.get(1));
+				return;
 			}
 		}
 		return;
@@ -179,15 +193,101 @@ public class PositionListener extends EContentAdapter {
 	/**
 	 * @generated NOT
 	 */
-	private void addBendPoint(int x, int y, LineImpl lineImpl, EObject eNotifier)
+	private void addBendPoint(LineImpl lineImpl, Edge edge)
 	{
+		//TODO: Make finding x and y locations of relative bendpoint into a function, if you feel like it.
+		if(lineImpl.getBendPoints().size() == 0)
+		{
+			Vector<Integer> loc =  calculateAbsoluteLocationAtIndex(1, lineImpl, edge);			
+			
+			createBendPointAtIndex(0, loc.get(0), loc.get(1), lineImpl);
+			return;
+		}
+		
+		for(int i = 1; i < ((RelativeBendpoints)edge.getBendpoints()).getPoints().size() - 1; i++)
+		{
+			Vector<Integer> loc =  calculateAbsoluteLocationAtIndex(i, lineImpl, edge);
+			
+			if(i > lineImpl.getBendPoints().size())
+			{
+				createBendPointAtIndex(lineImpl.getBendPoints().size(), loc.get(0), loc.get(1), lineImpl);
+				return;
+			}
+				
+			else if(loc.get(0) != lineImpl.getBendPoints().get(i-1).getXLocation() || loc.get(1) != lineImpl.getBendPoints().get(i-1).getYLocation())
+			{
+				createBendPointAtIndex(i - 1, loc.get(0), loc.get(1), lineImpl);
+				return;
+			}
+			
+		}
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	private void removeBendPoint(LineImpl lineImpl, Edge edge)
+	{
+		if(((RelativeBendpoints)edge.getBendpoints()).getPoints().size() == 2)
+		{
+			lineImpl.getBendPoints().remove(0);
+			return;
+		}
+		
+		else
+		{
+			for(int i = 1; i < ((RelativeBendpoints)edge.getBendpoints()).getPoints().size() - 1; i++)
+			{
+				Vector<Integer> loc =  calculateAbsoluteLocationAtIndex(i, lineImpl, edge);
+				
+				if(loc.get(0) != lineImpl.getBendPoints().get(i-1).getXLocation() || loc.get(1) != lineImpl.getBendPoints().get(i-1).getYLocation())
+				{
+					lineImpl.getBendPoints().remove(i - 1);
+					return;
+				}
+			}
+		}
+		
+		lineImpl.getBendPoints().remove(lineImpl.getBendPoints().size() - 1);
+		return;
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	private void createBendPointAtIndex(int ind, int x, int y, LineImpl lineImpl)
+	{
+		//TODO: add this somewhere more appropriate
+		//TODO: Name the new bendpoint. Change names of other bendpoints if it is needed.
 		BendPoint bendPoint = GeometryFactory.eINSTANCE.createBendPoint();
 		bendPoint.setXLocation(x);
 		bendPoint.setYLocation(y);
-		bendPoint.setLabel(lineImpl.getLabel() + "_Bendpoint");
-		lineImpl.setBendPoint(bendPoint);
-		
+		lineImpl.getBendPoints().add(ind, bendPoint);
+	}
+	
+	
+	private void removeBendPointAtIndex(int ind, LineImpl lineImpl)
+	{
+		//TODO: add this somewhere more appropriate
+		//TODO: Change names of other bendpoints if it is needed. Also add this to functions above.
+		lineImpl.getBendPoints().remove(ind);
 		return;
+	}
+	/**
+	 * @generated NOT
+	 */
+	private Vector<Integer> calculateAbsoluteLocationAtIndex(int index, LineImpl lineImpl, Edge edge)
+	{
+		//TODO: add this somewhere more appropriate
+		Object object = ((RelativeBendpoints)edge.getBendpoints()).getPoints().get(index);
+		int x = lineImpl.getBegin().getXLocation() + ((RelativeBendpoint) object).getSourceX();
+		int y = lineImpl.getBegin().getYLocation() + ((RelativeBendpoint) object).getSourceY();
+		
+		Vector<Integer> vector = new Vector<Integer>();
+		vector.add(x);
+		vector.add(y);
+		
+		return vector;
 	}
 }
 	

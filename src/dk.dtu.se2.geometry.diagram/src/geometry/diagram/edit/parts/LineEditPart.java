@@ -64,10 +64,11 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	public class LineFigure extends PolylineConnectionEx {
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		public LineFigure() {
-
+			//TODO: Curve the line somehow
+			//setSmoothness(LineFigure.SMOOTH_MORE); //not working
 			setTargetDecoration(createTargetDecoration());
 		}
 
