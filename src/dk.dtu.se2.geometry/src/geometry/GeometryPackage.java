@@ -150,13 +150,13 @@ public interface GeometryPackage extends EPackage {
 	int LINE__LABEL = GOBJECT__LABEL;
 
 	/**
-	 * The feature id for the '<em><b>Bend Point</b></em>' containment reference.
+	 * The feature id for the '<em><b>Bend Points</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINE__BEND_POINT = GOBJECT_FEATURE_COUNT + 0;
+	int LINE__BEND_POINTS = GOBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Begin</b></em>' reference.
@@ -486,15 +486,15 @@ public interface GeometryPackage extends EPackage {
 	EClass getLine();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link geometry.Line#getBendPoint <em>Bend Point</em>}'.
+	 * Returns the meta object for the containment reference list '{@link geometry.Line#getBendPoints <em>Bend Points</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Bend Point</em>'.
-	 * @see geometry.Line#getBendPoint()
+	 * @return the meta object for the containment reference list '<em>Bend Points</em>'.
+	 * @see geometry.Line#getBendPoints()
 	 * @see #getLine()
 	 * @generated
 	 */
-	EReference getLine_BendPoint();
+	EReference getLine_BendPoints();
 
 	/**
 	 * Returns the meta object for the reference '{@link geometry.Line#getBegin <em>Begin</em>}'.
@@ -672,12 +672,12 @@ public interface GeometryPackage extends EPackage {
 		EClass LINE = eINSTANCE.getLine();
 
 		/**
-		 * The meta object literal for the '<em><b>Bend Point</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Bend Points</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LINE__BEND_POINT = eINSTANCE.getLine_BendPoint();
+		EReference LINE__BEND_POINTS = eINSTANCE.getLine_BendPoints();
 
 		/**
 		 * The meta object literal for the '<em><b>Begin</b></em>' reference feature.

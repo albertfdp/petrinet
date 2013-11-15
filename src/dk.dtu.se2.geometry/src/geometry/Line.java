@@ -2,6 +2,8 @@
  */
 package geometry;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -11,7 +13,7 @@ package geometry;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link geometry.Line#getBendPoint <em>Bend Point</em>}</li>
+ *   <li>{@link geometry.Line#getBendPoints <em>Bend Points</em>}</li>
  *   <li>{@link geometry.Line#getBegin <em>Begin</em>}</li>
  *   <li>{@link geometry.Line#getEnd <em>End</em>}</li>
  * </ul>
@@ -23,30 +25,20 @@ package geometry;
  */
 public interface Line extends GObject {
 	/**
-	 * Returns the value of the '<em><b>Bend Point</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Bend Points</b></em>' containment reference list.
+	 * The list contents are of type {@link geometry.BendPoint}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Bend Point</em>' reference isn't clear,
+	 * If the meaning of the '<em>Bend Points</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Bend Point</em>' containment reference.
-	 * @see #setBendPoint(BendPoint)
-	 * @see geometry.GeometryPackage#getLine_BendPoint()
+	 * @return the value of the '<em>Bend Points</em>' containment reference list.
+	 * @see geometry.GeometryPackage#getLine_BendPoints()
 	 * @model containment="true"
 	 * @generated
 	 */
-	BendPoint getBendPoint();
-
-	/**
-	 * Sets the value of the '{@link geometry.Line#getBendPoint <em>Bend Point</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Bend Point</em>' containment reference.
-	 * @see #getBendPoint()
-	 * @generated
-	 */
-	void setBendPoint(BendPoint value);
+	EList<BendPoint> getBendPoints();
 
 	/**
 	 * Returns the value of the '<em><b>Begin</b></em>' reference.

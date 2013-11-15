@@ -17,12 +17,12 @@
             xsi:type="gmfgraph:PolygonDecoration"
             name="targetDecoration">
           <template
-              x="-6"
-              y="-4"/>
+              x="-2"
+              y="-1"/>
           <template/>
           <template
-              x="-6"
-              y="4"/>
+              x="-2"
+              y="1"/>
         </children>
       </actualFigure>
     </descriptors>
@@ -30,27 +30,13 @@
         name="ConnectorFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="ConnectorFigure">
-        <layout
-            xsi:type="gmfgraph:XYLayout"/>
-        <preferredSize
-            dx="12"
-            dy="12"/>
-        <location/>
-      </actualFigure>
+          name="ConnectorFigure"/>
     </descriptors>
     <descriptors
         name="InputPointFigure">
       <actualFigure
           xsi:type="gmfgraph:Ellipse"
-          name="InputPointFigure">
-        <layout
-            xsi:type="gmfgraph:XYLayout"/>
-        <preferredSize
-            dx="12"
-            dy="12"/>
-        <location/>
-      </actualFigure>
+          name="InputPointFigure"/>
     </descriptors>
   </figures>
   <nodes

@@ -186,7 +186,7 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLine_BendPoint() {
+	public EReference getLine_BendPoints() {
 		return (EReference)lineEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -315,7 +315,7 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 		createEAttribute(gObjectEClass, GOBJECT__LABEL);
 
 		lineEClass = createEClass(LINE);
-		createEReference(lineEClass, LINE__BEND_POINT);
+		createEReference(lineEClass, LINE__BEND_POINTS);
 		createEReference(lineEClass, LINE__BEGIN);
 		createEReference(lineEClass, LINE__END);
 
@@ -374,7 +374,7 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 		initEAttribute(getGObject_Label(), ecorePackage.getEString(), "label", null, 0, 1, GObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lineEClass, Line.class, "Line", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLine_BendPoint(), this.getBendPoint(), null, "bendPoint", null, 0, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLine_BendPoints(), this.getBendPoint(), null, "bendPoints", null, 0, -1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLine_Begin(), this.getConnector(), this.getConnector_Out(), "begin", null, 1, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLine_End(), this.getConnector(), this.getConnector_In(), "end", null, 1, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

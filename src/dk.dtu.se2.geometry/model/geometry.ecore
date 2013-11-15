@@ -10,8 +10,8 @@
         iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Line" eSuperTypes="#//GObject">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="bendPoint" eType="#//BendPoint"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bendPoints" upperBound="-1"
+        eType="#//BendPoint" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="begin" lowerBound="1" eType="#//Connector"
         eOpposite="#//Connector/out"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" lowerBound="1" eType="#//Connector"

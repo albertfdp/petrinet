@@ -186,7 +186,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_crFaEUklEeOkYIj7VlCqPQ" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_crFaEkklEeOkYIj7VlCqPQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="geometry.ecore#//Line/bendPoint"/>
+    <element xmi:type="ecore:EReference" href="geometry.ecore#//Line/bendPoints"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_crFaE0klEeOkYIj7VlCqPQ" points="[41, 9, 47, -151]$[-4, 160, 2, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_crJEcEklEeOkYIj7VlCqPQ" id="(0.08823529411764706,0.46511627906976744)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_crJEcUklEeOkYIj7VlCqPQ" id="(0.6372549019607843,0.18604651162790697)"/>

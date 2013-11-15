@@ -7,13 +7,17 @@ import geometry.Connector;
 import geometry.GeometryPackage;
 import geometry.Line;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link geometry.impl.LineImpl#getBendPoint <em>Bend Point</em>}</li>
+ *   <li>{@link geometry.impl.LineImpl#getBendPoints <em>Bend Points</em>}</li>
  *   <li>{@link geometry.impl.LineImpl#getBegin <em>Begin</em>}</li>
  *   <li>{@link geometry.impl.LineImpl#getEnd <em>End</em>}</li>
  * </ul>
@@ -32,14 +36,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class LineImpl extends GObjectImpl implements Line {
 	/**
-	 * The cached value of the '{@link #getBendPoint() <em>Bend Point</em>}' containment reference.
+	 * The cached value of the '{@link #getBendPoints() <em>Bend Points</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBendPoint()
+	 * @see #getBendPoints()
 	 * @generated
 	 * @ordered
 	 */
-	protected BendPoint bendPoint;
+	protected EList<BendPoint> bendPoints;
 
 	/**
 	 * The cached value of the '{@link #getBegin() <em>Begin</em>}' reference.
@@ -85,42 +89,11 @@ public class LineImpl extends GObjectImpl implements Line {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BendPoint getBendPoint() {
-		return bendPoint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetBendPoint(BendPoint newBendPoint, NotificationChain msgs) {
-		BendPoint oldBendPoint = bendPoint;
-		bendPoint = newBendPoint;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeometryPackage.LINE__BEND_POINT, oldBendPoint, newBendPoint);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<BendPoint> getBendPoints() {
+		if (bendPoints == null) {
+			bendPoints = new EObjectContainmentEList<BendPoint>(BendPoint.class, this, GeometryPackage.LINE__BEND_POINTS);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setBendPoint(BendPoint newBendPoint) {
-		if (newBendPoint != bendPoint) {
-			NotificationChain msgs = null;
-			if (bendPoint != null)
-				msgs = ((InternalEObject)bendPoint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeometryPackage.LINE__BEND_POINT, null, msgs);
-			if (newBendPoint != null)
-				msgs = ((InternalEObject)newBendPoint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeometryPackage.LINE__BEND_POINT, null, msgs);
-			msgs = basicSetBendPoint(newBendPoint, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeometryPackage.LINE__BEND_POINT, newBendPoint, newBendPoint));
+		return bendPoints;
 	}
 
 	/**
@@ -271,8 +244,8 @@ public class LineImpl extends GObjectImpl implements Line {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GeometryPackage.LINE__BEND_POINT:
-				return basicSetBendPoint(null, msgs);
+			case GeometryPackage.LINE__BEND_POINTS:
+				return ((InternalEList<?>)getBendPoints()).basicRemove(otherEnd, msgs);
 			case GeometryPackage.LINE__BEGIN:
 				return basicSetBegin(null, msgs);
 			case GeometryPackage.LINE__END:
@@ -289,8 +262,8 @@ public class LineImpl extends GObjectImpl implements Line {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeometryPackage.LINE__BEND_POINT:
-				return getBendPoint();
+			case GeometryPackage.LINE__BEND_POINTS:
+				return getBendPoints();
 			case GeometryPackage.LINE__BEGIN:
 				if (resolve) return getBegin();
 				return basicGetBegin();
@@ -306,11 +279,13 @@ public class LineImpl extends GObjectImpl implements Line {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeometryPackage.LINE__BEND_POINT:
-				setBendPoint((BendPoint)newValue);
+			case GeometryPackage.LINE__BEND_POINTS:
+				getBendPoints().clear();
+				getBendPoints().addAll((Collection<? extends BendPoint>)newValue);
 				return;
 			case GeometryPackage.LINE__BEGIN:
 				setBegin((Connector)newValue);
@@ -330,8 +305,8 @@ public class LineImpl extends GObjectImpl implements Line {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeometryPackage.LINE__BEND_POINT:
-				setBendPoint((BendPoint)null);
+			case GeometryPackage.LINE__BEND_POINTS:
+				getBendPoints().clear();
 				return;
 			case GeometryPackage.LINE__BEGIN:
 				setBegin((Connector)null);
@@ -351,8 +326,8 @@ public class LineImpl extends GObjectImpl implements Line {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeometryPackage.LINE__BEND_POINT:
-				return bendPoint != null;
+			case GeometryPackage.LINE__BEND_POINTS:
+				return bendPoints != null && !bendPoints.isEmpty();
 			case GeometryPackage.LINE__BEGIN:
 				return begin != null;
 			case GeometryPackage.LINE__END:
