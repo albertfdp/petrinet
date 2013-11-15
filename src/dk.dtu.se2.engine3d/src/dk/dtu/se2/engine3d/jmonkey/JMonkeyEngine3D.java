@@ -19,6 +19,7 @@ import com.jme3.cinematic.PlayState;
 import com.jme3.cinematic.events.MotionEvent;
 import com.jme3.font.BitmapFont.Align;
 import com.jme3.font.BitmapText;
+import com.jme3.font.Rectangle;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
@@ -66,6 +67,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     public double timeSinceLastTrigger;
     public double timeAtLastTrigger;
     public Random rand = new Random();
+    public Rectangle boundingBox;
     
     public enum State {
     	PLAYING,
@@ -92,7 +94,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     */
     public void setupModelMeshes() {
     	
-    	System.out.println("Running setup of model meshes.");
+    	//System.out.println("Running setup of model meshes.");
     	
     	/*
     	Vector3f startPoint = new Vector3f(0, 1, -5); // some combinations of coordinates don't work: (1) when it is parallel to the x axis (angle = 0/180)
@@ -150,14 +152,15 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
      */
     public void setupSObjects() {
     	
+    	
     	EList<GObject> gObjects = this.geometry.getGObjects();
 		for (GObject gObject:gObjects) {
 			if (gObject instanceof InputPoint) {
 				InputPoint point = (InputPoint) gObject;
 				allSObjects.add(new SObject(new Vector2f(point.getXLocation(), point.getYLocation()), 
-						new Vector2f(point.getXLocation(), point.getYLocation()), 
-						new Vector2f(point.getXLocation(), point.getYLocation()), 
-						true, point.getLabel(), 0f)); // TODO: Handle InputPoint
+											new Vector2f(point.getXLocation(), point.getYLocation()), 
+											new Vector2f(point.getXLocation(), point.getYLocation()), 
+											true, point.getLabel(), 0f)); // TODO: Handle InputPoint
 			}
 				
 			else if(gObject instanceof Line) {
@@ -165,12 +168,28 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 				Point start = line.getBegin();
 				Point end = line.getEnd();
 				Point bendPoint = line.getBendPoint();
-				allSObjects.add(new SObject(new Vector2f(start.getXLocation(), start.getYLocation()), 
-						new Vector2f(bendPoint.getXLocation(), bendPoint.getYLocation()), new Vector2f(end.getXLocation(), end.getYLocation()), 
-						false, line.getLabel(), 3f)); // TODO: Change the speed
+				allSObjects.add(new SObject(new Vector2f(start.getXLocation(),     start.getYLocation()), 
+											new Vector2f(bendPoint.getXLocation(), bendPoint.getYLocation()), 
+											new Vector2f(end.getXLocation(),       end.getYLocation()), 
+											false, line.getLabel(), 3f)); // TODO: Change the speed
 			}
 						
 		}
+		
+    	
+    	/*
+    	// AP: for testing purposes
+		allSObjects.add(new SObject(new Vector2f(0, 5 ), 
+									new Vector2f(25, 80),
+									new Vector2f(100, 105), 
+									false, "test01", 3f));
+		
+		allSObjects.add(new SObject(new Vector2f(100, 105), 
+									new Vector2f(75, 30),
+									new Vector2f(0, 5), 
+									false, "test02", 3f));
+		
+		*/
 	}
 	
 	public void setupTokens() { // happens in the engine, gets information from the simulator (from the configuration file)
@@ -179,8 +198,8 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		
 		// Temporary:
 		for (int index = 0; index < allSObjects.size() ; index++) { // create the same number of tokens as there are SObjects
-		
-			Geometry token = new Geometry("Box", new Box(3f, 2f, 7f)); // create cube geometry from with box shape        
+	
+			Geometry token = new Geometry("Box", new Box(0.006f*boundingBox.width, 0.004f*boundingBox.width, 0.014f*boundingBox.width)); // create cube geometry from with box shape        
 	
 			Texture tokenTex = assetManager.loadTexture("Interface/Logo/Monkey.jpg"); // create a texture
 			
@@ -249,7 +268,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     	}
     	
     	// AP: set up text field for displaying misc info
-    	for (int index = 0; index < 5; index++) {
+    	for (int index = 0; index < allSObjects.size(); index++) {
 			   
     		BitmapText text = new BitmapText(guiFont, false);
     		text.setAlignment(Align.Left);
@@ -298,26 +317,86 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		
 	}
 	
-	public void updateCameraPosition() {
+	public void calculateBoundingBox() {
 		
-		/*
-		infoText.get(0).setText("Cam location: " + cam.getLocation());
-		infoText.get(1).setText("Cam dir: " + cam.getDirection());
-		infoText.get(2).setText("Cam dir 2: " + cam.getRotation());
-		*/
+		int lowX = (int)allSObjects.get(0).getBegin().x;
+		int lowY = (int)allSObjects.get(0).getBegin().y;
+		int highX = (int)allSObjects.get(0).getBegin().x;
+		int highY = (int)allSObjects.get(0).getBegin().y;
 		
-		/*
-		int lowestX = ;
-		int lowestY = 0;
-		int highestX = 0;
-		int highestY = 0;
 		
-		for (SObject object : allSObjects) {
+		// Find lowest and highest x and y
+		for (int index = 0; index < allSObjects.size(); index++) {
 			
-			if (object.getBegin().getX() < 
+			// find lowest x
+			if ((int)allSObjects.get(index).getBegin().x < lowX)
+				lowX = (int)allSObjects.get(index).getBegin().x;
+
+			if ((int)allSObjects.get(index).getBend().x < lowX)  //will need to accept a list of bend points
+				lowX = (int)allSObjects.get(index).getBend().x;
 			
+			if ((int)allSObjects.get(index).getEnd().x < lowX)
+				lowX = (int)allSObjects.get(index).getEnd().x;
+			
+			//find lowest y
+			if ((int)allSObjects.get(index).getBegin().y < lowY)
+				lowY = (int)allSObjects.get(index).getBegin().y;
+
+			if ((int)allSObjects.get(index).getBend().y < lowY)  //will need to accept a list of bend points
+				lowY = (int)allSObjects.get(index).getBend().y;
+	
+			if ((int)allSObjects.get(index).getEnd().y < lowY)
+				lowY = (int)allSObjects.get(index).getEnd().y;
+			
+			// find highest x
+			if ((int)allSObjects.get(index).getBegin().x > highX)
+				highX = (int)allSObjects.get(index).getBegin().x;
+
+			if ((int)allSObjects.get(index).getBend().x > highX)  //will need to accept a list of bend points
+				highX = (int)allSObjects.get(index).getBend().x;
+
+			if ((int)allSObjects.get(index).getEnd().x > highX)
+				highX = (int)allSObjects.get(index).getEnd().x;	
+			
+			// find highest y
+			if ((int)allSObjects.get(index).getBegin().y > highY)
+				highY = (int)allSObjects.get(index).getBegin().y;
+
+			if ((int)allSObjects.get(index).getBend().y > highY)  //will need to accept a list of bend points
+				highY = (int)allSObjects.get(index).getBend().y;
+
+			if ((int)allSObjects.get(index).getEnd().y > highY)
+				highY = (int)allSObjects.get(index).getEnd().y;	
 		}
-		*/	
+		
+		boundingBox = new Rectangle(lowX, lowY, highX-lowX, highY-lowY);
+		
+	}
+	
+	public void setupCameraPosition() {
+		
+		float heightScaler = 1.1f;
+			
+		Vector3f camPos = new Vector3f(boundingBox.x + boundingBox.width/2, 
+				(float)Math.tan(Math.toRadians(67.5f))*(boundingBox.width/2)*heightScaler, 
+				boundingBox.y + boundingBox.height/2); // height is assuming 45 degree FOV. Angle used for calculation is 90 - (45/2) = 67.5
+		cam.setLocation(camPos);
+		
+		Quaternion rotation = new Quaternion(0, (float)Math.cos(Math.toRadians(45)), -(float)Math.cos(Math.toRadians(45)), 0); // make camera look "down"
+		cam.setRotation(rotation);
+		
+	}
+	
+	public void displayCameraPosition() {
+		
+		//infoText.get(0).setText("Cam location:   " + cam.getLocation());
+		//infoText.get(1).setText("Cam quaternion: " + cam.getRotation());	
+		/*
+		for (int index = 0; index < allSObjects.size(); index++) {
+			infoText.get(index).setText(allSObjects.get(index).getName() + "-" + allSObjects.get(index).getBegin() + "-" + allSObjects.get(index).getBend() + "-" + allSObjects.get(index).getEnd()  );
+		}
+		*/
+	
 		
 	}
 	
@@ -328,19 +407,10 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		timeAtSystemStart = System.currentTimeMillis();
 		// AP: set the background color
 		viewPort.setBackgroundColor(ColorRGBA.Gray);
-		// AP: disable camera fly - the ability to move the camera with keyboard and mouse
+		// AP: enable/disable camera fly - the ability to move the camera with keyboard and mouse
 		flyCam.setEnabled(false); 
 		flyCam.setMoveSpeed(25);
-		// AP: set camera position (off center)
-		//Vector3f camPos = new Vector3f(0, 90, 30);
-		Vector3f camPos = new Vector3f(387.2f, 290, 393.1f);
-		cam.setLocation(camPos);
-		// AP: make the camera look at the center
-		//cam.lookAt(new Vector3f(30, 0, 30), cam.getUp());
-		//cam.lookAt(new Vector3f(0, -0.9f, -0.4f), cam.getUp());
-		Quaternion rotation = new Quaternion(0.001803f, 0.848513f, -0.529162f, 0.002892f);
-		cam.setRotation(rotation);
-		
+	
 		// toggle statistics window in bottom left
 		setDisplayFps(false);
 		setDisplayStatView(false);
@@ -356,11 +426,12 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		    	
 		// AP: create ground with volume
 		/*
-		float groundWidthX  = 30;
+		float groundWidthX  = 300;
 		float groundHeightY = 1;
-		float groundDepthZ  = 30;
+		float groundDepthZ  = 300;
 		groundGeo = new Geometry("Box", new Box(groundWidthX, groundHeightY, groundDepthZ)); 
 		Material groundMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+		groundMat.setColor("Color", ColorRGBA.Brown);
 //		Texture groundTex = assetManager.loadTexture("SE2_ground.jpg"); 
 //		groundMat.setTexture("ColorMap", groundTex);
 		groundGeo.setMaterial(groundMat);
@@ -384,9 +455,11 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		// AP: Run setups to prepare the layout of the paths etc.
 		setupModelMeshes();
 		setupSObjects();
+		calculateBoundingBox();
 		setupTokens();
 		setupMotionEvents();
 		setupTextFields();
+		setupCameraPosition();
 		        
 		engineState = State.PAUSED;
 		        
@@ -469,7 +542,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	@Override 
     public void simpleUpdate(float tpf) {
 		
-		//updateCameraPosition();
+		displayCameraPosition();
     	
 		//double timeElapsedSinceStart = System.currentTimeMillis() - timeAtSystemStart; // Time elapsed since program start. 
 		
