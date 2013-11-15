@@ -120,7 +120,7 @@ public class LineItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(GeometryPackage.Literals.LINE__BEND_POINT);
+			childrenFeatures.add(GeometryPackage.Literals.LINE__BEND_POINTS);
 		}
 		return childrenFeatures;
 	}
@@ -175,7 +175,7 @@ public class LineItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Line.class)) {
-			case GeometryPackage.LINE__BEND_POINT:
+			case GeometryPackage.LINE__BEND_POINTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -195,7 +195,7 @@ public class LineItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(GeometryPackage.Literals.LINE__BEND_POINT,
+				(GeometryPackage.Literals.LINE__BEND_POINTS,
 				 GeometryFactory.eINSTANCE.createBendPoint()));
 	}
 
