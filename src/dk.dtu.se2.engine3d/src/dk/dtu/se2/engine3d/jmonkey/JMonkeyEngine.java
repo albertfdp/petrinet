@@ -44,9 +44,10 @@ import dk.dtu.se2.animation.Move;
 import dk.dtu.se2.appearance.Appearance;
 import dk.dtu.se2.engine3d.Engine3D;
 import dk.dtu.se2.engine3d.Engine3DListener;
+import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine3D.State;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
-public class JMonkeyEngine extends SimpleApplication implements Engine3D,CinematicEventListener {
+public class JMonkeyEngine extends SimpleApplication implements Engine3D, CinematicEventListener {
 	
 	private geometry.Geometry 	geometry;
 	private Appearance 			appearance;
@@ -75,7 +76,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D,Cinemat
     private enum State {
     	PLAYING,
     	PAUSED,
-    	RESETTING
+    	RESETTING,
+    	STOPPED
     }
     
     private State engineState;
@@ -160,10 +162,12 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D,Cinemat
 		
 		/* Parse the list of animations and create a new MotionPath and MotionEvent for each of them */
 		for(RTAnimation animation : animations) {
-			if(animation instanceof Move) {
+			System.out.println(animation.getClass());
+			if(animation.getAnimation() instanceof Move) {
 				
 				/* Get the motion path corresponding to the current animation */
-				MotionPath path = lines.get(animation.getGeometryLabel());
+				MotionPath path = new MotionPath();
+				path = lines.get(animation.getGeometryLabel());
 							
 				/* Create token */
 				Geometry token = new Geometry("Box", new Box(0.006f*boundingBox.width, 0.004f*boundingBox.width, 0.014f*boundingBox.width)); // create cube geometry from with box shape        
@@ -179,7 +183,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D,Cinemat
 				rootNode.attachChild(token); // put this node in the scene, attached to the root
 				
 				/* Create motion event corresponding to the move animation */
-				MotionEvent event = new MotionEvent(token, path, ((Move) animation).getSpeed(), LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
+				MotionEvent event = new MotionEvent(token, path, ((Move) animation.getAnimation()).getSpeed(), LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
 				
 				event.setDirectionType(MotionEvent.Direction.Path); // the spatial is always faced in the direction of the path while moving
 				event.addListener(this); // add the JMonkeyEngine as a listener to all motion events
@@ -192,11 +196,17 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D,Cinemat
 	}
 	
 	private void setBoundingBox() {
+		
+		System.out.println(lowX);
+		System.out.println(lowY);
+		System.out.println(highX);
+		System.out.println(highY);
+		
 		boundingBox = new Rectangle(lowX, lowY, highX-lowX, highY-lowY);
 	}
 	
 	
-	public void setupTextFields() {
+	public void setUpTextFields() {
 	
 		textFields = new ArrayList<BitmapText>();
 		infoText = new ArrayList<BitmapText>();
@@ -226,7 +236,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D,Cinemat
     	infoText.get(0).setText("Press 'p' to play & pause, press 'r' to reset - use '1' and '2' to add token animations to the queue");
 	}
 	
-	private void setupCameraPosition() {
+	private void setUpCameraPosition() {
 		
 		float heightScaler = 1.1f;
 			
@@ -245,20 +255,20 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D,Cinemat
  		
  	// AP: setting up miscellaneous stuff
  			timeAtSystemStart = System.currentTimeMillis();
- 			// AP: set the background color
+ 	// AP: set the background color
  			viewPort.setBackgroundColor(ColorRGBA.Gray);
- 			// AP: enable/disable camera fly - the ability to move the camera with keyboard and mouse
- 			flyCam.setEnabled(false); 
+ 	// AP: enable/disable camera fly - the ability to move the camera with keyboard and mouse
+ 			flyCam.setEnabled(true); 
  			flyCam.setMoveSpeed(25);
  		
- 			// toggle statistics window in bottom left
+ 	// Toggle statistics window in bottom left
  			setDisplayFps(false);
  			setDisplayStatView(false);
  			    	
- 			// AP: setting up a hud text
+ 	// AP: setting up a hud text
  			hudText = new BitmapText(guiFont, false);          
- 			hudText.setSize(guiFont.getCharSet().getRenderedSize());      // font size
- 			hudText.setColor(ColorRGBA.White);                             // font color
+ 			hudText.setSize(guiFont.getCharSet().getRenderedSize());   // font size
+ 			hudText.setColor(ColorRGBA.White);                        // font color
  			hudText.setText("" + engineState);  
  			hudText.setSize(25);
  			hudText.setLocalTranslation(350, 580, 0); // position
@@ -276,12 +286,12 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D,Cinemat
  			inputManager.addListener(actionListener, new String[]{"p"});
  			inputManager.addListener(actionListener, new String[]{"r"});
  			        
- 			// AP: Run setups to prepare the layout of the paths etc.
+ 	// AP: Run setups to prepare the layout of the paths etc.
  			this.setUpEnvironment();
  			this.setBoundingBox();
  			this.setUpAnimations();
- 			this.setupTextFields();
- 			this.setupCameraPosition();
+ 			this.setUpTextFields();
+ 			this.setUpCameraPosition();
  			        
  			this.engineState = State.PAUSED;
  			        
@@ -302,6 +312,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D,Cinemat
 		this.geometry = geometry;
 		this.appearance = appearance;
 		this.animations = animations;
+		
+		this.lines = new HashMap<String, MotionPath>();
+		this.events = new HashMap<MotionEvent, String>();
 		
 		this.start(); 
 		}
@@ -332,9 +345,47 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D,Cinemat
 	@Override
 	public void onStop(CinematicEvent ev) {
 		
-		this.listener.onAnimationFinished(events.get(ev));
+		this.listener.onAnimationFinished(events.get((MotionEvent) ev));
 	}
 
+	@Override 
+    public void simpleUpdate(float tpf) {
+	    			
+		if (engineState == State.PLAYING)
+			hudText.setColor(ColorRGBA.Green);
+		else
+			hudText.setColor(ColorRGBA.Red);
+		
+		hudText.setText("" + engineState);
+		
+		/* Play waiting animations */
+		if (engineState == State.PLAYING) {
+			
+			if (events.keySet() != null) {
+				
+				for (MotionEvent event : events.keySet()) {
+			
+					PlayState state = event.getPlayState();
+			
+					if (state == PlayState.Stopped) {
+						event.play();
+						}
+					if (state == PlayState.Playing) {
+						event.stop(); // if we need several tokens on one place, this is where it has to happen.
+						event.play(); // right now, it just restarts the animation.
+						}
+				}
+			} else { 
+				engineState = State.STOPPED;
+				hudText.setText("No more animations to be run: " + engineState);
+			}
+			
+			for (MotionEvent event : events.keySet()) 
+				if(event.getPlayState() == PlayState.Stopped) 
+					events.remove(event);
+		}
+							
+    }
 	
 	
 	private ActionListener actionListener = new ActionListener() {
