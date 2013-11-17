@@ -3,15 +3,16 @@ package dk.dtu.se2.simulator;
 
 import geometry.Geometry;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
+import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
 
-import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.appearance.Appearance;
 import dk.dtu.se2.engine3d.Engine3DListener;
-import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine3D;
+import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine;
+//import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine3D;
 import dk.dtu.se2.simulator.petrinet.PetriNetEngine;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
@@ -36,9 +37,14 @@ public class Simulator implements Engine3DListener {
 		
 		this.nextAnimations = this.petrinetEngine.init(petrinet);
 		
-		JMonkeyEngine3D jmon = new JMonkeyEngine3D();
+//		JMonkeyEngine3D jmon = new JMonkeyEngine3D();
+//		jmon.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
+//		jmon.setEngine3DListener(this);
+//		jmon.addToAnimationQueue(this.nextAnimations);
+		
+		JMonkeyEngine jmon = new JMonkeyEngine();
 		jmon.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
-
+		jmon.setEngine3DListener(this);
 		jmon.addToAnimationQueue(this.nextAnimations);
 			
 	}
@@ -65,8 +71,11 @@ public class Simulator implements Engine3DListener {
 
 	@Override
 	public void onAnimationFinished(String geometryLabel) {
-		// TODO Auto-generated method stub
+		System.out.println("Animation finished on: " + geometryLabel);
+				
+		EList<PetriNet> petrinetObject = petrinet.getNet();
 		
+//		this.petrinetEngine.markTokenAsFinished(place);
 	}
 
 	@Override
