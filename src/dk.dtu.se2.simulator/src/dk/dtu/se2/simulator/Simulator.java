@@ -26,6 +26,8 @@ public class Simulator implements Engine3DListener {
 	private PetriNetEngine petrinetEngine;
 	
 	private List<RTAnimation> nextAnimations;
+	
+	private JMonkeyEngine engine3d;
 		
 	public Simulator (PetriNetDoc petrinet, Geometry geometry, Appearance appearance) {
 		
@@ -42,10 +44,10 @@ public class Simulator implements Engine3DListener {
 //		jmon.setEngine3DListener(this);
 //		jmon.addToAnimationQueue(this.nextAnimations);
 		
-		JMonkeyEngine jmon = new JMonkeyEngine();
-		jmon.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
-		jmon.setEngine3DListener(this);
-		jmon.addToAnimationQueue(this.nextAnimations);
+		engine3d = new JMonkeyEngine();
+		engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
+		engine3d.setEngine3DListener(this);
+		engine3d.addToAnimationQueue(this.nextAnimations);
 			
 	}
 
@@ -72,10 +74,10 @@ public class Simulator implements Engine3DListener {
 	@Override
 	public void onAnimationFinished(String geometryLabel) {
 		System.out.println("Animation finished on: " + geometryLabel);
-				
-		EList<PetriNet> petrinetObject = petrinet.getNet();
 		
-//		this.petrinetEngine.markTokenAsFinished(place);
+		this.petrinetEngine.markTokenAsFinished(geometryLabel);
+		this.nextAnimations = this.petrinetEngine.fireTransitions();
+		engine3d.addToAnimationQueue(this.nextAnimations);
 	}
 
 	@Override

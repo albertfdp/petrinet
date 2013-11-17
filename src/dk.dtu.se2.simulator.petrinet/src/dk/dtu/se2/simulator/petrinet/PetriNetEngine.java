@@ -8,8 +8,11 @@ import org.pnml.tools.epnk.pnmlcoremodel.Arc;
 import org.pnml.tools.epnk.pnmlcoremodel.Object;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
 import org.pnml.tools.epnk.pnmlcoremodel.Transition;
+import org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceNodeImpl;
 
+import dk.dtu.se2.petrinet.ExtendedPetriNet;
 import dk.dtu.se2.petrinet.Place;
+import dk.dtu.se2.petrinet.impl.PlaceImpl;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 import dk.dtu.se2.simulator.petrinet.runtime.RTToken;
 
@@ -100,9 +103,17 @@ public class PetriNetEngine {
 	 * 
 	 * @param place: The place on which a token has finished moving
 	 */
-	public void markTokenAsFinished(Place place) {
+	public void markTokenAsFinished(String geometryLabel) {
 		//Search for the first non finished token and mark it.
-		for (RTToken runtimeToken : marking.get(place) ) {
+		Place placeToMark = null;
+		for (Place place : marking.keySet()) {
+			if (place.getGeometryLabel().getText().equals(geometryLabel)) {
+				placeToMark = place;
+				break;
+			}
+		}
+		System.out.print("Marking place " + placeToMark.toString() + " as finished");
+		for (RTToken runtimeToken : marking.get(placeToMark) ) {
 			if (!runtimeToken.isFinished()) {
 				runtimeToken.setFinished(true);
 				break;

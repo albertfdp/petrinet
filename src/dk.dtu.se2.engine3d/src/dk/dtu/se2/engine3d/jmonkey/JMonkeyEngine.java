@@ -9,6 +9,7 @@ import geometry.Point;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -57,10 +58,13 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	private Engine3DListener listener;
 	
 	/* Events that need to be run */
-	private ArrayList<JMonkeyEvent> events;
+	private HashMap<String, JMonkeyEvent> events;
+	
+	private LinkedList<JMonkeyEvent> eventsQueue;
 	
 	/* Initial lines in the geometry */
 	private HashMap<String, MotionPath> lines;
+	
 	
 	private Random rand = new Random();
     private Rectangle boundingBox;
@@ -81,13 +85,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
     }
     
     private State engineState;
-    
-	public static void main (String [] args) {
-		JMonkeyEngine jMonkeyEngine = new JMonkeyEngine();
-		jMonkeyEngine.setDisplayStatView(false);;
-		jMonkeyEngine.start();
-	}
-	
+    	
 	private void setUpEnvironment() {
 		EList<GObject> gObjects = this.geometry.getGObjects();
 		
@@ -183,13 +181,10 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				rootNode.attachChild(token); // put this node in the scene, attached to the root
 				
 				/* Create motion event corresponding to the move animation */
-				JMonkeyEvent event = new JMonkeyEvent(token, path, ((Move) animation.getAnimation()).getSpeed(), LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
+				JMonkeyEvent event = new JMonkeyEvent(animation.getGeometryLabel(), token, path, ((Move) animation.getAnimation()).getSpeed(), LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
 				event.setDirectionType(MotionEvent.Direction.Path); // the spatial is always faced in the direction of the path while moving
 				event.addListener(this); // add the JMonkeyEngine as a listener to all motion events
-				event.setGeometryLabel(animation.getGeometryLabel()); // set the geometry label of the animation
-				events.add(event); // add event to the list of events
-				
-				
+				events.put(animation.getGeometryLabel(), event);
 			}
 		}
 		
@@ -314,7 +309,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		this.animations = animations;
 		
 		this.lines = new HashMap<String, MotionPath>();
-		this.events = new ArrayList<JMonkeyEvent>();
+		this.events = new HashMap<String, JMonkeyEvent>();
+		this.eventsQueue = new LinkedList<JMonkeyEvent>();
 		
 		this.start(); 
 		}
@@ -326,8 +322,10 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	
 	@Override
 	public void addToAnimationQueue(List<RTAnimation> animations) {
-		// TODO Auto-generated method stub
-		
+		for (RTAnimation animation : animations) {
+			JMonkeyEvent eventToQueue = events.get(animation.getGeometryLabel());
+			eventsQueue.add(eventToQueue);
+		}
 	}
 
 	@Override
@@ -362,19 +360,10 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		/* Play waiting animations */
 		if (engineState == State.PLAYING) {
 			
-			if (!events.isEmpty()) {
-						
-				for (int index = 0; index<events.size(); index++) {
-					
-					JMonkeyEvent eventToPlay = events.get(index);
-					events.remove(eventToPlay);
-										
-					eventToPlay.play();
-				}
-			} else { 
-//				engineState = State.STOPPED;
+			while (!eventsQueue.isEmpty()) {
+				MotionEvent eventToRun = eventsQueue.pop();
+				eventToRun.play();
 			}
-			
 		}
 							
     }
@@ -388,7 +377,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				
 				switch (engineState) {
 				
-				case PLAYING: 	for (MotionEvent event : events) { // only pause the playing motionEvents
+				case PLAYING: 	
+					for (MotionEvent event : eventsQueue) { // only pause the playing motionEvents
 									
 									PlayState playState = event.getPlayState();
 									if (playState == PlayState.Playing)
@@ -397,7 +387,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 								engineState = State.PAUSED;
 								break;
 				
-				case PAUSED: 	for (MotionEvent event : events) { // only play the paused motionEvents
+				case PAUSED: 	for (MotionEvent event : eventsQueue) { // only play the paused motionEvents
 									
 									PlayState playState = event.getPlayState();
 									if (playState == PlayState.Paused)
@@ -420,7 +410,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 			if (name.equals("r") && !keyPressed) { 
 				
 				hudText.setText("Play state: " + engineState); 
-				for (MotionEvent event : events) {
+				for (MotionEvent event : eventsQueue) {
 					event.stop();
 					// remove tokens
 					// 

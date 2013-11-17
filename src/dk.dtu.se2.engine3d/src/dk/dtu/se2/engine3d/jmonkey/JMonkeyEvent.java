@@ -21,10 +21,12 @@ public class JMonkeyEvent extends MotionEvent{
 		super();
 	}
 
-	public JMonkeyEvent(Spatial spatial, MotionPath path,
+	public JMonkeyEvent(String geometryLabel, Spatial spatial, MotionPath path,
 			float initialDuration, LoopMode loopMode) {
 		super(spatial, path, initialDuration, loopMode);
+		this.geometryLabel = geometryLabel;
 	}
+	
 	
 	
 	
