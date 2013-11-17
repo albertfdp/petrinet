@@ -1,6 +1,7 @@
 package dk.dtu.se2.engine3d;
 
-import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine3D;
+import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine;
+//import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine3D;
 
 /**
  * A factory for creating Engine3D objects.
@@ -18,12 +19,13 @@ public class Engine3DFactory {
 	 */
 	public static Engine3D getEngine3D(String engineName) {
 		if (engineName.equals(JMONKEY)) {
-			return new JMonkeyEngine3D();
+//			return new JMonkeyEngine3D();
+			return new JMonkeyEngine();
 		}
 			
 		else
 			// FIXME
-			return new JMonkeyEngine3D();
+			return new JMonkeyEngine();
 	}
 
 }
