@@ -47,8 +47,7 @@ public class Simulator implements Engine3DListener {
 		engine3d = new JMonkeyEngine();
 		engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
 		engine3d.setEngine3DListener(this);
-		engine3d.addToAnimationQueue(this.nextAnimations);
-			
+		engine3d.addToAnimationQueue(this.nextAnimations);		
 	}
 
 	@Override
@@ -77,7 +76,7 @@ public class Simulator implements Engine3DListener {
 		
 		this.petrinetEngine.markTokenAsFinished(geometryLabel);
 		this.nextAnimations = this.petrinetEngine.fireTransitions();
-		engine3d.addToAnimationQueue(this.nextAnimations);
+		this.engine3d.addToAnimationQueue(this.nextAnimations);
 	}
 
 	@Override
