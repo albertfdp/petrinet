@@ -692,8 +692,6 @@ public class ConfigurationEditor
 	public ConfigurationEditor() {
 		super();
 		initializeEditingDomain();
-		
-		System.out.println("I am WORKING!!!");
 	}
 
 	/**
