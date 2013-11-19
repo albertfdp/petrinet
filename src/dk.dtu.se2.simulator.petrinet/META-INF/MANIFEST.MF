@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Petrinet
 Bundle-SymbolicName: dk.dtu.se2.simulator.petrinet
 Bundle-Version: 1.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: dk.dtu.se2.simulator.petrinet,
  dk.dtu.se2.simulator.petrinet.runtime
 Require-Bundle: dk.dtu.se2.animation;bundle-version="0.1.0",
