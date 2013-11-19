@@ -177,13 +177,22 @@ public interface GeometryPackage extends EPackage {
 	int LINE__END = GOBJECT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Appearance Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINE__APPEARANCE_LABEL = GOBJECT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Line</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINE_FEATURE_COUNT = GOBJECT_FEATURE_COUNT + 3;
+	int LINE_FEATURE_COUNT = GOBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Line</em>' class.
@@ -415,13 +424,22 @@ public interface GeometryPackage extends EPackage {
 	int INPUT_POINT__YLOCATION = POINT__YLOCATION;
 
 	/**
+	 * The feature id for the '<em><b>Appearance Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_POINT__APPEARANCE_LABEL = POINT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Input Point</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INPUT_POINT_FEATURE_COUNT = POINT_FEATURE_COUNT + 0;
+	int INPUT_POINT_FEATURE_COUNT = POINT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Input Point</em>' class.
@@ -519,6 +537,17 @@ public interface GeometryPackage extends EPackage {
 	EReference getLine_End();
 
 	/**
+	 * Returns the meta object for the attribute '{@link geometry.Line#getAppearanceLabel <em>Appearance Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Appearance Label</em>'.
+	 * @see geometry.Line#getAppearanceLabel()
+	 * @see #getLine()
+	 * @generated
+	 */
+	EAttribute getLine_AppearanceLabel();
+
+	/**
 	 * Returns the meta object for class '{@link geometry.Point <em>Point</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -601,6 +630,17 @@ public interface GeometryPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getInputPoint();
+
+	/**
+	 * Returns the meta object for the attribute '{@link geometry.InputPoint#getAppearanceLabel <em>Appearance Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Appearance Label</em>'.
+	 * @see geometry.InputPoint#getAppearanceLabel()
+	 * @see #getInputPoint()
+	 * @generated
+	 */
+	EAttribute getInputPoint_AppearanceLabel();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -696,6 +736,14 @@ public interface GeometryPackage extends EPackage {
 		EReference LINE__END = eINSTANCE.getLine_End();
 
 		/**
+		 * The meta object literal for the '<em><b>Appearance Label</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LINE__APPEARANCE_LABEL = eINSTANCE.getLine_AppearanceLabel();
+
+		/**
 		 * The meta object literal for the '{@link geometry.impl.PointImpl <em>Point</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -766,6 +814,14 @@ public interface GeometryPackage extends EPackage {
 		 * @generated
 		 */
 		EClass INPUT_POINT = eINSTANCE.getInputPoint();
+
+		/**
+		 * The meta object literal for the '<em><b>Appearance Label</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INPUT_POINT__APPEARANCE_LABEL = eINSTANCE.getInputPoint_AppearanceLabel();
 
 	}
 

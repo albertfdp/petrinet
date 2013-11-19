@@ -16,6 +16,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference geometry.ecore#//Line/bendPoints"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference geometry.ecore#//Line/begin"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference geometry.ecore#//Line/end"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//Line/appearanceLabel"/>
     </genClasses>
     <genClasses ecoreClass="geometry.ecore#//Point">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//Point/xLocation"/>
@@ -26,6 +27,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference geometry.ecore#//Connector/out"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference geometry.ecore#//Connector/in"/>
     </genClasses>
-    <genClasses ecoreClass="geometry.ecore#//InputPoint"/>
+    <genClasses ecoreClass="geometry.ecore#//InputPoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//InputPoint/appearanceLabel"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -4,6 +4,7 @@ import geometry.diagram.edit.policies.LineItemSemanticEditPolicy;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.PolygonDecoration;
+import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.draw2d.RotatableDecoration;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;

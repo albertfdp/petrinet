@@ -94,21 +94,21 @@ public class InputPointEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new Ellipse();
+		return primaryShape = new InputPointFigure();
 	}
 
 	/**
 	 * @generated
 	 */
-	public Ellipse getPrimaryShape() {
-		return (Ellipse) primaryShape;
+	public InputPointFigure getPrimaryShape() {
+		return (InputPointFigure) primaryShape;
 	}
 
 	/**
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(12, 12);
 		return result;
 	}
 
@@ -183,6 +183,21 @@ public class InputPointEditPart extends ShapeNodeEditPart {
 		if (primaryShape instanceof Shape) {
 			((Shape) primaryShape).setLineStyle(style);
 		}
+	}
+
+	/**
+	 * @generated
+	 */
+	public class InputPointFigure extends Ellipse {
+
+		/**
+		 * @generated
+		 */
+		public InputPointFigure() {
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
+					getMapMode().DPtoLP(12)));
+		}
+
 	}
 
 }

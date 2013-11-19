@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link geometry.Line#getBendPoints <em>Bend Points</em>}</li>
  *   <li>{@link geometry.Line#getBegin <em>Begin</em>}</li>
  *   <li>{@link geometry.Line#getEnd <em>End</em>}</li>
+ *   <li>{@link geometry.Line#getAppearanceLabel <em>Appearance Label</em>}</li>
  * </ul>
  * </p>
  *
@@ -95,5 +96,31 @@ public interface Line extends GObject {
 	 * @generated
 	 */
 	void setEnd(Connector value);
+
+	/**
+	 * Returns the value of the '<em><b>Appearance Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Appearance Label</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Appearance Label</em>' attribute.
+	 * @see #setAppearanceLabel(String)
+	 * @see geometry.GeometryPackage#getLine_AppearanceLabel()
+	 * @model
+	 * @generated
+	 */
+	String getAppearanceLabel();
+
+	/**
+	 * Sets the value of the '{@link geometry.Line#getAppearanceLabel <em>Appearance Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Appearance Label</em>' attribute.
+	 * @see #getAppearanceLabel()
+	 * @generated
+	 */
+	void setAppearanceLabel(String value);
 
 } // Line

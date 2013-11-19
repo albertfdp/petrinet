@@ -14,7 +14,7 @@
           name="LineFigure"
           targetDecoration="//@figures.0/@descriptors.0/@actualFigure/@children.0">
         <children
-            xsi:type="gmfgraph:PolygonDecoration"
+            xsi:type="gmfgraph:PolylineDecoration"
             name="targetDecoration">
           <template
               x="-2"
@@ -30,13 +30,21 @@
         name="ConnectorFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="ConnectorFigure"/>
+          name="ConnectorFigure">
+        <preferredSize
+            dx="12"
+            dy="12"/>
+      </actualFigure>
     </descriptors>
     <descriptors
         name="InputPointFigure">
       <actualFigure
           xsi:type="gmfgraph:Ellipse"
-          name="InputPointFigure"/>
+          name="InputPointFigure">
+        <preferredSize
+            dx="12"
+            dy="12"/>
+      </actualFigure>
     </descriptors>
   </figures>
   <nodes

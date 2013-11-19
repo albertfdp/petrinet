@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link geometry.impl.LineImpl#getBendPoints <em>Bend Points</em>}</li>
  *   <li>{@link geometry.impl.LineImpl#getBegin <em>Begin</em>}</li>
  *   <li>{@link geometry.impl.LineImpl#getEnd <em>End</em>}</li>
+ *   <li>{@link geometry.impl.LineImpl#getAppearanceLabel <em>Appearance Label</em>}</li>
  * </ul>
  * </p>
  *
@@ -64,6 +65,26 @@ public class LineImpl extends GObjectImpl implements Line {
 	 * @ordered
 	 */
 	protected Connector end;
+
+	/**
+	 * The default value of the '{@link #getAppearanceLabel() <em>Appearance Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAppearanceLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String APPEARANCE_LABEL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getAppearanceLabel() <em>Appearance Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAppearanceLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected String appearanceLabel = APPEARANCE_LABEL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -221,6 +242,27 @@ public class LineImpl extends GObjectImpl implements Line {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getAppearanceLabel() {
+		return appearanceLabel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAppearanceLabel(String newAppearanceLabel) {
+		String oldAppearanceLabel = appearanceLabel;
+		appearanceLabel = newAppearanceLabel;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GeometryPackage.LINE__APPEARANCE_LABEL, oldAppearanceLabel, appearanceLabel));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -270,6 +312,8 @@ public class LineImpl extends GObjectImpl implements Line {
 			case GeometryPackage.LINE__END:
 				if (resolve) return getEnd();
 				return basicGetEnd();
+			case GeometryPackage.LINE__APPEARANCE_LABEL:
+				return getAppearanceLabel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -293,6 +337,9 @@ public class LineImpl extends GObjectImpl implements Line {
 			case GeometryPackage.LINE__END:
 				setEnd((Connector)newValue);
 				return;
+			case GeometryPackage.LINE__APPEARANCE_LABEL:
+				setAppearanceLabel((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -314,6 +361,9 @@ public class LineImpl extends GObjectImpl implements Line {
 			case GeometryPackage.LINE__END:
 				setEnd((Connector)null);
 				return;
+			case GeometryPackage.LINE__APPEARANCE_LABEL:
+				setAppearanceLabel(APPEARANCE_LABEL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -332,8 +382,26 @@ public class LineImpl extends GObjectImpl implements Line {
 				return begin != null;
 			case GeometryPackage.LINE__END:
 				return end != null;
+			case GeometryPackage.LINE__APPEARANCE_LABEL:
+				return APPEARANCE_LABEL_EDEFAULT == null ? appearanceLabel != null : !APPEARANCE_LABEL_EDEFAULT.equals(appearanceLabel);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (appearanceLabel: ");
+		result.append(appearanceLabel);
+		result.append(')');
+		return result.toString();
 	}
 
 } //LineImpl

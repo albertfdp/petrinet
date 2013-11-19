@@ -101,21 +101,21 @@ public class ConnectorEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new RectangleFigure();
+		return primaryShape = new ConnectorFigure();
 	}
 
 	/**
 	 * @generated
 	 */
-	public RectangleFigure getPrimaryShape() {
-		return (RectangleFigure) primaryShape;
+	public ConnectorFigure getPrimaryShape() {
+		return (ConnectorFigure) primaryShape;
 	}
 
 	/**
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(12, 12);
 		return result;
 	}
 
@@ -242,6 +242,21 @@ public class ConnectorEditPart extends ShapeNodeEditPart {
 			types.add(GeometryElementTypes.Connector_2001);
 		}
 		return types;
+	}
+
+	/**
+	 * @generated
+	 */
+	public class ConnectorFigure extends RectangleFigure {
+
+		/**
+		 * @generated
+		 */
+		public ConnectorFigure() {
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
+					getMapMode().DPtoLP(12)));
+		}
+
 	}
 
 }
