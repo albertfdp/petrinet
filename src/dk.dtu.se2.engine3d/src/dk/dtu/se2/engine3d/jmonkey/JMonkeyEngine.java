@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
 
 import com.jme3.animation.LoopMode;
 import com.jme3.app.SimpleApplication;
+import com.jme3.cinematic.Cinematic;
 import com.jme3.cinematic.MotionPath;
 import com.jme3.cinematic.PlayState;
 import com.jme3.cinematic.events.CinematicEvent;
@@ -52,13 +53,23 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	private Appearance 			appearance;
 	private List<RTAnimation>	animations;
 	
-	/* The listener of the 3D Engine - the simulator*/
+	/* The listener of the 3D Engine - the simulator */
 	private Engine3DListener listener;
 	
-	/* Events that need to be run */
+	/* 
+	 * Mapping between all the possible events 
+	 * in the Petri net and their geometry label
+	 */
 	private HashMap<String, JMonkeyEvent> events;
 	
+	/* Queue of the events that are to be run next */
 	private LinkedList<JMonkeyEvent> eventsQueue;
+	
+	/* 
+	 * Movie script of all the events currently 
+	 * running in the simulation
+	 */
+	private Cinematic eventsRunning;
 	
 	/* Initial lines in the geometry */
 	private HashMap<String, MotionPath> lines;
@@ -156,6 +167,18 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 
 	private void setUpAnimations() {
 		
+		/* Create token */
+		Geometry token = new Geometry("Box", new Box(0.006f*boundingBox.width, 0.004f*boundingBox.width, 0.014f*boundingBox.width)); // create cube geometry from with box shape        
+		
+		Texture tokenTex = assetManager.loadTexture("Interface/Logo/Monkey.jpg"); // create a texture
+		
+		Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");  // create a simple material
+		tokenMat.setTexture("ColorMap", tokenTex);	// set the texture to the material
+		tokenMat.setColor("Color", ColorRGBA.Blue); // set the base color of the material  
+		
+		token.setMaterial(tokenMat); // apply the material to the geometry
+		
+		rootNode.attachChild(token); // put this node in the scene, attached to the root
 		/* Parse the list of animations and create a new MotionPath and MotionEvent for each of them */
 		for(RTAnimation animation : animations) {
 			System.out.println(animation.getClass());
@@ -164,23 +187,11 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				/* Get the motion path corresponding to the current animation */
 				MotionPath path = new MotionPath();
 				path = lines.get(animation.getGeometryLabel());
-							
-				/* Create token */
-				Geometry token = new Geometry("Box", new Box(0.006f*boundingBox.width, 0.004f*boundingBox.width, 0.014f*boundingBox.width)); // create cube geometry from with box shape        
-				
-				Texture tokenTex = assetManager.loadTexture("Interface/Logo/Monkey.jpg"); // create a texture
-				
-				Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");  // create a simple material
-				tokenMat.setTexture("ColorMap", tokenTex);	// set the texture to the material
-				tokenMat.setColor("Color", ColorRGBA.Blue); // set the base color of the material  
-				
-				token.setMaterial(tokenMat); // apply the material to the geometry
-				
-				rootNode.attachChild(token); // put this node in the scene, attached to the root
+								
 				
 				/* Create motion event corresponding to the move animation */
-				JMonkeyEvent event = new JMonkeyEvent(animation.getGeometryLabel(), token, path, ((Move) animation.getAnimation()).getSpeed(), LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
-//				event.setSpeed(((Move) animation.getAnimation()).getSpeed());
+				JMonkeyEvent event = new JMonkeyEvent(animation.getGeometryLabel(), token, path, 10, LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
+				event.setSpeed(((Move) animation.getAnimation()).getSpeed());
 				event.setDirectionType(MotionEvent.Direction.Path); // the spatial is always faced in the direction of the path while moving
 				event.addListener(this); // add the JMonkeyEngine as a listener to all motion events
 				events.put(animation.getGeometryLabel(), event);
@@ -312,6 +323,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		this.events = new HashMap<String, JMonkeyEvent>();
 		this.eventsQueue = new LinkedList<JMonkeyEvent>();
 		
+		this.eventsRunning = new Cinematic(this.rootNode, 10);
+		stateManager.attach(eventsRunning);
+		
 		this.start(); 
 		
 		}
@@ -326,8 +340,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		for (RTAnimation animation : animations) {
 			JMonkeyEvent eventToQueue = events.get(animation.getGeometryLabel());
 			eventsQueue.add(eventToQueue);
+			
 			System.out.println("Animation added to queue: " + animation.getGeometryLabel());
-//			System.out.println("Animation state: " + eventToQueue.getPlayState().name());
 		}
 	}
 
@@ -347,6 +361,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	public void onStop(CinematicEvent ev) {
 		
 		this.listener.onAnimationFinished(((JMonkeyEvent) ev).getGeometryLabel());
+		this.eventsRunning.removeCinematicEvent(ev);
+		
 		System.out.println(ev.getPlayState());
 	}
 
@@ -365,8 +381,11 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 			
 			while (!eventsQueue.isEmpty()) {
 				MotionEvent eventToRun = eventsQueue.pop();
-				if(eventToRun!=null) eventToRun.play();
+				if(eventToRun!=null) 
+					eventsRunning.addCinematicEvent(0, eventToRun);
 			}
+			
+			eventsRunning.play();
 		}
 							
     }
@@ -380,41 +399,18 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				
 				switch (engineState) {
 				
-				case PLAYING: 	for (MotionEvent event : eventsQueue) { // only pause the playing motionEvents
-									
-									if(event!=null) {
-										PlayState playState = event.getPlayState();
-										if (playState == PlayState.Playing)
-											event.pause();
-									}
-	        					}	
+				case PLAYING: 	eventsRunning.pause();
 								engineState = State.PAUSED;
 								break;
 				
-				case PAUSED: 	for (MotionEvent event : eventsQueue) { // only play the paused motionEvents
-									
-									if(event!=null) {
-										PlayState playState = event.getPlayState();
-										if (playState == PlayState.Paused)
-											event.play();	
-									}
-									
-								}	
+				case PAUSED: 	eventsRunning.play();
 								engineState = State.PLAYING;
 								break;
 								
 				case RESETTING:	// do nothing
 								break;
 								
-				case STOPPED: for (MotionEvent event : eventsQueue) { // only play the stopped motionEvents
-					
-								if(event!=null) {
-									PlayState playState = event.getPlayState();
-									if (playState == PlayState.Stopped)
-										event.play();	
-									}
-								}	
-								engineState = State.PLAYING;
+				case STOPPED: 	engineState = State.PLAYING;
 								break;
 								
 				}
