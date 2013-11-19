@@ -17,16 +17,35 @@ import dk.dtu.se2.simulator.petrinet.PetriNetEngine;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
 
+/**
+ * @author Monica
+ *
+ */
+
 public class Simulator implements Engine3DListener {
 	
+	/*
+	 * The three models connected in the configuration
+	 * in order to run the simulation
+	 */
 	private PetriNetDoc petrinet;
 	private Geometry geometry;
 	private Appearance appearance;
 	
+	/*
+	 * Instance of the Petri net Engine
+	 */
 	private PetriNetEngine petrinetEngine;
 	
+	/*
+	 * List of runtime animations that are next to
+	 * be played by the simulator
+	 */
 	private List<RTAnimation> nextAnimations;
 	
+	/*
+	 * Instance of the 3D Engine
+	 */
 	private JMonkeyEngine engine3d;
 		
 	public Simulator (PetriNetDoc petrinet, Geometry geometry, Appearance appearance) {
@@ -37,22 +56,16 @@ public class Simulator implements Engine3DListener {
 		
 		this.petrinetEngine = new PetriNetEngine();
 		
-		this.nextAnimations = this.petrinetEngine.init(petrinet);
-		
-//		JMonkeyEngine3D jmon = new JMonkeyEngine3D();
-//		jmon.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
-//		jmon.setEngine3DListener(this);
-//		jmon.addToAnimationQueue(this.nextAnimations);
-		
-		engine3d = new JMonkeyEngine();
-		engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
-		engine3d.setEngine3DListener(this);
-		engine3d.addToAnimationQueue(this.nextAnimations);		
+		this.engine3d = new JMonkeyEngine();
+		this.engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
+		this.engine3d.setEngine3DListener(this);
+	
 	}
 
 	@Override
 	public void onStart() {
-		
+		this.nextAnimations = this.petrinetEngine.init(petrinet);		
+		this.engine3d.addToAnimationQueue(this.nextAnimations);
 	}
 
 

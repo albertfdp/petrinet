@@ -18,12 +18,16 @@ import org.eclipse.emf.common.util.EList;
 import com.jme3.animation.LoopMode;
 import com.jme3.app.SimpleApplication;
 import com.jme3.cinematic.MotionPath;
+import com.jme3.cinematic.PlayState;
 import com.jme3.cinematic.events.CinematicEvent;
 import com.jme3.cinematic.events.CinematicEventListener;
 import com.jme3.cinematic.events.MotionEvent;
 import com.jme3.font.BitmapFont.Align;
 import com.jme3.font.BitmapText;
 import com.jme3.font.Rectangle;
+import com.jme3.input.KeyInput;
+import com.jme3.input.controls.ActionListener;
+import com.jme3.input.controls.KeyTrigger;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Quaternion;
@@ -263,7 +267,18 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  			hudText.setSize(25);
  			hudText.setLocalTranslation(350, 580, 0); // position
  			guiNode.attachChild(hudText);    	
- 			
+ 			    	 			
+ 			inputManager.addMapping("1",  new KeyTrigger(KeyInput.KEY_1));
+ 			inputManager.addMapping("2",  new KeyTrigger(KeyInput.KEY_2));
+ 			inputManager.addMapping("3",  new KeyTrigger(KeyInput.KEY_3));
+ 			inputManager.addMapping("p",  new KeyTrigger(KeyInput.KEY_P));
+ 			inputManager.addMapping("r",  new KeyTrigger(KeyInput.KEY_R));
+ 			        
+ 			inputManager.addListener(actionListener, new String[]{"1"});
+ 			inputManager.addListener(actionListener, new String[]{"2"});
+ 			inputManager.addListener(actionListener, new String[]{"3"});
+ 			inputManager.addListener(actionListener, new String[]{"p"});
+ 			inputManager.addListener(actionListener, new String[]{"r"});
  			        
  	// AP: Run setups to prepare the layout of the paths etc.
  			this.setUpEnvironment();
@@ -272,8 +287,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  			this.setUpTextFields();
  			this.setUpCameraPosition();
  		 			        
- 			//this.engineState = State.STOPPED;
- 			        
+ 			this.engineState = State.STOPPED;
+ 			
+ 			this.listener.onStart();		        
 	}
 
 	@Override
@@ -297,6 +313,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		this.eventsQueue = new LinkedList<JMonkeyEvent>();
 		
 		this.start(); 
+		
 		}
 
 	public void setEngine3DListener(Engine3DListener engine3DListener) {
@@ -309,7 +326,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		for (RTAnimation animation : animations) {
 			JMonkeyEvent eventToQueue = events.get(animation.getGeometryLabel());
 			eventsQueue.add(eventToQueue);
-			eventToQueue.play();
 			System.out.println("Animation added to queue: " + animation.getGeometryLabel());
 //			System.out.println("Animation state: " + eventToQueue.getPlayState().name());
 		}
@@ -331,18 +347,110 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	public void onStop(CinematicEvent ev) {
 		
 		this.listener.onAnimationFinished(((JMonkeyEvent) ev).getGeometryLabel());
-		System.out.println(ev.toString() + " " + ev.getPlayState());
+		System.out.println(ev.getPlayState());
 	}
 
 	@Override 
     public void simpleUpdate(float tpf) {
-    	if (engineState == State.PLAYING)
+	    			
+		if (engineState == State.PLAYING)
 			hudText.setColor(ColorRGBA.Green);
 		else
 			hudText.setColor(ColorRGBA.Red);
 		
 		hudText.setText("" + engineState);
+		
+		/* Play waiting animations */
+		if (engineState == State.PLAYING) {
+			
+			while (!eventsQueue.isEmpty()) {
+				MotionEvent eventToRun = eventsQueue.pop();
+				if(eventToRun!=null) eventToRun.play();
+			}
+		}
 							
     }
-    
+	
+	
+	private ActionListener actionListener = new ActionListener() {
+		 
+		public void onAction(String name, boolean keyPressed, float tpf) {
+			
+			if (name.equals("p") && !keyPressed) { 
+				
+				switch (engineState) {
+				
+				case PLAYING: 	for (MotionEvent event : eventsQueue) { // only pause the playing motionEvents
+									
+									if(event!=null) {
+										PlayState playState = event.getPlayState();
+										if (playState == PlayState.Playing)
+											event.pause();
+									}
+	        					}	
+								engineState = State.PAUSED;
+								break;
+				
+				case PAUSED: 	for (MotionEvent event : eventsQueue) { // only play the paused motionEvents
+									
+									if(event!=null) {
+										PlayState playState = event.getPlayState();
+										if (playState == PlayState.Paused)
+											event.play();	
+									}
+									
+								}	
+								engineState = State.PLAYING;
+								break;
+								
+				case RESETTING:	// do nothing
+								break;
+								
+				case STOPPED: for (MotionEvent event : eventsQueue) { // only play the stopped motionEvents
+					
+								if(event!=null) {
+									PlayState playState = event.getPlayState();
+									if (playState == PlayState.Stopped)
+										event.play();	
+									}
+								}	
+								engineState = State.PLAYING;
+								break;
+								
+				}
+					
+		    }
+			
+			if (name.equals("r") && !keyPressed) { 
+				
+				hudText.setText("Play state: " + engineState); 
+				for (MotionEvent event : eventsQueue) {
+					if(event!=null) event.stop();
+					// remove tokens
+					// 
+					// This needs to be done differently: it should load the original configuration and remove all tokens.
+				}
+				
+				engineState = State.PAUSED; // perhaps the state should be 'stopped'
+			}
+			
+//			if (name.equals("1") && !keyPressed) { 
+//				
+//				animationQueue.add(0); // adds the ID of the animation to the list 
+//
+//		    } 
+//			if (name.equals("2") && !keyPressed) { 
+//				
+//				animationQueue.add(1); // adds the ID of the animation to the list
+//				
+//		    }
+//			if (name.equals("3") && !keyPressed) {
+//				
+//				animationQueue.add(2); // adds the ID of the animation to the list
+//
+//		    }
+
+		}
+		
+	};
 }
