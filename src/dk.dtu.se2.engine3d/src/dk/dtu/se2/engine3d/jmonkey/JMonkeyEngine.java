@@ -289,7 +289,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  			this.setUpTextFields();
  			this.setUpCameraPosition();
  		 			        
- 			this.engineState = State.PAUSED;
+ 			this.engineState = State.STOPPED;
  			        
 	}
 
@@ -327,6 +327,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 			JMonkeyEvent eventToQueue = events.get(animation.getGeometryLabel());
 			eventsQueue.add(eventToQueue);
 			System.out.println("Animation added to queue: " + animation.getGeometryLabel());
+//			System.out.println("Animation state: " + eventToQueue.getPlayState().name());
 		}
 	}
 
@@ -405,7 +406,14 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				case RESETTING:	// do nothing
 								break;
 								
-				case STOPPED: // do nothing
+				case STOPPED: for (MotionEvent event : eventsQueue) { // only play the stopped motionEvents
+					
+								if(event!=null) {
+									PlayState playState = event.getPlayState();
+									if (playState == PlayState.Stopped)
+										event.play();	
+									}
+								}	
 								engineState = State.PLAYING;
 								break;
 								
