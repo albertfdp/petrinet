@@ -41,3 +41,12 @@ The procedures that ensure the quality of this software product are described in
 		\item A test strategy shall be developed to test the implementation. The strategy will consists of different types of testing such as unit test, acceptance test and system testing. Based on the functionality of each component, a suitable type of testing will be assigned to it. 
 	\end{enumerate}
 \end{enumerate}
+
+\subsection{Performance requirements}
+The software can be excepted to fulfill following performance requirements.
+\begin{enumerate}
+	\item Satisfactory response times for geometry and PetriNet editor related commands are immediate.
+	\item Satisfactory response time for simulator related commands should be immediate for small models. No upper boundary for the size of the model is made. Thus response time for larger models will gradually approach infinity depending on the size of the model.
+	\item Generally the amount of user request as scale of time is small. When the relative amount of requests is large they are simple, such as writing in editors, and when the relative amount of requests is small they are more advanced, such as play command for 3D simulator.
+	\item The number of user per machine will be one.
+\end{enumerate}
