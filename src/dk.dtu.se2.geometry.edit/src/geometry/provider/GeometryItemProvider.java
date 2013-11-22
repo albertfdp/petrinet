@@ -6,12 +6,20 @@ package geometry.provider;
 import geometry.Geometry;
 import geometry.GeometryFactory;
 import geometry.GeometryPackage;
+import geometry.commands.CreateGObjectWLabel;
+
 import java.util.Collection;
 import java.util.List;
+
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -186,5 +194,24 @@ public class GeometryItemProvider
 	public ResourceLocator getResourceLocator() {
 		return GeometryEditPlugin.INSTANCE;
 	}
+	
+	/**
+	 *
+	 * @author Morten
+	 */
+	 @Override
+	 protected Command createAddCommand(EditingDomain domain, EObject owner, 
+			 				EStructuralFeature feature, Collection<?> collection, int index) {
+		 
+		 
+		 if (feature == GeometryPackage.eINSTANCE.getGeometry_GObjects()) {
+			 return new CreateGObjectWLabel(domain, owner,
+			 super.createAddCommand(domain, owner, feature, collection, index));
+		 }
+		 
+		 return super.createAddCommand(domain, owner, feature, collection, index);
+	 }
+	 
+	
 
 }
