@@ -122,71 +122,6 @@ public interface AnimationPackage extends EPackage {
 	int MOVE_OPERATION_COUNT = ANIMATION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dk.dtu.se2.animation.impl.ShowImpl <em>Show</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see dk.dtu.se2.animation.impl.ShowImpl
-	 * @see dk.dtu.se2.animation.impl.AnimationPackageImpl#getShow()
-	 * @generated
-	 */
-	int SHOW = 2;
-
-	/**
-	 * The number of structural features of the '<em>Show</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SHOW_FEATURE_COUNT = ANIMATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Show</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SHOW_OPERATION_COUNT = ANIMATION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link dk.dtu.se2.animation.impl.HideImpl <em>Hide</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see dk.dtu.se2.animation.impl.HideImpl
-	 * @see dk.dtu.se2.animation.impl.AnimationPackageImpl#getHide()
-	 * @generated
-	 */
-	int HIDE = 3;
-
-	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HIDE__LABEL = ANIMATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Hide</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HIDE_FEATURE_COUNT = ANIMATION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Hide</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HIDE_OPERATION_COUNT = ANIMATION_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link dk.dtu.se2.animation.impl.StopImpl <em>Stop</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -194,7 +129,7 @@ public interface AnimationPackage extends EPackage {
 	 * @see dk.dtu.se2.animation.impl.AnimationPackageImpl#getStop()
 	 * @generated
 	 */
-	int STOP = 4;
+	int STOP = 2;
 
 	/**
 	 * The number of structural features of the '<em>Stop</em>' class.
@@ -222,7 +157,7 @@ public interface AnimationPackage extends EPackage {
 	 * @see dk.dtu.se2.animation.impl.AnimationPackageImpl#getSequence()
 	 * @generated
 	 */
-	int SEQUENCE = 5;
+	int SEQUENCE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Animations</b></em>' containment reference list.
@@ -250,6 +185,53 @@ public interface AnimationPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEQUENCE_OPERATION_COUNT = ANIMATION_OPERATION_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link dk.dtu.se2.animation.impl.AppearImpl <em>Appear</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dk.dtu.se2.animation.impl.AppearImpl
+	 * @see dk.dtu.se2.animation.impl.AnimationPackageImpl#getAppear()
+	 * @generated
+	 */
+	int APPEAR = 4;
+
+	/**
+	 * The feature id for the '<em><b>Geometry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPEAR__GEOMETRY = ANIMATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPEAR__APPEARANCE = ANIMATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Appear</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPEAR_FEATURE_COUNT = ANIMATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Appear</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPEAR_OPERATION_COUNT = ANIMATION_OPERATION_COUNT + 0;
 
 
 	/**
@@ -284,37 +266,6 @@ public interface AnimationPackage extends EPackage {
 	EAttribute getMove_Speed();
 
 	/**
-	 * Returns the meta object for class '{@link dk.dtu.se2.animation.Show <em>Show</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Show</em>'.
-	 * @see dk.dtu.se2.animation.Show
-	 * @generated
-	 */
-	EClass getShow();
-
-	/**
-	 * Returns the meta object for class '{@link dk.dtu.se2.animation.Hide <em>Hide</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Hide</em>'.
-	 * @see dk.dtu.se2.animation.Hide
-	 * @generated
-	 */
-	EClass getHide();
-
-	/**
-	 * Returns the meta object for the attribute '{@link dk.dtu.se2.animation.Hide#getLabel <em>Label</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Label</em>'.
-	 * @see dk.dtu.se2.animation.Hide#getLabel()
-	 * @see #getHide()
-	 * @generated
-	 */
-	EAttribute getHide_Label();
-
-	/**
 	 * Returns the meta object for class '{@link dk.dtu.se2.animation.Stop <em>Stop</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -344,6 +295,38 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSequence_Animations();
+
+	/**
+	 * Returns the meta object for class '{@link dk.dtu.se2.animation.Appear <em>Appear</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Appear</em>'.
+	 * @see dk.dtu.se2.animation.Appear
+	 * @generated
+	 */
+	EClass getAppear();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dk.dtu.se2.animation.Appear#getGeometry <em>Geometry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Geometry</em>'.
+	 * @see dk.dtu.se2.animation.Appear#getGeometry()
+	 * @see #getAppear()
+	 * @generated
+	 */
+	EAttribute getAppear_Geometry();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dk.dtu.se2.animation.Appear#getAppearance <em>Appearance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Appearance</em>'.
+	 * @see dk.dtu.se2.animation.Appear#getAppearance()
+	 * @see #getAppear()
+	 * @generated
+	 */
+	EAttribute getAppear_Appearance();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -397,34 +380,6 @@ public interface AnimationPackage extends EPackage {
 		EAttribute MOVE__SPEED = eINSTANCE.getMove_Speed();
 
 		/**
-		 * The meta object literal for the '{@link dk.dtu.se2.animation.impl.ShowImpl <em>Show</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dk.dtu.se2.animation.impl.ShowImpl
-		 * @see dk.dtu.se2.animation.impl.AnimationPackageImpl#getShow()
-		 * @generated
-		 */
-		EClass SHOW = eINSTANCE.getShow();
-
-		/**
-		 * The meta object literal for the '{@link dk.dtu.se2.animation.impl.HideImpl <em>Hide</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dk.dtu.se2.animation.impl.HideImpl
-		 * @see dk.dtu.se2.animation.impl.AnimationPackageImpl#getHide()
-		 * @generated
-		 */
-		EClass HIDE = eINSTANCE.getHide();
-
-		/**
-		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute HIDE__LABEL = eINSTANCE.getHide_Label();
-
-		/**
 		 * The meta object literal for the '{@link dk.dtu.se2.animation.impl.StopImpl <em>Stop</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -451,6 +406,32 @@ public interface AnimationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SEQUENCE__ANIMATIONS = eINSTANCE.getSequence_Animations();
+
+		/**
+		 * The meta object literal for the '{@link dk.dtu.se2.animation.impl.AppearImpl <em>Appear</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dk.dtu.se2.animation.impl.AppearImpl
+		 * @see dk.dtu.se2.animation.impl.AnimationPackageImpl#getAppear()
+		 * @generated
+		 */
+		EClass APPEAR = eINSTANCE.getAppear();
+
+		/**
+		 * The meta object literal for the '<em><b>Geometry</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPEAR__GEOMETRY = eINSTANCE.getAppear_Geometry();
+
+		/**
+		 * The meta object literal for the '<em><b>Appearance</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPEAR__APPEARANCE = eINSTANCE.getAppear_Appearance();
 
 	}
 

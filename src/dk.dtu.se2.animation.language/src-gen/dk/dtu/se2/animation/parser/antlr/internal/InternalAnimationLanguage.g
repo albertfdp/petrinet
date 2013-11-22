@@ -200,90 +200,77 @@ ruleMove returns [EObject current=null]
 
 
 
-// Entry rule entryRuleShow
-entryRuleShow returns [EObject current=null] 
+// Entry rule entryRuleAppear
+entryRuleAppear returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getShowRule()); }
-	 iv_ruleShow=ruleShow 
-	 { $current=$iv_ruleShow.current; } 
+	{ newCompositeNode(grammarAccess.getAppearRule()); }
+	 iv_ruleAppear=ruleAppear 
+	 { $current=$iv_ruleAppear.current; } 
 	 EOF 
 ;
 
-// Rule Show
-ruleShow returns [EObject current=null] 
+// Rule Appear
+ruleAppear returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 ((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getShowAccess().getShowAction_0(),
+            grammarAccess.getAppearAccess().getAppearAction_0(),
             $current);
     }
-)	otherlv_1='show' 
+)	otherlv_1='appear' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getShowAccess().getShowKeyword_1());
-    }
-	otherlv_2='()' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getShowAccess().getLeftParenthesisRightParenthesisKeyword_2());
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleHide
-entryRuleHide returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getHideRule()); }
-	 iv_ruleHide=ruleHide 
-	 { $current=$iv_ruleHide.current; } 
-	 EOF 
-;
-
-// Rule Hide
-ruleHide returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-((
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getHideAccess().getHideAction_0(),
-            $current);
-    }
-)	otherlv_1='hide' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getHideAccess().getHideKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getAppearAccess().getAppearKeyword_1());
     }
 	otherlv_2='(' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getHideAccess().getLeftParenthesisKeyword_2());
+    	newLeafNode(otherlv_2, grammarAccess.getAppearAccess().getLeftParenthesisKeyword_2());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getHideAccess().getLabelEStringParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getAppearAccess().getGeometryEStringParserRuleCall_3_0()); 
 	    }
-		lv_label_3_0=ruleEString		{
+		lv_geometry_3_0=ruleEString		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getHideRule());
+	            $current = createModelElementForParent(grammarAccess.getAppearRule());
 	        }
        		set(
        			$current, 
-       			"label",
-        		lv_label_3_0, 
+       			"geometry",
+        		lv_geometry_3_0, 
         		"EString");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_4=')' 
+)	otherlv_4=',' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getHideAccess().getRightParenthesisKeyword_4());
+    	newLeafNode(otherlv_4, grammarAccess.getAppearAccess().getCommaKeyword_4());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getAppearAccess().getAppearanceEStringParserRuleCall_5_0()); 
+	    }
+		lv_appearance_5_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getAppearRule());
+	        }
+       		set(
+       			$current, 
+       			"appearance",
+        		lv_appearance_5_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_6=')' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getAppearAccess().getRightParenthesisKeyword_6());
     }
 )
 ;
@@ -432,41 +419,31 @@ ruleAnimation returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getAnimationAccess().getShowParserRuleCall_1()); 
+        newCompositeNode(grammarAccess.getAnimationAccess().getAppearParserRuleCall_1()); 
     }
-    this_Show_1=ruleShow
+    this_Appear_1=ruleAppear
     { 
-        $current = $this_Show_1.current; 
+        $current = $this_Appear_1.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAnimationAccess().getHideParserRuleCall_2()); 
+        newCompositeNode(grammarAccess.getAnimationAccess().getStopParserRuleCall_2()); 
     }
-    this_Hide_2=ruleHide
+    this_Stop_2=ruleStop
     { 
-        $current = $this_Hide_2.current; 
+        $current = $this_Stop_2.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAnimationAccess().getStopParserRuleCall_3()); 
+        newCompositeNode(grammarAccess.getAnimationAccess().getSequenceParserRuleCall_3()); 
     }
-    this_Stop_3=ruleStop
+    this_Sequence_3=ruleSequence
     { 
-        $current = $this_Stop_3.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getAnimationAccess().getSequenceParserRuleCall_4()); 
-    }
-    this_Sequence_4=ruleSequence
-    { 
-        $current = $this_Sequence_4.current; 
+        $current = $this_Sequence_3.current; 
         afterParserOrEnumRuleCall();
     }
 )

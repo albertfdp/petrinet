@@ -76,20 +76,16 @@ public class AnimationAdapterFactory extends AdapterFactoryImpl {
 				return createMoveAdapter();
 			}
 			@Override
-			public Adapter caseShow(Show object) {
-				return createShowAdapter();
-			}
-			@Override
-			public Adapter caseHide(Hide object) {
-				return createHideAdapter();
-			}
-			@Override
 			public Adapter caseStop(Stop object) {
 				return createStopAdapter();
 			}
 			@Override
 			public Adapter caseSequence(Sequence object) {
 				return createSequenceAdapter();
+			}
+			@Override
+			public Adapter caseAppear(Appear object) {
+				return createAppearAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -140,34 +136,6 @@ public class AnimationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.animation.Show <em>Show</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see dk.dtu.se2.animation.Show
-	 * @generated
-	 */
-	public Adapter createShowAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.animation.Hide <em>Hide</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see dk.dtu.se2.animation.Hide
-	 * @generated
-	 */
-	public Adapter createHideAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.animation.Stop <em>Stop</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -192,6 +160,20 @@ public class AnimationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSequenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.animation.Appear <em>Appear</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dk.dtu.se2.animation.Appear
+	 * @generated
+	 */
+	public Adapter createAppearAdapter() {
 		return null;
 	}
 

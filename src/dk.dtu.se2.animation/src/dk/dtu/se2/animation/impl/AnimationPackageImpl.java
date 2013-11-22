@@ -5,17 +5,14 @@ package dk.dtu.se2.animation.impl;
 import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.animation.AnimationFactory;
 import dk.dtu.se2.animation.AnimationPackage;
-import dk.dtu.se2.animation.Hide;
+import dk.dtu.se2.animation.Appear;
 import dk.dtu.se2.animation.Move;
 import dk.dtu.se2.animation.Sequence;
-import dk.dtu.se2.animation.Show;
 import dk.dtu.se2.animation.Stop;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -44,20 +41,6 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass showEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass hideEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass stopEClass = null;
 
 	/**
@@ -66,6 +49,13 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * @generated
 	 */
 	private EClass sequenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass appearEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -160,33 +150,6 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getShow() {
-		return showEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getHide() {
-		return hideEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getHide_Label() {
-		return (EAttribute)hideEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getStop() {
 		return stopEClass;
 	}
@@ -207,6 +170,33 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 */
 	public EReference getSequence_Animations() {
 		return (EReference)sequenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAppear() {
+		return appearEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAppear_Geometry() {
+		return (EAttribute)appearEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAppear_Appearance() {
+		return (EAttribute)appearEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -242,15 +232,14 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 		moveEClass = createEClass(MOVE);
 		createEAttribute(moveEClass, MOVE__SPEED);
 
-		showEClass = createEClass(SHOW);
-
-		hideEClass = createEClass(HIDE);
-		createEAttribute(hideEClass, HIDE__LABEL);
-
 		stopEClass = createEClass(STOP);
 
 		sequenceEClass = createEClass(SEQUENCE);
 		createEReference(sequenceEClass, SEQUENCE__ANIMATIONS);
+
+		appearEClass = createEClass(APPEAR);
+		createEAttribute(appearEClass, APPEAR__GEOMETRY);
+		createEAttribute(appearEClass, APPEAR__APPEARANCE);
 	}
 
 	/**
@@ -282,10 +271,9 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 
 		// Add supertypes to classes
 		moveEClass.getESuperTypes().add(this.getAnimation());
-		showEClass.getESuperTypes().add(this.getAnimation());
-		hideEClass.getESuperTypes().add(this.getAnimation());
 		stopEClass.getESuperTypes().add(this.getAnimation());
 		sequenceEClass.getESuperTypes().add(this.getAnimation());
+		appearEClass.getESuperTypes().add(this.getAnimation());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(animationEClass, Animation.class, "Animation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -293,15 +281,14 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 		initEClass(moveEClass, Move.class, "Move", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMove_Speed(), ecorePackage.getEInt(), "speed", null, 0, 1, Move.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(showEClass, Show.class, "Show", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(hideEClass, Hide.class, "Hide", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getHide_Label(), ecorePackage.getEString(), "label", null, 0, 1, Hide.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(stopEClass, Stop.class, "Stop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(sequenceEClass, Sequence.class, "Sequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSequence_Animations(), this.getAnimation(), null, "animations", null, 2, -1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(appearEClass, Appear.class, "Appear", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAppear_Geometry(), ecorePackage.getEString(), "geometry", null, 0, 1, Appear.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAppear_Appearance(), ecorePackage.getEString(), "appearance", null, 0, 1, Appear.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

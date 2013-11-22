@@ -118,52 +118,6 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.animation.Show} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ShowItemProvider showItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link dk.dtu.se2.animation.Show}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createShowAdapter() {
-		if (showItemProvider == null) {
-			showItemProvider = new ShowItemProvider(this);
-		}
-
-		return showItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.animation.Hide} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected HideItemProvider hideItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link dk.dtu.se2.animation.Hide}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createHideAdapter() {
-		if (hideItemProvider == null) {
-			hideItemProvider = new HideItemProvider(this);
-		}
-
-		return hideItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.animation.Stop} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -207,6 +161,29 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 		}
 
 		return sequenceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.animation.Appear} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AppearItemProvider appearItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link dk.dtu.se2.animation.Appear}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAppearAdapter() {
+		if (appearItemProvider == null) {
+			appearItemProvider = new AppearItemProvider(this);
+		}
+
+		return appearItemProvider;
 	}
 
 	/**
@@ -310,10 +287,9 @@ public class AnimationItemProviderAdapterFactory extends AnimationAdapterFactory
 	public void dispose() {
 		if (animationItemProvider != null) animationItemProvider.dispose();
 		if (moveItemProvider != null) moveItemProvider.dispose();
-		if (showItemProvider != null) showItemProvider.dispose();
-		if (hideItemProvider != null) hideItemProvider.dispose();
 		if (stopItemProvider != null) stopItemProvider.dispose();
 		if (sequenceItemProvider != null) sequenceItemProvider.dispose();
+		if (appearItemProvider != null) appearItemProvider.dispose();
 	}
 
 }

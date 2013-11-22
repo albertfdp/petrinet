@@ -79,20 +79,6 @@ public class AnimationSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnimationPackage.SHOW: {
-				Show show = (Show)theEObject;
-				T result = caseShow(show);
-				if (result == null) result = caseAnimation(show);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnimationPackage.HIDE: {
-				Hide hide = (Hide)theEObject;
-				T result = caseHide(hide);
-				if (result == null) result = caseAnimation(hide);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AnimationPackage.STOP: {
 				Stop stop = (Stop)theEObject;
 				T result = caseStop(stop);
@@ -104,6 +90,13 @@ public class AnimationSwitch<T> extends Switch<T> {
 				Sequence sequence = (Sequence)theEObject;
 				T result = caseSequence(sequence);
 				if (result == null) result = caseAnimation(sequence);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnimationPackage.APPEAR: {
+				Appear appear = (Appear)theEObject;
+				T result = caseAppear(appear);
+				if (result == null) result = caseAnimation(appear);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -142,36 +135,6 @@ public class AnimationSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Show</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Show</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseShow(Show object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hide</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hide</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseHide(Hide object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Stop</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -198,6 +161,21 @@ public class AnimationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSequence(Sequence object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Appear</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Appear</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAppear(Appear object) {
 		return null;
 	}
 

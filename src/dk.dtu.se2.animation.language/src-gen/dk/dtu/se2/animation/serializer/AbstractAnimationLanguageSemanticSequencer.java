@@ -3,10 +3,9 @@ package dk.dtu.se2.animation.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import dk.dtu.se2.animation.AnimationPackage;
-import dk.dtu.se2.animation.Hide;
+import dk.dtu.se2.animation.Appear;
 import dk.dtu.se2.animation.Move;
 import dk.dtu.se2.animation.Sequence;
-import dk.dtu.se2.animation.Show;
 import dk.dtu.se2.animation.Stop;
 import dk.dtu.se2.animation.services.AnimationLanguageGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
@@ -29,12 +28,12 @@ public abstract class AbstractAnimationLanguageSemanticSequencer extends Abstrac
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == AnimationPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case AnimationPackage.HIDE:
+			case AnimationPackage.APPEAR:
 				if(context == grammarAccess.getAnimationRule() ||
 				   context == grammarAccess.getAnimation_ImplRule() ||
 				   context == grammarAccess.getAnimation_ImplAccess().getSequenceAnimationsAction_1_1() ||
-				   context == grammarAccess.getHideRule()) {
-					sequence_Hide(context, (Hide) semanticObject); 
+				   context == grammarAccess.getAppearRule()) {
+					sequence_Appear(context, (Appear) semanticObject); 
 					return; 
 				}
 				else break;
@@ -56,15 +55,6 @@ public abstract class AbstractAnimationLanguageSemanticSequencer extends Abstrac
 				   context == grammarAccess.getAnimation_ImplAccess().getSequenceAnimationsAction_1_1() ||
 				   context == grammarAccess.getSequenceRule()) {
 					sequence_Sequence(context, (Sequence) semanticObject); 
-					return; 
-				}
-				else break;
-			case AnimationPackage.SHOW:
-				if(context == grammarAccess.getAnimationRule() ||
-				   context == grammarAccess.getAnimation_ImplRule() ||
-				   context == grammarAccess.getAnimation_ImplAccess().getSequenceAnimationsAction_1_1() ||
-				   context == grammarAccess.getShowRule()) {
-					sequence_Show(context, (Show) semanticObject); 
 					return; 
 				}
 				else break;
@@ -92,16 +82,19 @@ public abstract class AbstractAnimationLanguageSemanticSequencer extends Abstrac
 	
 	/**
 	 * Constraint:
-	 *     label=EString
+	 *     (geometry=EString appearance=EString)
 	 */
-	protected void sequence_Hide(EObject context, Hide semanticObject) {
+	protected void sequence_Appear(EObject context, Appear semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, AnimationPackage.Literals.HIDE__LABEL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AnimationPackage.Literals.HIDE__LABEL));
+			if(transientValues.isValueTransient(semanticObject, AnimationPackage.Literals.APPEAR__GEOMETRY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AnimationPackage.Literals.APPEAR__GEOMETRY));
+			if(transientValues.isValueTransient(semanticObject, AnimationPackage.Literals.APPEAR__APPEARANCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AnimationPackage.Literals.APPEAR__APPEARANCE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getHideAccess().getLabelEStringParserRuleCall_3_0(), semanticObject.getLabel());
+		feeder.accept(grammarAccess.getAppearAccess().getGeometryEStringParserRuleCall_3_0(), semanticObject.getGeometry());
+		feeder.accept(grammarAccess.getAppearAccess().getAppearanceEStringParserRuleCall_5_0(), semanticObject.getAppearance());
 		feeder.finish();
 	}
 	
@@ -127,15 +120,6 @@ public abstract class AbstractAnimationLanguageSemanticSequencer extends Abstrac
 	 *     (animations+=Animation animations+=Animation*)
 	 */
 	protected void sequence_Sequence(EObject context, Sequence semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {Show}
-	 */
-	protected void sequence_Show(EObject context, Show semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

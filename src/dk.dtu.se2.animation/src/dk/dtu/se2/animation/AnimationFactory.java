@@ -40,24 +40,6 @@ public interface AnimationFactory extends EFactory {
 	Move createMove();
 
 	/**
-	 * Returns a new object of class '<em>Show</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Show</em>'.
-	 * @generated
-	 */
-	Show createShow();
-
-	/**
-	 * Returns a new object of class '<em>Hide</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Hide</em>'.
-	 * @generated
-	 */
-	Hide createHide();
-
-	/**
 	 * Returns a new object of class '<em>Stop</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -74,6 +56,15 @@ public interface AnimationFactory extends EFactory {
 	 * @generated
 	 */
 	Sequence createSequence();
+
+	/**
+	 * Returns a new object of class '<em>Appear</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Appear</em>'.
+	 * @generated
+	 */
+	Appear createAppear();
 
 	/**
 	 * Returns the package supported by this factory.

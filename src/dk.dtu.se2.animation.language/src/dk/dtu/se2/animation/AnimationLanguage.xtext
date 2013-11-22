@@ -13,13 +13,9 @@ Move returns Move:
 	{Move}
 	'move' '(' speed=EInt ')';
 
-Show returns Show:
-	{Show}
-	'show' '()';
-
-Hide returns Hide:
-	{Hide}
-	'hide' '(' label=EString ')';
+Appear returns Appear:
+	{Appear}
+	'appear' '(' geometry=EString ',' appearance=EString ')';
 
 Stop returns Stop:
 	{Stop}
@@ -30,7 +26,7 @@ Sequence returns Sequence:
 	'[' animations+=Animation ( ";" animations += Animation )* ']';
 
 Animation returns Animation:
-	Move | Show | Hide | Stop | Sequence;
+	Move | Appear | Stop | Sequence;
 
 EInt returns ecore::EInt:
 	'-'? INT;

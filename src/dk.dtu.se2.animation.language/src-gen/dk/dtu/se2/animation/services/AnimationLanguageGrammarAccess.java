@@ -106,64 +106,52 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 	}
 
-	public class ShowElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Show");
+	public class AppearElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Appear");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cShowAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cShowKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftParenthesisRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		
-		//Show:
-		//	{Show} "show" "()";
-		public ParserRule getRule() { return rule; }
-
-		//{Show} "show" "()"
-		public Group getGroup() { return cGroup; }
-
-		//{Show}
-		public Action getShowAction_0() { return cShowAction_0; }
-
-		//"show"
-		public Keyword getShowKeyword_1() { return cShowKeyword_1; }
-
-		//"()"
-		public Keyword getLeftParenthesisRightParenthesisKeyword_2() { return cLeftParenthesisRightParenthesisKeyword_2; }
-	}
-
-	public class HideElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Hide");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cHideAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cHideKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Action cAppearAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cAppearKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cLabelAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cLabelEStringParserRuleCall_3_0 = (RuleCall)cLabelAssignment_3.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cGeometryAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cGeometryEStringParserRuleCall_3_0 = (RuleCall)cGeometryAssignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cAppearanceAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cAppearanceEStringParserRuleCall_5_0 = (RuleCall)cAppearanceAssignment_5.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//Hide:
-		//	{Hide} "hide" "(" label=EString ")";
+		//Appear:
+		//	{Appear} "appear" "(" geometry=EString "," appearance=EString ")";
 		public ParserRule getRule() { return rule; }
 
-		//{Hide} "hide" "(" label=EString ")"
+		//{Appear} "appear" "(" geometry=EString "," appearance=EString ")"
 		public Group getGroup() { return cGroup; }
 
-		//{Hide}
-		public Action getHideAction_0() { return cHideAction_0; }
+		//{Appear}
+		public Action getAppearAction_0() { return cAppearAction_0; }
 
-		//"hide"
-		public Keyword getHideKeyword_1() { return cHideKeyword_1; }
+		//"appear"
+		public Keyword getAppearKeyword_1() { return cAppearKeyword_1; }
 
 		//"("
 		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 
-		//label=EString
-		public Assignment getLabelAssignment_3() { return cLabelAssignment_3; }
+		//geometry=EString
+		public Assignment getGeometryAssignment_3() { return cGeometryAssignment_3; }
 
 		//EString
-		public RuleCall getLabelEStringParserRuleCall_3_0() { return cLabelEStringParserRuleCall_3_0; }
+		public RuleCall getGeometryEStringParserRuleCall_3_0() { return cGeometryEStringParserRuleCall_3_0; }
+
+		//","
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
+
+		//appearance=EString
+		public Assignment getAppearanceAssignment_5() { return cAppearanceAssignment_5; }
+
+		//EString
+		public RuleCall getAppearanceEStringParserRuleCall_5_0() { return cAppearanceEStringParserRuleCall_5_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
 	}
 
 	public class StopElements extends AbstractParserRuleElementFinder {
@@ -246,32 +234,28 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Animation");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMoveParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cShowParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cHideParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cStopParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cSequenceParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cAppearParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cStopParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cSequenceParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Animation:
-		//	Move | Show | Hide | Stop | Sequence;
+		//	Move | Appear | Stop | Sequence;
 		public ParserRule getRule() { return rule; }
 
-		//Move | Show | Hide | Stop | Sequence
+		//Move | Appear | Stop | Sequence
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Move
 		public RuleCall getMoveParserRuleCall_0() { return cMoveParserRuleCall_0; }
 
-		//Show
-		public RuleCall getShowParserRuleCall_1() { return cShowParserRuleCall_1; }
-
-		//Hide
-		public RuleCall getHideParserRuleCall_2() { return cHideParserRuleCall_2; }
+		//Appear
+		public RuleCall getAppearParserRuleCall_1() { return cAppearParserRuleCall_1; }
 
 		//Stop
-		public RuleCall getStopParserRuleCall_3() { return cStopParserRuleCall_3; }
+		public RuleCall getStopParserRuleCall_2() { return cStopParserRuleCall_2; }
 
 		//Sequence
-		public RuleCall getSequenceParserRuleCall_4() { return cSequenceParserRuleCall_4; }
+		public RuleCall getSequenceParserRuleCall_3() { return cSequenceParserRuleCall_3; }
 	}
 
 	public class EIntElements extends AbstractParserRuleElementFinder {
@@ -317,8 +301,7 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 	
 	private Animation_ImplElements pAnimation_Impl;
 	private MoveElements pMove;
-	private ShowElements pShow;
-	private HideElements pHide;
+	private AppearElements pAppear;
 	private StopElements pStop;
 	private SequenceElements pSequence;
 	private AnimationElements pAnimation;
@@ -383,24 +366,14 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 		return getMoveAccess().getRule();
 	}
 
-	//Show:
-	//	{Show} "show" "()";
-	public ShowElements getShowAccess() {
-		return (pShow != null) ? pShow : (pShow = new ShowElements());
+	//Appear:
+	//	{Appear} "appear" "(" geometry=EString "," appearance=EString ")";
+	public AppearElements getAppearAccess() {
+		return (pAppear != null) ? pAppear : (pAppear = new AppearElements());
 	}
 	
-	public ParserRule getShowRule() {
-		return getShowAccess().getRule();
-	}
-
-	//Hide:
-	//	{Hide} "hide" "(" label=EString ")";
-	public HideElements getHideAccess() {
-		return (pHide != null) ? pHide : (pHide = new HideElements());
-	}
-	
-	public ParserRule getHideRule() {
-		return getHideAccess().getRule();
+	public ParserRule getAppearRule() {
+		return getAppearAccess().getRule();
 	}
 
 	//Stop:
@@ -424,7 +397,7 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 	}
 
 	//Animation:
-	//	Move | Show | Hide | Stop | Sequence;
+	//	Move | Appear | Stop | Sequence;
 	public AnimationElements getAnimationAccess() {
 		return (pAnimation != null) ? pAnimation : (pAnimation = new AnimationElements());
 	}

@@ -157,22 +157,17 @@ public class SequenceItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(AnimationPackage.Literals.SEQUENCE__ANIMATIONS,
-				 AnimationFactory.eINSTANCE.createShow()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AnimationPackage.Literals.SEQUENCE__ANIMATIONS,
-				 AnimationFactory.eINSTANCE.createHide()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AnimationPackage.Literals.SEQUENCE__ANIMATIONS,
 				 AnimationFactory.eINSTANCE.createStop()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AnimationPackage.Literals.SEQUENCE__ANIMATIONS,
 				 AnimationFactory.eINSTANCE.createSequence()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AnimationPackage.Literals.SEQUENCE__ANIMATIONS,
+				 AnimationFactory.eINSTANCE.createAppear()));
 	}
 
 }
