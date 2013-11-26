@@ -35,7 +35,7 @@ public interface Engine3DListener {
 	/**
 	 * On user click.
 	 */
-	public void onUserClick();
+	public void onUserClick(String geometryLabel);
 	
 	/**
 	 * On animation finished.
