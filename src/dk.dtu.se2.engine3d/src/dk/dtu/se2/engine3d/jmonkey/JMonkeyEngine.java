@@ -23,19 +23,25 @@ import com.jme3.cinematic.PlayState;
 import com.jme3.cinematic.events.CinematicEvent;
 import com.jme3.cinematic.events.CinematicEventListener;
 import com.jme3.cinematic.events.MotionEvent;
+import com.jme3.collision.CollisionResult;
+import com.jme3.collision.CollisionResults;
 import com.jme3.font.BitmapFont.Align;
 import com.jme3.font.BitmapText;
 import com.jme3.font.Rectangle;
 import com.jme3.input.KeyInput;
+import com.jme3.input.MouseInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
+import com.jme3.input.controls.MouseButtonTrigger;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Quaternion;
+import com.jme3.math.Ray;
 import com.jme3.math.Spline;
 import com.jme3.math.Spline.SplineType;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
+import com.jme3.scene.Node;
 import com.jme3.scene.shape.Box;
 import com.jme3.scene.shape.Curve;
 import com.jme3.system.AppSettings;
@@ -55,6 +61,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	
 	/* The listener of the 3D Engine - the simulator */
 	private Engine3DListener listener;
+	
+	private Node inputPlaces;
 	
 	/* 
 	 * Mapping between all the possible events 
@@ -161,6 +169,23 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				
 			} else if (object instanceof InputPoint) {
 				
+				InputPoint inputPoint = (InputPoint) object;
+				
+				int x = inputPoint.getXLocation();
+				int y = inputPoint.getYLocation();
+				
+				//Change this with the real geometry
+				Box b = new Box(5, 5, 5);
+				
+				Geometry geom = new Geometry(object.getLabel(), b);
+				geom.setLocalTranslation(new Vector3f(x,0f,y));
+				Material mat = new Material(assetManager,
+				          "Common/MatDefs/Misc/Unshaded.j3md");  // create a simple material
+		        mat.setColor("Color", ColorRGBA.Blue);   // set color of material to blue
+		        geom.setMaterial(mat);   
+		        //Attach the geometry to input places node
+		        inputPlaces.attachChild(geom);
+				
 			}
 		}
 	}
@@ -266,6 +291,10 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  			flyCam.setEnabled(true); 
  			flyCam.setMoveSpeed(25);
  		
+ 			//Attaching the input places node to the root node
+ 			this.inputPlaces = new Node("InputPlaces");
+ 			rootNode.attachChild(inputPlaces);
+ 		
  	// Toggle statistics window in bottom left
  			setDisplayFps(false);
  			setDisplayStatView(false);
@@ -284,12 +313,14 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  			inputManager.addMapping("3",  new KeyTrigger(KeyInput.KEY_3));
  			inputManager.addMapping("p",  new KeyTrigger(KeyInput.KEY_P));
  			inputManager.addMapping("r",  new KeyTrigger(KeyInput.KEY_R));
+ 			inputManager.addMapping("Click", new MouseButtonTrigger(MouseInput.BUTTON_LEFT));
  			        
  			inputManager.addListener(actionListener, new String[]{"1"});
  			inputManager.addListener(actionListener, new String[]{"2"});
  			inputManager.addListener(actionListener, new String[]{"3"});
  			inputManager.addListener(actionListener, new String[]{"p"});
  			inputManager.addListener(actionListener, new String[]{"r"});
+ 			inputManager.addListener(actionListener, new String[]{"Click"});
  			        
  	// AP: Run setups to prepare the layout of the paths etc.
  			this.setUpEnvironment();
@@ -324,7 +355,10 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		this.eventsQueue = new LinkedList<JMonkeyEvent>();
 		
 		this.eventsRunning = new Cinematic(this.rootNode, 10);
-		stateManager.attach(eventsRunning);		
+		stateManager.attach(eventsRunning);
+		
+		this.start(); 
+		
 		}
 
 	public void setEngine3DListener(Engine3DListener engine3DListener) {
@@ -425,6 +459,22 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				}
 				
 				engineState = State.PAUSED; // perhaps the state should be 'stopped'
+			}
+			
+			if (name.equals("Click") && !keyPressed) {
+				// 1. Reset results list.
+		        CollisionResults results = new CollisionResults();
+		        // 2. Aim the ray from cam loc to cam direction.
+		        Ray ray = new Ray(cam.getLocation(), cam.getDirection());
+		        // 3. Collect intersections between Ray and Input Places in results list.
+		        inputPlaces.collideWith(ray, results);
+		        // 4. Get the closest collision
+		        if (results.size() > 0) {
+		        	CollisionResult hitPlace = results.getClosestCollision();
+			        String inputPlaceId = hitPlace.getGeometry().getName();
+			        listener.onUserClick(inputPlaceId);
+		        }
+		        
 			}
 			
 //			if (name.equals("1") && !keyPressed) { 
