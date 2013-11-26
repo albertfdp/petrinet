@@ -160,22 +160,17 @@ public class AnimationLabelItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(PetrinetPackage.Literals.ANIMATION_LABEL__STRUCTURE,
-				 AnimationFactory.eINSTANCE.createShow()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(PetrinetPackage.Literals.ANIMATION_LABEL__STRUCTURE,
-				 AnimationFactory.eINSTANCE.createHide()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(PetrinetPackage.Literals.ANIMATION_LABEL__STRUCTURE,
 				 AnimationFactory.eINSTANCE.createStop()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(PetrinetPackage.Literals.ANIMATION_LABEL__STRUCTURE,
 				 AnimationFactory.eINSTANCE.createSequence()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(PetrinetPackage.Literals.ANIMATION_LABEL__STRUCTURE,
+				 AnimationFactory.eINSTANCE.createAppear()));
 	}
 
 	/**
