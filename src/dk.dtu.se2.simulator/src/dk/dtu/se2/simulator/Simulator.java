@@ -98,10 +98,13 @@ public class Simulator implements Engine3DListener {
 	}
 
 	@Override
-	public void onUserClick() {
-		// TODO Auto-generated method stub
+	public void onUserClick(String geometryLabel) {
 		
+		this.petrinetEngine.createToken(geometryLabel);
+		this.nextAnimations = this.petrinetEngine.fireTransitions();
+		this.engine3d.addToAnimationQueue(this.nextAnimations);
 	}
+	
 	
 	
 }
