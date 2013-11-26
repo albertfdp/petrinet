@@ -23,6 +23,7 @@ import com.jme3.font.Rectangle;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
+import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Quaternion;
@@ -31,9 +32,12 @@ import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
+import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
+import com.jme3.shadow.DirectionalLightShadowRenderer;
 import com.jme3.system.AppSettings;
 import com.jme3.texture.Texture;
+import com.jme3.util.SkyFactory;
 
 import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.appearance.Appearance;
@@ -61,7 +65,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     public ArrayList<BitmapText> messageToPetriNet = new ArrayList<BitmapText>();
     public ArrayList<BitmapText> infoText = new ArrayList<BitmapText>();
     public ArrayList<BitmapText> allTextFields = new ArrayList<BitmapText>();
-    public ArrayList<Geometry> allTokens = new ArrayList<Geometry>();
+    public ArrayList<Spatial> allTokens = new ArrayList<Spatial>();
     public ArrayList<SObject> allSObjects = new ArrayList<SObject>();
     public static ArrayList<MotionEvent> allMotionEvents = new ArrayList<MotionEvent>();
     public double timeSinceLastTrigger;
@@ -198,19 +202,21 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		
 		// Temporary:
 		for (int index = 0; index < allSObjects.size() ; index++) { // create the same number of tokens as there are SObjects
-	
-			Geometry token = new Geometry("Box", new Box(0.006f*boundingBox.width, 0.004f*boundingBox.width, 0.014f*boundingBox.width)); // create cube geometry from with box shape        
-	
-			Texture tokenTex = assetManager.loadTexture("Interface/Logo/Monkey.jpg"); // create a texture
 			
-			Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");  // create a simple material
-			tokenMat.setTexture("ColorMap", tokenTex);
-			tokenMat.setColor("Color", ColorRGBA.Blue); // set the base color   
+			// AP: importing train object
+			Spatial train = assetManager.loadModel("Models/train.obj");
+			train.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
 			
-			token.setMaterial(tokenMat); // apply the material to the geometry
-			
-			allTokens.add(token);
-			rootNode.attachChild(token); // put this node in the scene, attached to the root.
+	        Material trainMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");
+	        trainMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));
+	        trainMat.setColor("Color", ColorRGBA.White);
+	        train.setMaterial(trainMat);
+
+	        // scaling the train
+	     	train.scale(boundingBox.width * 0.006f);
+	     	
+	     	allTokens.add(train);
+	     	rootNode.attachChild(train);
 		}	
 	}
 
@@ -375,46 +381,84 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	
 	public void setupCameraPosition() {
 		
-		float heightScaler = 1.1f;
-			
+		
+		float heightScaler = 1.1f;	
 		Vector3f camPos = new Vector3f(boundingBox.x + boundingBox.width/2, 
 				(float)Math.tan(Math.toRadians(67.5f))*(boundingBox.width/2)*heightScaler, 
 				boundingBox.y + boundingBox.height/2); // height is assuming 45 degree FOV. Angle used for calculation is 90 - (45/2) = 67.5
+		
+		//Vector3f camPos = new Vector3f(205.67f, 61.72f, 188.71f); 
+		
 		cam.setLocation(camPos);
 		
-		Quaternion rotation = new Quaternion(0, (float)Math.cos(Math.toRadians(45)), -(float)Math.cos(Math.toRadians(45)), 0); // make camera look "down"
+		//Quaternion rotation = new Quaternion(0.144f, 0.555f, -0.0987f, 0.8130f); // make camera look "down"
+		Quaternion rotation = new Quaternion(0, (float)Math.cos(Math.toRadians(45)), (float)-Math.cos(Math.toRadians(45)), 0);
 		cam.setRotation(rotation);
 		
 	}
 	
 	public void displayCameraPosition() {
 		
-		//infoText.get(0).setText("Cam location:   " + cam.getLocation());
-		//infoText.get(1).setText("Cam quaternion: " + cam.getRotation());	
-		/*
-		for (int index = 0; index < allSObjects.size(); index++) {
-			infoText.get(index).setText(allSObjects.get(index).getName() + "-" + allSObjects.get(index).getBegin() + "-" + allSObjects.get(index).getBend() + "-" + allSObjects.get(index).getEnd()  );
-		}
-		*/
-	
-		
+		infoText.get(0).setText("Cam location:   " + cam.getLocation());
+		infoText.get(1).setText("Cam quaternion: " + cam.getRotation());		
 	}
 	
 	@Override
 	public void simpleInitApp() {  // keep in mind that we don't have the size of the allSObjects list yet.
 
+		// AP: Run setups to prepare the layout of the paths etc.
+		setupModelMeshes();
+		setupSObjects();
+		calculateBoundingBox();
+		setupTokens();
+		setupMotionEvents();
+		setupTextFields();
+		setupCameraPosition();
+		
+	
 		// AP: setting up miscellaneous stuff
 		timeAtSystemStart = System.currentTimeMillis();
 		// AP: set the background color
 		viewPort.setBackgroundColor(ColorRGBA.Gray);
 		// AP: enable/disable camera fly - the ability to move the camera with keyboard and mouse
-		flyCam.setEnabled(false); 
-		flyCam.setMoveSpeed(25);
+		flyCam.setEnabled(true); 
+		flyCam.setMoveSpeed(50);
+		
+		// AP: setting up skybox
+		rootNode.attachChild(SkyFactory.createSky(
+	            assetManager, "Textures/Sky/Bright/BrightSky.dds", false));
 	
 		// toggle statistics window in bottom left
 		setDisplayFps(false);
 		setDisplayStatView(false);
-		    	
+		
+        // AP: adding light - remember to get materials with shader
+        DirectionalLight sun = new DirectionalLight();
+        sun.setDirection(new Vector3f(-0.5f,-0.5f,-0.5f).normalizeLocal());
+        //sun.setDirection(cam.getDirection());
+        sun.setColor(ColorRGBA.Red);
+        rootNode.addLight(sun);        
+        
+        // Drop shadows 
+        final int SHADOWMAP_SIZE=1024;
+        DirectionalLightShadowRenderer dlsr = new DirectionalLightShadowRenderer(assetManager, SHADOWMAP_SIZE, 3);
+        dlsr.setLight(sun);
+        viewPort.addProcessor(dlsr);
+        
+        /*
+        // box for testing shadows
+        Geometry testBox = new Geometry("testBox", new Box(10, 10, 10));
+        testBox.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
+        Material testBoxMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+        testBoxMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));
+        //testBoxMat.setColor("Color", ColorRGBA.White);
+        
+        testBox.setMaterial(testBoxMat);
+        testBox.setLocalTranslation(boundingBox.width/2 + boundingBox.x, 10, boundingBox.height/2 + boundingBox.y);
+        
+        rootNode.attachChild(testBox);
+        */
+		
 		// AP: setting up a hud text
 		hudText = new BitmapText(guiFont, false);          
 		hudText.setSize(guiFont.getCharSet().getRenderedSize());      // font size
@@ -425,20 +469,20 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		guiNode.attachChild(hudText);    	
 		    	
 		// AP: create ground with volume
-		/*
-		float groundWidthX  = 300;
+		float groundWidthX  = (boundingBox.width/2) * 1.1f;
 		float groundHeightY = 1;
-		float groundDepthZ  = 300;
-		groundGeo = new Geometry("Box", new Box(groundWidthX, groundHeightY, groundDepthZ)); 
+		float groundDepthZ  = (boundingBox.height/2) * 1.1f;
+		groundGeo = new Geometry("Box", new Box(groundWidthX, groundHeightY, groundDepthZ));
+		groundGeo.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
 		Material groundMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-		groundMat.setColor("Color", ColorRGBA.Brown);
-//		Texture groundTex = assetManager.loadTexture("SE2_ground.jpg"); 
-//		groundMat.setTexture("ColorMap", groundTex);
+		//groundMat.setColor("Color", ColorRGBA.Brown);
+		Texture groundTex = assetManager.loadTexture("Textures/ground.jpg"); 
+		groundMat.setTexture("ColorMap", groundTex);
 		groundGeo.setMaterial(groundMat);
-		groundGeo.setLocalTranslation(groundWidthX, (-groundHeightY)-0.1f, groundDepthZ);
+		groundGeo.setLocalTranslation((boundingBox.width/2) + boundingBox.x, (-groundHeightY)-0.1f, (boundingBox.height/2) + boundingBox.y);
 		        
 		rootNode.attachChild(groundGeo);
-		  */
+		  
 		
 		inputManager.addMapping("1",  new KeyTrigger(KeyInput.KEY_1));
 		inputManager.addMapping("2",  new KeyTrigger(KeyInput.KEY_2));
@@ -452,15 +496,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		inputManager.addListener(actionListener, new String[]{"p"});
 		inputManager.addListener(actionListener, new String[]{"r"});
 		        
-		// AP: Run setups to prepare the layout of the paths etc.
-		setupModelMeshes();
-		setupSObjects();
-		calculateBoundingBox();
-		setupTokens();
-		setupMotionEvents();
-		setupTextFields();
-		setupCameraPosition();
-		        
+
 		engineState = State.PAUSED;
 		        
 		for (int index = 0; index < 5; index++) {
@@ -542,35 +578,8 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	@Override 
     public void simpleUpdate(float tpf) {
 		
-		displayCameraPosition();
-    	
-		//double timeElapsedSinceStart = System.currentTimeMillis() - timeAtSystemStart; // Time elapsed since program start. 
-		
-		//timeSinceLastTrigger += timeElapsedSinceStart - timeAtLastTrigger;
-		
-//		// add a random motion event to the animation queue
-//		if ((timeElapsedSinceStart/1000)%5 == 0 && timeSinceLastTrigger/1000 > 0.1f) { // do this every 5 seconds
-//			
-//			int randomNum = rand.nextInt(3);
-//			
-//			if (randomNum == 0) {
-//				addToAnimationQueue("ID00");
-//			}
-//			if (randomNum == 1) {
-//				addToAnimationQueue("ID01");
-//			}
-//			if (randomNum == 2) {
-//				addToAnimationQueue("ID02");
-//			}
-//			
-//			timeAtLastTrigger = timeElapsedSinceStart; // we need to ensure that some time has passed before running this function again, otherwise we might get (time%5 == 0) true several times in a row.
-//			timeSinceLastTrigger = 0;
-//		}
-//		
-		
-		// update play state HUD
-		//hudText.setText("Press 'p' to play/pause, press 'r' to reset - " + engineState + " - time: " + timeElapsedSinceStart/1000);  
-		
+		//displayCameraPosition();
+
 		if (engineState == State.PLAYING)
 			hudText.setColor(ColorRGBA.Green);
 		else
