@@ -3,6 +3,9 @@ package geometry.diagram.edit.commands;
 import geometry.BendPoint;
 import geometry.Geometry;
 import geometry.GeometryFactory;
+import geometry.impl.BendPointImpl;
+import geometry.impl.ConnectorImpl;
+import geometry.impl.LineImpl;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -50,13 +53,21 @@ public class BendPointCreateCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
+	 * @author Morten
+	 * @generated NOT
 	 */
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
 			IAdaptable info) throws ExecutionException {
 		BendPoint newElement = GeometryFactory.eINSTANCE.createBendPoint();
 
 		Geometry owner = (Geometry) getElementToEdit();
+		int count = 1;
+		for (Object obj: owner.getGObjects()) {
+			if (obj instanceof LineImpl)
+				count += ((LineImpl) obj).getBendPoints().size();
+				
+		}
+		newElement.setLabel("BP"+count);
 		owner.getGObjects().add(newElement);
 
 		doConfigure(newElement, monitor, info);
@@ -83,5 +94,8 @@ public class BendPointCreateCommand extends EditElementCommand {
 			configureCommand.execute(monitor, info);
 		}
 	}
+	
+	
+	
 
 }

@@ -3,6 +3,7 @@ package geometry.diagram.edit.commands;
 import geometry.Connector;
 import geometry.Geometry;
 import geometry.GeometryFactory;
+import geometry.impl.ConnectorImpl;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -26,8 +27,11 @@ public class ConnectorCreateCommand extends EditElementCommand {
 	 */
 	public ConnectorCreateCommand(CreateElementRequest req) {
 		super(req.getLabel(), null, req);
+		
+		
 	}
-
+	
+	
 	/**
 	 * FIXME: replace with setElementToEdit()
 	 * @generated
@@ -50,13 +54,20 @@ public class ConnectorCreateCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
+	 * Set label in diagram editor
+	 * @author Morten
+	 * @generated NOT
 	 */
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
 			IAdaptable info) throws ExecutionException {
 		Connector newElement = GeometryFactory.eINSTANCE.createConnector();
-
 		Geometry owner = (Geometry) getElementToEdit();
+		int count = 1;
+		for (Object obj: owner.getGObjects()) {
+			if (obj instanceof ConnectorImpl)
+				count++;
+		}
+		newElement.setLabel("C"+count);
 		owner.getGObjects().add(newElement);
 
 		doConfigure(newElement, monitor, info);

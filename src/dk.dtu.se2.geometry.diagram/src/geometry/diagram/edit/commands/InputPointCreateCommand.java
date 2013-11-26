@@ -3,6 +3,8 @@ package geometry.diagram.edit.commands;
 import geometry.Geometry;
 import geometry.GeometryFactory;
 import geometry.InputPoint;
+import geometry.impl.ConnectorImpl;
+import geometry.impl.InputPointImpl;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -50,13 +52,20 @@ public class InputPointCreateCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
+	 * @author Morten
+	 * @generated NOT
 	 */
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
 			IAdaptable info) throws ExecutionException {
 		InputPoint newElement = GeometryFactory.eINSTANCE.createInputPoint();
 
 		Geometry owner = (Geometry) getElementToEdit();
+		int count = 1;
+		for (Object obj: owner.getGObjects()) {
+			if (obj instanceof InputPointImpl)
+				count++;
+		}
+		newElement.setLabel("IP"+count);
 		owner.getGObjects().add(newElement);
 
 		doConfigure(newElement, monitor, info);

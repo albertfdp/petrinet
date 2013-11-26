@@ -5,6 +5,8 @@ import geometry.Geometry;
 import geometry.GeometryFactory;
 import geometry.Line;
 import geometry.diagram.edit.policies.GeometryBaseItemSemanticEditPolicy;
+import geometry.impl.ConnectorImpl;
+import geometry.impl.LineImpl;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -17,6 +19,7 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
+import org.eclipse.gmf.runtime.notation.View;
 
 /**
  * @generated
@@ -37,7 +40,7 @@ public class LineCreateCommand extends EditElementCommand {
 	 * @generated
 	 */
 	private final Geometry container;
-
+	
 	/**
 	 * @generated
 	 */
@@ -47,6 +50,7 @@ public class LineCreateCommand extends EditElementCommand {
 		this.source = source;
 		this.target = target;
 		container = deduceContainer(source, target);
+		
 	}
 
 	/**
@@ -74,7 +78,8 @@ public class LineCreateCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
+	 * @author Morten
+	 * @generated NOT
 	 */
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
 			IAdaptable info) throws ExecutionException {
@@ -84,6 +89,14 @@ public class LineCreateCommand extends EditElementCommand {
 		}
 
 		Line newElement = GeometryFactory.eINSTANCE.createLine();
+		
+		int count = 1;
+		for (Object obj: getContainer().getGObjects()) {
+			if (obj instanceof LineImpl)
+				count++;
+		}
+		newElement.setLabel("L"+count);
+		
 		getContainer().getGObjects().add(newElement);
 		newElement.setBegin(getSource());
 		newElement.setEnd(getTarget());
@@ -161,5 +174,8 @@ public class LineCreateCommand extends EditElementCommand {
 		}
 		return null;
 	}
+	
+
+
 
 }
