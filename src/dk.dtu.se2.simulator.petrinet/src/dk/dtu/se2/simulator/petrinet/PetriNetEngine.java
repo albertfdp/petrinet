@@ -70,7 +70,10 @@ public class PetriNetEngine {
 			Object item = iterator.next();
 			if (item instanceof Place) {
 				Place place = (Place) item;
-				animations.add(new RTAnimation(place.getId(), place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure()));
+				if (!place.getInputPlaceLabel().isText()) {
+					//This isn't an input place so it has an animation
+					animations.add(new RTAnimation(place.getId(), place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure()));
+				}
 			}
 			
 		}
@@ -112,7 +115,7 @@ public class PetriNetEngine {
 				break;
 			}
 		}
-		System.out.print("Marking place " + placeToMark.toString() + " as finished");
+		System.out.println("Marking place " + placeToMark.toString() + " as finished");
 		for (RTToken runtimeToken : marking.get(placeToMark) ) {
 			if (!runtimeToken.isFinished()) {
 				runtimeToken.setFinished(true);
@@ -125,11 +128,21 @@ public class PetriNetEngine {
 	 * Creates a token on a place
 	 * @param place: The place on which the token is created
 	 */
-	public void createToken(Place place) {
-		//Create a token and add it to the place
-		RTToken newToken = new RTToken();
-		marking.get(place).add(newToken);
+	public void createToken(String geometryLabel) {
+		//Search for the place on which the token is created
+		Place placeToDropTokenOn = null;
+		for (Place place : marking.keySet()) {
+			if (place.getGeometryLabel().getText().equals(geometryLabel)) {
+				placeToDropTokenOn = place;
+				break;
+			}
+		}
+		System.out.println("Creating token on: " + placeToDropTokenOn.toString());
 		
+		//Create the token and add it.
+		RTToken newToken = new RTToken();
+		newToken.setFinished(true);
+		marking.get(placeToDropTokenOn).add(newToken);
 	}
 
 	/**
