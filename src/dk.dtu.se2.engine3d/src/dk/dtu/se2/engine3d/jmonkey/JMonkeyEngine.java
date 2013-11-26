@@ -324,10 +324,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		this.eventsQueue = new LinkedList<JMonkeyEvent>();
 		
 		this.eventsRunning = new Cinematic(this.rootNode, 10);
-		stateManager.attach(eventsRunning);
-		
-		this.start(); 
-		
+		stateManager.attach(eventsRunning);		
 		}
 
 	public void setEngine3DListener(Engine3DListener engine3DListener) {
