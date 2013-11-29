@@ -1,5 +1,6 @@
 package dk.dtu.se2.engine3d.jmonkey;
 
+
 import geometry.BendPoint;
 import geometry.GObject;
 import geometry.InputPoint;
@@ -52,19 +53,16 @@ import com.jme3.system.AppSettings;
 import com.jme3.texture.Texture;
 import com.jme3.util.SkyFactory;
 
-import dk.dtu.se2.animation.Appear;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
 import dk.dtu.se2.animation.Move;
-import dk.dtu.se2.animation.Sequence;
-import dk.dtu.se2.animation.Stop;
 import dk.dtu.se2.appearance.Appearance;
 import dk.dtu.se2.engine3d.Engine3D;
 import dk.dtu.se2.engine3d.Engine3DListener;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
-public class JMonkeyEngine extends SimpleApplication implements Engine3D, CinematicEventListener {
+public class JMonkeyEngine extends SimpleApplication implements Engine3D, CinematicEventListener{
 	
 	/*
 	 * Geometry and Appearance models, plus all possible animations
@@ -92,9 +90,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	/* Queue of the events that are to be run next */
 	private LinkedList<JMonkeyEvent> eventsQueue;
 	
-	/* Queue of tokes to be destroyed */
-	private HashMap<String, LinkedList<Spatial>> tokenQueue;
-	
 	/* 
 	 * Movie script of all the events currently 
 	 * running in the simulation
@@ -105,9 +100,11 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	private HashMap<String, MotionPath> lines;
 	
     private Rectangle boundingBox;
+    
     private int highX = (int) Double.NEGATIVE_INFINITY, highY = (int) Double.NEGATIVE_INFINITY;
     private int lowX = (int) Double.POSITIVE_INFINITY, lowY = (int) Double.POSITIVE_INFINITY;
     
+  //  private int highX, highY, lowX, lowY;
     private Geometry groundGeo;
     private double timeAtSystemStart;
     private ArrayList<BitmapText> textFields;
@@ -122,7 +119,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
     }
     
     private State engineState;
-    	
+
 	private void setUpEnvironment() {
 		EList<GObject> gObjects = this.geometry.getGObjects();
 		
@@ -151,7 +148,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				track.setLineWidth(500);
 				
 				/* Create geometry */
-				Geometry trackGeometry = new Geometry(line.getLabel(), track); // create track geometry with curve shape   		
+				Geometry trackGeometry = new Geometry("Track", track); // create track geometry with curve shape   		
 				
 				/* Set "appearance" */
 				Texture trackTex = assetManager.loadTexture("Interface/Logo/Monkey.jpg"); // create a texture
@@ -160,28 +157,33 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				trackMat.setColor("Color", ColorRGBA.Orange); // set the base color of the material   
 				
 				trackGeometry.setMaterial(trackMat); // apply the material to the geometry
-				Node node = new Node(line.getLabel());
-				node.attachChild(trackGeometry);
-				rootNode.attachChild(node); // put this node in the scene, attached to the root node.
+				
+				rootNode.attachChild(trackGeometry); // put this node in the scene, attached to the root node.
 				
 				/* Create motion path */
 				MotionPath path = new MotionPath();
 				
 				path.setCycle(false); // make sure the path doesn't loop 
 				
-	       
+				
+				
+				
 				for(int j=0; j<=i; j++) {
 					
-					/* Find highest and lowest values of X to set the boundary */
+					// Commented out for debugging purposes.
+					
+					// Find highest and lowest values of X to set the boundary 
 					if(controlPoints[j].getX() > highX) highX = (int) controlPoints[j].getX();
 					else if(controlPoints[j].getX() < lowX) lowX = (int) controlPoints[j].getX();
 					
-					/* Find highest and lowest values of Y to set the boundary */
-					if(controlPoints[j].getY() > highY) highY = (int) controlPoints[j].getY();
-					else if(controlPoints[j].getY() < lowY) lowY = (int) controlPoints[j].getY();
+					// Find highest and lowest values of Y to set the boundary
+					if(controlPoints[j].getZ() > highY) highY = (int) controlPoints[j].getZ();
+					else if(controlPoints[j].getZ() < lowY) lowY = (int) controlPoints[j].getZ();
+					
 					
 					path.addWayPoint(controlPoints[j]);
 				}
+				
 				
 				path.setPathSplineType(SplineType.CatmullRom);
 				path.setCurveTension(0.5f);        
@@ -214,46 +216,36 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 
 	private void setUpAnimations() {
 		
+		/* Create token */
+		Spatial token = assetManager.loadModel("Models/train.obj");
+		token.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
+				
+		Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
+		tokenMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));	// set the texture to the material
+		tokenMat.setColor("Color", ColorRGBA.White); // set the base color of the material  
+		
+		token.setMaterial(tokenMat); // apply the material to the geometry
 
+		// scaling the train
+     	token.scale(boundingBox.width * 0.006f);
+     	
+		rootNode.attachChild(token); // put this node in the scene, attached to the root
 		/* Parse the list of animations and create a new MotionPath and MotionEvent for each of them */
 		for(RTAnimation animation : animations) {
 			System.out.println(animation.getClass());
 			if(animation.getAnimation() instanceof Move) {
 				
-				/* Create token */
-				Spatial token = assetManager.loadModel("Models/train.obj");
-				token.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
-						
-				Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
-				tokenMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));	// set the texture to the material
-				tokenMat.setColor("Color", ColorRGBA.White); // set the base color of the material  
-				
-				token.setMaterial(tokenMat); // apply the material to the geometry
-
-				// scaling the train
-		     	token.scale(boundingBox.width * 0.006f);
-		     	
-				//rootNode.attachChild(token); // put this node in the scene, attached to the root
-				
 				/* Get the motion path corresponding to the current animation */
 				MotionPath path = new MotionPath();
 				path = lines.get(animation.getGeometryLabel());
-			
+								
 				
 				/* Create motion event corresponding to the move animation */
 				JMonkeyEvent event = new JMonkeyEvent(animation.getGeometryLabel(), token, path, 10, LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
 				event.setSpeed(((Move) animation.getAnimation()).getSpeed());
 				event.setDirectionType(MotionEvent.Direction.Path); // the spatial is always faced in the direction of the path while moving
 				event.addListener(this); // add the JMonkeyEngine as a listener to all motion events
-				
 				events.put(animation.getGeometryLabel(), event);
-				
-			} else if (animation.getAnimation() instanceof Appear) {
-				
-			} else if (animation.getAnimation() instanceof Sequence) {
-				
-			} else if (animation.getAnimation() instanceof Stop) {
-				
 			}
 		}
 				
@@ -283,35 +275,31 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	}
 	
 	private void setUpGround() {
+		
 		// AP: create ground with volume
-				float groundWidthX  = (boundingBox.width/2) * 1.1f;
-				float groundHeightY = 1;
-				float groundDepthZ  = (boundingBox.height/2) * 1.1f;
-				groundGeo = new Geometry("Box", new Box(groundWidthX, groundHeightY, groundDepthZ));
-				groundGeo.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
-				Material groundMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-				//groundMat.setColor("Color", ColorRGBA.Brown);
-				Texture groundTex = assetManager.loadTexture("Textures/ground.jpg"); 
-				groundMat.setTexture("ColorMap", groundTex);
-				groundGeo.setMaterial(groundMat);
-				groundGeo.setLocalTranslation((boundingBox.width/2) + boundingBox.x, (-groundHeightY)-0.1f, (boundingBox.height/2) + boundingBox.y);
+		float groundWidthX  = (boundingBox.width/2) * 1.1f;
+		float groundHeightY = 1;
+		float groundDepthZ  = (boundingBox.height/2) * 1.1f;
+		groundGeo = new Geometry("Box", new Box(groundWidthX, groundHeightY, groundDepthZ));
+		groundGeo.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
+		Material groundMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+		Texture groundTex = assetManager.loadTexture("Textures/ground.jpg"); 
+		groundMat.setTexture("ColorMap", groundTex);
+		groundGeo.setMaterial(groundMat);
+		groundGeo.setLocalTranslation((boundingBox.width/2) + boundingBox.x, (-groundHeightY)-0.1f, (boundingBox.height/2) + boundingBox.y);
 				        
-				rootNode.attachChild(groundGeo);
+		rootNode.attachChild(groundGeo);
 
 	}
 	private void setBoundingBox() {
-		
-		System.out.println(lowX);
-		System.out.println(lowY);
-		System.out.println(highX);
-		System.out.println(highY);
 		
 		boundingBox = new Rectangle(lowX, lowY, highX-lowX, highY-lowY);
 	}
 	
 	
 	public void setUpTextFields() {
-	
+		
+		/*
 		textFields = new ArrayList<BitmapText>();
 		infoText = new ArrayList<BitmapText>();
 		
@@ -338,6 +326,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
     	}
 		    	
     	infoText.get(0).setText("Press 'p' to play & pause, press 'r' to reset - use '1' and '2' to add token animations to the queue");
+    	*/
 	}
 	
 	private void setUpCameraPosition() {
@@ -357,24 +346,24 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  	@Override
 	public void simpleInitApp() {
  		
- 	// AP: setting up miscellaneous stuff
+ 			// AP: setting up miscellaneous stuff
  			timeAtSystemStart = System.currentTimeMillis();
- 	// AP: set the background color
+ 			// AP: set the background color
  			viewPort.setBackgroundColor(ColorRGBA.Gray);
- 	// AP: enable/disable camera fly - the ability to move the camera with keyboard and mouse
+ 			// AP: enable/disable camera fly - the ability to move the camera with keyboard and mouse
  			flyCam.setEnabled(false); 
- 			flyCam.setMoveSpeed(50);
+ 			flyCam.setMoveSpeed(100);
 
  		
  			//Attaching the input places node to the root node
  			this.inputPlaces = new Node("InputPlaces");
  			rootNode.attachChild(inputPlaces);
  		
- 	// Toggle statistics window in bottom left
+ 			// Toggle statistics window in bottom left
  			setDisplayFps(false);
  			setDisplayStatView(false);
  			    	
- 	// AP: setting up a hud text
+ 			// AP: setting up a hud text
  			hudText = new BitmapText(guiFont, false);          
  			hudText.setSize(guiFont.getCharSet().getRenderedSize());   // font size
  			hudText.setColor(ColorRGBA.White);                        // font color
@@ -382,21 +371,12 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  			hudText.setSize(25);
  			hudText.setLocalTranslation(350, 580, 0); // position
  			guiNode.attachChild(hudText);    	
- 			
- 			
- 			        
- 			Box b = new Box(Vector3f.ZERO, 1, 1, 1);
- 	        Geometry geom = new Geometry("Box", b);
- 	        Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
- 	        mat.setTexture("ColorMap", assetManager.loadTexture("Interface/Logo/Monkey.jpg"));
- 	        geom.setMaterial(mat);
- 	        rootNode.attachChild(geom);
  	        
  	// AP: Run setups to prepare the layout of the paths etc.
  	        this.setUpLight();
+ 	        this.setUpEnvironment();
  	        this.setBoundingBox();
  	        this.setUpGround();
- 			this.setUpEnvironment();
  			this.setUpAnimations();
  			this.setUpTextFields();
  			this.setUpCameraPosition();
@@ -466,7 +446,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		this.lines = new HashMap<String, MotionPath>();
 		this.events = new HashMap<String, JMonkeyEvent>();
 		this.eventsQueue = new LinkedList<JMonkeyEvent>();
-		this.tokenQueue = new HashMap<String, LinkedList<Spatial>>();
 		
 		this.eventsRunning = new Cinematic(this.rootNode, 10);
 		stateManager.attach(eventsRunning);
@@ -474,7 +453,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		this.setPauseOnLostFocus(false);
 		this.start(); 
 		
-	}
+		}
 
 	public void setEngine3DListener(Engine3DListener engine3DListener) {
 		this.listener = engine3DListener;
@@ -502,24 +481,19 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 	@Override
-	public void onStop(CinematicEvent ev ) {
-		JMonkeyEvent event = (JMonkeyEvent) ev;
-		this.listener.onAnimationFinished(event.getGeometryLabel());
-		this.eventsRunning.removeCinematicEvent(ev);
+	public void onStop(CinematicEvent ev) {
 		
-		if (this.tokenQueue.get(event.getGeometryLabel()) == null) {
-			this.tokenQueue.put(event.getGeometryLabel(), new LinkedList<Spatial>());
-		}
-		this.tokenQueue.get(event.getGeometryLabel()).add(event.getSpatial());
+		this.listener.onAnimationFinished(((JMonkeyEvent) ev).getGeometryLabel());
+		this.eventsRunning.removeCinematicEvent(ev);
 		
 		System.out.println(ev.getPlayState());
 	}
 
 	@Override 
     public void simpleUpdate(float tpf) {
-	    			
+
 		if (engineState == State.PLAYING)
 			hudText.setColor(ColorRGBA.Green);
 		else
@@ -532,7 +506,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 			
 			while (!eventsQueue.isEmpty()) {
 				MotionEvent eventToRun = eventsQueue.pop();
-				rootNode.attachChild(eventToRun.getSpatial());
 				if(eventToRun!=null) 
 					eventsRunning.addCinematicEvent(0, eventToRun);
 			}
@@ -582,6 +555,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				engineState = State.PAUSED; // perhaps the state should be 'stopped'
 			}
 			
+			
 			//Enable the camera control by the mouse
 			if (name.equals("CameraControl") && keyPressed) {
 				flyCam.setEnabled(true);
@@ -627,13 +601,5 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		}
 		
 	};
-
-	@Override
-	public void destroyRepresentation(ArrayList<String> geometryLabels) {
-		for (String geometryLabel : geometryLabels) {
-			Spatial spatial = this.tokenQueue.get(geometryLabel).pop();
-			rootNode.detachChild(spatial);
-		}
-	}
 
 }
