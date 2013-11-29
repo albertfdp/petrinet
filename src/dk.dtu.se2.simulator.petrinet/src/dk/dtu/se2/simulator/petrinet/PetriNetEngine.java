@@ -1,5 +1,6 @@
 package dk.dtu.se2.simulator.petrinet;
 
+import java.awt.AWTKeyStroke;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,6 +14,7 @@ import org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceNodeImpl;
 import dk.dtu.se2.petrinet.ExtendedPetriNet;
 import dk.dtu.se2.petrinet.Place;
 import dk.dtu.se2.petrinet.impl.PlaceImpl;
+import dk.dtu.se2.simulator.Simulator;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 import dk.dtu.se2.simulator.petrinet.runtime.RTToken;
 
@@ -26,6 +28,11 @@ public class PetriNetEngine {
 		
 	private HashMap<Place, ArrayList<RTToken>> marking = new HashMap<Place, ArrayList<RTToken>>();
 	private ArrayList<Transition> transitions = new ArrayList<Transition>();
+	private Simulator simulator;
+	
+	public PetriNetEngine(Simulator simulator) {
+		this.simulator = simulator;
+	}
 	
 	/**
 	 * Initializes the Petri Net Engine with a Static Petrinet
@@ -70,7 +77,7 @@ public class PetriNetEngine {
 			Object item = iterator.next();
 			if (item instanceof Place) {
 				Place place = (Place) item;
-				if (place.getInputPlaceLabel() != null && !place.getInputPlaceLabel().isText()) {
+				if (!place.getInputPlaceLabel().isText()) {
 					//This isn't an input place so it has an animation
 					animations.add(new RTAnimation(place.getId(), place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure()));
 				}
@@ -89,12 +96,26 @@ public class PetriNetEngine {
 		ArrayList<RTAnimation> animations = new ArrayList<RTAnimation>();
 		
 		//Iterate through each transition
+		ArrayList<String> tokensToRemove = new ArrayList<String>();
+		
 		for (Transition transition : transitions) {
 			if (isTransitionEnabled(transition)) {
 				//The transition is enabled, fire it and get its labels
 				ArrayList<RTAnimation> newAnimations = fireTransition(transition);
 				animations.addAll(newAnimations);
+				
+				
+				for (Arc a: transition.getIn()) {
+					if (a.getSource() instanceof Place) {
+						Place p = (Place)a.getSource();
+						tokensToRemove.add(p.getGeometryLabel().getText());
+					}
+				}
 			}
+		}
+		
+		if (!tokensToRemove.isEmpty()) {
+			simulator.destroyRepresentations(tokensToRemove);
 		}
 		
 		return animations;
