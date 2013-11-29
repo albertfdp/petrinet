@@ -246,6 +246,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 	
 	public void setupTextFields() {
 		
+		/*
 		for (int index = 0; index < allSObjects.size(); index++) {
 			   
     		BitmapText text = new BitmapText(guiFont, false);
@@ -256,7 +257,9 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     		allTextFields.add(text);
     		guiNode.attachChild(text);
     	}
+		*/
 		
+		/*
 		// AP: set up Petri net message "console"
     	for (int index = 0; index < 5; index++) {
 			   
@@ -272,7 +275,9 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     		messageToPetriNet.add(text);
     		guiNode.attachChild(text);
     	}
+    	*/
     	
+		/*
     	// AP: set up text field for displaying misc info
     	for (int index = 0; index < allSObjects.size(); index++) {
 			   
@@ -285,8 +290,9 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     		infoText.add(text);
     		guiNode.attachChild(text);
     	}
-    	
-    	infoText.get(0).setText("Press 'p' to play & pause, press 'r' to reset - use '1' and '2' to add token animations to the queue");
+    	*/
+		
+    	//infoText.get(0).setText("Press 'p' to play & pause, press 'r' to reset - use '1' and '2' to add token animations to the queue");
 	}
     
 	@Override
@@ -509,6 +515,25 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		}	
 	}
 	
+	public void hideStoppedTokens() {
+		
+		for (int index = 0; index < allMotionEvents.size(); index++) {
+			
+			PlayState state = allMotionEvents.get(index).getPlayState();
+			
+			if (state == PlayState.Stopped) {
+				// Hide token 
+				// This is not the best way to hide the objects, but for now, it works.
+				// This does save a little time, compared to making the object invisible, 
+				// and then visible again when it is needed, since the motionEvent will
+				// move the object automatically when it is needed again.
+				allTokens.get(index).setLocalTranslation(0, -1000, 0);  
+			}
+			
+		}
+		
+	}
+	
 	private ActionListener actionListener = new ActionListener() {
 		 
 		public void onAction(String name, boolean keyPressed, float tpf) {
@@ -579,6 +604,8 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
     public void simpleUpdate(float tpf) {
 		
 		//displayCameraPosition();
+		
+		hideStoppedTokens();
 
 		if (engineState == State.PLAYING)
 			hudText.setColor(ColorRGBA.Green);
@@ -625,6 +652,7 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 		}
 		
 		
+		/*
 		// Debug: update petri net message console
 		for (int index = 0; index < messageToPetriNet.size(); index++) {
 					
@@ -632,7 +660,9 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 			messageToPetriNet.get(index).setText("Animation finished in: " + number); 
 							
 		}
+		*/
 		
+		/*
 		// Debug: update the text fields that display the play state of each animation/MotionEvent
 		for (int index = 0; index < allTextFields.size(); index++) {
 			
@@ -646,7 +676,8 @@ public class JMonkeyEngine3D extends SimpleApplication implements Engine3D {
 			if (state == PlayState.Stopped){
 				allTextFields.get(index).setText(allSObjects.get(index).getName() + " : Stopped");
 			}
-		}	
+		}
+		*/	
     }
 	
 }
