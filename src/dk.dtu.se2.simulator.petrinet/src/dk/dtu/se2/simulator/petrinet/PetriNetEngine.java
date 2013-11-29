@@ -70,7 +70,7 @@ public class PetriNetEngine {
 			Object item = iterator.next();
 			if (item instanceof Place) {
 				Place place = (Place) item;
-				if (!place.getInputPlaceLabel().isText()) {
+				if (place.getInputPlaceLabel() != null && !place.getInputPlaceLabel().isText()) {
 					//This isn't an input place so it has an animation
 					animations.add(new RTAnimation(place.getId(), place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure()));
 				}
