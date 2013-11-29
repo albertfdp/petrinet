@@ -1,5 +1,6 @@
 package dk.dtu.se2.engine3d.jmonkey;
 
+
 import geometry.BendPoint;
 import geometry.GObject;
 import geometry.InputPoint;
@@ -17,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
 
 import com.jme3.animation.LoopMode;
 import com.jme3.app.SimpleApplication;
+import com.jme3.app.state.AppState;
 import com.jme3.cinematic.Cinematic;
 import com.jme3.cinematic.MotionPath;
 import com.jme3.cinematic.PlayState;
@@ -33,6 +35,7 @@ import com.jme3.input.MouseInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.controls.MouseButtonTrigger;
+import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Quaternion;
@@ -40,24 +43,39 @@ import com.jme3.math.Ray;
 import com.jme3.math.Spline;
 import com.jme3.math.Spline.SplineType;
 import com.jme3.math.Vector3f;
+import com.jme3.niftygui.NiftyJmeDisplay;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
+import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
 import com.jme3.scene.shape.Curve;
+import com.jme3.shadow.DirectionalLightShadowRenderer;
 import com.jme3.system.AppSettings;
 import com.jme3.texture.Texture;
+import com.jme3.util.SkyFactory;
 
+import de.lessvoid.nifty.Nifty;
+import de.lessvoid.nifty.screen.Screen;
+import de.lessvoid.nifty.screen.ScreenController;
 import dk.dtu.se2.animation.Move;
 import dk.dtu.se2.appearance.Appearance;
 import dk.dtu.se2.engine3d.Engine3D;
 import dk.dtu.se2.engine3d.Engine3DListener;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
-public class JMonkeyEngine extends SimpleApplication implements Engine3D, CinematicEventListener {
+public class JMonkeyEngine extends SimpleApplication implements Engine3D, CinematicEventListener{
 	
+	/*
+	 * Geometry and Appearance models, plus all possible animations
+	 */
 	private geometry.Geometry 	geometry;
 	private Appearance 			appearance;
 	private List<RTAnimation>	animations;
+	
+	private NiftyJmeDisplay 	niftyDisplay; 
+	private Nifty 				nifty;
+	private ScreenController 	screenController;
+	
 	
 	/* The listener of the 3D Engine - the simulator */
 	private Engine3DListener listener;
@@ -88,7 +106,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
     private int highX = (int) Double.NEGATIVE_INFINITY, highY = (int) Double.NEGATIVE_INFINITY;
     private int lowX = (int) Double.POSITIVE_INFINITY, lowY = (int) Double.POSITIVE_INFINITY;
     
-    
+    private Geometry groundGeo;
     private double timeAtSystemStart;
     private ArrayList<BitmapText> textFields;
     private ArrayList<BitmapText> infoText;
@@ -193,16 +211,18 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	private void setUpAnimations() {
 		
 		/* Create token */
-		Geometry token = new Geometry("Box", new Box(0.006f*boundingBox.width, 0.004f*boundingBox.width, 0.014f*boundingBox.width)); // create cube geometry from with box shape        
-		
-		Texture tokenTex = assetManager.loadTexture("Interface/Logo/Monkey.jpg"); // create a texture
-		
-		Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");  // create a simple material
-		tokenMat.setTexture("ColorMap", tokenTex);	// set the texture to the material
-		tokenMat.setColor("Color", ColorRGBA.Blue); // set the base color of the material  
+		Spatial token = assetManager.loadModel("Models/train.obj");
+		token.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
+				
+		Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
+		tokenMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));	// set the texture to the material
+		tokenMat.setColor("Color", ColorRGBA.White); // set the base color of the material  
 		
 		token.setMaterial(tokenMat); // apply the material to the geometry
-		
+
+		// scaling the train
+     	token.scale(boundingBox.width * 0.006f);
+     	
 		rootNode.attachChild(token); // put this node in the scene, attached to the root
 		/* Parse the list of animations and create a new MotionPath and MotionEvent for each of them */
 		for(RTAnimation animation : animations) {
@@ -225,6 +245,46 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				
 	}
 	
+	private void setUpLight() {
+		// AP: setting up skybox
+				rootNode.attachChild(SkyFactory.createSky(
+			            assetManager, "Textures/Sky/Bright/BrightSky.dds", false));
+			
+				// toggle statistics window in bottom left
+				setDisplayFps(false);
+				setDisplayStatView(false);
+				
+		        // AP: adding light - remember to get materials with shader
+		        DirectionalLight sun = new DirectionalLight();
+		        sun.setDirection(new Vector3f(-0.5f,-0.5f,-0.5f).normalizeLocal());
+		        //sun.setDirection(cam.getDirection());
+		        sun.setColor(ColorRGBA.Red);
+		        rootNode.addLight(sun);        
+		        
+		        // Drop shadows 
+		        final int SHADOWMAP_SIZE=1024;
+		        DirectionalLightShadowRenderer dlsr = new DirectionalLightShadowRenderer(assetManager, SHADOWMAP_SIZE, 3);
+		        dlsr.setLight(sun);
+		        viewPort.addProcessor(dlsr);
+	}
+	
+	private void setUpGround() {
+		// AP: create ground with volume
+				float groundWidthX  = (boundingBox.width/2) * 1.1f;
+				float groundHeightY = 1;
+				float groundDepthZ  = (boundingBox.height/2) * 1.1f;
+				groundGeo = new Geometry("Box", new Box(groundWidthX, groundHeightY, groundDepthZ));
+				groundGeo.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
+				Material groundMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+				//groundMat.setColor("Color", ColorRGBA.Brown);
+				Texture groundTex = assetManager.loadTexture("Textures/ground.jpg"); 
+				groundMat.setTexture("ColorMap", groundTex);
+				groundGeo.setMaterial(groundMat);
+				groundGeo.setLocalTranslation((boundingBox.width/2) + boundingBox.x, (-groundHeightY)-0.1f, (boundingBox.height/2) + boundingBox.y);
+				        
+				rootNode.attachChild(groundGeo);
+
+	}
 	private void setBoundingBox() {
 		
 		System.out.println(lowX);
@@ -288,8 +348,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  	// AP: set the background color
  			viewPort.setBackgroundColor(ColorRGBA.Gray);
  	// AP: enable/disable camera fly - the ability to move the camera with keyboard and mouse
- 			flyCam.setEnabled(true); 
- 			flyCam.setMoveSpeed(25);
+ 			flyCam.setEnabled(false); 
+// 			flyCam.setMoveSpeed(25);
  		
  			//Attaching the input places node to the root node
  			this.inputPlaces = new Node("InputPlaces");
@@ -322,16 +382,44 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  			inputManager.addListener(actionListener, new String[]{"r"});
  			inputManager.addListener(actionListener, new String[]{"Click"});
  			        
+ 			Box b = new Box(Vector3f.ZERO, 1, 1, 1);
+ 	        Geometry geom = new Geometry("Box", b);
+ 	        Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+ 	        mat.setTexture("ColorMap", assetManager.loadTexture("Interface/Logo/Monkey.jpg"));
+ 	        geom.setMaterial(mat);
+ 	        rootNode.attachChild(geom);
+ 	        
  	// AP: Run setups to prepare the layout of the paths etc.
+ 	        this.setUpLight();
+ 	        this.setBoundingBox();
+ 	        this.setUpGround();
  			this.setUpEnvironment();
- 			this.setBoundingBox();
  			this.setUpAnimations();
  			this.setUpTextFields();
  			this.setUpCameraPosition();
+ 			
+ 			this.niftyDisplay = new NiftyJmeDisplay(assetManager, 
+ 													inputManager,
+ 													audioRenderer,
+ 													guiViewPort);
+ 			
+ 			// Create a new NiftyGUI object 
+ 			this.nifty = this.niftyDisplay.getNifty();
+ 			// Read the XML and initialize the custom ScreenController
+ 			this.nifty.fromXml("GUI/NiftyButtons.xml", "start");
+ 			this.nifty.setDebugOptionPanelColors(false);
+ 			
+// 			this.screenController = this.nifty.getCurrentScreen().getScreenController();
+// 			stateManager.attach((AppState) this.screenController);
  		 			        
+ 			// Attach the Nifty display to the GUI view port as a processor
+ 	        guiViewPort.addProcessor(niftyDisplay);
+ 	        
  			this.engineState = State.STOPPED;
  			
- 			this.listener.onStart();		        
+ 			this.listener.onStart();	
+ 			
+ 			inputManager.setCursorVisible(true);
 	}
 
 	@Override
@@ -357,6 +445,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		this.eventsRunning = new Cinematic(this.rootNode, 10);
 		stateManager.attach(eventsRunning);
 		
+		this.setPauseOnLostFocus(false);
 		this.start(); 
 		
 		}
@@ -496,4 +585,5 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		}
 		
 	};
+
 }
