@@ -172,6 +172,9 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 			return point;
 		}
 		
+		/**
+		 * @generated NOT
+		 */
 		private Point extrapolatePoint(Point p1, Point p2) {
 			Point point = new Point(); //This isn't correct, me thinks.
 			point.x = (p2.x - p1.x) + p1.x;
