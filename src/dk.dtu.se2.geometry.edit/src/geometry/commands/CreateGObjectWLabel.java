@@ -52,6 +52,7 @@ public class CreateGObjectWLabel extends CompoundCommand {
 		if (resultObject instanceof geometry.Connector)
 			myLabel = "C" + count;
 		
+		
 		/*
 		 * domain: the editing domain your model lives in
 		 * owner: element you are doing the modifications to
