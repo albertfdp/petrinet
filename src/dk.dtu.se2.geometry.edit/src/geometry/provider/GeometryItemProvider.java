@@ -194,7 +194,7 @@ public class GeometryItemProvider
 	public ResourceLocator getResourceLocator() {
 		return GeometryEditPlugin.INSTANCE;
 	}
-	
+
 	/**
 	 *
 	 * @author Morten
@@ -211,6 +211,8 @@ public class GeometryItemProvider
 		 
 		 return super.createAddCommand(domain, owner, feature, collection, index);
 	 }
+	
+	 
 	 
 	
 
