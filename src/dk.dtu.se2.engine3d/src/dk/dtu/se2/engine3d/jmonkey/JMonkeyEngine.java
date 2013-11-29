@@ -1,6 +1,5 @@
 package dk.dtu.se2.engine3d.jmonkey;
 
-
 import geometry.BendPoint;
 import geometry.GObject;
 import geometry.InputPoint;
@@ -53,16 +52,19 @@ import com.jme3.system.AppSettings;
 import com.jme3.texture.Texture;
 import com.jme3.util.SkyFactory;
 
+import dk.dtu.se2.animation.Appear;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
 import dk.dtu.se2.animation.Move;
+import dk.dtu.se2.animation.Sequence;
+import dk.dtu.se2.animation.Stop;
 import dk.dtu.se2.appearance.Appearance;
 import dk.dtu.se2.engine3d.Engine3D;
 import dk.dtu.se2.engine3d.Engine3DListener;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
-public class JMonkeyEngine extends SimpleApplication implements Engine3D, CinematicEventListener{
+public class JMonkeyEngine extends SimpleApplication implements Engine3D, CinematicEventListener {
 	
 	/*
 	 * Geometry and Appearance models, plus all possible animations
@@ -89,6 +91,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	
 	/* Queue of the events that are to be run next */
 	private LinkedList<JMonkeyEvent> eventsQueue;
+	
+	/* Queue of tokes to be destroyed */
+	private HashMap<String, LinkedList<Spatial>> tokenQueue;
 	
 	/* 
 	 * Movie script of all the events currently 
@@ -117,7 +122,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
     }
     
     private State engineState;
-
+    	
 	private void setUpEnvironment() {
 		EList<GObject> gObjects = this.geometry.getGObjects();
 		
@@ -146,7 +151,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				track.setLineWidth(500);
 				
 				/* Create geometry */
-				Geometry trackGeometry = new Geometry("Track", track); // create track geometry with curve shape   		
+				Geometry trackGeometry = new Geometry(line.getLabel(), track); // create track geometry with curve shape   		
 				
 				/* Set "appearance" */
 				Texture trackTex = assetManager.loadTexture("Interface/Logo/Monkey.jpg"); // create a texture
@@ -155,13 +160,15 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				trackMat.setColor("Color", ColorRGBA.Orange); // set the base color of the material   
 				
 				trackGeometry.setMaterial(trackMat); // apply the material to the geometry
-				
-				rootNode.attachChild(trackGeometry); // put this node in the scene, attached to the root node.
+				Node node = new Node(line.getLabel());
+				node.attachChild(trackGeometry);
+				rootNode.attachChild(node); // put this node in the scene, attached to the root node.
 				
 				/* Create motion path */
 				MotionPath path = new MotionPath();
 				
 				path.setCycle(false); // make sure the path doesn't loop 
+				
 	       
 				for(int j=0; j<=i; j++) {
 					
@@ -207,36 +214,46 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 
 	private void setUpAnimations() {
 		
-		/* Create token */
-		Spatial token = assetManager.loadModel("Models/train.obj");
-		token.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
-				
-		Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
-		tokenMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));	// set the texture to the material
-		tokenMat.setColor("Color", ColorRGBA.White); // set the base color of the material  
-		
-		token.setMaterial(tokenMat); // apply the material to the geometry
 
-		// scaling the train
-     	token.scale(boundingBox.width * 0.006f);
-     	
-		rootNode.attachChild(token); // put this node in the scene, attached to the root
 		/* Parse the list of animations and create a new MotionPath and MotionEvent for each of them */
 		for(RTAnimation animation : animations) {
 			System.out.println(animation.getClass());
 			if(animation.getAnimation() instanceof Move) {
 				
+				/* Create token */
+				Spatial token = assetManager.loadModel("Models/train.obj");
+				token.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
+						
+				Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
+				tokenMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));	// set the texture to the material
+				tokenMat.setColor("Color", ColorRGBA.White); // set the base color of the material  
+				
+				token.setMaterial(tokenMat); // apply the material to the geometry
+
+				// scaling the train
+		     	token.scale(boundingBox.width * 0.006f);
+		     	
+				//rootNode.attachChild(token); // put this node in the scene, attached to the root
+				
 				/* Get the motion path corresponding to the current animation */
 				MotionPath path = new MotionPath();
 				path = lines.get(animation.getGeometryLabel());
-								
+			
 				
 				/* Create motion event corresponding to the move animation */
 				JMonkeyEvent event = new JMonkeyEvent(animation.getGeometryLabel(), token, path, 10, LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
 				event.setSpeed(((Move) animation.getAnimation()).getSpeed());
 				event.setDirectionType(MotionEvent.Direction.Path); // the spatial is always faced in the direction of the path while moving
 				event.addListener(this); // add the JMonkeyEngine as a listener to all motion events
+				
 				events.put(animation.getGeometryLabel(), event);
+				
+			} else if (animation.getAnimation() instanceof Appear) {
+				
+			} else if (animation.getAnimation() instanceof Sequence) {
+				
+			} else if (animation.getAnimation() instanceof Stop) {
+				
 			}
 		}
 				
@@ -449,6 +466,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		this.lines = new HashMap<String, MotionPath>();
 		this.events = new HashMap<String, JMonkeyEvent>();
 		this.eventsQueue = new LinkedList<JMonkeyEvent>();
+		this.tokenQueue = new HashMap<String, LinkedList<Spatial>>();
 		
 		this.eventsRunning = new Cinematic(this.rootNode, 10);
 		stateManager.attach(eventsRunning);
@@ -456,7 +474,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		this.setPauseOnLostFocus(false);
 		this.start(); 
 		
-		}
+	}
 
 	public void setEngine3DListener(Engine3DListener engine3DListener) {
 		this.listener = engine3DListener;
@@ -484,12 +502,17 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
-	public void onStop(CinematicEvent ev) {
-		
-		this.listener.onAnimationFinished(((JMonkeyEvent) ev).getGeometryLabel());
+	public void onStop(CinematicEvent ev ) {
+		JMonkeyEvent event = (JMonkeyEvent) ev;
+		this.listener.onAnimationFinished(event.getGeometryLabel());
 		this.eventsRunning.removeCinematicEvent(ev);
+		
+		if (this.tokenQueue.get(event.getGeometryLabel()) == null) {
+			this.tokenQueue.put(event.getGeometryLabel(), new LinkedList<Spatial>());
+		}
+		this.tokenQueue.get(event.getGeometryLabel()).add(event.getSpatial());
 		
 		System.out.println(ev.getPlayState());
 	}
@@ -509,6 +532,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 			
 			while (!eventsQueue.isEmpty()) {
 				MotionEvent eventToRun = eventsQueue.pop();
+				rootNode.attachChild(eventToRun.getSpatial());
 				if(eventToRun!=null) 
 					eventsRunning.addCinematicEvent(0, eventToRun);
 			}
@@ -603,5 +627,13 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		}
 		
 	};
+
+	@Override
+	public void destroyRepresentation(ArrayList<String> geometryLabels) {
+		for (String geometryLabel : geometryLabels) {
+			Spatial spatial = this.tokenQueue.get(geometryLabel).pop();
+			rootNode.detachChild(spatial);
+		}
+	}
 
 }
