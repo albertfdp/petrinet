@@ -3,6 +3,7 @@ package dk.dtu.se2.simulator;
 
 import geometry.Geometry;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -12,8 +13,10 @@ import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
 import dk.dtu.se2.appearance.Appearance;
 import dk.dtu.se2.engine3d.Engine3DListener;
 import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine;
+import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine3D;
 //import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine3D;
 import dk.dtu.se2.simulator.petrinet.PetriNetEngine;
+import dk.dtu.se2.simulator.petrinet.PetriNetEngineDelegate;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
 
@@ -22,7 +25,7 @@ import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
  *
  */
 
-public class Simulator implements Engine3DListener {
+public class Simulator implements Engine3DListener, PetriNetEngineDelegate {
 	
 	/*
 	 * The three models connected in the configuration
@@ -47,7 +50,7 @@ public class Simulator implements Engine3DListener {
 	 * Instance of the 3D Engine
 	 */
 	private JMonkeyEngine engine3d;
-	
+//	private JMonkeyEngine3D engine3d;
 		
 	public Simulator (PetriNetDoc petrinet, Geometry geometry, Appearance appearance) {
 		
@@ -57,13 +60,16 @@ public class Simulator implements Engine3DListener {
 		this.geometry = geometry;
 		this.appearance = appearance;
 		
-		this.petrinetEngine = new PetriNetEngine();
+		this.petrinetEngine = new PetriNetEngine(this);
 		
 		this.engine3d = new JMonkeyEngine();
 		this.engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
 		this.engine3d.setEngine3DListener(this);
-		
-		
+/*		
+		this.engine3d = new JMonkeyEngine3D();
+		this.engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
+		this.engine3d.setEngine3DListener(this);
+*/
 	}
 
 	@Override
@@ -104,6 +110,13 @@ public class Simulator implements Engine3DListener {
 		this.petrinetEngine.createToken(geometryLabel);
 		this.nextAnimations = this.petrinetEngine.fireTransitions();
 		this.engine3d.addToAnimationQueue(this.nextAnimations);
+	}
+
+	@Override
+	public void destroyRepresentations(ArrayList<String> geometryLabels) {
+		
+		//Call the method in the engine3D here.
+		
 	}
 	
 	
