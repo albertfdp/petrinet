@@ -12,7 +12,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -100,8 +99,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	/* Initial lines in the geometry */
 	private HashMap<String, MotionPath> lines;
 	
-	
-	private Random rand = new Random();
     private Rectangle boundingBox;
     private int highX = (int) Double.NEGATIVE_INFINITY, highY = (int) Double.NEGATIVE_INFINITY;
     private int lowX = (int) Double.POSITIVE_INFINITY, lowY = (int) Double.POSITIVE_INFINITY;
