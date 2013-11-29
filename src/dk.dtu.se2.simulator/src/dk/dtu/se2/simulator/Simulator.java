@@ -12,7 +12,6 @@ import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
 import dk.dtu.se2.appearance.Appearance;
 import dk.dtu.se2.engine3d.Engine3DListener;
 import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine;
-import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine3D;
 //import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine3D;
 import dk.dtu.se2.simulator.petrinet.PetriNetEngine;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
@@ -47,8 +46,8 @@ public class Simulator implements Engine3DListener {
 	/*
 	 * Instance of the 3D Engine
 	 */
-//	private JMonkeyEngine engine3d;
-	private JMonkeyEngine3D engine3d;
+	private JMonkeyEngine engine3d;
+	
 		
 	public Simulator (PetriNetDoc petrinet, Geometry geometry, Appearance appearance) {
 		
@@ -60,13 +59,11 @@ public class Simulator implements Engine3DListener {
 		
 		this.petrinetEngine = new PetriNetEngine();
 		
-//		this.engine3d = new JMonkeyEngine();
-//		this.engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
-//		this.engine3d.setEngine3DListener(this);
-		
-		this.engine3d = new JMonkeyEngine3D();
+		this.engine3d = new JMonkeyEngine();
 		this.engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
 		this.engine3d.setEngine3DListener(this);
+		
+		
 	}
 
 	@Override
