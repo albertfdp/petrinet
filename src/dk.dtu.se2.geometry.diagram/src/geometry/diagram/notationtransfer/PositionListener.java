@@ -158,7 +158,6 @@ public class PositionListener extends EContentAdapter {
 	 */
 	private void updateLine(ENotificationImpl eNotification, EObject eNotifier, LineImpl lineImpl, Edge edge)
 	{	
-		//TODO: Update to case of multiple bendpoints within line
 		//Object object = ((RelativeBendpoints)edge.getBendpoints()).getPoints().get(1);
 		int amount = ((RelativeBendpoints)edge.getBendpoints()).getPoints().size();
 		// Is array<RelativeBendpoint> bigger than lineImpl.getBendPoint():
@@ -257,19 +256,16 @@ public class PositionListener extends EContentAdapter {
 	 */
 	private void createBendPointAtIndex(int ind, int x, int y, LineImpl lineImpl)
 	{
-		//TODO: add this somewhere more appropriate
-		//TODO: Name the new bendpoint. Change names of other bendpoints if it is needed.
 		BendPoint bendPoint = GeometryFactory.eINSTANCE.createBendPoint();
 		bendPoint.setXLocation(x);
 		bendPoint.setYLocation(y);
+		bendPoint.setLabel(lineImpl.getLabel() + "_Bendpoint");
 		lineImpl.getBendPoints().add(ind, bendPoint);
 	}
 	
 	
 	private void removeBendPointAtIndex(int ind, LineImpl lineImpl)
 	{
-		//TODO: add this somewhere more appropriate
-		//TODO: Change names of other bendpoints if it is needed. Also add this to functions above.
 		lineImpl.getBendPoints().remove(ind);
 		return;
 	}
@@ -278,7 +274,6 @@ public class PositionListener extends EContentAdapter {
 	 */
 	private Vector<Integer> calculateAbsoluteLocationAtIndex(int index, LineImpl lineImpl, Edge edge)
 	{
-		//TODO: add this somewhere more appropriate
 		Object object = ((RelativeBendpoints)edge.getBendpoints()).getPoints().get(index);
 		int x = lineImpl.getBegin().getXLocation() + ((RelativeBendpoint) object).getSourceX();
 		int y = lineImpl.getBegin().getYLocation() + ((RelativeBendpoint) object).getSourceY();

@@ -1,6 +1,5 @@
 package geometry.diagram.navigator;
 
-import geometry.BendPoint;
 import geometry.Connector;
 import geometry.InputPoint;
 import geometry.Line;

@@ -1,6 +1,5 @@
 package geometry.diagram.edit.policies;
 
-import geometry.diagram.edit.commands.BendPointCreateCommand;
 import geometry.diagram.edit.commands.ConnectorCreateCommand;
 import geometry.diagram.edit.commands.InputPointCreateCommand;
 import geometry.diagram.providers.GeometryElementTypes;
