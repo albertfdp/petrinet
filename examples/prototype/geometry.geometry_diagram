@@ -2,11 +2,15 @@
 <notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:geometry="http://geometry/1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_IxfsQE-CEeO8vqYVr__Ivw" type="Geometry" name="geometry.geometry_diagram" measurementUnit="Pixel">
   <children xmi:type="notation:Shape" xmi:id="_LSZiwE-CEeO8vqYVr__Ivw" type="2001" fontName="Segoe UI">
     <element xmi:type="geometry:Connector" href="geometry.geometry#C1"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LSZiwU-CEeO8vqYVr__Ivw" x="120" y="144"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LSZiwU-CEeO8vqYVr__Ivw" x="396" y="144"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_O0fwgE-CEeO8vqYVr__Ivw" type="2001" fontName="Segoe UI">
     <element xmi:type="geometry:Connector" href="geometry.geometry#C2"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_O0fwgU-CEeO8vqYVr__Ivw" x="408" y="144"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_O0fwgU-CEeO8vqYVr__Ivw" x="684" y="144"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_OcMusFOHEeOPith-EPsDbg" type="2002" fontName="Lucida Grande">
+    <element xmi:type="geometry:InputPoint" href="geometry.geometry#TL"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OcMusVOHEeOPith-EPsDbg" x="342" y="144"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_IxfsQU-CEeO8vqYVr__Ivw"/>
   <element xmi:type="geometry:Geometry" href="geometry.geometry#/"/>

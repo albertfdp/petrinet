@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <geometry:Geometry xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:geometry="http://geometry/1.0">
-  <gObjects xsi:type="geometry:Connector" label="C1" xLocation="120" yLocation="144" out="L1" in="L2"/>
-  <gObjects xsi:type="geometry:Connector" label="C2" xLocation="408" yLocation="144" out="L2" in="L1"/>
+  <gObjects xsi:type="geometry:Connector" label="C1" xLocation="396" yLocation="144" out="L1" in="L2"/>
+  <gObjects xsi:type="geometry:Connector" label="C2" xLocation="684" yLocation="144" out="L2" in="L1"/>
   <gObjects xsi:type="geometry:Line" label="L1" begin="C1" end="C2">
     <bendPoints xLocation="240" yLocation="24"/>
   </gObjects>
   <gObjects xsi:type="geometry:Line" label="L2" begin="C2" end="C1">
     <bendPoints xLocation="229" yLocation="272"/>
   </gObjects>
+  <gObjects xsi:type="geometry:InputPoint" label="TL" xLocation="342" yLocation="144" appearanceLabel="green"/>
 </geometry:Geometry>
