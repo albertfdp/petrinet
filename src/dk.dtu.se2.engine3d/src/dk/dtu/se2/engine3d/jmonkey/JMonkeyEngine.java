@@ -117,7 +117,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
     }
     
     private State engineState;
-    	
+
 	private void setUpEnvironment() {
 		EList<GObject> gObjects = this.geometry.getGObjects();
 		
@@ -346,7 +346,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  			viewPort.setBackgroundColor(ColorRGBA.Gray);
  	// AP: enable/disable camera fly - the ability to move the camera with keyboard and mouse
  			flyCam.setEnabled(false); 
-// 			flyCam.setMoveSpeed(25);
+ 			flyCam.setMoveSpeed(50);
+
  		
  			//Attaching the input places node to the root node
  			this.inputPlaces = new Node("InputPlaces");
@@ -364,20 +365,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  			hudText.setSize(25);
  			hudText.setLocalTranslation(350, 580, 0); // position
  			guiNode.attachChild(hudText);    	
- 			    	 			
- 			inputManager.addMapping("1",  new KeyTrigger(KeyInput.KEY_1));
- 			inputManager.addMapping("2",  new KeyTrigger(KeyInput.KEY_2));
- 			inputManager.addMapping("3",  new KeyTrigger(KeyInput.KEY_3));
- 			inputManager.addMapping("p",  new KeyTrigger(KeyInput.KEY_P));
- 			inputManager.addMapping("r",  new KeyTrigger(KeyInput.KEY_R));
- 			inputManager.addMapping("Click", new MouseButtonTrigger(MouseInput.BUTTON_LEFT));
- 			        
- 			inputManager.addListener(actionListener, new String[]{"1"});
- 			inputManager.addListener(actionListener, new String[]{"2"});
- 			inputManager.addListener(actionListener, new String[]{"3"});
- 			inputManager.addListener(actionListener, new String[]{"p"});
- 			inputManager.addListener(actionListener, new String[]{"r"});
- 			inputManager.addListener(actionListener, new String[]{"Click"});
+ 			
+ 			
  			        
  			Box b = new Box(Vector3f.ZERO, 1, 1, 1);
  	        Geometry geom = new Geometry("Box", b);
@@ -394,6 +383,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  			this.setUpAnimations();
  			this.setUpTextFields();
  			this.setUpCameraPosition();
+
+ 		 	this.setupKeyMappings();
+ 			
  			
  			this.niftyDisplay = new NiftyJmeDisplay(assetManager, 
  													inputManager,
@@ -419,6 +411,25 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  			inputManager.setCursorVisible(true);
 	}
 
+ 	private void setupKeyMappings() {
+
+			inputManager.addMapping("1",  new KeyTrigger(KeyInput.KEY_1));
+			inputManager.addMapping("2",  new KeyTrigger(KeyInput.KEY_2));
+			inputManager.addMapping("3",  new KeyTrigger(KeyInput.KEY_3));
+			inputManager.addMapping("p",  new KeyTrigger(KeyInput.KEY_P));
+			inputManager.addMapping("r",  new KeyTrigger(KeyInput.KEY_R));
+			inputManager.addMapping("Click", new MouseButtonTrigger(MouseInput.BUTTON_LEFT));
+			inputManager.addMapping("CameraControl", new MouseButtonTrigger(MouseInput.BUTTON_RIGHT));
+			        
+			inputManager.addListener(actionListener, new String[]{"1"});
+			inputManager.addListener(actionListener, new String[]{"2"});
+			inputManager.addListener(actionListener, new String[]{"3"});
+			inputManager.addListener(actionListener, new String[]{"p"});
+			inputManager.addListener(actionListener, new String[]{"r"});
+			inputManager.addListener(actionListener, new String[]{"Click"});
+			inputManager.addListener(actionListener, new String[]{"CameraControl"});
+ 	}
+ 	
 	@Override
 	public void init(geometry.Geometry geometry, Appearance appearance,
 			List<RTAnimation> animations) {
@@ -545,6 +556,16 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				}
 				
 				engineState = State.PAUSED; // perhaps the state should be 'stopped'
+			}
+			
+			//Enable the camera control by the mouse
+			if (name.equals("CameraControl") && keyPressed) {
+				flyCam.setEnabled(true);
+			}
+
+			//Disable the camera control back
+			if (name.equals("CameraControl") && !keyPressed) {
+				flyCam.setEnabled(false);
 			}
 			
 			if (name.equals("Click") && !keyPressed) {
