@@ -248,6 +248,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				
 				events.put(animation.getGeometryLabel(), event);
 				
+				this.tokenQueue.put(animation.getGeometryLabel(), new LinkedList<Spatial>());
+
+				
 			} else if (animation.getAnimation() instanceof Appear) {
 				
 			} else if (animation.getAnimation() instanceof Sequence) {
@@ -412,7 +415,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  			// Create a new NiftyGUI object 
  			this.nifty = this.niftyDisplay.getNifty();
  			// Read the XML and initialize the custom ScreenController
- 			this.nifty.fromXml("GUI/NiftyButtons.xml", "start", new NiftyButtonsScreen("data"));
+ 		//	this.nifty.fromXml("GUI/NiftyButtons.xml", "start", new NiftyButtonsScreen("data"));
  			this.nifty.setDebugOptionPanelColors(false);
  			
 // 			this.screenController = this.nifty.getCurrentScreen().getScreenController();
@@ -506,14 +509,12 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	@Override
 	public void onStop(CinematicEvent ev ) {
 		JMonkeyEvent event = (JMonkeyEvent) ev;
-		this.listener.onAnimationFinished(event.getGeometryLabel());
-		this.eventsRunning.removeCinematicEvent(ev);
 		
-		if (this.tokenQueue.get(event.getGeometryLabel()) == null) {
-			this.tokenQueue.put(event.getGeometryLabel(), new LinkedList<Spatial>());
-		}
 		this.tokenQueue.get(event.getGeometryLabel()).add(event.getSpatial());
+		this.eventsRunning.removeCinematicEvent(ev);
+		this.listener.onAnimationFinished(event.getGeometryLabel());
 		
+				
 		System.out.println(ev.getPlayState());
 	}
 
@@ -531,7 +532,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		if (engineState == State.PLAYING) {
 			
 			while (!eventsQueue.isEmpty()) {
-				MotionEvent eventToRun = eventsQueue.pop();
+				JMonkeyEvent eventToRun = eventsQueue.pop();
+				System.out.println(eventToRun.getGeometryLabel() + " => " + eventToRun.getSpatial().getName());
 				rootNode.attachChild(eventToRun.getSpatial());
 				if(eventToRun!=null) 
 					eventsRunning.addCinematicEvent(0, eventToRun);
@@ -574,7 +576,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 			if (name.equals("r") && !keyPressed) { 
 				
 				hudText.setText("Play state: " + engineState); 
-				for (MotionEvent event : eventsQueue) {
+				for (JMonkeyEvent event : eventsQueue) {
 					if(event!=null) event.stop();
 					// remove tokens
 					// 
