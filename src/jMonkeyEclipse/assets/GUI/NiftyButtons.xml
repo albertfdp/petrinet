@@ -13,13 +13,14 @@
              backgroundColor="#0000">  
       </panel>
             
-      <panel id="panel_bottom" height="25%" width="100%" align="center" childLayout="horizontal" backgroundColor="#0000">
+      <panel id="panel_bottom" height="25%" width="100%" align="center" childLayout="horizontal" 
+      		backgroundColor="#0000">
       
       	<panel id="panel_bottom_left" height="50%" width="50%" valign="center" childLayout="center" 
              backgroundColor="#0000">  
              <control name="button" label="Start" id="StartButton"
 					  align="center" valign="center"
-					  visibleToMouse="true">
+					  visibleToMouse="false">
 				<interact onClick="startPetrinet()"/> 
          	 </control>
         </panel>
