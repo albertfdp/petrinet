@@ -1,6 +1,5 @@
 package dk.dtu.se2.simulator.petrinet;
 
-import java.awt.AWTKeyStroke;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -9,12 +8,8 @@ import org.pnml.tools.epnk.pnmlcoremodel.Arc;
 import org.pnml.tools.epnk.pnmlcoremodel.Object;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
 import org.pnml.tools.epnk.pnmlcoremodel.Transition;
-import org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceNodeImpl;
 
-import dk.dtu.se2.petrinet.ExtendedPetriNet;
 import dk.dtu.se2.petrinet.Place;
-import dk.dtu.se2.petrinet.impl.PlaceImpl;
-import dk.dtu.se2.simulator.Simulator;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 import dk.dtu.se2.simulator.petrinet.runtime.RTToken;
 
@@ -28,11 +23,8 @@ public class PetriNetEngine {
 		
 	private HashMap<Place, ArrayList<RTToken>> marking = new HashMap<Place, ArrayList<RTToken>>();
 	private ArrayList<Transition> transitions = new ArrayList<Transition>();
-	private Simulator simulator;
 	
-	public PetriNetEngine(Simulator simulator) {
-		this.simulator = simulator;
-	}
+	public PetriNetEngine() {}
 	
 	/**
 	 * Initializes the Petri Net Engine with a Static Petrinet
@@ -59,7 +51,7 @@ public class PetriNetEngine {
 				for (int i = 0; i < newPlace.getTokens().size(); i++) {
 					RTToken runtimeToken = new RTToken();
 					tokens.add(runtimeToken);
-					animations.add(new RTAnimation(newPlace.getId(), newPlace.getGeometryLabel().getText(), newPlace.getAnimationLabel().getStructure()));
+					animations.add(new RTAnimation(newPlace.getId(), newPlace.getGeometryLabel().getText(), newPlace.getAnimationLabel().getStructure(), false));
 				}
 				marking.put(newPlace, tokens);
 			}
@@ -77,9 +69,9 @@ public class PetriNetEngine {
 			Object item = iterator.next();
 			if (item instanceof Place) {
 				Place place = (Place) item;
-				if (!place.getInputPlaceLabel().isText()) {
+				if (place.getInputPlaceLabel() != null && !place.getInputPlaceLabel().isText()) {
 					//This isn't an input place so it has an animation
-					animations.add(new RTAnimation(place.getId(), place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure()));
+					animations.add(new RTAnimation(place.getId(), place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure(), false));
 				}
 			}
 			
@@ -96,7 +88,7 @@ public class PetriNetEngine {
 		ArrayList<RTAnimation> animations = new ArrayList<RTAnimation>();
 		
 		//Iterate through each transition
-		ArrayList<String> tokensToRemove = new ArrayList<String>();
+		ArrayList<RTAnimation> tokensToRemove = new ArrayList<RTAnimation>();
 		
 		for (Transition transition : transitions) {
 			if (isTransitionEnabled(transition)) {
@@ -108,16 +100,11 @@ public class PetriNetEngine {
 				for (Arc a: transition.getIn()) {
 					if (a.getSource() instanceof Place) {
 						Place p = (Place)a.getSource();
-						tokensToRemove.add(p.getGeometryLabel().getText());
+						animations.add(new RTAnimation(null, p.getGeometryLabel().getText(), null, true));
 					}
 				}
 			}
 		}
-		
-		if (!tokensToRemove.isEmpty()) {
-			simulator.destroyRepresentations(tokensToRemove);
-		}
-		
 		return animations;
 	}
 	
@@ -192,7 +179,7 @@ public class PetriNetEngine {
 				Place place = (Place)arc.getTarget();
 				RTToken newToken = new RTToken();
 				marking.get(place).add(newToken);
-				transitionAnimations.add(new RTAnimation(place.getId(), place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure()));
+				transitionAnimations.add(new RTAnimation(place.getId(), place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure(), false));
 			}
 		}
 		

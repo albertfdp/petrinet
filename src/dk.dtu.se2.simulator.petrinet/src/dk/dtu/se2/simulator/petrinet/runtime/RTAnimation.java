@@ -13,13 +13,16 @@ public class RTAnimation {
 	/* The animation to run */
 	private Animation animation;
 	
+	private boolean destroy;
+	
 	public RTAnimation() {}
 	
-	public RTAnimation(String id, String geometryLabel, Animation animation) {
+	public RTAnimation(String id, String geometryLabel, Animation animation, boolean destroy) {
 		super();
 		this.id = id;
 		this.geometryLabel = geometryLabel;
 		this.animation = animation;
+		this.destroy = destroy;
 	}
 
 	public String getId() {
@@ -80,6 +83,14 @@ public class RTAnimation {
 	public String toString() {
 		return "RTAnimation [geometryLabel=" + geometryLabel + ", animation="
 				+ animation + "]";
+	}
+
+	public boolean isDestroy() {
+		return destroy;
+	}
+
+	public void setDestroy(boolean destroy) {
+		this.destroy = destroy;
 	}
 
 	

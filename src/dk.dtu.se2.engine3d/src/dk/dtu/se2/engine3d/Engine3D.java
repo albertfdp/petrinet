@@ -2,7 +2,6 @@ package dk.dtu.se2.engine3d;
 
 import geometry.Geometry;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import dk.dtu.se2.appearance.Appearance;
@@ -14,6 +13,6 @@ public interface Engine3D {
 	
 	public void addToAnimationQueue(List<RTAnimation> animations);
 	
-	public void destroyRepresentation(ArrayList<String> geometryLabels);
+	public void destroyRepresentation(String geometryLabel);
 
 }

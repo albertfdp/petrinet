@@ -6,17 +6,13 @@ import geometry.Geometry;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
-import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
 
 import dk.dtu.se2.appearance.Appearance;
 import dk.dtu.se2.engine3d.Engine3DListener;
 import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine;
-import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine3D;
 //import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine3D;
 import dk.dtu.se2.simulator.petrinet.PetriNetEngine;
-import dk.dtu.se2.simulator.petrinet.PetriNetEngineDelegate;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
 
@@ -25,7 +21,7 @@ import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
  *
  */
 
-public class Simulator implements Engine3DListener, PetriNetEngineDelegate {
+public class Simulator implements Engine3DListener {
 	
 	/*
 	 * The three models connected in the configuration
@@ -60,7 +56,7 @@ public class Simulator implements Engine3DListener, PetriNetEngineDelegate {
 		this.geometry = geometry;
 		this.appearance = appearance;
 		
-		this.petrinetEngine = new PetriNetEngine(this);
+		this.petrinetEngine = new PetriNetEngine();
 		
 		this.engine3d = new JMonkeyEngine();
 		this.engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
@@ -100,6 +96,20 @@ public class Simulator implements Engine3DListener, PetriNetEngineDelegate {
 		System.out.println("Animation finished on: " + geometryLabel);
 		
 		this.petrinetEngine.markTokenAsFinished(geometryLabel);
+		
+		ArrayList<RTAnimation> tokensToBeDestroyed = new ArrayList<RTAnimation>();
+		for (RTAnimation animation : this.nextAnimations) {
+			if (animation.isDestroy()) {
+				this.engine3d.destroyRepresentation(animation.getGeometryLabel());
+				tokensToBeDestroyed.add(animation);
+			}
+		}
+		this.nextAnimations.removeAll(tokensToBeDestroyed);
+		
+		for (RTAnimation animation : this.nextAnimations) {
+			System.out.println("Next animation: " + animation.getGeometryLabel() + " " + animation.getAnimation().toString());
+		}
+		
 		this.nextAnimations = this.petrinetEngine.fireTransitions();
 		this.engine3d.addToAnimationQueue(this.nextAnimations);
 	}
@@ -110,15 +120,7 @@ public class Simulator implements Engine3DListener, PetriNetEngineDelegate {
 		this.petrinetEngine.createToken(geometryLabel);
 		this.nextAnimations = this.petrinetEngine.fireTransitions();
 		this.engine3d.addToAnimationQueue(this.nextAnimations);
-	}
-
-	@Override
-	public void destroyRepresentations(ArrayList<String> geometryLabels) {
-		
-		//Call the method in the engine3D here.
-		
-	}
-	
+	}	
 	
 	
 }
