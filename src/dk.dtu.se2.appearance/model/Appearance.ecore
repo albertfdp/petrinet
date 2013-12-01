@@ -3,17 +3,11 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="appearance" nsURI="http://appearance/1.0" nsPrefix="appearance">
   <eClassifiers xsi:type="ecore:EClass" name="Appearance">
     <eStructuralFeatures xsi:type="ecore:EReference" name="aObjects" upperBound="-1"
-        eType="#//AObject"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="aObjects" upperBound="-1"
         eType="#//AObject" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id : Eint"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AObject">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="EReference0" lowerBound="1"
-        eType="#//3DObject"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name : EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="3DObject" eSuperTypes="#//AObject">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="file : File"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="file" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>
