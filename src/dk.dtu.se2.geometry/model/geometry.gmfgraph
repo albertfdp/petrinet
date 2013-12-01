@@ -14,7 +14,7 @@
           name="LineFigure"
           targetDecoration="//@figures.0/@descriptors.0/@actualFigure/@children.0">
         <children
-            xsi:type="gmfgraph:PolylineDecoration"
+            xsi:type="gmfgraph:PolygonDecoration"
             name="targetDecoration">
           <template
               x="-2"
@@ -24,7 +24,14 @@
               x="-2"
               y="1"/>
         </children>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="name"
+            text="&lt;...>"/>
       </actualFigure>
+      <accessors
+          accessor="getFigureName"
+          figure="//@figures.0/@descriptors.0/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="ConnectorFigure">
@@ -46,6 +53,16 @@
             dy="12"/>
       </actualFigure>
     </descriptors>
+    <descriptors
+        name="NodeNameFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Label"
+          name="NodeNameLabel"
+          text="&lt;...>"/>
+      <accessors
+          accessor="getFigureNodeNameLabel"
+          figure="//@figures.0/@descriptors.3/@actualFigure"/>
+    </descriptors>
   </figures>
   <nodes
       name="Connector"
@@ -56,4 +73,23 @@
   <connections
       name="Line"
       figure="LineFigure"/>
+  <labels
+      name="nodeName"
+      figure="NodeNameFigure"
+      elementIcon="false">
+    <facets
+        xsi:type="gmfgraph:LabelOffsetFacet"
+        x="7"
+        y="7"/>
+  </labels>
+  <labels
+      name="lineName"
+      figure="LineFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.0/@accessors.0">
+    <facets
+        xsi:type="gmfgraph:LabelOffsetFacet"
+        x="7"
+        y="7"/>
+  </labels>
 </gmfgraph:Canvas>

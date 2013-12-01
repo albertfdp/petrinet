@@ -7,10 +7,12 @@ import org.eclipse.draw2d.PolygonDecoration;
 import org.eclipse.draw2d.RotatableDecoration;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITreeBranchEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.notation.View;
 
 /**
@@ -41,6 +43,48 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	}
 
 	/**
+	 * @generated
+	 */
+	protected boolean addFixedChild(EditPart childEditPart) {
+		if (childEditPart instanceof LineLabelEditPart) {
+			((LineLabelEditPart) childEditPart).setLabel(getPrimaryShape()
+					.getFigureName());
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * @generated
+	 */
+	protected void addChildVisual(EditPart childEditPart, int index) {
+		if (addFixedChild(childEditPart)) {
+			return;
+		}
+		super.addChildVisual(childEditPart, index);
+	}
+	
+	/**
+	 * @generated
+	 */
+	protected boolean removeFixedChild(EditPart childEditPart) {
+		if (childEditPart instanceof LineLabelEditPart) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * @generated
+	 */
+	protected void removeChildVisual(EditPart childEditPart) {
+		if (removeFixedChild(childEditPart)) {
+			return;
+		}
+		super.removeChildVisual(childEditPart);
+	}
+	
+	/**
 	 * Creates figure for this edit part.
 	 * 
 	 * Body of this method does not depend on settings in generation model
@@ -65,11 +109,26 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	public class LineFigure extends PolylineConnectionEx {
 
 		/**
+		 * @generated
+		 */
+		private WrappingLabel fFigureName;
+		
+		/**
 		 * @generated NOT
 		 */
 		public LineFigure() {
 			//TODO: Curve the line somehow
+			createContents();
 			setTargetDecoration(createTargetDecoration());
+		}
+		
+		/**
+		 * @generated
+		 */
+		private void createContents() {
+			fFigureName = new WrappingLabel();
+			fFigureName.setText("<...>");
+			this.add(fFigureName);
 		}
 
 		/**
@@ -85,6 +144,13 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 			df.setTemplate(pl);
 			df.setScale(getMapMode().DPtoLP(7), getMapMode().DPtoLP(3));
 			return df;
+		}
+		
+		/**
+		 * @generated
+		 */
+		public WrappingLabel getFigureName() {
+			return fFigureName;
 		}
 
 		/**

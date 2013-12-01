@@ -3,10 +3,13 @@ package geometry.diagram.part;
 import geometry.Geometry;
 import geometry.GeometryPackage;
 import geometry.diagram.edit.parts.ConnectorEditPart;
+import geometry.diagram.edit.parts.ConnectorLabelEditPart;
 import geometry.diagram.edit.parts.GeometryEditPart;
 import geometry.diagram.edit.parts.InputPointEditPart;
+import geometry.diagram.edit.parts.InputPointLabelEditPart;
 import geometry.diagram.edit.parts.LineEditPart;
 
+import geometry.diagram.edit.parts.LineLabelEditPart;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
@@ -122,13 +125,13 @@ public class GeometryVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case GeometryEditPart.VISUAL_ID:
-			if (GeometryPackage.eINSTANCE.getInputPoint().isSuperTypeOf(
-					domainElement.eClass())) {
-				return InputPointEditPart.VISUAL_ID;
-			}
 			if (GeometryPackage.eINSTANCE.getConnector().isSuperTypeOf(
 					domainElement.eClass())) {
 				return ConnectorEditPart.VISUAL_ID;
+			}
+			if (GeometryPackage.eINSTANCE.getInputPoint().isSuperTypeOf(
+					domainElement.eClass())) {
+				return InputPointEditPart.VISUAL_ID;
 			}
 			break;
 		}
@@ -157,10 +160,25 @@ public class GeometryVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case GeometryEditPart.VISUAL_ID:
+			if (ConnectorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			if (InputPointEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (ConnectorEditPart.VISUAL_ID == nodeVisualID) {
+			break;
+		case ConnectorEditPart.VISUAL_ID:
+			if (ConnectorLabelEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case InputPointEditPart.VISUAL_ID:
+			if (InputPointLabelEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case LineEditPart.VISUAL_ID:
+			if (LineLabelEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;

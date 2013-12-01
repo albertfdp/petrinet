@@ -4,13 +4,20 @@ import geometry.Connector;
 import geometry.InputPoint;
 import geometry.Line;
 import geometry.diagram.edit.parts.ConnectorEditPart;
+import geometry.diagram.edit.parts.ConnectorLabelEditPart;
 import geometry.diagram.edit.parts.GeometryEditPart;
 import geometry.diagram.edit.parts.InputPointEditPart;
+import geometry.diagram.edit.parts.InputPointLabelEditPart;
 import geometry.diagram.edit.parts.LineEditPart;
+import geometry.diagram.edit.parts.LineLabelEditPart;
 import geometry.diagram.part.GeometryDiagramEditorPlugin;
 import geometry.diagram.part.GeometryVisualIDRegistry;
 import geometry.diagram.providers.GeometryElementTypes;
 
+import geometry.diagram.providers.GeometryParserProvider;
+import org.eclipse.gmf.runtime.common.ui.services.parser.IParser;
+import org.eclipse.gmf.runtime.common.ui.services.parser.ParserOptions;
+import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -170,12 +177,18 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getConnector_2001Text(View view) {
-		Connector domainModelElement = (Connector) view.getElement();
-		if (domainModelElement != null) {
-			return domainModelElement.getLabel();
+		IParser parser = GeometryParserProvider.getParser(
+				GeometryElementTypes.Connector_2001,
+				view.getElement() != null ? view.getElement() : view,
+				GeometryVisualIDRegistry
+						.getType(ConnectorLabelEditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			GeometryDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 2001); //$NON-NLS-1$
+					"Parser was not found for label " + 5003); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -184,12 +197,18 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getInputPoint_2002Text(View view) {
-		InputPoint domainModelElement = (InputPoint) view.getElement();
-		if (domainModelElement != null) {
-			return domainModelElement.getLabel();
+		IParser parser = GeometryParserProvider.getParser(
+				GeometryElementTypes.InputPoint_2002,
+				view.getElement() != null ? view.getElement() : view,
+				GeometryVisualIDRegistry
+						.getType(InputPointLabelEditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			GeometryDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 2002); //$NON-NLS-1$
+					"Parser was not found for label " + 5002); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -198,12 +217,17 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getLine_4001Text(View view) {
-		Line domainModelElement = (Line) view.getElement();
-		if (domainModelElement != null) {
-			return domainModelElement.getLabel();
+		IParser parser = GeometryParserProvider.getParser(
+				GeometryElementTypes.Line_4001,
+				view.getElement() != null ? view.getElement() : view,
+				GeometryVisualIDRegistry.getType(LineLabelEditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			GeometryDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 4001); //$NON-NLS-1$
+					"Parser was not found for label " + 6001); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

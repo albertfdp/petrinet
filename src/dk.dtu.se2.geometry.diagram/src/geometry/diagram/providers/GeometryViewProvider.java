@@ -1,9 +1,12 @@
 package geometry.diagram.providers;
 
 import geometry.diagram.edit.parts.ConnectorEditPart;
+import geometry.diagram.edit.parts.ConnectorLabelEditPart;
 import geometry.diagram.edit.parts.GeometryEditPart;
 import geometry.diagram.edit.parts.InputPointEditPart;
+import geometry.diagram.edit.parts.InputPointLabelEditPart;
 import geometry.diagram.edit.parts.LineEditPart;
+import geometry.diagram.edit.parts.LineLabelEditPart;
 import geometry.diagram.part.GeometryVisualIDRegistry;
 
 import java.util.ArrayList;
@@ -29,9 +32,11 @@ import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.type.core.IHintedType;
 import org.eclipse.gmf.runtime.notation.Connector;
+import org.eclipse.gmf.runtime.notation.DecorationNode;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.FontStyle;
+import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.MeasurementUnit;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
@@ -138,8 +143,8 @@ public class GeometryViewProvider extends AbstractProvider implements
 					return false; // foreign diagram
 				}
 				switch (visualID) {
-				case InputPointEditPart.VISUAL_ID:
 				case ConnectorEditPart.VISUAL_ID:
+				case InputPointEditPart.VISUAL_ID:
 					if (domainElement == null
 							|| visualID != GeometryVisualIDRegistry
 									.getNodeVisualID(op.getContainerView(),
@@ -152,8 +157,8 @@ public class GeometryViewProvider extends AbstractProvider implements
 				}
 			}
 		}
-		return InputPointEditPart.VISUAL_ID == visualID
-				|| ConnectorEditPart.VISUAL_ID == visualID;
+		return ConnectorEditPart.VISUAL_ID == visualID
+				|| InputPointEditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -210,11 +215,11 @@ public class GeometryViewProvider extends AbstractProvider implements
 			visualID = GeometryVisualIDRegistry.getVisualID(semanticHint);
 		}
 		switch (visualID) {
-		case InputPointEditPart.VISUAL_ID:
-			return createInputPoint_2002(domainElement, containerView, index,
-					persisted, preferencesHint);
 		case ConnectorEditPart.VISUAL_ID:
 			return createConnector_2001(domainElement, containerView, index,
+					persisted, preferencesHint);
+		case InputPointEditPart.VISUAL_ID:
+			return createInputPoint_2002(domainElement, containerView, index,
 					persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct
@@ -278,6 +283,14 @@ public class GeometryViewProvider extends AbstractProvider implements
 		ViewUtil.setStructuralFeatureValue(node,
 				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5003 = createLabel(node,
+				GeometryVisualIDRegistry
+						.getType(ConnectorLabelEditPart.VISUAL_ID));
+		label5003.setLayoutConstraint(NotationFactory.eINSTANCE
+				.createLocation());
+		Location location5003 = (Location) label5003.getLayoutConstraint();
+		location5003.setX(0);
+		location5003.setY(5);
 		return node;
 	}
 
@@ -322,6 +335,14 @@ public class GeometryViewProvider extends AbstractProvider implements
 		ViewUtil.setStructuralFeatureValue(node,
 				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5002 = createLabel(node,
+				GeometryVisualIDRegistry
+						.getType(InputPointLabelEditPart.VISUAL_ID));
+		label5002.setLayoutConstraint(NotationFactory.eINSTANCE
+				.createLocation());
+		Location location5002 = (Location) label5002.getLayoutConstraint();
+		location5002.setX(0);
+		location5002.setY(5);
 		return node;
 	}
 
@@ -373,6 +394,13 @@ public class GeometryViewProvider extends AbstractProvider implements
 					NotationPackage.eINSTANCE.getRoutingStyle_Routing(),
 					routing);
 		}
+		Node label6001 = createLabel(edge,
+				GeometryVisualIDRegistry.getType(LineLabelEditPart.VISUAL_ID));
+		label6001.setLayoutConstraint(NotationFactory.eINSTANCE
+				.createLocation());
+		Location location6001 = (Location) label6001.getLayoutConstraint();
+		location6001.setX(7);
+		location6001.setY(7);
 		return edge;
 	}
 
@@ -389,6 +417,16 @@ public class GeometryViewProvider extends AbstractProvider implements
 					"modelID", GeometryEditPart.MODEL_ID); //$NON-NLS-1$
 			target.getEAnnotations().add(shortcutAnnotation);
 		}
+	}
+
+	/**
+	 * @generated
+	 */
+	private Node createLabel(View owner, String hint) {
+		DecorationNode rv = NotationFactory.eINSTANCE.createDecorationNode();
+		rv.setType(hint);
+		ViewUtil.insertChildView(owner, rv, ViewUtil.APPEND, true);
+		return rv;
 	}
 
 	/**

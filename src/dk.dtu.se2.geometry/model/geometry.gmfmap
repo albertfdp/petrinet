@@ -11,20 +11,14 @@
         href="geometry.ecore#//Geometry/gObjects"/>
     <ownedChild>
       <domainMetaElement
-          href="geometry.ecore#//InputPoint"/>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="geometry.gmftool#//@palette/@tools.0/@tools.2"/>
-      <diagramNode
-          href="geometry.gmfgraph#InputPoint"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="geometry.ecore#//Geometry/gObjects"/>
-    <ownedChild>
-      <domainMetaElement
           href="geometry.ecore#//Connector"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="geometry.gmfgraph#nodeName"/>
+        <features
+            href="geometry.ecore#//GObject/label"/>
+      </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
           href="geometry.gmftool#//@palette/@tools.0/@tools.1"/>
@@ -32,9 +26,36 @@
           href="geometry.gmfgraph#Connector"/>
     </ownedChild>
   </nodes>
+  <nodes>
+    <containmentFeature
+        href="geometry.ecore#//Geometry/gObjects"/>
+    <ownedChild>
+      <domainMetaElement
+          href="geometry.ecore#//InputPoint"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="geometry.gmfgraph#nodeName"/>
+        <features
+            href="geometry.ecore#//GObject/label"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="geometry.gmftool#//@palette/@tools.0/@tools.2"/>
+      <diagramNode
+          href="geometry.gmfgraph#InputPoint"/>
+    </ownedChild>
+  </nodes>
   <links>
     <domainMetaElement
         href="geometry.ecore#//Line"/>
+    <labelMappings
+        xsi:type="gmfmap:FeatureLabelMapping">
+      <diagramLabel
+          href="geometry.gmfgraph#lineName"/>
+      <features
+          href="geometry.ecore#//GObject/label"/>
+    </labelMappings>
     <containmentFeature
         href="geometry.ecore#//Geometry/gObjects"/>
     <tool
