@@ -56,11 +56,10 @@ public class Simulator implements Engine3DListener {
 		this.geometry = geometry;
 		this.appearance = appearance;
 		
-		this.petrinetEngine = new PetriNetEngine();
-		
 		this.engine3d = new JMonkeyEngine();
-		this.engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
-		this.engine3d.setEngine3DListener(this);
+		
+		onReset();
+		this.engine3d.start();
 	}
 
 	@Override
@@ -73,9 +72,10 @@ public class Simulator implements Engine3DListener {
 
 
 	@Override
-	public void onPause() {
-		// TODO Auto-generated method stub
-		
+	public void onReset() {
+		this.petrinetEngine = new PetriNetEngine();
+		this.engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
+		this.engine3d.setEngine3DListener(this);
 	}
 
 

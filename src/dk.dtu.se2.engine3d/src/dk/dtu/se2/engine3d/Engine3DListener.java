@@ -25,7 +25,7 @@ public interface Engine3DListener {
 	/**
 	 * On pause.
 	 */
-	public void onPause();
+	public void onReset();
 	
 	/**
 	 * On stop.

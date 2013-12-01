@@ -395,16 +395,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  	        geom.setMaterial(mat);
  	        rootNode.attachChild(geom);
  	        
- 	// AP: Run setups to prepare the layout of the paths etc.
- 	        this.setUpLight();
- 	        this.setUpEnvironment();
- 	        this.setBoundingBox();
- 	        this.setUpGround();
- 			this.setUpAnimations();
- 			this.setUpTextFields();
- 			this.setUpCameraPosition();
-
- 		 	this.setupKeyMappings();
+ 	        reset();
+ 	        this.setupKeyMappings();
  			
  			
  			this.niftyDisplay = new NiftyJmeDisplay(assetManager, 
@@ -427,10 +419,30 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  	        
  			this.engineState = State.STOPPED;
  			
- 			this.listener.onStart();	
- 			
  			inputManager.setCursorVisible(true);
 	}
+ 	
+ 	public void reset() {
+ 		
+ 		this.lines = new HashMap<String, MotionPath>();
+		this.events = new HashMap<String, JMonkeyEvent>();
+		this.eventsQueue = new LinkedList<JMonkeyEvent>();
+		this.tokenQueue = new HashMap<String, LinkedList<Spatial>>();
+		
+		this.eventsRunning = new Cinematic(this.rootNode, 10);
+		stateManager.attach(eventsRunning);
+		
+		this.setPauseOnLostFocus(false);
+ 		
+ 		 // AP: Run setups to prepare the layout of the paths etc.
+        this.setUpLight();
+        this.setUpEnvironment();
+        this.setBoundingBox();
+        this.setUpGround();
+		this.setUpAnimations();
+		this.setUpTextFields();
+		this.setUpCameraPosition();
+ 	}
 
  	private void setupKeyMappings() {
 
@@ -467,16 +479,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		this.appearance = appearance;
 		this.animations = animations;
 		
-		this.lines = new HashMap<String, MotionPath>();
-		this.events = new HashMap<String, JMonkeyEvent>();
-		this.eventsQueue = new LinkedList<JMonkeyEvent>();
-		this.tokenQueue = new HashMap<String, LinkedList<Spatial>>();
 		
-		this.eventsRunning = new Cinematic(this.rootNode, 10);
-		stateManager.attach(eventsRunning);
-		
-		this.setPauseOnLostFocus(false);
-		this.start(); 
 		
 	}
 
@@ -546,6 +549,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
     }
 	
 	public void onStartButtonPressed () {
+		this.listener.onStart();
 		switch (engineState) {
 		
 		case PLAYING: 	eventsRunning.pause();
@@ -567,7 +571,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	
 	public void onResetButtonPressed () {
 		
-//		this.listener.onReset();
+		this.listener.onReset();
 		
 	}
 	private ActionListener actionListener = new ActionListener() {
