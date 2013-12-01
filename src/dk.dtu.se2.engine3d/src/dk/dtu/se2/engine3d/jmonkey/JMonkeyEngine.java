@@ -414,13 +414,14 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  			
  			// Create a new NiftyGUI object 
  			this.nifty = this.niftyDisplay.getNifty();
- 			// Read the XML and initialize the custom ScreenController
- 		//	this.nifty.fromXml("GUI/NiftyButtons.xml", "start", new NiftyButtonsScreen("data"));
- 			this.nifty.setDebugOptionPanelColors(false);
  			
-// 			this.screenController = this.nifty.getCurrentScreen().getScreenController();
-// 			stateManager.attach((AppState) this.screenController);
- 		 			        
+ 			this.screenController = new NiftyButtonsScreen("data", this);
+ 			stateManager.attach((AppState) this.screenController);
+ 			
+ 			// Read the XML and initialize the custom ScreenController
+ 			this.nifty.fromXml("GUI/NiftyButtons.xml", "start", this.screenController);
+ 			this.nifty.setDebugOptionPanelColors(false);
+ 			 		 			        
  			// Attach the Nifty display to the GUI view port as a processor
  	        guiViewPort.addProcessor(niftyDisplay);
  	        
@@ -545,6 +546,28 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
     }
 	
 	public void onStartButtonPressed () {
+		switch (engineState) {
+		
+		case PLAYING: 	eventsRunning.pause();
+						engineState = State.PAUSED;
+						break;
+		
+		case PAUSED: 	eventsRunning.play();
+						engineState = State.PLAYING;
+						break;
+						
+		case RESETTING:	// do nothing
+						break;
+						
+		case STOPPED: 	engineState = State.PLAYING;
+						break;
+						
+		}
+	}
+	
+	public void onResetButtonPressed () {
+		
+//		this.listener.onReset();
 		
 	}
 	private ActionListener actionListener = new ActionListener() {
@@ -552,23 +575,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		public void onAction(String name, boolean keyPressed, float tpf) {
 			
 			if (name.equals("p") && !keyPressed) { 
-				switch (engineState) {
 				
-				case PLAYING: 	eventsRunning.pause();
-								engineState = State.PAUSED;
-								break;
-				
-				case PAUSED: 	eventsRunning.play();
-								engineState = State.PLAYING;
-								break;
-								
-				case RESETTING:	// do nothing
-								break;
-								
-				case STOPPED: 	engineState = State.PLAYING;
-								break;
-								
-				}
 				
 					
 		    }

@@ -14,11 +14,14 @@ public class NiftyButtonsScreen extends AbstractAppState implements ScreenContro
 	  private Nifty nifty;
 	  private Screen screen;
 	  private SimpleApplication app;
+	  private JMonkeyEngine engine3D;
 	 
-	  /** custom methods */ 
+	  /** custom methods 
+	 * @param jMonkeyEngine */ 
 	 
-	  public NiftyButtonsScreen(String data) { 
+	  public NiftyButtonsScreen(String data, JMonkeyEngine jMonkeyEngine) { 
 	    /** Your custom constructor, can accept arguments */ 
+		  this.engine3D = jMonkeyEngine;
 	  } 
 	 
 	  /** Nifty GUI ScreenControl methods */ 
@@ -46,10 +49,10 @@ public class NiftyButtonsScreen extends AbstractAppState implements ScreenContro
 	  }
 	 
 	  public void startPetrinet() {
-		  System.out.println("Start button pressed");
+		  this.engine3D.onStartButtonPressed();  
 	  }
 	  
 	  public void resetPetrinet() {
-		  System.out.println("Reset button pressed");  
+		  this.engine3D.onResetButtonPressed();
 	  }
  	}
