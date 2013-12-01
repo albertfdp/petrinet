@@ -91,6 +91,7 @@ public class Simulator implements Engine3DListener {
 		System.out.println("Animation finished on: " + geometryLabel);
 		
 		this.petrinetEngine.markTokenAsFinished(geometryLabel);
+		this.nextAnimations = this.petrinetEngine.fireTransitions();
 		
 		ArrayList<RTAnimation> tokensToBeDestroyed = new ArrayList<RTAnimation>();
 		for (RTAnimation animation : this.nextAnimations) {
@@ -105,7 +106,6 @@ public class Simulator implements Engine3DListener {
 			System.out.println("Next animation: " + animation.getGeometryLabel() + " " + animation.getAnimation().toString());
 		}
 		
-		this.nextAnimations = this.petrinetEngine.fireTransitions();
 		this.engine3d.addToAnimationQueue(this.nextAnimations);
 	}
 
