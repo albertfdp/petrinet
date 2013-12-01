@@ -19,7 +19,6 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppState;
 import com.jme3.cinematic.Cinematic;
 import com.jme3.cinematic.MotionPath;
-import com.jme3.cinematic.PlayState;
 import com.jme3.cinematic.events.CinematicEvent;
 import com.jme3.cinematic.events.CinematicEventListener;
 import com.jme3.cinematic.events.MotionEvent;
@@ -52,10 +51,9 @@ import com.jme3.system.AppSettings;
 import com.jme3.texture.Texture;
 import com.jme3.util.SkyFactory;
 
-import dk.dtu.se2.animation.Appear;
 import de.lessvoid.nifty.Nifty;
-import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
+import dk.dtu.se2.animation.Appear;
 import dk.dtu.se2.animation.Move;
 import dk.dtu.se2.animation.Sequence;
 import dk.dtu.se2.animation.Stop;
@@ -137,17 +135,16 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				Point end = line.getEnd();
 				EList<BendPoint> bendPoints = line.getBendPoints();
 							
-				Vector3f[] controlPoints = new Vector3f[3];
-				int i=0;
+				ArrayList<Vector3f> controlPoints = new ArrayList<Vector3f>();
 				
-				controlPoints[i++] = new Vector3f(start.getXLocation(), 0f, start.getYLocation());
+				controlPoints.add(new Vector3f(start.getXLocation(), 0f, start.getYLocation()));
 				for (BendPoint bendPoint:bendPoints)
-					controlPoints[i++] = new Vector3f(bendPoint.getXLocation(), 0f, bendPoint.getYLocation());
+					controlPoints.add(new Vector3f(bendPoint.getXLocation(), 0f, bendPoint.getYLocation()));
 				
-				controlPoints[i] = new Vector3f(end.getXLocation(), 0f, end.getYLocation());
+				controlPoints.add(new Vector3f(end.getXLocation(), 0f, end.getYLocation()));
 				
 				/* Create curve */
-				Curve track = new Curve(new Spline(SplineType.CatmullRom, controlPoints, 0.5f, false), 1);
+				Curve track = new Curve(new Spline(SplineType.CatmullRom, controlPoints, 0.5f, false), 10);
 				track.setLineWidth(500);
 				
 				/* Create geometry */
@@ -170,17 +167,17 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				path.setCycle(false); // make sure the path doesn't loop 
 				
 	       
-				for(int j=0; j<=i; j++) {
+				for(Vector3f controlPoint : controlPoints) {
 					
 					/* Find highest and lowest values of X to set the boundary */
-					if(controlPoints[j].getX() > highX) highX = (int) controlPoints[j].getX();
-					else if(controlPoints[j].getX() < lowX) lowX = (int) controlPoints[j].getX();
+					if(controlPoint.getX() > highX) highX = (int) controlPoint.getX();
+					else if(controlPoint.getX() < lowX) lowX = (int) controlPoint.getX();
 					
 					/* Find highest and lowest values of Y to set the boundary */
-					if(controlPoints[j].getY() > highY) highY = (int) controlPoints[j].getZ();
-					else if(controlPoints[j].getY() < lowY) lowY = (int) controlPoints[j].getZ();
+					if(controlPoint.getY() > highY) highY = (int) controlPoint.getZ();
+					else if(controlPoint.getY() < lowY) lowY = (int) controlPoint.getZ();
 					
-					path.addWayPoint(controlPoints[j]);
+					path.addWayPoint(controlPoint);
 				}
 				
 				path.setPathSplineType(SplineType.CatmullRom);
@@ -622,23 +619,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		        }
 		        
 			}
-			
-//			if (name.equals("1") && !keyPressed) { 
-//				
-//				animationQueue.add(0); // adds the ID of the animation to the list 
-//
-//		    } 
-//			if (name.equals("2") && !keyPressed) { 
-//				
-//				animationQueue.add(1); // adds the ID of the animation to the list
-//				
-//		    }
-//			if (name.equals("3") && !keyPressed) {
-//				
-//				animationQueue.add(2); // adds the ID of the animation to the list
-//
-//		    }
-
 		}
 		
 	};

@@ -9,6 +9,7 @@ import java.util.List;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
 
 import dk.dtu.se2.appearance.Appearance;
+import dk.dtu.se2.engine3d.Engine3DFactory;
 import dk.dtu.se2.engine3d.Engine3DListener;
 import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine;
 //import dk.dtu.se2.engine3d.jmonkey.JMonkeyEngine3D;
@@ -17,7 +18,7 @@ import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
 
 /**
- * @author Monica
+ * @author Monica, Albert
  *
  */
 
