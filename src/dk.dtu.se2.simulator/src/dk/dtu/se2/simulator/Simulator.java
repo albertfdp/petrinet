@@ -61,11 +61,6 @@ public class Simulator implements Engine3DListener {
 		this.engine3d = new JMonkeyEngine();
 		this.engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
 		this.engine3d.setEngine3DListener(this);
-/*		
-		this.engine3d = new JMonkeyEngine3D();
-		this.engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
-		this.engine3d.setEngine3DListener(this);
-*/
 	}
 
 	@Override
