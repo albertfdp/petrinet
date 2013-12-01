@@ -59,6 +59,7 @@ public class ConfigurationItemProvider
 
 			addPetrinetPropertyDescriptor(object);
 			addGeometryPropertyDescriptor(object);
+			addAppearancePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -99,6 +100,28 @@ public class ConfigurationItemProvider
 				 getString("_UI_Configuration_geometry_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Configuration_geometry_feature", "_UI_Configuration_type"),
 				 ConfigurationPackage.Literals.CONFIGURATION__GEOMETRY,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Appearance feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAppearancePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Configuration_appearance_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Configuration_appearance_feature", "_UI_Configuration_type"),
+				 ConfigurationPackage.Literals.CONFIGURATION__APPEARANCE,
 				 true,
 				 false,
 				 true,

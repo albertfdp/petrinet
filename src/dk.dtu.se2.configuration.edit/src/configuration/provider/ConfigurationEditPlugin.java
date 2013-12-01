@@ -2,6 +2,7 @@
  */
 package configuration.provider;
 
+import appearance.provider.AppearanceEditPlugin;
 import geometry.provider.GeometryEditPlugin;
 
 import org.eclipse.emf.common.EMFPlugin;
@@ -42,6 +43,7 @@ public final class ConfigurationEditPlugin extends EMFPlugin {
 	public ConfigurationEditPlugin() {
 		super
 		  (new ResourceLocator [] {
+		     AppearanceEditPlugin.INSTANCE,
 		     GeometryEditPlugin.INSTANCE,
 		     PNMLCoreModelEditPlugin.INSTANCE,
 		   });

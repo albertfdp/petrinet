@@ -4,8 +4,6 @@ package configuration;
 
 import org.eclipse.emf.ecore.EFactory;
 
-import configuration.impl.ConfigurationFactoryImpl;
-
 /**
  * <!-- begin-user-doc -->
  * The <b>Factory</b> for the model.
@@ -21,7 +19,7 @@ public interface ConfigurationFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ConfigurationFactory eINSTANCE = ConfigurationFactoryImpl.init();
+	ConfigurationFactory eINSTANCE = configuration.impl.ConfigurationFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Configuration</em>'.

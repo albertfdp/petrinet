@@ -156,6 +156,7 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import configuration.provider.ConfigurationItemProviderAdapterFactory;
 
+import appearance.provider.AppearanceItemProviderAdapterFactory;
 import geometry.provider.GeometryItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
@@ -707,6 +708,7 @@ public class ConfigurationEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ConfigurationItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new AppearanceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new GeometryItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new PnmlcoremodelItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());

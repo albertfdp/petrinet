@@ -2,6 +2,7 @@
  */
 package configuration;
 
+import appearance.Appearance;
 import geometry.Geometry;
 
 import org.eclipse.emf.ecore.EObject;
@@ -17,6 +18,7 @@ import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
  * <ul>
  *   <li>{@link configuration.Configuration#getPetrinet <em>Petrinet</em>}</li>
  *   <li>{@link configuration.Configuration#getGeometry <em>Geometry</em>}</li>
+ *   <li>{@link configuration.Configuration#getAppearance <em>Appearance</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,5 +78,31 @@ public interface Configuration extends EObject {
 	 * @generated
 	 */
 	void setGeometry(Geometry value);
+
+	/**
+	 * Returns the value of the '<em><b>Appearance</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Appearance</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Appearance</em>' reference.
+	 * @see #setAppearance(Appearance)
+	 * @see configuration.ConfigurationPackage#getConfiguration_Appearance()
+	 * @model required="true"
+	 * @generated
+	 */
+	Appearance getAppearance();
+
+	/**
+	 * Sets the value of the '{@link configuration.Configuration#getAppearance <em>Appearance</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Appearance</em>' reference.
+	 * @see #getAppearance()
+	 * @generated
+	 */
+	void setAppearance(Appearance value);
 
 } // Configuration

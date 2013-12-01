@@ -2,6 +2,7 @@
  */
 package configuration.impl;
 
+import appearance.AppearancePackage;
 import configuration.Configuration;
 import configuration.ConfigurationFactory;
 import configuration.ConfigurationPackage;
@@ -77,6 +78,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements Configurat
 		isInited = true;
 
 		// Initialize simple dependencies
+		AppearancePackage.eINSTANCE.eClass();
 		GeometryPackage.eINSTANCE.eClass();
 		PnmlcoremodelPackage.eINSTANCE.eClass();
 
@@ -127,6 +129,15 @@ public class ConfigurationPackageImpl extends EPackageImpl implements Configurat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getConfiguration_Appearance() {
+		return (EReference)configurationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ConfigurationFactory getConfigurationFactory() {
 		return (ConfigurationFactory)getEFactoryInstance();
 	}
@@ -153,6 +164,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements Configurat
 		configurationEClass = createEClass(CONFIGURATION);
 		createEReference(configurationEClass, CONFIGURATION__PETRINET);
 		createEReference(configurationEClass, CONFIGURATION__GEOMETRY);
+		createEReference(configurationEClass, CONFIGURATION__APPEARANCE);
 	}
 
 	/**
@@ -181,6 +193,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements Configurat
 		// Obtain other dependent packages
 		PnmlcoremodelPackage thePnmlcoremodelPackage = (PnmlcoremodelPackage)EPackage.Registry.INSTANCE.getEPackage(PnmlcoremodelPackage.eNS_URI);
 		GeometryPackage theGeometryPackage = (GeometryPackage)EPackage.Registry.INSTANCE.getEPackage(GeometryPackage.eNS_URI);
+		AppearancePackage theAppearancePackage = (AppearancePackage)EPackage.Registry.INSTANCE.getEPackage(AppearancePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -192,6 +205,7 @@ public class ConfigurationPackageImpl extends EPackageImpl implements Configurat
 		initEClass(configurationEClass, Configuration.class, "Configuration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConfiguration_Petrinet(), thePnmlcoremodelPackage.getPetriNetDoc(), null, "petrinet", null, 1, 1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConfiguration_Geometry(), theGeometryPackage.getGeometry(), null, "geometry", null, 1, 1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConfiguration_Appearance(), theAppearancePackage.getAppearance(), null, "appearance", null, 1, 1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

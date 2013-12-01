@@ -52,7 +52,7 @@ public class StartSimulation implements IObjectActionDelegate {
 //			Initialize the simulator with the Petri net, Geometry and Appearance models
 			simulator = new Simulator (selectedConfiguration.getPetrinet(), 
 									   selectedConfiguration.getGeometry(),
-									   null);
+									   selectedConfiguration.getAppearance());
 			
 		}
 		

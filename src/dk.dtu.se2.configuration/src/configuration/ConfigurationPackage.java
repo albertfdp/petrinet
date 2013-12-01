@@ -6,8 +6,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
-import configuration.impl.ConfigurationPackageImpl;
-
 /**
  * <!-- begin-user-doc -->
  * The <b>Package</b> for the model.
@@ -55,14 +53,14 @@ public interface ConfigurationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ConfigurationPackage eINSTANCE = ConfigurationPackageImpl.init();
+	ConfigurationPackage eINSTANCE = configuration.impl.ConfigurationPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link configuration.impl.deleted.ConfigurationImpl <em>Configuration</em>}' class.
+	 * The meta object id for the '{@link configuration.impl.ConfigurationImpl <em>Configuration</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see configuration.impl.deleted.ConfigurationImpl
-	 * @see configuration.impl.deleted.ConfigurationPackageImpl#getConfiguration()
+	 * @see configuration.impl.ConfigurationImpl
+	 * @see configuration.impl.ConfigurationPackageImpl#getConfiguration()
 	 * @generated
 	 */
 	int CONFIGURATION = 0;
@@ -86,13 +84,22 @@ public interface ConfigurationPackage extends EPackage {
 	int CONFIGURATION__GEOMETRY = 1;
 
 	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION__APPEARANCE = 2;
+
+	/**
 	 * The number of structural features of the '<em>Configuration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION_FEATURE_COUNT = 2;
+	int CONFIGURATION_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Configuration</em>' class.
@@ -137,6 +144,17 @@ public interface ConfigurationPackage extends EPackage {
 	EReference getConfiguration_Geometry();
 
 	/**
+	 * Returns the meta object for the reference '{@link configuration.Configuration#getAppearance <em>Appearance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Appearance</em>'.
+	 * @see configuration.Configuration#getAppearance()
+	 * @see #getConfiguration()
+	 * @generated
+	 */
+	EReference getConfiguration_Appearance();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -160,11 +178,11 @@ public interface ConfigurationPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link configuration.impl.deleted.ConfigurationImpl <em>Configuration</em>}' class.
+		 * The meta object literal for the '{@link configuration.impl.ConfigurationImpl <em>Configuration</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see configuration.impl.deleted.ConfigurationImpl
-		 * @see configuration.impl.deleted.ConfigurationPackageImpl#getConfiguration()
+		 * @see configuration.impl.ConfigurationImpl
+		 * @see configuration.impl.ConfigurationPackageImpl#getConfiguration()
 		 * @generated
 		 */
 		EClass CONFIGURATION = eINSTANCE.getConfiguration();
@@ -184,6 +202,14 @@ public interface ConfigurationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONFIGURATION__GEOMETRY = eINSTANCE.getConfiguration_Geometry();
+
+		/**
+		 * The meta object literal for the '<em><b>Appearance</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONFIGURATION__APPEARANCE = eINSTANCE.getConfiguration_Appearance();
 
 	}
 

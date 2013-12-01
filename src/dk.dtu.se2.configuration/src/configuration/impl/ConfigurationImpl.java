@@ -2,6 +2,7 @@
  */
 package configuration.impl;
 
+import appearance.Appearance;
 import configuration.Configuration;
 import configuration.ConfigurationPackage;
 
@@ -24,8 +25,9 @@ import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link configuration.impl.deleted.ConfigurationImpl#getPetrinet <em>Petrinet</em>}</li>
- *   <li>{@link configuration.impl.deleted.ConfigurationImpl#getGeometry <em>Geometry</em>}</li>
+ *   <li>{@link configuration.impl.ConfigurationImpl#getPetrinet <em>Petrinet</em>}</li>
+ *   <li>{@link configuration.impl.ConfigurationImpl#getGeometry <em>Geometry</em>}</li>
+ *   <li>{@link configuration.impl.ConfigurationImpl#getAppearance <em>Appearance</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,6 +53,16 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 	 * @ordered
 	 */
 	protected Geometry geometry;
+
+	/**
+	 * The cached value of the '{@link #getAppearance() <em>Appearance</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAppearance()
+	 * @generated
+	 * @ordered
+	 */
+	protected Appearance appearance;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,6 +164,44 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Appearance getAppearance() {
+		if (appearance != null && appearance.eIsProxy()) {
+			InternalEObject oldAppearance = (InternalEObject)appearance;
+			appearance = (Appearance)eResolveProxy(oldAppearance);
+			if (appearance != oldAppearance) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigurationPackage.CONFIGURATION__APPEARANCE, oldAppearance, appearance));
+			}
+		}
+		return appearance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Appearance basicGetAppearance() {
+		return appearance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAppearance(Appearance newAppearance) {
+		Appearance oldAppearance = appearance;
+		appearance = newAppearance;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.CONFIGURATION__APPEARANCE, oldAppearance, appearance));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -161,6 +211,9 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 			case ConfigurationPackage.CONFIGURATION__GEOMETRY:
 				if (resolve) return getGeometry();
 				return basicGetGeometry();
+			case ConfigurationPackage.CONFIGURATION__APPEARANCE:
+				if (resolve) return getAppearance();
+				return basicGetAppearance();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -178,6 +231,9 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 				return;
 			case ConfigurationPackage.CONFIGURATION__GEOMETRY:
 				setGeometry((Geometry)newValue);
+				return;
+			case ConfigurationPackage.CONFIGURATION__APPEARANCE:
+				setAppearance((Appearance)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -197,6 +253,9 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 			case ConfigurationPackage.CONFIGURATION__GEOMETRY:
 				setGeometry((Geometry)null);
 				return;
+			case ConfigurationPackage.CONFIGURATION__APPEARANCE:
+				setAppearance((Appearance)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -213,6 +272,8 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 				return petrinet != null;
 			case ConfigurationPackage.CONFIGURATION__GEOMETRY:
 				return geometry != null;
+			case ConfigurationPackage.CONFIGURATION__APPEARANCE:
+				return appearance != null;
 		}
 		return super.eIsSet(featureID);
 	}
