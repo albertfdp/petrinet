@@ -177,8 +177,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 					else if(controlPoints[j].getX() < lowX) lowX = (int) controlPoints[j].getX();
 					
 					/* Find highest and lowest values of Y to set the boundary */
-					if(controlPoints[j].getY() > highY) highY = (int) controlPoints[j].getY();
-					else if(controlPoints[j].getY() < lowY) lowY = (int) controlPoints[j].getY();
+					if(controlPoints[j].getY() > highY) highY = (int) controlPoints[j].getZ();
+					else if(controlPoints[j].getY() < lowY) lowY = (int) controlPoints[j].getZ();
 					
 					path.addWayPoint(controlPoints[j]);
 				}
@@ -394,9 +394,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  	        
  	// AP: Run setups to prepare the layout of the paths etc.
  	        this.setUpLight();
+ 	        this.setUpEnvironment();
  	        this.setBoundingBox();
  	        this.setUpGround();
- 			this.setUpEnvironment();
  			this.setUpAnimations();
  			this.setUpTextFields();
  			this.setUpCameraPosition();
@@ -412,7 +412,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  			// Create a new NiftyGUI object 
  			this.nifty = this.niftyDisplay.getNifty();
  			// Read the XML and initialize the custom ScreenController
- 			this.nifty.fromXml("GUI/NiftyButtons.xml", "start");
+ 			this.nifty.fromXml("GUI/NiftyButtons.xml", "start", new NiftyButtonsScreen("data"));
  			this.nifty.setDebugOptionPanelColors(false);
  			
 // 			this.screenController = this.nifty.getCurrentScreen().getScreenController();
@@ -542,13 +542,14 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 							
     }
 	
-	
+	public void onStartButtonPressed () {
+		
+	}
 	private ActionListener actionListener = new ActionListener() {
 		 
 		public void onAction(String name, boolean keyPressed, float tpf) {
 			
 			if (name.equals("p") && !keyPressed) { 
-				
 				switch (engineState) {
 				
 				case PLAYING: 	eventsRunning.pause();
@@ -566,6 +567,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 								break;
 								
 				}
+				
 					
 		    }
 			
