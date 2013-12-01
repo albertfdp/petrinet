@@ -7,12 +7,14 @@ import geometry.Line;
 import geometry.Point;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+
+import appearance.AObject;
+import appearance.Appearance;
 
 import com.jme3.animation.LoopMode;
 import com.jme3.app.SimpleApplication;
@@ -24,13 +26,10 @@ import com.jme3.cinematic.events.CinematicEventListener;
 import com.jme3.cinematic.events.MotionEvent;
 import com.jme3.collision.CollisionResult;
 import com.jme3.collision.CollisionResults;
-import com.jme3.font.BitmapFont.Align;
 import com.jme3.font.BitmapText;
 import com.jme3.font.Rectangle;
-import com.jme3.input.KeyInput;
 import com.jme3.input.MouseInput;
 import com.jme3.input.controls.ActionListener;
-import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.controls.MouseButtonTrigger;
 import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
@@ -57,20 +56,18 @@ import dk.dtu.se2.animation.Appear;
 import dk.dtu.se2.animation.Move;
 import dk.dtu.se2.animation.Sequence;
 import dk.dtu.se2.animation.Stop;
-import dk.dtu.se2.appearance.Appearance;
 import dk.dtu.se2.engine3d.Engine3D;
 import dk.dtu.se2.engine3d.Engine3DListener;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
 public class JMonkeyEngine extends SimpleApplication implements Engine3D, CinematicEventListener {
 	
-	/*
-	 * Geometry and Appearance models, plus all possible animations
-	 */
+	/* Geometry and Appearance models, plus list of all possible animations */
 	private geometry.Geometry 	geometry;
 	private Appearance 			appearance;
 	private List<RTAnimation>	animations;
 	
+	/* NiftyDisplay, Nifty object and ScreenController for the GUI of the Start/Pause/Reset buttons */
 	private NiftyJmeDisplay 	niftyDisplay; 
 	private Nifty 				nifty;
 	private ScreenController 	screenController;
@@ -81,21 +78,20 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	
 	private Node inputPlaces;
 	
-	/* 
-	 * Mapping between all the possible events 
-	 * in the Petri net and their geometry label
-	 */
+	/*  Mapping between all the possible events in the Petri net and their geometry label */
 	private HashMap<String, JMonkeyEvent> events;
 	
 	/* Queue of the events that are to be run next */
 	private LinkedList<JMonkeyEvent> eventsQueue;
 	
-	/* Queue of tokes to be destroyed */
+	/* Queue of tokens to be destroyed */
 	private HashMap<String, LinkedList<Spatial>> tokenQueue;
 	
+	/* Mapping between lines and tokens appearances */
+	private HashMap<String, String> tokenAppearances;
+	
 	/* 
-	 * Movie script of all the events currently 
-	 * running in the simulation
+	 * Movie script of all the events currently running in the simulation
 	 */
 	private Cinematic eventsRunning;
 	
@@ -108,50 +104,75 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
     
     private Geometry groundGeo;
     private double timeAtSystemStart;
-    private ArrayList<BitmapText> textFields;
-    private ArrayList<BitmapText> infoText;
     private BitmapText hudText;
     
     private enum State {
     	PLAYING,
     	PAUSED,
-    	RESETTING,
     	STOPPED
     }
     
     private State engineState;
     	
 	private void setUpEnvironment() {
-		EList<GObject> gObjects = this.geometry.getGObjects();
 		
-		for (GObject object : gObjects) {
-			if (object instanceof Line) {
+		/* 
+		 * Get the list of geometry objects from the geometry model
+		 */
+		EList<GObject> gObjects = this.geometry.getGObjects();
 				
-				/**
-				 * TODO: create curve, associate it to geometry, set appearance
+		/*
+		 * For each geometry object check whether it is a Line or an InputPoint and create their 
+		 * corresponding jMonkey geometry object  
+		 */
+		for (GObject object : gObjects) {
+			if (object instanceof Line) { // GObject is a line
+				
+				/* Cast GObject to line and get:
+				 * -- start and end points 
+				 * -- list of bend points 
+				 * -- appearance label 
+				 * -- token appearance label  TO BE DONE
 				 */
 				Line line = (Line) object;
 				Point start = line.getBegin();
 				Point end = line.getEnd();
 				EList<BendPoint> bendPoints = line.getBendPoints();
-							
+				String appearanceLabel = line.getAppearanceLabel();
+				
+				/*
+				 * Get the appearance object corresponding to the lines appearance label
+				 */
+				AObject appearanceObject = this.appearance.getAObjectByLabel(appearanceLabel);
+				String texture = appearanceObject.getTexture();
+				tokenAppearances.put(line.getLabel(), "train"); //line.getTokenAppearanceLabel);
+				
+				/*
+				 * Transform the EList of bend points to and ArrayList of Vector3f control points 
+				 * in order to create the Catmull Rom curve
+				 */
 				ArrayList<Vector3f> controlPoints = new ArrayList<Vector3f>();
 				
-				controlPoints.add(new Vector3f(start.getXLocation(), 0f, start.getYLocation()));
-				for (BendPoint bendPoint:bendPoints)
-					controlPoints.add(new Vector3f(bendPoint.getXLocation(), 0f, bendPoint.getYLocation()));
+				controlPoints.add(new Vector3f(start.getXLocation(), 0f, start.getYLocation())); // start point
 				
-				controlPoints.add(new Vector3f(end.getXLocation(), 0f, end.getYLocation()));
+				for (BendPoint bendPoint:bendPoints) // bend points
+					controlPoints.add(new Vector3f(bendPoint.getXLocation(), 0f, bendPoint.getYLocation())); 
 				
-				/* Create curve */
+				controlPoints.add(new Vector3f(end.getXLocation(), 0f, end.getYLocation())); // end point
+				
+				/* Create CatmullRom curve */
 				Curve track = new Curve(new Spline(SplineType.CatmullRom, controlPoints, 0.5f, false), 10);
 				track.setLineWidth(500);
 				
-				/* Create geometry */
-				Geometry trackGeometry = new Geometry(line.getLabel(), track); // create track geometry with curve shape   		
+				/* Create jMonkey geometry object for the track based on the CatmullRom curve */
+				Geometry trackGeometry = new Geometry(line.getLabel(), track);   		
 				
-				/* Set "appearance" */
-				Texture trackTex = assetManager.loadTexture("Interface/Logo/Monkey.jpg"); // create a texture
+				
+				/* Set the appearance to the jMonkey track geometry */
+				
+//				Texture trackTex = assetManager.loadTexture("Interface/Logo/Monkey.jpg"); // create a texture
+				
+				Texture trackTex = assetManager.loadTexture(texture); 
 				Material trackMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");  // create a simple material
 				trackMat.setTexture("ColorMap", trackTex);		// set the texture to the material
 				trackMat.setColor("Color", ColorRGBA.Orange); // set the base color of the material   
@@ -161,12 +182,11 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				node.attachChild(trackGeometry);
 				rootNode.attachChild(node); // put this node in the scene, attached to the root node.
 				
-				/* Create motion path */
+				/* Create motion path along the CatMullRom curve */
 				MotionPath path = new MotionPath();
 				
 				path.setCycle(false); // make sure the path doesn't loop 
 				
-	       
 				for(Vector3f controlPoint : controlPoints) {
 					
 					/* Find highest and lowest values of X to set the boundary */
@@ -177,10 +197,10 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 					if(controlPoint.getY() > highY) highY = (int) controlPoint.getZ();
 					else if(controlPoint.getY() < lowY) lowY = (int) controlPoint.getZ();
 					
-					path.addWayPoint(controlPoint);
+					path.addWayPoint(controlPoint); // add way points to the path 
 				}
 				
-				path.setPathSplineType(SplineType.CatmullRom);
+				path.setPathSplineType(SplineType.CatmullRom); // set path type
 				path.setCurveTension(0.5f);        
 				
 				/* Add the line label-motion path association to the lines HashMap */
@@ -214,15 +234,23 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 
 		/* Parse the list of animations and create a new MotionPath and MotionEvent for each of them */
 		for(RTAnimation animation : animations) {
-			System.out.println(animation.getClass());
+			
+			/* Get geometry label of the animation */
+			String geometryLabel = animation.getGeometryLabel();
+			
 			if(animation.getAnimation() instanceof Move) {
 				
-				/* Create token */
-				Spatial token = assetManager.loadModel("Models/train.obj");
+				/* Create token as a jMonkey spatial*/
+				String tokenAppearance = this.tokenAppearances.get(geometryLabel);
+				AObject tokenAppearanceObject = this.appearance.getAObjectByLabel(tokenAppearance);
+				
+//				Spatial token = assetManager.loadModel("Models/train.obj");
+				Spatial token = assetManager.loadModel(tokenAppearanceObject.getObject3D());
 				token.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
 						
 				Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
-				tokenMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));	// set the texture to the material
+//				tokenMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));	// set the texture to the material
+				tokenMat.setTexture("ColorMap", assetManager.loadTexture(tokenAppearanceObject.getTexture()));	
 				tokenMat.setColor("Color", ColorRGBA.White); // set the base color of the material  
 				
 				token.setMaterial(tokenMat); // apply the material to the geometry
@@ -234,18 +262,18 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				
 				/* Get the motion path corresponding to the current animation */
 				MotionPath path = new MotionPath();
-				path = lines.get(animation.getGeometryLabel());
+				path = lines.get(geometryLabel);
 			
 				
 				/* Create motion event corresponding to the move animation */
-				JMonkeyEvent event = new JMonkeyEvent(animation.getGeometryLabel(), token, path, 10, LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
+				JMonkeyEvent event = new JMonkeyEvent(geometryLabel, token, path, 10, LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
 				event.setSpeed(((Move) animation.getAnimation()).getSpeed());
 				event.setDirectionType(MotionEvent.Direction.Path); // the spatial is always faced in the direction of the path while moving
 				event.addListener(this); // add the JMonkeyEngine as a listener to all motion events
 				
-				events.put(animation.getGeometryLabel(), event);
+				events.put(geometryLabel, event);
 				
-				this.tokenQueue.put(animation.getGeometryLabel(), new LinkedList<Spatial>());
+				this.tokenQueue.put(geometryLabel, new LinkedList<Spatial>());
 
 				
 			} else if (animation.getAnimation() instanceof Appear) {
@@ -308,38 +336,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		
 		boundingBox = new Rectangle(lowX, lowY, highX-lowX, highY-lowY);
 	}
-	
-	
-	public void setUpTextFields() {
-	
-		textFields = new ArrayList<BitmapText>();
-		infoText = new ArrayList<BitmapText>();
 		
-		Collection<String> lineObjects = lines.keySet();
-		int i=1;
-		for (String lineObject : lineObjects) {
-			   
-    		BitmapText text = new BitmapText(guiFont, false);
-    		text.setAlignment(Align.Left);
-    		text.setLocalTranslation(5, text.getLineHeight() * (i+10), 0);
-    		text.setText("This is text field " + lineObject);
-
-    		textFields.add(text);
-    		guiNode.attachChild(text);
-    		
-    		BitmapText text2 = new BitmapText(guiFont, false);
-    		text2.setAlignment(Align.Left);
-    		text2.setColor(ColorRGBA.White);
-    		text2.setLocalTranslation(60, text2.getLineHeight() * (i+26), 0);
-    		text2.setText(" ");
-
-    		infoText.add(text);
-    		guiNode.attachChild(text);
-    	}
-		    	
-    	infoText.get(0).setText("Press 'p' to play & pause, press 'r' to reset - use '1' and '2' to add token animations to the queue");
-	}
-	
 	private void setUpCameraPosition() {
 		
 		float heightScaler = 1.1f;
@@ -364,122 +361,113 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  	// AP: enable/disable camera fly - the ability to move the camera with keyboard and mouse
  			flyCam.setEnabled(false); 
  			flyCam.setMoveSpeed(50);
-
- 		
- 			//Attaching the input places node to the root node
- 			this.inputPlaces = new Node("InputPlaces");
- 			rootNode.attachChild(inputPlaces);
- 		
- 	// Toggle statistics window in bottom left
+ 			
+ 	// AP: toggle statistics window in bottom left
  			setDisplayFps(false);
  			setDisplayStatView(false);
- 			    	
- 	// AP: setting up a hud text
- 			hudText = new BitmapText(guiFont, false);          
- 			hudText.setSize(guiFont.getCharSet().getRenderedSize());   // font size
- 			hudText.setColor(ColorRGBA.White);                        // font color
- 			hudText.setText("" + engineState);  
- 			hudText.setSize(25);
- 			hudText.setLocalTranslation(350, 580, 0); // position
- 			guiNode.attachChild(hudText);    	
- 			
- 			
- 			        
- 			Box b = new Box(Vector3f.ZERO, 1, 1, 1);
- 	        Geometry geom = new Geometry("Box", b);
- 	        Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
- 	        mat.setTexture("ColorMap", assetManager.loadTexture("Interface/Logo/Monkey.jpg"));
- 	        geom.setMaterial(mat);
- 	        rootNode.attachChild(geom);
- 	        
- 	        reset();
- 	        this.setupKeyMappings();
- 			
- 			
+ 		 			     	         	    
+ 	 /* Create a new NiftyDisplay for the Start/Pause/Reset buttons GUI */
  			this.niftyDisplay = new NiftyJmeDisplay(assetManager, 
  													inputManager,
  													audioRenderer,
  													guiViewPort);
  			
- 			// Create a new NiftyGUI object 
+ 	 /* Create a new NiftyGUI object */ 
  			this.nifty = this.niftyDisplay.getNifty();
  			
+ 	/* Initialize the controller for the buttons screen */
  			this.screenController = new NiftyButtonsScreen("data", this);
  			stateManager.attach((AppState) this.screenController);
  			
- 			// Read the XML and initialize the custom ScreenController
+ 	/* Read the XML and initialize the custom ScreenController */
  			this.nifty.fromXml("GUI/NiftyButtons.xml", "start", this.screenController);
  			this.nifty.setDebugOptionPanelColors(false);
  			 		 			        
- 			// Attach the Nifty display to the GUI view port as a processor
+ 	/* Attach the Nifty display to the GUI view port as a processor */
  	        guiViewPort.addProcessor(niftyDisplay);
  	        
- 			this.engineState = State.STOPPED;
- 			
- 			inputManager.setCursorVisible(true);
+ 	        reset();
+ 	        
 	}
  	
+ 	@Override
  	public void reset() {
  		
+ 	/* Initialize all lists, queues and hash maps */
  		this.lines = new HashMap<String, MotionPath>();
 		this.events = new HashMap<String, JMonkeyEvent>();
 		this.eventsQueue = new LinkedList<JMonkeyEvent>();
 		this.tokenQueue = new HashMap<String, LinkedList<Spatial>>();
+		this.tokenAppearances = new HashMap<String, String>();
 		
+	/* Initialize the Cinematic movie script of the simulation and add it to the application state manager */
 		this.eventsRunning = new Cinematic(this.rootNode, 10);
-		stateManager.attach(eventsRunning);
+		this.stateManager.attach(eventsRunning);
 		
+	/* Pause simulation when the window loses focus */
 		this.setPauseOnLostFocus(false);
  		
- 		 // AP: Run setups to prepare the layout of the paths etc.
+    /* Run setups to prepare: 
+     * -- the light
+     * -- the environment (all 3D objects according to the geometry and appearance info)
+     * -- the bounding box
+     * -- the all possible animations
+     * -- the position of the camera ( according to the bounding box)
+     * -- the key events 
+     */
         this.setUpLight();
         this.setUpEnvironment();
         this.setBoundingBox();
         this.setUpGround();
 		this.setUpAnimations();
-		this.setUpTextFields();
 		this.setUpCameraPosition();
+		this.setupKeyMappings();
+		
+	/* Attaching the input places node to the root node */
+			this.inputPlaces = new Node("InputPlaces");
+			rootNode.attachChild(inputPlaces);
+		
+	/* Set the state of the engine to STOPPED */
+		this.engineState = State.STOPPED;
+		
+		
  	}
 
  	private void setupKeyMappings() {
 
-			inputManager.addMapping("1",  new KeyTrigger(KeyInput.KEY_1));
-			inputManager.addMapping("2",  new KeyTrigger(KeyInput.KEY_2));
-			inputManager.addMapping("3",  new KeyTrigger(KeyInput.KEY_3));
-			inputManager.addMapping("p",  new KeyTrigger(KeyInput.KEY_P));
-			inputManager.addMapping("r",  new KeyTrigger(KeyInput.KEY_R));
 			inputManager.addMapping("Click", new MouseButtonTrigger(MouseInput.BUTTON_LEFT));
 			inputManager.addMapping("CameraControl", new MouseButtonTrigger(MouseInput.BUTTON_RIGHT));
 			        
-			inputManager.addListener(actionListener, new String[]{"1"});
-			inputManager.addListener(actionListener, new String[]{"2"});
-			inputManager.addListener(actionListener, new String[]{"3"});
-			inputManager.addListener(actionListener, new String[]{"p"});
-			inputManager.addListener(actionListener, new String[]{"r"});
 			inputManager.addListener(actionListener, new String[]{"Click"});
 			inputManager.addListener(actionListener, new String[]{"CameraControl"});
+			
+			inputManager.setCursorVisible(true);
  	}
  	
 	@Override
 	public void init(geometry.Geometry geometry, Appearance appearance,
 			List<RTAnimation> animations) {
 		
-		//--- This part removes the splash screen
+		/* This part removes the splash screen */
     	this.setShowSettings(false);
     	AppSettings settings = new AppSettings(true);
     	settings.setResolution(800, 600);
     	settings.setBitsPerPixel(32);
     	this.setSettings(settings);
-    	//---
-		        
+    	
+		/* Initialize the simulation models */        
 		this.geometry = geometry;
 		this.appearance = appearance;
 		this.animations = animations;
 		
-		
+		/* 
+		 * Start jMonkey application - the simpleInitApp() function is called 
+		 */
+		this.start();
 		
 	}
 
+	@Override
 	public void setEngine3DListener(Engine3DListener engine3DListener) {
 		this.listener = engine3DListener;
 	}
@@ -520,15 +508,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	}
 
 	@Override 
-    public void simpleUpdate(float tpf) {
-	    			
-		if (engineState == State.PLAYING)
-			hudText.setColor(ColorRGBA.Green);
-		else
-			hudText.setColor(ColorRGBA.Red);
-		
-		hudText.setText("" + engineState);
-		
+    public void simpleUpdate(float tpf) {		
 		/* Play waiting animations */
 		if (engineState == State.PLAYING) {
 			
@@ -546,7 +526,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
     }
 	
 	public void onStartButtonPressed () {
-		this.listener.onStart();
+		
 		switch (engineState) {
 		
 		case PLAYING: 	eventsRunning.pause();
@@ -557,10 +537,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 						engineState = State.PLAYING;
 						break;
 						
-		case RESETTING:	// do nothing
-						break;
-						
-		case STOPPED: 	engineState = State.PLAYING;
+		case STOPPED: 	this.listener.onStart();
+						engineState = State.PLAYING;
 						break;
 						
 		}
@@ -568,31 +546,17 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	
 	public void onResetButtonPressed () {
 		
+		this.eventsRunning.stop();
+		this.engineState = State.STOPPED;
+		this.rootNode.detachAllChildren();
+		this.guiNode.detachAllChildren();
+		this.inputManager.clearMappings();		
 		this.listener.onReset();
 		
 	}
 	private ActionListener actionListener = new ActionListener() {
 		 
 		public void onAction(String name, boolean keyPressed, float tpf) {
-			
-			if (name.equals("p") && !keyPressed) { 
-				
-				
-					
-		    }
-			
-			if (name.equals("r") && !keyPressed) { 
-				
-				hudText.setText("Play state: " + engineState); 
-				for (JMonkeyEvent event : eventsQueue) {
-					if(event!=null) event.stop();
-					// remove tokens
-					// 
-					// This needs to be done differently: it should load the original configuration and remove all tokens.
-				}
-				
-				engineState = State.PAUSED; // perhaps the state should be 'stopped'
-			}
 			
 			//Enable the camera control by the mouse
 			if (name.equals("CameraControl") && keyPressed) {

@@ -19,7 +19,6 @@ public class Engine3DFactory {
 	 */
 	public static Engine3D getEngine3D(String engineName) {
 		if (engineName.equals(JMONKEY)) {
-//			return new JMonkeyEngine3D();
 			return new JMonkeyEngine();
 		}
 			
