@@ -39,6 +39,7 @@ import com.jme3.math.Quaternion;
 import com.jme3.math.Ray;
 import com.jme3.math.Spline;
 import com.jme3.math.Spline.SplineType;
+import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.niftygui.NiftyJmeDisplay;
 import com.jme3.scene.Geometry;
@@ -575,13 +576,18 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				// 1. Reset results list.
 		        CollisionResults results = new CollisionResults();
 		        // 2. Aim the ray from cam loc to cam direction.
-		        Ray ray = new Ray(cam.getLocation(), cam.getDirection());
+		        Vector2f click2d = inputManager.getCursorPosition();
+		        Vector3f click3d = cam.getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 0f).clone();
+		        Vector3f dir = cam.getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 1f).subtractLocal(click3d).normalizeLocal();
+		        
+		        Ray ray = new Ray(click3d, dir);
 		        // 3. Collect intersections between Ray and Input Places in results list.
 		        inputPlaces.collideWith(ray, results);
 		        // 4. Get the closest collision
 		        if (results.size() > 0) {
 		        	CollisionResult hitPlace = results.getClosestCollision();
 			        String inputPlaceId = hitPlace.getGeometry().getName();
+			        
 			        listener.onUserClick(inputPlaceId);
 		        }
 		        
