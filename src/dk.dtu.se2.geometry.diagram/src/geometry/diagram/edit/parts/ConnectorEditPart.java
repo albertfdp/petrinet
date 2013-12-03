@@ -135,6 +135,7 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 
 	/**
 	 * @generated not
+	 * @Mikko_Tuulio
 	 */
 	protected void addBorderItem(IFigure borderItemContainer,
 			IBorderItemEditPart borderItemEditPart) {

@@ -10,8 +10,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ConnectionBendpointEditPo
 public class LineBendpointEditPart extends ConnectionBendpointEditPolicy
 {
 	/*
-	 *
 	 * generated NOT
+	 * @Mikko_Tuulio
+	 * Truth to be told I don't even remember why and what this was supposed to do.
 	 */
 	@Override
 	public Command getCommand(Request request) {
@@ -22,16 +23,4 @@ public class LineBendpointEditPart extends ConnectionBendpointEditPolicy
 		}
 		return null;*/
 	}
-	
-	
-	/*
-	 *
-	 * generated NOT
-	 */
-	/*@Override
-	protected Command getCreateBendpointCommand(BendpointRequest request) {
-		int x = 1;
-		int y = x;
-		return super.getCreateBendpointCommand(request);
-	}*/
 }

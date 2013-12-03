@@ -115,6 +115,7 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		
 		/**
 		 * @generated NOT
+		 * @Mikko_Tuulio
 		 */
 		public LineFigure() {
 			//TODO: Curve the line somehow
@@ -133,6 +134,7 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 
 		/**
 		 * @generated NOT
+		 * @Mikko_Tuulio
 		 */
 		private RotatableDecoration createTargetDecoration() {
 			PolygonDecoration df = new PolygonDecoration();
@@ -155,6 +157,7 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 
 		/**
 		 * @generated NOT
+		 * @Mikko_Tuulio
 		 */
 		@Override
 		public PointList getSmoothPoints(boolean calculateAppox) {
@@ -168,6 +171,7 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 
 		/**
 		 * @generated NOT
+		 * @Mikko_Tuulio
 		 */
 		private PointList calculateCatmullromPointList(PointList points, double smoothness) {
 			PointList catmullromPoints = new PointList(); //This isn't correct, me thinks.
@@ -220,6 +224,7 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		
 		/**
 		 * @generated NOT
+		 * @Mikko_Tuulio
 		 */
 		private Point calculatePoint(Point p0, Point p1, Point p2, Point p3, double t) {
 			Point point = new Point(); //This isn't correct, me thinks.
@@ -240,6 +245,7 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		
 		/**
 		 * @generated NOT
+		 * @Mikko_Tuulio
 		 */
 		private Point extrapolatePoint(Point p1, Point p2) {
 			Point point = new Point(); //This isn't correct, me thinks.

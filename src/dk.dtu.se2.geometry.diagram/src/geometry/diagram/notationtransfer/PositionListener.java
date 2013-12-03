@@ -35,12 +35,14 @@ public class PositionListener extends EContentAdapter {
 	
 	/**
 	 * @generated NOT
+	 * @Mikko_Tuulio
 	 */
 	public PositionListener() {
 		ModifiedFilter = NotificationFilter.createEventTypeFilter(Notification.SET).or(NotificationFilter.createEventTypeFilter(Notification.UNSET)).or(NotificationFilter.createEventTypeFilter(Notification.ADD)).or(NotificationFilter.createEventTypeFilter(Notification.REMOVE));
 	}
 	/**
 	 * @generated NOT
+	 * @Mikko_Tuulio
 	 */
 	@Override
 	public void notifyChanged(Notification notification) 
@@ -76,6 +78,7 @@ public class PositionListener extends EContentAdapter {
 	
 	/**
 	 * @generated NOT
+	 * @Mikko_Tuulio
 	 */
 	private void updateNodeBounds(ENotificationImpl eNotification, EObject eNotifier) {
 		View view = (View) eNotifier.eContainer();
@@ -85,6 +88,7 @@ public class PositionListener extends EContentAdapter {
 	
 	/**
 	 * @generated NOT
+	 * @Mikko_Tuulio
 	 */
 	private void updateNodeBounds(View view, EObject modelElement) {
 		if(view instanceof org.eclipse.gmf.runtime.notation.Node)
@@ -130,6 +134,7 @@ public class PositionListener extends EContentAdapter {
 	
 	/**
 	 * @generated NOT
+	 * @Mikko_Tuulio
 	 */
 	private Location getNodePosition(Node viewNode) 
 	{
@@ -155,6 +160,7 @@ public class PositionListener extends EContentAdapter {
 	
 	/**
 	 * @generated NOT
+	 * @Mikko_Tuulio
 	 */
 	private void updateLine(ENotificationImpl eNotification, EObject eNotifier, LineImpl lineImpl, Edge edge)
 	{	
@@ -172,6 +178,7 @@ public class PositionListener extends EContentAdapter {
 	
 	/**
 	 * @generated NOT
+	 * @Mikko_Tuulio
 	 */
 	private void updateBendPoints(LineImpl lineImpl, Edge edge)
 	{
@@ -191,6 +198,7 @@ public class PositionListener extends EContentAdapter {
 	
 	/**
 	 * @generated NOT
+	 * @Mikko_Tuulio
 	 */
 	private void addBendPoint(LineImpl lineImpl, Edge edge)
 	{
@@ -224,6 +232,7 @@ public class PositionListener extends EContentAdapter {
 	
 	/**
 	 * @generated NOT
+	 * @Mikko_Tuulio
 	 */
 	private void removeBendPoint(LineImpl lineImpl, Edge edge)
 	{
@@ -253,6 +262,7 @@ public class PositionListener extends EContentAdapter {
 	
 	/**
 	 * @generated NOT
+	 * @Mikko_Tuulio
 	 */
 	private void createBendPointAtIndex(int ind, int x, int y, LineImpl lineImpl)
 	{
@@ -263,14 +273,20 @@ public class PositionListener extends EContentAdapter {
 		lineImpl.getBendPoints().add(ind, bendPoint);
 	}
 	
-	
+	/**
+	 * @generated NOT
+	 * @Mikko_Tuulio
+	 * 
+	 */
 	private void removeBendPointAtIndex(int ind, LineImpl lineImpl)
 	{
 		lineImpl.getBendPoints().remove(ind);
 		return;
 	}
+	
 	/**
 	 * @generated NOT
+	 * @Mikko_Tuulio
 	 */
 	private Vector<Integer> calculateAbsoluteLocationAtIndex(int index, LineImpl lineImpl, Edge edge)
 	{

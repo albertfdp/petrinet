@@ -780,6 +780,8 @@ public class GeometryDocumentProvider extends AbstractDocumentProvider
 
 		/**
 		 * @generated NOT
+		 * @Mikko_Tuulio
+		 * For position listener to work it needs to be added to ResourceSetInfo
 		 */
 		private PositionListener positionListener;
 
@@ -830,6 +832,8 @@ public class GeometryDocumentProvider extends AbstractDocumentProvider
 
 		/**
 		 * @generated NOT
+		 * @Mikko_Tuulio
+		 * Added position listener
 		 */
 		public ResourceSetInfo(IDiagramDocument document,
 				IEditorInput editorInput) {
