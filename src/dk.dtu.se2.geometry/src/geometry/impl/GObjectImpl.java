@@ -2,13 +2,19 @@
  */
 package geometry.impl;
 
+import java.security.acl.Owner;
+import java.util.Collection;
+
+
+import java.util.Iterator;
+
 import geometry.GObject;
 import geometry.GeometryPackage;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -44,6 +50,10 @@ public class GObjectImpl extends MinimalEObjectImpl.Container implements GObject
 	 * @generated
 	 * @ordered
 	 */
+	
+
+	
+	
 	protected String label = LABEL_EDEFAULT;
 
 	/**
