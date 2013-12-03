@@ -5,6 +5,7 @@ import geometry.diagram.edit.parts.ConnectorLabelEditPart;
 import geometry.diagram.edit.parts.InputPointLabelEditPart;
 import geometry.diagram.edit.parts.LineLabelEditPart;
 import geometry.diagram.parsers.MessageFormatParser;
+import geometry.diagram.parsers.PrintfParser;
 import geometry.diagram.part.GeometryVisualIDRegistry;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -29,6 +30,27 @@ public class GeometryParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
+	private IParser inputPointLabelAppearanceLabelTokenAppearanceLabel_5002Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getInputPointLabelAppearanceLabelTokenAppearanceLabel_5002Parser() {
+		if (inputPointLabelAppearanceLabelTokenAppearanceLabel_5002Parser == null) {
+			EAttribute[] features = new EAttribute[] {
+					GeometryPackage.eINSTANCE.getGObject_Label(),
+					GeometryPackage.eINSTANCE.getInputPoint_AppearanceLabel(),
+					GeometryPackage.eINSTANCE
+							.getInputPoint_TokenAppearanceLabel() };
+			PrintfParser parser = new PrintfParser(features);
+			inputPointLabelAppearanceLabelTokenAppearanceLabel_5002Parser = parser;
+		}
+		return inputPointLabelAppearanceLabelTokenAppearanceLabel_5002Parser;
+	}
+
+	/**
+	 * @generated
+	 */
 	private IParser connectorLabel_5003Parser;
 
 	/**
@@ -47,37 +69,21 @@ public class GeometryParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	private IParser inputPointLabel_5002Parser;
+	private IParser lineLabelAppearanceLabelTokenAppearanceLabel_6001Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getInputPointLabel_5002Parser() {
-		if (inputPointLabel_5002Parser == null) {
-			EAttribute[] features = new EAttribute[] { GeometryPackage.eINSTANCE
-					.getGObject_Label() };
-			MessageFormatParser parser = new MessageFormatParser(features);
-			inputPointLabel_5002Parser = parser;
+	private IParser getLineLabelAppearanceLabelTokenAppearanceLabel_6001Parser() {
+		if (lineLabelAppearanceLabelTokenAppearanceLabel_6001Parser == null) {
+			EAttribute[] features = new EAttribute[] {
+					GeometryPackage.eINSTANCE.getGObject_Label(),
+					GeometryPackage.eINSTANCE.getLine_AppearanceLabel(),
+					GeometryPackage.eINSTANCE.getLine_TokenAppearanceLabel() };
+			PrintfParser parser = new PrintfParser(features);
+			lineLabelAppearanceLabelTokenAppearanceLabel_6001Parser = parser;
 		}
-		return inputPointLabel_5002Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	private IParser lineLabel_6001Parser;
-
-	/**
-	 * @generated
-	 */
-	private IParser getLineLabel_6001Parser() {
-		if (lineLabel_6001Parser == null) {
-			EAttribute[] features = new EAttribute[] { GeometryPackage.eINSTANCE
-					.getGObject_Label() };
-			MessageFormatParser parser = new MessageFormatParser(features);
-			lineLabel_6001Parser = parser;
-		}
-		return lineLabel_6001Parser;
+		return lineLabelAppearanceLabelTokenAppearanceLabel_6001Parser;
 	}
 
 	/**
@@ -85,12 +91,12 @@ public class GeometryParserProvider extends AbstractProvider implements
 	 */
 	protected IParser getParser(int visualID) {
 		switch (visualID) {
+		case InputPointLabelEditPart.VISUAL_ID:
+			return getInputPointLabelAppearanceLabelTokenAppearanceLabel_5002Parser();
 		case ConnectorLabelEditPart.VISUAL_ID:
 			return getConnectorLabel_5003Parser();
-		case InputPointLabelEditPart.VISUAL_ID:
-			return getInputPointLabel_5002Parser();
 		case LineLabelEditPart.VISUAL_ID:
-			return getLineLabel_6001Parser();
+			return getLineLabelAppearanceLabelTokenAppearanceLabel_6001Parser();
 		}
 		return null;
 	}

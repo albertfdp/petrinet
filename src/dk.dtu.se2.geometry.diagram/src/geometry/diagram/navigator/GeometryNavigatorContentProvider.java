@@ -229,12 +229,12 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 			Collection<View> connectedViews;
 			connectedViews = getChildrenByType(Collections.singleton(sv),
 					GeometryVisualIDRegistry
-							.getType(ConnectorEditPart.VISUAL_ID));
+							.getType(InputPointEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getChildrenByType(Collections.singleton(sv),
 					GeometryVisualIDRegistry
-							.getType(InputPointEditPart.VISUAL_ID));
+							.getType(ConnectorEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getDiagramLinksByType(Collections.singleton(sv),

@@ -62,6 +62,7 @@ public class LineItemProvider
 			addBeginPropertyDescriptor(object);
 			addEndPropertyDescriptor(object);
 			addAppearanceLabelPropertyDescriptor(object);
+			addTokenAppearanceLabelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -124,6 +125,28 @@ public class LineItemProvider
 				 getString("_UI_Line_appearanceLabel_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Line_appearanceLabel_feature", "_UI_Line_type"),
 				 GeometryPackage.Literals.LINE__APPEARANCE_LABEL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Token Appearance Label feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTokenAppearanceLabelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Line_tokenAppearanceLabel_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Line_tokenAppearanceLabel_feature", "_UI_Line_type"),
+				 GeometryPackage.Literals.LINE__TOKEN_APPEARANCE_LABEL,
 				 true,
 				 false,
 				 false,
@@ -200,6 +223,7 @@ public class LineItemProvider
 
 		switch (notification.getFeatureID(Line.class)) {
 			case GeometryPackage.LINE__APPEARANCE_LABEL:
+			case GeometryPackage.LINE__TOKEN_APPEARANCE_LABEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case GeometryPackage.LINE__BEND_POINTS:

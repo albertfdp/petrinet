@@ -58,6 +58,7 @@ public class InputPointItemProvider
 			super.getPropertyDescriptors(object);
 
 			addAppearanceLabelPropertyDescriptor(object);
+			addTokenAppearanceLabelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -76,6 +77,28 @@ public class InputPointItemProvider
 				 getString("_UI_InputPoint_appearanceLabel_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_InputPoint_appearanceLabel_feature", "_UI_InputPoint_type"),
 				 GeometryPackage.Literals.INPUT_POINT__APPEARANCE_LABEL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Token Appearance Label feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTokenAppearanceLabelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InputPoint_tokenAppearanceLabel_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InputPoint_tokenAppearanceLabel_feature", "_UI_InputPoint_type"),
+				 GeometryPackage.Literals.INPUT_POINT__TOKEN_APPEARANCE_LABEL,
 				 true,
 				 false,
 				 false,
@@ -122,6 +145,7 @@ public class InputPointItemProvider
 
 		switch (notification.getFeatureID(InputPoint.class)) {
 			case GeometryPackage.INPUT_POINT__APPEARANCE_LABEL:
+			case GeometryPackage.INPUT_POINT__TOKEN_APPEARANCE_LABEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

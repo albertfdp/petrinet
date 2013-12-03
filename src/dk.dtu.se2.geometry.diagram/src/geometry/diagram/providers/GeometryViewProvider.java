@@ -143,8 +143,8 @@ public class GeometryViewProvider extends AbstractProvider implements
 					return false; // foreign diagram
 				}
 				switch (visualID) {
-				case ConnectorEditPart.VISUAL_ID:
 				case InputPointEditPart.VISUAL_ID:
+				case ConnectorEditPart.VISUAL_ID:
 					if (domainElement == null
 							|| visualID != GeometryVisualIDRegistry
 									.getNodeVisualID(op.getContainerView(),
@@ -157,8 +157,8 @@ public class GeometryViewProvider extends AbstractProvider implements
 				}
 			}
 		}
-		return ConnectorEditPart.VISUAL_ID == visualID
-				|| InputPointEditPart.VISUAL_ID == visualID;
+		return InputPointEditPart.VISUAL_ID == visualID
+				|| ConnectorEditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -215,11 +215,11 @@ public class GeometryViewProvider extends AbstractProvider implements
 			visualID = GeometryVisualIDRegistry.getVisualID(semanticHint);
 		}
 		switch (visualID) {
-		case ConnectorEditPart.VISUAL_ID:
-			return createConnector_2001(domainElement, containerView, index,
-					persisted, preferencesHint);
 		case InputPointEditPart.VISUAL_ID:
 			return createInputPoint_2002(domainElement, containerView, index,
+					persisted, preferencesHint);
+		case ConnectorEditPart.VISUAL_ID:
+			return createConnector_2001(domainElement, containerView, index,
 					persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct

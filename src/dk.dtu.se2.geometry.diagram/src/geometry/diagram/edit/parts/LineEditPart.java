@@ -53,7 +53,7 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		}
 		return false;
 	}
-	
+
 	/**
 	 * @generated
 	 */
@@ -63,7 +63,7 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		}
 		super.addChildVisual(childEditPart, index);
 	}
-	
+
 	/**
 	 * @generated
 	 */
@@ -83,7 +83,7 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		}
 		super.removeChildVisual(childEditPart);
 	}
-	
+
 	/**
 	 * Creates figure for this edit part.
 	 * 
@@ -112,7 +112,7 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		 * @generated
 		 */
 		private WrappingLabel fFigureName;
-		
+
 		/**
 		 * @generated NOT
 		 * @Mikko_Tuulio
@@ -122,14 +122,18 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 			createContents();
 			setTargetDecoration(createTargetDecoration());
 		}
-		
+
 		/**
 		 * @generated
 		 */
 		private void createContents() {
+
 			fFigureName = new WrappingLabel();
+
 			fFigureName.setText("<...>");
+
 			this.add(fFigureName);
+
 		}
 
 		/**
@@ -147,7 +151,7 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 			df.setScale(getMapMode().DPtoLP(7), getMapMode().DPtoLP(3));
 			return df;
 		}
-		
+
 		/**
 		 * @generated
 		 */
@@ -162,10 +166,11 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		@Override
 		public PointList getSmoothPoints(boolean calculateAppox) {
 			// TODO Auto-generated method stub
-			
+
 			// Set how many smooth points there should be between each control point
 			double smoothness = (double) 100;
-			PointList smoothPoints = calculateCatmullromPointList(this.getPoints(), smoothness);
+			PointList smoothPoints = calculateCatmullromPointList(
+					this.getPoints(), smoothness);
 			return smoothPoints;
 		}
 
@@ -173,76 +178,83 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		 * @generated NOT
 		 * @Mikko_Tuulio
 		 */
-		private PointList calculateCatmullromPointList(PointList points, double smoothness) {
+		private PointList calculateCatmullromPointList(PointList points,
+				double smoothness) {
 			PointList catmullromPoints = new PointList(); //This isn't correct, me thinks.
-			
+
 			//If the point list consists of only two points, list of smooth points is the same as list of control points
-			if(2 == points.size())
-			{
+			if (2 == points.size()) {
 				//Add first and last points of control points list to smooth points list
 				catmullromPoints.addPoint(points.getFirstPoint());
 				catmullromPoints.addPoint(points.getLastPoint());
-				
+
 				return catmullromPoints;
 			}
-			
+
 			//Initialize values
 			Point newPoint = null;
 			double tStep = 1 / smoothness;
-			
+
 			//Loop trough all the points in point list. Depending on the method this might not be needed
-			for(int i = 0; i < points.size() - 1; i++)
-			{
+			for (int i = 0; i < points.size() - 1; i++) {
 				//Add control points to smooth points, except the last one
 				catmullromPoints.addPoint(points.getPoint(i));
-				
+
 				//Loop trough steps at the length of smoothness.
-				for(double t = tStep; t < 1; t = t + tStep)
-				{
+				for (double t = tStep; t < 1; t = t + tStep) {
 					//If the first segment  of line is being calculated, new control point needs to be created before the first one
-					if(i == 0)
-						newPoint = calculatePoint(extrapolatePoint(points.getPoint(i + 1), points.getPoint(i)), points.getPoint(i), points.getPoint(i + 1), points.getPoint(i + 2), t);
-					
+					if (i == 0)
+						newPoint = calculatePoint(
+								extrapolatePoint(points.getPoint(i + 1),
+										points.getPoint(i)),
+								points.getPoint(i), points.getPoint(i + 1),
+								points.getPoint(i + 2), t);
+
 					//If the last segment  of line is being calculated, new control point needs to be created after the last one
-					else if(i == points.size() - 2)
-						newPoint = calculatePoint(points.getPoint(i - 1), points.getPoint(i), points.getPoint(i + 1), extrapolatePoint(points.getPoint(i), points.getPoint(i + 1)), t);
-					
-					
+					else if (i == points.size() - 2)
+						newPoint = calculatePoint(
+								points.getPoint(i - 1),
+								points.getPoint(i),
+								points.getPoint(i + 1),
+								extrapolatePoint(points.getPoint(i),
+										points.getPoint(i + 1)), t);
+
 					//Calculate new point from nearby points and time step
 					else
-						newPoint = calculatePoint(points.getPoint(i - 1), points.getPoint(i), points.getPoint(i + 1), points.getPoint(i + 2), t);
-					
+						newPoint = calculatePoint(points.getPoint(i - 1),
+								points.getPoint(i), points.getPoint(i + 1),
+								points.getPoint(i + 2), t);
+
 					//Add new point to the list of smooth points.
 					catmullromPoints.addPoint(newPoint);
 				}
 			}
-			
+
 			//Add last control point to list of smooth points.
 			catmullromPoints.addPoint(points.getLastPoint());
 			return catmullromPoints;
 		}
-		
+
 		/**
 		 * @generated NOT
 		 * @Mikko_Tuulio
 		 */
-		private Point calculatePoint(Point p0, Point p1, Point p2, Point p3, double t) {
+		private Point calculatePoint(Point p0, Point p1, Point p2, Point p3,
+				double t) {
 			Point point = new Point(); //This isn't correct, me thinks.
-			
-			point.x = (int) (0.5 * (
-					p0.x * (-t + 2 * (t * t) - (t * t * t)) + 
-					p1.x * (2 - 5 * (t * t) + 3 * (t * t * t)) + 
-					p2.x * (t + 4 * (t * t) - 3 * (t * t * t)) + 
-					p3.x * (- (t * t) + (t * t * t))));
-			point.y = (int) (0.5 * (
-					p0.y * (-t + 2 * (t * t) - (t * t * t)) + 
-					p1.y * (2 - 5 * (t * t) + 3 * (t * t * t)) + 
-					p2.y * (t + 4 * (t * t) - 3 * (t * t * t)) + 
-					p3.y * (- (t * t) + (t * t * t))));
+
+			point.x = (int) (0.5 * (p0.x * (-t + 2 * (t * t) - (t * t * t))
+					+ p1.x * (2 - 5 * (t * t) + 3 * (t * t * t)) + p2.x
+					* (t + 4 * (t * t) - 3 * (t * t * t)) + p3.x
+					* (-(t * t) + (t * t * t))));
+			point.y = (int) (0.5 * (p0.y * (-t + 2 * (t * t) - (t * t * t))
+					+ p1.y * (2 - 5 * (t * t) + 3 * (t * t * t)) + p2.y
+					* (t + 4 * (t * t) - 3 * (t * t * t)) + p3.y
+					* (-(t * t) + (t * t * t))));
 
 			return point;
 		}
-		
+
 		/**
 		 * @generated NOT
 		 * @Mikko_Tuulio

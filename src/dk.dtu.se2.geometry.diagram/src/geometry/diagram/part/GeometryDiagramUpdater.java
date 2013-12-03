@@ -55,11 +55,11 @@ public class GeometryDiagramUpdater {
 			GObject childElement = (GObject) it.next();
 			int visualID = GeometryVisualIDRegistry.getNodeVisualID(view,
 					childElement);
-			if (visualID == ConnectorEditPart.VISUAL_ID) {
+			if (visualID == InputPointEditPart.VISUAL_ID) {
 				result.add(new GeometryNodeDescriptor(childElement, visualID));
 				continue;
 			}
-			if (visualID == InputPointEditPart.VISUAL_ID) {
+			if (visualID == ConnectorEditPart.VISUAL_ID) {
 				result.add(new GeometryNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -74,10 +74,10 @@ public class GeometryDiagramUpdater {
 		switch (GeometryVisualIDRegistry.getVisualID(view)) {
 		case GeometryEditPart.VISUAL_ID:
 			return getGeometry_1000ContainedLinks(view);
-		case ConnectorEditPart.VISUAL_ID:
-			return getConnector_2001ContainedLinks(view);
 		case InputPointEditPart.VISUAL_ID:
 			return getInputPoint_2002ContainedLinks(view);
+		case ConnectorEditPart.VISUAL_ID:
+			return getConnector_2001ContainedLinks(view);
 		case LineEditPart.VISUAL_ID:
 			return getLine_4001ContainedLinks(view);
 		}
@@ -89,10 +89,10 @@ public class GeometryDiagramUpdater {
 	 */
 	public static List<GeometryLinkDescriptor> getIncomingLinks(View view) {
 		switch (GeometryVisualIDRegistry.getVisualID(view)) {
-		case ConnectorEditPart.VISUAL_ID:
-			return getConnector_2001IncomingLinks(view);
 		case InputPointEditPart.VISUAL_ID:
 			return getInputPoint_2002IncomingLinks(view);
+		case ConnectorEditPart.VISUAL_ID:
+			return getConnector_2001IncomingLinks(view);
 		case LineEditPart.VISUAL_ID:
 			return getLine_4001IncomingLinks(view);
 		}
@@ -104,10 +104,10 @@ public class GeometryDiagramUpdater {
 	 */
 	public static List<GeometryLinkDescriptor> getOutgoingLinks(View view) {
 		switch (GeometryVisualIDRegistry.getVisualID(view)) {
-		case ConnectorEditPart.VISUAL_ID:
-			return getConnector_2001OutgoingLinks(view);
 		case InputPointEditPart.VISUAL_ID:
 			return getInputPoint_2002OutgoingLinks(view);
+		case ConnectorEditPart.VISUAL_ID:
+			return getConnector_2001OutgoingLinks(view);
 		case LineEditPart.VISUAL_ID:
 			return getLine_4001OutgoingLinks(view);
 		}

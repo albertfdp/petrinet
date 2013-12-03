@@ -194,12 +194,14 @@ public class MessageFormatParser extends AbstractAttributeParser {
 	}
 
 	/**
-	 * @generated
+	 * @generated not
+	 * @Mikko_Tuulio
 	 */
 	public String getPrintString(IAdaptable adapter, int flags) {
 		EObject element = (EObject) adapter.getAdapter(EObject.class);
-		return getViewProcessor().format(getValues(element),
-				new StringBuffer(), new FieldPosition(0)).toString();
+		return "Label: "
+				+ getViewProcessor().format(getValues(element),
+						new StringBuffer(), new FieldPosition(0)).toString();
 	}
 
 }
