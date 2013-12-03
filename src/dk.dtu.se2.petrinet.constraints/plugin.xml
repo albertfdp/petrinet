@@ -37,4 +37,13 @@
       </constraintProvider>
    </extension>
 
+	<extension
+         id="graphics"
+         name="Extended Petri Net graphical extensions"
+         point="org.pnml.tools.epnk.diagram.graphics">
+      <graphicsextension
+            class="dk.dtu.se2.petrinet.graphical.extensions.SignalnetGraphics"
+            description="Update graphics for Place">
+      </graphicsextension>
+   </extension>
 </plugin>

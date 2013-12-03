@@ -5,7 +5,8 @@ Bundle-SymbolicName: dk.dtu.se2.petrinet.constraints;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.validation,
- org.eclipse.equinox.registry
+ org.eclipse.equinox.registry,
+ org.pnml.tools.epnk.diagram
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: dk.dtu.se2.petrinet,
  org.pnml.tools.epnk.pnmlcoremodel
