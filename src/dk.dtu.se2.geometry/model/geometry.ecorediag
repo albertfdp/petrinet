@@ -43,6 +43,10 @@
         <element xmi:type="ecore:EAttribute" href="geometry.ecore#//Line/appearanceLabel"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_sciqwVDzEeOq37djFNxm2A"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_F6k48Fv4EeO0MLWwSbcpEQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="geometry.ecore#//Line/tokenAppearanceLabel"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_F6k48Vv4EeO0MLWwSbcpEQ"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_6EcWMkkkEeOkYIj7VlCqPQ"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_6EcWM0kkEeOkYIj7VlCqPQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_6EcWNEkkEeOkYIj7VlCqPQ"/>
@@ -118,6 +122,10 @@
       <children xmi:type="notation:Node" xmi:id="_147FoFDzEeOq37djFNxm2A" type="2001">
         <element xmi:type="ecore:EAttribute" href="geometry.ecore#//InputPoint/appearanceLabel"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_147FoVDzEeOq37djFNxm2A"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_W7NvcFv4EeO0MLWwSbcpEQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="geometry.ecore#//InputPoint/tokenAppearanceLabel"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_W7NvcVv4EeO0MLWwSbcpEQ"/>
       </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="__VIzwkkkEeOkYIj7VlCqPQ"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="__VIzw0kkEeOkYIj7VlCqPQ"/>
