@@ -61,7 +61,8 @@ public class AObjectItemProvider
 			super.getPropertyDescriptors(object);
 
 			addLabelPropertyDescriptor(object);
-			addFilePropertyDescriptor(object);
+			addObject3DPropertyDescriptor(object);
+			addTexturePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -89,19 +90,41 @@ public class AObjectItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the File feature.
+	 * This adds a property descriptor for the Object3 D feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addFilePropertyDescriptor(Object object) {
+	protected void addObject3DPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AObject_file_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AObject_file_feature", "_UI_AObject_type"),
-				 AppearancePackage.Literals.AOBJECT__FILE,
+				 getString("_UI_AObject_object3D_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AObject_object3D_feature", "_UI_AObject_type"),
+				 AppearancePackage.Literals.AOBJECT__OBJECT3_D,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Texture feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTexturePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AObject_texture_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AObject_texture_feature", "_UI_AObject_type"),
+				 AppearancePackage.Literals.AOBJECT__TEXTURE,
 				 true,
 				 false,
 				 false,
@@ -148,7 +171,8 @@ public class AObjectItemProvider
 
 		switch (notification.getFeatureID(AObject.class)) {
 			case AppearancePackage.AOBJECT__LABEL:
-			case AppearancePackage.AOBJECT__FILE:
+			case AppearancePackage.AOBJECT__OBJECT3_D:
+			case AppearancePackage.AOBJECT__TEXTURE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
