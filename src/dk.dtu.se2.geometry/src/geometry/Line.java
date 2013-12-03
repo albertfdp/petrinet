@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link geometry.Line#getBegin <em>Begin</em>}</li>
  *   <li>{@link geometry.Line#getEnd <em>End</em>}</li>
  *   <li>{@link geometry.Line#getAppearanceLabel <em>Appearance Label</em>}</li>
+ *   <li>{@link geometry.Line#getTokenAppearanceLabel <em>Token Appearance Label</em>}</li>
  * </ul>
  * </p>
  *
@@ -122,5 +123,32 @@ public interface Line extends GObject {
 	 * @generated
 	 */
 	void setAppearanceLabel(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Token Appearance Label</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Token Appearance Label</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Token Appearance Label</em>' attribute.
+	 * @see #setTokenAppearanceLabel(String)
+	 * @see geometry.GeometryPackage#getLine_TokenAppearanceLabel()
+	 * @model default=""
+	 * @generated
+	 */
+	String getTokenAppearanceLabel();
+
+	/**
+	 * Sets the value of the '{@link geometry.Line#getTokenAppearanceLabel <em>Token Appearance Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Token Appearance Label</em>' attribute.
+	 * @see #getTokenAppearanceLabel()
+	 * @generated
+	 */
+	void setTokenAppearanceLabel(String value);
 
 } // Line

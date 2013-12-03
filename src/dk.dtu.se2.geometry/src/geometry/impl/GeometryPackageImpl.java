@@ -222,6 +222,15 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLine_TokenAppearanceLabel() {
+		return (EAttribute)lineEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPoint() {
 		return pointEClass;
 	}
@@ -303,6 +312,15 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getInputPoint_TokenAppearanceLabel() {
+		return (EAttribute)inputPointEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public GeometryFactory getGeometryFactory() {
 		return (GeometryFactory)getEFactoryInstance();
 	}
@@ -337,6 +355,7 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 		createEReference(lineEClass, LINE__BEGIN);
 		createEReference(lineEClass, LINE__END);
 		createEAttribute(lineEClass, LINE__APPEARANCE_LABEL);
+		createEAttribute(lineEClass, LINE__TOKEN_APPEARANCE_LABEL);
 
 		pointEClass = createEClass(POINT);
 		createEAttribute(pointEClass, POINT__XLOCATION);
@@ -350,6 +369,7 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 
 		inputPointEClass = createEClass(INPUT_POINT);
 		createEAttribute(inputPointEClass, INPUT_POINT__APPEARANCE_LABEL);
+		createEAttribute(inputPointEClass, INPUT_POINT__TOKEN_APPEARANCE_LABEL);
 	}
 
 	/**
@@ -398,6 +418,7 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 		initEReference(getLine_Begin(), this.getConnector(), this.getConnector_Out(), "begin", null, 1, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLine_End(), this.getConnector(), this.getConnector_In(), "end", null, 1, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLine_AppearanceLabel(), ecorePackage.getEString(), "appearanceLabel", null, 0, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLine_TokenAppearanceLabel(), ecorePackage.getEString(), "tokenAppearanceLabel", "", 0, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pointEClass, Point.class, "Point", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPoint_XLocation(), ecorePackage.getEInt(), "xLocation", null, 0, 1, Point.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -411,6 +432,7 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 
 		initEClass(inputPointEClass, InputPoint.class, "InputPoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInputPoint_AppearanceLabel(), ecorePackage.getEString(), "appearanceLabel", null, 0, 1, InputPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInputPoint_TokenAppearanceLabel(), ecorePackage.getEString(), "tokenAppearanceLabel", null, 0, 1, InputPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
