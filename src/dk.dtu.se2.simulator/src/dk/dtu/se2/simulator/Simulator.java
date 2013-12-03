@@ -73,7 +73,7 @@ public class Simulator implements Engine3DListener {
 
 	@Override
 	public void onReset() {
-		this.petrinetEngine = new PetriNetEngine();
+		this.petrinetEngine.init(petrinet);
 		this.engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
 		this.engine3d.setEngine3DListener(this);
 		this.engine3d.reset();
