@@ -28,6 +28,7 @@ import com.jme3.collision.CollisionResult;
 import com.jme3.collision.CollisionResults;
 import com.jme3.font.BitmapText;
 import com.jme3.font.Rectangle;
+import com.jme3.input.KeyInput;
 import com.jme3.input.MouseInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.MouseButtonTrigger;
@@ -374,6 +375,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  			
  	 /* Create a new NiftyGUI object */ 
  			this.nifty = this.niftyDisplay.getNifty();
+ 	/* 	Set Nifty GUI to ignore keyboard events so that they are only handles by jMonkey */	
+ 			this.nifty.setIgnoreKeyboardEvents(true);
  			
  	/* Initialize the controller for the buttons screen */
  			this.screenController = new NiftyButtonsScreen("data", this);
@@ -406,6 +409,10 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		
 	/* Pause simulation when the window loses focus */
 		this.setPauseOnLostFocus(false);
+		
+	/* Attaching the input places node to the root node */
+		this.inputPlaces = new Node("InputPlaces");
+		rootNode.attachChild(inputPlaces);
  		
     /* Run setups to prepare: 
      * -- the light
@@ -422,11 +429,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		this.setUpAnimations();
 		this.setUpCameraPosition();
 		this.setupKeyMappings();
-		
-	/* Attaching the input places node to the root node */
-			this.inputPlaces = new Node("InputPlaces");
-			rootNode.attachChild(inputPlaces);
-		
+				
 	/* Set the state of the engine to STOPPED */
 		this.engineState = State.STOPPED;
 		
@@ -437,10 +440,10 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 
 			inputManager.addMapping("Click", new MouseButtonTrigger(MouseInput.BUTTON_LEFT));
 			inputManager.addMapping("CameraControl", new MouseButtonTrigger(MouseInput.BUTTON_RIGHT));
-			        
+						        
 			inputManager.addListener(actionListener, new String[]{"Click"});
 			inputManager.addListener(actionListener, new String[]{"CameraControl"});
-			
+						
 			inputManager.setCursorVisible(true);
  	}
  	
@@ -567,7 +570,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 			if (name.equals("CameraControl") && !keyPressed) {
 				flyCam.setEnabled(false);
 			}
-			
+						
 			if (name.equals("Click") && !keyPressed) {
 				// 1. Reset results list.
 		        CollisionResults results = new CollisionResults();
