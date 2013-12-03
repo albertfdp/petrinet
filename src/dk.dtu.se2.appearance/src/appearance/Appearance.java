@@ -65,5 +65,12 @@ public interface Appearance extends EObject {
 	 * @generated
 	 */
 	void setId(int value);
+	
+	/**
+	 * Returns a particular AObject from the Appearance model list 
+	 * @return the aObject having label = appearanceLabel 
+	 */
+	AObject getAObjectByLabel (String appearanceLabel);
+	
 
 } // Appearance

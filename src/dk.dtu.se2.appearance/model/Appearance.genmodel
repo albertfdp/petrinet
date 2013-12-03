@@ -12,7 +12,8 @@
     </genClasses>
     <genClasses ecoreClass="Appearance.ecore#//AObject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Appearance.ecore#//AObject/label"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Appearance.ecore#//AObject/file"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Appearance.ecore#//AObject/object3D"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Appearance.ecore#//AObject/texture"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

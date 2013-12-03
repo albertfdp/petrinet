@@ -146,8 +146,17 @@ public class AppearancePackageImpl extends EPackageImpl implements AppearancePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAObject_File() {
+	public EAttribute getAObject_Object3D() {
 		return (EAttribute)aObjectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAObject_Texture() {
+		return (EAttribute)aObjectEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -184,7 +193,8 @@ public class AppearancePackageImpl extends EPackageImpl implements AppearancePac
 
 		aObjectEClass = createEClass(AOBJECT);
 		createEAttribute(aObjectEClass, AOBJECT__LABEL);
-		createEAttribute(aObjectEClass, AOBJECT__FILE);
+		createEAttribute(aObjectEClass, AOBJECT__OBJECT3_D);
+		createEAttribute(aObjectEClass, AOBJECT__TEXTURE);
 	}
 
 	/**
@@ -223,7 +233,8 @@ public class AppearancePackageImpl extends EPackageImpl implements AppearancePac
 
 		initEClass(aObjectEClass, AObject.class, "AObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAObject_Label(), ecorePackage.getEString(), "label", null, 0, 1, AObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAObject_File(), ecorePackage.getEString(), "file", null, 0, 1, AObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAObject_Object3D(), ecorePackage.getEString(), "object3D", null, 0, 1, AObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAObject_Texture(), ecorePackage.getEString(), "texture", "", 0, 1, AObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

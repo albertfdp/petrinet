@@ -13,7 +13,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link appearance.AObject#getLabel <em>Label</em>}</li>
- *   <li>{@link appearance.AObject#getFile <em>File</em>}</li>
+ *   <li>{@link appearance.AObject#getObject3D <em>Object3 D</em>}</li>
+ *   <li>{@link appearance.AObject#getTexture <em>Texture</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,29 +50,56 @@ public interface AObject extends EObject {
 	void setLabel(String value);
 
 	/**
-	 * Returns the value of the '<em><b>File</b></em>' attribute.
+	 * Returns the value of the '<em><b>Object3 D</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>File</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Object3 D</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>File</em>' attribute.
-	 * @see #setFile(String)
-	 * @see appearance.AppearancePackage#getAObject_File()
+	 * @return the value of the '<em>Object3 D</em>' attribute.
+	 * @see #setObject3D(String)
+	 * @see appearance.AppearancePackage#getAObject_Object3D()
 	 * @model
 	 * @generated
 	 */
-	String getFile();
+	String getObject3D();
 
 	/**
-	 * Sets the value of the '{@link appearance.AObject#getFile <em>File</em>}' attribute.
+	 * Sets the value of the '{@link appearance.AObject#getObject3D <em>Object3 D</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>File</em>' attribute.
-	 * @see #getFile()
+	 * @param value the new value of the '<em>Object3 D</em>' attribute.
+	 * @see #getObject3D()
 	 * @generated
 	 */
-	void setFile(String value);
+	void setObject3D(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Texture</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Texture</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Texture</em>' attribute.
+	 * @see #setTexture(String)
+	 * @see appearance.AppearancePackage#getAObject_Texture()
+	 * @model default=""
+	 * @generated
+	 */
+	String getTexture();
+
+	/**
+	 * Sets the value of the '{@link appearance.AObject#getTexture <em>Texture</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Texture</em>' attribute.
+	 * @see #getTexture()
+	 * @generated
+	 */
+	void setTexture(String value);
 
 } // AObject

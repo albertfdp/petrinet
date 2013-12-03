@@ -122,13 +122,22 @@ public interface AppearancePackage extends EPackage {
 	int AOBJECT__LABEL = 0;
 
 	/**
-	 * The feature id for the '<em><b>File</b></em>' attribute.
+	 * The feature id for the '<em><b>Object3 D</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AOBJECT__FILE = 1;
+	int AOBJECT__OBJECT3_D = 1;
+
+	/**
+	 * The feature id for the '<em><b>Texture</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AOBJECT__TEXTURE = 2;
 
 	/**
 	 * The number of structural features of the '<em>AObject</em>' class.
@@ -137,7 +146,7 @@ public interface AppearancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AOBJECT_FEATURE_COUNT = 2;
+	int AOBJECT_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>AObject</em>' class.
@@ -203,15 +212,26 @@ public interface AppearancePackage extends EPackage {
 	EAttribute getAObject_Label();
 
 	/**
-	 * Returns the meta object for the attribute '{@link appearance.AObject#getFile <em>File</em>}'.
+	 * Returns the meta object for the attribute '{@link appearance.AObject#getObject3D <em>Object3 D</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>File</em>'.
-	 * @see appearance.AObject#getFile()
+	 * @return the meta object for the attribute '<em>Object3 D</em>'.
+	 * @see appearance.AObject#getObject3D()
 	 * @see #getAObject()
 	 * @generated
 	 */
-	EAttribute getAObject_File();
+	EAttribute getAObject_Object3D();
+
+	/**
+	 * Returns the meta object for the attribute '{@link appearance.AObject#getTexture <em>Texture</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Texture</em>'.
+	 * @see appearance.AObject#getTexture()
+	 * @see #getAObject()
+	 * @generated
+	 */
+	EAttribute getAObject_Texture();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -281,12 +301,20 @@ public interface AppearancePackage extends EPackage {
 		EAttribute AOBJECT__LABEL = eINSTANCE.getAObject_Label();
 
 		/**
-		 * The meta object literal for the '<em><b>File</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Object3 D</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute AOBJECT__FILE = eINSTANCE.getAObject_File();
+		EAttribute AOBJECT__OBJECT3_D = eINSTANCE.getAObject_Object3D();
+
+		/**
+		 * The meta object literal for the '<em><b>Texture</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute AOBJECT__TEXTURE = eINSTANCE.getAObject_Texture();
 
 	}
 
