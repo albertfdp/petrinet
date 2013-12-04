@@ -21,14 +21,10 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppState;
 import com.jme3.cinematic.Cinematic;
 import com.jme3.cinematic.MotionPath;
-import com.jme3.cinematic.events.CinematicEvent;
-import com.jme3.cinematic.events.CinematicEventListener;
 import com.jme3.cinematic.events.MotionEvent;
 import com.jme3.collision.CollisionResult;
 import com.jme3.collision.CollisionResults;
-import com.jme3.font.BitmapText;
 import com.jme3.font.Rectangle;
-import com.jme3.input.KeyInput;
 import com.jme3.input.MouseInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.MouseButtonTrigger;
@@ -62,7 +58,7 @@ import dk.dtu.se2.engine3d.Engine3D;
 import dk.dtu.se2.engine3d.Engine3DListener;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
-public class JMonkeyEngine extends SimpleApplication implements Engine3D, CinematicEventListener {
+public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	
 	/* Geometry and Appearance models, plus list of all possible animations */
 	private geometry.Geometry 	geometry;
@@ -108,9 +104,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
     private int lowX = (int) Double.POSITIVE_INFINITY, lowY = (int) Double.POSITIVE_INFINITY;
     
     private Geometry groundGeo;
-    private double timeAtSystemStart;
-    private BitmapText hudText;
-    
+         
     private enum State {
     	PLAYING,
     	PAUSED,
@@ -241,10 +235,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				inputObject.setMaterial(inputMat); // apply the material to the geometry
 				
 				inputObject.setLocalTranslation(new Vector3f(x,0f,y));
-				Material mat = new Material(assetManager,
-				          "Common/MatDefs/Misc/Unshaded.j3md");  // create a simple material
-		        mat.setColor("Color", ColorRGBA.Blue);   // set color of material to blue
-		        inputObject.setMaterial(mat);   
+				
 		        //Attach the geometry to input places node
 		        inputPlaces.attachChild(inputObject);
 		        
@@ -291,10 +282,12 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 			
 				
 				/* Create motion event corresponding to the move animation */
-				JMonkeyEvent event = new JMonkeyEvent(geometryLabel, token, path, 10, LoopMode.DontLoop); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
-				event.setSpeed(((Move) animation.getAnimation()).getSpeed());
-				event.setDirectionType(MotionEvent.Direction.Path); // the spatial is always faced in the direction of the path while moving
-				event.addListener(this); // add the JMonkeyEngine as a listener to all motion events
+				MotionEvent motionEvent = new MotionEvent(token, path, 10, LoopMode.DontLoop);
+				motionEvent.setSpeed(((Move) animation.getAnimation()).getSpeed());
+				motionEvent.setDirectionType(MotionEvent.Direction.Path); // the spatial is always faced in the direction of the path while moving
+								
+				JMonkeyEvent event = new JMonkeyMove(geometryLabel, motionEvent, this); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
+				motionEvent.addListener((JMonkeyMove) event); // add the JMonkeyEngine as a listener to all motion events				
 				
 				events.put(geometryLabel, event);
 				
@@ -302,6 +295,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 
 				
 			} else if (animation.getAnimation() instanceof Appear) {
+				
 				
 			} else if (animation.getAnimation() instanceof Sequence) {
 				
@@ -374,8 +368,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  	@Override
 	public void simpleInitApp() {
  		
- 	// AP: setting up miscellaneous stuff
- 			timeAtSystemStart = System.currentTimeMillis();
  	// AP: set the background color
  			viewPort.setBackgroundColor(ColorRGBA.Gray);
  	// AP: enable/disable camera fly - the ability to move the camera with keyboard and mouse
@@ -512,28 +504,16 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		}
 	}
 
-	@Override
-	public void onPause(CinematicEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onPlay(CinematicEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 	
-	@Override
-	public void onStop(CinematicEvent ev ) {
-		JMonkeyEvent event = (JMonkeyEvent) ev;
+	public void onStop(JMonkeyMove event) {	
 		
-		this.tokenQueue.get(event.getGeometryLabel()).add(event.getSpatial());
-		this.eventsRunning.removeCinematicEvent(ev);
+		MotionEvent motionEvent = event.getMotionEvent();
+		
+		this.tokenQueue.get(event.getGeometryLabel()).add(motionEvent.getSpatial());
+		this.eventsRunning.removeCinematicEvent(motionEvent);
 		this.listener.onAnimationFinished(event.getGeometryLabel());
 		
-				
-		System.out.println(ev.getPlayState());
+		System.out.println(motionEvent.getPlayState());
 	}
 
 	@Override 
@@ -542,11 +522,11 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		if (engineState == State.PLAYING) {
 			
 			while (!eventsQueue.isEmpty()) {
-				JMonkeyEvent eventToRun = eventsQueue.pop();
-				System.out.println(eventToRun.getGeometryLabel() + " => " + eventToRun.getSpatial().getName());
-				rootNode.attachChild(eventToRun.getSpatial());
+				JMonkeyMove eventToRun = (JMonkeyMove) eventsQueue.pop();
+				System.out.println(eventToRun.getGeometryLabel() + " => " + eventToRun.getMotionEvent().getSpatial().getName());
+				rootNode.attachChild(eventToRun.getMotionEvent().getSpatial());
 				if(eventToRun!=null) 
-					eventsRunning.addCinematicEvent(0, eventToRun);
+					eventsRunning.addCinematicEvent(0, eventToRun.getMotionEvent());
 			}
 			
 			eventsRunning.play();
