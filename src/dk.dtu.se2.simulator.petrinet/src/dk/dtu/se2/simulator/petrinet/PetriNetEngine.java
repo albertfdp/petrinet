@@ -21,10 +21,12 @@ import dk.dtu.se2.simulator.petrinet.runtime.RTToken;
  */
 public class PetriNetEngine {
 		
-	private HashMap<Place, ArrayList<RTToken>> marking = new HashMap<Place, ArrayList<RTToken>>();
+	private HashMap<Place, ArrayList<RTToken>> marking;
 	private ArrayList<Transition> transitions = new ArrayList<Transition>();
 	
-	public PetriNetEngine() {}
+	public PetriNetEngine() {
+		marking  = new HashMap<Place, ArrayList<RTToken>>();
+	}
 	
 	/**
 	 * Initializes the Petri Net Engine with a Static Petrinet
@@ -32,6 +34,8 @@ public class PetriNetEngine {
 	 * @return A list of geometry label of places to animate in the 3D Engine
 	 */
 	public ArrayList<RTAnimation> init (PetriNetDoc petrinet) {
+		
+		
 		
 		Iterator<Object> iterator = petrinet.getNet().get(0).getPage().get(0).getObject().iterator();
 		ArrayList<RTAnimation> animations = new ArrayList<RTAnimation>();
@@ -101,7 +105,7 @@ public class PetriNetEngine {
 				for (Arc a: transition.getIn()) {
 					if (a.getSource() instanceof Place) {
 						Place p = (Place)a.getSource();
-						animations.add(new RTAnimation(null, p.getGeometryLabel().getText(), null, true));
+						animations.add(new RTAnimation(p.getId(), p.getGeometryLabel().getText(), p.getAnimationLabel().getStructure(), false));
 					}
 				}
 			}
@@ -141,6 +145,7 @@ public class PetriNetEngine {
 		//Search for the place on which the token is created
 		Place placeToDropTokenOn = null;
 		for (Place place : marking.keySet()) {
+			System.out.println("geom label tested:" + place.getGeometryLabel().getText());
 			if (place.getGeometryLabel().getText().equals(geometryLabel)) {
 				placeToDropTokenOn = place;
 				break;
