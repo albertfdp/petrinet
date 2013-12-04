@@ -239,9 +239,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				inputMat.setColor("Color", ColorRGBA.White); // set the base color of the material  
 				
 				inputObject.setMaterial(inputMat); // apply the material to the geometry
-
-				// Scaling the input object
-		     	inputObject.scale(boundingBox.width * 0.006f);
 				
 				inputObject.setLocalTranslation(new Vector3f(x,0f,y));
 				Material mat = new Material(assetManager,
@@ -357,11 +354,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	}
 	private void setBoundingBox() {
 		
-		System.out.println(lowX);
-		System.out.println(lowY);
-		System.out.println(highX);
-		System.out.println(highY);
-		
 		boundingBox = new Rectangle(lowX, lowY, highX-lowX, highY-lowY);
 	}
 		
@@ -420,6 +412,11 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
  	        
 	}
  	
+ 	private void scaleInputPlaces() {
+ 		for (Spatial spatial:inputs.values())
+ 			spatial.scale(boundingBox.width * 0.006f);
+ 	}
+ 	
  	@Override
  	public void reset() {
  		
@@ -429,6 +426,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 		this.eventsQueue = new LinkedList<JMonkeyEvent>();
 		this.tokenQueue = new HashMap<String, LinkedList<Spatial>>();
 		this.tokenAppearances = new HashMap<String, String>();
+		this.inputs = new HashMap<String, Spatial>();
 		
 	/* Initialize the Cinematic movie script of the simulation and add it to the application state manager */
 		this.eventsRunning = new Cinematic(this.rootNode, 10);
@@ -452,6 +450,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
         this.setUpLight();
         this.setUpEnvironment();
         this.setBoundingBox();
+        this.scaleInputPlaces();
         this.setUpGround();
 		this.setUpAnimations();
 		this.setUpCameraPosition();
