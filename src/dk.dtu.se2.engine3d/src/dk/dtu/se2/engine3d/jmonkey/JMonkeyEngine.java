@@ -97,8 +97,11 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 	 */
 	private Cinematic eventsRunning;
 	
-	/* Initial lines in the geometry */
+	/* Mapping between geometry labels of lines and JMonkey motion paths */
 	private HashMap<String, MotionPath> lines;
+	
+	/* Mapping between geometry labels of input places and JMonkey spatial */
+	private HashMap<String, Spatial> inputs;
 	
     private Rectangle boundingBox;
     private int highX = (int) Double.NEGATIVE_INFINITY, highY = (int) Double.NEGATIVE_INFINITY;
@@ -143,7 +146,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				String appearanceLabel = line.getAppearanceLabel();
 				
 				/*
-				 * Get the appearance object corresponding to the lines appearance label
+				 * Get the appearance object corresponding to the line's appearance label
 				 */
 				AObject appearanceObject = this.appearance.getAObjectByLabel(appearanceLabel);
 				String texture = appearanceObject.getTexture();
@@ -208,25 +211,48 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Cinema
 				/* Add the line label-motion path association to the lines HashMap */
 				lines.put(line.getLabel(), path);
 				
-			} else if (object instanceof InputPoint) {
+			} else if (object instanceof InputPoint) { // GObject is an InputPoint
 				
+				/*
+				 * Cast GObject and get:
+				 * -- x location
+				 * -- y location
+				 */
 				InputPoint inputPoint = (InputPoint) object;
-				
 				int x = inputPoint.getXLocation();
 				int y = inputPoint.getYLocation();
+				String appearanceLabel = inputPoint.getAppearanceLabel();
+				
+				/*
+				 * Get the appearance object corresponding to the input place's appearance label
+				 */
+				AObject appearanceObject = this.appearance.getAObjectByLabel(appearanceLabel);
+				String texture = appearanceObject.getTexture();
 				
 				//Change this with the real geometry
-				Box b = new Box(5, 5, 5);
+//				Box b = new Box(5, 5, 5);
+				Spatial inputObject = assetManager.loadModel(appearanceObject.getObject3D());
+				inputObject.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
 				
-				Geometry geom = new Geometry(object.getLabel(), b);
-				geom.setLocalTranslation(new Vector3f(x,0f,y));
+				Material inputMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
+				inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
+				inputMat.setColor("Color", ColorRGBA.White); // set the base color of the material  
+				
+				inputObject.setMaterial(inputMat); // apply the material to the geometry
+
+				// Scaling the input object
+		     	inputObject.scale(boundingBox.width * 0.006f);
+				
+				inputObject.setLocalTranslation(new Vector3f(x,0f,y));
 				Material mat = new Material(assetManager,
 				          "Common/MatDefs/Misc/Unshaded.j3md");  // create a simple material
 		        mat.setColor("Color", ColorRGBA.Blue);   // set color of material to blue
-		        geom.setMaterial(mat);   
+		        inputObject.setMaterial(mat);   
 		        //Attach the geometry to input places node
-		        inputPlaces.attachChild(geom);
-				
+		        inputPlaces.attachChild(inputObject);
+		        
+		        /* Add the input place label-spatial association to the inputs HashMap */
+				inputs.put(inputPoint.getLabel(), inputObject);
 			}
 		}
 	}
