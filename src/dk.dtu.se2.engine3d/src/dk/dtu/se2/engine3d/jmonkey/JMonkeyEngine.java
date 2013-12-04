@@ -50,6 +50,7 @@ import com.jme3.util.SkyFactory;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.ScreenController;
+import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.animation.Appear;
 import dk.dtu.se2.animation.Move;
 import dk.dtu.se2.animation.Sequence;
@@ -249,12 +250,15 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		
 
 		/* Parse the list of animations and create a new MotionPath and MotionEvent for each of them */
-		for(RTAnimation animation : animations) {
+		for(RTAnimation RTanimation : animations) {
 			
-			/* Get geometry label of the animation */
-			String geometryLabel = animation.getGeometryLabel();
+			/* Get geometry label of the runtime animation */
+			String geometryLabel = RTanimation.getGeometryLabel();
 			
-			if(animation.getAnimation() instanceof Move) {
+			/* Get animation of the runtime animation */ 
+			Animation animation = RTanimation.getAnimation();
+			
+			if(animation instanceof Move) {
 				
 				/* Create token as a jMonkey spatial*/
 				String tokenAppearance = this.tokenAppearances.get(geometryLabel);
@@ -281,9 +285,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				path = lines.get(geometryLabel);
 			
 				
-				/* Create motion event corresponding to the move animation */
+				/* Create motion event and JMonkeyMove event corresponding to the move animation */
 				MotionEvent motionEvent = new MotionEvent(token, path, 10, LoopMode.DontLoop);
-				motionEvent.setSpeed(((Move) animation.getAnimation()).getSpeed());
+				motionEvent.setSpeed(((Move) animation).getSpeed());
 				motionEvent.setDirectionType(MotionEvent.Direction.Path); // the spatial is always faced in the direction of the path while moving
 								
 				JMonkeyEvent event = new JMonkeyMove(geometryLabel, motionEvent, this); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
@@ -294,12 +298,16 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				this.tokenQueue.put(geometryLabel, new LinkedList<Spatial>());
 
 				
-			} else if (animation.getAnimation() instanceof Appear) {
+			} else if (animation instanceof Appear) {
+				/* Create JMonkey appear event */
+				JMonkeyEvent event = new JMonkeyAppear(geometryLabel, ((Appear) animation).getAppearance());
+				
+				events.put(geometryLabel, event);
 				
 				
-			} else if (animation.getAnimation() instanceof Sequence) {
+			} else if (animation instanceof Sequence) {
 				
-			} else if (animation.getAnimation() instanceof Stop) {
+			} else if (animation instanceof Stop) {
 				
 			}
 		}
@@ -517,16 +525,49 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	}
 
 	@Override 
-    public void simpleUpdate(float tpf) {		
+    public void simpleUpdate(float tpf) {
+		
 		/* Play waiting animations */
 		if (engineState == State.PLAYING) {
 			
-			while (!eventsQueue.isEmpty()) {
-				JMonkeyMove eventToRun = (JMonkeyMove) eventsQueue.pop();
-				System.out.println(eventToRun.getGeometryLabel() + " => " + eventToRun.getMotionEvent().getSpatial().getName());
-				rootNode.attachChild(eventToRun.getMotionEvent().getSpatial());
-				if(eventToRun!=null) 
-					eventsRunning.addCinematicEvent(0, eventToRun.getMotionEvent());
+			while (!eventsQueue.isEmpty()) { // while there are events waiting to be run in the queue
+				/* Get event from queue*/
+				JMonkeyEvent eventToRun = eventsQueue.pop();
+				
+				if (eventToRun instanceof JMonkeyMove) {
+					/* Cast JMonkeyEvent to JMonkeyMove*/
+					JMonkeyMove moveEventToRun = (JMonkeyMove) eventToRun;
+					
+					System.out.println(moveEventToRun.getGeometryLabel() + " => " + moveEventToRun.getMotionEvent().getSpatial().getName());
+					
+					rootNode.attachChild(moveEventToRun.getMotionEvent().getSpatial());
+					
+					if(moveEventToRun!=null) 
+						eventsRunning.addCinematicEvent(0, moveEventToRun.getMotionEvent());
+				}
+				
+				else if (eventToRun instanceof JMonkeyAppear) {
+					/* Cast JMonkeyEvent to JMonkeyAppear */
+					JMonkeyAppear appearEventToRun = (JMonkeyAppear) eventToRun;
+					
+					Spatial inputObject = inputs.get(appearEventToRun.getGeometryLabel());
+					
+					/*
+					 * Get the appearance object corresponding to the input place's appearance label
+					 */
+					AObject appearanceObject = this.appearance.getAObjectByLabel(appearEventToRun.getAppearanceLabel());
+					String texture = appearanceObject.getTexture();
+					
+					/* Create new material according to the appearance of the event*/
+					Material inputMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
+					inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
+					inputMat.setColor("Color", ColorRGBA.Blue); // set the base color of the material  
+					inputObject.setMaterial(inputMat);
+					
+					System.out.println("Appear event");
+										
+				}
+				
 			}
 			
 			eventsRunning.play();
@@ -593,7 +634,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		        	CollisionResult hitPlace = results.getClosestCollision();
 			        String inputPlaceId = hitPlace.getGeometry().getName();
 			        
-			        listener.onUserClick(inputPlaceId);
+			        //listener.onUserClick(inputPlaceId);
+			        listener.onUserClick("TL");
 		        }
 		        
 			}
