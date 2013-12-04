@@ -58,6 +58,8 @@ public class Simulator implements Engine3DListener {
 		this.engine3d = Engine3DFactory.getEngine3D("jMonkey");
 		
 		this.petrinetEngine = new PetriNetEngine();
+		this.nextAnimations = this.petrinetEngine.init(petrinet);
+		
 		this.engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
 		this.engine3d.setEngine3DListener(this);
 	}
@@ -66,7 +68,6 @@ public class Simulator implements Engine3DListener {
 	public void onStart() {
 //		logger.info("onStart() ...");
 		
-		this.nextAnimations = this.petrinetEngine.init(petrinet);		
 		this.engine3d.addToAnimationQueue(this.nextAnimations);
 	}
 
