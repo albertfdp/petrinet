@@ -116,6 +116,20 @@ public class Simulator implements Engine3DListener {
 		
 		this.petrinetEngine.createToken(geometryLabel);
 		this.nextAnimations = this.petrinetEngine.fireTransitions();
+		
+		ArrayList<RTAnimation> tokensToBeDestroyed = new ArrayList<RTAnimation>();
+		for (RTAnimation animation : this.nextAnimations) {
+			if (animation.isDestroy()) {
+				this.engine3d.destroyRepresentation(animation.getGeometryLabel());
+				tokensToBeDestroyed.add(animation);
+			}
+		}
+		this.nextAnimations.removeAll(tokensToBeDestroyed);
+		
+		for (RTAnimation animation : this.nextAnimations) {
+			System.out.println("Next animation: " + animation.getGeometryLabel() + " " + animation.getAnimation().toString());
+		}
+		
 		this.engine3d.addToAnimationQueue(this.nextAnimations);
 	}	
 	

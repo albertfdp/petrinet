@@ -16,7 +16,7 @@ import dk.dtu.se2.simulator.petrinet.runtime.RTToken;
 /**
  * Petri net Engine responsible for the behaviour of the Runtime Petri net.
  * 
- * @author Thibaud
+ * @author Thibaud, Albert
  * @generated NOT
  */
 public class PetriNetEngine {
