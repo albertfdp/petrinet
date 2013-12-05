@@ -225,10 +225,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				String texture = appearanceObject.getTexture();
 				
 				//Change this with the real geometry
-//				Box b = new Box(5, 5, 5);
 				Spatial inputObject = assetManager.loadModel(appearanceObject.getObject3D());
+				inputObject.setName(inputPoint.getLabel());
 				inputObject.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
-				
 				Material inputMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
 				inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
 				inputMat.setColor("Color", ColorRGBA.White); // set the base color of the material  
@@ -558,7 +557,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 						System.out.println("Event to run: "+moveEventToRun.getGeometryLabel());
 					}
 						
-					
 				}
 				
 				else if (eventToRun instanceof JMonkeyAppear) {
@@ -582,10 +580,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 					System.out.println("Appear event");
 										
 				}
-				
+				eventsRunning.play();
 			}
-			
-			eventsRunning.play();
+
 		}							
     }
 	
@@ -639,7 +636,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 			if (name.equals("Click") && !keyPressed) {
 				// 1. Reset results list.
 		        CollisionResults results = new CollisionResults();
-		        // 2. Aim the ray from cam loc to cam direction.
+		        // 2. Aim the ray from mouse location to cam direction.
 		        Vector2f click2d = inputManager.getCursorPosition();
 		        Vector3f click3d = cam.getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 0f).clone();
 		        Vector3f dir = cam.getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 1f).subtractLocal(click3d).normalizeLocal();
@@ -647,13 +644,12 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		        Ray ray = new Ray(click3d, dir);
 		        // 3. Collect intersections between Ray and Input Places in results list.
 		        inputPlaces.collideWith(ray, results);
-		        // 4. Get the closest collision
+		        // 4. Get the closest collision (which is the object we clicked on)
 		        if (results.size() > 0) {
 		        	CollisionResult hitPlace = results.getClosestCollision();
 			        String inputPlaceId = hitPlace.getGeometry().getName();
 			        
-			        //listener.onUserClick(inputPlaceId);
-			        listener.onUserClick("TL");
+			        listener.onUserClick(inputPlaceId);
 		        }
 		        
 			}
@@ -665,7 +661,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	public void destroyRepresentation(String geometryLabel) {
 		if (this.tokenQueue.containsKey(geometryLabel)) {
 			Spatial spatial = this.tokenQueue.get(geometryLabel).pop();
-			System.out.println("Destroying token : " + spatial.getName());
+			System.out.println("Destroying token : " + spatial.getName() + " on geometry: " + geometryLabel);
 			rootNode.detachChild(spatial);
 		}
 	}
