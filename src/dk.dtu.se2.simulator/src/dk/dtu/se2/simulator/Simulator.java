@@ -61,6 +61,7 @@ public class Simulator implements Engine3DListener {
 		this.nextAnimations = this.petrinetEngine.init(petrinet);
 		
 		this.engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
+		this.engine3d.startEngine();
 		this.engine3d.setEngine3DListener(this);
 	}
 
