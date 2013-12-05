@@ -419,7 +419,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
  	
  	private void scaleInputPlaces() {
  		for (Spatial spatial:inputs.values())
- 			spatial.scale(boundingBox.width * 0.006f);
+ 			spatial.scale(boundingBox.width * 0.02f);
  	}
  	
  	@Override
@@ -540,6 +540,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				
 		/* Play waiting animations */
 		if (engineState == State.PLAYING) {
+			
 			while (!eventsQueue.isEmpty()) { // while there are events waiting to be run in the queue
 				/* Get event from queue*/
 				JMonkeyEvent eventToRun = eventsQueue.pop();
@@ -579,6 +580,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 					inputObject.setMaterial(inputMat);
 					
 					System.out.println("Appear event");
+										
 				}
 				
 			}
