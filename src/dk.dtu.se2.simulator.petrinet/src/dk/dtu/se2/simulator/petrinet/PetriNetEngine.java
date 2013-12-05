@@ -146,7 +146,8 @@ public class PetriNetEngine {
 		Place placeToDropTokenOn = null;
 		for (Place place : marking.keySet()) {
 			System.out.println("geom label tested:" + place.getGeometryLabel().getText());
-			if (place.getGeometryLabel().getText().equals(geometryLabel)) {
+			if (place.getGeometryLabel().getText().equals(geometryLabel) && 
+					(place.getInputPlaceLabel() != null && place.getInputPlaceLabel().isText())) {
 				placeToDropTokenOn = place;
 				break;
 			}
