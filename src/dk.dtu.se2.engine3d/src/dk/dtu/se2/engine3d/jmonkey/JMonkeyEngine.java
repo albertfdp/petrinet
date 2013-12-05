@@ -507,7 +507,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	public void addToAnimationQueue(List<RTAnimation> animations) {
 		for (RTAnimation animation : animations) {
 			JMonkeyEvent eventToQueue = events.get(animation.getGeometryLabel());
-			eventsQueue.add(eventToQueue);
+			JMonkeyEvent clonedEventToQueue = JMonkeyEvent.eventCopy(eventToQueue);
+			eventsQueue.add(clonedEventToQueue);
 			
 //			if (eventToQueue instanceof JMonkeyMove) {
 //				Spatial token = ((JMonkeyMove) eventToQueue).getMotionEvent().getSpatial();
@@ -539,7 +540,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				
 		/* Play waiting animations */
 		if (engineState == State.PLAYING) {
-			
 			while (!eventsQueue.isEmpty()) { // while there are events waiting to be run in the queue
 				/* Get event from queue*/
 				JMonkeyEvent eventToRun = eventsQueue.pop();

@@ -36,6 +36,10 @@ public class JMonkeyMove extends JMonkeyEvent implements CinematicEventListener{
 	public MotionEvent getMotionEvent() {
 		return motionEvent;
 	}
+	
+	public JMonkeyEngine getEngine3D() {
+		return engine3D;
+	}
 
 	public void setMotionEvent(MotionEvent motionEvent) {
 		this.motionEvent = motionEvent;
@@ -62,5 +66,6 @@ public class JMonkeyMove extends JMonkeyEvent implements CinematicEventListener{
 		
 		engine3D.onStop(this);
 	}
+	
 	
 }

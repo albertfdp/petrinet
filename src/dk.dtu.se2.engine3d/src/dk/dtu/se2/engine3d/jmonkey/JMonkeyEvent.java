@@ -21,5 +21,15 @@ public class JMonkeyEvent {
 	public void setGeometryLabel(String geometryLabel) {
 		this.geometryLabel = geometryLabel;
 	}
-	
+
+	public static JMonkeyEvent eventCopy(JMonkeyEvent baseObject) {
+		JMonkeyEvent copy = null;
+		if (baseObject instanceof JMonkeyMove) {
+			copy = new JMonkeyMove(baseObject.getGeometryLabel(), ((JMonkeyMove) baseObject).getMotionEvent(), ((JMonkeyMove) baseObject).getEngine3D());
+		} else if (baseObject instanceof JMonkeyAppear) {
+			copy = new JMonkeyAppear(baseObject.getGeometryLabel(), ((JMonkeyAppear) baseObject).getAppearanceLabel());
+		}
+		
+		return copy;
+	}
 }
