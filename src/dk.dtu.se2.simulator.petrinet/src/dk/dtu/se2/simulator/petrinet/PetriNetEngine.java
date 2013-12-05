@@ -201,7 +201,7 @@ public class PetriNetEngine {
 				RTToken newToken = new RTToken();
 				
 				if (inputPlaces.contains(place.getGeometryLabel().getText())) {
-					newToken.isFinished();
+					newToken.setFinished(true);
 				}
 				
 				marking.get(place).add(newToken);
