@@ -579,7 +579,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 					inputObject.setMaterial(inputMat);
 					
 					System.out.println("Appear event");
-					this.listener.onAppearFinished();
 				}
 				
 			}

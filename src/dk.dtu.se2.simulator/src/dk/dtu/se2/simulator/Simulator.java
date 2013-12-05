@@ -112,15 +112,6 @@ public class Simulator implements Engine3DListener {
 		this.engine3d.addToAnimationQueue(this.nextAnimations);
 	}
 	
-	/**
-	 * Fires the transition after an appear animation has been processed in the 3D Engine
-	 */
-	@Override 
-	public void onAppearFinished() {
-		
-		this.nextAnimations = this.petrinetEngine.fireTransitions();
-		this.engine3d.addToAnimationQueue(this.nextAnimations);
-	}
 
 	@Override
 	public void onUserClick(String geometryLabel) {
@@ -141,6 +132,10 @@ public class Simulator implements Engine3DListener {
 			System.out.println("Next animation: " + animation.getGeometryLabel() + " " + animation.getAnimation().toString());
 		}
 		
+		this.engine3d.addToAnimationQueue(this.nextAnimations);
+		
+		//Fire it twice so that new tokens can be fired.
+		this.nextAnimations = this.petrinetEngine.fireTransitions();
 		this.engine3d.addToAnimationQueue(this.nextAnimations);
 	}	
 	
