@@ -105,7 +105,7 @@ public class PetriNetEngine {
 				for (Arc a: transition.getIn()) {
 					if (a.getSource() instanceof Place) {
 						Place p = (Place)a.getSource();
-						animations.add(new RTAnimation(p.getId(), p.getGeometryLabel().getText(), p.getAnimationLabel().getStructure(), false));
+						animations.add(new RTAnimation(null, p.getGeometryLabel().getText(), null, true));
 					}
 				}
 			}
