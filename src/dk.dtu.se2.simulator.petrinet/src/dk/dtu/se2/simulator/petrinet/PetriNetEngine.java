@@ -2,6 +2,7 @@ package dk.dtu.se2.simulator.petrinet;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 
 import org.pnml.tools.epnk.pnmlcoremodel.Arc;
@@ -22,10 +23,12 @@ import dk.dtu.se2.simulator.petrinet.runtime.RTToken;
 public class PetriNetEngine {
 		
 	private HashMap<Place, ArrayList<RTToken>> marking;
+	private HashSet<String> inputPlaces;
 	private ArrayList<Transition> transitions = new ArrayList<Transition>();
 	
 	public PetriNetEngine() {
 		marking  = new HashMap<Place, ArrayList<RTToken>>();
+		inputPlaces = new HashSet<String>();
 	}
 	
 	/**
@@ -50,6 +53,17 @@ public class PetriNetEngine {
 				this.transitions.add(newTransition);
 			} else if (item instanceof Place) {
 				//Add the place + its tokens to the marking
+				Place newPlace = (Place)item;
+				if (newPlace.getInputPlaceLabel() != null && newPlace.getInputPlaceLabel().isText()) {
+					inputPlaces.add(newPlace.getGeometryLabel().getText());
+				}
+			}
+		}
+		
+		iterator = petrinet.getNet().get(0).getPage().get(0).getObject().iterator();
+		while (iterator.hasNext()) {
+			Object item = iterator.next();
+			if (item instanceof Place) {
 				Place newPlace = (Place)item;
 				ArrayList<RTToken> tokens = new ArrayList<RTToken>();
 				for (int i = 0; i < newPlace.getTokens().size(); i++) {
@@ -185,6 +199,11 @@ public class PetriNetEngine {
 			if (arc.getTarget() instanceof Place) {
 				Place place = (Place)arc.getTarget();
 				RTToken newToken = new RTToken();
+				
+				if (inputPlaces.contains(place.getGeometryLabel().getText())) {
+					newToken.isFinished();
+				}
+				
 				marking.get(place).add(newToken);
 				transitionAnimations.add(new RTAnimation(place.getId(), place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure(), false));
 			}
