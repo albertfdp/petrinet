@@ -40,8 +40,8 @@ public class GeometryModelingAssistantProvider extends
 				.getAdapter(IGraphicalEditPart.class);
 		if (editPart instanceof GeometryEditPart) {
 			ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-			types.add(GeometryElementTypes.InputPoint_2002);
 			types.add(GeometryElementTypes.Connector_2001);
+			types.add(GeometryElementTypes.InputPoint_2002);
 			return types;
 		}
 		return Collections.EMPTY_LIST;

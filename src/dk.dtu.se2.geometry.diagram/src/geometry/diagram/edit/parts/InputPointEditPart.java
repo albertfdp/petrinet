@@ -84,7 +84,7 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 			protected EditPolicy createChildEditPolicy(EditPart child) {
 				View childView = (View) child.getModel();
 				switch (GeometryVisualIDRegistry.getVisualID(childView)) {
-				case InputPointLabelEditPart.VISUAL_ID:
+				case InputPointLabelAppearanceLabelEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy() {
 
 						protected List createSelectionHandles() {
@@ -137,7 +137,7 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 		if (borderItemEditPart instanceof InputPointLabelEditPart) {
 			BorderItemLocator locator = new BorderItemLocator(getMainFigure(),
 					PositionConstants.SOUTH);
-			locator.setBorderItemOffset(new Dimension(0, 10));
+			locator.setBorderItemOffset(new Dimension(10, 10));
 			borderItemContainer.add(borderItemEditPart.getFigure(), locator);
 		} else {
 			super.addBorderItem(borderItemContainer, borderItemEditPart);
@@ -230,7 +230,7 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	 */
 	public EditPart getPrimaryChildEditPart() {
 		return getChildBySemanticHint(GeometryVisualIDRegistry
-				.getType(InputPointLabelEditPart.VISUAL_ID));
+				.getType(InputPointLabelAppearanceLabelEditPart.VISUAL_ID));
 	}
 
 	/**
@@ -243,6 +243,10 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 		 */
 		public InputPointFigure() {
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
+					getMapMode().DPtoLP(12)));
+			this.setMaximumSize(new Dimension(getMapMode().DPtoLP(12),
+					getMapMode().DPtoLP(12)));
+			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(12),
 					getMapMode().DPtoLP(12)));
 		}
 

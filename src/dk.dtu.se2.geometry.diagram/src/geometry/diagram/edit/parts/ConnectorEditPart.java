@@ -301,6 +301,10 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 		public ConnectorFigure() {
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
 					getMapMode().DPtoLP(12)));
+			this.setMaximumSize(new Dimension(getMapMode().DPtoLP(12),
+					getMapMode().DPtoLP(12)));
+			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(12),
+					getMapMode().DPtoLP(12)));
 		}
 
 	}

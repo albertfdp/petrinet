@@ -106,11 +106,11 @@ public class GeometryElementTypes {
 
 			elements.put(Geometry_1000, GeometryPackage.eINSTANCE.getGeometry());
 
-			elements.put(InputPoint_2002,
-					GeometryPackage.eINSTANCE.getInputPoint());
-
 			elements.put(Connector_2001,
 					GeometryPackage.eINSTANCE.getConnector());
+
+			elements.put(InputPoint_2002,
+					GeometryPackage.eINSTANCE.getInputPoint());
 
 			elements.put(Line_4001, GeometryPackage.eINSTANCE.getLine());
 		}
@@ -131,8 +131,8 @@ public class GeometryElementTypes {
 		if (KNOWN_ELEMENT_TYPES == null) {
 			KNOWN_ELEMENT_TYPES = new HashSet<IElementType>();
 			KNOWN_ELEMENT_TYPES.add(Geometry_1000);
-			KNOWN_ELEMENT_TYPES.add(InputPoint_2002);
 			KNOWN_ELEMENT_TYPES.add(Connector_2001);
+			KNOWN_ELEMENT_TYPES.add(InputPoint_2002);
 			KNOWN_ELEMENT_TYPES.add(Line_4001);
 		}
 		return KNOWN_ELEMENT_TYPES.contains(elementType);
@@ -145,10 +145,10 @@ public class GeometryElementTypes {
 		switch (visualID) {
 		case GeometryEditPart.VISUAL_ID:
 			return Geometry_1000;
-		case InputPointEditPart.VISUAL_ID:
-			return InputPoint_2002;
 		case ConnectorEditPart.VISUAL_ID:
 			return Connector_2001;
+		case InputPointEditPart.VISUAL_ID:
+			return InputPoint_2002;
 		case LineEditPart.VISUAL_ID:
 			return Line_4001;
 		}

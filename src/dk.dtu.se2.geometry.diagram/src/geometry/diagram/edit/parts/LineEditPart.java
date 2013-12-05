@@ -46,9 +46,9 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	 * @generated
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof LineLabelEditPart) {
-			((LineLabelEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getFigureName());
+		if (childEditPart instanceof LineLabelAppearanceLabelTokEditPart) {
+			((LineLabelAppearanceLabelTokEditPart) childEditPart)
+					.setLabel(getPrimaryShape().getFigureName());
 			return true;
 		}
 		return false;
@@ -68,7 +68,7 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	 * @generated
 	 */
 	protected boolean removeFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof LineLabelEditPart) {
+		if (childEditPart instanceof LineLabelAppearanceLabelTokEditPart) {
 			return true;
 		}
 		return false;

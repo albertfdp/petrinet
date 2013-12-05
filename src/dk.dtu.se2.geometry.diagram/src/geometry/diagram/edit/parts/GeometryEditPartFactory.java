@@ -25,23 +25,23 @@ public class GeometryEditPartFactory implements EditPartFactory {
 			case GeometryEditPart.VISUAL_ID:
 				return new GeometryEditPart(view);
 
-			case InputPointEditPart.VISUAL_ID:
-				return new InputPointEditPart(view);
-
-			case InputPointLabelEditPart.VISUAL_ID:
-				return new InputPointLabelEditPart(view);
-
 			case ConnectorEditPart.VISUAL_ID:
 				return new ConnectorEditPart(view);
 
 			case ConnectorLabelEditPart.VISUAL_ID:
 				return new ConnectorLabelEditPart(view);
 
+			case InputPointEditPart.VISUAL_ID:
+				return new InputPointEditPart(view);
+
+			case InputPointLabelAppearanceLabelEditPart.VISUAL_ID:
+				return new InputPointLabelAppearanceLabelEditPart(view);
+
 			case LineEditPart.VISUAL_ID:
 				return new LineEditPart(view);
 
-			case LineLabelEditPart.VISUAL_ID:
-				return new LineLabelEditPart(view);
+			case LineLabelAppearanceLabelTokEditPart.VISUAL_ID:
+				return new LineLabelAppearanceLabelTokEditPart(view);
 
 			}
 		}

@@ -4,8 +4,10 @@ import geometry.diagram.edit.parts.ConnectorEditPart;
 import geometry.diagram.edit.parts.ConnectorLabelEditPart;
 import geometry.diagram.edit.parts.GeometryEditPart;
 import geometry.diagram.edit.parts.InputPointEditPart;
+import geometry.diagram.edit.parts.InputPointLabelAppearanceLabelEditPart;
 import geometry.diagram.edit.parts.InputPointLabelEditPart;
 import geometry.diagram.edit.parts.LineEditPart;
+import geometry.diagram.edit.parts.LineLabelAppearanceLabelTokEditPart;
 import geometry.diagram.edit.parts.LineLabelEditPart;
 import geometry.diagram.part.GeometryVisualIDRegistry;
 
@@ -143,8 +145,8 @@ public class GeometryViewProvider extends AbstractProvider implements
 					return false; // foreign diagram
 				}
 				switch (visualID) {
-				case InputPointEditPart.VISUAL_ID:
 				case ConnectorEditPart.VISUAL_ID:
+				case InputPointEditPart.VISUAL_ID:
 					if (domainElement == null
 							|| visualID != GeometryVisualIDRegistry
 									.getNodeVisualID(op.getContainerView(),
@@ -157,8 +159,8 @@ public class GeometryViewProvider extends AbstractProvider implements
 				}
 			}
 		}
-		return InputPointEditPart.VISUAL_ID == visualID
-				|| ConnectorEditPart.VISUAL_ID == visualID;
+		return ConnectorEditPart.VISUAL_ID == visualID
+				|| InputPointEditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -215,11 +217,11 @@ public class GeometryViewProvider extends AbstractProvider implements
 			visualID = GeometryVisualIDRegistry.getVisualID(semanticHint);
 		}
 		switch (visualID) {
-		case InputPointEditPart.VISUAL_ID:
-			return createInputPoint_2002(domainElement, containerView, index,
-					persisted, preferencesHint);
 		case ConnectorEditPart.VISUAL_ID:
 			return createConnector_2001(domainElement, containerView, index,
+					persisted, preferencesHint);
+		case InputPointEditPart.VISUAL_ID:
+			return createInputPoint_2002(domainElement, containerView, index,
 					persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct
@@ -335,9 +337,10 @@ public class GeometryViewProvider extends AbstractProvider implements
 		ViewUtil.setStructuralFeatureValue(node,
 				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5002 = createLabel(node,
+		Node label5002 = createLabel(
+				node,
 				GeometryVisualIDRegistry
-						.getType(InputPointLabelEditPart.VISUAL_ID));
+						.getType(InputPointLabelAppearanceLabelEditPart.VISUAL_ID));
 		label5002.setLayoutConstraint(NotationFactory.eINSTANCE
 				.createLocation());
 		Location location5002 = (Location) label5002.getLayoutConstraint();
@@ -395,7 +398,8 @@ public class GeometryViewProvider extends AbstractProvider implements
 					routing);
 		}
 		Node label6001 = createLabel(edge,
-				GeometryVisualIDRegistry.getType(LineLabelEditPart.VISUAL_ID));
+				GeometryVisualIDRegistry
+						.getType(LineLabelAppearanceLabelTokEditPart.VISUAL_ID));
 		label6001.setLayoutConstraint(NotationFactory.eINSTANCE
 				.createLocation());
 		Location location6001 = (Location) label6001.getLayoutConstraint();

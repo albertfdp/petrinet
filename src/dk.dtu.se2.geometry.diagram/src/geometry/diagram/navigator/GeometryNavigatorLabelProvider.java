@@ -7,8 +7,10 @@ import geometry.diagram.edit.parts.ConnectorEditPart;
 import geometry.diagram.edit.parts.ConnectorLabelEditPart;
 import geometry.diagram.edit.parts.GeometryEditPart;
 import geometry.diagram.edit.parts.InputPointEditPart;
+import geometry.diagram.edit.parts.InputPointLabelAppearanceLabelEditPart;
 import geometry.diagram.edit.parts.InputPointLabelEditPart;
 import geometry.diagram.edit.parts.LineEditPart;
+import geometry.diagram.edit.parts.LineLabelAppearanceLabelTokEditPart;
 import geometry.diagram.edit.parts.LineLabelEditPart;
 import geometry.diagram.part.GeometryDiagramEditorPlugin;
 import geometry.diagram.part.GeometryVisualIDRegistry;
@@ -197,11 +199,12 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getInputPoint_2002Text(View view) {
-		IParser parser = GeometryParserProvider.getParser(
-				GeometryElementTypes.InputPoint_2002,
-				view.getElement() != null ? view.getElement() : view,
-				GeometryVisualIDRegistry
-						.getType(InputPointLabelEditPart.VISUAL_ID));
+		IParser parser = GeometryParserProvider
+				.getParser(
+						GeometryElementTypes.InputPoint_2002,
+						view.getElement() != null ? view.getElement() : view,
+						GeometryVisualIDRegistry
+								.getType(InputPointLabelAppearanceLabelEditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(
 					view.getElement() != null ? view.getElement() : view),
@@ -217,10 +220,12 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getLine_4001Text(View view) {
-		IParser parser = GeometryParserProvider.getParser(
-				GeometryElementTypes.Line_4001,
-				view.getElement() != null ? view.getElement() : view,
-				GeometryVisualIDRegistry.getType(LineLabelEditPart.VISUAL_ID));
+		IParser parser = GeometryParserProvider
+				.getParser(
+						GeometryElementTypes.Line_4001,
+						view.getElement() != null ? view.getElement() : view,
+						GeometryVisualIDRegistry
+								.getType(LineLabelAppearanceLabelTokEditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(
 					view.getElement() != null ? view.getElement() : view),

@@ -12,7 +12,7 @@ import org.eclipse.gmf.tooling.runtime.parsers.AbstractAttributeParser;
 /**
  * @generated
  */
-public class PrintfParser extends AbstractAttributeParser {
+public class LinePrintfParser extends AbstractAttributeParser {
 
 	/**
 	 * @generated
@@ -26,14 +26,14 @@ public class PrintfParser extends AbstractAttributeParser {
 	/**
 	 * @generated
 	 */
-	public PrintfParser(EAttribute[] features) {
+	public LinePrintfParser(EAttribute[] features) {
 		super(features);
 	}
 
 	/**
 	 * @generated
 	 */
-	public PrintfParser(EAttribute[] features, EAttribute[] editableFeatures) {
+	public LinePrintfParser(EAttribute[] features, EAttribute[] editableFeatures) {
 		super(features, editableFeatures);
 	}
 
@@ -115,9 +115,9 @@ public class PrintfParser extends AbstractAttributeParser {
 		Object[] labels = getValues(element);
 		string = "Label: ";
 		string += (String) labels[0];
-		if (labels[1] != "")
+		if (labels[1] != "" && labels.length > 1)
 			string += " Visual: " + labels[1];
-		if (labels[2] != "")
+		if (labels[2] != "" && labels.length > 2)
 			string += " Token: " + labels[2];
 
 		return string;
