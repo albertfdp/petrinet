@@ -645,9 +645,11 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 
 	@Override
 	public void destroyRepresentation(String geometryLabel) {
-		Spatial spatial = this.tokenQueue.get(geometryLabel).pop();
-		System.out.println("Destroying token : " + spatial.getName());
-		rootNode.detachChild(spatial);
+		if (this.tokenQueue.containsKey(geometryLabel)) {
+			Spatial spatial = this.tokenQueue.get(geometryLabel).pop();
+			System.out.println("Destroying token : " + spatial.getName());
+			rootNode.detachChild(spatial);
+		}
 	}
 
 }
