@@ -68,6 +68,9 @@ public class PetriNetEngine {
 				ArrayList<RTToken> tokens = new ArrayList<RTToken>();
 				for (int i = 0; i < newPlace.getTokens().size(); i++) {
 					RTToken runtimeToken = new RTToken();
+					if (inputPlaces.contains(newPlace.getGeometryLabel().getText())) {
+						runtimeToken.setFinished(true);
+					}
 					tokens.add(runtimeToken);
 					animations.add(new RTAnimation(newPlace.getId(), newPlace.getGeometryLabel().getText(), newPlace.getAnimationLabel().getStructure(), false));
 				}
