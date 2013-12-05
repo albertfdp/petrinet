@@ -11,6 +11,7 @@
       canonicalEditPolicyClassName="GeometryCanonicalEditPolicy"
       iconProviderPriority="Low"
       validationProviderPriority="Low"
+      validationEnabled="true"
       validationDecorators="true">
     <diagramRunTimeClass
         href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Diagram"/>
@@ -22,63 +23,6 @@
         figureQualifiedClassName="org.eclipse.draw2d.FreeformLayer"/>
     <domainDiagramElement
         href="geometry.genmodel#//geometry/Geometry"/>
-    <topLevelNodes
-        visualID="2002"
-        editPartClassName="InputPointEditPart"
-        itemSemanticEditPolicyClassName="InputPointItemSemanticEditPolicy"
-        notationViewFactoryClassName="InputPointViewFactory"
-        canonicalEditPolicyClassName="InputPointCanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="InputPointGraphicalNodeEditPolicy"
-        createCommandClassName="InputPointCreateCommand">
-      <diagramRunTimeClass
-          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-      <elementType
-          xsi:type="gmfgen:MetamodelType"
-          editHelperClassName="InputPointEditHelper"/>
-      <viewmap
-          xsi:type="gmfgen:InnerClassViewmap"
-          className="InputPointFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class InputPointFigure extends org.eclipse.draw2d.Ellipse {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public InputPointFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(12)&#xA;, getMapMode().DPtoLP(12)&#xA;));&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
-        <attributes
-            xsi:type="gmfgen:DefaultSizeAttributes"
-            width="12"
-            height="12"/>
-      </viewmap>
-      <modelFacet>
-        <metaClass
-            href="geometry.genmodel#//geometry/InputPoint"/>
-        <containmentMetaFeature
-            href="geometry.genmodel#//geometry/Geometry/gObjects"/>
-        <childMetaFeature
-            href="geometry.genmodel#//geometry/Geometry/gObjects"/>
-      </modelFacet>
-      <labels
-          xsi:type="gmfgen:GenExternalNodeLabel"
-          visualID="5002"
-          editPartClassName="InputPointLabelEditPart"
-          itemSemanticEditPolicyClassName="InputPointLabelItemSemanticEditPolicy"
-          notationViewFactoryClassName="InputPointLabelViewFactory"
-          readOnly="true">
-        <diagramRunTimeClass
-            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap
-            xsi:type="gmfgen:InnerClassViewmap"
-            className="NodeNameFigure"
-            classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class NodeNameFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureNodeNameLabel; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public NodeNameFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;&lt;...>&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureNodeNameLabel() {&#xA;&#x9;&#x9;return fFigureNodeNameLabel;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
-        <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet"
-            parser="//@labelParsers/@implementations.0"
-            viewMethod="PRINTF"
-            editMethod="PRINTF">
-          <metaFeatures
-              href="geometry.genmodel#//geometry/GObject/label"/>
-          <metaFeatures
-              href="geometry.genmodel#//geometry/InputPoint/appearanceLabel"/>
-          <metaFeatures
-              href="geometry.genmodel#//geometry/InputPoint/tokenAppearanceLabel"/>
-        </modelFacet>
-      </labels>
-    </topLevelNodes>
     <topLevelNodes
         visualID="2001"
         editPartClassName="ConnectorEditPart"
@@ -95,7 +39,7 @@
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
           className="ConnectorFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ConnectorFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ConnectorFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(12)&#xA;, getMapMode().DPtoLP(12)&#xA;));&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ConnectorFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ConnectorFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(12)&#xA;, getMapMode().DPtoLP(12)&#xA;));&#xA;this.setMaximumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(12)&#xA;, getMapMode().DPtoLP(12)&#xA;));&#xA;this.setMinimumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(12)&#xA;, getMapMode().DPtoLP(12)&#xA;));&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
         <attributes
             xsi:type="gmfgen:DefaultSizeAttributes"
             width="12"
@@ -124,11 +68,67 @@
             classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class NodeNameFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureNodeNameLabel; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public NodeNameFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;&lt;...>&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureNodeNameLabel() {&#xA;&#x9;&#x9;return fFigureNodeNameLabel;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
         <modelFacet
             xsi:type="gmfgen:FeatureLabelModelFacet"
-            parser="//@labelParsers/@implementations.1"
-            editorPattern=""
-            editPattern="">
+            parser="//@labelParsers/@implementations.0"
+            viewMethod="PRINTF"
+            editMethod="PRINTF">
           <metaFeatures
               href="geometry.genmodel#//geometry/GObject/label"/>
+        </modelFacet>
+      </labels>
+    </topLevelNodes>
+    <topLevelNodes
+        visualID="2002"
+        editPartClassName="InputPointEditPart"
+        itemSemanticEditPolicyClassName="InputPointItemSemanticEditPolicy"
+        notationViewFactoryClassName="InputPointViewFactory"
+        canonicalEditPolicyClassName="InputPointCanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="InputPointGraphicalNodeEditPolicy"
+        createCommandClassName="InputPointCreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="InputPointEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          className="InputPointFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class InputPointFigure extends org.eclipse.draw2d.Ellipse {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public InputPointFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(12)&#xA;, getMapMode().DPtoLP(12)&#xA;));&#xA;this.setMaximumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(12)&#xA;, getMapMode().DPtoLP(12)&#xA;));&#xA;this.setMinimumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(12)&#xA;, getMapMode().DPtoLP(12)&#xA;));&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
+        <attributes
+            xsi:type="gmfgen:DefaultSizeAttributes"
+            width="12"
+            height="12"/>
+      </viewmap>
+      <modelFacet>
+        <metaClass
+            href="geometry.genmodel#//geometry/InputPoint"/>
+        <containmentMetaFeature
+            href="geometry.genmodel#//geometry/Geometry/gObjects"/>
+        <childMetaFeature
+            href="geometry.genmodel#//geometry/Geometry/gObjects"/>
+      </modelFacet>
+      <labels
+          xsi:type="gmfgen:GenExternalNodeLabel"
+          visualID="5002"
+          editPartClassName="InputPointLabelAppearanceLabelEditPart"
+          itemSemanticEditPolicyClassName="InputPointLabelAppearanceLabelItemSemanticEditPolicy"
+          notationViewFactoryClassName="InputPointLabelAppearanceLabelViewFactory"
+          readOnly="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:InnerClassViewmap"
+            className="NodeNameFigure"
+            classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class NodeNameFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureNodeNameLabel; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public NodeNameFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;&lt;...>&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureNodeNameLabel() {&#xA;&#x9;&#x9;return fFigureNodeNameLabel;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0"
+            editPattern=""
+            viewMethod="PRINTF"
+            editMethod="PRINTF">
+          <metaFeatures
+              href="geometry.genmodel#//geometry/GObject/label"/>
+          <metaFeatures
+              href="geometry.genmodel#//geometry/InputPoint/appearanceLabel"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
@@ -163,9 +163,9 @@
       </modelFacet>
       <labels
           visualID="6001"
-          editPartClassName="LineLabelEditPart"
-          itemSemanticEditPolicyClassName="LineLabelItemSemanticEditPolicy"
-          notationViewFactoryClassName="LineLabelViewFactory"
+          editPartClassName="LineLabelAppearanceLabelTokEditPart"
+          itemSemanticEditPolicyClassName="LineLabelAppearanceLabelTokItemSemanticEditPolicy"
+          notationViewFactoryClassName="LineLabelAppearanceLabelTokenAppearanceLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -181,6 +181,7 @@
         <modelFacet
             xsi:type="gmfgen:FeatureLabelModelFacet"
             parser="//@labelParsers/@implementations.0"
+            editPattern=""
             viewMethod="PRINTF"
             editMethod="PRINTF">
           <metaFeatures
@@ -204,12 +205,12 @@
             xsi:type="gmfgen:ToolEntry"
             title="Connector"
             description="Create new Connector"
-            genNodes="//@diagram/@topLevelNodes.1"/>
+            genNodes="//@diagram/@topLevelNodes.0"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="InputPoint"
             description="Create new InputPoint"
-            genNodes="//@diagram/@topLevelNodes.0"/>
+            genNodes="//@diagram/@topLevelNodes.1"/>
       </groups>
     </palette>
     <preferencePages
@@ -260,24 +261,24 @@
         groupIcon="icons/linksNavigatorGroup.gif"/>
     <childReferences
         parent="//@diagram/@links.0"
-        child="//@diagram/@topLevelNodes.1"
+        child="//@diagram/@topLevelNodes.0"
         referenceType="out_target"
         groupName="target"
         groupIcon="icons/linkTargetNavigatorGroup.gif"/>
     <childReferences
-        parent="//@diagram/@topLevelNodes.1"
+        parent="//@diagram/@topLevelNodes.0"
         child="//@diagram/@links.0"
         referenceType="in_source"
         groupName="incoming links"
         groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
     <childReferences
         parent="//@diagram/@links.0"
-        child="//@diagram/@topLevelNodes.1"
+        child="//@diagram/@topLevelNodes.0"
         referenceType="in_source"
         groupName="source"
         groupIcon="icons/linkSourceNavigatorGroup.gif"/>
     <childReferences
-        parent="//@diagram/@topLevelNodes.1"
+        parent="//@diagram/@topLevelNodes.0"
         child="//@diagram/@links.0"
         referenceType="out_target"
         groupName="outgoing links"
@@ -309,12 +310,9 @@
       extensibleViaService="true">
     <implementations
         xsi:type="gmfgen:PredefinedParser"
-        uses="//@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet"
+        uses="//@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet"
         viewMethod="PRINTF"
         editMethod="PRINTF"/>
-    <implementations
-        xsi:type="gmfgen:PredefinedParser"
-        uses="//@diagram/@topLevelNodes.1/@labels.0/@modelFacet"/>
   </labelParsers>
   <contextMenus
       context="//@diagram">
