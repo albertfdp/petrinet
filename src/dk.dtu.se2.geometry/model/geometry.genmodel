@@ -30,7 +30,6 @@
     </genClasses>
     <genClasses ecoreClass="geometry.ecore#//InputPoint">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//InputPoint/appearanceLabel"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//InputPoint/tokenAppearanceLabel"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

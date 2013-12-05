@@ -33,6 +33,5 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InputPoint" eSuperTypes="#//Point">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="appearanceLabel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tokenAppearanceLabel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

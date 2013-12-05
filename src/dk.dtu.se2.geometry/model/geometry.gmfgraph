@@ -38,6 +38,12 @@
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
           name="ConnectorFigure">
+        <maximumSize
+            dx="12"
+            dy="12"/>
+        <minimumSize
+            dx="12"
+            dy="12"/>
         <preferredSize
             dx="12"
             dy="12"/>
@@ -48,6 +54,12 @@
       <actualFigure
           xsi:type="gmfgraph:Ellipse"
           name="InputPointFigure">
+        <maximumSize
+            dx="12"
+            dy="12"/>
+        <minimumSize
+            dx="12"
+            dy="12"/>
         <preferredSize
             dx="12"
             dy="12"/>
