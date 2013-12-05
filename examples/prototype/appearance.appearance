@@ -2,6 +2,6 @@
 <appearance:Appearance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:appearance="http://appearance/1.0">
   <aObjects label="train" object3D="Models/train.obj" texture="Textures/trainTex.jpg"/>
   <aObjects label="track" texture="Interface/Logo/Monkey.jpg"/>
-  <aObjects label="green" object3D="Models/train.obj" texture="Textures/trainTex.jpg"/>
-  <aObjects label="red" object3D="Models/train.obj" texture="Textures/trainTex.jpg"/>
+  <aObjects label="green" object3D="Models/traffic_light.obj" texture="Textures/trainTex.jpg"/>
+  <aObjects label="red" object3D="Models/traffic_light.obj" texture="Textures/trainTex.jpg"/>
 </appearance:Appearance>
