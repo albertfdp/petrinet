@@ -3,4 +3,5 @@
   <aObjects label="train" object3D="Models/train.obj" texture="Textures/trainTex.jpg"/>
   <aObjects label="track" texture="Interface/Logo/Monkey.jpg"/>
   <aObjects label="green" object3D="Models/train.obj" texture="Textures/trainTex.jpg"/>
+  <aObjects label="red" object3D="Models/train.obj" texture="Textures/trainTex.jpg"/>
 </appearance:Appearance>
