@@ -229,13 +229,13 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				inputObject.setName(inputPoint.getLabel());
 				inputObject.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
 				Material inputMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
-				inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
-				inputMat.setColor("Color", ColorRGBA.White); // set the base color of the material  
+//				inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
+				inputMat.setColor("Color", ColorRGBA.Red); // set the base color of the material  
 				
 				inputObject.setMaterial(inputMat); // apply the material to the geometry
 				
 				inputObject.setLocalTranslation(new Vector3f(x,0f,y));
-				
+								
 		        //Attach the geometry to input places node
 		        inputPlaces.attachChild(inputObject);
 		        
@@ -287,7 +287,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				path = lines.get(geometryLabel);
 				
 				Vector3f endWayPoint = path.getWayPoint(path.getNbWayPoints()-1);
-				
+								
 				/* Create motion event and JMonkeyMove event corresponding to the move animation */
 				MotionEvent motionEvent = new MotionEvent(token, path, 10, LoopMode.DontLoop);
 				motionEvent.setSpeed(((Move) animation).getSpeed());
@@ -295,6 +295,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 								
 				JMonkeyEvent event = new JMonkeyMove(geometryLabel, motionEvent, this); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
 				((JMonkeyMove) event).setEndWayPoint(endWayPoint);
+		
 				motionEvent.addListener((JMonkeyMove) event); // add the JMonkeyEngine as a listener to all motion events				
 				
 				events.put(geometryLabel, event);
@@ -423,8 +424,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
  	
  	@Override
  	public void reset() {
- 		System.out.println("Reset method");
- 		
+ 		 		
  	/* Initialize all lists, queues and hash maps */
  		this.lines = new HashMap<String, MotionPath>();
 		this.events = new HashMap<String, JMonkeyEvent>();
@@ -508,13 +508,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 			JMonkeyEvent eventToQueue = events.get(animation.getGeometryLabel());
 			JMonkeyEvent clonedEventToQueue = JMonkeyEvent.eventCopy(eventToQueue);
 			eventsQueue.add(clonedEventToQueue);
-			
-//			if (eventToQueue instanceof JMonkeyMove) {
-//				Spatial token = ((JMonkeyMove) eventToQueue).getMotionEvent().getSpatial();
-//				tokenQueue.get(animation.getGeometryLabel()).add(token);
-//				rootNode.attachChild(token);
-//			}
-			
+					
 			System.out.println("Animation added to queue: " + animation.getGeometryLabel());
 		}
 	}
@@ -523,8 +517,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	public void onStop(JMonkeyMove event) {	
 		
 		MotionEvent motionEvent = event.getMotionEvent();
-		System.out.println(motionEvent.getPlayState());
-		
+				
 		Spatial token = motionEvent.getSpatial();		
 		this.tokenQueue.get(event.getGeometryLabel()).add(token);
 		
@@ -547,15 +540,13 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				if (eventToRun instanceof JMonkeyMove) {
 					/* Cast JMonkeyEvent to JMonkeyMove*/
 					JMonkeyMove moveEventToRun = (JMonkeyMove) eventToRun;
+					Spatial token = moveEventToRun.getMotionEvent().getSpatial();
 					
-					System.out.println(moveEventToRun.getGeometryLabel() + " => " + moveEventToRun.getMotionEvent().getSpatial().getName());
-					
-					rootNode.attachChild(moveEventToRun.getMotionEvent().getSpatial());
-					
-					if(moveEventToRun!=null) {
+					System.out.println(moveEventToRun.getGeometryLabel() + " => " + token.getName());					
+					rootNode.attachChild(token);
+								
+					if(moveEventToRun!=null)
 						eventsRunning.addCinematicEvent(0, moveEventToRun.getMotionEvent());
-						System.out.println("Event to run: "+moveEventToRun.getGeometryLabel());
-					}
 						
 				}
 				
@@ -573,12 +564,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 					
 					/* Create new material according to the appearance of the event*/
 					Material inputMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
-					inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
-					inputMat.setColor("Color", ColorRGBA.Blue); // set the base color of the material  
-					inputObject.setMaterial(inputMat);
-					
-					System.out.println("Appear event");
-										
+//					inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
+					inputMat.setColor("Color", ColorRGBA.Green); // set the base color of the material  
+					inputObject.setMaterial(inputMat);										
 				}
 				eventsRunning.play();
 			}
@@ -587,9 +575,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
     }
 	
 	public void onStartButtonPressed () {
-		
-		System.out.println("Start button..." + engineState);
-		
+				
 		switch (engineState) {
 		
 		case PLAYING: 	eventsRunning.pause();
@@ -608,8 +594,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	}
 	
 	public void onResetButtonPressed () {
-		
-		System.out.println("Resetting...");
 		
 		this.eventsRunning.stop();
 		this.engineState = State.STOPPED;
@@ -636,7 +620,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 			if (name.equals("Click") && !keyPressed) {
 				// 1. Reset results list.
 		        CollisionResults results = new CollisionResults();
-		        // 2. Aim the ray from mouse location to cam direction.
+		        // 2. Aim the ray from cam loc to cam direction.
 		        Vector2f click2d = inputManager.getCursorPosition();
 		        Vector3f click3d = cam.getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 0f).clone();
 		        Vector3f dir = cam.getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 1f).subtractLocal(click3d).normalizeLocal();
@@ -644,7 +628,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		        Ray ray = new Ray(click3d, dir);
 		        // 3. Collect intersections between Ray and Input Places in results list.
 		        inputPlaces.collideWith(ray, results);
-		        // 4. Get the closest collision (which is the object we clicked on)
+		        // 4. Get the closest collision
 		        if (results.size() > 0) {
 		        	CollisionResult hitPlace = results.getClosestCollision();
 			        String inputPlaceId = hitPlace.getGeometry().getName();

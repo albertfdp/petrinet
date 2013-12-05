@@ -22,7 +22,7 @@ public class JMonkeyMove extends JMonkeyEvent implements CinematicEventListener{
 		this.motionEvent = motionEvent;
 		this.engine3D = engine3D;
 	}
-
+	
 	public Vector3f getEndWayPoint() {
 		return endWayPoint;
 	}
@@ -53,8 +53,8 @@ public class JMonkeyMove extends JMonkeyEvent implements CinematicEventListener{
 
 	@Override
 	public void onPlay(CinematicEvent arg0) {
-		// TODO Auto-generated method stub
 		
+				
 	}
 
 	@Override
