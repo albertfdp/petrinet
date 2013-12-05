@@ -58,7 +58,7 @@ public class JMonkeyMove extends JMonkeyEvent implements CinematicEventListener{
 		
 		Spatial token = this.motionEvent.getSpatial();
 		token.getControl(TokenControl.class).setLocation(this.endWayPoint, token);
-		token.rotate(0, 0, 0);
+		token.rotate(0, 90, 0);
 		
 		engine3D.onStop(this);
 	}
