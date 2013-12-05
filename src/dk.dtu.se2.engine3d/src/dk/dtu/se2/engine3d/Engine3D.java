@@ -14,6 +14,8 @@ public interface Engine3D {
 	
 	public void addToAnimationQueue(List<RTAnimation> animations);
 	
+	public void startEngine();
+	
 	public void destroyRepresentation(String geometryLabel);
 	
 	public void reset();

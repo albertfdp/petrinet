@@ -247,7 +247,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	}
 
 	private void setUpAnimations() {
-		
+		int tokensNr = 0;
 
 		/* Parse the list of animations and create a new MotionPath and MotionEvent for each of them */
 		for(RTAnimation RTanimation : animations) {
@@ -263,10 +263,13 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				/* Create token as a jMonkey spatial*/
 				String tokenAppearance = this.tokenAppearances.get(geometryLabel);
 				AObject tokenAppearanceObject = this.appearance.getAObjectByLabel(tokenAppearance);
-				
+								
 //				Spatial token = assetManager.loadModel("Models/train.obj");
 				Spatial token = assetManager.loadModel(tokenAppearanceObject.getObject3D());
+				token.setName("t"+ tokensNr);
+				tokensNr++;
 				token.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
+				token.addControl(new TokenControl());
 						
 				Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
 //				tokenMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));	// set the texture to the material
@@ -283,7 +286,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				/* Get the motion path corresponding to the current animation */
 				MotionPath path = new MotionPath();
 				path = lines.get(geometryLabel);
-			
+				
+				Vector3f endWayPoint = path.getWayPoint(path.getNbWayPoints()-1);
 				
 				/* Create motion event and JMonkeyMove event corresponding to the move animation */
 				MotionEvent motionEvent = new MotionEvent(token, path, 10, LoopMode.DontLoop);
@@ -291,6 +295,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				motionEvent.setDirectionType(MotionEvent.Direction.Path); // the spatial is always faced in the direction of the path while moving
 								
 				JMonkeyEvent event = new JMonkeyMove(geometryLabel, motionEvent, this); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
+				((JMonkeyMove) event).setEndWayPoint(endWayPoint);
 				motionEvent.addListener((JMonkeyMove) event); // add the JMonkeyEngine as a listener to all motion events				
 				
 				events.put(geometryLabel, event);
@@ -419,6 +424,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
  	
  	@Override
  	public void reset() {
+ 		System.out.println("Reset method");
  		
  	/* Initialize all lists, queues and hash maps */
  		this.lines = new HashMap<String, MotionPath>();
@@ -488,12 +494,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		this.geometry = geometry;
 		this.appearance = appearance;
 		this.animations = animations;
-		
-		/* 
-		 * Start jMonkey application - the simpleInitApp() function is called 
-		 */
-		this.start();
-		
+			
 	}
 
 	@Override
@@ -508,6 +509,12 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 			JMonkeyEvent eventToQueue = events.get(animation.getGeometryLabel());
 			eventsQueue.add(eventToQueue);
 			
+//			if (eventToQueue instanceof JMonkeyMove) {
+//				Spatial token = ((JMonkeyMove) eventToQueue).getMotionEvent().getSpatial();
+//				tokenQueue.get(animation.getGeometryLabel()).add(token);
+//				rootNode.attachChild(token);
+//			}
+			
 			System.out.println("Animation added to queue: " + animation.getGeometryLabel());
 		}
 	}
@@ -516,17 +523,20 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	public void onStop(JMonkeyMove event) {	
 		
 		MotionEvent motionEvent = event.getMotionEvent();
+		System.out.println(motionEvent.getPlayState());
 		
-		this.tokenQueue.get(event.getGeometryLabel()).add(motionEvent.getSpatial());
+		Spatial token = motionEvent.getSpatial();		
+		this.tokenQueue.get(event.getGeometryLabel()).add(token);
+		
 		this.eventsRunning.removeCinematicEvent(motionEvent);
+		
 		this.listener.onAnimationFinished(event.getGeometryLabel());
 		
-		System.out.println(motionEvent.getPlayState());
 	}
 
 	@Override 
     public void simpleUpdate(float tpf) {
-		
+				
 		/* Play waiting animations */
 		if (engineState == State.PLAYING) {
 			
@@ -542,8 +552,12 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 					
 					rootNode.attachChild(moveEventToRun.getMotionEvent().getSpatial());
 					
-					if(moveEventToRun!=null) 
+					if(moveEventToRun!=null) {
 						eventsRunning.addCinematicEvent(0, moveEventToRun.getMotionEvent());
+						System.out.println("Event to run: "+moveEventToRun.getGeometryLabel());
+					}
+						
+					
 				}
 				
 				else if (eventToRun instanceof JMonkeyAppear) {
@@ -571,11 +585,12 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 			}
 			
 			eventsRunning.play();
-		}
-							
+		}							
     }
 	
 	public void onStartButtonPressed () {
+		
+		System.out.println("Start button..." + engineState);
 		
 		switch (engineState) {
 		
@@ -596,11 +611,13 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	
 	public void onResetButtonPressed () {
 		
+		System.out.println("Resetting...");
+		
 		this.eventsRunning.stop();
 		this.engineState = State.STOPPED;
 		this.rootNode.detachAllChildren();
 		this.guiNode.detachAllChildren();
-		this.inputManager.clearMappings();		
+		this.inputManager.clearMappings();
 		this.listener.onReset();
 		
 	}
@@ -650,6 +667,14 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 			System.out.println("Destroying token : " + spatial.getName());
 			rootNode.detachChild(spatial);
 		}
+	}
+
+	@Override
+	public void startEngine() {
+		/* 
+		 * Start jMonkey application - the simpleInitApp() function is called 
+		 */
+		this.start();
 	}
 
 }
