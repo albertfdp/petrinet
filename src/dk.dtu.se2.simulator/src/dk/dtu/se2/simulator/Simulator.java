@@ -111,6 +111,16 @@ public class Simulator implements Engine3DListener {
 		
 		this.engine3d.addToAnimationQueue(this.nextAnimations);
 	}
+	
+	/**
+	 * Fires the transition after an appear animation has been processed in the 3D Engine
+	 */
+	@Override 
+	public void onAppearFinished() {
+		
+		this.nextAnimations = this.petrinetEngine.fireTransitions();
+		this.engine3d.addToAnimationQueue(this.nextAnimations);
+	}
 
 	@Override
 	public void onUserClick(String geometryLabel) {
