@@ -42,5 +42,5 @@ public interface Engine3DListener {
 	 */
 	public void onAnimationFinished(String geometryLabel);
 	
-		
+	public void onAppearFinished();
 }
