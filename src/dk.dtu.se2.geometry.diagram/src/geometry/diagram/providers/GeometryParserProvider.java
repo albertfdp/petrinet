@@ -36,7 +36,8 @@ public class GeometryParserProvider extends AbstractProvider implements
 	private IParser connectorLabel_5003Parser;
 
 	/**
-	 * @generated
+	 * @generated not
+	 * @Mikko_Tuulio
 	 */
 	private IParser getConnectorLabel_5003Parser() {
 		if (connectorLabel_5003Parser == null) {
@@ -74,7 +75,8 @@ public class GeometryParserProvider extends AbstractProvider implements
 	private IParser lineLabelAppearanceLabelTokenAppearanceLabel_6001Parser;
 
 	/**
-	 * @generated
+	 * @generated not
+	 * @Mikko_Tuulio
 	 */
 	private IParser getLineLabelAppearanceLabelTokenAppearanceLabel_6001Parser() {
 		if (lineLabelAppearanceLabelTokenAppearanceLabel_6001Parser == null) {
