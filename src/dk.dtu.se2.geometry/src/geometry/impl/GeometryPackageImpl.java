@@ -312,15 +312,6 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInputPoint_TokenAppearanceLabel() {
-		return (EAttribute)inputPointEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public GeometryFactory getGeometryFactory() {
 		return (GeometryFactory)getEFactoryInstance();
 	}
@@ -369,7 +360,6 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 
 		inputPointEClass = createEClass(INPUT_POINT);
 		createEAttribute(inputPointEClass, INPUT_POINT__APPEARANCE_LABEL);
-		createEAttribute(inputPointEClass, INPUT_POINT__TOKEN_APPEARANCE_LABEL);
 	}
 
 	/**
@@ -432,7 +422,6 @@ public class GeometryPackageImpl extends EPackageImpl implements GeometryPackage
 
 		initEClass(inputPointEClass, InputPoint.class, "InputPoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInputPoint_AppearanceLabel(), ecorePackage.getEString(), "appearanceLabel", null, 0, 1, InputPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInputPoint_TokenAppearanceLabel(), ecorePackage.getEString(), "tokenAppearanceLabel", null, 0, 1, InputPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

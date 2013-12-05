@@ -442,22 +442,13 @@ public interface GeometryPackage extends EPackage {
 	int INPUT_POINT__APPEARANCE_LABEL = POINT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Token Appearance Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_POINT__TOKEN_APPEARANCE_LABEL = POINT_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Input Point</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INPUT_POINT_FEATURE_COUNT = POINT_FEATURE_COUNT + 2;
+	int INPUT_POINT_FEATURE_COUNT = POINT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Input Point</em>' class.
@@ -672,17 +663,6 @@ public interface GeometryPackage extends EPackage {
 	EAttribute getInputPoint_AppearanceLabel();
 
 	/**
-	 * Returns the meta object for the attribute '{@link geometry.InputPoint#getTokenAppearanceLabel <em>Token Appearance Label</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Token Appearance Label</em>'.
-	 * @see geometry.InputPoint#getTokenAppearanceLabel()
-	 * @see #getInputPoint()
-	 * @generated
-	 */
-	EAttribute getInputPoint_TokenAppearanceLabel();
-
-	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -870,14 +850,6 @@ public interface GeometryPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute INPUT_POINT__APPEARANCE_LABEL = eINSTANCE.getInputPoint_AppearanceLabel();
-
-		/**
-		 * The meta object literal for the '<em><b>Token Appearance Label</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INPUT_POINT__TOKEN_APPEARANCE_LABEL = eINSTANCE.getInputPoint_TokenAppearanceLabel();
 
 	}
 
