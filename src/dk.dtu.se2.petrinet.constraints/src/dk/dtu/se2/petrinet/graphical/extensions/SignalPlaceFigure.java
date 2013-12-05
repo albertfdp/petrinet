@@ -5,6 +5,8 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.pnml.tools.epnk.gmf.extensions.graphics.figures.PlaceFigure;
 import org.pnml.tools.epnk.pnmlcoremodel.Place;
 
+import dk.dtu.se2.petrinet.InputPlace;
+
 /**
  * Graphical extensions to Petri Net Editor
  * 
@@ -25,7 +27,6 @@ public class SignalPlaceFigure extends PlaceFigure {
 		super.fillShape(graphics);
 		dk.dtu.se2.petrinet.Place p = (dk.dtu.se2.petrinet.Place) this.place;
 		
-		/* check if it is a token */
 		if (!p.getTokens().isEmpty()) {
 			Rectangle rectangle = this.getClientArea();
 			graphics.setBackgroundColor(getForegroundColor());
@@ -35,6 +36,17 @@ public class SignalPlaceFigure extends PlaceFigure {
 			graphics.drawString(String.valueOf(p.getTokens().size()), 
 					(int) (rectangle.x + 0.6 * rectangle.width), 
 					(int) (rectangle.y + 0.45 * rectangle.height));
+		}
+		
+		InputPlace inputPlace = p.getInputPlaceLabel();
+		if(inputPlace != null && inputPlace.isText()){
+			Rectangle rectangle = this.getClientArea();
+			graphics.setBackgroundColor(getForegroundColor());
+			graphics.setLineWidth(2);
+			graphics.drawLine(rectangle.x + 10, rectangle.y + 10, 
+					rectangle.x + rectangle.width - 10, rectangle.y + rectangle.height - 10);
+			graphics.drawLine(rectangle.x + 10, rectangle.y + rectangle.height - 10, 
+					rectangle.x + rectangle.width - 10, rectangle.y + 10);
 		}
 	}
 
