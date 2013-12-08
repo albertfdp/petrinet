@@ -17,14 +17,14 @@
   <edges xmi:type="notation:Connector" xmi:id="_QlkskE-CEeO8vqYVr__Ivw" type="4001" source="_LSZiwE-CEeO8vqYVr__Ivw" target="_O0fwgE-CEeO8vqYVr__Ivw">
     <styles xmi:type="notation:FontStyle" xmi:id="_QlkskU-CEeO8vqYVr__Ivw" fontName="Segoe UI"/>
     <element xmi:type="geometry:Line" href="geometry.geometry#L1"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Qlkskk-CEeO8vqYVr__Ivw" points="[0, 0, -253, 10]$[120, -120, -133, -110]$[248, -15, -5, -5]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Qlkskk-CEeO8vqYVr__Ivw" points="[0, 0, -277, 3]$[27, -158, -250, -155]$[257, -158, -20, -155]$[276, -9, -1, -6]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_QmDNsE-CEeO8vqYVr__Ivw" id="(1.0,0.825)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_QmDNsU-CEeO8vqYVr__Ivw" id="(0.125,0.575)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_T0RdME-CEeO8vqYVr__Ivw" type="4001" source="_O0fwgE-CEeO8vqYVr__Ivw" target="_LSZiwE-CEeO8vqYVr__Ivw">
     <styles xmi:type="notation:FontStyle" xmi:id="_T0RdMU-CEeO8vqYVr__Ivw" fontName="Segoe UI"/>
     <element xmi:type="geometry:Line" href="geometry.geometry#L2"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_T0RdMk-CEeO8vqYVr__Ivw" points="[0, 0, 309, 7]$[-179, 128, 130, 135]$[-303, 0, 6, 7]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_T0RdMk-CEeO8vqYVr__Ivw" points="[0, 0, 294, 3]$[-14, 159, 280, 162]$[-249, 159, 45, 162]$[-294, 0, 0, 3]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_T0WVsE-CEeO8vqYVr__Ivw" id="(0.875,1.0)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_T0W8wE-CEeO8vqYVr__Ivw" id="(0.35,0.825)"/>
   </edges>
