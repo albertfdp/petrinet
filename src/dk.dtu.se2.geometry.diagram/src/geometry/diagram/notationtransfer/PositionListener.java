@@ -269,7 +269,6 @@ public class PositionListener extends EContentAdapter {
 		BendPoint bendPoint = GeometryFactory.eINSTANCE.createBendPoint();
 		bendPoint.setXLocation(x);
 		bendPoint.setYLocation(y);
-		bendPoint.setLabel(lineImpl.getLabel() + "_Bendpoint_" + (ind+1));
 		lineImpl.getBendPoints().add(ind, bendPoint);
 		for(int i = ind; i < lineImpl.getBendPoints().size(); i++)
 			lineImpl.getBendPoints().get(i).setLabel(lineImpl.getLabel() + "_Bendpoint_" + (i+1));
