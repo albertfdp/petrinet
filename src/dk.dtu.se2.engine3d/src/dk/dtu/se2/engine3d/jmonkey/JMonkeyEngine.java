@@ -229,8 +229,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				inputObject.setName(inputPoint.getLabel());
 				inputObject.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
 				Material inputMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
-//				inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
-				inputMat.setColor("Color", ColorRGBA.Red); // set the base color of the material  
+				inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
 				
 				inputObject.setMaterial(inputMat); // apply the material to the geometry
 				
@@ -507,12 +506,30 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	@Override
 	public void addToAnimationQueue(List<RTAnimation> animations) {
 		for (RTAnimation animation : animations) {
-			JMonkeyEvent eventToQueue = events.get(animation.getGeometryLabel());
-			JMonkeyEvent clonedEventToQueue = JMonkeyEvent.eventCopy(eventToQueue);
-			eventsQueue.add(clonedEventToQueue);
-					
-			System.out.println("Animation added to queue: " + animation.getGeometryLabel());
+			if (animation.getAnimation() instanceof Appear) {
+				changeAppearanceOfSpatial((Appear) animation.getAnimation());
+			} else {
+				JMonkeyEvent eventToQueue = events.get(animation.getGeometryLabel());
+				JMonkeyEvent clonedEventToQueue = JMonkeyEvent.eventCopy(eventToQueue);
+				eventsQueue.add(clonedEventToQueue);
+				System.out.println("Animation added to queue: " + animation.getGeometryLabel());
+			}
 		}
+	}
+	
+	private void changeAppearanceOfSpatial(Appear appearAnimation) {
+		System.out.println("Changing appearance of " + appearAnimation.getGeometry() + " to " + appearAnimation.getAppearance());
+		Spatial inputObject = inputs.get(appearAnimation.getGeometry());
+		/*
+		 * Get the appearance object corresponding to the input place's appearance label
+		 */
+		AObject appearanceObject = this.appearance.getAObjectByLabel(appearAnimation.getAppearance());
+		String texture = appearanceObject.getTexture();
+		
+		/* Create new material according to the appearance of the event*/
+		Material inputMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
+		inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
+		inputObject.setMaterial(inputMat);	
 	}
 
 	
@@ -552,24 +569,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 						
 				}
 				
-				else if (eventToRun instanceof JMonkeyAppear) {
-					/* Cast JMonkeyEvent to JMonkeyAppear */
-					JMonkeyAppear appearEventToRun = (JMonkeyAppear) eventToRun;
-					
-					Spatial inputObject = inputs.get(appearEventToRun.getGeometryLabel());
-					
-					/*
-					 * Get the appearance object corresponding to the input place's appearance label
-					 */
-					AObject appearanceObject = this.appearance.getAObjectByLabel(appearEventToRun.getAppearanceLabel());
-					String texture = appearanceObject.getTexture();
-					
-					/* Create new material according to the appearance of the event*/
-					Material inputMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
-					inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
-					inputObject.setMaterial(inputMat);	
-					
-				}
+				
 				eventsRunning.play();
 			}
 
