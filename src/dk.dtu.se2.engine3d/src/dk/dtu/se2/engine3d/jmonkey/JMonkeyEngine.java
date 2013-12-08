@@ -399,7 +399,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
  			
  	 /* Create a new NiftyGUI object */ 
  			this.nifty = this.niftyDisplay.getNifty();
- 	/* 	Set Nifty GUI to ignore keyboard events so that they are only handles by jMonkey */	
+ 	/* 	Set Nifty GUI to ignore keyboard events so that they are only handled by jMonkey */	
  			this.nifty.setIgnoreKeyboardEvents(true);
  			
  	/* Initialize the controller for the buttons screen */
@@ -423,8 +423,10 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
  	}
  	
  	@Override
- 	public void reset() {
- 		 		
+ 	public void reset() {		
+	/* Attach the Nifty display to the GUI view port as a processor */
+	        guiViewPort.addProcessor(niftyDisplay);
+		
  	/* Initialize all lists, queues and hash maps */
  		this.lines = new HashMap<String, MotionPath>();
 		this.events = new HashMap<String, JMonkeyEvent>();
@@ -564,9 +566,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 					
 					/* Create new material according to the appearance of the event*/
 					Material inputMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
-//					inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
-					inputMat.setColor("Color", ColorRGBA.Green); // set the base color of the material  
-					inputObject.setMaterial(inputMat);										
+					inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
+					inputObject.setMaterial(inputMat);	
+					
 				}
 				eventsRunning.play();
 			}
