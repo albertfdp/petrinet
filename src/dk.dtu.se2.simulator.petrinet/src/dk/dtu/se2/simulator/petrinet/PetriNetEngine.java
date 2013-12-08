@@ -72,7 +72,7 @@ public class PetriNetEngine {
 						runtimeToken.setFinished(true);
 					}
 					tokens.add(runtimeToken);
-					animations.add(new RTAnimation(newPlace.getId(), newPlace.getGeometryLabel().getText(), newPlace.getAnimationLabel().getStructure(), false));
+					animations.add(new RTAnimation(newPlace.getGeometryLabel().getText(), newPlace.getAnimationLabel().getStructure(), false));
 				}
 				marking.put(newPlace, tokens);
 			}
@@ -93,7 +93,7 @@ public class PetriNetEngine {
 				if (place.getInputPlaceLabel() == null || (place.getInputPlaceLabel() != null
 						&& !place.getInputPlaceLabel().isText())) {
 					//This isn't an input place so it has an animation
-					animations.add(new RTAnimation(place.getId(), place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure(), false));
+					animations.add(new RTAnimation(place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure(), false));
 				}
 			}
 			
@@ -110,8 +110,6 @@ public class PetriNetEngine {
 		ArrayList<RTAnimation> animations = new ArrayList<RTAnimation>();
 		
 		//Iterate through each transition
-		ArrayList<RTAnimation> tokensToRemove = new ArrayList<RTAnimation>();
-		
 		for (Transition transition : transitions) {
 			if (isTransitionEnabled(transition)) {
 				//The transition is enabled, fire it and get its labels
@@ -122,7 +120,7 @@ public class PetriNetEngine {
 				for (Arc a: transition.getIn()) {
 					if (a.getSource() instanceof Place) {
 						Place p = (Place)a.getSource();
-						animations.add(new RTAnimation(null, p.getGeometryLabel().getText(), null, true));
+						animations.add(new RTAnimation(p.getGeometryLabel().getText(), null, true));
 					}
 				}
 			}
@@ -208,7 +206,7 @@ public class PetriNetEngine {
 				}
 				
 				marking.get(place).add(newToken);
-				transitionAnimations.add(new RTAnimation(place.getId(), place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure(), false));
+				transitionAnimations.add(new RTAnimation(place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure(), false));
 			}
 		}
 		
