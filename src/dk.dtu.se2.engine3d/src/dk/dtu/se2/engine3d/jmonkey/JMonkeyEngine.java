@@ -163,7 +163,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				
 				/* Create CatmullRom curve */
 				Curve track = new Curve(new Spline(SplineType.CatmullRom, controlPoints, 0.5f, false), 10);
-				track.setLineWidth(500);
+				track.setLineWidth(300);
 				
 				/* Create jMonkey geometry object for the track based on the CatmullRom curve */
 				Geometry trackGeometry = new Geometry(line.getLabel(), track);   		
@@ -176,7 +176,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				Texture trackTex = assetManager.loadTexture(texture); 
 				Material trackMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");  // create a simple material
 				trackMat.setTexture("ColorMap", trackTex);		// set the texture to the material
-				trackMat.setColor("Color", ColorRGBA.Orange); // set the base color of the material   
+				trackMat.setColor("Color", ColorRGBA.Gray); // set the base color of the material   
 				
 				trackGeometry.setMaterial(trackMat); // apply the material to the geometry
 				Node node = new Node(line.getLabel());
@@ -278,7 +278,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				token.setMaterial(tokenMat); // apply the material to the geometry
 
 				// scaling the train
-		     	token.scale(boundingBox.width * 0.006f);
+		     	token.scale(boundingBox.width * 0.01f);
 		     	
 				//rootNode.attachChild(token); // put this node in the scene, attached to the root
 				
