@@ -186,7 +186,7 @@ public class PositionListener extends EContentAdapter {
 		{
 			Vector<Integer> loc =  calculateAbsoluteLocationAtIndex(i, lineImpl, edge);
 			
-			if(loc.get(0) != lineImpl.getBendPoints().get(i-1).getXLocation() || loc.get(0) != lineImpl.getBendPoints().get(i-1).getYLocation())
+			if(loc.get(0) != lineImpl.getBendPoints().get(i-1).getXLocation() || loc.get(1) != lineImpl.getBendPoints().get(i-1).getYLocation())
 			{
 				lineImpl.getBendPoints().get(i-1).setXLocation(loc.get(0));
 				lineImpl.getBendPoints().get(i-1).setYLocation(loc.get(1));

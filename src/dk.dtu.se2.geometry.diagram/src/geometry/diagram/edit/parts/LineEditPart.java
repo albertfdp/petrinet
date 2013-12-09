@@ -118,7 +118,6 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		 * @Mikko_Tuulio
 		 */
 		public LineFigure() {
-			//TODO: Curve the line somehow
 			createContents();
 			setTargetDecoration(createTargetDecoration());
 		}
