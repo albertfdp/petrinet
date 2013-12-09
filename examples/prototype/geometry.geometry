@@ -12,4 +12,5 @@
   <gObjects xsi:type="geometry:Line" label="L6" begin="C5" end="C1" appearanceLabel="track" tokenAppearanceLabel="train"/>
   <gObjects xsi:type="geometry:Line" label="L5" begin="C3" end="C5" appearanceLabel="track" tokenAppearanceLabel="train"/>
   <gObjects xsi:type="geometry:InputPoint" label="IP1" xLocation="235" yLocation="105" appearanceLabel="green"/>
+  <gObjects xsi:type="geometry:InputPoint" label="IP2" xLocation="358" yLocation="212" appearanceLabel="green"/>
 </geometry:Geometry>

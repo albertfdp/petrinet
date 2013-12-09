@@ -35,6 +35,13 @@
     <element xmi:type="geometry:InputPoint" href="geometry.geometry#IP1"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YhjqEWD5EeOLyKvJ2yssUA" x="235" y="105"/>
   </children>
+  <children xmi:type="notation:Shape" xmi:id="_6DTeQGEAEeOe-uZzBIzD5w" type="2002" fontName="Lucida Grande">
+    <children xmi:type="notation:DecorationNode" xmi:id="_6DUFUGEAEeOe-uZzBIzD5w" type="5002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_6DUFUWEAEeOe-uZzBIzD5w" y="5"/>
+    </children>
+    <element xmi:type="geometry:InputPoint" href="geometry.geometry#IP2"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6DTeQWEAEeOe-uZzBIzD5w" x="358" y="212"/>
+  </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_kmIrsWD4EeOLyKvJ2yssUA"/>
   <element xmi:type="geometry:Geometry" href="geometry.geometry#/"/>
   <edges xmi:type="notation:Connector" xmi:id="_rtH8gGD4EeOLyKvJ2yssUA" type="4001" source="_qTjhgGD4EeOLyKvJ2yssUA" target="_ql-HMGD4EeOLyKvJ2yssUA">
