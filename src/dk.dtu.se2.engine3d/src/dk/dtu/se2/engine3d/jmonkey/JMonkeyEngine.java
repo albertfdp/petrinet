@@ -346,9 +346,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	
 	private void setUpGround() {
 		// AP: create ground with volume
-				float groundWidthX  = (boundingBox.width/2) * 1.1f;
+				float groundWidthX  = 2000; //(boundingBox.width/2) * 1.1f;
 				float groundHeightY = 1;
-				float groundDepthZ  = (boundingBox.height/2) * 1.1f;
+				float groundDepthZ  = 2000; //(boundingBox.height/2) * 1.1f;
 				groundGeo = new Geometry("Box", new Box(groundWidthX, groundHeightY, groundDepthZ));
 				groundGeo.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
 				Material groundMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
@@ -356,8 +356,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				Texture groundTex = assetManager.loadTexture("Textures/ground.jpg"); 
 				groundMat.setTexture("ColorMap", groundTex);
 				groundGeo.setMaterial(groundMat);
-				groundGeo.setLocalTranslation((boundingBox.width/2) + boundingBox.x, (-groundHeightY)-0.1f, (boundingBox.height/2) + boundingBox.y);
-				        
+				//groundGeo.setLocalTranslation((boundingBox.width/2) + boundingBox.x, (-groundHeightY)-0.1f, (boundingBox.height/2) + boundingBox.y);
+				groundGeo.setLocalTranslation(0,-1.1f,0);
 				rootNode.attachChild(groundGeo);
 
 	}
