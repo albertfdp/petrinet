@@ -152,7 +152,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				
 				/*
 				 * Transform the EList of bend points to and ArrayList of Vector3f control points 
-				 * in order to create the Catmull Rom curve
+				 * in order to create the CatmullRom curve
 				 */
 				ArrayList<Vector3f> controlPoints = new ArrayList<Vector3f>();
 				
