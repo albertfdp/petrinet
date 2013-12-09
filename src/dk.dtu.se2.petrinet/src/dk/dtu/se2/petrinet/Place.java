@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link dk.dtu.se2.petrinet.Place#getGeometryLabel <em>Geometry Label</em>}</li>
  *   <li>{@link dk.dtu.se2.petrinet.Place#getAnimationLabel <em>Animation Label</em>}</li>
- *   <li>{@link dk.dtu.se2.petrinet.Place#getAppearanceLabel <em>Appearance Label</em>}</li>
  *   <li>{@link dk.dtu.se2.petrinet.Place#getTokens <em>Tokens</em>}</li>
  *   <li>{@link dk.dtu.se2.petrinet.Place#getInputPlaceLabel <em>Input Place Label</em>}</li>
  * </ul>
@@ -76,32 +75,6 @@ public interface Place extends org.pnml.tools.epnk.pnmlcoremodel.Place {
 	 * @generated
 	 */
 	void setAnimationLabel(AnimationLabel value);
-
-	/**
-	 * Returns the value of the '<em><b>Appearance Label</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Appearance Label</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Appearance Label</em>' containment reference.
-	 * @see #setAppearanceLabel(AppearanceLabel)
-	 * @see dk.dtu.se2.petrinet.PetrinetPackage#getPlace_AppearanceLabel()
-	 * @model containment="true"
-	 * @generated
-	 */
-	AppearanceLabel getAppearanceLabel();
-
-	/**
-	 * Sets the value of the '{@link dk.dtu.se2.petrinet.Place#getAppearanceLabel <em>Appearance Label</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Appearance Label</em>' containment reference.
-	 * @see #getAppearanceLabel()
-	 * @generated
-	 */
-	void setAppearanceLabel(AppearanceLabel value);
 
 	/**
 	 * Returns the value of the '<em><b>Tokens</b></em>' containment reference list.

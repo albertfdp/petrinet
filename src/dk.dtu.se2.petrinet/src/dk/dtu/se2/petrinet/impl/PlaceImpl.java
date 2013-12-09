@@ -3,7 +3,6 @@
 package dk.dtu.se2.petrinet.impl;
 
 import dk.dtu.se2.petrinet.AnimationLabel;
-import dk.dtu.se2.petrinet.AppearanceLabel;
 import dk.dtu.se2.petrinet.GeometryLabel;
 import dk.dtu.se2.petrinet.InputPlace;
 import dk.dtu.se2.petrinet.PetrinetPackage;
@@ -28,7 +27,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link dk.dtu.se2.petrinet.impl.PlaceImpl#getGeometryLabel <em>Geometry Label</em>}</li>
  *   <li>{@link dk.dtu.se2.petrinet.impl.PlaceImpl#getAnimationLabel <em>Animation Label</em>}</li>
- *   <li>{@link dk.dtu.se2.petrinet.impl.PlaceImpl#getAppearanceLabel <em>Appearance Label</em>}</li>
  *   <li>{@link dk.dtu.se2.petrinet.impl.PlaceImpl#getTokens <em>Tokens</em>}</li>
  *   <li>{@link dk.dtu.se2.petrinet.impl.PlaceImpl#getInputPlaceLabel <em>Input Place Label</em>}</li>
  * </ul>
@@ -56,16 +54,6 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	 * @ordered
 	 */
 	protected AnimationLabel animationLabel;
-
-	/**
-	 * The cached value of the '{@link #getAppearanceLabel() <em>Appearance Label</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAppearanceLabel()
-	 * @generated
-	 * @ordered
-	 */
-	protected AppearanceLabel appearanceLabel;
 
 	/**
 	 * The cached value of the '{@link #getTokens() <em>Tokens</em>}' containment reference list.
@@ -197,49 +185,6 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AppearanceLabel getAppearanceLabel() {
-		return appearanceLabel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetAppearanceLabel(AppearanceLabel newAppearanceLabel, NotificationChain msgs) {
-		AppearanceLabel oldAppearanceLabel = appearanceLabel;
-		appearanceLabel = newAppearanceLabel;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PetrinetPackage.PLACE__APPEARANCE_LABEL, oldAppearanceLabel, newAppearanceLabel);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAppearanceLabel(AppearanceLabel newAppearanceLabel) {
-		if (newAppearanceLabel != appearanceLabel) {
-			NotificationChain msgs = null;
-			if (appearanceLabel != null)
-				msgs = ((InternalEObject)appearanceLabel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PetrinetPackage.PLACE__APPEARANCE_LABEL, null, msgs);
-			if (newAppearanceLabel != null)
-				msgs = ((InternalEObject)newAppearanceLabel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PetrinetPackage.PLACE__APPEARANCE_LABEL, null, msgs);
-			msgs = basicSetAppearanceLabel(newAppearanceLabel, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.PLACE__APPEARANCE_LABEL, newAppearanceLabel, newAppearanceLabel));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Token> getTokens() {
 		if (tokens == null) {
 			tokens = new EObjectContainmentEList<Token>(Token.class, this, PetrinetPackage.PLACE__TOKENS);
@@ -302,8 +247,6 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 				return basicSetGeometryLabel(null, msgs);
 			case PetrinetPackage.PLACE__ANIMATION_LABEL:
 				return basicSetAnimationLabel(null, msgs);
-			case PetrinetPackage.PLACE__APPEARANCE_LABEL:
-				return basicSetAppearanceLabel(null, msgs);
 			case PetrinetPackage.PLACE__TOKENS:
 				return ((InternalEList<?>)getTokens()).basicRemove(otherEnd, msgs);
 			case PetrinetPackage.PLACE__INPUT_PLACE_LABEL:
@@ -324,8 +267,6 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 				return getGeometryLabel();
 			case PetrinetPackage.PLACE__ANIMATION_LABEL:
 				return getAnimationLabel();
-			case PetrinetPackage.PLACE__APPEARANCE_LABEL:
-				return getAppearanceLabel();
 			case PetrinetPackage.PLACE__TOKENS:
 				return getTokens();
 			case PetrinetPackage.PLACE__INPUT_PLACE_LABEL:
@@ -348,9 +289,6 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 				return;
 			case PetrinetPackage.PLACE__ANIMATION_LABEL:
 				setAnimationLabel((AnimationLabel)newValue);
-				return;
-			case PetrinetPackage.PLACE__APPEARANCE_LABEL:
-				setAppearanceLabel((AppearanceLabel)newValue);
 				return;
 			case PetrinetPackage.PLACE__TOKENS:
 				getTokens().clear();
@@ -377,9 +315,6 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 			case PetrinetPackage.PLACE__ANIMATION_LABEL:
 				setAnimationLabel((AnimationLabel)null);
 				return;
-			case PetrinetPackage.PLACE__APPEARANCE_LABEL:
-				setAppearanceLabel((AppearanceLabel)null);
-				return;
 			case PetrinetPackage.PLACE__TOKENS:
 				getTokens().clear();
 				return;
@@ -402,8 +337,6 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 				return geometryLabel != null;
 			case PetrinetPackage.PLACE__ANIMATION_LABEL:
 				return animationLabel != null;
-			case PetrinetPackage.PLACE__APPEARANCE_LABEL:
-				return appearanceLabel != null;
 			case PetrinetPackage.PLACE__TOKENS:
 				return tokens != null && !tokens.isEmpty();
 			case PetrinetPackage.PLACE__INPUT_PLACE_LABEL:

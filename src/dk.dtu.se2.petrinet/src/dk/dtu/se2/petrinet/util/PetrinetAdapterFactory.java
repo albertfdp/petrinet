@@ -93,10 +93,6 @@ public class PetrinetAdapterFactory extends AdapterFactoryImpl {
 				return createAnimationLabelAdapter();
 			}
 			@Override
-			public Adapter caseAppearanceLabel(AppearanceLabel object) {
-				return createAppearanceLabelAdapter();
-			}
-			@Override
 			public Adapter caseToken(Token object) {
 				return createTokenAdapter();
 			}
@@ -225,20 +221,6 @@ public class PetrinetAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAnimationLabelAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.petrinet.AppearanceLabel <em>Appearance Label</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see dk.dtu.se2.petrinet.AppearanceLabel
-	 * @generated
-	 */
-	public Adapter createAppearanceLabelAdapter() {
 		return null;
 	}
 

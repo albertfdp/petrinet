@@ -170,22 +170,13 @@ public interface PetrinetPackage extends EPackage {
 	int PLACE__ANIMATION_LABEL = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Appearance Label</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACE__APPEARANCE_LABEL = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Tokens</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE__TOKENS = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 3;
+	int PLACE__TOKENS = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Input Place Label</b></em>' containment reference.
@@ -194,7 +185,7 @@ public interface PetrinetPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE__INPUT_PLACE_LABEL = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 4;
+	int PLACE__INPUT_PLACE_LABEL = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Place</em>' class.
@@ -203,7 +194,7 @@ public interface PetrinetPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE_FEATURE_COUNT = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 5;
+	int PLACE_FEATURE_COUNT = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link dk.dtu.se2.petrinet.impl.GeometryLabelImpl <em>Geometry Label</em>}' class.
@@ -325,61 +316,6 @@ public interface PetrinetPackage extends EPackage {
 	int ANIMATION_LABEL_FEATURE_COUNT = StructuredpntypemodelPackage.STRUCTURED_LABEL_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link dk.dtu.se2.petrinet.impl.AppearanceLabelImpl <em>Appearance Label</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see dk.dtu.se2.petrinet.impl.AppearanceLabelImpl
-	 * @see dk.dtu.se2.petrinet.impl.PetrinetPackageImpl#getAppearanceLabel()
-	 * @generated
-	 */
-	int APPEARANCE_LABEL = 4;
-
-	/**
-	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE_LABEL__TOOLSPECIFIC = PnmlcoremodelPackage.LABEL__TOOLSPECIFIC;
-
-	/**
-	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE_LABEL__GRAPHICS = PnmlcoremodelPackage.LABEL__GRAPHICS;
-
-	/**
-	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE_LABEL__UNKNOWN = PnmlcoremodelPackage.LABEL__UNKNOWN;
-
-	/**
-	 * The feature id for the '<em><b>Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE_LABEL__TEXT = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Appearance Label</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE_LABEL_FEATURE_COUNT = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link dk.dtu.se2.petrinet.impl.TokenImpl <em>Token</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -387,7 +323,7 @@ public interface PetrinetPackage extends EPackage {
 	 * @see dk.dtu.se2.petrinet.impl.PetrinetPackageImpl#getToken()
 	 * @generated
 	 */
-	int TOKEN = 5;
+	int TOKEN = 4;
 
 	/**
 	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
@@ -442,7 +378,7 @@ public interface PetrinetPackage extends EPackage {
 	 * @see dk.dtu.se2.petrinet.impl.PetrinetPackageImpl#getArc()
 	 * @generated
 	 */
-	int ARC = 6;
+	int ARC = 5;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -533,7 +469,7 @@ public interface PetrinetPackage extends EPackage {
 	 * @see dk.dtu.se2.petrinet.impl.PetrinetPackageImpl#getIdentity()
 	 * @generated
 	 */
-	int IDENTITY = 7;
+	int IDENTITY = 6;
 
 	/**
 	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
@@ -588,7 +524,7 @@ public interface PetrinetPackage extends EPackage {
 	 * @see dk.dtu.se2.petrinet.impl.PetrinetPackageImpl#getInputPlace()
 	 * @generated
 	 */
-	int INPUT_PLACE = 8;
+	int INPUT_PLACE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
@@ -678,17 +614,6 @@ public interface PetrinetPackage extends EPackage {
 	EReference getPlace_AnimationLabel();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link dk.dtu.se2.petrinet.Place#getAppearanceLabel <em>Appearance Label</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Appearance Label</em>'.
-	 * @see dk.dtu.se2.petrinet.Place#getAppearanceLabel()
-	 * @see #getPlace()
-	 * @generated
-	 */
-	EReference getPlace_AppearanceLabel();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link dk.dtu.se2.petrinet.Place#getTokens <em>Tokens</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -751,27 +676,6 @@ public interface PetrinetPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAnimationLabel_Structure();
-
-	/**
-	 * Returns the meta object for class '{@link dk.dtu.se2.petrinet.AppearanceLabel <em>Appearance Label</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Appearance Label</em>'.
-	 * @see dk.dtu.se2.petrinet.AppearanceLabel
-	 * @generated
-	 */
-	EClass getAppearanceLabel();
-
-	/**
-	 * Returns the meta object for the attribute '{@link dk.dtu.se2.petrinet.AppearanceLabel#getText <em>Text</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see dk.dtu.se2.petrinet.AppearanceLabel#getText()
-	 * @see #getAppearanceLabel()
-	 * @generated
-	 */
-	EAttribute getAppearanceLabel_Text();
 
 	/**
 	 * Returns the meta object for class '{@link dk.dtu.se2.petrinet.Token <em>Token</em>}'.
@@ -916,14 +820,6 @@ public interface PetrinetPackage extends EPackage {
 		EReference PLACE__ANIMATION_LABEL = eINSTANCE.getPlace_AnimationLabel();
 
 		/**
-		 * The meta object literal for the '<em><b>Appearance Label</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PLACE__APPEARANCE_LABEL = eINSTANCE.getPlace_AppearanceLabel();
-
-		/**
 		 * The meta object literal for the '<em><b>Tokens</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -974,24 +870,6 @@ public interface PetrinetPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ANIMATION_LABEL__STRUCTURE = eINSTANCE.getAnimationLabel_Structure();
-
-		/**
-		 * The meta object literal for the '{@link dk.dtu.se2.petrinet.impl.AppearanceLabelImpl <em>Appearance Label</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dk.dtu.se2.petrinet.impl.AppearanceLabelImpl
-		 * @see dk.dtu.se2.petrinet.impl.PetrinetPackageImpl#getAppearanceLabel()
-		 * @generated
-		 */
-		EClass APPEARANCE_LABEL = eINSTANCE.getAppearanceLabel();
-
-		/**
-		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute APPEARANCE_LABEL__TEXT = eINSTANCE.getAppearanceLabel_Text();
 
 		/**
 		 * The meta object literal for the '{@link dk.dtu.se2.petrinet.impl.TokenImpl <em>Token</em>}' class.

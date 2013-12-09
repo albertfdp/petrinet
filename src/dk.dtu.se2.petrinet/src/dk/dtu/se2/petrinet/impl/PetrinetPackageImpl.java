@@ -9,10 +9,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
 import org.pnml.tools.epnk.structuredpntypemodel.StructuredpntypemodelPackage;
-
 import dk.dtu.se2.animation.AnimationPackage;
 import dk.dtu.se2.petrinet.AnimationLabel;
-import dk.dtu.se2.petrinet.AppearanceLabel;
 import dk.dtu.se2.petrinet.Arc;
 import dk.dtu.se2.petrinet.ExtendedPetriNet;
 import dk.dtu.se2.petrinet.GeometryLabel;
@@ -57,13 +55,6 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * @generated
 	 */
 	private EClass animationLabelEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass appearanceLabelEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -199,7 +190,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPlace_AppearanceLabel() {
+	public EReference getPlace_Tokens() {
 		return (EReference)placeEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -208,17 +199,8 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPlace_Tokens() {
-		return (EReference)placeEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getPlace_InputPlaceLabel() {
-		return (EReference)placeEClass.getEStructuralFeatures().get(4);
+		return (EReference)placeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -255,24 +237,6 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 */
 	public EReference getAnimationLabel_Structure() {
 		return (EReference)animationLabelEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAppearanceLabel() {
-		return appearanceLabelEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAppearanceLabel_Text() {
-		return (EAttribute)appearanceLabelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -380,7 +344,6 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		placeEClass = createEClass(PLACE);
 		createEReference(placeEClass, PLACE__GEOMETRY_LABEL);
 		createEReference(placeEClass, PLACE__ANIMATION_LABEL);
-		createEReference(placeEClass, PLACE__APPEARANCE_LABEL);
 		createEReference(placeEClass, PLACE__TOKENS);
 		createEReference(placeEClass, PLACE__INPUT_PLACE_LABEL);
 
@@ -389,9 +352,6 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 
 		animationLabelEClass = createEClass(ANIMATION_LABEL);
 		createEReference(animationLabelEClass, ANIMATION_LABEL__STRUCTURE);
-
-		appearanceLabelEClass = createEClass(APPEARANCE_LABEL);
-		createEAttribute(appearanceLabelEClass, APPEARANCE_LABEL__TEXT);
 
 		tokenEClass = createEClass(TOKEN);
 		createEAttribute(tokenEClass, TOKEN__TEXT);
@@ -443,7 +403,6 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		placeEClass.getESuperTypes().add(thePnmlcoremodelPackage.getPlace());
 		geometryLabelEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		animationLabelEClass.getESuperTypes().add(theStructuredpntypemodelPackage.getStructuredLabel());
-		appearanceLabelEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		tokenEClass.getESuperTypes().add(thePnmlcoremodelPackage.getAttribute());
 		arcEClass.getESuperTypes().add(thePnmlcoremodelPackage.getArc());
 		identityEClass.getESuperTypes().add(thePnmlcoremodelPackage.getAttribute());
@@ -455,7 +414,6 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		initEClass(placeEClass, Place.class, "Place", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPlace_GeometryLabel(), this.getGeometryLabel(), null, "geometryLabel", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlace_AnimationLabel(), this.getAnimationLabel(), null, "animationLabel", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPlace_AppearanceLabel(), this.getAppearanceLabel(), null, "appearanceLabel", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlace_Tokens(), this.getToken(), null, "tokens", null, 0, -1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlace_InputPlaceLabel(), this.getInputPlace(), null, "inputPlaceLabel", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -464,9 +422,6 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 
 		initEClass(animationLabelEClass, AnimationLabel.class, "AnimationLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAnimationLabel_Structure(), theAnimationPackage.getAnimation(), null, "structure", null, 1, 1, AnimationLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(appearanceLabelEClass, AppearanceLabel.class, "AppearanceLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAppearanceLabel_Text(), ecorePackage.getEString(), "text", null, 0, 1, AppearanceLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tokenEClass, Token.class, "Token", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getToken_Text(), ecorePackage.getEString(), "text", null, 0, 1, Token.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

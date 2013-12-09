@@ -164,29 +164,6 @@ public class PetrinetItemProviderAdapterFactory extends PetrinetAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.petrinet.AppearanceLabel} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AppearanceLabelItemProvider appearanceLabelItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link dk.dtu.se2.petrinet.AppearanceLabel}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAppearanceLabelAdapter() {
-		if (appearanceLabelItemProvider == null) {
-			appearanceLabelItemProvider = new AppearanceLabelItemProvider(this);
-		}
-
-		return appearanceLabelItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.petrinet.Token} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -381,7 +358,6 @@ public class PetrinetItemProviderAdapterFactory extends PetrinetAdapterFactory i
 		if (placeItemProvider != null) placeItemProvider.dispose();
 		if (geometryLabelItemProvider != null) geometryLabelItemProvider.dispose();
 		if (animationLabelItemProvider != null) animationLabelItemProvider.dispose();
-		if (appearanceLabelItemProvider != null) appearanceLabelItemProvider.dispose();
 		if (tokenItemProvider != null) tokenItemProvider.dispose();
 		if (arcItemProvider != null) arcItemProvider.dispose();
 		if (identityItemProvider != null) identityItemProvider.dispose();

@@ -102,7 +102,6 @@ public class PlaceItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(PetrinetPackage.Literals.PLACE__GEOMETRY_LABEL);
 			childrenFeatures.add(PetrinetPackage.Literals.PLACE__ANIMATION_LABEL);
-			childrenFeatures.add(PetrinetPackage.Literals.PLACE__APPEARANCE_LABEL);
 			childrenFeatures.add(PetrinetPackage.Literals.PLACE__TOKENS);
 		}
 		return childrenFeatures;
@@ -160,7 +159,6 @@ public class PlaceItemProvider
 		switch (notification.getFeatureID(Place.class)) {
 			case PetrinetPackage.PLACE__GEOMETRY_LABEL:
 			case PetrinetPackage.PLACE__ANIMATION_LABEL:
-			case PetrinetPackage.PLACE__APPEARANCE_LABEL:
 			case PetrinetPackage.PLACE__TOKENS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -188,11 +186,6 @@ public class PlaceItemProvider
 			(createChildParameter
 				(PetrinetPackage.Literals.PLACE__ANIMATION_LABEL,
 				 PetrinetFactory.eINSTANCE.createAnimationLabel()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(PetrinetPackage.Literals.PLACE__APPEARANCE_LABEL,
-				 PetrinetFactory.eINSTANCE.createAppearanceLabel()));
 
 		newChildDescriptors.add
 			(createChildParameter

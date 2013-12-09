@@ -108,13 +108,6 @@ public class PetrinetSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PetrinetPackage.APPEARANCE_LABEL: {
-				AppearanceLabel appearanceLabel = (AppearanceLabel)theEObject;
-				T result = caseAppearanceLabel(appearanceLabel);
-				if (result == null) result = caseLabel(appearanceLabel);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case PetrinetPackage.TOKEN: {
 				Token token = (Token)theEObject;
 				T result = caseToken(token);
@@ -209,21 +202,6 @@ public class PetrinetSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAnimationLabel(AnimationLabel object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Appearance Label</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Appearance Label</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAppearanceLabel(AppearanceLabel object) {
 		return null;
 	}
 

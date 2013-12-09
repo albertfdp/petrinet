@@ -60,7 +60,6 @@ public class PetrinetFactoryImpl extends EFactoryImpl implements PetrinetFactory
 			case PetrinetPackage.PLACE: return createPlace();
 			case PetrinetPackage.GEOMETRY_LABEL: return createGeometryLabel();
 			case PetrinetPackage.ANIMATION_LABEL: return createAnimationLabel();
-			case PetrinetPackage.APPEARANCE_LABEL: return createAppearanceLabel();
 			case PetrinetPackage.TOKEN: return createToken();
 			case PetrinetPackage.ARC: return createArc();
 			case PetrinetPackage.IDENTITY: return createIdentity();
@@ -108,16 +107,6 @@ public class PetrinetFactoryImpl extends EFactoryImpl implements PetrinetFactory
 	public AnimationLabel createAnimationLabel() {
 		AnimationLabelImpl animationLabel = new AnimationLabelImpl();
 		return animationLabel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AppearanceLabel createAppearanceLabel() {
-		AppearanceLabelImpl appearanceLabel = new AppearanceLabelImpl();
-		return appearanceLabel;
 	}
 
 	/**

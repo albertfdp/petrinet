@@ -58,15 +58,6 @@ public interface PetrinetFactory extends EFactory {
 	AnimationLabel createAnimationLabel();
 
 	/**
-	 * Returns a new object of class '<em>Appearance Label</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Appearance Label</em>'.
-	 * @generated
-	 */
-	AppearanceLabel createAppearanceLabel();
-
-	/**
 	 * Returns a new object of class '<em>Token</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
