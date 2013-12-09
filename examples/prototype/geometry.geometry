@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <geometry:Geometry xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:geometry="http://geometry/1.0">
-  <gObjects xsi:type="geometry:Connector" label="C1" xLocation="103" yLocation="193" out="L1 L2" in="L6"/>
-  <gObjects xsi:type="geometry:Connector" label="C2" xLocation="575" yLocation="225" out="L3" in="L1 L2"/>
+  <gObjects xsi:type="geometry:Connector" label="C1" xLocation="165" yLocation="115" out="L1 L2" in="L6"/>
+  <gObjects xsi:type="geometry:Connector" label="C2" xLocation="395" yLocation="115" out="L3" in="L1 L2"/>
   <gObjects xsi:type="geometry:Line" label="L1" begin="C1" end="C2" appearanceLabel="track" tokenAppearanceLabel="train">
-    <bendPoints label="L1_Bendpoint_1" xLocation="260" yLocation="106"/>
-    <bendPoints label="L1_Bendpoint_3" xLocation="454" yLocation="104"/>
+    <bendPoints label="L1_Bendpoint_1" xLocation="274" yLocation="74"/>
   </gObjects>
   <gObjects xsi:type="geometry:Line" label="L2" begin="C1" end="C2" appearanceLabel="track" tokenAppearanceLabel="train"/>
-  <gObjects xsi:type="geometry:Connector" label="C3" xLocation="649" yLocation="377" out="L5" in="L3"/>
-  <gObjects xsi:type="geometry:Connector" label="C5" xLocation="58" yLocation="351" out="L6" in="L5"/>
+  <gObjects xsi:type="geometry:Connector" label="C3" xLocation="390" yLocation="240" out="L5" in="L3"/>
+  <gObjects xsi:type="geometry:Connector" label="C5" xLocation="165" yLocation="240" out="L6" in="L5"/>
   <gObjects xsi:type="geometry:Line" label="L3" begin="C2" end="C3" appearanceLabel="track" tokenAppearanceLabel="train"/>
   <gObjects xsi:type="geometry:Line" label="L6" begin="C5" end="C1" appearanceLabel="track" tokenAppearanceLabel="train"/>
-  <gObjects xsi:type="geometry:Line" label="L5" begin="C3" end="C5" appearanceLabel="track" tokenAppearanceLabel="train">
-    <bendPoints label="L5_Bendpoint_1" xLocation="489" yLocation="469"/>
-    <bendPoints label="L5_Bendpoint_2" xLocation="104" yLocation="489"/>
-  </gObjects>
-  <gObjects xsi:type="geometry:InputPoint" label="IP1" xLocation="205" yLocation="166" appearanceLabel="green"/>
+  <gObjects xsi:type="geometry:Line" label="L5" begin="C3" end="C5" appearanceLabel="track" tokenAppearanceLabel="train"/>
+  <gObjects xsi:type="geometry:InputPoint" label="IP1" xLocation="235" yLocation="105" appearanceLabel="green"/>
 </geometry:Geometry>
