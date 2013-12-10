@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-encoding/default.geometry=UTF-8
-encoding/geometry.geometry=UTF-8
-encoding/geometry.geometry_diagram=UTF-8
-encoding/test_multiple_tokens.geometry_diagram=UTF-8
+encoding//demo/geometry.geometry=UTF-8
+encoding//demo/geometry.geometry_diagram=UTF-8
+encoding//other/default.geometry=UTF-8
+encoding//other/test_multiple_tokens.geometry_diagram=UTF-8
