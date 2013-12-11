@@ -547,8 +547,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				newSpatial.setName(String.valueOf(clonedEventToQueue.getId()));
 				
 				//Set the bounding box
-				newSpatial.setModelBound(new BoundingSphere());
+				newSpatial.setModelBound(new BoundingBox(newSpatial.getLocalTranslation(), 1, 1, 0));
 				newSpatial.updateModelBound();
+				
 				
 				//Attaching the spatial token to the rootnode and playing the event
 				rootNode.attachChild(newSpatial);
@@ -621,8 +622,10 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				
 		/* Play waiting animations */
 		if (engineState == State.PLAYING) {
-			//Collisions test
+			//All collisions recorded in this loop
 			HashSet<String> allCollisionsRecorded = new HashSet<String>();
+			
+			//Iterate through every event, make its spatial collide with all the others
 			for (JMonkeyEvent event : allRenderedEvents.values()) {
 				JMonkeyMove currentMove = (JMonkeyMove) event;
 				ArrayList<String> collided = new ArrayList<String>();
@@ -633,18 +636,25 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 						
 						Spatial currentSpatial = currentMove.getSpatial();
 						Spatial testedSpatial = testedMove.getSpatial();
-
-						//Try collision
-						if (currentSpatial.getWorldBound().intersects(testedSpatial.getWorldBound())) {
-							if (!allCollisionsRecorded.contains(currentSpatial.getName())) {
-								collided.add(testedEvent.getId());
-								allCollisionsRecorded.add(event.getId());
+						
+						CollisionResults results = new CollisionResults();
+						currentSpatial.collideWith(testedSpatial.getWorldBound(), results);
+						if (results.size()>0) {
+							//There is a collision between currentSpatial and testedSpatial
+							if (currentMove.getMotionEvent().getCurrentValue() 
+									> testedMove.getMotionEvent().getCurrentValue()) {
+								//If the collision wasn't already recorded, we add it and record it
+								if (!allCollisionsRecorded.contains(currentSpatial.getName())) {
+									collided.add(testedEvent.getId());
+									allCollisionsRecorded.add(event.getId());
+								}
 							}
 						}
 					}
 				}
 				
 				if (collided.isEmpty()) {
+					//We play all the old paused animations since they don't collide anymore
 					if (allCollisions.containsKey(currentMove.getId())) {
 						for (String id: allCollisions.get(currentMove.getId())) {
 							JMonkeyMove toStartMove = (JMonkeyMove) allRenderedEvents.get(id);
@@ -653,6 +663,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 						allCollisions.remove(currentMove.getId());
 					}
 				} else {
+					//We pause all the animations which collide
 					for (String id: collided) {
 						JMonkeyMove toPauseMove = (JMonkeyMove) allRenderedEvents.get(id);
 						toPauseMove.pause();
@@ -661,34 +672,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				}
 				
 			}
-			
-			
-			while (!eventsQueue.isEmpty()) { // while there are events waiting to be run in the queue
-				/* Get event from queue*/
-				JMonkeyEvent eventToRun = eventsQueue.pop();
-				
-//				if (eventToRun instanceof JMonkeyMove) {
-//					/* Cast JMonkeyEvent to JMonkeyMove*/
-//					JMonkeyMove moveEventToRun = (JMonkeyMove) eventToRun;
-//					
-//					System.out.println(moveEventToRun.getGeometryLabel() + " => " + moveEventToRun.getMotionEvent().getSpatial().getName());
-//					
-//					rootNode.attachChild(moveEventToRun.getMotionEvent().getSpatial());
-//					
-//					if(moveEventToRun!=null) {
-//						
-//						moveEventToRun.getMotionEvent().play();
-//						
-//						System.out.println("Event to run: "+moveEventToRun.getGeometryLabel());
-//					}
-//					
-//					
-//						
-//				}
-				
-				
-			}
-
 		}							
     }
 
@@ -798,7 +781,14 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 			System.out.println("Destroying token : " + event.getSpatial().getName() + " with ID: " + id);
 			
 			allRenderedEvents.remove(id);
-			allCollisions.remove(id);
+			if (allCollisions.containsKey(id)) {
+				for (String eventIdToStart: allCollisions.get(id)) {
+					if (allRenderedEvents.containsKey(eventIdToStart)) {
+						((JMonkeyMove)allRenderedEvents.get(eventIdToStart)).play();
+					}
+				}
+				allCollisions.remove(id);	
+			}
 		}
 		
 	}
