@@ -1,6 +1,0 @@
-eclipse.preferences.version=1
-gmf_dashboard/domainGenerationModel=platform\:/resource/dk.dtu.se2.geometry/model/geometry.genmodel
-gmf_dashboard/domainModel=platform\:/resource/dk.dtu.se2.geometry/model/geometry.ecore
-gmf_dashboard/graphicalDefinitionModel=platform\:/resource/dk.dtu.se2.geometry/model/geometry.gmfgraph
-gmf_dashboard/mappingModel=platform\:/resource/dk.dtu.se2.geometry/model/geometry.gmfmap
-gmf_dashboard/toolingDefinitionModel=platform\:/resource/dk.dtu.se2.geometry/model/geometry.gmftool
