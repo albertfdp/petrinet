@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty>
+  <useStyles filename="nifty-default-styles.xml" />
+  <useControls filename="nifty-default-controls.xml" />
+  <screen id="start" controller="dk.dtu.se2.engine3d.jmonkey.NiftyButtonsScreen">
+    <layer id="foreground" backgroundColor="#0000" childLayout="vertical">
+      
+      <panel id="panel_top" height="25%" width="100%" align="center" childLayout="center"
+             backgroundColor="#0000">  
+      </panel>
+      
+      <panel id="panel_mid" height="50%" width="100%" align="center" childLayout="center"
+             backgroundColor="#0000">  
+      </panel>
+            
+      <panel id="panel_bottom" height="25%" width="100%" align="center" childLayout="horizontal" 
+      		backgroundColor="#0000">
+      
+      	<panel id="panel_bottom_left" height="50%" width="50%" valign="center" childLayout="center" 
+             backgroundColor="#0000">  
+             <control name="button" label="Start" id="StartButton"
+					  align="center" valign="center"
+					  visibleToMouse="false">
+				<interact onClick="startPetrinet()"/> 
+         	 </control>
+        </panel>
+        
+        <panel id="panel_bottom_right" height="50%" width="50%" valign="center" childLayout="center"
+             backgroundColor="#0000">
+             <control name="button" label="Reset" id="ResetButton" 
+             		  align="center" valign="center"
+             		  visibleToMouse="false">
+             	<interact onClick="resetPetrinet()"/> 
+             </control>
+        </panel>
+      	
+      </panel>
+    </layer>
+  </screen>
+</nifty>

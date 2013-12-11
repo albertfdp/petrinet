@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/dk.dtu.se2.geometry/src" modelPluginID="dk.dtu.se2.geometry"
+    modelName="Geometry" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>geometry.ecore</foreignModel>
+  <genPackages prefix="Geometry" disposableProviderFactory="true" ecorePackage="geometry.ecore#/">
+    <genClasses ecoreClass="geometry.ecore#//Geometry">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference geometry.ecore#//Geometry/gObjects"/>
+    </genClasses>
+    <genClasses ecoreClass="geometry.ecore#//GObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//GObject/label"/>
+    </genClasses>
+    <genClasses ecoreClass="geometry.ecore#//Line">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference geometry.ecore#//Line/bendPoints"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference geometry.ecore#//Line/begin"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference geometry.ecore#//Line/end"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//Line/appearanceLabel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//Line/tokenAppearanceLabel"/>
+    </genClasses>
+    <genClasses ecoreClass="geometry.ecore#//Point">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//Point/xLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//Point/yLocation"/>
+    </genClasses>
+    <genClasses ecoreClass="geometry.ecore#//BendPoint"/>
+    <genClasses ecoreClass="geometry.ecore#//Connector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference geometry.ecore#//Connector/out"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference geometry.ecore#//Connector/in"/>
+    </genClasses>
+    <genClasses ecoreClass="geometry.ecore#//InputPoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//InputPoint/appearanceLabel"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

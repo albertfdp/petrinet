@@ -1,0 +1,7 @@
+# Tracing options for the dk.dtu.se2.geometry.diagram plug-in
+
+# Common issues
+dk.dtu.se2.geometry.diagram/debug=false
+
+# Visual IDs
+dk.dtu.se2.geometry.diagram/debug/visualID=false
