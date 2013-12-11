@@ -8,6 +8,8 @@ import geometry.Point;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,6 +21,13 @@ import appearance.Appearance;
 import com.jme3.animation.LoopMode;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppState;
+import com.jme3.bounding.BoundingBox;
+import com.jme3.bounding.BoundingSphere;
+import com.jme3.bullet.BulletAppState;
+import com.jme3.bullet.collision.PhysicsCollisionEvent;
+import com.jme3.bullet.collision.PhysicsCollisionListener;
+import com.jme3.bullet.collision.shapes.BoxCollisionShape;
+import com.jme3.bullet.control.GhostControl;
 import com.jme3.cinematic.Cinematic;
 import com.jme3.cinematic.MotionPath;
 import com.jme3.cinematic.events.MotionEvent;
@@ -49,7 +58,6 @@ import com.jme3.texture.Texture;
 import com.jme3.util.SkyFactory;
 
 import de.lessvoid.nifty.Nifty;
-import de.lessvoid.nifty.controls.Button;
 import de.lessvoid.nifty.screen.ScreenController;
 import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.animation.Appear;
@@ -61,6 +69,8 @@ import dk.dtu.se2.engine3d.Engine3DListener;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
 public class JMonkeyEngine extends SimpleApplication implements Engine3D {
+	
+	private BulletAppState bulletAppState;
 	
 	/* Geometry and Appearance models, plus list of all possible animations */
 	private geometry.Geometry 	geometry;
@@ -90,10 +100,11 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	/* Mapping between lines and tokens appearances */
 	private HashMap<String, String> tokenAppearances;
 	
-	/* 
-	 * Movie script of all the events currently running in the simulation
-	 */
-	private Cinematic eventsRunning;
+	/*  Mapping each token to a specific id (String) and its animation rendering in the visualisation*/
+	private HashMap<String, JMonkeyEvent> allRenderedEvents;
+	
+	/*  Mapping between a specific id for a token and all the token it collides with */
+	private HashMap<String, ArrayList<String>> allCollisions;
 	
 	/* Mapping between geometry labels of lines and JMonkey motion paths */
 	private HashMap<String, MotionPath> lines;
@@ -150,7 +161,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				
 				/*
 				 * Transform the EList of bend points to and ArrayList of Vector3f control points 
-				 * in order to create the CatmullRom curve
+				 * in order to create the Catmull Rom curve
 				 */
 				ArrayList<Vector3f> controlPoints = new ArrayList<Vector3f>();
 				
@@ -287,7 +298,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				path = lines.get(geometryLabel);
 				
 				Vector3f endWayPoint = path.getWayPoint(path.getNbWayPoints()-1);
-								
+				Vector3f startWayPoint = path.getWayPoint(0);
+				
 				/* Create motion event and JMonkeyMove event corresponding to the move animation */
 				MotionEvent motionEvent = new MotionEvent(token, path, 10, LoopMode.DontLoop);
 				motionEvent.setSpeed(((Move) animation).getSpeed());
@@ -295,7 +307,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 								
 				JMonkeyEvent event = new JMonkeyMove(geometryLabel, motionEvent, this); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
 				((JMonkeyMove) event).setEndWayPoint(endWayPoint);
-		
+				((JMonkeyMove) event).setStartWayPoint(startWayPoint);
 				motionEvent.addListener((JMonkeyMove) event); // add the JMonkeyEngine as a listener to all motion events				
 				
 				events.put(geometryLabel, event);
@@ -381,6 +393,12 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
  	@Override
 	public void simpleInitApp() {
  		
+ 		bulletAppState = new BulletAppState();
+ 	    stateManager.attach(bulletAppState);
+ 		//Enable debug mode
+ 	    
+ 	   bulletAppState.setDebugEnabled(true);
+ 	    
  	// AP: set the background color
  			viewPort.setBackgroundColor(ColorRGBA.Gray);
  	// AP: enable/disable camera fly - the ability to move the camera with keyboard and mouse
@@ -434,10 +452,11 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		this.tokenQueue = new HashMap<String, LinkedList<Spatial>>();
 		this.tokenAppearances = new HashMap<String, String>();
 		this.inputs = new HashMap<String, Spatial>();
-		
-	/* Initialize the Cinematic movie script of the simulation and add it to the application state manager */
-		this.eventsRunning = new Cinematic(this.rootNode, 10);
-		this.stateManager.attach(eventsRunning);
+
+	/* Initialize the data structures used to keep track of the current animations*/
+		this.allCollisions = new HashMap<String, ArrayList<String>>();
+		this.allRenderedEvents = new HashMap<String, JMonkeyEvent>();
+
 		
 	/* Pause simulation when the window loses focus */
 		this.setPauseOnLostFocus(false);
@@ -506,15 +525,43 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	
 	@Override
 	public void addToAnimationQueue(List<RTAnimation> animations) {
+		
 		for (RTAnimation animation : animations) {
-			if (animation.getAnimation() instanceof Appear) {
-				changeAppearanceOfSpatial((Appear) animation.getAnimation());
-			} else {
-				JMonkeyEvent eventToQueue = events.get(animation.getGeometryLabel());
-				JMonkeyEvent clonedEventToQueue = JMonkeyEvent.eventCopy(eventToQueue);
-				eventsQueue.add(clonedEventToQueue);
-				System.out.println("Animation added to queue: " + animation.getGeometryLabel());
-			}
+			//Getting the geometry label of the line on which the token has effect
+			String geometryLabel = animation.getGeometryLabel();
+			JMonkeyEvent clonedEventToQueue;
+			
+			if (animation.getAnimation() instanceof Move) {
+				//Getting the Motion Path and the Spatial
+				MotionPath pathToClone = lines.get(geometryLabel);
+				MotionPath clonedPath = this.cloneMotionPath(pathToClone);
+				String modelName = tokenAppearances.get(geometryLabel);
+				
+				//Cloning the MotionEvent
+				Spatial newSpatial = assetManager.loadModel(this.appearance.getAObjectByLabel(modelName).getObject3D());
+				JMonkeyEvent eventToClone = events.get(geometryLabel);
+				clonedEventToQueue = JMonkeyEvent.moveEvent(eventToClone, clonedPath, newSpatial);
+				
+				//Set the ID of the Event
+				clonedEventToQueue.setId(animation.getId());
+				newSpatial.setName(String.valueOf(clonedEventToQueue.getId()));
+				
+				//Set the bounding box
+				newSpatial.setModelBound(new BoundingSphere());
+				newSpatial.updateModelBound();
+				
+				//Attaching the spatial token to the rootnode and playing the event
+				rootNode.attachChild(newSpatial);
+			
+				allRenderedEvents.put(clonedEventToQueue.getId(), clonedEventToQueue);
+				allCollisions.put(clonedEventToQueue.getId(), new ArrayList<String>());
+				((JMonkeyMove)clonedEventToQueue).play();
+				
+			} else if (animation.getAnimation() instanceof Appear) {
+				changeAppearanceOfSpatial((Appear) animation.getAnimation());		
+			}			
+			
+			System.out.println("Animation added to queue: " + animation.getGeometryLabel());
 		}
 	}
 	
@@ -532,19 +579,41 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
 		inputObject.setMaterial(inputMat);	
 	}
+	
+	/**
+	 * 
+	 * @param path: The path to clone
+	 * @return A deep-copy of motion path with the same waypoints
+	 */
+	private MotionPath cloneMotionPath(MotionPath path) {
+		
+		MotionPath newPath = new MotionPath();
+		newPath.setCycle(false); // make sure the path doesn't loop 
+		Iterator<Vector3f> waypoints = path.iterator();
+		
+		while(waypoints.hasNext()) {
+			
+			newPath.addWayPoint(waypoints.next()); // add way points to the path 
+		}
+		
+		newPath.setPathSplineType(SplineType.CatmullRom); // set path type
+		newPath.setCurveTension(0.5f);    
+		
+		return newPath;
+	}
 
 	
 	public void onStop(JMonkeyMove event) {	
 		
-		MotionEvent motionEvent = event.getMotionEvent();
-				
-		Spatial token = motionEvent.getSpatial();		
-		this.tokenQueue.get(event.getGeometryLabel()).add(token);
-		
-		this.eventsRunning.removeCinematicEvent(motionEvent);
-		
+//		MotionEvent motionEvent = event.getMotionEvent();
+//		System.out.println(motionEvent.getPlayState());
+//		
+//		Spatial token = motionEvent.getSpatial();		
+//		this.tokenQueue.get(event.getGeometryLabel()).add(token);
+//		
+//		this.allRenderedEvents.;
+//		
 		this.listener.onAnimationFinished(event.getGeometryLabel());
-		
 	}
 
 	@Override 
@@ -552,55 +621,118 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				
 		/* Play waiting animations */
 		if (engineState == State.PLAYING) {
+			//Collisions test
+			HashSet<String> allCollisionsRecorded = new HashSet<String>();
+			for (JMonkeyEvent event : allRenderedEvents.values()) {
+				JMonkeyMove currentMove = (JMonkeyMove) event;
+				ArrayList<String> collided = new ArrayList<String>();
+				for (JMonkeyEvent testedEvent : allRenderedEvents.values()) {
+					
+					if (testedEvent != event) {
+						JMonkeyMove testedMove = (JMonkeyMove) testedEvent;
+						
+						Spatial currentSpatial = currentMove.getSpatial();
+						Spatial testedSpatial = testedMove.getSpatial();
+
+						//Try collision
+						if (currentSpatial.getWorldBound().intersects(testedSpatial.getWorldBound())) {
+							if (!allCollisionsRecorded.contains(currentSpatial.getName())) {
+								collided.add(testedEvent.getId());
+								allCollisionsRecorded.add(event.getId());
+							}
+						}
+					}
+				}
+				
+				if (collided.isEmpty()) {
+					if (allCollisions.containsKey(currentMove.getId())) {
+						for (String id: allCollisions.get(currentMove.getId())) {
+							JMonkeyMove toStartMove = (JMonkeyMove) allRenderedEvents.get(id);
+							toStartMove.play();
+						}
+						allCollisions.remove(currentMove.getId());
+					}
+				} else {
+					for (String id: collided) {
+						JMonkeyMove toPauseMove = (JMonkeyMove) allRenderedEvents.get(id);
+						toPauseMove.pause();
+					}
+					allCollisions.put(currentMove.getId(), collided);
+				}
+				
+			}
+			
 			
 			while (!eventsQueue.isEmpty()) { // while there are events waiting to be run in the queue
 				/* Get event from queue*/
 				JMonkeyEvent eventToRun = eventsQueue.pop();
 				
-				if (eventToRun instanceof JMonkeyMove) {
-					/* Cast JMonkeyEvent to JMonkeyMove*/
-					JMonkeyMove moveEventToRun = (JMonkeyMove) eventToRun;
-					Spatial token = moveEventToRun.getMotionEvent().getSpatial();
-					
-					System.out.println(moveEventToRun.getGeometryLabel() + " => " + token.getName());					
-					rootNode.attachChild(token);
-								
-					if(moveEventToRun!=null)
-						eventsRunning.addCinematicEvent(0, moveEventToRun.getMotionEvent());
-						
-				}
+//				if (eventToRun instanceof JMonkeyMove) {
+//					/* Cast JMonkeyEvent to JMonkeyMove*/
+//					JMonkeyMove moveEventToRun = (JMonkeyMove) eventToRun;
+//					
+//					System.out.println(moveEventToRun.getGeometryLabel() + " => " + moveEventToRun.getMotionEvent().getSpatial().getName());
+//					
+//					rootNode.attachChild(moveEventToRun.getMotionEvent().getSpatial());
+//					
+//					if(moveEventToRun!=null) {
+//						
+//						moveEventToRun.getMotionEvent().play();
+//						
+//						System.out.println("Event to run: "+moveEventToRun.getGeometryLabel());
+//					}
+//					
+//					
+//						
+//				}
 				
 				
-				eventsRunning.play();
 			}
 
 		}							
     }
+
+	private void playAnimations() {
+		System.out.println("Playing animations");
+		for (JMonkeyEvent event: allRenderedEvents.values()) {
+			System.out.println("Playing: " + event.getId());
+			((JMonkeyMove) event).play();
+		}
+	}
+	
+	private void pauseAnimations() {
+		for (JMonkeyEvent event: allRenderedEvents.values()) {
+			((JMonkeyMove) event).pause();
+		}
+	}
+	
+	private void stopAnimations() {
+		//Stop all the moves
+		for (JMonkeyEvent event: allRenderedEvents.values()) {
+			((JMonkeyMove) event).stop();
+		}
+		//Clear the data structure
+		allRenderedEvents.clear();
+		allCollisions.clear();
+	}
 	
 	public void onStartButtonPressed () {
 		
-		/* Find play/pause button */
-		Button niftyElement = nifty.getCurrentScreen().findNiftyControl("StartButton", Button.class);
+		System.out.println("Start button..." + engineState);
 		
-				
 		switch (engineState) {
 		
-		case PLAYING: 	eventsRunning.pause();
+		case PLAYING: 	this.pauseAnimations();
 						engineState = State.PAUSED;
-						// Swap old with new text
-						niftyElement.setText("Play");
 						break;
 		
-		case PAUSED: 	eventsRunning.play();
+		case PAUSED: 	this.playAnimations();
 						engineState = State.PLAYING;
-						// Swap old with new text
-						niftyElement.setText("Pause");
 						break;
 						
-		case STOPPED: 	this.listener.onStart();
+		case STOPPED: 	this.playAnimations();
+						this.listener.onStart();
 						engineState = State.PLAYING;
-						// Swap old with new text
-						niftyElement.setText("Pause");
 						break;
 						
 		}
@@ -608,12 +740,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	
 	public void onResetButtonPressed () {
 		
-		/* Find play/pause button */
-		Button niftyElement = nifty.getCurrentScreen().findNiftyControl("StartButton", Button.class);
+		System.out.println("Resetting...");
 		
-		niftyElement.setText("Start");
-		
-		this.eventsRunning.stop();
+		this.stopAnimations();
 		this.engineState = State.STOPPED;
 		this.rootNode.detachAllChildren();
 		this.guiNode.detachAllChildren();
@@ -650,7 +779,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		        if (results.size() > 0) {
 		        	CollisionResult hitPlace = results.getClosestCollision();
 			        String inputPlaceId = hitPlace.getGeometry().getName();
-			        
+		
+			        //Call the simulator to add a token on this place
 			        listener.onUserClick(inputPlaceId);
 		        }
 		        
@@ -660,12 +790,17 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	};
 
 	@Override
-	public void destroyRepresentation(String geometryLabel) {
-		if (this.tokenQueue.containsKey(geometryLabel)) {
-			Spatial spatial = this.tokenQueue.get(geometryLabel).pop();
-			System.out.println("Destroying token : " + spatial.getName() + " on geometry: " + geometryLabel);
-			rootNode.detachChild(spatial);
+	public void destroyRepresentation(String id) {
+
+		if (allRenderedEvents.containsKey(id)) {
+			JMonkeyMove event = (JMonkeyMove) this.allRenderedEvents.get(id);
+			rootNode.detachChild(event.getSpatial());
+			System.out.println("Destroying token : " + event.getSpatial().getName() + " with ID: " + id);
+			
+			allRenderedEvents.remove(id);
+			allCollisions.remove(id);
 		}
+		
 	}
 
 	@Override
@@ -675,5 +810,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		 */
 		this.start();
 	}
+
 
 }

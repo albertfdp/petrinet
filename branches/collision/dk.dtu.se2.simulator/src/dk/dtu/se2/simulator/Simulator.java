@@ -99,14 +99,14 @@ public class Simulator implements Engine3DListener {
 		ArrayList<RTAnimation> tokensToBeDestroyed = new ArrayList<RTAnimation>();
 		for (RTAnimation animation : this.nextAnimations) {
 			if (animation.isDestroy()) {
-				this.engine3d.destroyRepresentation(animation.getGeometryLabel());
+				this.engine3d.destroyRepresentation(animation.getId());
 				tokensToBeDestroyed.add(animation);
 			}
 		}
 		this.nextAnimations.removeAll(tokensToBeDestroyed);
 		
 		for (RTAnimation animation : this.nextAnimations) {
-			System.out.println("Next animation: " + animation.getGeometryLabel() + " " + animation.getAnimation().toString());
+			System.out.println("Next animation: " + animation.getId() + " " + animation.getAnimation().toString());
 		}
 		
 		this.engine3d.addToAnimationQueue(this.nextAnimations);
@@ -122,7 +122,7 @@ public class Simulator implements Engine3DListener {
 		ArrayList<RTAnimation> tokensToBeDestroyed = new ArrayList<RTAnimation>();
 		for (RTAnimation animation : this.nextAnimations) {
 			if (animation.isDestroy()) {
-				this.engine3d.destroyRepresentation(animation.getGeometryLabel());
+				this.engine3d.destroyRepresentation(animation.getId());
 				tokensToBeDestroyed.add(animation);
 			}
 		}

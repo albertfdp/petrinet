@@ -11,6 +11,13 @@ import com.jme3.scene.Spatial;
 import dk.dtu.se2.animation.Move;
 
 
+
+import com.jme3.animation.LoopMode;
+import com.jme3.cinematic.MotionPath;
+import com.jme3.cinematic.events.MotionEvent;
+import com.jme3.scene.Spatial;
+
+
 /**
  * @author Monica
  *
