@@ -620,7 +620,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	@Override 
     public void simpleUpdate(float tpf) {
 				
-		/* Play waiting animations */
 		if (engineState == State.PLAYING) {
 			//All collisions recorded in this loop
 			HashSet<String> allCollisionsRecorded = new HashSet<String>();
