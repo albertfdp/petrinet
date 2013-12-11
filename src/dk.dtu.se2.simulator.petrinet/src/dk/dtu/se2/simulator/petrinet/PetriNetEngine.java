@@ -72,7 +72,7 @@ public class PetriNetEngine {
 						runtimeToken.setFinished(true);
 					}
 					tokens.add(runtimeToken);
-					animations.add(new RTAnimation(newPlace.getGeometryLabel().getText(), newPlace.getAnimationLabel().getStructure(), false));
+					animations.add(new RTAnimation(runtimeToken.getId(), newPlace.getGeometryLabel().getText(), newPlace.getAnimationLabel().getStructure(), false));
 				}
 				marking.put(newPlace, tokens);
 			}
@@ -93,7 +93,8 @@ public class PetriNetEngine {
 				if (place.getInputPlaceLabel() == null || (place.getInputPlaceLabel() != null
 						&& !place.getInputPlaceLabel().isText())) {
 					//This isn't an input place so it has an animation
-					animations.add(new RTAnimation(place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure(), false));
+					//The id of the animation here does not matter
+					animations.add(new RTAnimation(place.getId(), place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure(), false));
 				}
 			}
 			
@@ -110,19 +111,13 @@ public class PetriNetEngine {
 		ArrayList<RTAnimation> animations = new ArrayList<RTAnimation>();
 		
 		//Iterate through each transition
+		ArrayList<RTAnimation> tokensToRemove = new ArrayList<RTAnimation>();
+		
 		for (Transition transition : transitions) {
 			if (isTransitionEnabled(transition)) {
 				//The transition is enabled, fire it and get its labels
 				ArrayList<RTAnimation> newAnimations = fireTransition(transition);
 				animations.addAll(newAnimations);
-				
-				
-				for (Arc a: transition.getIn()) {
-					if (a.getSource() instanceof Place) {
-						Place p = (Place)a.getSource();
-						animations.add(new RTAnimation(p.getGeometryLabel().getText(), null, true));
-					}
-				}
 			}
 		}
 		return animations;
@@ -189,11 +184,19 @@ public class PetriNetEngine {
 				for (RTToken runtimeToken : marking.get(place)) {
 					if (runtimeToken.isFinished()) {
 						marking.get(place).remove(runtimeToken);
+						
+						//Add this token to the list of animations to be destroyed
+						System.out.println("Remove token id: " + runtimeToken.getId());
+						transitionAnimations.add(new RTAnimation(runtimeToken.getId(), 
+																place.getGeometryLabel().getText(),
+																null,
+																true));
 						break;
 					}
 				}
 			}
 		}
+		
 		//Iterate through the outgoing places, add a token and add a geometry labels to
 		//the set of animations
 		for (Arc arc: transition.getOut()) {
@@ -206,7 +209,7 @@ public class PetriNetEngine {
 				}
 				
 				marking.get(place).add(newToken);
-				transitionAnimations.add(new RTAnimation(place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure(), false));
+				transitionAnimations.add(new RTAnimation(newToken.getId(), place.getGeometryLabel().getText(), place.getAnimationLabel().getStructure(), false));
 			}
 		}
 		
