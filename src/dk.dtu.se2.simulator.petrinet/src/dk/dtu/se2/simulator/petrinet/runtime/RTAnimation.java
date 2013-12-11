@@ -4,6 +4,9 @@ import dk.dtu.se2.animation.Animation;
 
 public class RTAnimation {
 	
+	/* The place unique id */
+	private String id;
+	
 	/* The geometry label of that place */
 	private String geometryLabel;
 	
@@ -14,11 +17,20 @@ public class RTAnimation {
 	
 	public RTAnimation() {}
 	
-	public RTAnimation(String geometryLabel, Animation animation, boolean destroy) {
+	public RTAnimation(String id, String geometryLabel, Animation animation, boolean destroy) {
 		super();
+		this.id = id;
 		this.geometryLabel = geometryLabel;
 		this.animation = animation;
 		this.destroy = destroy;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getGeometryLabel() {
@@ -38,6 +50,31 @@ public class RTAnimation {
 	}
 	
 	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RTAnimation other = (RTAnimation) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
