@@ -58,6 +58,7 @@ import com.jme3.texture.Texture;
 import com.jme3.util.SkyFactory;
 
 import de.lessvoid.nifty.Nifty;
+import de.lessvoid.nifty.controls.Button;
 import de.lessvoid.nifty.screen.ScreenController;
 import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.animation.Appear;
@@ -700,21 +701,30 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	
 	public void onStartButtonPressed () {
 		
-		System.out.println("Start button..." + engineState);
+
+		/* Find play/pause button */
+		Button niftyElement = nifty.getCurrentScreen().findNiftyControl("StartButton", Button.class);
+		
 		
 		switch (engineState) {
 		
 		case PLAYING: 	this.pauseAnimations();
 						engineState = State.PAUSED;
+						// Swap old with new text
+						niftyElement.setText("Play");
 						break;
 		
 		case PAUSED: 	this.playAnimations();
 						engineState = State.PLAYING;
+						// Swap old with new text
+						niftyElement.setText("Pause");
 						break;
 						
 		case STOPPED: 	this.playAnimations();
 						this.listener.onStart();
 						engineState = State.PLAYING;
+						// Swap old with new text
+						niftyElement.setText("Pause");
 						break;
 						
 		}
@@ -722,7 +732,10 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	
 	public void onResetButtonPressed () {
 		
-		System.out.println("Resetting...");
+		/* Find play/pause button */
+		Button niftyElement = nifty.getCurrentScreen().findNiftyControl("StartButton", Button.class);
+		
+		niftyElement.setText("Start");
 		
 		this.stopAnimations();
 		this.engineState = State.STOPPED;
