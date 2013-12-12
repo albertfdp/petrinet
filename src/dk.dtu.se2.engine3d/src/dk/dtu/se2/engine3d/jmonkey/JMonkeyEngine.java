@@ -629,9 +629,10 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 			for (JMonkeyEvent event : allRenderedEvents.values()) {
 				JMonkeyMove currentMove = (JMonkeyMove) event;
 				ArrayList<String> collided = new ArrayList<String>();
+				//System.out.println("NEW COLLISIONS:");
 				for (JMonkeyEvent testedEvent : allRenderedEvents.values()) {
 					
-					if (testedEvent != event) {
+					if (testedEvent.getId() != event.getId()) {
 						JMonkeyMove testedMove = (JMonkeyMove) testedEvent;
 						
 						Spatial currentSpatial = currentMove.getSpatial();
@@ -641,12 +642,16 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 						currentSpatial.collideWith(testedSpatial.getWorldBound(), results);
 						if (results.size()>0) {
 							//There is a collision between currentSpatial and testedSpatial
-							if (currentMove.getMotionEvent().getCurrentValue() 
-									> testedMove.getMotionEvent().getCurrentValue()) {
+							if ((currentMove.getMotionEvent().getCurrentValue() 
+									>= testedMove.getMotionEvent().getCurrentValue())
+								&&
+									(currentMove.getGeometryLabel() == testedMove.getGeometryLabel())
+								) {
 								//If the collision wasn't already recorded, we add it and record it
 								if (!allCollisionsRecorded.contains(currentSpatial.getName())) {
 									collided.add(testedEvent.getId());
-									allCollisionsRecorded.add(event.getId());
+									//System.out.println("Collision added: " + event.getId());
+									allCollisionsRecorded.add(testedSpatial.getName());
 								}
 							}
 						}
