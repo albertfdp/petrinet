@@ -278,7 +278,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Physic
 				tokensNr++;
 				token.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
 				token.addControl(new TokenControl());
-						
+				
 				Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
 //				tokenMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));	// set the texture to the material
 				tokenMat.setTexture("ColorMap", assetManager.loadTexture(tokenAppearanceObject.getTexture()));	
@@ -287,7 +287,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Physic
 				token.setMaterial(tokenMat); // apply the material to the geometry
 
 				// scaling the train
-		     	token.scale(boundingBox.width * 0.01f);
+		     	token.scale(boundingBox.width * 0.03f);
 		     	
 				//rootNode.attachChild(token); // put this node in the scene, attached to the root
 				
@@ -341,8 +341,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Physic
 		        // AP: adding light - remember to get materials with shader
 		        DirectionalLight sun = new DirectionalLight();
 		        sun.setDirection(new Vector3f(-0.5f,-0.5f,-0.5f).normalizeLocal());
-		        //sun.setDirection(cam.getDirection());
-		        sun.setColor(ColorRGBA.Red);
 		        rootNode.addLight(sun);        
 		        
 		        // Drop shadows 
@@ -359,7 +357,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Physic
 				float groundDepthZ  = 2000; //(boundingBox.height/2) * 1.1f;
 				groundGeo = new Geometry("Box", new Box(groundWidthX, groundHeightY, groundDepthZ));
 				groundGeo.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
-				Material groundMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+				Material groundMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");
 				//groundMat.setColor("Color", ColorRGBA.Brown);
 				Texture groundTex = assetManager.loadTexture("Textures/ground.jpg"); 
 				groundTex.setWrap(Texture.WrapMode.Repeat);
@@ -404,7 +402,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Physic
  			viewPort.setBackgroundColor(ColorRGBA.Gray);
  	// AP: enable/disable camera fly - the ability to move the camera with keyboard and mouse
  			flyCam.setEnabled(false); 
- 			flyCam.setMoveSpeed(50);
+ 			flyCam.setMoveSpeed(100);
+ 			flyCam.setRotationSpeed(8);
+ 			flyCam.setZoomSpeed(50);
  			
  	// AP: toggle statistics window in bottom left
  			setDisplayFps(false);
@@ -551,6 +551,13 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Physic
 				newSpatial.setModelBound(new BoundingBox(newSpatial.getLocalTranslation(), 1, 1, 0));
 				newSpatial.updateModelBound();
 				
+				// Adding texture and shadows to token
+				newSpatial.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
+				Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
+				tokenMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));	 
+				newSpatial.setMaterial(tokenMat); 
+				newSpatial.scale(boundingBox.width * 0.008f);
+							
 				
 				//Attaching the spatial token to the rootnode and playing the event
 				rootNode.attachChild(newSpatial);
