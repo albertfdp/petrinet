@@ -6,7 +6,6 @@ import dk.dtu.se2.animation.AnimationPackage;
 import dk.dtu.se2.animation.Appear;
 import dk.dtu.se2.animation.Move;
 import dk.dtu.se2.animation.Sequence;
-import dk.dtu.se2.animation.Stop;
 import dk.dtu.se2.animation.services.AnimationLanguageGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
@@ -48,22 +47,7 @@ public abstract class AbstractAnimationLanguageSemanticSequencer extends Abstrac
 				else break;
 			case AnimationPackage.SEQUENCE:
 				if(context == grammarAccess.getAnimation_ImplRule()) {
-					sequence_Animation_Impl_Sequence(context, (Sequence) semanticObject); 
-					return; 
-				}
-				else if(context == grammarAccess.getAnimationRule() ||
-				   context == grammarAccess.getAnimation_ImplAccess().getSequenceAnimationsAction_1_1() ||
-				   context == grammarAccess.getSequenceRule()) {
-					sequence_Sequence(context, (Sequence) semanticObject); 
-					return; 
-				}
-				else break;
-			case AnimationPackage.STOP:
-				if(context == grammarAccess.getAnimationRule() ||
-				   context == grammarAccess.getAnimation_ImplRule() ||
-				   context == grammarAccess.getAnimation_ImplAccess().getSequenceAnimationsAction_1_1() ||
-				   context == grammarAccess.getStopRule()) {
-					sequence_Stop(context, (Stop) semanticObject); 
+					sequence_Animation_Impl(context, (Sequence) semanticObject); 
 					return; 
 				}
 				else break;
@@ -73,9 +57,9 @@ public abstract class AbstractAnimationLanguageSemanticSequencer extends Abstrac
 	
 	/**
 	 * Constraint:
-	 *     ((animations+=Animation_Impl_Sequence_1_1 animations+=Animation animations+=Animation*) | (animations+=Animation animations+=Animation*))
+	 *     (animations+=Animation_Impl_Sequence_1_1 animations+=Animation animations+=Animation*)
 	 */
-	protected void sequence_Animation_Impl_Sequence(EObject context, Sequence semanticObject) {
+	protected void sequence_Animation_Impl(EObject context, Sequence semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -112,23 +96,5 @@ public abstract class AbstractAnimationLanguageSemanticSequencer extends Abstrac
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getMoveAccess().getSpeedEDoubleParserRuleCall_3_0(), semanticObject.getSpeed());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (animations+=Animation animations+=Animation*)
-	 */
-	protected void sequence_Sequence(EObject context, Sequence semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {Stop}
-	 */
-	protected void sequence_Stop(EObject context, Stop semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 }

@@ -17,16 +17,8 @@ Appear returns Appear:
 	{Appear}
 	'appear' '(' geometry=EString ',' appearance=EString ')';
 
-Stop returns Stop:
-	{Stop}
-	'stop' '('')';
-
-Sequence returns Sequence:
-	{Sequence}
-	'[' animations+=Animation ( ";" animations += Animation )* ']';
-
 Animation returns Animation:
-	Move | Appear | Stop | Sequence;
+	Move | Appear;
 	
 EDouble returns ecore::EDouble:
    	'-'? INT? '.' INT;

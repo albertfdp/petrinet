@@ -44,9 +44,6 @@ public class AnimationLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAnimation_ImplAccess().getGroup_1_3(), "rule__Animation_Impl__Group_1_3__0");
 					put(grammarAccess.getMoveAccess().getGroup(), "rule__Move__Group__0");
 					put(grammarAccess.getAppearAccess().getGroup(), "rule__Appear__Group__0");
-					put(grammarAccess.getStopAccess().getGroup(), "rule__Stop__Group__0");
-					put(grammarAccess.getSequenceAccess().getGroup(), "rule__Sequence__Group__0");
-					put(grammarAccess.getSequenceAccess().getGroup_3(), "rule__Sequence__Group_3__0");
 					put(grammarAccess.getEDoubleAccess().getGroup(), "rule__EDouble__Group__0");
 					put(grammarAccess.getEIntAccess().getGroup(), "rule__EInt__Group__0");
 					put(grammarAccess.getAnimation_ImplAccess().getAnimationsAssignment_1_2(), "rule__Animation_Impl__AnimationsAssignment_1_2");
@@ -54,8 +51,6 @@ public class AnimationLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMoveAccess().getSpeedAssignment_3(), "rule__Move__SpeedAssignment_3");
 					put(grammarAccess.getAppearAccess().getGeometryAssignment_3(), "rule__Appear__GeometryAssignment_3");
 					put(grammarAccess.getAppearAccess().getAppearanceAssignment_5(), "rule__Appear__AppearanceAssignment_5");
-					put(grammarAccess.getSequenceAccess().getAnimationsAssignment_2(), "rule__Sequence__AnimationsAssignment_2");
-					put(grammarAccess.getSequenceAccess().getAnimationsAssignment_3_1(), "rule__Sequence__AnimationsAssignment_3_1");
 				}
 			};
 		}
