@@ -276,20 +276,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Physic
 				Spatial token = assetManager.loadModel(tokenAppearanceObject.getObject3D());
 				token.setName("t"+ tokensNr);
 				tokensNr++;
-				token.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
 				token.addControl(new TokenControl());
 				
-				Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
-//				tokenMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));	// set the texture to the material
-				tokenMat.setTexture("ColorMap", assetManager.loadTexture(tokenAppearanceObject.getTexture()));	
-				tokenMat.setColor("Color", ColorRGBA.White); // set the base color of the material  
-				
-				token.setMaterial(tokenMat); // apply the material to the geometry
-
-				// scaling the train
-		     	token.scale(boundingBox.width * 0.03f);
-		     	
-				//rootNode.attachChild(token); // put this node in the scene, attached to the root
 				
 				/* Get the motion path corresponding to the current animation */
 				MotionPath path = new MotionPath();
