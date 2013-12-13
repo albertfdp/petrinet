@@ -22,14 +22,11 @@ import com.jme3.animation.LoopMode;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppState;
 import com.jme3.bounding.BoundingBox;
-import com.jme3.bounding.BoundingSphere;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.bullet.collision.PhysicsCollisionEvent;
 import com.jme3.bullet.collision.PhysicsCollisionListener;
-import com.jme3.bullet.collision.shapes.BoxCollisionShape;
-import com.jme3.bullet.control.GhostControl;
-import com.jme3.cinematic.Cinematic;
 import com.jme3.cinematic.MotionPath;
+import com.jme3.cinematic.PlayState;
 import com.jme3.cinematic.events.MotionEvent;
 import com.jme3.collision.CollisionResult;
 import com.jme3.collision.CollisionResults;
@@ -69,7 +66,7 @@ import dk.dtu.se2.engine3d.Engine3D;
 import dk.dtu.se2.engine3d.Engine3DListener;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
-public class JMonkeyEngine extends SimpleApplication implements Engine3D {
+public class JMonkeyEngine extends SimpleApplication implements Engine3D, PhysicsCollisionListener {
 	
 	private BulletAppState bulletAppState;
 	
@@ -400,6 +397,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
  	    stateManager.attach(bulletAppState);
  		//Enable debug mode
  	    
+ 	    bulletAppState.getPhysicsSpace().addCollisionListener(this);
  	   bulletAppState.setDebugEnabled(true);
  	    
  	// AP: set the background color
@@ -556,7 +554,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				
 				//Attaching the spatial token to the rootnode and playing the event
 				rootNode.attachChild(newSpatial);
-			
+				
 				allRenderedEvents.put(clonedEventToQueue.getId(), clonedEventToQueue);
 				allCollisions.put(clonedEventToQueue.getId(), new ArrayList<String>());
 				((JMonkeyMove)clonedEventToQueue).play();
@@ -624,8 +622,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
     public void simpleUpdate(float tpf) {
 				
 		if (engineState == State.PLAYING) {
-			//All collisions recorded in this loop
-			HashSet<String> allCollisionsRecorded = new HashSet<String>();
+			
 			
 			//Iterate through every event, make its spatial collide with all the others
 			for (JMonkeyEvent event : allRenderedEvents.values()) {
@@ -634,7 +631,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				//System.out.println("NEW COLLISIONS:");
 				for (JMonkeyEvent testedEvent : allRenderedEvents.values()) {
 					
-					if (testedEvent.getId() != event.getId()) {
+					if (!testedEvent.getId().equals(event.getId())) {
 						JMonkeyMove testedMove = (JMonkeyMove) testedEvent;
 						
 						Spatial currentSpatial = currentMove.getSpatial();
@@ -644,17 +641,20 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 						currentSpatial.collideWith(testedSpatial.getWorldBound(), results);
 						if (results.size()>0) {
 							//There is a collision between currentSpatial and testedSpatial
-							if ((currentMove.getMotionEvent().getCurrentValue() 
-									>= testedMove.getMotionEvent().getCurrentValue())
+							int currentId = Integer.parseInt(currentMove.getId());
+							int testedId = Integer.parseInt(testedMove.getId());
+							
+							System.out.println("Current test: ");
+							System.out.println(currentId + " vs " + testedId);
+							System.out.println(currentMove.getGeometryLabel() + " vs " + testedMove.getGeometryLabel());
+							System.out.println(currentMove.getMotionEvent().getTraveledDistance() + " vs "+ testedMove.getMotionEvent().getTraveledDistance());
+							
+							
+							if ((currentId < testedId)
 								&&
-									(currentMove.getGeometryLabel() == testedMove.getGeometryLabel())
-								) {
-								//If the collision wasn't already recorded, we add it and record it
-								if (!allCollisionsRecorded.contains(currentSpatial.getName())) {
+								 (currentMove.getGeometryLabel().equals(testedMove.getGeometryLabel()))) {
+									System.out.println("Added collision");
 									collided.add(testedEvent.getId());
-									//System.out.println("Collision added: " + event.getId());
-									allCollisionsRecorded.add(testedSpatial.getName());
-								}
 							}
 						}
 					}
@@ -671,6 +671,13 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 					}
 				} else {
 					//We pause all the animations which collide
+//					if (allCollisions.containsKey(currentMove.getId())) {
+//						for (String id: allCollisions.get(currentMove.getId())) {
+//							JMonkeyMove toStartMove = (JMonkeyMove) allRenderedEvents.get(id);
+//							toStartMove.play();
+//						}
+//						allCollisions.remove(currentMove.getId());
+//					}
 					for (String id: collided) {
 						JMonkeyMove toPauseMove = (JMonkeyMove) allRenderedEvents.get(id);
 						toPauseMove.pause();
@@ -686,7 +693,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		System.out.println("Playing animations");
 		for (JMonkeyEvent event: allRenderedEvents.values()) {
 			System.out.println("Playing: " + event.getId());
-			((JMonkeyMove) event).play();
+			if (((JMonkeyMove) event).getMotionEvent().getPlayState() != PlayState.Playing) {
+				((JMonkeyMove) event).play();
+			}
 		}
 	}
 	
@@ -818,6 +827,25 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		 * Start jMonkey application - the simpleInitApp() function is called 
 		 */
 		this.start();
+	}
+
+	@Override
+	public void collision(PhysicsCollisionEvent event) {
+		// TODO Auto-generated method stub
+//		System.out.println("COLLISION BETWEEN: " + event.getNodeA() + " and " + event.getNodeB());
+//		String firstId = event.getNodeA().getName();
+//		String secondId = event.getNodeB().getName();
+//		
+//		if (allRenderedEvents.containsKey(firstId) && allRenderedEvents.containsKey(secondId)) {
+//			JMonkeyMove firstMove = ((JMonkeyMove) allRenderedEvents.get(firstId));
+//			JMonkeyMove secondMove = ((JMonkeyMove) allRenderedEvents.get(secondId));
+//			
+//			if (firstMove.getMotionEvent().getCurrentValue() > secondMove.getMotionEvent().getCurrentValue()) {
+//				secondMove.pause();		
+//			} else {
+//				firstMove.pause();
+//			}
+//		}
 	}
 
 
