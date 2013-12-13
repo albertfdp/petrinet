@@ -9,7 +9,6 @@ import geometry.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -21,9 +20,6 @@ import com.jme3.animation.LoopMode;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppState;
 import com.jme3.bounding.BoundingBox;
-import com.jme3.bullet.BulletAppState;
-import com.jme3.bullet.collision.PhysicsCollisionEvent;
-import com.jme3.bullet.collision.PhysicsCollisionListener;
 import com.jme3.cinematic.MotionPath;
 import com.jme3.cinematic.PlayState;
 import com.jme3.cinematic.events.MotionEvent;
@@ -649,6 +645,13 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 						allCollisions.remove(currentMove.getId());
 					}
 				} else {
+					if (allCollisions.containsKey(currentMove.getId())) {
+						for (String id: allCollisions.get(currentMove.getId())) {
+							JMonkeyMove toStartMove = (JMonkeyMove) allRenderedEvents.get(id);
+							toStartMove.play();
+						}
+						allCollisions.remove(currentMove.getId());
+					}
 					//We pause all the animations which collide with the current token
 					for (String id: collided) {
 						JMonkeyMove toPauseMove = (JMonkeyMove) allRenderedEvents.get(id);
