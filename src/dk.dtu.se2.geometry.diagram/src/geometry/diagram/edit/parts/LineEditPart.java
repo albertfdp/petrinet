@@ -179,7 +179,7 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		 */
 		private PointList calculateCatmullromPointList(PointList points,
 				double smoothness) {
-			PointList catmullromPoints = new PointList(); //This isn't correct, me thinks.
+			PointList catmullromPoints = new PointList();
 
 			//If the point list consists of only two points, list of smooth points is the same as list of control points
 			if (2 == points.size()) {
