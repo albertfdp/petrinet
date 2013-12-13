@@ -365,6 +365,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				Material groundMat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
 				//groundMat.setColor("Color", ColorRGBA.Brown);
 				Texture groundTex = assetManager.loadTexture("Textures/ground.jpg"); 
+				groundTex.setWrap(Texture.WrapMode.Repeat);
+				groundGeo.getMesh().scaleTextureCoordinates(new Vector2f(7,7));
 				groundMat.setTexture("ColorMap", groundTex);
 				groundGeo.setMaterial(groundMat);
 				//groundGeo.setLocalTranslation((boundingBox.width/2) + boundingBox.x, (-groundHeightY)-0.1f, (boundingBox.height/2) + boundingBox.y);
