@@ -778,7 +778,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		        // 3. Collect intersections between Ray and Input Places in results list.
 		        inputPlaces.collideWith(ray, results);
 		        // 4. Get the closest collision
-		        if (results.size() > 0) {
+		        if (results.size() > 0 && engineState == State.PLAYING) {
 		        	CollisionResult hitPlace = results.getClosestCollision();
 			        String inputPlaceId = hitPlace.getGeometry().getName();
 		
