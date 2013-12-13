@@ -1,5 +1,5 @@
-To use geometry editor in Eclipse first thing needed to do is to create a geometry file. To create it, a new General Project should be created by $General->Project$ which is found in $File->New->Project$. Give the project some name and click finish. 
-Right click the project folder $New->Other$. Find Geometry diagram from the list, the search functionality might help, choose it and click next. Refer to Figure~\ref{fig:ge-wiz-select}. Name it and click finish. On the project explorer leaf click on the file that you just generated. Geometry editor should open if it wasn't open already.
+To use geometry editor in Eclipse first thing needed to do is to create a geometry file. To create it, a new General Project should be created by $General->Project$ which is found in $File->New->Project$, if it hasn't been made already. Give the project some name and click finish. 
+Right click the project folder $New->Other$. Find Geometry diagram from the list, the search functionality might help, choose it and click next. Refer to Figure~\ref{fig:ge-wiz-select}. Name it, click next, name the geometry and then click finish. On the project explorer leaf two new files have now been generated, geometry and geometry diagram. The geometry diagram is Graphical geometry editor and the geometry is the model, presented in a tree view, that geometry diagram edits. Editing geometry within the tree view of the geometry will not do correct changes on the graphical view of the geometry. If the geometry diagram is not open, open it now.
 
 \begin{figure}[htp]
 \begin{center}
@@ -57,6 +57,16 @@ The properties view of Line as seen in Figure~\ref{fig:ge-prop-line} has followi
   \includegraphics[width=0.8\textwidth]{image/ge-prop-line.png}
   \caption{Properties view of line geometry object.}
   \label{fig:ge-prop-line}
+\end{center}
+\end{figure}
+
+To validate that the geometry doesn't have any duplicate Labels, the geometry should be opened in the tree view. Right click on the tree view window and choose the Validate option. If there are duplicate Labels, an error message will pop up. The tree view of the geometry used as an example can be seen in Figure~\ref{fig:ge-tree-exam}
+
+\begin{figure}[htp]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{image/ge-tree-exam.png}
+  \caption{Tree view of the geometry.}
+  \label{fig:ge-tree-exam}
 \end{center}
 \end{figure}
 
