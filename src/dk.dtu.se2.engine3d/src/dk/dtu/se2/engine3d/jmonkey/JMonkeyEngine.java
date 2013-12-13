@@ -551,10 +551,14 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D, Physic
 				newSpatial.setModelBound(new BoundingBox(newSpatial.getLocalTranslation(), 1, 1, 0));
 				newSpatial.updateModelBound();
 				
+				// Get token appearance
+				String tokenAppearance = this.tokenAppearances.get(geometryLabel);
+				AObject tokenAppearanceObject = this.appearance.getAObjectByLabel(tokenAppearance);
 				// Adding texture and shadows to token
 				newSpatial.setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode.CastAndReceive);
 				Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
-				tokenMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));	 
+				//tokenMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));	 
+				tokenMat.setTexture("ColorMap", assetManager.loadTexture(tokenAppearanceObject.getTexture()));
 				newSpatial.setMaterial(tokenMat); 
 				newSpatial.scale(boundingBox.width * 0.008f);
 							
