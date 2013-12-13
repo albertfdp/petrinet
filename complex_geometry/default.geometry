@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<geometry:Geometry xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:geometry="http://geometry/1.0">
+  <gObjects xsi:type="geometry:Connector" label="C1" xLocation="24" yLocation="322" out="L1"/>
+  <gObjects xsi:type="geometry:Connector" label="C2" xLocation="350" yLocation="422" out="L2 L3" in="L1"/>
+  <gObjects xsi:type="geometry:Connector" label="C3" xLocation="756" yLocation="492" out="L4" in="L2 L3"/>
+  <gObjects xsi:type="geometry:Line" label="L1" begin="C1" end="C2" appearanceLabel="track" tokenAppearanceLabel="train">
+    <bendPoints label="L1_Bendpoint_1" xLocation="164" yLocation="334"/>
+    <bendPoints label="L1_Bendpoint_2" xLocation="284" yLocation="422"/>
+  </gObjects>
+  <gObjects xsi:type="geometry:Line" label="L2" begin="C2" end="C3" appearanceLabel="track" tokenAppearanceLabel="train">
+    <bendPoints label="L2_Bendpoint_1" xLocation="494" yLocation="456"/>
+    <bendPoints label="L2_Bendpoint_2" xLocation="572" yLocation="519"/>
+    <bendPoints label="L2_Bendpoint_3" xLocation="506" yLocation="516"/>
+  </gObjects>
+  <gObjects xsi:type="geometry:Line" label="L3" begin="C2" end="C3" appearanceLabel="track" tokenAppearanceLabel="train">
+    <bendPoints label="L3_Bendpoint_1" xLocation="478" yLocation="364"/>
+  </gObjects>
+  <gObjects xsi:type="geometry:Connector" label="C4" xLocation="1308" yLocation="408" out="L5 L6" in="L4"/>
+  <gObjects xsi:type="geometry:Line" label="L4" begin="C3" end="C4" appearanceLabel="track" tokenAppearanceLabel="train">
+    <bendPoints label="L4_Bendpoint_1" xLocation="830" yLocation="514"/>
+    <bendPoints label="L4_Bendpoint_2" xLocation="926" yLocation="466"/>
+    <bendPoints label="L4_Bendpoint_3" xLocation="998" yLocation="490"/>
+    <bendPoints label="L4_Bendpoint_4" xLocation="1070" yLocation="490"/>
+    <bendPoints label="L4_Bendpoint_5" xLocation="1082" yLocation="466"/>
+    <bendPoints label="L4_Bendpoint_6" xLocation="1120" yLocation="432"/>
+    <bendPoints label="L4_Bendpoint_7" xLocation="1166" yLocation="442"/>
+  </gObjects>
+  <gObjects xsi:type="geometry:Connector" label="C6" xLocation="1450" yLocation="506" out="L9 L11" in="L5"/>
+  <gObjects xsi:type="geometry:Connector" label="C20" xLocation="1992" yLocation="300" out="L14 L16" in="L12 L17"/>
+  <gObjects xsi:type="geometry:Connector" label="C7" xLocation="1704" yLocation="280" out="L20 L13" in="L6 L8"/>
+  <gObjects xsi:type="geometry:Line" label="L5" begin="C4" end="C6" appearanceLabel="track" tokenAppearanceLabel="train"/>
+  <gObjects xsi:type="geometry:Connector" label="C8" xLocation="1742" yLocation="330" out="L8 L12" in="L20 L10"/>
+  <gObjects xsi:type="geometry:Line" label="L6" begin="C4" end="C7" appearanceLabel="track" tokenAppearanceLabel="train"/>
+  <gObjects xsi:type="geometry:Line" label="L8" begin="C8" end="C7" appearanceLabel="track" tokenAppearanceLabel="train">
+    <bendPoints label="L8_Bendpoint_1" xLocation="1742" yLocation="298"/>
+  </gObjects>
+  <gObjects xsi:type="geometry:Line" label="L20" begin="C7" end="C8" appearanceLabel="track" tokenAppearanceLabel="train">
+    <bendPoints label="L9_Bendpoint_1" xLocation="1710" yLocation="306"/>
+  </gObjects>
+  <gObjects xsi:type="geometry:Connector" label="C9" xLocation="1606" yLocation="425" out="L10" in="L9 L11"/>
+  <gObjects xsi:type="geometry:Line" label="L9" begin="C6" end="C9" appearanceLabel="track" tokenAppearanceLabel="train"/>
+  <gObjects xsi:type="geometry:Line" label="L10" begin="C9" end="C8" appearanceLabel="track" tokenAppearanceLabel="train"/>
+  <gObjects xsi:type="geometry:Line" label="L11" begin="C6" end="C9" appearanceLabel="track" tokenAppearanceLabel="train">
+    <bendPoints label="L11_Bendpoint_1" xLocation="1518" yLocation="570"/>
+    <bendPoints label="L11_Bendpoint_2" xLocation="1518" yLocation="618"/>
+    <bendPoints label="L11_Bendpoint_3" xLocation="1590" yLocation="618"/>
+    <bendPoints label="L11_Bendpoint_4" xLocation="1806" yLocation="714"/>
+    <bendPoints label="L11_Bendpoint_5" xLocation="1914" yLocation="702"/>
+    <bendPoints label="L11_Bendpoint_6" xLocation="1974" yLocation="522"/>
+  </gObjects>
+  <gObjects xsi:type="geometry:Connector" label="C10" xLocation="12" yLocation="-13" out="L15 L17" in="L13 L16"/>
+  <gObjects xsi:type="geometry:Connector" label="C11" xLocation="2064" yLocation="204" in="L15"/>
+  <gObjects xsi:type="geometry:Connector" label="C12" xLocation="2064" yLocation="372" in="L14"/>
+  <gObjects xsi:type="geometry:Line" label="L12" begin="C8" end="C20" appearanceLabel="track" tokenAppearanceLabel="train"/>
+  <gObjects xsi:type="geometry:Line" label="L13" begin="C7" end="C10" appearanceLabel="track" tokenAppearanceLabel="train"/>
+  <gObjects xsi:type="geometry:Line" label="L14" begin="C20" end="C12" appearanceLabel="track" tokenAppearanceLabel="train"/>
+  <gObjects xsi:type="geometry:Line" label="L15" begin="C10" end="C11" appearanceLabel="track" tokenAppearanceLabel="train"/>
+  <gObjects xsi:type="geometry:Line" label="L16" begin="C20" end="C10" appearanceLabel="track" tokenAppearanceLabel="train"/>
+  <gObjects xsi:type="geometry:Line" label="L17" begin="C10" end="C20" appearanceLabel="track" tokenAppearanceLabel="train"/>
+</geometry:Geometry>
