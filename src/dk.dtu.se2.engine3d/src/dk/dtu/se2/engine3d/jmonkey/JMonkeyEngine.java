@@ -59,8 +59,6 @@ import de.lessvoid.nifty.screen.ScreenController;
 import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.animation.Appear;
 import dk.dtu.se2.animation.Move;
-import dk.dtu.se2.animation.Sequence;
-import dk.dtu.se2.animation.Stop;
 import dk.dtu.se2.engine3d.Engine3D;
 import dk.dtu.se2.engine3d.Engine3DListener;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
@@ -531,7 +529,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				changeAppearanceOfSpatial((Appear) animation.getAnimation());		
 			}			
 			
-			System.out.println("Animation added to queue: " + animation.getGeometryLabel());
+			if (DEBUG_MODE) {
+				System.out.println("Animation added to queue: " + animation.getGeometryLabel());
+			}
 		}
 	}
 	
@@ -540,7 +540,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	 * @param appearAnimation: The appear animation performed on a Spatial in a geometry.
 	 */
 	private void changeAppearanceOfSpatial(Appear appearAnimation) {
-		System.out.println("Changing appearance of " + appearAnimation.getGeometry() + " to " + appearAnimation.getAppearance());
+		if (DEBUG_MODE) {
+			System.out.println("Changing appearance of " + appearAnimation.getGeometry() + " to " + appearAnimation.getAppearance());
+		}
 		Spatial inputObject = inputs.get(appearAnimation.getGeometry());
 		/*
 		 * Get the appearance object corresponding to the input place's appearance label
@@ -612,11 +614,12 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 							//There is a collision between currentSpatial and testedSpatial
 							int currentId = Integer.parseInt(currentMove.getId());
 							int testedId = Integer.parseInt(testedMove.getId());
-							
-							System.out.println("Current test: ");
-							System.out.println(currentId + " vs " + testedId);
-							System.out.println(currentMove.getGeometryLabel() + " vs " + testedMove.getGeometryLabel());
-							System.out.println(currentMove.getMotionEvent().getTraveledDistance() + " vs "+ testedMove.getMotionEvent().getTraveledDistance());
+							if (DEBUG_MODE) {
+								System.out.println("Current test: ");
+								System.out.println(currentId + " vs " + testedId);
+								System.out.println(currentMove.getGeometryLabel() + " vs " + testedMove.getGeometryLabel());
+								System.out.println(currentMove.getMotionEvent().getTraveledDistance() + " vs "+ testedMove.getMotionEvent().getTraveledDistance());	
+							}
 							
 							/*
 							 * If the currentId is less than testedId, the currentMove was on the line first
@@ -625,8 +628,11 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 							if ((currentId < testedId)
 								&&
 								 (currentMove.getGeometryLabel().equals(testedMove.getGeometryLabel()))) {
-									System.out.println("Added collision");
-									collided.add(testedEvent.getId());
+								
+								if (DEBUG_MODE) {
+									System.out.println("Added collision");	
+								}
+								collided.add(testedEvent.getId());
 							}
 						}
 					}
@@ -659,9 +665,13 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	 * Starts all the tokens present in the 3D visualization
 	 */
 	private void playAnimations() {
-		System.out.println("Playing animations");
+		if (DEBUG_MODE) {
+			System.out.println("Playing animations");
+		}
 		for (JMonkeyEvent event: allRenderedEvents.values()) {
-			System.out.println("Playing: " + event.getId());
+			if (DEBUG_MODE) {
+				System.out.println("Playing: " + event.getId());	
+			}
 			if (((JMonkeyMove) event).getMotionEvent().getPlayState() != PlayState.Playing) {
 				((JMonkeyMove) event).play();
 			}
@@ -787,7 +797,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 			//Get the motion event and remove its spatial from the scene
 			JMonkeyMove event = (JMonkeyMove) this.allRenderedEvents.get(id);
 			rootNode.detachChild(event.getSpatial());
-			System.out.println("Destroying token : " + event.getSpatial().getName() + " with ID: " + id);
+			if (DEBUG_MODE) {
+				System.out.println("Destroying token : " + event.getSpatial().getName() + " with ID: " + id);
+			}
 			
 			//Remove all the references to this object and start all the events that previously collided with it.
 			allRenderedEvents.remove(id);
