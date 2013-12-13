@@ -109,6 +109,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
     }
     
     private State engineState;
+    
+    private float objectScale = 1f;  // scales tokens and input point 3D models
     	
 	private void setUpEnvironment() {
 		
@@ -224,7 +226,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
 				
 				inputObject.setMaterial(inputMat); // apply the material to the geometry
-				
+				inputObject.scale(objectScale);
 				inputObject.setLocalTranslation(new Vector3f(x,0f,y));
 								
 		        //Attach the geometry to input places node
@@ -392,7 +394,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
  	 */
  	private void scaleInputPlaces() {
  		for (Spatial spatial:inputs.values())
- 			spatial.scale(boundingBox.width * 0.02f);
+ 			spatial.scale(objectScale);
  	}
  	
  	@Override
@@ -512,7 +514,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				//tokenMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));	 
 				tokenMat.setTexture("ColorMap", assetManager.loadTexture(tokenAppearanceObject.getTexture()));
 				newSpatial.setMaterial(tokenMat); 
-				newSpatial.scale(boundingBox.width * 0.008f);
+				newSpatial.scale(objectScale);
 							
 				//Attaching the spatial token to the rootnode and playing the event
 				rootNode.attachChild(newSpatial);
