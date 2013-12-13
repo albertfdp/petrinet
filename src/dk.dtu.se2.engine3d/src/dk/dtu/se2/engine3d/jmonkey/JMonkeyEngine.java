@@ -613,8 +613,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 							if (DEBUG_MODE) {
 								System.out.println("Current test: ");
 								System.out.println(currentId + " vs " + testedId);
-								System.out.println(currentMove.getGeometryLabel() + " vs " + testedMove.getGeometryLabel());
-								System.out.println(currentMove.getMotionEvent().getTraveledDistance() + " vs "+ testedMove.getMotionEvent().getTraveledDistance());	
+								System.out.println(currentMove.getGeometryLabel() + " vs " + testedMove.getGeometryLabel());	
 							}
 							
 							/*
