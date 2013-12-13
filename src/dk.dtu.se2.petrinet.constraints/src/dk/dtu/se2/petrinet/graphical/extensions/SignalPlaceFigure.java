@@ -10,7 +10,8 @@ import dk.dtu.se2.petrinet.InputPlace;
 /**
  * Graphical extensions to Petri Net Editor
  * 
- * @author albert
+ * @generated NOT
+ * @author Albert
  *
  */
 public class SignalPlaceFigure extends PlaceFigure {

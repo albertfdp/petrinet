@@ -14,7 +14,8 @@ import dk.dtu.se2.petrinet.Place;
 /**
  * Only allow arcs to be a connection between Places and Transitions.
  * 
- * @author albert
+ * @generated NOT
+ * @author Albert
  *
  */
 public class ArcValidator extends AbstractModelConstraint {

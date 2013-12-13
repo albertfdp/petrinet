@@ -12,7 +12,7 @@ import dk.dtu.se2.petrinet.Place;
 /**
  * @generated NOT
  * 
- * @author albert
+ * @author Albert
  *
  */
 public class SignalnetGraphics extends GraphicalExtension {
