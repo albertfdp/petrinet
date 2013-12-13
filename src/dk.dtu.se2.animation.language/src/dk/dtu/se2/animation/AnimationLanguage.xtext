@@ -11,7 +11,7 @@ Animation_Impl returns Animation:
 
 Move returns Move:
 	{Move}
-	'move' '(' speed=EInt ')';
+	'move' '(' speed=EDouble ')';
 
 Appear returns Appear:
 	{Appear}
@@ -27,6 +27,10 @@ Sequence returns Sequence:
 
 Animation returns Animation:
 	Move | Appear | Stop | Sequence;
+	
+EDouble returns ecore::EDouble:
+   	'-'? INT? '.' INT;
+
 
 EInt returns ecore::EInt:
 	'-'? INT;

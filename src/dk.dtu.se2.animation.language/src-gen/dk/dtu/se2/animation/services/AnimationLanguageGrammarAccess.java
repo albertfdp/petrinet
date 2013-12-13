@@ -77,14 +77,14 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 		private final Keyword cMoveKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cSpeedAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cSpeedEIntParserRuleCall_3_0 = (RuleCall)cSpeedAssignment_3.eContents().get(0);
+		private final RuleCall cSpeedEDoubleParserRuleCall_3_0 = (RuleCall)cSpeedAssignment_3.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Move:
-		//	{Move} "move" "(" speed=EInt ")";
+		//	{Move} "move" "(" speed=EDouble ")";
 		public ParserRule getRule() { return rule; }
 
-		//{Move} "move" "(" speed=EInt ")"
+		//{Move} "move" "(" speed=EDouble ")"
 		public Group getGroup() { return cGroup; }
 
 		//{Move}
@@ -96,11 +96,11 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 		//"("
 		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 
-		//speed=EInt
+		//speed=EDouble
 		public Assignment getSpeedAssignment_3() { return cSpeedAssignment_3; }
 
-		//EInt
-		public RuleCall getSpeedEIntParserRuleCall_3_0() { return cSpeedEIntParserRuleCall_3_0; }
+		//EDouble
+		public RuleCall getSpeedEDoubleParserRuleCall_3_0() { return cSpeedEDoubleParserRuleCall_3_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
@@ -258,6 +258,34 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 		public RuleCall getSequenceParserRuleCall_3() { return cSequenceParserRuleCall_3; }
 	}
 
+	public class EDoubleElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EDouble");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final RuleCall cINTTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
+		
+		//EDouble returns ecore::EDouble:
+		//	"-"? INT? "." INT;
+		public ParserRule getRule() { return rule; }
+
+		//"-"? INT? "." INT
+		public Group getGroup() { return cGroup; }
+
+		//"-"?
+		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
+
+		//INT?
+		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_2() { return cFullStopKeyword_2; }
+
+		//INT
+		public RuleCall getINTTerminalRuleCall_3() { return cINTTerminalRuleCall_3; }
+	}
+
 	public class EIntElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EInt");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -305,6 +333,7 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 	private StopElements pStop;
 	private SequenceElements pSequence;
 	private AnimationElements pAnimation;
+	private EDoubleElements pEDouble;
 	private EIntElements pEInt;
 	private EStringElements pEString;
 	
@@ -357,7 +386,7 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 	}
 
 	//Move:
-	//	{Move} "move" "(" speed=EInt ")";
+	//	{Move} "move" "(" speed=EDouble ")";
 	public MoveElements getMoveAccess() {
 		return (pMove != null) ? pMove : (pMove = new MoveElements());
 	}
@@ -404,6 +433,16 @@ public class AnimationLanguageGrammarAccess extends AbstractGrammarElementFinder
 	
 	public ParserRule getAnimationRule() {
 		return getAnimationAccess().getRule();
+	}
+
+	//EDouble returns ecore::EDouble:
+	//	"-"? INT? "." INT;
+	public EDoubleElements getEDoubleAccess() {
+		return (pEDouble != null) ? pEDouble : (pEDouble = new EDoubleElements());
+	}
+	
+	public ParserRule getEDoubleRule() {
+		return getEDoubleAccess().getRule();
 	}
 
 	//EInt returns ecore::EInt:

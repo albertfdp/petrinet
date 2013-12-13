@@ -174,9 +174,9 @@ ruleMove returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMoveAccess().getSpeedEIntParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getMoveAccess().getSpeedEDoubleParserRuleCall_3_0()); 
 	    }
-		lv_speed_3_0=ruleEInt		{
+		lv_speed_3_0=ruleEDouble		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMoveRule());
 	        }
@@ -184,7 +184,7 @@ ruleMove returns [EObject current=null]
        			$current, 
        			"speed",
         		lv_speed_3_0, 
-        		"EInt");
+        		"EDouble");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -453,17 +453,17 @@ ruleAnimation returns [EObject current=null]
 
 
 
-// Entry rule entryRuleEInt
-entryRuleEInt returns [String current=null] 
+// Entry rule entryRuleEDouble
+entryRuleEDouble returns [String current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getEIntRule()); } 
-	 iv_ruleEInt=ruleEInt 
-	 { $current=$iv_ruleEInt.current.getText(); }  
+	{ newCompositeNode(grammarAccess.getEDoubleRule()); } 
+	 iv_ruleEDouble=ruleEDouble 
+	 { $current=$iv_ruleEDouble.current.getText(); }  
 	 EOF 
 ;
 
-// Rule EInt
-ruleEInt returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+// Rule EDouble
+ruleEDouble returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
@@ -471,17 +471,32 @@ ruleEInt returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 	kw='-' 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getEIntAccess().getHyphenMinusKeyword_0()); 
+        newLeafNode(kw, grammarAccess.getEDoubleAccess().getHyphenMinusKeyword_0()); 
     }
-)?    this_INT_1=RULE_INT    {
+)?(    this_INT_1=RULE_INT    {
 		$current.merge(this_INT_1);
     }
 
     { 
-    newLeafNode(this_INT_1, grammarAccess.getEIntAccess().getINTTerminalRuleCall_1()); 
+    newLeafNode(this_INT_1, grammarAccess.getEDoubleAccess().getINTTerminalRuleCall_1()); 
+    }
+)?
+	kw='.' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getEDoubleAccess().getFullStopKeyword_2()); 
+    }
+    this_INT_3=RULE_INT    {
+		$current.merge(this_INT_3);
+    }
+
+    { 
+    newLeafNode(this_INT_3, grammarAccess.getEDoubleAccess().getINTTerminalRuleCall_3()); 
     }
 )
     ;
+
+
 
 
 

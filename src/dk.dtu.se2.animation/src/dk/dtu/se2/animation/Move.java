@@ -29,12 +29,12 @@ public interface Move extends Animation {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Speed</em>' attribute.
-	 * @see #setSpeed(int)
+	 * @see #setSpeed(double)
 	 * @see dk.dtu.se2.animation.AnimationPackage#getMove_Speed()
 	 * @model
 	 * @generated
 	 */
-	int getSpeed();
+	double getSpeed();
 
 	/**
 	 * Sets the value of the '{@link dk.dtu.se2.animation.Move#getSpeed <em>Speed</em>}' attribute.
@@ -44,6 +44,6 @@ public interface Move extends Animation {
 	 * @see #getSpeed()
 	 * @generated
 	 */
-	void setSpeed(int value);
+	void setSpeed(double value);
 
 } // Move

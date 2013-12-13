@@ -101,7 +101,7 @@ public abstract class AbstractAnimationLanguageSemanticSequencer extends Abstrac
 	
 	/**
 	 * Constraint:
-	 *     speed=EInt
+	 *     speed=EDouble
 	 */
 	protected void sequence_Move(EObject context, Move semanticObject) {
 		if(errorAcceptor != null) {
@@ -110,7 +110,7 @@ public abstract class AbstractAnimationLanguageSemanticSequencer extends Abstrac
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMoveAccess().getSpeedEIntParserRuleCall_3_0(), semanticObject.getSpeed());
+		feeder.accept(grammarAccess.getMoveAccess().getSpeedEDoubleParserRuleCall_3_0(), semanticObject.getSpeed());
 		feeder.finish();
 	}
 	

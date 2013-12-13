@@ -280,8 +280,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				Vector3f startWayPoint = path.getWayPoint(0);
 				
 				/* Create motion event and JMonkeyMove event corresponding to the move animation */
-				MotionEvent motionEvent = new MotionEvent(token, path, 10, LoopMode.DontLoop);
-				motionEvent.setSpeed(((Move) animation).getSpeed());
+				MotionEvent motionEvent = new MotionEvent(token, path, LoopMode.DontLoop);
+				motionEvent.setSpeed((float)((Move) animation).getSpeed());
 				motionEvent.setDirectionType(MotionEvent.Direction.Path); // the spatial is always faced in the direction of the path while moving
 								
 				JMonkeyEvent event = new JMonkeyMove(geometryLabel, motionEvent, this); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).

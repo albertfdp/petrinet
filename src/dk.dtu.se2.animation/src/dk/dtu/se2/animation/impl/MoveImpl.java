@@ -33,7 +33,7 @@ public class MoveImpl extends AnimationImpl implements Move {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SPEED_EDEFAULT = 0;
+	protected static final double SPEED_EDEFAULT = 0.0;
 
 	/**
 	 * The cached value of the '{@link #getSpeed() <em>Speed</em>}' attribute.
@@ -43,7 +43,7 @@ public class MoveImpl extends AnimationImpl implements Move {
 	 * @generated
 	 * @ordered
 	 */
-	protected int speed = SPEED_EDEFAULT;
+	protected double speed = SPEED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -69,7 +69,7 @@ public class MoveImpl extends AnimationImpl implements Move {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getSpeed() {
+	public double getSpeed() {
 		return speed;
 	}
 
@@ -78,8 +78,8 @@ public class MoveImpl extends AnimationImpl implements Move {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSpeed(int newSpeed) {
-		int oldSpeed = speed;
+	public void setSpeed(double newSpeed) {
+		double oldSpeed = speed;
 		speed = newSpeed;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AnimationPackage.MOVE__SPEED, oldSpeed, speed));
@@ -108,7 +108,7 @@ public class MoveImpl extends AnimationImpl implements Move {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AnimationPackage.MOVE__SPEED:
-				setSpeed((Integer)newValue);
+				setSpeed((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

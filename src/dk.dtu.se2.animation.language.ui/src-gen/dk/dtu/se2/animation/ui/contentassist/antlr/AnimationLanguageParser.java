@@ -47,6 +47,7 @@ public class AnimationLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStopAccess().getGroup(), "rule__Stop__Group__0");
 					put(grammarAccess.getSequenceAccess().getGroup(), "rule__Sequence__Group__0");
 					put(grammarAccess.getSequenceAccess().getGroup_3(), "rule__Sequence__Group_3__0");
+					put(grammarAccess.getEDoubleAccess().getGroup(), "rule__EDouble__Group__0");
 					put(grammarAccess.getEIntAccess().getGroup(), "rule__EInt__Group__0");
 					put(grammarAccess.getAnimation_ImplAccess().getAnimationsAssignment_1_2(), "rule__Animation_Impl__AnimationsAssignment_1_2");
 					put(grammarAccess.getAnimation_ImplAccess().getAnimationsAssignment_1_3_1(), "rule__Animation_Impl__AnimationsAssignment_1_3_1");
