@@ -2,26 +2,25 @@
  */
 package dk.dtu.se2.petrinet;
 
-import org.pnml.tools.epnk.pnmlcoremodel.Attribute;
+import org.pnml.tools.epnk.pnmlcoremodel.Label;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Input Place</b></em>'.
+ * A representation of the model object '<em><b>Appearance Label</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link dk.dtu.se2.petrinet.InputPlace#isText <em>Text</em>}</li>
+ *   <li>{@link dk.dtu.se2.petrinet.AppearanceLabel#getText <em>Text</em>}</li>
  * </ul>
  * </p>
  *
- * @see dk.dtu.se2.petrinet.PetrinetPackage#getInputPlace()
+ * @see dk.dtu.se2.petrinet.PetrinetPackage#getAppearanceLabel()
  * @model
  * @generated
  */
-public interface InputPlace extends Attribute {
-
+public interface AppearanceLabel extends Label {
 	/**
 	 * Returns the value of the '<em><b>Text</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -31,20 +30,21 @@ public interface InputPlace extends Attribute {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Text</em>' attribute.
-	 * @see #setText(boolean)
-	 * @see dk.dtu.se2.petrinet.PetrinetPackage#getInputPlace_Text()
+	 * @see #setText(String)
+	 * @see dk.dtu.se2.petrinet.PetrinetPackage#getAppearanceLabel_Text()
 	 * @model
 	 * @generated
 	 */
-	boolean isText();
+	String getText();
 
 	/**
-	 * Sets the value of the '{@link dk.dtu.se2.petrinet.InputPlace#isText <em>Text</em>}' attribute.
+	 * Sets the value of the '{@link dk.dtu.se2.petrinet.AppearanceLabel#getText <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Text</em>' attribute.
-	 * @see #isText()
+	 * @see #getText()
 	 * @generated
 	 */
-	void setText(boolean value);
-} // InputPlace
+	void setText(String value);
+
+} // AppearanceLabel

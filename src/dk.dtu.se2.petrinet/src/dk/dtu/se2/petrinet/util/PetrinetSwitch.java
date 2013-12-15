@@ -116,6 +116,23 @@ public class PetrinetSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case PetrinetPackage.ARC: {
+				Arc arc = (Arc)theEObject;
+				T result = caseArc(arc);
+				if (result == null) result = casePnmlcoremodel_Arc(arc);
+				if (result == null) result = caseObject(arc);
+				if (result == null) result = caseID(arc);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PetrinetPackage.IDENTITY: {
+				Identity identity = (Identity)theEObject;
+				T result = caseIdentity(identity);
+				if (result == null) result = caseAttribute(identity);
+				if (result == null) result = caseLabel(identity);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case PetrinetPackage.INPUT_PLACE: {
 				InputPlace inputPlace = (InputPlace)theEObject;
 				T result = caseInputPlace(inputPlace);
@@ -200,6 +217,36 @@ public class PetrinetSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseToken(Token object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Arc</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Arc</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseArc(Arc object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Identity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Identity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentity(Identity object) {
 		return null;
 	}
 
@@ -324,6 +371,21 @@ public class PetrinetSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Attribute</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAttribute(Attribute object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Structured Label</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -339,17 +401,17 @@ public class PetrinetSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Arc</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Attribute</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Arc</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAttribute(Attribute object) {
+	public T casePnmlcoremodel_Arc(org.pnml.tools.epnk.pnmlcoremodel.Arc object) {
 		return null;
 	}
 

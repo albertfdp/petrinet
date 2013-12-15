@@ -2,27 +2,24 @@
  */
 package dk.dtu.se2.petrinet.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
+import org.pnml.tools.epnk.structuredpntypemodel.StructuredpntypemodelPackage;
 import dk.dtu.se2.animation.AnimationPackage;
-
 import dk.dtu.se2.petrinet.AnimationLabel;
+import dk.dtu.se2.petrinet.Arc;
 import dk.dtu.se2.petrinet.ExtendedPetriNet;
 import dk.dtu.se2.petrinet.GeometryLabel;
+import dk.dtu.se2.petrinet.Identity;
 import dk.dtu.se2.petrinet.InputPlace;
 import dk.dtu.se2.petrinet.PetrinetFactory;
 import dk.dtu.se2.petrinet.PetrinetPackage;
 import dk.dtu.se2.petrinet.Place;
 import dk.dtu.se2.petrinet.Token;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
-
-import org.pnml.tools.epnk.structuredpntypemodel.StructuredpntypemodelPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -65,6 +62,20 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * @generated
 	 */
 	private EClass tokenEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass arcEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass identityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -251,6 +262,42 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getArc() {
+		return arcEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getArc_Identity() {
+		return (EReference)arcEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getIdentity() {
+		return identityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIdentity_Text() {
+		return (EAttribute)identityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInputPlace() {
 		return inputPlaceEClass;
 	}
@@ -309,6 +356,12 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		tokenEClass = createEClass(TOKEN);
 		createEAttribute(tokenEClass, TOKEN__TEXT);
 
+		arcEClass = createEClass(ARC);
+		createEReference(arcEClass, ARC__IDENTITY);
+
+		identityEClass = createEClass(IDENTITY);
+		createEAttribute(identityEClass, IDENTITY__TEXT);
+
 		inputPlaceEClass = createEClass(INPUT_PLACE);
 		createEAttribute(inputPlaceEClass, INPUT_PLACE__TEXT);
 	}
@@ -351,6 +404,8 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		geometryLabelEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		animationLabelEClass.getESuperTypes().add(theStructuredpntypemodelPackage.getStructuredLabel());
 		tokenEClass.getESuperTypes().add(thePnmlcoremodelPackage.getAttribute());
+		arcEClass.getESuperTypes().add(thePnmlcoremodelPackage.getArc());
+		identityEClass.getESuperTypes().add(thePnmlcoremodelPackage.getAttribute());
 		inputPlaceEClass.getESuperTypes().add(thePnmlcoremodelPackage.getAttribute());
 
 		// Initialize classes and features; add operations and parameters
@@ -370,6 +425,12 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 
 		initEClass(tokenEClass, Token.class, "Token", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getToken_Text(), ecorePackage.getEString(), "text", null, 0, 1, Token.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(arcEClass, Arc.class, "Arc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getArc_Identity(), this.getIdentity(), null, "identity", null, 0, 1, Arc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(identityEClass, Identity.class, "Identity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIdentity_Text(), ecorePackage.getEString(), "text", null, 0, 1, Identity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inputPlaceEClass, InputPlace.class, "InputPlace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInputPlace_Text(), ecorePackage.getEBoolean(), "text", null, 0, 1, InputPlace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

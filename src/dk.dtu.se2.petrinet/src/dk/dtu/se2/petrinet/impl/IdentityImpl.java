@@ -2,54 +2,57 @@
  */
 package dk.dtu.se2.petrinet.impl;
 
-import dk.dtu.se2.petrinet.InputPlace;
+import dk.dtu.se2.petrinet.Identity;
 import dk.dtu.se2.petrinet.PetrinetPackage;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.pnml.tools.epnk.pnmlcoremodel.impl.AttributeImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Input Place</b></em>'.
+ * An implementation of the model object '<em><b>Identity</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link dk.dtu.se2.petrinet.impl.InputPlaceImpl#isText <em>Text</em>}</li>
+ *   <li>{@link dk.dtu.se2.petrinet.impl.IdentityImpl#getText <em>Text</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class InputPlaceImpl extends AttributeImpl implements InputPlace {
+public class IdentityImpl extends AttributeImpl implements Identity {
 	/**
-	 * The default value of the '{@link #isText() <em>Text</em>}' attribute.
+	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isText()
+	 * @see #getText()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean TEXT_EDEFAULT = false;
+	protected static final String TEXT_EDEFAULT = null;
+
 	/**
-	 * The cached value of the '{@link #isText() <em>Text</em>}' attribute.
+	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isText()
+	 * @see #getText()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean text = TEXT_EDEFAULT;
+	protected String text = TEXT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InputPlaceImpl() {
+	protected IdentityImpl() {
 		super();
 	}
 
@@ -60,7 +63,7 @@ public class InputPlaceImpl extends AttributeImpl implements InputPlace {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return PetrinetPackage.Literals.INPUT_PLACE;
+		return PetrinetPackage.Literals.IDENTITY;
 	}
 
 	/**
@@ -68,7 +71,7 @@ public class InputPlaceImpl extends AttributeImpl implements InputPlace {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isText() {
+	public String getText() {
 		return text;
 	}
 
@@ -77,11 +80,11 @@ public class InputPlaceImpl extends AttributeImpl implements InputPlace {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setText(boolean newText) {
-		boolean oldText = text;
+	public void setText(String newText) {
+		String oldText = text;
 		text = newText;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.INPUT_PLACE__TEXT, oldText, text));
+			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.IDENTITY__TEXT, oldText, text));
 	}
 
 	/**
@@ -92,8 +95,8 @@ public class InputPlaceImpl extends AttributeImpl implements InputPlace {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PetrinetPackage.INPUT_PLACE__TEXT:
-				return isText();
+			case PetrinetPackage.IDENTITY__TEXT:
+				return getText();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -106,8 +109,8 @@ public class InputPlaceImpl extends AttributeImpl implements InputPlace {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PetrinetPackage.INPUT_PLACE__TEXT:
-				setText((Boolean)newValue);
+			case PetrinetPackage.IDENTITY__TEXT:
+				setText((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -121,7 +124,7 @@ public class InputPlaceImpl extends AttributeImpl implements InputPlace {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PetrinetPackage.INPUT_PLACE__TEXT:
+			case PetrinetPackage.IDENTITY__TEXT:
 				setText(TEXT_EDEFAULT);
 				return;
 		}
@@ -136,8 +139,8 @@ public class InputPlaceImpl extends AttributeImpl implements InputPlace {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PetrinetPackage.INPUT_PLACE__TEXT:
-				return text != TEXT_EDEFAULT;
+			case PetrinetPackage.IDENTITY__TEXT:
+				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -158,4 +161,4 @@ public class InputPlaceImpl extends AttributeImpl implements InputPlace {
 		return result.toString();
 	}
 
-} //InputPlaceImpl
+} //IdentityImpl

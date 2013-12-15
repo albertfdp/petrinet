@@ -8,5 +8,4 @@ Export-Package: dk.dtu.se2.simulator.petrinet,
  dk.dtu.se2.simulator.petrinet.runtime
 Require-Bundle: dk.dtu.se2.animation;bundle-version="0.1.0",
  dk.dtu.se2.petrinet;bundle-version="0.1.0",
- org.pnml.tools.epnk;bundle-version="1.0.0",
- org.junit
+ org.pnml.tools.epnk;bundle-version="1.0.0"

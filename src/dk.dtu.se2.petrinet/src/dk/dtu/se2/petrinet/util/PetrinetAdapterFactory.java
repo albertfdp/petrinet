@@ -97,6 +97,14 @@ public class PetrinetAdapterFactory extends AdapterFactoryImpl {
 				return createTokenAdapter();
 			}
 			@Override
+			public Adapter caseArc(Arc object) {
+				return createArcAdapter();
+			}
+			@Override
+			public Adapter caseIdentity(Identity object) {
+				return createIdentityAdapter();
+			}
+			@Override
 			public Adapter caseInputPlace(InputPlace object) {
 				return createInputPlaceAdapter();
 			}
@@ -135,6 +143,10 @@ public class PetrinetAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAttribute(Attribute object) {
 				return createAttributeAdapter();
+			}
+			@Override
+			public Adapter casePnmlcoremodel_Arc(org.pnml.tools.epnk.pnmlcoremodel.Arc object) {
+				return createPnmlcoremodel_ArcAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -223,6 +235,34 @@ public class PetrinetAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTokenAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.petrinet.Arc <em>Arc</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dk.dtu.se2.petrinet.Arc
+	 * @generated
+	 */
+	public Adapter createArcAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dk.dtu.se2.petrinet.Identity <em>Identity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dk.dtu.se2.petrinet.Identity
+	 * @generated
+	 */
+	public Adapter createIdentityAdapter() {
 		return null;
 	}
 
@@ -339,6 +379,20 @@ public class PetrinetAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.pnml.tools.epnk.pnmlcoremodel.Attribute <em>Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.pnml.tools.epnk.pnmlcoremodel.Attribute
+	 * @generated
+	 */
+	public Adapter createAttributeAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.pnml.tools.epnk.structuredpntypemodel.StructuredLabel <em>Structured Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -353,16 +407,16 @@ public class PetrinetAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.pnml.tools.epnk.pnmlcoremodel.Attribute <em>Attribute</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.pnml.tools.epnk.pnmlcoremodel.Arc <em>Arc</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.pnml.tools.epnk.pnmlcoremodel.Attribute
+	 * @see org.pnml.tools.epnk.pnmlcoremodel.Arc
 	 * @generated
 	 */
-	public Adapter createAttributeAdapter() {
+	public Adapter createPnmlcoremodel_ArcAdapter() {
 		return null;
 	}
 

@@ -371,6 +371,152 @@ public interface PetrinetPackage extends EPackage {
 	int TOKEN_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link dk.dtu.se2.petrinet.impl.ArcImpl <em>Arc</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dk.dtu.se2.petrinet.impl.ArcImpl
+	 * @see dk.dtu.se2.petrinet.impl.PetrinetPackageImpl#getArc()
+	 * @generated
+	 */
+	int ARC = 5;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__ID = PnmlcoremodelPackage.ARC__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__NAME = PnmlcoremodelPackage.ARC__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__TOOLSPECIFIC = PnmlcoremodelPackage.ARC__TOOLSPECIFIC;
+
+	/**
+	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__GRAPHICS = PnmlcoremodelPackage.ARC__GRAPHICS;
+
+	/**
+	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__UNKNOWN = PnmlcoremodelPackage.ARC__UNKNOWN;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__SOURCE = PnmlcoremodelPackage.ARC__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__TARGET = PnmlcoremodelPackage.ARC__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__IDENTITY = PnmlcoremodelPackage.ARC_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Arc</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC_FEATURE_COUNT = PnmlcoremodelPackage.ARC_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link dk.dtu.se2.petrinet.impl.IdentityImpl <em>Identity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dk.dtu.se2.petrinet.impl.IdentityImpl
+	 * @see dk.dtu.se2.petrinet.impl.PetrinetPackageImpl#getIdentity()
+	 * @generated
+	 */
+	int IDENTITY = 6;
+
+	/**
+	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY__TOOLSPECIFIC = PnmlcoremodelPackage.ATTRIBUTE__TOOLSPECIFIC;
+
+	/**
+	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY__GRAPHICS = PnmlcoremodelPackage.ATTRIBUTE__GRAPHICS;
+
+	/**
+	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY__UNKNOWN = PnmlcoremodelPackage.ATTRIBUTE__UNKNOWN;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY__TEXT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Identity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link dk.dtu.se2.petrinet.impl.InputPlaceImpl <em>Input Place</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -378,7 +524,7 @@ public interface PetrinetPackage extends EPackage {
 	 * @see dk.dtu.se2.petrinet.impl.PetrinetPackageImpl#getInputPlace()
 	 * @generated
 	 */
-	int INPUT_PLACE = 5;
+	int INPUT_PLACE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
@@ -424,7 +570,6 @@ public interface PetrinetPackage extends EPackage {
 	 * @ordered
 	 */
 	int INPUT_PLACE_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
 
 	/**
 	 * Returns the meta object for class '{@link dk.dtu.se2.petrinet.ExtendedPetriNet <em>Extended Petri Net</em>}'.
@@ -552,6 +697,48 @@ public interface PetrinetPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getToken_Text();
+
+	/**
+	 * Returns the meta object for class '{@link dk.dtu.se2.petrinet.Arc <em>Arc</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Arc</em>'.
+	 * @see dk.dtu.se2.petrinet.Arc
+	 * @generated
+	 */
+	EClass getArc();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link dk.dtu.se2.petrinet.Arc#getIdentity <em>Identity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Identity</em>'.
+	 * @see dk.dtu.se2.petrinet.Arc#getIdentity()
+	 * @see #getArc()
+	 * @generated
+	 */
+	EReference getArc_Identity();
+
+	/**
+	 * Returns the meta object for class '{@link dk.dtu.se2.petrinet.Identity <em>Identity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Identity</em>'.
+	 * @see dk.dtu.se2.petrinet.Identity
+	 * @generated
+	 */
+	EClass getIdentity();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dk.dtu.se2.petrinet.Identity#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see dk.dtu.se2.petrinet.Identity#getText()
+	 * @see #getIdentity()
+	 * @generated
+	 */
+	EAttribute getIdentity_Text();
 
 	/**
 	 * Returns the meta object for class '{@link dk.dtu.se2.petrinet.InputPlace <em>Input Place</em>}'.
@@ -701,6 +888,42 @@ public interface PetrinetPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TOKEN__TEXT = eINSTANCE.getToken_Text();
+
+		/**
+		 * The meta object literal for the '{@link dk.dtu.se2.petrinet.impl.ArcImpl <em>Arc</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dk.dtu.se2.petrinet.impl.ArcImpl
+		 * @see dk.dtu.se2.petrinet.impl.PetrinetPackageImpl#getArc()
+		 * @generated
+		 */
+		EClass ARC = eINSTANCE.getArc();
+
+		/**
+		 * The meta object literal for the '<em><b>Identity</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ARC__IDENTITY = eINSTANCE.getArc_Identity();
+
+		/**
+		 * The meta object literal for the '{@link dk.dtu.se2.petrinet.impl.IdentityImpl <em>Identity</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dk.dtu.se2.petrinet.impl.IdentityImpl
+		 * @see dk.dtu.se2.petrinet.impl.PetrinetPackageImpl#getIdentity()
+		 * @generated
+		 */
+		EClass IDENTITY = eINSTANCE.getIdentity();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDENTITY__TEXT = eINSTANCE.getIdentity_Text();
 
 		/**
 		 * The meta object literal for the '{@link dk.dtu.se2.petrinet.impl.InputPlaceImpl <em>Input Place</em>}' class.

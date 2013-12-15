@@ -61,6 +61,8 @@ public class PetrinetFactoryImpl extends EFactoryImpl implements PetrinetFactory
 			case PetrinetPackage.GEOMETRY_LABEL: return createGeometryLabel();
 			case PetrinetPackage.ANIMATION_LABEL: return createAnimationLabel();
 			case PetrinetPackage.TOKEN: return createToken();
+			case PetrinetPackage.ARC: return createArc();
+			case PetrinetPackage.IDENTITY: return createIdentity();
 			case PetrinetPackage.INPUT_PLACE: return createInputPlace();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -115,6 +117,26 @@ public class PetrinetFactoryImpl extends EFactoryImpl implements PetrinetFactory
 	public Token createToken() {
 		TokenImpl token = new TokenImpl();
 		return token;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Arc createArc() {
+		ArcImpl arc = new ArcImpl();
+		return arc;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Identity createIdentity() {
+		IdentityImpl identity = new IdentityImpl();
+		return identity;
 	}
 
 	/**

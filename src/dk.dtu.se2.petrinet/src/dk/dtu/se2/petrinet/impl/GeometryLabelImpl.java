@@ -4,13 +4,9 @@ package dk.dtu.se2.petrinet.impl;
 
 import dk.dtu.se2.petrinet.GeometryLabel;
 import dk.dtu.se2.petrinet.PetrinetPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.pnml.tools.epnk.pnmlcoremodel.impl.LabelImpl;
 
 /**

@@ -67,6 +67,24 @@ public interface PetrinetFactory extends EFactory {
 	Token createToken();
 
 	/**
+	 * Returns a new object of class '<em>Arc</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Arc</em>'.
+	 * @generated
+	 */
+	Arc createArc();
+
+	/**
+	 * Returns a new object of class '<em>Identity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Identity</em>'.
+	 * @generated
+	 */
+	Identity createIdentity();
+
+	/**
 	 * Returns a new object of class '<em>Input Place</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

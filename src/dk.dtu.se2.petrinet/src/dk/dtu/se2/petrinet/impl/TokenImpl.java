@@ -4,13 +4,9 @@ package dk.dtu.se2.petrinet.impl;
 
 import dk.dtu.se2.petrinet.PetrinetPackage;
 import dk.dtu.se2.petrinet.Token;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.pnml.tools.epnk.pnmlcoremodel.impl.AttributeImpl;
 
 /**
@@ -36,7 +32,6 @@ public class TokenImpl extends AttributeImpl implements Token {
 	 * @ordered
 	 */
 	protected static final String TEXT_EDEFAULT = null;
-
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->

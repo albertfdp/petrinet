@@ -2,20 +2,19 @@
  */
 package dk.dtu.se2.petrinet.impl;
 
-import dk.dtu.se2.animation.Animation;
-
-import dk.dtu.se2.petrinet.AnimationLabel;
-import dk.dtu.se2.petrinet.PetrinetPackage;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
+import org.pnml.tools.epnk.helpers.NetFunctions;
+import org.pnml.tools.epnk.pnmlcoremodel.PetriNetType;
 import org.pnml.tools.epnk.structuredpntypemodel.impl.StructuredLabelImpl;
+
+import dk.dtu.se2.animation.Animation;
+import dk.dtu.se2.petrinet.AnimationLabel;
+import dk.dtu.se2.petrinet.PetrinetPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,6 +30,7 @@ import org.pnml.tools.epnk.structuredpntypemodel.impl.StructuredLabelImpl;
  * @generated
  */
 public class AnimationLabelImpl extends StructuredLabelImpl implements AnimationLabel {
+	
 	/**
 	 * The cached value of the '{@link #getStructure() <em>Structure</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -59,7 +59,7 @@ public class AnimationLabelImpl extends StructuredLabelImpl implements Animation
 	protected EClass eStaticClass() {
 		return PetrinetPackage.Literals.ANIMATION_LABEL;
 	}
-
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -173,6 +173,30 @@ public class AnimationLabelImpl extends StructuredLabelImpl implements Animation
 				return structure != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * Parse a structured label according to the defined language.
+	 * @generated NOT
+	 * @author thibaud
+	 */
+	@Override
+	public EObject parse(String input) {
+		
+		Animation result = null;
+		
+		if (input != null) {
+			PetriNetType petriNetType = NetFunctions.getPetriNetType(this);
+			if (petriNetType instanceof ExtendedPetriNetImpl) {
+				ExtendedPetriNetImpl epni = (ExtendedPetriNetImpl) petriNetType;
+				if (epni.animationParser != null) {
+					return epni.animationParser.parse(input);
+				}
+			}			
+		}
+		
+		return result;
+		
 	}
 
 } //AnimationLabelImpl

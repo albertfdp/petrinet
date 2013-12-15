@@ -2,9 +2,9 @@
  */
 package dk.dtu.se2.petrinet;
 
-import dk.dtu.se2.animation.Animation;
-
 import org.pnml.tools.epnk.structuredpntypemodel.StructuredLabel;
+
+import dk.dtu.se2.animation.Animation;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +23,7 @@ import org.pnml.tools.epnk.structuredpntypemodel.StructuredLabel;
  * @generated
  */
 public interface AnimationLabel extends StructuredLabel {
+
 	/**
 	 * Returns the value of the '<em><b>Structure</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -48,5 +49,6 @@ public interface AnimationLabel extends StructuredLabel {
 	 * @generated
 	 */
 	void setStructure(Animation value);
-
+	
+	
 } // AnimationLabel

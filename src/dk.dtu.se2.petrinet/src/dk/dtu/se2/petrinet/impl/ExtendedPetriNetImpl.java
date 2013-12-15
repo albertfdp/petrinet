@@ -2,11 +2,12 @@
  */
 package dk.dtu.se2.petrinet.impl;
 
-import dk.dtu.se2.petrinet.ExtendedPetriNet;
-import dk.dtu.se2.petrinet.PetrinetPackage;
-
 import org.eclipse.emf.ecore.EClass;
 import org.pnml.tools.epnk.pnmlcoremodel.impl.PetriNetTypeImpl;
+
+import dk.dtu.se2.animation.AnimationParser;
+import dk.dtu.se2.petrinet.ExtendedPetriNet;
+import dk.dtu.se2.petrinet.PetrinetPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,13 +19,19 @@ import org.pnml.tools.epnk.pnmlcoremodel.impl.PetriNetTypeImpl;
  * @generated
  */
 public class ExtendedPetriNetImpl extends PetriNetTypeImpl implements ExtendedPetriNet {
+	
+	/** @generated NOT **/
+	final AnimationParser animationParser;
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * @author Albert, Thibaud
 	 */
-	protected ExtendedPetriNetImpl() {
+	public ExtendedPetriNetImpl() {
 		super();
+		this.animationParser = new AnimationParser();
 	}
 
 	/**
@@ -36,11 +43,16 @@ public class ExtendedPetriNetImpl extends PetriNetTypeImpl implements ExtendedPe
 	protected EClass eStaticClass() {
 		return PetrinetPackage.Literals.EXTENDED_PETRI_NET;
 	}
-
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @author Albert, Thibaud
+	 */
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		return "ExtendedPetriNet";
 	}
 
 } //ExtendedPetriNetImpl

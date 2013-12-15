@@ -96,7 +96,7 @@ public interface Place extends org.pnml.tools.epnk.pnmlcoremodel.Place {
 	 * Returns the value of the '<em><b>Input Place Label</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Input Place Label</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Input Place Label</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
