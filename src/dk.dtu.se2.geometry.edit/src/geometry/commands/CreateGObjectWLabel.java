@@ -12,9 +12,11 @@ import geometry.GObject;
 import geometry.Geometry;
 import geometry.GeometryPackage;
 
-/*
- * @author: Morten
- * This class is used to automatically add Labels to Geometry objects
+/**
+ * Creates a label for the GObjects when they are initialized.
+ * 
+ * @author Morten
+ *
  */
 public class CreateGObjectWLabel extends CompoundCommand {
 
@@ -45,6 +47,7 @@ public class CreateGObjectWLabel extends CompoundCommand {
 			if (object.getClass() == resultObject.getClass())
 				count++;
 		}
+		//Set the new label according to the object
 		if (resultObject instanceof geometry.BendPoint)
 			myLabel = "BP" + count;
 		if (resultObject instanceof geometry.Line)
@@ -53,12 +56,6 @@ public class CreateGObjectWLabel extends CompoundCommand {
 			myLabel = "C" + count;
 		
 		
-		/*
-		 * domain: the editing domain your model lives in
-		 * owner: element you are doing the modifications to
-		 * feature: feature in model that should be given to you by the EPackage of your model
-		 * value: the value you want to be set in the feature
-		 */
 		this.append(new SetCommand(domain, resultObject, GeometryPackage.eINSTANCE.getGObject_Label(), myLabel));		
 	}
 	
