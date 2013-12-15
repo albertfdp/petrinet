@@ -24,12 +24,6 @@
     <genClasses ecoreClass="petrinet.ecore#//Token">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute petrinet.ecore#//Token/text"/>
     </genClasses>
-    <genClasses ecoreClass="petrinet.ecore#//Arc">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference petrinet.ecore#//Arc/identity"/>
-    </genClasses>
-    <genClasses ecoreClass="petrinet.ecore#//Identity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute petrinet.ecore#//Identity/text"/>
-    </genClasses>
     <genClasses ecoreClass="petrinet.ecore#//InputPlace">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute petrinet.ecore#//InputPlace/text"/>
     </genClasses>

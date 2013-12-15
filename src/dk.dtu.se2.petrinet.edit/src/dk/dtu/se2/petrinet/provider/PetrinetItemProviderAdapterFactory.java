@@ -187,52 +187,6 @@ public class PetrinetItemProviderAdapterFactory extends PetrinetAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.petrinet.Arc} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ArcItemProvider arcItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link dk.dtu.se2.petrinet.Arc}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createArcAdapter() {
-		if (arcItemProvider == null) {
-			arcItemProvider = new ArcItemProvider(this);
-		}
-
-		return arcItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.petrinet.Identity} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IdentityItemProvider identityItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link dk.dtu.se2.petrinet.Identity}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createIdentityAdapter() {
-		if (identityItemProvider == null) {
-			identityItemProvider = new IdentityItemProvider(this);
-		}
-
-		return identityItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link dk.dtu.se2.petrinet.InputPlace} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -359,8 +313,6 @@ public class PetrinetItemProviderAdapterFactory extends PetrinetAdapterFactory i
 		if (geometryLabelItemProvider != null) geometryLabelItemProvider.dispose();
 		if (animationLabelItemProvider != null) animationLabelItemProvider.dispose();
 		if (tokenItemProvider != null) tokenItemProvider.dispose();
-		if (arcItemProvider != null) arcItemProvider.dispose();
-		if (identityItemProvider != null) identityItemProvider.dispose();
 		if (inputPlaceItemProvider != null) inputPlaceItemProvider.dispose();
 	}
 
