@@ -196,7 +196,8 @@ public class GeometryItemProvider
 	}
 
 	/**
-	 *
+	 * When you add a new GObject to the tree editor the GObject will have 
+	 * a specific label.
 	 * @author Morten
 	 */
 	 @Override
@@ -211,6 +212,7 @@ public class GeometryItemProvider
 		 
 		 return super.createAddCommand(domain, owner, feature, collection, index);
 	 }
+	 
 	
 	 
 	 
