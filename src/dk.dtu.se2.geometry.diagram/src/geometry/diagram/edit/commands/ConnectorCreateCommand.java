@@ -61,7 +61,8 @@ public class ConnectorCreateCommand extends EditElementCommand {
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
 			IAdaptable info) throws ExecutionException {
 		Connector newElement = GeometryFactory.eINSTANCE.createConnector();
-		Geometry owner = (Geometry) getElementToEdit();
+		Geometry owner = (Geometry) getElementToEdit(); 
+		
 		int count = 1;
 		for (Object obj: owner.getGObjects()) {
 			if (obj instanceof ConnectorImpl)
