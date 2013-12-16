@@ -6,12 +6,10 @@ import appearance.AObject;
 import appearance.Appearance;
 import appearance.AppearanceFactory;
 import appearance.AppearancePackage;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**

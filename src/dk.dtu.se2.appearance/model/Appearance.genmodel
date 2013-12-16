@@ -10,7 +10,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Appearance.ecore#//Appearance/aObjects"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Appearance.ecore#//Appearance/id"/>
     </genClasses>
-    <genClasses ecoreClass="Appearance.ecore#//AObject">
+    <genClasses ecoreClass="Appearance.ecore#//AObject" labelFeature="#//appearance/AObject/label">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Appearance.ecore#//AObject/label"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Appearance.ecore#//AObject/object3D"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Appearance.ecore#//AObject/texture"/>

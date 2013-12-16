@@ -1392,7 +1392,8 @@ public class AppearanceEditor
 	 * This accesses a cached version of the property sheet.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * @author Morten
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
 		PropertySheetPage propertySheetPage =
@@ -1409,7 +1410,10 @@ public class AppearanceEditor
 					getActionBarContributor().shareGlobalActions(this, actionBars);
 				}
 			};
-		propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
+		
+		// Customized PropertySourceProvider
+		propertySheetPage.setPropertySourceProvider(new CustomizedAdapterFactoryContentProvider(adapterFactory));
+		//propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
 		propertySheetPages.add(propertySheetPage);
 
 		return propertySheetPage;
