@@ -53,6 +53,7 @@ public class BendPointCreateCommand extends EditElementCommand {
 	}
 
 	/**
+	 * Set the initial label
 	 * @author Morten
 	 * @generated NOT
 	 */

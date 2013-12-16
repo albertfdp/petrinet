@@ -52,6 +52,7 @@ public class InputPointCreateCommand extends EditElementCommand {
 	}
 
 	/**
+	 * Set the initial label
 	 * @author Morten
 	 * @generated NOT
 	 */
