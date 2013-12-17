@@ -17,7 +17,7 @@ import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
 
 /**
- * @author Monica, Albert
+ * @authors: Albert, Monica
  *
  */
 
@@ -47,32 +47,51 @@ public class Simulator implements Engine3DListener {
 	 */
 	private Engine3D engine3d;
 		
+	/**
+	 * Constructor
+	 * @param petrinet
+	 * @param geometry
+	 * @param appearance
+	 */
 	public Simulator (PetriNetDoc petrinet, Geometry geometry, Appearance appearance) {
-		
-//		logger.info("Starting Simulator");
-		
+				
+		/* Models initialization */
 		this.petrinet = petrinet;
 		this.geometry = geometry;
 		this.appearance = appearance;
 		
+		/* Get 3D engine using the Engine 3D Factory */
 		this.engine3d = Engine3DFactory.getEngine3D("jMonkey");
 		
+		/* Petri net engine initialization and list of first 
+		 * animations to be run
+		 */
 		this.petrinetEngine = new PetriNetEngine();
 		this.nextAnimations = this.petrinetEngine.init(petrinet);
 		
-		this.engine3d.init(geometry, appearance, this.petrinetEngine.getAllPossibleAnimations(petrinet));
+		/* 3D engine initialization */
+		this.engine3d.init(geometry, appearance, 
+				this.petrinetEngine.getAllPossibleAnimations(petrinet));
+		
+		/* Start 3D engine */
 		this.engine3d.startEngine();
+		
+		/* Add the simulator as a listener of the 3D engine */
 		this.engine3d.setEngine3DListener(this);
 	}
 
+	/**
+	 * Function called when the "Start" button is pressed in the simulation
+	 */
 	@Override
 	public void onStart() {
-//		logger.info("onStart() ...");
-		
 		this.engine3d.addToAnimationQueue(this.nextAnimations);
 	}
 
 
+	/**
+	 * Function called when the "Reset" button is pressed in the simulation
+	 */
 	@Override
 	public void onReset() {
 		this.nextAnimations = this.petrinetEngine.init(petrinet);
@@ -89,6 +108,9 @@ public class Simulator implements Engine3DListener {
 	}
 
 
+	/**
+	 * Function called when the "Start" an event stopped in the simulation
+	 */
 	@Override
 	public void onAnimationFinished(String geometryLabel) {
 		System.out.println("Animation finished on: " + geometryLabel);
@@ -112,7 +134,10 @@ public class Simulator implements Engine3DListener {
 		this.engine3d.addToAnimationQueue(this.nextAnimations);
 	}
 	
-
+	/**
+	 * Function called when the user clicks on an input point
+	 * @param geometryLabel
+	 */
 	@Override
 	public void onUserClick(String geometryLabel) {
 		
