@@ -51,6 +51,7 @@ import com.jme3.util.SkyFactory;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.controls.Button;
+import de.lessvoid.nifty.elements.Element;
 import de.lessvoid.nifty.screen.ScreenController;
 import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.animation.Appear;
@@ -59,6 +60,11 @@ import dk.dtu.se2.engine3d.Engine3D;
 import dk.dtu.se2.engine3d.Engine3DListener;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
+/**
+ * 
+ * @authors: Albert, Anders, Monica, Thibaud
+ *
+ */
 public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	
 	public static final boolean DEBUG_MODE = true; // TRUE/FALSE = Enable/Disable console outputs
@@ -73,19 +79,22 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	private Nifty 				nifty;
 	private ScreenController 	screenController;
 	
+	 /* Nifty popup for showing system paused message */
+    private Element enginePopup;
+	
 	/* The listener of the 3D Engine - the simulator */
 	private Engine3DListener listener;
 	
 	private Node inputPlaces;
 	
 	/*  Mapping between all the possible events in the Petri net and their geometry label */
-	private HashMap<String, JMonkeyEvent> events;
+	private HashMap<String, JMonkeyMove> events;
 	
 	/* Mapping between lines and tokens appearances */
 	private HashMap<String, String> tokenAppearances;
 	
 	/*  Mapping each token to a specific id (String) and its animation rendering in the visualisation*/
-	private HashMap<String, JMonkeyEvent> allRenderedEvents;
+	private HashMap<String, JMonkeyMove> allRenderedEvents;
 	
 	/*  Mapping between a specific id for a token and all the token it collides with */
 	private HashMap<String, ArrayList<String>> allCollisions;
@@ -101,7 +110,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
     private int lowX = (int) Double.POSITIVE_INFINITY, lowY = (int) Double.POSITIVE_INFINITY;
     
     private Geometry groundGeo;
-         
+    
+           
     private enum State {
     	PLAYING,
     	PAUSED,
@@ -110,7 +120,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
     
     private State engineState;
     
-    private float objectScale = 1f;  // scales tokens and input point 3D models
+    private float tokenScale = 1f;  // scales tokens 
+    private float inputPointScale = 6f;  // scales input point 3D models
     	
 	private void setUpEnvironment() {
 		
@@ -226,7 +237,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				inputMat.setTexture("ColorMap", assetManager.loadTexture(texture));	// set the texture to the material
 				
 				inputObject.setMaterial(inputMat); // apply the material to the geometry
-				inputObject.scale(objectScale);
+				inputObject.scale(inputPointScale);
 				inputObject.setLocalTranslation(new Vector3f(x,0f,y));
 								
 		        //Attach the geometry to input places node
@@ -252,40 +263,39 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 			
 			if(animation instanceof Move) {
 				
-				/* Create token as a jMonkey spatial*/
+				/* Get the appearance of the token that will perform the Move animation*/
 				String tokenAppearance = this.tokenAppearances.get(geometryLabel);
 				AObject tokenAppearanceObject = this.appearance.getAObjectByLabel(tokenAppearance);
-								
+							
+				/* Create token as a jMonkey spatial*/
 				Spatial token = assetManager.loadModel(tokenAppearanceObject.getObject3D());
 				token.setName("t"+ tokensNr);
 				tokensNr++;
-				token.addControl(new TokenControl());
-						
-				Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md");  // create a simple material
-				tokenMat.setTexture("ColorMap", assetManager.loadTexture(tokenAppearanceObject.getTexture()));	
+							
+				/* Create a material for the token spatial */
+				Material tokenMat = new Material(assetManager, "Common/MatDefs/Misc/ColoredTextured.j3md"); // create simple material
+				tokenMat.setTexture("ColorMap", assetManager.loadTexture(tokenAppearanceObject.getTexture()));	// add texture to material
 				tokenMat.setColor("Color", ColorRGBA.White); // set the base color of the material  
 				
-				token.setMaterial(tokenMat); // apply the material to the geometry
+				token.setMaterial(tokenMat); // apply the material to the token spatial
 
-				// scaling the train
-		     	token.scale(boundingBox.width * 0.01f);
-				
-				/* Get the motion path corresponding to the current animation */
+				/* Get the motion path (line) corresponding to the current animation */
 				MotionPath path = new MotionPath();
 				path = lines.get(geometryLabel);
 				
+				/* Get the way points of the path */
 				Vector3f endWayPoint = path.getWayPoint(path.getNbWayPoints()-1);
 				Vector3f startWayPoint = path.getWayPoint(0);
 				
 				/* Create motion event and JMonkeyMove event corresponding to the move animation */
 				MotionEvent motionEvent = new MotionEvent(token, path, LoopMode.DontLoop);
-				motionEvent.setSpeed((float)((Move) animation).getSpeed());
+				motionEvent.setSpeed((float)((Move) animation).getSpeed()); // set event speed
 				motionEvent.setDirectionType(MotionEvent.Direction.Path); // the spatial is always faced in the direction of the path while moving
 								
-				JMonkeyEvent event = new JMonkeyMove(geometryLabel, motionEvent, this); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
-				((JMonkeyMove) event).setEndWayPoint(endWayPoint);
-				((JMonkeyMove) event).setStartWayPoint(startWayPoint);
-				motionEvent.addListener((JMonkeyMove) event); // add the JMonkeyEngine as a listener to all motion events				
+				JMonkeyMove event = new JMonkeyMove(geometryLabel, motionEvent, this); // constructing the motion event with spatial (cubeGeo), the motion path (path), time (10 seconds) and loop mode (don't loop).
+				event.setEndWayPoint(endWayPoint);
+				event.setStartWayPoint(startWayPoint);
+				motionEvent.addListener(event); // add the JMonkeyEngine as a listener to all motion events				
 				
 				events.put(geometryLabel, event);
 			}
@@ -377,40 +387,34 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
  			
  	/* Initialize the controller for the buttons screen */
  			this.screenController = new NiftyButtonsScreen("data", this);
- 			stateManager.attach((AppState) this.screenController);
- 			
+ 		 			
  	/* Read the XML and initialize the custom ScreenController */
  			this.nifty.fromXml("GUI/NiftyButtons.xml", "start", this.screenController);
+ 			this.stateManager.attach((AppState) this.nifty.getCurrentScreen().getScreenController());
  			this.nifty.setDebugOptionPanelColors(false);
+ 			
+ 			this.enginePopup = this.nifty.createPopup("popupSystemPaused");
  			 		 			        
  	/* Attach the Nifty display to the GUI view port as a processor */
  	        guiViewPort.addProcessor(niftyDisplay);
  	        
  	        reset();
 	}
- 	
- 	/**
- 	 * Scales the input places to make them bigger
- 	 */
- 	private void scaleInputPlaces() {
- 		for (Spatial spatial:inputs.values())
- 			spatial.scale(objectScale);
- 	}
- 	
+ 	 	
  	@Override
  	public void reset() {		
 	/* Attach the Nifty display to the GUI view port as a processor */
-	        guiViewPort.addProcessor(niftyDisplay);
+	    guiViewPort.addProcessor(niftyDisplay);
 		
  	/* Initialize all lists, queues and hash maps */
  		this.lines = new HashMap<String, MotionPath>();
-		this.events = new HashMap<String, JMonkeyEvent>();
+		this.events = new HashMap<String, JMonkeyMove>();
 		this.tokenAppearances = new HashMap<String, String>();
 		this.inputs = new HashMap<String, Spatial>();
 
 	/* Initialize the data structures used to keep track of the current animations*/
 		this.allCollisions = new HashMap<String, ArrayList<String>>();
-		this.allRenderedEvents = new HashMap<String, JMonkeyEvent>();
+		this.allRenderedEvents = new HashMap<String, JMonkeyMove>();
 
 	/* Pause simulation when the window loses focus */
 		this.setPauseOnLostFocus(false);
@@ -423,6 +427,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
      * -- the light
      * -- the environment (all 3D objects according to the geometry and appearance info)
      * -- the bounding box
+     * -- the ground
      * -- the all possible animations
      * -- the position of the camera ( according to the bounding box)
      * -- the key events 
@@ -430,7 +435,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
         this.setUpLight();
         this.setUpEnvironment();
         this.setBoundingBox();
-        this.scaleInputPlaces();
         this.setUpGround();
 		this.setUpAnimations();
 		this.setUpCameraPosition();
@@ -484,7 +488,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		for (RTAnimation animation : animations) {
 			//Getting the geometry label of the line on which the token has effect
 			String geometryLabel = animation.getGeometryLabel();
-			JMonkeyEvent clonedEventToQueue;
+			JMonkeyMove clonedEventToQueue;
 			
 			if (animation.getAnimation() instanceof Move) {
 				//Getting the Motion Path and the Spatial
@@ -494,8 +498,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				
 				//Cloning the MotionEvent
 				Spatial newSpatial = assetManager.loadModel(this.appearance.getAObjectByLabel(modelName).getObject3D());
-				JMonkeyEvent eventToClone = events.get(geometryLabel);
-				clonedEventToQueue = JMonkeyEvent.moveEvent(eventToClone, clonedPath, newSpatial);
+				JMonkeyMove eventToClone = events.get(geometryLabel);
+				clonedEventToQueue = JMonkeyMove.moveEvent(eventToClone, clonedPath, newSpatial);
 				
 				//Set the ID of the Event
 				clonedEventToQueue.setId(animation.getId());
@@ -514,11 +518,11 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				//tokenMat.setTexture("ColorMap", assetManager.loadTexture("Textures/trainTex.jpg"));	 
 				tokenMat.setTexture("ColorMap", assetManager.loadTexture(tokenAppearanceObject.getTexture()));
 				newSpatial.setMaterial(tokenMat); 
-				newSpatial.scale(objectScale);
+				newSpatial.scale(tokenScale);
 							
 				//Attaching the spatial token to the rootnode and playing the event
 				rootNode.attachChild(newSpatial);
-				
+			
 				allRenderedEvents.put(clonedEventToQueue.getId(), clonedEventToQueue);
 				allCollisions.put(clonedEventToQueue.getId(), new ArrayList<String>());
 				((JMonkeyMove)clonedEventToQueue).play();
@@ -591,16 +595,15 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		if (engineState == State.PLAYING) {
 			
 			//Iterate through every event, make its spatial collide with all the others
-			for (JMonkeyEvent event : allRenderedEvents.values()) {
-				JMonkeyMove currentMove = (JMonkeyMove) event;
+			for (JMonkeyMove currentMove : allRenderedEvents.values()) {
+				
 				//The list of all spatials that collide with the current spatial
 				ArrayList<String> collided = new ArrayList<String>();
 				
-				for (JMonkeyEvent testedEvent : allRenderedEvents.values()) {
+				for (JMonkeyMove testedMove : allRenderedEvents.values()) {
 					//Make sure that we don't test the spatial against itself
-					if (!testedEvent.getId().equals(event.getId())) {
+					if (!testedMove.getId().equals(currentMove.getId())) {
 						
-						JMonkeyMove testedMove = (JMonkeyMove) testedEvent;
 						Spatial currentSpatial = currentMove.getSpatial();
 						Spatial testedSpatial = testedMove.getSpatial();
 						
@@ -629,7 +632,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 								if (DEBUG_MODE) {
 									System.out.println("Added collision");	
 								}
-								collided.add(testedEvent.getId());
+								collided.add(testedMove.getId());
 							}
 						}
 					}
@@ -672,7 +675,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		if (DEBUG_MODE) {
 			System.out.println("Playing animations");
 		}
-		for (JMonkeyEvent event: allRenderedEvents.values()) {
+		for (JMonkeyMove event: allRenderedEvents.values()) {
 			if (DEBUG_MODE) {
 				System.out.println("Playing: " + event.getId());	
 			}
@@ -686,8 +689,8 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	 * Pauses all the tokens present in the 3D visualization
 	 */
 	private void pauseAnimations() {
-		for (JMonkeyEvent event: allRenderedEvents.values()) {
-			((JMonkeyMove) event).pause();
+		for (JMonkeyMove event: allRenderedEvents.values()) {
+				event.pause();
 		}
 	}
 	
@@ -696,14 +699,20 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	 */
 	private void stopAnimations() {
 		//Stop all the moves
-		for (JMonkeyEvent event: allRenderedEvents.values()) {
-			((JMonkeyMove) event).stop();
+		for (JMonkeyMove event: allRenderedEvents.values()) {
+				 event.stop();
 		}
 		//Clear the data structure
 		allRenderedEvents.clear();
 		allCollisions.clear();
 	}
-	
+
+	public void closePopup() {
+		this.nifty.closePopup(enginePopup.getId());
+		enginePopup.setVisible(false);
+		enginePopup.setVisibleToMouseEvents(false);
+	}
+
 	/**
 	 * Starts/Pause the current simulation
 	 */
@@ -746,8 +755,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		
 		niftyElement.setText("Start");
 		
-		this.stopAnimations();
-		this.engineState = State.STOPPED;
+//		this.stopAnimations();
 		this.rootNode.detachAllChildren();
 		this.guiNode.detachAllChildren();
 		this.inputManager.clearMappings();
@@ -787,6 +795,13 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		
 			        //Call the simulator to add a token on this place
 			        listener.onUserClick(inputPlaceId);
+		        }
+		        else {
+		        	if (engineState != State.PLAYING) {
+		        		enginePopup.setVisible(true);
+		        		enginePopup.setVisibleToMouseEvents(true);
+		        		nifty.showPopup(nifty.getCurrentScreen(), enginePopup.getId(), null);
+		        	}
 		        }
 		        
 			}

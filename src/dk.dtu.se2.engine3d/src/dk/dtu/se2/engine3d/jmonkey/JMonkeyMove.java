@@ -1,5 +1,7 @@
 package dk.dtu.se2.engine3d.jmonkey;
 
+import com.jme3.animation.LoopMode;
+import com.jme3.cinematic.MotionPath;
 import com.jme3.cinematic.events.CinematicEvent;
 import com.jme3.cinematic.events.CinematicEventListener;
 import com.jme3.cinematic.events.MotionEvent;
@@ -11,17 +13,31 @@ import com.jme3.scene.Spatial;
  * @author Monica
  *
  */
-public class JMonkeyMove extends JMonkeyEvent implements CinematicEventListener{
+public class JMonkeyMove implements CinematicEventListener{
 	
 	private MotionEvent 	motionEvent;
 	private JMonkeyEngine	engine3D;
 	private Vector3f		endWayPoint;
 	private Vector3f		startWayPoint;
+	
+	//An id for the JMonkeyEvent
+		private String id;
+		
+		//The geometry label
+		private String geometryLabel;
 
 	public JMonkeyMove(String geometryLabel, MotionEvent motionEvent, JMonkeyEngine engine3D) {
-		super(geometryLabel);
+		this.geometryLabel = geometryLabel;
 		this.motionEvent = motionEvent;
 		this.engine3D = engine3D;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public Vector3f getEndWayPoint() {
@@ -64,9 +80,30 @@ public class JMonkeyMove extends JMonkeyEvent implements CinematicEventListener{
 		return engine3D;
 	}
 
+	public String getGeometryLabel() {
+		return geometryLabel;
+	}
+	
 	public void setMotionEvent(MotionEvent motionEvent) {
 		this.motionEvent = motionEvent;
 	}
+	
+	public static JMonkeyMove moveEvent(JMonkeyMove baseObject, MotionPath newPath, Spatial spatialToCopy) {
+		MotionEvent oldMotionEvent = baseObject.getMotionEvent();
+		
+		//Cloning the old motion event 
+		MotionEvent newMotionEvent = new MotionEvent(spatialToCopy, newPath, 10, LoopMode.DontLoop);
+		newMotionEvent.setSpeed(oldMotionEvent.getSpeed());
+		newMotionEvent.setDirectionType(MotionEvent.Direction.Path);
+		
+		//Copying the JMonkeyMove
+		JMonkeyMove copy = new JMonkeyMove(baseObject.getGeometryLabel(), newMotionEvent, ((JMonkeyMove) baseObject).getEngine3D());
+		copy.setEndWayPoint( newPath.getWayPoint( newPath.getNbWayPoints()-1) );
+		newMotionEvent.addListener(copy); // add the JMonkeyEngine as a listener to all motion events	
+
+		return copy;
+		
+	}	
 
 	@Override
 	public void onPause(CinematicEvent arg0) {
@@ -81,12 +118,7 @@ public class JMonkeyMove extends JMonkeyEvent implements CinematicEventListener{
 
 	@Override
 	public void onStop(CinematicEvent event) {
-		
-		//Spatial token = this.motionEvent.getSpatial();
-		//token.getControl(TokenControl.class).setLocation(this.endWayPoint, token);
-		//token.rotate(0, 90, 0);
-		
-		engine3D.onStop(this);
+		this.engine3D.onStop(this);
 	}
 	
 	
