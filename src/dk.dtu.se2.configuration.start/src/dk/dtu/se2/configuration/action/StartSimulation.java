@@ -15,15 +15,22 @@ import dk.dtu.se2.simulator.Simulator;
 
 public class StartSimulation implements IObjectActionDelegate {
 
-//	Constructor
+/**
+ * 	Constructor
+ */
 	public StartSimulation() {
 		super();
 	}
 	
-//	Private variable storing the currently selected configuration file
+/**
+ * 	Private variable storing the currently selected configuration file
+ */
 	private Configuration selectedConfiguration;
 	
-//	The simulator object to be started from the configuration file with the StartSimulation action
+/**
+ * 	The simulator object to be started from the configuration file 
+ * 	with the StartSimulation action
+ */
 	private Simulator simulator;
 
 	
@@ -49,7 +56,9 @@ public class StartSimulation implements IObjectActionDelegate {
 	public void run(IAction action) {
 		if(isEnabled()) {
 			
-//			Initialize the simulator with the Petri net, Geometry and Appearance models
+			/**
+			 * Initialize the simulator with the Petri net, Geometry and Appearance models
+			 */
 			simulator = new Simulator (selectedConfiguration.getPetrinet(), 
 									   selectedConfiguration.getGeometry(),
 									   selectedConfiguration.getAppearance());

@@ -213,6 +213,11 @@ public class AppearanceImpl extends MinimalEObjectImpl.Container implements Appe
 		return result.toString();
 	}
 
+	/**
+	 * Returns a particular AObject from the Appearance model list 
+	 * @return the AObject having label = appearanceLabel
+	 * @author Monica 
+	 */
 	@Override
 	public AObject getAObjectByLabel(String appearanceLabel) {
 		for (AObject a : aObjects)

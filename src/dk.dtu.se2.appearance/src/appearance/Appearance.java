@@ -68,7 +68,8 @@ public interface Appearance extends EObject {
 	
 	/**
 	 * Returns a particular AObject from the Appearance model list 
-	 * @return the aObject having label = appearanceLabel 
+	 * @return the AObject having label = appearanceLabel
+	 * @author Monica 
 	 */
 	AObject getAObjectByLabel (String appearanceLabel);
 	
