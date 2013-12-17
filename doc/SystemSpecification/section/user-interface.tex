@@ -5,8 +5,6 @@
 The following section will describe how the Graphical User Interfaces (GUIs) of the Petri net editor, Geometry editor, Appearance editor, Configuration editor and the Simulation window should look like. How to execute different tasks in the editors, such as creating and editing Geometries and Petri nets, will be described in the handbook. 
 
 The different editors will strive towards being intuitive for the targeted user, e.g. the Geometry editor should be easy to use for the non-technical user, while the Petri net editor should be intuitive for the Petri net engineer.
- 
-We are not that far in the actual implementation process to show concrete examples of the GUI. Instead, illustrations of the expected GUI will be shown. 
 
 \subsection{Technologies}
 The editors will be implemented as extensions to Eclipse, which allows us to use the different functionalities that comes with Eclipse. The functionalities listed below are all part of Eclipse and will be used for this software.
@@ -23,127 +21,141 @@ The use of these features will be further explained in the user handbook.
 \subsection{Graphical User Interface}
 This section will describe the GUI for the editors and the simulation tool. 
 
-\subsubsection{Petri net editor \& Geometry editor}
-The Petri net and Geometry editors are very much alike. They have the same composition and only the objects that can be drawn on the canvas are different. Both editors consist of a toolbar, a view with the project files, a view with the properties of the selected object, a canvas and an object toolbar belonging to the canvas. Illustrations of the Petri net and Geometry editors  can be seen in figure \ref{fig:petrinet_editor} and figure \ref{fig:geometry_editor} respectively. 
+\subsubsection{Introduction to Petri net editor \& Geometry editor.}
+The Petri net and Geometry editors are very much alike. They have the same composition and only the objects that can be drawn on the canvas are different. Both editors have from the ePNK two kinds of editors: a tree editor and a diagram editor. The diagram editor consist of a palette, a view with the project files, a view with the properties of the selected object and a canvas. The tree editor has a project explorer, properties view and a view with the tree of objects. Examples of the Petri net and Geometry editors  can be seen in figure \ref{fig:petrinet_tree} \& \ref{fig:petrinet_diagram} and figure \ref{fig:geometry_tree} \& \ref{fig:geometry_diagram} respectively. 
 
-\begin{figure}[ht]
-	\begin{minipage}[b]{0.45\linewidth}
-	\centering
-		\includegraphics[scale=0.3]{image/petri.png}
-\caption{An illustration of the Petri net editor GUI.}
-\label{fig:petrinet_editor}
-	\end{minipage}
-\hspace{0.5cm}
-	\begin{minipage}[b]{0.45\linewidth}
-	\centering
-		\includegraphics[scale=0.3]{image/geometry.png}
-\caption{An illustration of the Geometry editor GUI.}
-\label{fig:geometry_editor}
-	\end{minipage}
-
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.45]{image/ui/petrinet_tree.png}
+\caption{The Petri net tree editor.}
+\label{fig:petrinet_tree}
+\end{center}
 \end{figure}
 
-\subsubsection{Toolbar}
-The toolbar on top allows the user to \textbf{Load} and \textbf{Save} Petri nets as well as Geometries. The \textbf{Play} button allows the user to run the simulation tool anytime he or she wants to, given that the configuration is set up correctly. 
+\begin{figure*}[H]
+\begin{center}
+\includegraphics[scale=0.45]{image/ui/petrinet_diagram.png}
+\caption{The Petri net diagram editor.}
+\label{fig:petrinet_diagram}
+\end{center}
+\end{figure*}
 
-\subsubsection{Project files}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.45]{image/ui/geometry_tree.png}
+\caption{The geometry tree editor.}
+\label{fig:geometry_tree}
+\end{center}
+\end{figure}
+
+\begin{figure*}[H]
+\begin{center}
+\includegraphics[scale=0.45]{image/ui/geometry_diagram.png}
+\caption{The geometry diagram editor.}
+\label{fig:geometry_diagram}
+\end{center}
+\end{figure*}
+
+\subsubsection{Petri net editor}
+\textbf{Project explorer} \\
 On the left side, the user will have a view where all the files associated to the project are shown. This view will be able to identify the type of each file and, when the user opens one of the files, the editor associated to the file type will open accordingly. 
 
-\subsubsection{Canvas}
-The canvas is the place where the user can draw the Petri net and Geometry models respectively. The user drags an object from the Object toolbar and places it on the canvas. The user can edit the position of the different objects by dragging them around the canvas. Furthermore, the connections between the objects can be edited by dragging lines between two objects (while following the rules of the Petri net). The user will be able to see the graphical representation of the Petri net in the Petri net Editor and the graphical representation of the geometry in the Geometry Editor. 
+\textbf{Canvas (diagram editor)} \\
+The canvas is the place where the user can create/draw the Petri net. In the diagram editor the user selects an object from the palette and left-click on the canvas to create the object. The user can edit the position of the different objects by dragging them around the canvas. Furthermore, the connections between the objects can be edited by dragging lines between two objects (while following the rules of the Petri net). The user will be able to see the graphical representation of the Petri net in the Petri net diagram editor. 
 
-\subsubsection{Objects}
-To create and modify the Petri net and/or the geometry, the user will be able to drag objects from the toolbar into the canvas. The toolbar will only contain the objects that correspond to the current editor (e.g. \textit{places} in the Petri net Editor and \textit{lines} in the Geometry Editor. Each object will have a dedicated icon in order to increase the usability of the GUIs.
+\textbf{Palette} \\
+To create and modify the Petri net the user will be able to create objects on the canvas by selecting the desired tool in the palette on the right side. The palette in the Petri net editor has tools to create places, transistions and arcs. Each object will have a dedicated icon in order to increase the usability of the GUI.
 
-\subsubsection{Object properties}
-Each object has different properties that can be defined by the user. The user can modify these properties in the properties view whenever an object is selected. More details about the properties of the objects in each editor are specified in the (Section \ref{sec:system-features}).
+\textbf{Tree editor} \\
+In the tree editor the user can create objects by right-clicking and select Add object. The tree editor gives the user a quick overview of how the different objects are connected.
+
+\textbf{Object properties} \\
+Each object has different properties that can be defined by the user. The user can modify these properties in the properties view whenever an object is selected. The different objects have the properties: \\
+\textbf{Transistion}
+\begin{itemize}
+\item{\textbf{Id:} The id of the object used in the simulator.}
+\item{\textbf{In:} The incoming arcs.}
+\item{\textbf{Out:} The outgoing arcs.}
+\end{itemize}
+\textbf{Place}%%%%%%%%%%%%
+\begin{itemize}
+\item{\textbf{Id:} The id of the object used in the simulator.}
+\item{\textbf{In:} The incoming arcs.}
+\item{\textbf{Out:} The out going arcs.}
+\item{\textbf{Tokens:} A list of tokens placed on this place.}
+\item{\textbf{Input place label:} Determines whether the place is an input place. Can either be true of false.}
+\end{itemize}
+\textbf{Arc}%%%%%%%%%%%%
+\begin{itemize}
+\item{\textbf{Id:} The id of the object used in the simulator.}
+\item{\textbf{Source:} The source object.}
+\item{\textbf{Target:} The target object.}
+\end{itemize}
+
+\subsubsection{Geometry editor}
+\textbf{Project explorer} \\
+On the left side, the user will have a view where all the files associated to the project are shown. This view will be able to identify the type of each file and, when the user opens one of the files, the editor associated to the file type will open accordingly. 
+
+\textbf{Canvas (diagram editor)} \\
+The canvas is the place where the user can create/draw the geometry. In the diagram editor the user selects an object from the palette and left-click on the canvas to create the object. The user can edit the position of the different objects by dragging them around the canvas. Furthermore, the connections between the objects can be edited by dragging lines between two objects. The user can create bend points on these lines to modify the slopes of the lines. The user will be able to see the graphical representation of the Petri net in the Petri net diagram editor. 
+
+\textbf{Palette} \\
+To create and modify the geometry, the user will be able to create objects on the canvas by selecting the desired tool in the palette on the right side. The palette in the geometry editor has tools to create input places, connections and lines. Each object will have a dedicated icon in order to increase the usability of the GUI.
+
+\textbf{Object properties} \\
+Each object has different properties that can be defined by the user. The user can modify these properties in the properties view whenever an object is selected. The different objects have the properties: \\
+\textbf{Input place}
+\begin{itemize}
+\item{\textbf{Appearance label:} The appearance label is used in the appearance editor where the user specify the appearance in the 3D simulation of the specific label.}
+\item{\textbf{Label:} Used in the 3D engine for recognition.}
+\item{\textbf{X and Y location:} The position in the simulation.}
+\end{itemize}
+\textbf{Connector}
+\begin{itemize}
+\item{\textbf{Label:} Used in the 3D engine for recognition.}
+\item{\textbf{In:} The incoming lines.}
+\item{\textbf{Out:} The outgoing lines.}
+\item{\textbf{X and Y location:} The position in the simulation.}
+\end{itemize}
+\textbf{Line}
+\begin{itemize}
+\item{\textbf{Appearance label:} The appearance label is used in the appearance editor where the user specify the appearance in the 3D simulation of the specific label.}
+\item{\textbf{Begin:} The source connector.}
+\item{\textbf{End:} The target connector.}
+\item{\textbf{Label:} Used in the 3D engine for recognition.}
+\item{\textbf{Token appearance label:} The appearance label of the tokens on this line. The user specifies the appearance in the appearance editor.}
+\end{itemize}
 
 \subsubsection{Appearance editor}
-Figure \ref{fig:appearance_editor} is an illustration of how the appearance editor will look like. The user has previously specified, in the Petri net editor, the appearance labels for each object. The appearance can either be a texture to a surface or a 3D object. In the appearance editor, the user will be able to specify which files should be associated to which label. 
+Figure \ref{fig:appearance_editor} is an example of the appearance editor. The user has previously specified, in the Petri net editor, the appearance labels for each object. The user creates a new Appearance object (AObject) in the editor and gives it the same label as given in the Geometry editor. The user can specify the texture and model of the appearance in the texture and Object3D property.
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[scale=0.5]{image/appearance.png}
-\caption{An illustration of the Appearance editor GUI.}
+\includegraphics[scale=0.45]{image/ui/appearance.png}
+\caption{The Appearance editor GUI.}
 \label{fig:appearance_editor}
 \end{center}
 \end{figure}
 
-\subsubsection{Configuration wizard}
-The configuration wizard tool helps the user to set up the simulation. The configuration wizard will be a pop-up window with several pages where the user has to specify a file for: Petri net, Geometry and Appearance models. The wizard will then validate whether these files match each other. If they do, the user will be able to run the 3D simulation. 
+\subsubsection{Configuration editor}
+The configuration editor (figure \ref{fig:configuration}) helps the user to set up the 3D simulation. In the editor the user has to specify the Petri net, geometry and appearance that he or she wants to use for the 3D simulation. This way the user can for example have different Petri nets but still use the same visual representation for tokens and places in the simulator.
 
 \subsubsection{Simulation tool}
-When the user has run the Configuration wizard successfully he will be able to run the 3D simulation. The 3D simulation opens in a new window. This window has a \textbf{play/pause} button that changes according to the play state; if the simulation state is play the button will be a pause symbol and the other way around. The window also has a \textbf{reset} button that allows the user to reset the simulation.
-The user will be able to interact with the simulation, therefore the user will be able to use the mouse to click on different objects. The user will also be able to use the mouse to change the camera perspective.
+When the user has set up the Configuration successfully he will be able to run the 3D simulation. The 3D simulation opens in a new window. This window has a \textbf{play/pause} button that changes according to the play state; if the simulation state is play the button will be a pause symbol and the other way around. The window also has a \textbf{reset} button that allows the user to reset the simulation.
+The user will be able to interact with the simulation, therefore the user will be able to use the mouse to click on different objects. The user will also be able to use the mouse and keyboard to change the camera perspective. An example of the simulation tool can be seen in Figure \ref{fig:simulation_tool}
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[scale=0.5]{image/simulation_tool.png}
-\caption{An illustration of the Simulation tool.}
-\label{fig:simulation_tool.}
+\includegraphics[scale=0.45]{image/ui/configuration.png}
+\caption{The configuration editor.}
+\label{fig:configuration}
 \end{center}
 \end{figure}
 
-\subsection{Handbook}
-Since the implementation of this software is only in the beginning stages, the following topics will be an estimation of how the mentioned tasks will be executed. The actual implementation of the software will strive towards being able to do the tasks in this handbook. 
-The handbook is a list of typical questions a user will have to the most important parts of this software. A step-by-step guide to solve each of these questions is provided to the reader.
-
-\subsubsection{How do I create a Petri net?}
-In the Project files explorer Right-click and choose New $>$ Petri net File ... . \\
-A pop-up window will appear where the user can specify the file name. \\
-The new Petri net file will appear in the Project files explorer.   
-
-\subsubsection{How do I create a geometry?}
-In the Project files explorer Right-click and choose New $>$ Geometry File ... .  \\
-A pop-up window will appear where the user can specify the file name. \\
-The new geometry file will appear in the Project files explorer.   
-
-\subsubsection{How do add a transition/place to the Petri net?}
-Select the transition/place object from the object toolbar on the right. Click and drag the transition/place to the canvas. \\
-The transition/place will now appear on the canvas. \\
-The user can change the position of the object by click and drag to the new position.
-
-\subsubsection{How do add a point to the geometry?}
-Select the point object from the object toolbar on the right. Click and drag the point to the canvas. \\
-The point will now appear on the canvas. \\
-The user can change the position of the point by click and drag to the new position.
-
-\subsubsection{How do I create a connection between two objects?}
-Select the arc/line object from the object toolbar on the right.  \\
-Click on the object that is the source and drag the mouse to the target object. \\
-The arc/line will now appear on the canvas. 
-
-\subsubsection{How do add a bendpoint to a line?}
-Select the line you want to add a bendpoint to. \\
-Right-click on the canvas where you want the bendpoint to be and select \textbf{Add bendpoint}. \\
-The position of bendpoint can be changed by dragging it with the mouse.
-
-\subsubsection{How do I add an appearance to an object?}
-Select an object on the canvas in the Petri net editor / Geometry editor. \\
-In the object properties view in the bottom of the editor, change the name in the appearance label for the object. \\
-Open the appearance editor. Find the appearance label given in the last step. \\
-Click on the \textbf{File..} button next to the label. \\
-A pop-up window will appear with a list of the project files. Choose the file you want for the appearance (e.g. a texture file or a 3D object file).\\
-When you run the simulation the texture or 3D model will appear for the specific object. 
-
-\subsubsection{How do I delete an object in the Petri net editor and Geometry editor?}
-Select and mark the object in the canvas and press Delete.
-
-\subsubsection{How do I save a Petri net model / a geometry model?}
-In the editor - click on the \textbf{Save} button in the top toolbar.
-
-\subsubsection{How do I load a Petri net model / a geometry model?}
-In the project files explorer - double-click on the model file you want to open. \\
-The Petri net editor and geometry editor will open respectively. \\
-\newline
-The model can also be opened by clicking the \textbf{Load} button in the top toolbar.
-A pop-up window will appear with the project files. Select the file you want to open from the list of project files and press Load. 
-
-\subsubsection{How do I run the Configuration wizard?} \label{sec:conf_wizard}
-Click on the \textbf{Configuration} button on the top toolbar. 
-A pop-up wizard will appear. On the first page in the wizards, select the Petri net file from the project files. On the next page select the geometry model file from the project files. On the third page select the appearance model file. \\
-The wizard will now validate whether the 3 files match. If they do the configuration is complete. 
-
-\subsubsection{How do I run the 3D simulation?}
-When you have run the Configuration wizard (see steps in section \ref{sec:conf_wizard}) correctly, you will be able to run the simulation. \\
-Press the simulation button in top toolbar to run the 3D simulation. 
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{image/ui/simulator.png}
+\caption{An example of the Simulation tool.}
+\label{fig:simulation_tool}
+\end{center}
+\end{figure}
