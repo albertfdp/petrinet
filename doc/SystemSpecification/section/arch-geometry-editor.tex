@@ -31,3 +31,10 @@ Class BendPoint is the type of parametric point that defines the curvature of th
 
 \paragraph{Line}
 Class Line is a parametric curve in a two dimensional plane. The line begins at a point location \textbf{begin} and it ends at a point location \textbf{end}. A \textbf{BendPoint} is a point location which parametrically defines the curvature of the line, unless it doesn't have one, thus the line would be straight. \textbf{AppearanceLabel} Is used to define the 3d shape of the line within 3d simulator. The appearance will be extrapolated along the length of the line, thus the appearance could for instance be track, road, empty space, etc. On the other hand, the \textbf{tokenAppearanceLabel} defines 3D models, that are animated along the line. They could be for instance train, bike, space ship, etc.
+
+The geometry editor is initially implemented with Graphical Modeling Framework or GMF. It provides factory pattern for construction of objects, command pattern for editing functionalities and interfaces for function calls. The implementation is then extended with listeners. The listener notify geometry of the changes done to the locations of graphical objects in graphical editor. This information is used to define coordinate locations of geometry objects. Furthermore, the visualization of lines, or as they are called in GMF, connections, in the graphical editor is changed to that of catmull-rom curves. 
+
+
+
+
+
