@@ -1,5 +1,5 @@
 \subsection{Petri net engine}
-\writer{Thibaud}
+\writer{Thibaud, Albert}
 
 Figure \ref{fig:uml-petrinet-engine} shows the model behind the Petri net Engine.
 
@@ -13,6 +13,7 @@ There is also a specific Token class introduced which is the \textbf{RuntimeToke
 The simulator can then interact with the engine by calling one these three methods to simulate the Petri net:
 
 \begin{itemize}
+  \item \textbf{getAllPossibleAnimations}: This method is called by the simulator during initialization as the Engine 3D needs the list of animations that should be run at any time. 
   \item \textbf{fireTransitions}: This method is called by the simulator whenever an animation is finished. The Petri net engine fires all the transition currently possible and returns a list of \textbf{Animation} objects
   \item \textbf{markTokenAsFinished}: This method is called once an animation corresponding to a Token is finished. It is therefore marked as finished so that the method \textbf{fireTransitions} can know which transitions are possible to execute right away.
   \item \textbf{createToken}: This method is called by the simulator after an user input on an InputPlace. It creates a Token on the Place clicked by the user.

@@ -3,7 +3,7 @@
 
 The simulator is the main component of the system, it reads the initial configuration and works as a controller between the Petri net Engine and the 3D Engine.
 
-In order to implement this, we will use the Observer pattern (Figure \ref{fig:observer-pattern}) so that the Simulator can keep track and receive notifications from the 3D engine when some events happen, such as an animation finished or a user interaction.
+In order to implement this, we use the Observer pattern (Figure \ref{fig:observer-pattern}) so that the Simulator can keep track and receive notifications from the 3D engine when some events happen, such as an animation finished or a user interaction.
 
 \begin{figure}[htp]
 \begin{center}
@@ -17,7 +17,7 @@ Figure \ref{fig:sd-engines} shows the interaction between the three components i
 
 \begin{figure}[htp]
 \begin{center}
-  \includegraphics[width=0.8\textwidth]{image/sd-engines.png}
+  \includegraphics[width=0.8\textwidth]{image/sequence.png}
   \caption{Sequence diagram of the Simulator, Petri net Engine and 3D engine}
   \label{fig:sd-engines}
 \end{center}

@@ -5,14 +5,6 @@ The Petri net editor is a component which consists of an extension of the ePNK e
 
 \begin{figure}[htp]
 \begin{center}
-  \includegraphics[width=0.6\textwidth]{image/petrinet_uml.png}
-  \caption{UML for the Petri net Editor}
-  \label{fig:uml-petrinet-editor}
-\end{center}
-\end{figure}
-
-\begin{figure}[htp]
-\begin{center}
   \includegraphics[width=0.8\textwidth]{image/petrinet_editor_domain.png}
   \caption{Petri net editor domain model}
   \label{fig:petri-net-domain-model}
@@ -28,17 +20,66 @@ A description of the classes shown in Figure \ref{fig:petri-net-domain-model} is
 The class Place extends from Place in the \textit{pnmlcoremodel}, and contains the following attributes:
 
 \begin{itemize}
-	\item \textbf{Token}: an ePNK string label to indicate the presence of one or more tokens in this Place.
-	\item \textbf{AppearanceLabel}: an ePNK string label to indicate the shape and texture of the Place.
+	\item \textbf{Token}: an ePNK label to indicate the presence of one or more tokens in this Place.
 	\item \textbf{InputPlaceLabel}: an ePNK boolean attribute to indicate if the place is interactive for the user or not (if tokens can be added by the user during runtime ).
 	\item \textbf{GeometryLabel}: an ePNK string label to indicate the geometry location of the Place in the simulation.
 	\item \textbf{AnimationLabel}: : an ePNK structured label which contains an Animation object and that contains all the information of the animation or sequence of animations executed when a Token is in this Place.
 \end{itemize}
 
-\paragraph{Arc}
+\subsubsection{Animation}
 
-The class Arc extends from Arc in the \textit{pnmlcoremodel}, and contains the following attributes:
+As shown in Figure~\ref{fig:petri-net-domain-model}, Places have a defined animation model, which is the one shown in Figure~\ref{fig:animation-model}.
 
-\begin{itemize}
-	\item \textbf{Identity}: an ePNK integer label to indicate the id of an arc, which is required for proper visualization of the Token "movement" during the simulation.
-\end{itemize}
+\begin{figure}[htp]
+\begin{center}
+  \includegraphics[width=0.5\textwidth]{image/animation_model.png}
+  \caption{Animation model}
+  \label{fig:animation-model}
+\end{center}
+\end{figure}
+
+As shown, there are two possible animations: move or appear. The first one also has speed as a parameter, whilst the second one includes the geometry label of the place of which we want to change the shape on, and the shape we want that place to have. Using this two animations, it is possible to visualize all the necessary animations.
+
+\subsubsection{PAL: Petri Net Animation Language}
+
+In order to be able to read the animations defined in an animation label in the Petri Net Editor, it has been implemented a language using Xtext. The defined syntax is the following:
+
+\begin{lstlisting}
+	move(2.0)
+\end{lstlisting}
+
+\begin{lstlisting}
+	appear(L1, red)
+\end{lstlisting}
+
+\subsubsection{Graphical Extensions}
+
+When extending from the ePNK it has been also necessary to add two graphical extensions in order to provide more usability to the end-user by letting him know in a single look which places have tokens and which are input places. Therefore, we implemented the following method in an inherited class of PlaceFigure, which depending on Place having tokens or having been marked as input place, the shape would change on run time.
+\begin{lstlisting}
+protected void fillShape(Graphics graphics) {
+		super.fillShape(graphics);
+		dk.dtu.se2.petrinet.Place p = (dk.dtu.se2.petrinet.Place) this.place;
+		
+		if (!p.getTokens().isEmpty()) {
+			Rectangle rectangle = this.getClientArea();
+			graphics.setBackgroundColor(getForegroundColor());
+			graphics.fillOval((int) (rectangle.x + 0.325 * rectangle.width), 
+					(int) (rectangle.y + 0.375 * rectangle.height),
+					(int) (0.25 * rectangle.width), (int) (0.25 * rectangle.height));
+			graphics.drawString(String.valueOf(p.getTokens().size()), 
+					(int) (rectangle.x + 0.6 * rectangle.width), 
+					(int) (rectangle.y + 0.45 * rectangle.height));
+		}
+		
+		InputPlace inputPlace = p.getInputPlaceLabel();
+		if(inputPlace != null && inputPlace.isText()){
+			Rectangle rectangle = this.getClientArea();
+			graphics.setBackgroundColor(getForegroundColor());
+			graphics.setLineWidth(2);
+			graphics.drawLine(rectangle.x + 10, rectangle.y + 10, 
+					rectangle.x + rectangle.width - 10, rectangle.y + rectangle.height - 10);
+			graphics.drawLine(rectangle.x + 10, rectangle.y + rectangle.height - 10, 
+					rectangle.x + rectangle.width - 10, rectangle.y + 10);
+		}
+	}
+\end{lstlisting}

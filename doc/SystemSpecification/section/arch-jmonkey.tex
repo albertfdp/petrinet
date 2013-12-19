@@ -1,5 +1,7 @@
 \subsection{The jMonkeyEngine}
-The interface described in Section~\ref{sec:3d-engine} will be implemented using the jMonkey libraries. In the following, the implementation of the interface will be described.
+\writer{Anders, Albert}
+
+The interface that described in Section~\ref{sec:3d-engine} will be implemented using jMonkey library. In the following, the implementation of the interface will be described.
 
 \textbf{init(Geometry geometry, Appearance appearance)}
 The initialization will put all information about the geometry and appearance into a list of SObjects. An SObject is a line segment, or using Petri Net terms: two transitions and a place. This list of SObjects is then used to set up the animations that will be playable in the simulation. The animations are created using the MotionPath and MotionEvent classes inherited from jMonkey. For each SObject, a MotionPath is created using the points that make up the line segement; this could be a beginning point, a few bend points and an end point. The MotionPath is then used to set up the MotionEvent, which besides needing a MotionPath, also needs some geometry, which in this case will be a shape defined by the SObject. The shape will be the shape of the token on the line segment. All tokens have need to be prepared as jMonkey geometries before creating the MotionEvents.
@@ -25,3 +27,6 @@ The animations in the simulator are started according to the current list of ani
 
 \textbf{onAnimationFinished(Animation animation)}
 The simulator needs to know as soon as animations have finished, in order to quickly get the next animation. The state of all animations is checked 60 times per second, and the delay between one animation finishing and the next starting should be low.
+
+\subsubsection{Collision Detection}
+\writer{Thibaud}
