@@ -13,27 +13,27 @@ import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientRelationshipRequest;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LineReorientCommand.
+ *
  * @generated
  */
 public class LineReorientCommand extends EditElementCommand {
 
-	/**
-	 * @generated
-	 */
+	/** The reorient direction. @generated */
 	private final int reorientDirection;
 
-	/**
-	 * @generated
-	 */
+	/** The old end. @generated */
 	private final EObject oldEnd;
 
-	/**
-	 * @generated
-	 */
+	/** The new end. @generated */
 	private final EObject newEnd;
 
 	/**
+	 * Instantiates a new line reorient command.
+	 *
+	 * @param request the request
 	 * @generated
 	 */
 	public LineReorientCommand(ReorientRelationshipRequest request) {
@@ -44,6 +44,9 @@ public class LineReorientCommand extends EditElementCommand {
 	}
 
 	/**
+	 * Can execute.
+	 *
+	 * @return true, if successful
 	 * @generated
 	 */
 	public boolean canExecute() {
@@ -60,6 +63,9 @@ public class LineReorientCommand extends EditElementCommand {
 	}
 
 	/**
+	 * Can reorient source.
+	 *
+	 * @return true, if successful
 	 * @generated
 	 */
 	protected boolean canReorientSource() {
@@ -77,6 +83,9 @@ public class LineReorientCommand extends EditElementCommand {
 	}
 
 	/**
+	 * Can reorient target.
+	 *
+	 * @return true, if successful
 	 * @generated
 	 */
 	protected boolean canReorientTarget() {
@@ -94,6 +103,12 @@ public class LineReorientCommand extends EditElementCommand {
 	}
 
 	/**
+	 * Do execute with result.
+	 *
+	 * @param monitor the monitor
+	 * @param info the info
+	 * @return the command result
+	 * @throws ExecutionException the execution exception
 	 * @generated
 	 */
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
@@ -112,6 +127,10 @@ public class LineReorientCommand extends EditElementCommand {
 	}
 
 	/**
+	 * Reorient source.
+	 *
+	 * @return the command result
+	 * @throws ExecutionException the execution exception
 	 * @generated
 	 */
 	protected CommandResult reorientSource() throws ExecutionException {
@@ -120,6 +139,10 @@ public class LineReorientCommand extends EditElementCommand {
 	}
 
 	/**
+	 * Reorient target.
+	 *
+	 * @return the command result
+	 * @throws ExecutionException the execution exception
 	 * @generated
 	 */
 	protected CommandResult reorientTarget() throws ExecutionException {
@@ -128,6 +151,9 @@ public class LineReorientCommand extends EditElementCommand {
 	}
 
 	/**
+	 * Gets the link.
+	 *
+	 * @return the link
 	 * @generated
 	 */
 	protected Line getLink() {
@@ -135,6 +161,9 @@ public class LineReorientCommand extends EditElementCommand {
 	}
 
 	/**
+	 * Gets the old source.
+	 *
+	 * @return the old source
 	 * @generated
 	 */
 	protected Connector getOldSource() {
@@ -142,6 +171,9 @@ public class LineReorientCommand extends EditElementCommand {
 	}
 
 	/**
+	 * Gets the new source.
+	 *
+	 * @return the new source
 	 * @generated
 	 */
 	protected Connector getNewSource() {
@@ -149,6 +181,9 @@ public class LineReorientCommand extends EditElementCommand {
 	}
 
 	/**
+	 * Gets the old target.
+	 *
+	 * @return the old target
 	 * @generated
 	 */
 	protected Connector getOldTarget() {
@@ -156,6 +191,9 @@ public class LineReorientCommand extends EditElementCommand {
 	}
 
 	/**
+	 * Gets the new target.
+	 *
+	 * @return the new target
 	 * @generated
 	 */
 	protected Connector getNewTarget() {
