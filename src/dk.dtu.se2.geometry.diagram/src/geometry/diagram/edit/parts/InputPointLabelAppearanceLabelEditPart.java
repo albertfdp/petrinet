@@ -52,40 +52,31 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InputPointLabelAppearanceLabelEditPart.
+ *
  * @generated
  */
 public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 		implements ITextAwareEditPart, IBorderItemEditPart {
 
-	/**
-	 * @generated
-	 */
+	/** The Constant VISUAL_ID. @generated */
 	public static final int VISUAL_ID = 5002;
 
-	/**
-	 * @generated
-	 */
+	/** The manager. @generated */
 	private DirectEditManager manager;
 
-	/**
-	 * @generated
-	 */
+	/** The parser. @generated */
 	private IParser parser;
 
-	/**
-	 * @generated
-	 */
+	/** The parser elements. @generated */
 	private List<?> parserElements;
 
-	/**
-	 * @generated
-	 */
+	/** The default text. @generated */
 	private String defaultText;
 
-	/**
-	 * @generated
-	 */
+	/** The label delegate. @generated */
 	private ILabelDelegate labelDelegate;
 
 	/**
@@ -99,6 +90,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Instantiates a new input point label appearance label edit part.
+	 *
+	 * @param view the view
 	 * @generated
 	 */
 	public InputPointLabelAppearanceLabelEditPart(View view) {
@@ -106,6 +100,8 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Creates the default edit policies.
+	 *
 	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
@@ -117,6 +113,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the border item locator.
+	 *
+	 * @return the border item locator
 	 * @generated
 	 */
 	public IBorderItemLocator getBorderItemLocator() {
@@ -130,6 +129,8 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Refresh bounds.
+	 *
 	 * @generated
 	 */
 	public void refreshBounds() {
@@ -146,6 +147,10 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the label text helper.
+	 *
+	 * @param figure the figure
+	 * @return the label text helper
 	 * @generated
 	 */
 	protected String getLabelTextHelper(IFigure figure) {
@@ -159,6 +164,10 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Sets the label text helper.
+	 *
+	 * @param figure the figure
+	 * @param text the text
 	 * @generated
 	 */
 	protected void setLabelTextHelper(IFigure figure, String text) {
@@ -172,6 +181,10 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the label icon helper.
+	 *
+	 * @param figure the figure
+	 * @return the label icon helper
 	 * @generated
 	 */
 	protected Image getLabelIconHelper(IFigure figure) {
@@ -185,6 +198,10 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Sets the label icon helper.
+	 *
+	 * @param figure the figure
+	 * @param icon the icon
 	 * @generated
 	 */
 	protected void setLabelIconHelper(IFigure figure, Image icon) {
@@ -200,6 +217,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Sets the label.
+	 *
+	 * @param figure the new label
 	 * @generated
 	 */
 	public void setLabel(IFigure figure) {
@@ -211,6 +231,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the model children.
+	 *
+	 * @return the model children
 	 * @generated
 	 */
 	@SuppressWarnings("rawtypes")
@@ -219,6 +242,10 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the child by semantic hint.
+	 *
+	 * @param semanticHint the semantic hint
+	 * @return the child by semantic hint
 	 * @generated
 	 */
 	public IGraphicalEditPart getChildBySemanticHint(String semanticHint) {
@@ -226,6 +253,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the parser element.
+	 *
+	 * @return the parser element
 	 * @generated
 	 */
 	protected EObject getParserElement() {
@@ -233,6 +263,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the label icon.
+	 *
+	 * @return the label icon
 	 * @generated
 	 */
 	protected Image getLabelIcon() {
@@ -240,6 +273,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the label text.
+	 *
+	 * @return the label text
 	 * @generated
 	 */
 	protected String getLabelText() {
@@ -257,6 +293,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Sets the label text.
+	 *
+	 * @param text the new label text
 	 * @generated
 	 */
 	public void setLabelText(String text) {
@@ -265,6 +304,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the edits the text.
+	 *
+	 * @return the edits the text
 	 * @generated
 	 */
 	public String getEditText() {
@@ -277,6 +319,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Checks if is editable.
+	 *
+	 * @return true, if is editable
 	 * @generated
 	 */
 	protected boolean isEditable() {
@@ -284,6 +329,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the edits the text validator.
+	 *
+	 * @return the edits the text validator
 	 * @generated
 	 */
 	public ICellEditorValidator getEditTextValidator() {
@@ -320,6 +368,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the completion processor.
+	 *
+	 * @return the completion processor
 	 * @generated
 	 */
 	public IContentAssistProcessor getCompletionProcessor() {
@@ -331,6 +382,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the parser options.
+	 *
+	 * @return the parser options
 	 * @generated
 	 */
 	public ParserOptions getParserOptions() {
@@ -338,6 +392,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the parser.
+	 *
+	 * @return the parser
 	 * @generated
 	 */
 	public IParser getParser() {
@@ -353,6 +410,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the manager.
+	 *
+	 * @return the manager
 	 * @generated
 	 */
 	protected DirectEditManager getManager() {
@@ -364,6 +424,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Sets the manager.
+	 *
+	 * @param manager the new manager
 	 * @generated
 	 */
 	protected void setManager(DirectEditManager manager) {
@@ -371,6 +434,8 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Perform direct edit.
+	 *
 	 * @generated
 	 */
 	protected void performDirectEdit() {
@@ -378,6 +443,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Perform direct edit.
+	 *
+	 * @param eventLocation the event location
 	 * @generated
 	 */
 	protected void performDirectEdit(Point eventLocation) {
@@ -388,6 +456,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Perform direct edit.
+	 *
+	 * @param initialCharacter the initial character
 	 * @generated
 	 */
 	private void performDirectEdit(char initialCharacter) {
@@ -403,6 +474,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Perform direct edit request.
+	 *
+	 * @param request the request
 	 * @generated
 	 */
 	protected void performDirectEditRequest(Request request) {
@@ -435,6 +509,8 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Refresh visuals.
+	 *
 	 * @generated
 	 */
 	protected void refreshVisuals() {
@@ -447,6 +523,8 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Refresh label.
+	 *
 	 * @generated
 	 */
 	protected void refreshLabel() {
@@ -456,6 +534,8 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Refresh underline.
+	 *
 	 * @generated
 	 */
 	protected void refreshUnderline() {
@@ -467,6 +547,8 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Refresh strike through.
+	 *
 	 * @generated
 	 */
 	protected void refreshStrikeThrough() {
@@ -479,6 +561,8 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Refresh font.
+	 *
 	 * @generated
 	 */
 	protected void refreshFont() {
@@ -494,6 +578,8 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Refresh selection feedback.
+	 *
 	 * @generated
 	 */
 	private void refreshSelectionFeedback() {
@@ -502,6 +588,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Request edit policy feedback refresh.
+	 *
+	 * @param editPolicyKey the edit policy key
 	 * @generated
 	 */
 	private void requestEditPolicyFeedbackRefresh(String editPolicyKey) {
@@ -512,6 +601,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Sets the font color.
+	 *
+	 * @param color the new font color
 	 * @generated
 	 */
 	protected void setFontColor(Color color) {
@@ -519,6 +611,8 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Adds the semantic listeners.
+	 *
 	 * @generated
 	 */
 	protected void addSemanticListeners() {
@@ -536,6 +630,8 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Removes the semantic listeners.
+	 *
 	 * @generated
 	 */
 	protected void removeSemanticListeners() {
@@ -549,6 +645,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the accessible edit part.
+	 *
+	 * @return the accessible edit part
 	 * @generated
 	 */
 	protected AccessibleEditPart getAccessibleEditPart() {
@@ -564,6 +663,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the font style owner view.
+	 *
+	 * @return the font style owner view
 	 * @generated
 	 */
 	private View getFontStyleOwnerView() {
@@ -571,6 +673,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the label delegate.
+	 *
+	 * @return the label delegate
 	 * @generated
 	 */
 	private ILabelDelegate getLabelDelegate() {
@@ -586,6 +691,10 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Gets the adapter.
+	 *
+	 * @param key the key
+	 * @return the adapter
 	 * @generated
 	 */
 	@Override
@@ -597,6 +706,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Handle notification event.
+	 *
+	 * @param event the event
 	 * @generated
 	 */
 	protected void handleNotificationEvent(Notification event) {
@@ -640,6 +752,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Creates the figure.
+	 *
+	 * @return the i figure
 	 * @generated
 	 */
 	protected IFigure createFigure() {
@@ -649,6 +764,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * Creates the figure prim.
+	 *
+	 * @return the i figure
 	 * @generated
 	 */
 	protected IFigure createFigurePrim() {
@@ -656,16 +774,18 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 	}
 
 	/**
+	 * The Class NodeNameFigure.
+	 *
 	 * @generated
 	 */
 	public class NodeNameFigure extends WrappingLabel {
 
-		/**
-		 * @generated
-		 */
+		/** The figure node name label. @generated */
 		private WrappingLabel fFigureNodeNameLabel;
 
 		/**
+		 * Instantiates a new node name figure.
+		 *
 		 * @generated
 		 */
 		public NodeNameFigure() {
@@ -673,6 +793,9 @@ public class InputPointLabelAppearanceLabelEditPart extends LabelEditPart
 		}
 
 		/**
+		 * Gets the figure node name label.
+		 *
+		 * @return the figure node name label
 		 * @generated
 		 */
 		public WrappingLabel getFigureNodeNameLabel() {

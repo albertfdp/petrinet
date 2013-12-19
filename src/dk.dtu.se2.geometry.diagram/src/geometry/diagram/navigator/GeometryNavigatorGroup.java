@@ -3,27 +3,29 @@ package geometry.diagram.navigator;
 import java.util.Collection;
 import java.util.LinkedList;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryNavigatorGroup.
+ *
  * @generated
  */
 public class GeometryNavigatorGroup extends GeometryAbstractNavigatorItem {
 
-	/**
-	 * @generated
-	 */
+	/** The my group name. @generated */
 	private String myGroupName;
 
-	/**
-	 * @generated
-	 */
+	/** The my icon. @generated */
 	private String myIcon;
 
-	/**
-	 * @generated
-	 */
+	/** The my children. @generated */
 	private Collection myChildren = new LinkedList();
 
 	/**
+	 * Instantiates a new geometry navigator group.
+	 *
+	 * @param groupName the group name
+	 * @param icon the icon
+	 * @param parent the parent
 	 * @generated
 	 */
 	GeometryNavigatorGroup(String groupName, String icon, Object parent) {
@@ -33,6 +35,9 @@ public class GeometryNavigatorGroup extends GeometryAbstractNavigatorItem {
 	}
 
 	/**
+	 * Gets the group name.
+	 *
+	 * @return the group name
 	 * @generated
 	 */
 	public String getGroupName() {
@@ -40,6 +45,9 @@ public class GeometryNavigatorGroup extends GeometryAbstractNavigatorItem {
 	}
 
 	/**
+	 * Gets the icon.
+	 *
+	 * @return the icon
 	 * @generated
 	 */
 	public String getIcon() {
@@ -47,6 +55,9 @@ public class GeometryNavigatorGroup extends GeometryAbstractNavigatorItem {
 	}
 
 	/**
+	 * Gets the children.
+	 *
+	 * @return the children
 	 * @generated
 	 */
 	public Object[] getChildren() {
@@ -54,6 +65,9 @@ public class GeometryNavigatorGroup extends GeometryAbstractNavigatorItem {
 	}
 
 	/**
+	 * Adds the children.
+	 *
+	 * @param children the children
 	 * @generated
 	 */
 	public void addChildren(Collection children) {
@@ -61,6 +75,9 @@ public class GeometryNavigatorGroup extends GeometryAbstractNavigatorItem {
 	}
 
 	/**
+	 * Adds the child.
+	 *
+	 * @param child the child
 	 * @generated
 	 */
 	public void addChild(Object child) {
@@ -68,6 +85,9 @@ public class GeometryNavigatorGroup extends GeometryAbstractNavigatorItem {
 	}
 
 	/**
+	 * Checks if is empty.
+	 *
+	 * @return true, if is empty
 	 * @generated
 	 */
 	public boolean isEmpty() {
@@ -75,6 +95,10 @@ public class GeometryNavigatorGroup extends GeometryAbstractNavigatorItem {
 	}
 
 	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
 	 * @generated
 	 */
 	public boolean equals(Object obj) {
@@ -88,6 +112,9 @@ public class GeometryNavigatorGroup extends GeometryAbstractNavigatorItem {
 	}
 
 	/**
+	 * Hash code.
+	 *
+	 * @return the int
 	 * @generated
 	 */
 	public int hashCode() {

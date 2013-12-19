@@ -53,13 +53,20 @@ import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.FontData;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryViewProvider.
+ *
  * @generated
  */
 public class GeometryViewProvider extends AbstractProvider implements
 		IViewProvider {
 
 	/**
+	 * Provides.
+	 *
+	 * @param operation the operation
+	 * @return true, if successful
 	 * @generated
 	 */
 	public final boolean provides(IOperation operation) {
@@ -78,6 +85,10 @@ public class GeometryViewProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Provides.
+	 *
+	 * @param op the op
+	 * @return true, if successful
 	 * @generated
 	 */
 	protected boolean provides(CreateViewForKindOperation op) {
@@ -91,6 +102,10 @@ public class GeometryViewProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Provides.
+	 *
+	 * @param op the op
+	 * @return true, if successful
 	 * @generated
 	 */
 	protected boolean provides(CreateDiagramViewOperation op) {
@@ -101,6 +116,10 @@ public class GeometryViewProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Provides.
+	 *
+	 * @param op the op
+	 * @return true, if successful
 	 * @generated
 	 */
 	protected boolean provides(CreateNodeViewOperation op) {
@@ -164,6 +183,10 @@ public class GeometryViewProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Provides.
+	 *
+	 * @param op the op
+	 * @return true, if successful
 	 * @generated
 	 */
 	protected boolean provides(CreateEdgeViewOperation op) {
@@ -190,6 +213,12 @@ public class GeometryViewProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Creates the diagram.
+	 *
+	 * @param semanticAdapter the semantic adapter
+	 * @param diagramKind the diagram kind
+	 * @param preferencesHint the preferences hint
+	 * @return the diagram
 	 * @generated
 	 */
 	public Diagram createDiagram(IAdaptable semanticAdapter,
@@ -203,6 +232,15 @@ public class GeometryViewProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Creates the node.
+	 *
+	 * @param semanticAdapter the semantic adapter
+	 * @param containerView the container view
+	 * @param semanticHint the semantic hint
+	 * @param index the index
+	 * @param persisted the persisted
+	 * @param preferencesHint the preferences hint
+	 * @return the node
 	 * @generated
 	 */
 	public Node createNode(IAdaptable semanticAdapter, View containerView,
@@ -229,6 +267,15 @@ public class GeometryViewProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Creates the edge.
+	 *
+	 * @param semanticAdapter the semantic adapter
+	 * @param containerView the container view
+	 * @param semanticHint the semantic hint
+	 * @param index the index
+	 * @param persisted the persisted
+	 * @param preferencesHint the preferences hint
+	 * @return the edge
 	 * @generated
 	 */
 	public Edge createEdge(IAdaptable semanticAdapter, View containerView,
@@ -246,6 +293,14 @@ public class GeometryViewProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Creates the connector_2001.
+	 *
+	 * @param domainElement the domain element
+	 * @param containerView the container view
+	 * @param index the index
+	 * @param persisted the persisted
+	 * @param preferencesHint the preferences hint
+	 * @return the node
 	 * @generated
 	 */
 	public Node createConnector_2001(EObject domainElement, View containerView,
@@ -297,6 +352,14 @@ public class GeometryViewProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Creates the input point_2002.
+	 *
+	 * @param domainElement the domain element
+	 * @param containerView the container view
+	 * @param index the index
+	 * @param persisted the persisted
+	 * @param preferencesHint the preferences hint
+	 * @return the node
 	 * @generated
 	 */
 	public Node createInputPoint_2002(EObject domainElement,
@@ -350,6 +413,14 @@ public class GeometryViewProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Creates the line_4001.
+	 *
+	 * @param domainElement the domain element
+	 * @param containerView the container view
+	 * @param index the index
+	 * @param persisted the persisted
+	 * @param preferencesHint the preferences hint
+	 * @return the edge
 	 * @generated
 	 */
 	public Edge createLine_4001(EObject domainElement, View containerView,
@@ -409,6 +480,10 @@ public class GeometryViewProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Stamp shortcut.
+	 *
+	 * @param containerView the container view
+	 * @param target the target
 	 * @generated
 	 */
 	private void stampShortcut(View containerView, Node target) {
@@ -424,6 +499,11 @@ public class GeometryViewProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Creates the label.
+	 *
+	 * @param owner the owner
+	 * @param hint the hint
+	 * @return the node
 	 * @generated
 	 */
 	private Node createLabel(View owner, String hint) {
@@ -434,6 +514,10 @@ public class GeometryViewProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Gets the semantic element.
+	 *
+	 * @param semanticAdapter the semantic adapter
+	 * @return the semantic element
 	 * @generated
 	 */
 	private EObject getSemanticElement(IAdaptable semanticAdapter) {
@@ -449,6 +533,10 @@ public class GeometryViewProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Gets the semantic element type.
+	 *
+	 * @param semanticAdapter the semantic adapter
+	 * @return the semantic element type
 	 * @generated
 	 */
 	private IElementType getSemanticElementType(IAdaptable semanticAdapter) {

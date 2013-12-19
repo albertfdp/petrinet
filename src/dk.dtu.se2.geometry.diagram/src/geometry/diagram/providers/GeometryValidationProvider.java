@@ -7,17 +7,21 @@ import geometry.diagram.part.GeometryVisualIDRegistry;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.View;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryValidationProvider.
+ *
  * @generated
  */
 public class GeometryValidationProvider {
 
-	/**
-	 * @generated
-	 */
+	/** The constraints active. @generated */
 	private static boolean constraintsActive = false;
 
 	/**
+	 * Should constraints be private.
+	 *
+	 * @return true, if successful
 	 * @generated
 	 */
 	public static boolean shouldConstraintsBePrivate() {
@@ -25,6 +29,10 @@ public class GeometryValidationProvider {
 	}
 
 	/**
+	 * Run with constraints.
+	 *
+	 * @param editingDomain the editing domain
+	 * @param operation the operation
 	 * @generated
 	 */
 	public static void runWithConstraints(
@@ -53,6 +61,10 @@ public class GeometryValidationProvider {
 	}
 
 	/**
+	 * Checks if is in default editor context.
+	 *
+	 * @param object the object
+	 * @return true, if is in default editor context
 	 * @generated
 	 */
 	static boolean isInDefaultEditorContext(Object object) {

@@ -14,42 +14,36 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryCreationWizard.
+ *
  * @generated
  */
 public class GeometryCreationWizard extends Wizard implements INewWizard {
 
-	/**
-	 * @generated
-	 */
+	/** The workbench. @generated */
 	private IWorkbench workbench;
 
-	/**
-	 * @generated
-	 */
+	/** The selection. @generated */
 	protected IStructuredSelection selection;
 
-	/**
-	 * @generated
-	 */
+	/** The diagram model file page. @generated */
 	protected GeometryCreationWizardPage diagramModelFilePage;
 
-	/**
-	 * @generated
-	 */
+	/** The domain model file page. @generated */
 	protected GeometryCreationWizardPage domainModelFilePage;
 
-	/**
-	 * @generated
-	 */
+	/** The diagram. @generated */
 	protected Resource diagram;
 
-	/**
-	 * @generated
-	 */
+	/** The open newly created diagram editor. @generated */
 	private boolean openNewlyCreatedDiagramEditor = true;
 
 	/**
+	 * Gets the workbench.
+	 *
+	 * @return the workbench
 	 * @generated
 	 */
 	public IWorkbench getWorkbench() {
@@ -57,6 +51,9 @@ public class GeometryCreationWizard extends Wizard implements INewWizard {
 	}
 
 	/**
+	 * Gets the selection.
+	 *
+	 * @return the selection
 	 * @generated
 	 */
 	public IStructuredSelection getSelection() {
@@ -64,6 +61,9 @@ public class GeometryCreationWizard extends Wizard implements INewWizard {
 	}
 
 	/**
+	 * Gets the diagram.
+	 *
+	 * @return the diagram
 	 * @generated
 	 */
 	public final Resource getDiagram() {
@@ -71,6 +71,9 @@ public class GeometryCreationWizard extends Wizard implements INewWizard {
 	}
 
 	/**
+	 * Checks if is open newly created diagram editor.
+	 *
+	 * @return true, if is open newly created diagram editor
 	 * @generated
 	 */
 	public final boolean isOpenNewlyCreatedDiagramEditor() {
@@ -78,6 +81,9 @@ public class GeometryCreationWizard extends Wizard implements INewWizard {
 	}
 
 	/**
+	 * Sets the open newly created diagram editor.
+	 *
+	 * @param openNewlyCreatedDiagramEditor the new open newly created diagram editor
 	 * @generated
 	 */
 	public void setOpenNewlyCreatedDiagramEditor(
@@ -86,6 +92,10 @@ public class GeometryCreationWizard extends Wizard implements INewWizard {
 	}
 
 	/**
+	 * Inits the.
+	 *
+	 * @param workbench the workbench
+	 * @param selection the selection
 	 * @generated
 	 */
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
@@ -98,6 +108,8 @@ public class GeometryCreationWizard extends Wizard implements INewWizard {
 	}
 
 	/**
+	 * Adds the pages.
+	 *
 	 * @generated
 	 */
 	public void addPages() {
@@ -131,6 +143,9 @@ public class GeometryCreationWizard extends Wizard implements INewWizard {
 	}
 
 	/**
+	 * Perform finish.
+	 *
+	 * @return true, if successful
 	 * @generated
 	 */
 	public boolean performFinish() {

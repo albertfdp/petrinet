@@ -24,54 +24,49 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryDiagramEditorPlugin.
+ *
  * @generated
  */
 public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 
-	/**
-	 * @generated
-	 */
+	/** The Constant ID. @generated */
 	public static final String ID = "dk.dtu.se2.geometry.diagram"; //$NON-NLS-1$
 
-	/**
-	 * @generated
-	 */
+	/** The Constant DIAGRAM_PREFERENCES_HINT. @generated */
 	public static final PreferencesHint DIAGRAM_PREFERENCES_HINT = new PreferencesHint(
 			ID);
 
-	/**
-	 * @generated
-	 */
+	/** The instance. @generated */
 	private static GeometryDiagramEditorPlugin instance;
 
-	/**
-	 * @generated
-	 */
+	/** The adapter factory. @generated */
 	private ComposedAdapterFactory adapterFactory;
 
-	/**
-	 * @generated
-	 */
+	/** The document provider. @generated */
 	private GeometryDocumentProvider documentProvider;
 
-	/**
-	 * @generated
-	 */
+	/** The link constraints. @generated */
 	private GeometryBaseItemSemanticEditPolicy.LinkConstraints linkConstraints;
 
-	/**
-	 * @generated
-	 */
+	/** The initializers. @generated */
 	private ElementInitializers initializers;
 
 	/**
+	 * Instantiates a new geometry diagram editor plugin.
+	 *
 	 * @generated
 	 */
 	public GeometryDiagramEditorPlugin() {
 	}
 
 	/**
+	 * Start.
+	 *
+	 * @param context the context
+	 * @throws Exception the exception
 	 * @generated
 	 */
 	public void start(BundleContext context) throws Exception {
@@ -83,6 +78,10 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Stop.
+	 *
+	 * @param context the context
+	 * @throws Exception the exception
 	 * @generated
 	 */
 	public void stop(BundleContext context) throws Exception {
@@ -95,6 +94,9 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Gets the single instance of GeometryDiagramEditorPlugin.
+	 *
+	 * @return single instance of GeometryDiagramEditorPlugin
 	 * @generated
 	 */
 	public static GeometryDiagramEditorPlugin getInstance() {
@@ -102,6 +104,9 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Creates the adapter factory.
+	 *
+	 * @return the composed adapter factory
 	 * @generated
 	 */
 	protected ComposedAdapterFactory createAdapterFactory() {
@@ -111,6 +116,9 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Fill item provider factories.
+	 *
+	 * @param factories the factories
 	 * @generated
 	 */
 	protected void fillItemProviderFactories(List<AdapterFactory> factories) {
@@ -120,6 +128,9 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Gets the item providers adapter factory.
+	 *
+	 * @return the item providers adapter factory
 	 * @generated
 	 */
 	public AdapterFactory getItemProvidersAdapterFactory() {
@@ -127,6 +138,10 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Gets the item image descriptor.
+	 *
+	 * @param item the item
+	 * @return the item image descriptor
 	 * @generated
 	 */
 	public ImageDescriptor getItemImageDescriptor(Object item) {
@@ -143,9 +158,9 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	 * Returns an image descriptor for the image file at the given
 	 * plug-in relative path.
 	 *
-	 * @generated
 	 * @param path the path
 	 * @return the image descriptor
+	 * @generated
 	 */
 	public static ImageDescriptor getBundledImageDescriptor(String path) {
 		return AbstractUIPlugin.imageDescriptorFromPlugin(ID, path);
@@ -153,12 +168,12 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 
 	/**
 	 * Respects images residing in any plug-in. If path is relative,
-	 * then this bundle is looked up for the image, otherwise, for absolute 
+	 * then this bundle is looked up for the image, otherwise, for absolute
 	 * path, first segment is taken as id of plug-in with image
 	 *
-	 * @generated
 	 * @param path the path to image, either absolute (with plug-in id as first segment), or relative for bundled images
 	 * @return the image descriptor
+	 * @generated
 	 */
 	public static ImageDescriptor findImageDescriptor(String path) {
 		final IPath p = new Path(path);
@@ -174,9 +189,9 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	 * Returns an image for the image file at the given plug-in relative path.
 	 * Client do not need to dispose this image. Images will be disposed automatically.
 	 *
-	 * @generated
 	 * @param path the path
 	 * @return image instance
+	 * @generated
 	 */
 	public Image getBundledImage(String path) {
 		Image image = getImageRegistry().get(path);
@@ -188,8 +203,10 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Returns string from plug-in's resource bundle
+	 * Returns string from plug-in's resource bundle.
 	 *
+	 * @param key the key
+	 * @return the string
 	 * @generated
 	 */
 	public static String getString(String key) {
@@ -197,6 +214,9 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Gets the document provider.
+	 *
+	 * @return the document provider
 	 * @generated
 	 */
 	public GeometryDocumentProvider getDocumentProvider() {
@@ -207,6 +227,9 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Gets the link constraints.
+	 *
+	 * @return the link constraints
 	 * @generated
 	 */
 	public GeometryBaseItemSemanticEditPolicy.LinkConstraints getLinkConstraints() {
@@ -214,6 +237,9 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Sets the link constraints.
+	 *
+	 * @param lc the new link constraints
 	 * @generated
 	 */
 	public void setLinkConstraints(
@@ -222,6 +248,9 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Gets the element initializers.
+	 *
+	 * @return the element initializers
 	 * @generated
 	 */
 	public ElementInitializers getElementInitializers() {
@@ -229,6 +258,9 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Sets the element initializers.
+	 *
+	 * @param i the new element initializers
 	 * @generated
 	 */
 	public void setElementInitializers(ElementInitializers i) {
@@ -236,6 +268,9 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Log error.
+	 *
+	 * @param error the error
 	 * @generated
 	 */
 	public void logError(String error) {
@@ -243,6 +278,10 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Log error.
+	 *
+	 * @param error the error
+	 * @param throwable the throwable
 	 * @generated
 	 */
 	public void logError(String error, Throwable throwable) {
@@ -256,6 +295,9 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Log info.
+	 *
+	 * @param message the message
 	 * @generated
 	 */
 	public void logInfo(String message) {
@@ -263,6 +305,10 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Log info.
+	 *
+	 * @param message the message
+	 * @param throwable the throwable
 	 * @generated
 	 */
 	public void logInfo(String message, Throwable throwable) {
@@ -276,6 +322,10 @@ public class GeometryDiagramEditorPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Debug.
+	 *
+	 * @param message the message
+	 * @param throwable the throwable
 	 * @generated
 	 */
 	private void debug(String message, Throwable throwable) {

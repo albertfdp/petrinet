@@ -5,7 +5,10 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.PlatformObject;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryAbstractNavigatorItem.
+ *
  * @generated
  */
 public abstract class GeometryAbstractNavigatorItem extends PlatformObject {
@@ -36,12 +39,13 @@ public abstract class GeometryAbstractNavigatorItem extends PlatformObject {
 		}, geometry.diagram.navigator.GeometryAbstractNavigatorItem.class);
 	}
 
-	/**
-	 * @generated
-	 */
+	/** The my parent. @generated */
 	private Object myParent;
 
 	/**
+	 * Instantiates a new geometry abstract navigator item.
+	 *
+	 * @param parent the parent
 	 * @generated
 	 */
 	protected GeometryAbstractNavigatorItem(Object parent) {
@@ -49,6 +53,9 @@ public abstract class GeometryAbstractNavigatorItem extends PlatformObject {
 	}
 
 	/**
+	 * Gets the parent.
+	 *
+	 * @return the parent
 	 * @generated
 	 */
 	public Object getParent() {

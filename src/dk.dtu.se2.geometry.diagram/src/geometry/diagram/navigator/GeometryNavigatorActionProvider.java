@@ -28,22 +28,24 @@ import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
 import org.eclipse.ui.part.FileEditorInput;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryNavigatorActionProvider.
+ *
  * @generated
  */
 public class GeometryNavigatorActionProvider extends CommonActionProvider {
 
-	/**
-	 * @generated
-	 */
+	/** The my contribute. @generated */
 	private boolean myContribute;
 
-	/**
-	 * @generated
-	 */
+	/** The my open diagram action. @generated */
 	private OpenDiagramAction myOpenDiagramAction;
 
 	/**
+	 * Inits the.
+	 *
+	 * @param aSite the a site
 	 * @generated
 	 */
 	public void init(ICommonActionExtensionSite aSite) {
@@ -57,6 +59,9 @@ public class GeometryNavigatorActionProvider extends CommonActionProvider {
 	}
 
 	/**
+	 * Make actions.
+	 *
+	 * @param viewerSite the viewer site
 	 * @generated
 	 */
 	private void makeActions(ICommonViewerWorkbenchSite viewerSite) {
@@ -64,6 +69,9 @@ public class GeometryNavigatorActionProvider extends CommonActionProvider {
 	}
 
 	/**
+	 * Fill action bars.
+	 *
+	 * @param actionBars the action bars
 	 * @generated
 	 */
 	public void fillActionBars(IActionBars actionBars) {
@@ -80,27 +88,31 @@ public class GeometryNavigatorActionProvider extends CommonActionProvider {
 	}
 
 	/**
+	 * Fill context menu.
+	 *
+	 * @param menu the menu
 	 * @generated
 	 */
 	public void fillContextMenu(IMenuManager menu) {
 	}
 
 	/**
+	 * The Class OpenDiagramAction.
+	 *
 	 * @generated
 	 */
 	private static class OpenDiagramAction extends Action {
 
-		/**
-		 * @generated
-		 */
+		/** The my diagram. @generated */
 		private Diagram myDiagram;
 
-		/**
-		 * @generated
-		 */
+		/** The my viewer site. @generated */
 		private ICommonViewerWorkbenchSite myViewerSite;
 
 		/**
+		 * Instantiates a new open diagram action.
+		 *
+		 * @param viewerSite the viewer site
 		 * @generated
 		 */
 		public OpenDiagramAction(ICommonViewerWorkbenchSite viewerSite) {
@@ -109,6 +121,9 @@ public class GeometryNavigatorActionProvider extends CommonActionProvider {
 		}
 
 		/**
+		 * Selection changed.
+		 *
+		 * @param selection the selection
 		 * @generated
 		 */
 		public final void selectionChanged(IStructuredSelection selection) {
@@ -135,6 +150,8 @@ public class GeometryNavigatorActionProvider extends CommonActionProvider {
 		}
 
 		/**
+		 * Run.
+		 *
 		 * @generated
 		 */
 		public void run() {
@@ -153,6 +170,10 @@ public class GeometryNavigatorActionProvider extends CommonActionProvider {
 		}
 
 		/**
+		 * Gets the editor input.
+		 *
+		 * @param diagram the diagram
+		 * @return the editor input
 		 * @generated
 		 */
 		private static IEditorInput getEditorInput(Diagram diagram) {

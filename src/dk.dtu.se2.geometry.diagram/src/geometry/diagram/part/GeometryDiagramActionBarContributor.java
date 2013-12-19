@@ -8,13 +8,19 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPage;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryDiagramActionBarContributor.
+ *
  * @generated
  */
 public class GeometryDiagramActionBarContributor extends
 		DiagramActionBarContributor {
 
 	/**
+	 * Gets the editor class.
+	 *
+	 * @return the editor class
 	 * @generated
 	 */
 	protected Class getEditorClass() {
@@ -22,6 +28,9 @@ public class GeometryDiagramActionBarContributor extends
 	}
 
 	/**
+	 * Gets the editor id.
+	 *
+	 * @return the editor id
 	 * @generated
 	 */
 	protected String getEditorId() {
@@ -29,6 +38,10 @@ public class GeometryDiagramActionBarContributor extends
 	}
 
 	/**
+	 * Inits the.
+	 *
+	 * @param bars the bars
+	 * @param page the page
 	 * @generated
 	 */
 	public void init(IActionBars bars, IWorkbenchPage page) {

@@ -6,7 +6,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.notation.View;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryNavigatorItem.
+ *
  * @generated
  */
 public class GeometryNavigatorItem extends GeometryAbstractNavigatorItem {
@@ -33,17 +36,18 @@ public class GeometryNavigatorItem extends GeometryAbstractNavigatorItem {
 		}, geometry.diagram.navigator.GeometryNavigatorItem.class);
 	}
 
-	/**
-	 * @generated
-	 */
+	/** The my view. @generated */
 	private View myView;
 
-	/**
-	 * @generated
-	 */
+	/** The my leaf. @generated */
 	private boolean myLeaf = false;
 
 	/**
+	 * Instantiates a new geometry navigator item.
+	 *
+	 * @param view the view
+	 * @param parent the parent
+	 * @param isLeaf the is leaf
 	 * @generated
 	 */
 	public GeometryNavigatorItem(View view, Object parent, boolean isLeaf) {
@@ -53,6 +57,9 @@ public class GeometryNavigatorItem extends GeometryAbstractNavigatorItem {
 	}
 
 	/**
+	 * Gets the view.
+	 *
+	 * @return the view
 	 * @generated
 	 */
 	public View getView() {
@@ -60,6 +67,9 @@ public class GeometryNavigatorItem extends GeometryAbstractNavigatorItem {
 	}
 
 	/**
+	 * Checks if is leaf.
+	 *
+	 * @return true, if is leaf
 	 * @generated
 	 */
 	public boolean isLeaf() {
@@ -67,6 +77,10 @@ public class GeometryNavigatorItem extends GeometryAbstractNavigatorItem {
 	}
 
 	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
 	 * @generated
 	 */
 	public boolean equals(Object obj) {
@@ -81,6 +95,9 @@ public class GeometryNavigatorItem extends GeometryAbstractNavigatorItem {
 	}
 
 	/**
+	 * Hash code.
+	 *
+	 * @return the int
 	 * @generated
 	 */
 	public int hashCode() {

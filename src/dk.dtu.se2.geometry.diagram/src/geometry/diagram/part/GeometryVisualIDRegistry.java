@@ -19,6 +19,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.structure.DiagramStructure;
 
+// TODO: Auto-generated Javadoc
 /**
  * This registry is used to determine which type of visual object should be
  * created for the corresponding Diagram, Node, ChildNode or Link represented
@@ -28,12 +29,14 @@ import org.eclipse.gmf.tooling.runtime.structure.DiagramStructure;
  */
 public class GeometryVisualIDRegistry {
 
-	/**
-	 * @generated
-	 */
+	/** The Constant DEBUG_KEY. @generated */
 	private static final String DEBUG_KEY = "dk.dtu.se2.geometry.diagram/debug/visualID"; //$NON-NLS-1$
 
 	/**
+	 * Gets the visual id.
+	 *
+	 * @param view the view
+	 * @return the visual id
 	 * @generated
 	 */
 	public static int getVisualID(View view) {
@@ -49,6 +52,10 @@ public class GeometryVisualIDRegistry {
 	}
 
 	/**
+	 * Gets the model id.
+	 *
+	 * @param view the view
+	 * @return the model id
 	 * @generated
 	 */
 	public static String getModelID(View view) {
@@ -64,6 +71,10 @@ public class GeometryVisualIDRegistry {
 	}
 
 	/**
+	 * Gets the visual id.
+	 *
+	 * @param type the type
+	 * @return the visual id
 	 * @generated
 	 */
 	public static int getVisualID(String type) {
@@ -81,6 +92,10 @@ public class GeometryVisualIDRegistry {
 	}
 
 	/**
+	 * Gets the type.
+	 *
+	 * @param visualID the visual id
+	 * @return the type
 	 * @generated
 	 */
 	public static String getType(int visualID) {
@@ -88,6 +103,10 @@ public class GeometryVisualIDRegistry {
 	}
 
 	/**
+	 * Gets the diagram visual id.
+	 *
+	 * @param domainElement the domain element
+	 * @return the diagram visual id
 	 * @generated
 	 */
 	public static int getDiagramVisualID(EObject domainElement) {
@@ -103,6 +122,11 @@ public class GeometryVisualIDRegistry {
 	}
 
 	/**
+	 * Gets the node visual id.
+	 *
+	 * @param containerView the container view
+	 * @param domainElement the domain element
+	 * @return the node visual id
 	 * @generated
 	 */
 	public static int getNodeVisualID(View containerView, EObject domainElement) {
@@ -141,6 +165,11 @@ public class GeometryVisualIDRegistry {
 	}
 
 	/**
+	 * Can create node.
+	 *
+	 * @param containerView the container view
+	 * @param nodeVisualID the node visual id
+	 * @return true, if successful
 	 * @generated
 	 */
 	public static boolean canCreateNode(View containerView, int nodeVisualID) {
@@ -189,6 +218,10 @@ public class GeometryVisualIDRegistry {
 	}
 
 	/**
+	 * Gets the link with class visual id.
+	 *
+	 * @param domainElement the domain element
+	 * @return the link with class visual id
 	 * @generated
 	 */
 	public static int getLinkWithClassVisualID(EObject domainElement) {
@@ -205,7 +238,9 @@ public class GeometryVisualIDRegistry {
 	/**
 	 * User can change implementation of this method to handle some specific
 	 * situations not covered by default logic.
-	 * 
+	 *
+	 * @param element the element
+	 * @return true, if is diagram
 	 * @generated
 	 */
 	private static boolean isDiagram(Geometry element) {
@@ -213,6 +248,12 @@ public class GeometryVisualIDRegistry {
 	}
 
 	/**
+	 * Check node visual id.
+	 *
+	 * @param containerView the container view
+	 * @param domainElement the domain element
+	 * @param candidate the candidate
+	 * @return true, if successful
 	 * @generated
 	 */
 	public static boolean checkNodeVisualID(View containerView,
@@ -226,6 +267,10 @@ public class GeometryVisualIDRegistry {
 	}
 
 	/**
+	 * Checks if is compartment visual id.
+	 *
+	 * @param visualID the visual id
+	 * @return true, if is compartment visual id
 	 * @generated
 	 */
 	public static boolean isCompartmentVisualID(int visualID) {
@@ -233,6 +278,10 @@ public class GeometryVisualIDRegistry {
 	}
 
 	/**
+	 * Checks if is semantic leaf visual id.
+	 *
+	 * @param visualID the visual id
+	 * @return true, if is semantic leaf visual id
 	 * @generated
 	 */
 	public static boolean isSemanticLeafVisualID(int visualID) {
@@ -248,11 +297,14 @@ public class GeometryVisualIDRegistry {
 		return false;
 	}
 
-	/**
-	 * @generated
-	 */
+	/** The Constant TYPED_INSTANCE. @generated */
 	public static final DiagramStructure TYPED_INSTANCE = new DiagramStructure() {
+		
 		/**
+		 * Gets the visual id.
+		 *
+		 * @param view the view
+		 * @return the visual id
 		 * @generated
 		 */
 		@Override
@@ -262,6 +314,10 @@ public class GeometryVisualIDRegistry {
 		}
 
 		/**
+		 * Gets the model id.
+		 *
+		 * @param view the view
+		 * @return the model id
 		 * @generated
 		 */
 		@Override
@@ -271,6 +327,11 @@ public class GeometryVisualIDRegistry {
 		}
 
 		/**
+		 * Gets the node visual id.
+		 *
+		 * @param containerView the container view
+		 * @param domainElement the domain element
+		 * @return the node visual id
 		 * @generated
 		 */
 		@Override
@@ -280,6 +341,12 @@ public class GeometryVisualIDRegistry {
 		}
 
 		/**
+		 * Check node visual id.
+		 *
+		 * @param containerView the container view
+		 * @param domainElement the domain element
+		 * @param candidate the candidate
+		 * @return true, if successful
 		 * @generated
 		 */
 		@Override
@@ -290,6 +357,10 @@ public class GeometryVisualIDRegistry {
 		}
 
 		/**
+		 * Checks if is compartment visual id.
+		 *
+		 * @param visualID the visual id
+		 * @return true, if is compartment visual id
 		 * @generated
 		 */
 		@Override
@@ -299,6 +370,10 @@ public class GeometryVisualIDRegistry {
 		}
 
 		/**
+		 * Checks if is semantic leaf visual id.
+		 *
+		 * @param visualID the visual id
+		 * @return true, if is semantic leaf visual id
 		 * @generated
 		 */
 		@Override

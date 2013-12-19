@@ -19,13 +19,18 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientRelationshipReques
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ConnectorItemSemanticEditPolicy.
+ *
  * @generated
  */
 public class ConnectorItemSemanticEditPolicy extends
 		GeometryBaseItemSemanticEditPolicy {
 
 	/**
+	 * Instantiates a new connector item semantic edit policy.
+	 *
 	 * @generated
 	 */
 	public ConnectorItemSemanticEditPolicy() {
@@ -33,6 +38,10 @@ public class ConnectorItemSemanticEditPolicy extends
 	}
 
 	/**
+	 * Gets the destroy element command.
+	 *
+	 * @param req the req
+	 * @return the destroy element command
 	 * @generated
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
@@ -73,6 +82,10 @@ public class ConnectorItemSemanticEditPolicy extends
 	}
 
 	/**
+	 * Gets the creates the relationship command.
+	 *
+	 * @param req the req
+	 * @return the creates the relationship command
 	 * @generated
 	 */
 	protected Command getCreateRelationshipCommand(CreateRelationshipRequest req) {
@@ -83,6 +96,10 @@ public class ConnectorItemSemanticEditPolicy extends
 	}
 
 	/**
+	 * Gets the start create relationship command.
+	 *
+	 * @param req the req
+	 * @return the start create relationship command
 	 * @generated
 	 */
 	protected Command getStartCreateRelationshipCommand(
@@ -95,6 +112,10 @@ public class ConnectorItemSemanticEditPolicy extends
 	}
 
 	/**
+	 * Gets the complete create relationship command.
+	 *
+	 * @param req the req
+	 * @return the complete create relationship command
 	 * @generated
 	 */
 	protected Command getCompleteCreateRelationshipCommand(
@@ -109,7 +130,9 @@ public class ConnectorItemSemanticEditPolicy extends
 	/**
 	 * Returns command to reorient EClass based link. New link target or source
 	 * should be the domain model element associated with this node.
-	 * 
+	 *
+	 * @param req the req
+	 * @return the reorient relationship command
 	 * @generated
 	 */
 	protected Command getReorientRelationshipCommand(

@@ -2,7 +2,10 @@ package geometry.diagram.part;
 
 import org.eclipse.osgi.util.NLS;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class Messages.
+ *
  * @generated
  */
 public class Messages extends NLS {
@@ -15,309 +18,191 @@ public class Messages extends NLS {
 	}
 
 	/**
+	 * Instantiates a new messages.
+	 *
 	 * @generated
 	 */
 	private Messages() {
 	}
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry creation wizard title. @generated */
 	public static String GeometryCreationWizardTitle;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry creation wizard_ diagram model file page title. @generated */
 	public static String GeometryCreationWizard_DiagramModelFilePageTitle;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry creation wizard_ diagram model file page description. @generated */
 	public static String GeometryCreationWizard_DiagramModelFilePageDescription;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry creation wizard_ domain model file page title. @generated */
 	public static String GeometryCreationWizard_DomainModelFilePageTitle;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry creation wizard_ domain model file page description. @generated */
 	public static String GeometryCreationWizard_DomainModelFilePageDescription;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry creation wizard open editor error. @generated */
 	public static String GeometryCreationWizardOpenEditorError;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry creation wizard creation error. @generated */
 	public static String GeometryCreationWizardCreationError;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry creation wizard page extension error. @generated */
 	public static String GeometryCreationWizardPageExtensionError;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry diagram editor util_ open model resource error dialog title. @generated */
 	public static String GeometryDiagramEditorUtil_OpenModelResourceErrorDialogTitle;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry diagram editor util_ open model resource error dialog message. @generated */
 	public static String GeometryDiagramEditorUtil_OpenModelResourceErrorDialogMessage;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry diagram editor util_ create diagram progress task. @generated */
 	public static String GeometryDiagramEditorUtil_CreateDiagramProgressTask;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry diagram editor util_ create diagram command label. @generated */
 	public static String GeometryDiagramEditorUtil_CreateDiagramCommandLabel;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry document provider_is modifiable. @generated */
 	public static String GeometryDocumentProvider_isModifiable;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry document provider_handle element content changed. @generated */
 	public static String GeometryDocumentProvider_handleElementContentChanged;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry document provider_ incorrect input error. @generated */
 	public static String GeometryDocumentProvider_IncorrectInputError;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry document provider_ no diagram in resource error. @generated */
 	public static String GeometryDocumentProvider_NoDiagramInResourceError;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry document provider_ diagram loading error. @generated */
 	public static String GeometryDocumentProvider_DiagramLoadingError;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry document provider_ unsynchronized file save error. @generated */
 	public static String GeometryDocumentProvider_UnsynchronizedFileSaveError;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry document provider_ save diagram task. @generated */
 	public static String GeometryDocumentProvider_SaveDiagramTask;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry document provider_ save next resource task. @generated */
 	public static String GeometryDocumentProvider_SaveNextResourceTask;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry document provider_ save as operation. @generated */
 	public static String GeometryDocumentProvider_SaveAsOperation;
 
-	/**
-	 * @generated
-	 */
+	/** The Init diagram file_ resource error dialog title. @generated */
 	public static String InitDiagramFile_ResourceErrorDialogTitle;
 
-	/**
-	 * @generated
-	 */
+	/** The Init diagram file_ resource error dialog message. @generated */
 	public static String InitDiagramFile_ResourceErrorDialogMessage;
 
-	/**
-	 * @generated
-	 */
+	/** The Init diagram file_ wizard title. @generated */
 	public static String InitDiagramFile_WizardTitle;
 
-	/**
-	 * @generated
-	 */
+	/** The Init diagram file_ open model file dialog title. @generated */
 	public static String InitDiagramFile_OpenModelFileDialogTitle;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry new diagram file wizard_ creation page name. @generated */
 	public static String GeometryNewDiagramFileWizard_CreationPageName;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry new diagram file wizard_ creation page title. @generated */
 	public static String GeometryNewDiagramFileWizard_CreationPageTitle;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry new diagram file wizard_ creation page description. @generated */
 	public static String GeometryNewDiagramFileWizard_CreationPageDescription;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry new diagram file wizard_ root selection page name. @generated */
 	public static String GeometryNewDiagramFileWizard_RootSelectionPageName;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry new diagram file wizard_ root selection page title. @generated */
 	public static String GeometryNewDiagramFileWizard_RootSelectionPageTitle;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry new diagram file wizard_ root selection page description. @generated */
 	public static String GeometryNewDiagramFileWizard_RootSelectionPageDescription;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry new diagram file wizard_ root selection page selection title. @generated */
 	public static String GeometryNewDiagramFileWizard_RootSelectionPageSelectionTitle;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry new diagram file wizard_ root selection page no selection message. @generated */
 	public static String GeometryNewDiagramFileWizard_RootSelectionPageNoSelectionMessage;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry new diagram file wizard_ root selection page invalid selection message. @generated */
 	public static String GeometryNewDiagramFileWizard_RootSelectionPageInvalidSelectionMessage;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry new diagram file wizard_ init diagram command. @generated */
 	public static String GeometryNewDiagramFileWizard_InitDiagramCommand;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry new diagram file wizard_ incorrect root error. @generated */
 	public static String GeometryNewDiagramFileWizard_IncorrectRootError;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry diagram editor_ saving deleted file. @generated */
 	public static String GeometryDiagramEditor_SavingDeletedFile;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry diagram editor_ save as error title. @generated */
 	public static String GeometryDiagramEditor_SaveAsErrorTitle;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry diagram editor_ save as error message. @generated */
 	public static String GeometryDiagramEditor_SaveAsErrorMessage;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry diagram editor_ save error title. @generated */
 	public static String GeometryDiagramEditor_SaveErrorTitle;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry diagram editor_ save error message. @generated */
 	public static String GeometryDiagramEditor_SaveErrorMessage;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry element chooser dialog_ select model element title. @generated */
 	public static String GeometryElementChooserDialog_SelectModelElementTitle;
 
-	/**
-	 * @generated
-	 */
+	/** The Model element selection page message. @generated */
 	public static String ModelElementSelectionPageMessage;
 
-	/**
-	 * @generated
-	 */
+	/** The Validate action message. @generated */
 	public static String ValidateActionMessage;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry1 group_title. @generated */
 	public static String Geometry1Group_title;
 
-	/**
-	 * @generated
-	 */
+	/** The Line1 creation tool_title. @generated */
 	public static String Line1CreationTool_title;
 
-	/**
-	 * @generated
-	 */
+	/** The Line1 creation tool_desc. @generated */
 	public static String Line1CreationTool_desc;
 
-	/**
-	 * @generated
-	 */
+	/** The Connector2 creation tool_title. @generated */
 	public static String Connector2CreationTool_title;
 
-	/**
-	 * @generated
-	 */
+	/** The Connector2 creation tool_desc. @generated */
 	public static String Connector2CreationTool_desc;
 
-	/**
-	 * @generated
-	 */
+	/** The Input point3 creation tool_title. @generated */
 	public static String InputPoint3CreationTool_title;
 
-	/**
-	 * @generated
-	 */
+	/** The Input point3 creation tool_desc. @generated */
 	public static String InputPoint3CreationTool_desc;
 
-	/**
-	 * @generated
-	 */
+	/** The Command name_ open diagram. @generated */
 	public static String CommandName_OpenDiagram;
 
-	/**
-	 * @generated
-	 */
+	/** The Navigator group name_ geometry_1000_links. @generated */
 	public static String NavigatorGroupName_Geometry_1000_links;
 
-	/**
-	 * @generated
-	 */
+	/** The Navigator group name_ connector_2001_incominglinks. @generated */
 	public static String NavigatorGroupName_Connector_2001_incominglinks;
 
-	/**
-	 * @generated
-	 */
+	/** The Navigator group name_ connector_2001_outgoinglinks. @generated */
 	public static String NavigatorGroupName_Connector_2001_outgoinglinks;
 
-	/**
-	 * @generated
-	 */
+	/** The Navigator group name_ line_4001_target. @generated */
 	public static String NavigatorGroupName_Line_4001_target;
 
-	/**
-	 * @generated
-	 */
+	/** The Navigator group name_ line_4001_source. @generated */
 	public static String NavigatorGroupName_Line_4001_source;
 
-	/**
-	 * @generated
-	 */
+	/** The Navigator action provider_ open diagram action name. @generated */
 	public static String NavigatorActionProvider_OpenDiagramActionName;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry modeling assistant provider title. @generated */
 	public static String GeometryModelingAssistantProviderTitle;
 
-	/**
-	 * @generated
-	 */
+	/** The Geometry modeling assistant provider message. @generated */
 	public static String GeometryModelingAssistantProviderMessage;
 
 	//TODO: put accessor fields manually	

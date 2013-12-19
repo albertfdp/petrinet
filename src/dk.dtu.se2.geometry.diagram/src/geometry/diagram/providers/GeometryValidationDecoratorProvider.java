@@ -42,34 +42,32 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryValidationDecoratorProvider.
+ *
  * @generated
  */
 public class GeometryValidationDecoratorProvider extends AbstractProvider
 		implements IDecoratorProvider {
 
-	/**
-	 * @generated
-	 */
+	/** The Constant KEY. @generated */
 	private static final String KEY = "validationStatus"; //$NON-NLS-1$
 
-	/**
-	 * @generated
-	 */
+	/** The Constant MARKER_TYPE. @generated */
 	private static final String MARKER_TYPE = GeometryDiagramEditorPlugin.ID
 			+ ".diagnostic"; //$NON-NLS-1$
 
-	/**
-	 * @generated
-	 */
+	/** The file observer. @generated */
 	private static MarkerObserver fileObserver;
 
-	/**
-	 * @generated
-	 */
+	/** The all decorators. @generated */
 	private static Map/*<String, List<IDecorator>>*/allDecorators = new HashMap();
 
 	/**
+	 * Creates the decorators.
+	 *
+	 * @param decoratorTarget the decorator target
 	 * @generated
 	 */
 	public void createDecorators(IDecoratorTarget decoratorTarget) {
@@ -96,6 +94,10 @@ public class GeometryValidationDecoratorProvider extends AbstractProvider
 	}
 
 	/**
+	 * Provides.
+	 *
+	 * @param operation the operation
+	 * @return true, if successful
 	 * @generated
 	 */
 	public boolean provides(IOperation operation) {
@@ -111,6 +113,9 @@ public class GeometryValidationDecoratorProvider extends AbstractProvider
 	}
 
 	/**
+	 * Refresh decorators.
+	 *
+	 * @param view the view
 	 * @generated
 	 */
 	public static void refreshDecorators(View view) {
@@ -118,6 +123,10 @@ public class GeometryValidationDecoratorProvider extends AbstractProvider
 	}
 
 	/**
+	 * Refresh decorators.
+	 *
+	 * @param viewId the view id
+	 * @param diagram the diagram
 	 * @generated
 	 */
 	private static void refreshDecorators(String viewId, Diagram diagram) {
@@ -152,16 +161,19 @@ public class GeometryValidationDecoratorProvider extends AbstractProvider
 	}
 
 	/**
+	 * The Class StatusDecorator.
+	 *
 	 * @generated
 	 */
 	public static class StatusDecorator extends AbstractDecorator {
 
-		/**
-		 * @generated
-		 */
+		/** The view id. @generated */
 		private String viewId;
 
 		/**
+		 * Instantiates a new status decorator.
+		 *
+		 * @param decoratorTarget the decorator target
 		 * @generated
 		 */
 		public StatusDecorator(IDecoratorTarget decoratorTarget) {
@@ -184,6 +196,8 @@ public class GeometryValidationDecoratorProvider extends AbstractProvider
 		}
 
 		/**
+		 * Refresh.
+		 *
 		 * @generated
 		 */
 		public void refresh() {
@@ -280,6 +294,10 @@ public class GeometryValidationDecoratorProvider extends AbstractProvider
 		}
 
 		/**
+		 * Gets the image.
+		 *
+		 * @param severity the severity
+		 * @return the image
 		 * @generated
 		 */
 		private Image getImage(int severity) {
@@ -299,6 +317,8 @@ public class GeometryValidationDecoratorProvider extends AbstractProvider
 		}
 
 		/**
+		 * Activate.
+		 *
 		 * @generated
 		 */
 		public void activate() {
@@ -332,6 +352,8 @@ public class GeometryValidationDecoratorProvider extends AbstractProvider
 		}
 
 		/**
+		 * Deactivate.
+		 *
 		 * @generated
 		 */
 		public void deactivate() {
@@ -359,16 +381,22 @@ public class GeometryValidationDecoratorProvider extends AbstractProvider
 	}
 
 	/**
+	 * An asynchronous update interface for receiving notifications
+	 * about Marker information as the Marker is constructed.
+	 *
 	 * @generated
 	 */
 	static class MarkerObserver implements IFileObserver {
 
-		/**
-		 * @generated
-		 */
+		/** The diagram. @generated */
 		private Diagram diagram;
 
 		/**
+		 * This method is called when information about an Marker
+		 * which was previously requested using an asynchronous
+		 * interface becomes available.
+		 *
+		 * @param diagram the diagram
 		 * @generated
 		 */
 		private MarkerObserver(Diagram diagram) {
@@ -376,30 +404,57 @@ public class GeometryValidationDecoratorProvider extends AbstractProvider
 		}
 
 		/**
+		 * This method is called when information about an Marker
+		 * which was previously requested using an asynchronous
+		 * interface becomes available.
+		 *
+		 * @param oldFile the old file
+		 * @param file the file
 		 * @generated
 		 */
 		public void handleFileRenamed(IFile oldFile, IFile file) {
 		}
 
 		/**
+		 * This method is called when information about an Marker
+		 * which was previously requested using an asynchronous
+		 * interface becomes available.
+		 *
+		 * @param oldFile the old file
+		 * @param file the file
 		 * @generated
 		 */
 		public void handleFileMoved(IFile oldFile, IFile file) {
 		}
 
 		/**
+		 * This method is called when information about an Marker
+		 * which was previously requested using an asynchronous
+		 * interface becomes available.
+		 *
+		 * @param file the file
 		 * @generated
 		 */
 		public void handleFileDeleted(IFile file) {
 		}
 
 		/**
+		 * This method is called when information about an Marker
+		 * which was previously requested using an asynchronous
+		 * interface becomes available.
+		 *
+		 * @param file the file
 		 * @generated
 		 */
 		public void handleFileChanged(IFile file) {
 		}
 
 		/**
+		 * This method is called when information about an Marker
+		 * which was previously requested using an asynchronous
+		 * interface becomes available.
+		 *
+		 * @param marker the marker
 		 * @generated
 		 */
 		public void handleMarkerAdded(IMarker marker) {
@@ -412,6 +467,12 @@ public class GeometryValidationDecoratorProvider extends AbstractProvider
 		}
 
 		/**
+		 * This method is called when information about an Marker
+		 * which was previously requested using an asynchronous
+		 * interface becomes available.
+		 *
+		 * @param marker the marker
+		 * @param attributes the attributes
 		 * @generated
 		 */
 		public void handleMarkerDeleted(IMarker marker, Map attributes) {
@@ -421,6 +482,11 @@ public class GeometryValidationDecoratorProvider extends AbstractProvider
 		}
 
 		/**
+		 * This method is called when information about an Marker
+		 * which was previously requested using an asynchronous
+		 * interface becomes available.
+		 *
+		 * @param marker the marker
 		 * @generated
 		 */
 		public void handleMarkerChanged(IMarker marker) {
@@ -435,6 +501,12 @@ public class GeometryValidationDecoratorProvider extends AbstractProvider
 		}
 
 		/**
+		 * This method is called when information about an Marker
+		 * which was previously requested using an asynchronous
+		 * interface becomes available.
+		 *
+		 * @param marker the marker
+		 * @return the type
 		 * @generated
 		 */
 		private String getType(IMarker marker) {

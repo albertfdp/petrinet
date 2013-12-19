@@ -15,18 +15,22 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.notation.View;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LineEditPart.
+ *
  * @generated
  */
 public class LineEditPart extends ConnectionNodeEditPart implements
 		ITreeBranchEditPart {
 
-	/**
-	 * @generated
-	 */
+	/** The Constant VISUAL_ID. @generated */
 	public static final int VISUAL_ID = 4001;
 
 	/**
+	 * Instantiates a new line edit part.
+	 *
+	 * @param view the view
 	 * @generated
 	 */
 	public LineEditPart(View view) {
@@ -34,6 +38,8 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	}
 
 	/**
+	 * Creates the default edit policies.
+	 *
 	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
@@ -43,6 +49,10 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	}
 
 	/**
+	 * Adds the fixed child.
+	 *
+	 * @param childEditPart the child edit part
+	 * @return true, if successful
 	 * @generated
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
@@ -55,6 +65,10 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	}
 
 	/**
+	 * Adds the child visual.
+	 *
+	 * @param childEditPart the child edit part
+	 * @param index the index
 	 * @generated
 	 */
 	protected void addChildVisual(EditPart childEditPart, int index) {
@@ -65,6 +79,10 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	}
 
 	/**
+	 * Removes the fixed child.
+	 *
+	 * @param childEditPart the child edit part
+	 * @return true, if successful
 	 * @generated
 	 */
 	protected boolean removeFixedChild(EditPart childEditPart) {
@@ -75,6 +93,9 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	}
 
 	/**
+	 * Removes the child visual.
+	 *
+	 * @param childEditPart the child edit part
 	 * @generated
 	 */
 	protected void removeChildVisual(EditPart childEditPart) {
@@ -89,7 +110,8 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	 * 
 	 * Body of this method does not depend on settings in generation model
 	 * so you may safely remove <i>generated</i> tag and modify it.
-	 * 
+	 *
+	 * @return the connection
 	 * @generated
 	 */
 	protected Connection createConnectionFigure() {
@@ -97,6 +119,9 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	}
 
 	/**
+	 * Gets the primary shape.
+	 *
+	 * @return the primary shape
 	 * @generated
 	 */
 	public LineFigure getPrimaryShape() {
@@ -104,16 +129,18 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 	}
 
 	/**
+	 * The Class LineFigure.
+	 *
 	 * @generated
 	 */
 	public class LineFigure extends PolylineConnectionEx {
 
-		/**
-		 * @generated
-		 */
+		/** The figure name. @generated */
 		private WrappingLabel fFigureName;
 
 		/**
+		 * Instantiates a new line figure.
+		 *
 		 * @generated NOT
 		 * @Mikko_Tuulio
 		 */
@@ -123,6 +150,8 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		}
 
 		/**
+		 * Creates the contents.
+		 *
 		 * @generated
 		 */
 		private void createContents() {
@@ -136,6 +165,9 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		}
 
 		/**
+		 * Creates the target decoration.
+		 *
+		 * @return the rotatable decoration
 		 * @generated NOT
 		 * @Mikko_Tuulio
 		 */
@@ -152,6 +184,9 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		}
 
 		/**
+		 * Gets the figure name.
+		 *
+		 * @return the figure name
 		 * @generated
 		 */
 		public WrappingLabel getFigureName() {
@@ -159,6 +194,10 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		}
 
 		/**
+		 * Gets the smooth points.
+		 *
+		 * @param calculateAppox the calculate appox
+		 * @return the smooth points
 		 * @generated NOT
 		 * @Mikko_Tuulio
 		 */
@@ -174,6 +213,11 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		}
 
 		/**
+		 * Calculate catmullrom point list.
+		 *
+		 * @param points the points
+		 * @param smoothness the smoothness
+		 * @return the point list
 		 * @generated NOT
 		 * @Mikko_Tuulio
 		 */
@@ -235,12 +279,20 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		}
 
 		/**
+		 * Calculate point.
+		 *
+		 * @param p0 the p0
+		 * @param p1 the p1
+		 * @param p2 the p2
+		 * @param p3 the p3
+		 * @param t the t
+		 * @return the point
 		 * @generated NOT
 		 * @Mikko_Tuulio
 		 */
 		private Point calculatePoint(Point p0, Point p1, Point p2, Point p3,
 				double t) {
-			Point point = new Point(); //This isn't correct, me thinks.
+			Point point = new Point();
 
 			point.x = (int) (0.5 * (p0.x * (-t + 2 * (t * t) - (t * t * t))
 					+ p1.x * (2 - 5 * (t * t) + 3 * (t * t * t)) + p2.x
@@ -255,6 +307,11 @@ public class LineEditPart extends ConnectionNodeEditPart implements
 		}
 
 		/**
+		 * Extrapolate point.
+		 *
+		 * @param p1 the p1
+		 * @param p2 the p2
+		 * @return the point
 		 * @generated NOT
 		 * @Mikko_Tuulio
 		 */

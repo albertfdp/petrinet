@@ -12,13 +12,20 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.graphics.Image;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometrySheetLabelProvider.
+ *
  * @generated
  */
 public class GeometrySheetLabelProvider extends BaseLabelProvider implements
 		ILabelProvider {
 
 	/**
+	 * Gets the text.
+	 *
+	 * @param element the element
+	 * @return the text
 	 * @generated
 	 */
 	public String getText(Object element) {
@@ -31,6 +38,10 @@ public class GeometrySheetLabelProvider extends BaseLabelProvider implements
 	}
 
 	/**
+	 * Gets the image.
+	 *
+	 * @param element the element
+	 * @return the image
 	 * @generated
 	 */
 	public Image getImage(Object element) {
@@ -39,6 +50,10 @@ public class GeometrySheetLabelProvider extends BaseLabelProvider implements
 	}
 
 	/**
+	 * Unwrap.
+	 *
+	 * @param element the element
+	 * @return the object
 	 * @generated
 	 */
 	private Object unwrap(Object element) {
@@ -49,6 +64,10 @@ public class GeometrySheetLabelProvider extends BaseLabelProvider implements
 	}
 
 	/**
+	 * Gets the view.
+	 *
+	 * @param element the element
+	 * @return the view
 	 * @generated
 	 */
 	private View getView(Object element) {
@@ -62,6 +81,10 @@ public class GeometrySheetLabelProvider extends BaseLabelProvider implements
 	}
 
 	/**
+	 * Gets the element type.
+	 *
+	 * @param view the view
+	 * @return the element type
 	 * @generated
 	 */
 	private IElementType getElementType(View view) {

@@ -36,27 +36,27 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InputPointEditPart.
+ *
  * @generated
  */
 public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 
-	/**
-	 * @generated
-	 */
+	/** The Constant VISUAL_ID. @generated */
 	public static final int VISUAL_ID = 2002;
 
-	/**
-	 * @generated
-	 */
+	/** The content pane. @generated */
 	protected IFigure contentPane;
 
-	/**
-	 * @generated
-	 */
+	/** The primary shape. @generated */
 	protected IFigure primaryShape;
 
 	/**
+	 * Instantiates a new input point edit part.
+	 *
+	 * @param view the view
 	 * @generated
 	 */
 	public InputPointEditPart(View view) {
@@ -64,6 +64,8 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Creates the default edit policies.
+	 *
 	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
@@ -76,6 +78,9 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Creates the layout edit policy.
+	 *
+	 * @return the layout edit policy
 	 * @generated
 	 */
 	protected LayoutEditPolicy createLayoutEditPolicy() {
@@ -115,6 +120,9 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Creates the node shape.
+	 *
+	 * @return the i figure
 	 * @generated
 	 */
 	protected IFigure createNodeShape() {
@@ -122,6 +130,9 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Gets the primary shape.
+	 *
+	 * @return the primary shape
 	 * @generated
 	 */
 	public InputPointFigure getPrimaryShape() {
@@ -129,6 +140,10 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Adds the border item.
+	 *
+	 * @param borderItemContainer the border item container
+	 * @param borderItemEditPart the border item edit part
 	 * @generated not
 	 * @Mikko_Tuulio
 	 */
@@ -145,6 +160,9 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Creates the node plate.
+	 *
+	 * @return the node figure
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
@@ -157,7 +175,8 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	 * 
 	 * Body of this method does not depend on settings in generation model
 	 * so you may safely remove <i>generated</i> tag and modify it.
-	 * 
+	 *
+	 * @return the node figure
 	 * @generated
 	 */
 	protected NodeFigure createMainFigure() {
@@ -172,7 +191,9 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	/**
 	 * Default implementation treats passed figure as content pane.
 	 * Respects layout one may have set for generated figure.
+	 *
 	 * @param nodeShape instance of generated figure class
+	 * @return the i figure
 	 * @generated
 	 */
 	protected IFigure setupContentPane(IFigure nodeShape) {
@@ -180,6 +201,9 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Gets the content pane.
+	 *
+	 * @return the content pane
 	 * @generated
 	 */
 	public IFigure getContentPane() {
@@ -190,6 +214,9 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Sets the foreground color.
+	 *
+	 * @param color the new foreground color
 	 * @generated
 	 */
 	protected void setForegroundColor(Color color) {
@@ -199,6 +226,9 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Sets the background color.
+	 *
+	 * @param color the new background color
 	 * @generated
 	 */
 	protected void setBackgroundColor(Color color) {
@@ -208,6 +238,9 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Sets the line width.
+	 *
+	 * @param width the new line width
 	 * @generated
 	 */
 	protected void setLineWidth(int width) {
@@ -217,6 +250,9 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Sets the line type.
+	 *
+	 * @param style the new line type
 	 * @generated
 	 */
 	protected void setLineType(int style) {
@@ -226,6 +262,9 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Gets the primary child edit part.
+	 *
+	 * @return the primary child edit part
 	 * @generated
 	 */
 	public EditPart getPrimaryChildEditPart() {
@@ -234,11 +273,15 @@ public class InputPointEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * The Class InputPointFigure.
+	 *
 	 * @generated
 	 */
 	public class InputPointFigure extends Ellipse {
 
 		/**
+		 * Instantiates a new input point figure.
+		 *
 		 * @generated
 		 */
 		public InputPointFigure() {

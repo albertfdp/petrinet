@@ -11,13 +11,18 @@ import org.eclipse.gmf.runtime.emf.commands.core.commands.DuplicateEObjectsComma
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryItemSemanticEditPolicy.
+ *
  * @generated
  */
 public class GeometryItemSemanticEditPolicy extends
 		GeometryBaseItemSemanticEditPolicy {
 
 	/**
+	 * Instantiates a new geometry item semantic edit policy.
+	 *
 	 * @generated
 	 */
 	public GeometryItemSemanticEditPolicy() {
@@ -25,6 +30,10 @@ public class GeometryItemSemanticEditPolicy extends
 	}
 
 	/**
+	 * Gets the creates the command.
+	 *
+	 * @param req the req
+	 * @return the creates the command
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
@@ -38,6 +47,10 @@ public class GeometryItemSemanticEditPolicy extends
 	}
 
 	/**
+	 * Gets the duplicate command.
+	 *
+	 * @param req the req
+	 * @return the duplicate command
 	 * @generated
 	 */
 	protected Command getDuplicateCommand(DuplicateElementsRequest req) {
@@ -47,12 +60,18 @@ public class GeometryItemSemanticEditPolicy extends
 	}
 
 	/**
+	 * The Class DuplicateAnythingCommand.
+	 *
 	 * @generated
 	 */
 	private static class DuplicateAnythingCommand extends
 			DuplicateEObjectsCommand {
 
 		/**
+		 * Instantiates a new duplicate anything command.
+		 *
+		 * @param editingDomain the editing domain
+		 * @param req the req
 		 * @generated
 		 */
 		public DuplicateAnythingCommand(

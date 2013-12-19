@@ -18,28 +18,27 @@ import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.tooling.runtime.edit.policies.labels.IRefreshableFeedbackEditPolicy;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryTextNonResizableEditPolicy.
+ *
  * @generated
  */
 public class GeometryTextNonResizableEditPolicy extends
 		NonResizableEditPolicyEx implements IRefreshableFeedbackEditPolicy {
 
-	/**
-	 * @generated
-	 */
+	/** The selection feedback figure. @generated */
 	private IFigure selectionFeedbackFigure;
 
-	/**
-	 * @generated
-	 */
+	/** The focus feedback figure. @generated */
 	private IFigure focusFeedbackFigure;
 
-	/**
-	 * @generated
-	 */
+	/** The host position listener. @generated */
 	private FigureListener hostPositionListener;
 
 	/**
+	 * Show primary selection.
+	 *
 	 * @generated
 	 */
 	protected void showPrimarySelection() {
@@ -53,6 +52,8 @@ public class GeometryTextNonResizableEditPolicy extends
 	}
 
 	/**
+	 * Show selection.
+	 *
 	 * @generated
 	 */
 	protected void showSelection() {
@@ -69,6 +70,8 @@ public class GeometryTextNonResizableEditPolicy extends
 	}
 
 	/**
+	 * Hide selection.
+	 *
 	 * @generated
 	 */
 	protected void hideSelection() {
@@ -86,6 +89,8 @@ public class GeometryTextNonResizableEditPolicy extends
 	}
 
 	/**
+	 * Show focus.
+	 *
 	 * @generated
 	 */
 	protected void showFocus() {
@@ -99,6 +104,8 @@ public class GeometryTextNonResizableEditPolicy extends
 	}
 
 	/**
+	 * Hide focus.
+	 *
 	 * @generated
 	 */
 	protected void hideFocus() {
@@ -113,6 +120,9 @@ public class GeometryTextNonResizableEditPolicy extends
 	}
 
 	/**
+	 * Gets the feedback bounds.
+	 *
+	 * @return the feedback bounds
 	 * @generated
 	 */
 	protected Rectangle getFeedbackBounds() {
@@ -129,6 +139,9 @@ public class GeometryTextNonResizableEditPolicy extends
 	}
 
 	/**
+	 * Creates the selection feedback figure.
+	 *
+	 * @return the i figure
 	 * @generated
 	 */
 	protected IFigure createSelectionFeedbackFigure() {
@@ -148,6 +161,9 @@ public class GeometryTextNonResizableEditPolicy extends
 	}
 
 	/**
+	 * Creates the focus feedback figure.
+	 *
+	 * @return the i figure
 	 * @generated
 	 */
 	protected IFigure createFocusFeedbackFigure() {
@@ -160,6 +176,9 @@ public class GeometryTextNonResizableEditPolicy extends
 	}
 
 	/**
+	 * Update label.
+	 *
+	 * @param target the target
 	 * @generated
 	 */
 	protected void updateLabel(Label target) {
@@ -170,6 +189,8 @@ public class GeometryTextNonResizableEditPolicy extends
 	}
 
 	/**
+	 * Refresh selection feedback.
+	 *
 	 * @generated
 	 */
 	protected void refreshSelectionFeedback() {
@@ -185,6 +206,8 @@ public class GeometryTextNonResizableEditPolicy extends
 	}
 
 	/**
+	 * Refresh focus feedback.
+	 *
 	 * @generated
 	 */
 	protected void refreshFocusFeedback() {
@@ -194,6 +217,8 @@ public class GeometryTextNonResizableEditPolicy extends
 	}
 
 	/**
+	 * Refresh feedback.
+	 *
 	 * @generated
 	 */
 	@Override
@@ -203,6 +228,9 @@ public class GeometryTextNonResizableEditPolicy extends
 	}
 
 	/**
+	 * Gets the host position listener.
+	 *
+	 * @return the host position listener
 	 * @generated
 	 */
 	private FigureListener getHostPositionListener() {
@@ -217,6 +245,9 @@ public class GeometryTextNonResizableEditPolicy extends
 	}
 
 	/**
+	 * Creates the selection handles.
+	 *
+	 * @return the list
 	 * @generated
 	 */
 	protected List createSelectionHandles() {

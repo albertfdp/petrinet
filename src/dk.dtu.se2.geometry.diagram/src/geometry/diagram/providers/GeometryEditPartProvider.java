@@ -6,12 +6,17 @@ import geometry.diagram.part.GeometryVisualIDRegistry;
 
 import org.eclipse.gmf.tooling.runtime.providers.DefaultEditPartProvider;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryEditPartProvider.
+ *
  * @generated
  */
 public class GeometryEditPartProvider extends DefaultEditPartProvider {
 
 	/**
+	 * Instantiates a new geometry edit part provider.
+	 *
 	 * @generated
 	 */
 	public GeometryEditPartProvider() {

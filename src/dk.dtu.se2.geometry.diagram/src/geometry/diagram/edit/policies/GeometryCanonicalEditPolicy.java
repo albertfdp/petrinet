@@ -39,12 +39,17 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.update.UpdaterLinkDescriptor;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryCanonicalEditPolicy.
+ *
  * @generated
  */
 public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 
 	/**
+	 * Refresh on activate.
+	 *
 	 * @generated
 	 */
 	protected void refreshOnActivate() {
@@ -57,6 +62,9 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
+	 * Gets the feature to synchronize.
+	 *
+	 * @return the feature to synchronize
 	 * @generated
 	 */
 	protected EStructuralFeature getFeatureToSynchronize() {
@@ -64,6 +72,9 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
+	 * Gets the semantic children list.
+	 *
+	 * @return the semantic children list
 	 * @generated
 	 */
 	@SuppressWarnings("rawtypes")
@@ -79,6 +90,11 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
+	 * Checks if is orphaned.
+	 *
+	 * @param semanticChildren the semantic children
+	 * @param view the view
+	 * @return true, if is orphaned
 	 * @generated
 	 */
 	protected boolean isOrphaned(Collection<EObject> semanticChildren,
@@ -88,6 +104,10 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
+	 * Checks if is my diagram element.
+	 *
+	 * @param view the view
+	 * @return true, if is my diagram element
 	 * @generated
 	 */
 	private boolean isMyDiagramElement(View view) {
@@ -97,6 +117,8 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
+	 * Refresh semantic.
+	 *
 	 * @generated
 	 */
 	protected void refreshSemantic() {
@@ -188,6 +210,9 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
+	 * Refresh connections.
+	 *
+	 * @return the collection
 	 * @generated
 	 */
 	private Collection<IAdaptable> refreshConnections() {
@@ -231,6 +256,11 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
+	 * Collect all links.
+	 *
+	 * @param view the view
+	 * @param domain2NotationMap the domain2 notation map
+	 * @return the collection
 	 * @generated
 	 */
 	private Collection<GeometryLinkDescriptor> collectAllLinks(View view,
@@ -287,6 +317,11 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
+	 * Creates the connections.
+	 *
+	 * @param linkDescriptors the link descriptors
+	 * @param domain2NotationMap the domain2 notation map
+	 * @return the collection
 	 * @generated
 	 */
 	private Collection<IAdaptable> createConnections(
@@ -327,6 +362,11 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
+	 * Gets the edits the part.
+	 *
+	 * @param domainModelElement the domain model element
+	 * @param domain2NotationMap the domain2 notation map
+	 * @return the edits the part
 	 * @generated
 	 */
 	private EditPart getEditPart(EObject domainModelElement,
@@ -340,6 +380,9 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
+	 * Gets the diagram.
+	 *
+	 * @return the diagram
 	 * @generated
 	 */
 	private Diagram getDiagram() {
@@ -347,6 +390,11 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
+	 * Gets the source edit part.
+	 *
+	 * @param descriptor the descriptor
+	 * @param domain2NotationMap the domain2 notation map
+	 * @return the source edit part
 	 * @generated
 	 */
 	private EditPart getSourceEditPart(UpdaterLinkDescriptor descriptor,
@@ -355,6 +403,11 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
+	 * Gets the target edit part.
+	 *
+	 * @param descriptor the descriptor
+	 * @param domain2NotationMap the domain2 notation map
+	 * @return the target edit part
 	 * @generated
 	 */
 	private EditPart getTargetEditPart(UpdaterLinkDescriptor descriptor,
@@ -363,6 +416,12 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
+	 * Gets the hinted edit part.
+	 *
+	 * @param domainModelElement the domain model element
+	 * @param domain2NotationMap the domain2 notation map
+	 * @param hintVisualId the hint visual id
+	 * @return the hinted edit part
 	 * @generated
 	 */
 	protected final EditPart getHintedEditPart(EObject domainModelElement,
@@ -377,11 +436,18 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 	}
 
 	/**
+	 * The Class Domain2Notation.
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("serial")
 	protected static class Domain2Notation extends HashMap<EObject, View> {
+		
 		/**
+		 * Contains domain element.
+		 *
+		 * @param domainElement the domain element
+		 * @return true, if successful
 		 * @generated
 		 */
 		public boolean containsDomainElement(EObject domainElement) {
@@ -389,6 +455,11 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 
 		/**
+		 * Gets the hinted.
+		 *
+		 * @param domainEObject the domain e object
+		 * @param hint the hint
+		 * @return the hinted
 		 * @generated
 		 */
 		public View getHinted(EObject domainEObject, String hint) {
@@ -396,6 +467,10 @@ public class GeometryCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 
 		/**
+		 * Put view.
+		 *
+		 * @param domainElement the domain element
+		 * @param view the view
 		 * @generated
 		 */
 		public void putView(EObject domainElement, View view) {

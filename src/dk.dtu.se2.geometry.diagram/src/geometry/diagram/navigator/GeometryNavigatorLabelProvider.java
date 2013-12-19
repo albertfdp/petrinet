@@ -33,7 +33,10 @@ import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryNavigatorLabelProvider.
+ *
  * @generated
  */
 public class GeometryNavigatorLabelProvider extends LabelProvider implements
@@ -54,6 +57,10 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
+	 * Update label.
+	 *
+	 * @param label the label
+	 * @param elementPath the element path
 	 * @generated
 	 */
 	public void updateLabel(ViewerLabel label, TreePath elementPath) {
@@ -67,6 +74,10 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
+	 * Gets the image.
+	 *
+	 * @param element the element
+	 * @return the image
 	 * @generated
 	 */
 	public Image getImage(Object element) {
@@ -88,6 +99,10 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
+	 * Gets the image.
+	 *
+	 * @param view the view
+	 * @return the image
 	 * @generated
 	 */
 	public Image getImage(View view) {
@@ -109,6 +124,11 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
+	 * Gets the image.
+	 *
+	 * @param key the key
+	 * @param elementType the element type
+	 * @return the image
 	 * @generated
 	 */
 	private Image getImage(String key, IElementType elementType) {
@@ -129,6 +149,10 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
+	 * Gets the text.
+	 *
+	 * @param element the element
+	 * @return the text
 	 * @generated
 	 */
 	public String getText(Object element) {
@@ -149,6 +173,10 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
+	 * Gets the text.
+	 *
+	 * @param view the view
+	 * @return the text
 	 * @generated
 	 */
 	public String getText(View view) {
@@ -169,6 +197,10 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
+	 * Gets the geometry_1000 text.
+	 *
+	 * @param view the view
+	 * @return the geometry_1000 text
 	 * @generated
 	 */
 	private String getGeometry_1000Text(View view) {
@@ -176,6 +208,10 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
+	 * Gets the connector_2001 text.
+	 *
+	 * @param view the view
+	 * @return the connector_2001 text
 	 * @generated
 	 */
 	private String getConnector_2001Text(View view) {
@@ -196,6 +232,10 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
+	 * Gets the input point_2002 text.
+	 *
+	 * @param view the view
+	 * @return the input point_2002 text
 	 * @generated
 	 */
 	private String getInputPoint_2002Text(View view) {
@@ -217,6 +257,10 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
+	 * Gets the line_4001 text.
+	 *
+	 * @param view the view
+	 * @return the line_4001 text
 	 * @generated
 	 */
 	private String getLine_4001Text(View view) {
@@ -238,6 +282,10 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
+	 * Gets the unknown element text.
+	 *
+	 * @param view the view
+	 * @return the unknown element text
 	 * @generated
 	 */
 	private String getUnknownElementText(View view) {
@@ -245,6 +293,10 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
+	 * Gets the unresolved domain element proxy text.
+	 *
+	 * @param view the view
+	 * @return the unresolved domain element proxy text
 	 * @generated
 	 */
 	private String getUnresolvedDomainElementProxyText(View view) {
@@ -252,24 +304,37 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
+	 * Inits the.
+	 *
+	 * @param aConfig the a config
 	 * @generated
 	 */
 	public void init(ICommonContentExtensionSite aConfig) {
 	}
 
 	/**
+	 * Restore state.
+	 *
+	 * @param aMemento the a memento
 	 * @generated
 	 */
 	public void restoreState(IMemento aMemento) {
 	}
 
 	/**
+	 * Save state.
+	 *
+	 * @param aMemento the a memento
 	 * @generated
 	 */
 	public void saveState(IMemento aMemento) {
 	}
 
 	/**
+	 * Gets the description.
+	 *
+	 * @param anElement the an element
+	 * @return the description
 	 * @generated
 	 */
 	public String getDescription(Object anElement) {
@@ -277,6 +342,10 @@ public class GeometryNavigatorLabelProvider extends LabelProvider implements
 	}
 
 	/**
+	 * Checks if is own view.
+	 *
+	 * @param view the view
+	 * @return true, if is own view
 	 * @generated
 	 */
 	private boolean isOwnView(View view) {

@@ -24,12 +24,19 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.update.DiagramUpdater;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryDiagramUpdater.
+ *
  * @generated
  */
 public class GeometryDiagramUpdater {
 
 	/**
+	 * Gets the semantic children.
+	 *
+	 * @param view the view
+	 * @return the semantic children
 	 * @generated
 	 */
 	public static List<GeometryNodeDescriptor> getSemanticChildren(View view) {
@@ -41,6 +48,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the geometry_1000 semantic children.
+	 *
+	 * @param view the view
+	 * @return the geometry_1000 semantic children
 	 * @generated
 	 */
 	public static List<GeometryNodeDescriptor> getGeometry_1000SemanticChildren(
@@ -68,6 +79,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the contained links.
+	 *
+	 * @param view the view
+	 * @return the contained links
 	 * @generated
 	 */
 	public static List<GeometryLinkDescriptor> getContainedLinks(View view) {
@@ -85,6 +100,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the incoming links.
+	 *
+	 * @param view the view
+	 * @return the incoming links
 	 * @generated
 	 */
 	public static List<GeometryLinkDescriptor> getIncomingLinks(View view) {
@@ -100,6 +119,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the outgoing links.
+	 *
+	 * @param view the view
+	 * @return the outgoing links
 	 * @generated
 	 */
 	public static List<GeometryLinkDescriptor> getOutgoingLinks(View view) {
@@ -115,6 +138,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the geometry_1000 contained links.
+	 *
+	 * @param view the view
+	 * @return the geometry_1000 contained links
 	 * @generated
 	 */
 	public static List<GeometryLinkDescriptor> getGeometry_1000ContainedLinks(
@@ -126,6 +153,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the connector_2001 contained links.
+	 *
+	 * @param view the view
+	 * @return the connector_2001 contained links
 	 * @generated
 	 */
 	public static List<GeometryLinkDescriptor> getConnector_2001ContainedLinks(
@@ -134,6 +165,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the input point_2002 contained links.
+	 *
+	 * @param view the view
+	 * @return the input point_2002 contained links
 	 * @generated
 	 */
 	public static List<GeometryLinkDescriptor> getInputPoint_2002ContainedLinks(
@@ -142,6 +177,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the line_4001 contained links.
+	 *
+	 * @param view the view
+	 * @return the line_4001 contained links
 	 * @generated
 	 */
 	public static List<GeometryLinkDescriptor> getLine_4001ContainedLinks(
@@ -150,6 +189,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the connector_2001 incoming links.
+	 *
+	 * @param view the view
+	 * @return the connector_2001 incoming links
 	 * @generated
 	 */
 	public static List<GeometryLinkDescriptor> getConnector_2001IncomingLinks(
@@ -164,6 +207,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the input point_2002 incoming links.
+	 *
+	 * @param view the view
+	 * @return the input point_2002 incoming links
 	 * @generated
 	 */
 	public static List<GeometryLinkDescriptor> getInputPoint_2002IncomingLinks(
@@ -172,6 +219,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the line_4001 incoming links.
+	 *
+	 * @param view the view
+	 * @return the line_4001 incoming links
 	 * @generated
 	 */
 	public static List<GeometryLinkDescriptor> getLine_4001IncomingLinks(
@@ -180,6 +231,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the connector_2001 outgoing links.
+	 *
+	 * @param view the view
+	 * @return the connector_2001 outgoing links
 	 * @generated
 	 */
 	public static List<GeometryLinkDescriptor> getConnector_2001OutgoingLinks(
@@ -191,6 +246,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the input point_2002 outgoing links.
+	 *
+	 * @param view the view
+	 * @return the input point_2002 outgoing links
 	 * @generated
 	 */
 	public static List<GeometryLinkDescriptor> getInputPoint_2002OutgoingLinks(
@@ -199,6 +258,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the line_4001 outgoing links.
+	 *
+	 * @param view the view
+	 * @return the line_4001 outgoing links
 	 * @generated
 	 */
 	public static List<GeometryLinkDescriptor> getLine_4001OutgoingLinks(
@@ -207,6 +270,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the contained type model facet links_ line_4001.
+	 *
+	 * @param container the container
+	 * @return the contained type model facet links_ line_4001
 	 * @generated
 	 */
 	private static Collection<GeometryLinkDescriptor> getContainedTypeModelFacetLinks_Line_4001(
@@ -232,6 +299,11 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the incoming type model facet links_ line_4001.
+	 *
+	 * @param target the target
+	 * @param crossReferences the cross references
+	 * @return the incoming type model facet links_ line_4001
 	 * @generated
 	 */
 	private static Collection<GeometryLinkDescriptor> getIncomingTypeModelFacetLinks_Line_4001(
@@ -259,6 +331,10 @@ public class GeometryDiagramUpdater {
 	}
 
 	/**
+	 * Gets the outgoing type model facet links_ line_4001.
+	 *
+	 * @param source the source
+	 * @return the outgoing type model facet links_ line_4001
 	 * @generated
 	 */
 	private static Collection<GeometryLinkDescriptor> getOutgoingTypeModelFacetLinks_Line_4001(
@@ -299,11 +375,14 @@ public class GeometryDiagramUpdater {
 		return result;
 	}
 
-	/**
-	 * @generated
-	 */
+	/** The Constant TYPED_INSTANCE. @generated */
 	public static final DiagramUpdater TYPED_INSTANCE = new DiagramUpdater() {
+		
 		/**
+		 * Gets the semantic children.
+		 *
+		 * @param view the view
+		 * @return the semantic children
 		 * @generated
 		 */
 		@Override
@@ -312,6 +391,10 @@ public class GeometryDiagramUpdater {
 		}
 
 		/**
+		 * Gets the contained links.
+		 *
+		 * @param view the view
+		 * @return the contained links
 		 * @generated
 		 */
 		@Override
@@ -320,6 +403,10 @@ public class GeometryDiagramUpdater {
 		}
 
 		/**
+		 * Gets the incoming links.
+		 *
+		 * @param view the view
+		 * @return the incoming links
 		 * @generated
 		 */
 		@Override
@@ -328,6 +415,10 @@ public class GeometryDiagramUpdater {
 		}
 
 		/**
+		 * Gets the outgoing links.
+		 *
+		 * @param view the view
+		 * @return the outgoing links
 		 * @generated
 		 */
 		@Override

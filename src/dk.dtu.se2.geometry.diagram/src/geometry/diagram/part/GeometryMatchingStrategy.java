@@ -6,12 +6,20 @@ import org.eclipse.ui.IEditorMatchingStrategy;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PartInitException;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryMatchingStrategy.
+ *
  * @generated
  */
 public class GeometryMatchingStrategy implements IEditorMatchingStrategy {
 
 	/**
+	 * Matches.
+	 *
+	 * @param editorRef the editor ref
+	 * @param input the input
+	 * @return true, if successful
 	 * @generated
 	 */
 	public boolean matches(IEditorReference editorRef, IEditorInput input) {

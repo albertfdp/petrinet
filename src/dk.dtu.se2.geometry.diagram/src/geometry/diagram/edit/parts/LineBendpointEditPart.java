@@ -7,6 +7,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ConnectionBendpointEditPo
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LineBendpointEditPart.
+ */
 public class LineBendpointEditPart extends ConnectionBendpointEditPolicy
 {
 	/*

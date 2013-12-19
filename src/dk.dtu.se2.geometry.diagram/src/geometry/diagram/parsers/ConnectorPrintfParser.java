@@ -9,21 +9,24 @@ import org.eclipse.gmf.runtime.common.ui.services.parser.IParserEditStatus;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserEditStatus;
 import org.eclipse.gmf.tooling.runtime.parsers.AbstractAttributeParser;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ConnectorPrintfParser.
+ *
  * @generated
  */
 public class ConnectorPrintfParser extends AbstractAttributeParser {
 
-	/**
-	 * @generated
-	 */
+	/** The default pattern. @generated */
 	private String defaultPattern;
-	/**
-	 * @generated
-	 */
+	
+	/** The default editable pattern. @generated */
 	private String defaultEditablePattern;
 
 	/**
+	 * Instantiates a new connector printf parser.
+	 *
+	 * @param features the features
 	 * @generated
 	 */
 	public ConnectorPrintfParser(EAttribute[] features) {
@@ -31,6 +34,10 @@ public class ConnectorPrintfParser extends AbstractAttributeParser {
 	}
 
 	/**
+	 * Instantiates a new connector printf parser.
+	 *
+	 * @param features the features
+	 * @param editableFeatures the editable features
 	 * @generated
 	 */
 	public ConnectorPrintfParser(EAttribute[] features, EAttribute[] editableFeatures) {
@@ -38,6 +45,9 @@ public class ConnectorPrintfParser extends AbstractAttributeParser {
 	}
 
 	/**
+	 * Gets the default pattern.
+	 *
+	 * @return the default pattern
 	 * @generated
 	 */
 	protected String getDefaultPattern() {
@@ -58,6 +68,9 @@ public class ConnectorPrintfParser extends AbstractAttributeParser {
 	}
 
 	/**
+	 * Gets the default editable pattern.
+	 *
+	 * @return the default editable pattern
 	 * @generated
 	 */
 	protected String getDefaultEditablePattern() {
@@ -78,6 +91,11 @@ public class ConnectorPrintfParser extends AbstractAttributeParser {
 	}
 
 	/**
+	 * Gets the edits the string.
+	 *
+	 * @param adapter the adapter
+	 * @param flags the flags
+	 * @return the edits the string
 	 * @generated
 	 */
 	public String getEditString(IAdaptable adapter, int flags) {
@@ -88,6 +106,11 @@ public class ConnectorPrintfParser extends AbstractAttributeParser {
 	}
 
 	/**
+	 * Checks if is valid edit string.
+	 *
+	 * @param adapter the adapter
+	 * @param editString the edit string
+	 * @return the i parser edit status
 	 * @generated
 	 */
 	public IParserEditStatus isValidEditString(IAdaptable adapter,
@@ -96,6 +119,12 @@ public class ConnectorPrintfParser extends AbstractAttributeParser {
 	}
 
 	/**
+	 * Gets the parses the command.
+	 *
+	 * @param adapter the adapter
+	 * @param newString the new string
+	 * @param flags the flags
+	 * @return the parses the command
 	 * @generated
 	 */
 	public ICommand getParseCommand(IAdaptable adapter, String newString,
@@ -104,10 +133,15 @@ public class ConnectorPrintfParser extends AbstractAttributeParser {
 	}
 
 	/**
+	 * Gets the prints the string.
+	 *
+	 * @param adapter the adapter
+	 * @param flags the flags
+	 * @return the prints the string
 	 * @generated not
 	 * @Mikko_Tuulio
 	 * If they would have new lines instead of " ", this would likely look nicer. However, something prevents using new line.
-	 * Currently the end result looks cluttered. 
+	 * Currently the end result looks cluttered.
 	 */
 	public String getPrintString(IAdaptable adapter, int flags) {
 		EObject element = (EObject) adapter.getAdapter(EObject.class);

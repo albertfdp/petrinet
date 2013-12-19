@@ -9,22 +9,24 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryEditPart.
+ *
  * @generated
  */
 public class GeometryEditPart extends DiagramEditPart {
 
-	/**
-	 * @generated
-	 */
+	/** The Constant MODEL_ID. @generated */
 	public final static String MODEL_ID = "Geometry"; //$NON-NLS-1$
 
-	/**
-	 * @generated
-	 */
+	/** The Constant VISUAL_ID. @generated */
 	public static final int VISUAL_ID = 1000;
 
 	/**
+	 * Instantiates a new geometry edit part.
+	 *
+	 * @param view the view
 	 * @generated
 	 */
 	public GeometryEditPart(View view) {
@@ -32,6 +34,8 @@ public class GeometryEditPart extends DiagramEditPart {
 	}
 
 	/**
+	 * Creates the default edit policies.
+	 *
 	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {

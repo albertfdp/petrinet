@@ -43,23 +43,24 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryDiagramEditor.
+ *
  * @generated
  */
 public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 		IGotoMarker {
 
-	/**
-	 * @generated
-	 */
+	/** The Constant ID. @generated */
 	public static final String ID = "geometry.diagram.part.GeometryDiagramEditorID"; //$NON-NLS-1$
 
-	/**
-	 * @generated
-	 */
+	/** The Constant CONTEXT_ID. @generated */
 	public static final String CONTEXT_ID = "geometry.diagram.ui.diagramContext"; //$NON-NLS-1$
 
 	/**
+	 * Instantiates a new geometry diagram editor.
+	 *
 	 * @generated
 	 */
 	public GeometryDiagramEditor() {
@@ -67,6 +68,9 @@ public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
+	 * Gets the context id.
+	 *
+	 * @return the context id
 	 * @generated
 	 */
 	protected String getContextID() {
@@ -74,6 +78,10 @@ public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
+	 * Creates the palette root.
+	 *
+	 * @param existingPaletteRoot the existing palette root
+	 * @return the palette root
 	 * @generated
 	 */
 	protected PaletteRoot createPaletteRoot(PaletteRoot existingPaletteRoot) {
@@ -83,6 +91,9 @@ public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
+	 * Gets the preferences hint.
+	 *
+	 * @return the preferences hint
 	 * @generated
 	 */
 	protected PreferencesHint getPreferencesHint() {
@@ -90,6 +101,9 @@ public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
+	 * Gets the contributor id.
+	 *
+	 * @return the contributor id
 	 * @generated
 	 */
 	public String getContributorId() {
@@ -97,6 +111,10 @@ public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
+	 * Gets the adapter.
+	 *
+	 * @param type the type
+	 * @return the adapter
 	 * @generated
 	 */
 	@SuppressWarnings("rawtypes")
@@ -112,6 +130,10 @@ public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
+	 * Gets the document provider.
+	 *
+	 * @param input the input
+	 * @return the document provider
 	 * @generated
 	 */
 	protected IDocumentProvider getDocumentProvider(IEditorInput input) {
@@ -124,6 +146,9 @@ public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
+	 * Gets the editing domain.
+	 *
+	 * @return the editing domain
 	 * @generated
 	 */
 	public TransactionalEditingDomain getEditingDomain() {
@@ -136,6 +161,9 @@ public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
+	 * Sets the document provider.
+	 *
+	 * @param input the new document provider
 	 * @generated
 	 */
 	protected void setDocumentProvider(IEditorInput input) {
@@ -149,6 +177,9 @@ public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
+	 * Goto marker.
+	 *
+	 * @param marker the marker
 	 * @generated
 	 */
 	public void gotoMarker(IMarker marker) {
@@ -156,6 +187,9 @@ public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
+	 * Checks if is save as allowed.
+	 *
+	 * @return true, if is save as allowed
 	 * @generated
 	 */
 	public boolean isSaveAsAllowed() {
@@ -163,6 +197,8 @@ public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
+	 * Do save as.
+	 *
 	 * @generated
 	 */
 	public void doSaveAs() {
@@ -170,6 +206,9 @@ public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
+	 * Perform save as.
+	 *
+	 * @param progressMonitor the progress monitor
 	 * @generated
 	 */
 	protected void performSaveAs(IProgressMonitor progressMonitor) {
@@ -251,6 +290,9 @@ public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
+	 * Gets the show in context.
+	 *
+	 * @return the show in context
 	 * @generated
 	 */
 	public ShowInContext getShowInContext() {
@@ -258,6 +300,9 @@ public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
+	 * Gets the navigator selection.
+	 *
+	 * @return the navigator selection
 	 * @generated
 	 */
 	private ISelection getNavigatorSelection() {
@@ -279,6 +324,8 @@ public class GeometryDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
+	 * Configure graphical viewer.
+	 *
 	 * @generated
 	 */
 	protected void configureGraphicalViewer() {

@@ -39,7 +39,10 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.helpers.GeneratedEditHelperBase;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryBaseItemSemanticEditPolicy.
+ *
  * @generated
  */
 public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
@@ -50,12 +53,13 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	 */
 	public static final String VISUAL_ID_KEY = "visual_id"; //$NON-NLS-1$
 
-	/**
-	 * @generated
-	 */
+	/** The my element type. @generated */
 	private final IElementType myElementType;
 
 	/**
+	 * Instantiates a new geometry base item semantic edit policy.
+	 *
+	 * @param elementType the element type
 	 * @generated
 	 */
 	protected GeometryBaseItemSemanticEditPolicy(IElementType elementType) {
@@ -68,7 +72,9 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	 * so command switch can decide what kind of diagram element is being edited.
 	 * It is done in those cases when it's not possible to deduce diagram
 	 * element kind from domain element.
-	 * 
+	 *
+	 * @param request the request
+	 * @return the command
 	 * @generated
 	 */
 	public Command getCommand(Request request) {
@@ -86,6 +92,9 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 
 	/**
 	 * Returns visual id from request parameters.
+	 *
+	 * @param request the request
+	 * @return the visual id
 	 * @generated
 	 */
 	protected int getVisualID(IEditCommandRequest request) {
@@ -94,6 +103,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the semantic command.
+	 *
+	 * @param request the request
+	 * @return the semantic command
 	 * @generated
 	 */
 	protected Command getSemanticCommand(IEditCommandRequest request) {
@@ -110,6 +123,11 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Adds the delete view command.
+	 *
+	 * @param mainCommand the main command
+	 * @param completedRequest the completed request
+	 * @return the command
 	 * @generated
 	 */
 	protected Command addDeleteViewCommand(Command mainCommand,
@@ -121,6 +139,11 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the edits the helper command.
+	 *
+	 * @param request the request
+	 * @param editPolicyCommand the edit policy command
+	 * @return the edits the helper command
 	 * @generated
 	 */
 	private Command getEditHelperCommand(IEditCommandRequest request,
@@ -148,6 +171,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the context element type.
+	 *
+	 * @param request the request
+	 * @return the context element type
 	 * @generated
 	 */
 	private IElementType getContextElementType(IEditCommandRequest request) {
@@ -158,6 +185,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the semantic command switch.
+	 *
+	 * @param req the req
+	 * @return the semantic command switch
 	 * @generated
 	 */
 	protected Command getSemanticCommandSwitch(IEditCommandRequest req) {
@@ -188,6 +219,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the configure command.
+	 *
+	 * @param req the req
+	 * @return the configure command
 	 * @generated
 	 */
 	protected Command getConfigureCommand(ConfigureRequest req) {
@@ -195,6 +230,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the creates the relationship command.
+	 *
+	 * @param req the req
+	 * @return the creates the relationship command
 	 * @generated
 	 */
 	protected Command getCreateRelationshipCommand(CreateRelationshipRequest req) {
@@ -202,6 +241,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the creates the command.
+	 *
+	 * @param req the req
+	 * @return the creates the command
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
@@ -209,6 +252,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the sets the command.
+	 *
+	 * @param req the req
+	 * @return the sets the command
 	 * @generated
 	 */
 	protected Command getSetCommand(SetRequest req) {
@@ -216,6 +263,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the edits the context command.
+	 *
+	 * @param req the req
+	 * @return the edits the context command
 	 * @generated
 	 */
 	protected Command getEditContextCommand(GetEditContextRequest req) {
@@ -223,6 +274,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the destroy element command.
+	 *
+	 * @param req the req
+	 * @return the destroy element command
 	 * @generated
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
@@ -230,6 +285,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the destroy reference command.
+	 *
+	 * @param req the req
+	 * @return the destroy reference command
 	 * @generated
 	 */
 	protected Command getDestroyReferenceCommand(DestroyReferenceRequest req) {
@@ -237,6 +296,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the duplicate command.
+	 *
+	 * @param req the req
+	 * @return the duplicate command
 	 * @generated
 	 */
 	protected Command getDuplicateCommand(DuplicateElementsRequest req) {
@@ -244,6 +307,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the move command.
+	 *
+	 * @param req the req
+	 * @return the move command
 	 * @generated
 	 */
 	protected Command getMoveCommand(MoveRequest req) {
@@ -251,6 +318,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the reorient reference relationship command.
+	 *
+	 * @param req the req
+	 * @return the reorient reference relationship command
 	 * @generated
 	 */
 	protected Command getReorientReferenceRelationshipCommand(
@@ -259,6 +330,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the reorient relationship command.
+	 *
+	 * @param req the req
+	 * @return the reorient relationship command
 	 * @generated
 	 */
 	protected Command getReorientRelationshipCommand(
@@ -267,6 +342,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the gEF wrapper.
+	 *
+	 * @param cmd the cmd
+	 * @return the gEF wrapper
 	 * @generated
 	 */
 	protected final Command getGEFWrapper(ICommand cmd) {
@@ -275,6 +354,8 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 
 	/**
 	 * Returns editing domain from the host edit part.
+	 *
+	 * @return the editing domain
 	 * @generated
 	 */
 	protected TransactionalEditingDomain getEditingDomain() {
@@ -282,7 +363,10 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
-	 * Clean all shortcuts to the host element from the same diagram
+	 * Clean all shortcuts to the host element from the same diagram.
+	 *
+	 * @param cmd the cmd
+	 * @param view the view
 	 * @generated
 	 */
 	protected void addDestroyShortcutsCommand(ICompositeCommand cmd, View view) {
@@ -298,6 +382,9 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * Gets the link constraints.
+	 *
+	 * @return the link constraints
 	 * @generated
 	 */
 	public static LinkConstraints getLinkConstraints() {
@@ -311,11 +398,15 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
+	 * The Class LinkConstraints.
+	 *
 	 * @generated
 	 */
 	public static class LinkConstraints {
 
 		/**
+		 * Instantiates a new link constraints.
+		 *
 		 * @generated
 		 */
 		LinkConstraints() {
@@ -323,6 +414,12 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		}
 
 		/**
+		 * Can create line_4001.
+		 *
+		 * @param container the container
+		 * @param source the source
+		 * @param target the target
+		 * @return true, if successful
 		 * @generated
 		 */
 		public boolean canCreateLine_4001(Geometry container, Connector source,
@@ -331,6 +428,13 @@ public class GeometryBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		}
 
 		/**
+		 * Can exist line_4001.
+		 *
+		 * @param container the container
+		 * @param linkInstance the link instance
+		 * @param source the source
+		 * @param target the target
+		 * @return true, if successful
 		 * @generated
 		 */
 		public boolean canExistLine_4001(Geometry container, Line linkInstance,

@@ -20,43 +20,36 @@ import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonContentProvider;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryDomainNavigatorContentProvider.
+ *
  * @generated
  */
 public class GeometryDomainNavigatorContentProvider implements
 		ICommonContentProvider {
 
-	/**
-	 * @generated
-	 */
+	/** The my adapter fctory content provier. @generated */
 	private AdapterFactoryContentProvider myAdapterFctoryContentProvier;
 
-	/**
-	 * @generated
-	 */
+	/** The Constant EMPTY_ARRAY. @generated */
 	private static final Object[] EMPTY_ARRAY = new Object[0];
 
-	/**
-	 * @generated
-	 */
+	/** The my viewer. @generated */
 	private Viewer myViewer;
 
-	/**
-	 * @generated
-	 */
+	/** The my editing domain. @generated */
 	private AdapterFactoryEditingDomain myEditingDomain;
 
-	/**
-	 * @generated
-	 */
+	/** The my workspace synchronizer. @generated */
 	private WorkspaceSynchronizer myWorkspaceSynchronizer;
 
-	/**
-	 * @generated
-	 */
+	/** The my viewer refresh runnable. @generated */
 	private Runnable myViewerRefreshRunnable;
 
 	/**
+	 * Instantiates a new geometry domain navigator content provider.
+	 *
 	 * @generated
 	 */
 	public GeometryDomainNavigatorContentProvider() {
@@ -108,6 +101,8 @@ public class GeometryDomainNavigatorContentProvider implements
 	}
 
 	/**
+	 * Dispose.
+	 *
 	 * @generated
 	 */
 	public void dispose() {
@@ -121,6 +116,11 @@ public class GeometryDomainNavigatorContentProvider implements
 	}
 
 	/**
+	 * Input changed.
+	 *
+	 * @param viewer the viewer
+	 * @param oldInput the old input
+	 * @param newInput the new input
 	 * @generated
 	 */
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
@@ -128,6 +128,8 @@ public class GeometryDomainNavigatorContentProvider implements
 	}
 
 	/**
+	 * Unload all resources.
+	 *
 	 * @generated
 	 */
 	void unloadAllResources() {
@@ -138,6 +140,8 @@ public class GeometryDomainNavigatorContentProvider implements
 	}
 
 	/**
+	 * Async refresh.
+	 *
 	 * @generated
 	 */
 	void asyncRefresh() {
@@ -148,6 +152,10 @@ public class GeometryDomainNavigatorContentProvider implements
 	}
 
 	/**
+	 * Gets the elements.
+	 *
+	 * @param inputElement the input element
+	 * @return the elements
 	 * @generated
 	 */
 	public Object[] getElements(Object inputElement) {
@@ -155,24 +163,37 @@ public class GeometryDomainNavigatorContentProvider implements
 	}
 
 	/**
+	 * Restore state.
+	 *
+	 * @param aMemento the a memento
 	 * @generated
 	 */
 	public void restoreState(IMemento aMemento) {
 	}
 
 	/**
+	 * Save state.
+	 *
+	 * @param aMemento the a memento
 	 * @generated
 	 */
 	public void saveState(IMemento aMemento) {
 	}
 
 	/**
+	 * Inits the.
+	 *
+	 * @param aConfig the a config
 	 * @generated
 	 */
 	public void init(ICommonContentExtensionSite aConfig) {
 	}
 
 	/**
+	 * Gets the children.
+	 *
+	 * @param parentElement the parent element
+	 * @return the children
 	 * @generated
 	 */
 	public Object[] getChildren(Object parentElement) {
@@ -196,6 +217,11 @@ public class GeometryDomainNavigatorContentProvider implements
 	}
 
 	/**
+	 * Wrap e objects.
+	 *
+	 * @param objects the objects
+	 * @param parentElement the parent element
+	 * @return the object[]
 	 * @generated
 	 */
 	public Object[] wrapEObjects(Object[] objects, Object parentElement) {
@@ -211,6 +237,10 @@ public class GeometryDomainNavigatorContentProvider implements
 	}
 
 	/**
+	 * Gets the parent.
+	 *
+	 * @param element the element
+	 * @return the parent
 	 * @generated
 	 */
 	public Object getParent(Object element) {
@@ -222,6 +252,10 @@ public class GeometryDomainNavigatorContentProvider implements
 	}
 
 	/**
+	 * Checks for children.
+	 *
+	 * @param element the element
+	 * @return true, if successful
 	 * @generated
 	 */
 	public boolean hasChildren(Object element) {

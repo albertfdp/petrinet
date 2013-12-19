@@ -24,18 +24,22 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.ui.services.parser.ParserHintAdapter;
 import org.eclipse.gmf.runtime.notation.View;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryParserProvider.
+ *
  * @generated
  */
 public class GeometryParserProvider extends AbstractProvider implements
 		IParserProvider {
 
-	/**
-	 * @generated
-	 */
+	/** The connector label_5003 parser. @generated */
 	private IParser connectorLabel_5003Parser;
 
 	/**
+	 * Gets the connector label_5003 parser.
+	 *
+	 * @return the connector label_5003 parser
 	 * @generated not
 	 * @Mikko_Tuulio
 	 */
@@ -49,12 +53,13 @@ public class GeometryParserProvider extends AbstractProvider implements
 		return connectorLabel_5003Parser;
 	}
 
-	/**
-	 * @generated
-	 */
+	/** The input point label appearance label_5002 parser. @generated */
 	private IParser inputPointLabelAppearanceLabel_5002Parser;
 
 	/**
+	 * Gets the input point label appearance label_5002 parser.
+	 *
+	 * @return the input point label appearance label_5002 parser
 	 * @generated not
 	 * @Mikko_Tuulio
 	 */
@@ -69,12 +74,13 @@ public class GeometryParserProvider extends AbstractProvider implements
 		return inputPointLabelAppearanceLabel_5002Parser;
 	}
 
-	/**
-	 * @generated
-	 */
+	/** The line label appearance label token appearance label_6001 parser. @generated */
 	private IParser lineLabelAppearanceLabelTokenAppearanceLabel_6001Parser;
 
 	/**
+	 * Gets the line label appearance label token appearance label_6001 parser.
+	 *
+	 * @return the line label appearance label token appearance label_6001 parser
 	 * @generated not
 	 * @Mikko_Tuulio
 	 */
@@ -91,6 +97,10 @@ public class GeometryParserProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Gets the parser.
+	 *
+	 * @param visualID the visual id
+	 * @return the parser
 	 * @generated
 	 */
 	protected IParser getParser(int visualID) {
@@ -106,7 +116,12 @@ public class GeometryParserProvider extends AbstractProvider implements
 	}
 
 	/**
-	 * Utility method that consults ParserService
+	 * Utility method that consults ParserService.
+	 *
+	 * @param type the type
+	 * @param object the object
+	 * @param parserHint the parser hint
+	 * @return the parser
 	 * @generated
 	 */
 	public static IParser getParser(IElementType type, EObject object,
@@ -116,6 +131,10 @@ public class GeometryParserProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Gets the parser.
+	 *
+	 * @param hint the hint
+	 * @return the parser
 	 * @generated
 	 */
 	public IParser getParser(IAdaptable hint) {
@@ -131,6 +150,10 @@ public class GeometryParserProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Provides.
+	 *
+	 * @param operation the operation
+	 * @return true, if successful
 	 * @generated
 	 */
 	public boolean provides(IOperation operation) {
@@ -145,16 +168,21 @@ public class GeometryParserProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * The Class HintAdapter.
+	 *
 	 * @generated
 	 */
 	private static class HintAdapter extends ParserHintAdapter {
 
-		/**
-		 * @generated
-		 */
+		/** The element type. @generated */
 		private final IElementType elementType;
 
 		/**
+		 * Instantiates a new hint adapter.
+		 *
+		 * @param type the type
+		 * @param object the object
+		 * @param parserHint the parser hint
 		 * @generated
 		 */
 		public HintAdapter(IElementType type, EObject object, String parserHint) {
@@ -164,6 +192,10 @@ public class GeometryParserProvider extends AbstractProvider implements
 		}
 
 		/**
+		 * Gets the adapter.
+		 *
+		 * @param adapter the adapter
+		 * @return the adapter
 		 * @generated
 		 */
 		public Object getAdapter(Class adapter) {

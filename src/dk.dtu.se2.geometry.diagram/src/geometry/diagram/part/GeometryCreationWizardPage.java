@@ -8,17 +8,23 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryCreationWizardPage.
+ *
  * @generated
  */
 public class GeometryCreationWizardPage extends WizardNewFileCreationPage {
 
-	/**
-	 * @generated
-	 */
+	/** The file extension. @generated */
 	private final String fileExtension;
 
 	/**
+	 * Instantiates a new geometry creation wizard page.
+	 *
+	 * @param pageName the page name
+	 * @param selection the selection
+	 * @param fileExtension the file extension
 	 * @generated
 	 */
 	public GeometryCreationWizardPage(String pageName,
@@ -29,7 +35,8 @@ public class GeometryCreationWizardPage extends WizardNewFileCreationPage {
 
 	/**
 	 * Override to create files with this extension.
-	 * 
+	 *
+	 * @return the extension
 	 * @generated
 	 */
 	protected String getExtension() {
@@ -37,6 +44,9 @@ public class GeometryCreationWizardPage extends WizardNewFileCreationPage {
 	}
 
 	/**
+	 * Gets the uri.
+	 *
+	 * @return the uri
 	 * @generated
 	 */
 	public URI getURI() {
@@ -44,6 +54,9 @@ public class GeometryCreationWizardPage extends WizardNewFileCreationPage {
 	}
 
 	/**
+	 * Gets the file path.
+	 *
+	 * @return the file path
 	 * @generated
 	 */
 	protected IPath getFilePath() {
@@ -59,6 +72,9 @@ public class GeometryCreationWizardPage extends WizardNewFileCreationPage {
 	}
 
 	/**
+	 * Creates the control.
+	 *
+	 * @param parent the parent
 	 * @generated
 	 */
 	public void createControl(Composite parent) {
@@ -69,6 +85,9 @@ public class GeometryCreationWizardPage extends WizardNewFileCreationPage {
 	}
 
 	/**
+	 * Validate page.
+	 *
+	 * @return true, if successful
 	 * @generated
 	 */
 	protected boolean validatePage() {

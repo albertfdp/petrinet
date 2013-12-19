@@ -21,52 +21,50 @@ import org.eclipse.gmf.tooling.runtime.providers.DiagramElementTypes;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryElementTypes.
+ *
  * @generated
  */
 public class GeometryElementTypes {
 
 	/**
+	 * Instantiates a new geometry element types.
+	 *
 	 * @generated
 	 */
 	private GeometryElementTypes() {
 	}
 
-	/**
-	 * @generated
-	 */
+	/** The elements. @generated */
 	private static Map<IElementType, ENamedElement> elements;
 
-	/**
-	 * @generated
-	 */
+	/** The element type images. @generated */
 	private static DiagramElementTypeImages elementTypeImages = new DiagramElementTypeImages(
 			GeometryDiagramEditorPlugin.getInstance()
 					.getItemProvidersAdapterFactory());
 
-	/**
-	 * @generated
-	 */
+	/** The known element types. @generated */
 	private static Set<IElementType> KNOWN_ELEMENT_TYPES;
 
-	/**
-	 * @generated
-	 */
+	/** The Constant Geometry_1000. @generated */
 	public static final IElementType Geometry_1000 = getElementType("dk.dtu.se2.geometry.diagram.Geometry_1000"); //$NON-NLS-1$
-	/**
-	 * @generated
-	 */
+	
+	/** The Constant Connector_2001. @generated */
 	public static final IElementType Connector_2001 = getElementType("dk.dtu.se2.geometry.diagram.Connector_2001"); //$NON-NLS-1$
-	/**
-	 * @generated
-	 */
+	
+	/** The Constant InputPoint_2002. @generated */
 	public static final IElementType InputPoint_2002 = getElementType("dk.dtu.se2.geometry.diagram.InputPoint_2002"); //$NON-NLS-1$
-	/**
-	 * @generated
-	 */
+	
+	/** The Constant Line_4001. @generated */
 	public static final IElementType Line_4001 = getElementType("dk.dtu.se2.geometry.diagram.Line_4001"); //$NON-NLS-1$
 
 	/**
+	 * Gets the image descriptor.
+	 *
+	 * @param element the element
+	 * @return the image descriptor
 	 * @generated
 	 */
 	public static ImageDescriptor getImageDescriptor(ENamedElement element) {
@@ -74,6 +72,10 @@ public class GeometryElementTypes {
 	}
 
 	/**
+	 * Gets the image.
+	 *
+	 * @param element the element
+	 * @return the image
 	 * @generated
 	 */
 	public static Image getImage(ENamedElement element) {
@@ -81,6 +83,10 @@ public class GeometryElementTypes {
 	}
 
 	/**
+	 * Gets the image descriptor.
+	 *
+	 * @param hint the hint
+	 * @return the image descriptor
 	 * @generated
 	 */
 	public static ImageDescriptor getImageDescriptor(IAdaptable hint) {
@@ -88,6 +94,10 @@ public class GeometryElementTypes {
 	}
 
 	/**
+	 * Gets the image.
+	 *
+	 * @param hint the hint
+	 * @return the image
 	 * @generated
 	 */
 	public static Image getImage(IAdaptable hint) {
@@ -96,7 +106,9 @@ public class GeometryElementTypes {
 
 	/**
 	 * Returns 'type' of the ecore object associated with the hint.
-	 * 
+	 *
+	 * @param hint the hint
+	 * @return the element
 	 * @generated
 	 */
 	public static ENamedElement getElement(IAdaptable hint) {
@@ -118,6 +130,10 @@ public class GeometryElementTypes {
 	}
 
 	/**
+	 * Gets the element type.
+	 *
+	 * @param id the id
+	 * @return the element type
 	 * @generated
 	 */
 	private static IElementType getElementType(String id) {
@@ -125,6 +141,10 @@ public class GeometryElementTypes {
 	}
 
 	/**
+	 * Checks if is known element type.
+	 *
+	 * @param elementType the element type
+	 * @return true, if is known element type
 	 * @generated
 	 */
 	public static boolean isKnownElementType(IElementType elementType) {
@@ -139,6 +159,10 @@ public class GeometryElementTypes {
 	}
 
 	/**
+	 * Gets the element type.
+	 *
+	 * @param visualID the visual id
+	 * @return the element type
 	 * @generated
 	 */
 	public static IElementType getElementType(int visualID) {
@@ -155,13 +179,15 @@ public class GeometryElementTypes {
 		return null;
 	}
 
-	/**
-	 * @generated
-	 */
+	/** The Constant TYPED_INSTANCE. @generated */
 	public static final DiagramElementTypes TYPED_INSTANCE = new DiagramElementTypes(
 			elementTypeImages) {
 
 		/**
+		 * Checks if is known element type.
+		 *
+		 * @param elementType the element type
+		 * @return true, if is known element type
 		 * @generated
 		 */
 		@Override
@@ -171,6 +197,10 @@ public class GeometryElementTypes {
 		}
 
 		/**
+		 * Gets the element type for visual id.
+		 *
+		 * @param visualID the visual id
+		 * @return the element type for visual id
 		 * @generated
 		 */
 		@Override
@@ -180,6 +210,10 @@ public class GeometryElementTypes {
 		}
 
 		/**
+		 * Gets the defining named element.
+		 *
+		 * @param elementTypeAdapter the element type adapter
+		 * @return the defining named element
 		 * @generated
 		 */
 		@Override

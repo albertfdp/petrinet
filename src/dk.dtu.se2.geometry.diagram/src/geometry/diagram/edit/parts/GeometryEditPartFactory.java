@@ -9,12 +9,20 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.directedit.locator.CellEditorLocatorAccess;
 
+// TODO: Auto-generated Javadoc
 /**
+ * A factory for creating GeometryEditPart objects.
+ *
  * @generated
  */
 public class GeometryEditPartFactory implements EditPartFactory {
 
 	/**
+	 * Creates a new GeometryEditPart object.
+	 *
+	 * @param context the context
+	 * @param model the model
+	 * @return the edits the part
 	 * @generated
 	 */
 	public EditPart createEditPart(EditPart context, Object model) {
@@ -49,6 +57,11 @@ public class GeometryEditPartFactory implements EditPartFactory {
 	}
 
 	/**
+	 * Creates a new GeometryEditPart object.
+	 *
+	 * @param context the context
+	 * @param model the model
+	 * @return the edits the part
 	 * @generated
 	 */
 	private EditPart createUnrecognizedEditPart(EditPart context, Object model) {
@@ -57,6 +70,10 @@ public class GeometryEditPartFactory implements EditPartFactory {
 	}
 
 	/**
+	 * Gets the text cell editor locator.
+	 *
+	 * @param source the source
+	 * @return the text cell editor locator
 	 * @generated
 	 */
 	public static CellEditorLocator getTextCellEditorLocator(

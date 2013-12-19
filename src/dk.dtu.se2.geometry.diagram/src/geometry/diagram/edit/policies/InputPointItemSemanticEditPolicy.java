@@ -10,13 +10,18 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InputPointItemSemanticEditPolicy.
+ *
  * @generated
  */
 public class InputPointItemSemanticEditPolicy extends
 		GeometryBaseItemSemanticEditPolicy {
 
 	/**
+	 * Instantiates a new input point item semantic edit policy.
+	 *
 	 * @generated
 	 */
 	public InputPointItemSemanticEditPolicy() {
@@ -24,6 +29,10 @@ public class InputPointItemSemanticEditPolicy extends
 	}
 
 	/**
+	 * Gets the destroy element command.
+	 *
+	 * @param req the req
+	 * @return the destroy element command
 	 * @generated
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {

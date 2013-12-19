@@ -20,22 +20,25 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryInitDiagramFileAction.
+ *
  * @generated
  */
 public class GeometryInitDiagramFileAction implements IObjectActionDelegate {
 
-	/**
-	 * @generated
-	 */
+	/** The target part. @generated */
 	private IWorkbenchPart targetPart;
 
-	/**
-	 * @generated
-	 */
+	/** The domain model uri. @generated */
 	private URI domainModelURI;
 
 	/**
+	 * Sets the active part.
+	 *
+	 * @param action the action
+	 * @param targetPart the target part
 	 * @generated
 	 */
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
@@ -43,6 +46,10 @@ public class GeometryInitDiagramFileAction implements IObjectActionDelegate {
 	}
 
 	/**
+	 * Selection changed.
+	 *
+	 * @param action the action
+	 * @param selection the selection
 	 * @generated
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
@@ -60,6 +67,9 @@ public class GeometryInitDiagramFileAction implements IObjectActionDelegate {
 	}
 
 	/**
+	 * Gets the shell.
+	 *
+	 * @return the shell
 	 * @generated
 	 */
 	private Shell getShell() {
@@ -67,6 +77,9 @@ public class GeometryInitDiagramFileAction implements IObjectActionDelegate {
 	}
 
 	/**
+	 * Run.
+	 *
+	 * @param action the action
 	 * @generated
 	 */
 	public void run(IAction action) {

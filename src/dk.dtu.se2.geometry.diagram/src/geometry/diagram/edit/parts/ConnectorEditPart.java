@@ -41,27 +41,27 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ConnectorEditPart.
+ *
  * @generated
  */
 public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 
-	/**
-	 * @generated
-	 */
+	/** The Constant VISUAL_ID. @generated */
 	public static final int VISUAL_ID = 2001;
 
-	/**
-	 * @generated
-	 */
+	/** The content pane. @generated */
 	protected IFigure contentPane;
 
-	/**
-	 * @generated
-	 */
+	/** The primary shape. @generated */
 	protected IFigure primaryShape;
 
 	/**
+	 * Instantiates a new connector edit part.
+	 *
+	 * @param view the view
 	 * @generated
 	 */
 	public ConnectorEditPart(View view) {
@@ -69,6 +69,8 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Creates the default edit policies.
+	 *
 	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
@@ -81,6 +83,9 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Creates the layout edit policy.
+	 *
+	 * @return the layout edit policy
 	 * @generated
 	 */
 	protected LayoutEditPolicy createLayoutEditPolicy() {
@@ -120,6 +125,9 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Creates the node shape.
+	 *
+	 * @return the i figure
 	 * @generated
 	 */
 	protected IFigure createNodeShape() {
@@ -127,6 +135,9 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Gets the primary shape.
+	 *
+	 * @return the primary shape
 	 * @generated
 	 */
 	public ConnectorFigure getPrimaryShape() {
@@ -134,6 +145,10 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Adds the border item.
+	 *
+	 * @param borderItemContainer the border item container
+	 * @param borderItemEditPart the border item edit part
 	 * @generated not
 	 * @Mikko_Tuulio
 	 */
@@ -150,6 +165,9 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Creates the node plate.
+	 *
+	 * @return the node figure
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
@@ -162,7 +180,8 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	 * 
 	 * Body of this method does not depend on settings in generation model
 	 * so you may safely remove <i>generated</i> tag and modify it.
-	 * 
+	 *
+	 * @return the node figure
 	 * @generated
 	 */
 	protected NodeFigure createMainFigure() {
@@ -177,7 +196,9 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	/**
 	 * Default implementation treats passed figure as content pane.
 	 * Respects layout one may have set for generated figure.
+	 *
 	 * @param nodeShape instance of generated figure class
+	 * @return the i figure
 	 * @generated
 	 */
 	protected IFigure setupContentPane(IFigure nodeShape) {
@@ -185,6 +206,9 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Gets the content pane.
+	 *
+	 * @return the content pane
 	 * @generated
 	 */
 	public IFigure getContentPane() {
@@ -195,6 +219,9 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Sets the foreground color.
+	 *
+	 * @param color the new foreground color
 	 * @generated
 	 */
 	protected void setForegroundColor(Color color) {
@@ -204,6 +231,9 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Sets the background color.
+	 *
+	 * @param color the new background color
 	 * @generated
 	 */
 	protected void setBackgroundColor(Color color) {
@@ -213,6 +243,9 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Sets the line width.
+	 *
+	 * @param width the new line width
 	 * @generated
 	 */
 	protected void setLineWidth(int width) {
@@ -222,6 +255,9 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Sets the line type.
+	 *
+	 * @param style the new line type
 	 * @generated
 	 */
 	protected void setLineType(int style) {
@@ -231,6 +267,9 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Gets the primary child edit part.
+	 *
+	 * @return the primary child edit part
 	 * @generated
 	 */
 	public EditPart getPrimaryChildEditPart() {
@@ -239,6 +278,9 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Gets the mA rel types on source.
+	 *
+	 * @return the mA rel types on source
 	 * @generated
 	 */
 	public List<IElementType> getMARelTypesOnSource() {
@@ -248,6 +290,10 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Gets the mA rel types on source and target.
+	 *
+	 * @param targetEditPart the target edit part
+	 * @return the mA rel types on source and target
 	 * @generated
 	 */
 	public List<IElementType> getMARelTypesOnSourceAndTarget(
@@ -260,6 +306,10 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Gets the mA types for target.
+	 *
+	 * @param relationshipType the relationship type
+	 * @return the mA types for target
 	 * @generated
 	 */
 	public List<IElementType> getMATypesForTarget(IElementType relationshipType) {
@@ -271,6 +321,9 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Gets the mA rel types on target.
+	 *
+	 * @return the mA rel types on target
 	 * @generated
 	 */
 	public List<IElementType> getMARelTypesOnTarget() {
@@ -280,6 +333,10 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * Gets the mA types for source.
+	 *
+	 * @param relationshipType the relationship type
+	 * @return the mA types for source
 	 * @generated
 	 */
 	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
@@ -291,11 +348,15 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * The Class ConnectorFigure.
+	 *
 	 * @generated
 	 */
 	public class ConnectorFigure extends RectangleFigure {
 
 		/**
+		 * Instantiates a new connector figure.
+		 *
 		 * @generated
 		 */
 		public ConnectorFigure() {

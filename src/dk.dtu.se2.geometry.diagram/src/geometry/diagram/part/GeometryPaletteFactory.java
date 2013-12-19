@@ -14,12 +14,18 @@ import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * A factory for creating GeometryPalette objects.
+ *
  * @generated
  */
 public class GeometryPaletteFactory {
 
 	/**
+	 * Fill palette.
+	 *
+	 * @param paletteRoot the palette root
 	 * @generated
 	 */
 	public void fillPalette(PaletteRoot paletteRoot) {
@@ -27,7 +33,9 @@ public class GeometryPaletteFactory {
 	}
 
 	/**
-	 * Creates "geometry" palette tool group
+	 * Creates "geometry" palette tool group.
+	 *
+	 * @return the palette container
 	 * @generated
 	 */
 	private PaletteContainer createGeometry1Group() {
@@ -41,6 +49,9 @@ public class GeometryPaletteFactory {
 	}
 
 	/**
+	 * Creates a new GeometryPalette object.
+	 *
+	 * @return the tool entry
 	 * @generated
 	 */
 	private ToolEntry createLine1CreationTool() {
@@ -56,6 +67,9 @@ public class GeometryPaletteFactory {
 	}
 
 	/**
+	 * Creates a new GeometryPalette object.
+	 *
+	 * @return the tool entry
 	 * @generated
 	 */
 	private ToolEntry createConnector2CreationTool() {
@@ -71,6 +85,9 @@ public class GeometryPaletteFactory {
 	}
 
 	/**
+	 * Creates a new GeometryPalette object.
+	 *
+	 * @return the tool entry
 	 * @generated
 	 */
 	private ToolEntry createInputPoint3CreationTool() {
@@ -86,16 +103,21 @@ public class GeometryPaletteFactory {
 	}
 
 	/**
+	 * The Class NodeToolEntry.
+	 *
 	 * @generated
 	 */
 	private static class NodeToolEntry extends ToolEntry {
 
-		/**
-		 * @generated
-		 */
+		/** The element types. @generated */
 		private final List<IElementType> elementTypes;
 
 		/**
+		 * Instantiates a new node tool entry.
+		 *
+		 * @param title the title
+		 * @param description the description
+		 * @param elementTypes the element types
 		 * @generated
 		 */
 		private NodeToolEntry(String title, String description,
@@ -105,6 +127,9 @@ public class GeometryPaletteFactory {
 		}
 
 		/**
+		 * Creates the tool.
+		 *
+		 * @return the tool
 		 * @generated
 		 */
 		public Tool createTool() {
@@ -115,16 +140,21 @@ public class GeometryPaletteFactory {
 	}
 
 	/**
+	 * The Class LinkToolEntry.
+	 *
 	 * @generated
 	 */
 	private static class LinkToolEntry extends ToolEntry {
 
-		/**
-		 * @generated
-		 */
+		/** The relationship types. @generated */
 		private final List<IElementType> relationshipTypes;
 
 		/**
+		 * Instantiates a new link tool entry.
+		 *
+		 * @param title the title
+		 * @param description the description
+		 * @param relationshipTypes the relationship types
 		 * @generated
 		 */
 		private LinkToolEntry(String title, String description,
@@ -134,6 +164,9 @@ public class GeometryPaletteFactory {
 		}
 
 		/**
+		 * Creates the tool.
+		 *
+		 * @return the tool
 		 * @generated
 		 */
 		public Tool createTool() {

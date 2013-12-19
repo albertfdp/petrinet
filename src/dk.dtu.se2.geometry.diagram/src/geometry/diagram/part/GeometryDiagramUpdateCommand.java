@@ -15,24 +15,37 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.PlatformUI;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryDiagramUpdateCommand.
+ *
  * @generated
  */
 public class GeometryDiagramUpdateCommand implements IHandler {
 
 	/**
+	 * Adds the handler listener.
+	 *
+	 * @param handlerListener the handler listener
 	 * @generated
 	 */
 	public void addHandlerListener(IHandlerListener handlerListener) {
 	}
 
 	/**
+	 * Dispose.
+	 *
 	 * @generated
 	 */
 	public void dispose() {
 	}
 
 	/**
+	 * Execute.
+	 *
+	 * @param event the event
+	 * @return the object
+	 * @throws ExecutionException the execution exception
 	 * @generated
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -63,6 +76,9 @@ public class GeometryDiagramUpdateCommand implements IHandler {
 	}
 
 	/**
+	 * Checks if is enabled.
+	 *
+	 * @return true, if is enabled
 	 * @generated
 	 */
 	public boolean isEnabled() {
@@ -70,6 +86,9 @@ public class GeometryDiagramUpdateCommand implements IHandler {
 	}
 
 	/**
+	 * Checks if is handled.
+	 *
+	 * @return true, if is handled
 	 * @generated
 	 */
 	public boolean isHandled() {
@@ -77,6 +96,9 @@ public class GeometryDiagramUpdateCommand implements IHandler {
 	}
 
 	/**
+	 * Removes the handler listener.
+	 *
+	 * @param handlerListener the handler listener
 	 * @generated
 	 */
 	public void removeHandlerListener(IHandlerListener handlerListener) {

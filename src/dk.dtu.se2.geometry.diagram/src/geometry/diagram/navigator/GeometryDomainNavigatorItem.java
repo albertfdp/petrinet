@@ -8,7 +8,10 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.IPropertySourceProvider;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryDomainNavigatorItem.
+ *
  * @generated
  */
 public class GeometryDomainNavigatorItem extends PlatformObject {
@@ -43,22 +46,21 @@ public class GeometryDomainNavigatorItem extends PlatformObject {
 		}, geometry.diagram.navigator.GeometryDomainNavigatorItem.class);
 	}
 
-	/**
-	 * @generated
-	 */
+	/** The my parent. @generated */
 	private Object myParent;
 
-	/**
-	 * @generated
-	 */
+	/** The my e object. @generated */
 	private EObject myEObject;
 
-	/**
-	 * @generated
-	 */
+	/** The my property source provider. @generated */
 	private IPropertySourceProvider myPropertySourceProvider;
 
 	/**
+	 * Instantiates a new geometry domain navigator item.
+	 *
+	 * @param eObject the e object
+	 * @param parent the parent
+	 * @param propertySourceProvider the property source provider
 	 * @generated
 	 */
 	public GeometryDomainNavigatorItem(EObject eObject, Object parent,
@@ -69,6 +71,9 @@ public class GeometryDomainNavigatorItem extends PlatformObject {
 	}
 
 	/**
+	 * Gets the parent.
+	 *
+	 * @return the parent
 	 * @generated
 	 */
 	public Object getParent() {
@@ -76,6 +81,9 @@ public class GeometryDomainNavigatorItem extends PlatformObject {
 	}
 
 	/**
+	 * Gets the e object.
+	 *
+	 * @return the e object
 	 * @generated
 	 */
 	public EObject getEObject() {
@@ -83,6 +91,9 @@ public class GeometryDomainNavigatorItem extends PlatformObject {
 	}
 
 	/**
+	 * Gets the property source provider.
+	 *
+	 * @return the property source provider
 	 * @generated
 	 */
 	public IPropertySourceProvider getPropertySourceProvider() {
@@ -90,6 +101,10 @@ public class GeometryDomainNavigatorItem extends PlatformObject {
 	}
 
 	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
 	 * @generated
 	 */
 	public boolean equals(Object obj) {
@@ -104,6 +119,9 @@ public class GeometryDomainNavigatorItem extends PlatformObject {
 	}
 
 	/**
+	 * Hash code.
+	 *
+	 * @return the int
 	 * @generated
 	 */
 	public int hashCode() {

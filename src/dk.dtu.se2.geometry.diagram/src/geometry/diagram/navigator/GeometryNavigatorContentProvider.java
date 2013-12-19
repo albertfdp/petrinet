@@ -30,37 +30,32 @@ import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonContentProvider;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryNavigatorContentProvider.
+ *
  * @generated
  */
 public class GeometryNavigatorContentProvider implements ICommonContentProvider {
 
-	/**
-	 * @generated
-	 */
+	/** The Constant EMPTY_ARRAY. @generated */
 	private static final Object[] EMPTY_ARRAY = new Object[0];
 
-	/**
-	 * @generated
-	 */
+	/** The my viewer. @generated */
 	private Viewer myViewer;
 
-	/**
-	 * @generated
-	 */
+	/** The my editing domain. @generated */
 	private AdapterFactoryEditingDomain myEditingDomain;
 
-	/**
-	 * @generated
-	 */
+	/** The my workspace synchronizer. @generated */
 	private WorkspaceSynchronizer myWorkspaceSynchronizer;
 
-	/**
-	 * @generated
-	 */
+	/** The my viewer refresh runnable. @generated */
 	private Runnable myViewerRefreshRunnable;
 
 	/**
+	 * Instantiates a new geometry navigator content provider.
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings({ "unchecked", "serial", "rawtypes" })
@@ -110,6 +105,8 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Dispose.
+	 *
 	 * @generated
 	 */
 	public void dispose() {
@@ -123,6 +120,11 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Input changed.
+	 *
+	 * @param viewer the viewer
+	 * @param oldInput the old input
+	 * @param newInput the new input
 	 * @generated
 	 */
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
@@ -130,6 +132,8 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Unload all resources.
+	 *
 	 * @generated
 	 */
 	void unloadAllResources() {
@@ -140,6 +144,8 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Async refresh.
+	 *
 	 * @generated
 	 */
 	void asyncRefresh() {
@@ -150,6 +156,10 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Gets the elements.
+	 *
+	 * @param inputElement the input element
+	 * @return the elements
 	 * @generated
 	 */
 	public Object[] getElements(Object inputElement) {
@@ -157,24 +167,37 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Restore state.
+	 *
+	 * @param aMemento the a memento
 	 * @generated
 	 */
 	public void restoreState(IMemento aMemento) {
 	}
 
 	/**
+	 * Save state.
+	 *
+	 * @param aMemento the a memento
 	 * @generated
 	 */
 	public void saveState(IMemento aMemento) {
 	}
 
 	/**
+	 * Inits the.
+	 *
+	 * @param aConfig the a config
 	 * @generated
 	 */
 	public void init(ICommonContentExtensionSite aConfig) {
 	}
 
 	/**
+	 * Gets the children.
+	 *
+	 * @param parentElement the parent element
+	 * @return the children
 	 * @generated
 	 */
 	public Object[] getChildren(Object parentElement) {
@@ -215,6 +238,11 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Gets the view children.
+	 *
+	 * @param view the view
+	 * @param parentElement the parent element
+	 * @return the view children
 	 * @generated
 	 */
 	private Object[] getViewChildren(View view, Object parentElement) {
@@ -306,6 +334,11 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Gets the links source by type.
+	 *
+	 * @param edges the edges
+	 * @param type the type
+	 * @return the links source by type
 	 * @generated
 	 */
 	private Collection<View> getLinksSourceByType(Collection<Edge> edges,
@@ -322,6 +355,11 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Gets the links target by type.
+	 *
+	 * @param edges the edges
+	 * @param type the type
+	 * @return the links target by type
 	 * @generated
 	 */
 	private Collection<View> getLinksTargetByType(Collection<Edge> edges,
@@ -338,6 +376,11 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Gets the outgoing links by type.
+	 *
+	 * @param nodes the nodes
+	 * @param type the type
+	 * @return the outgoing links by type
 	 * @generated
 	 */
 	private Collection<View> getOutgoingLinksByType(
@@ -350,6 +393,11 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Gets the incoming links by type.
+	 *
+	 * @param nodes the nodes
+	 * @param type the type
+	 * @return the incoming links by type
 	 * @generated
 	 */
 	private Collection<View> getIncomingLinksByType(
@@ -362,6 +410,11 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Gets the children by type.
+	 *
+	 * @param nodes the nodes
+	 * @param type the type
+	 * @return the children by type
 	 * @generated
 	 */
 	private Collection<View> getChildrenByType(
@@ -374,6 +427,11 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Gets the diagram links by type.
+	 *
+	 * @param diagrams the diagrams
+	 * @param type the type
+	 * @return the diagram links by type
 	 * @generated
 	 */
 	private Collection<View> getDiagramLinksByType(
@@ -387,6 +445,11 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 
 	// TODO refactor as static method
 	/**
+	 * Select views by type.
+	 *
+	 * @param views the views
+	 * @param type the type
+	 * @return the collection
 	 * @generated
 	 */
 	private Collection<View> selectViewsByType(Collection<View> views,
@@ -401,6 +464,10 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Checks if is own view.
+	 *
+	 * @param view the view
+	 * @return true, if is own view
 	 * @generated
 	 */
 	private boolean isOwnView(View view) {
@@ -409,6 +476,12 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Creates the navigator items.
+	 *
+	 * @param views the views
+	 * @param parent the parent
+	 * @param isLeafs the is leafs
+	 * @return the collection
 	 * @generated
 	 */
 	private Collection<GeometryNavigatorItem> createNavigatorItems(
@@ -422,6 +495,10 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Gets the parent.
+	 *
+	 * @param element the element
+	 * @return the parent
 	 * @generated
 	 */
 	public Object getParent(Object element) {
@@ -433,6 +510,10 @@ public class GeometryNavigatorContentProvider implements ICommonContentProvider 
 	}
 
 	/**
+	 * Checks for children.
+	 *
+	 * @param element the element
+	 * @return true, if successful
 	 * @generated
 	 */
 	public boolean hasChildren(Object element) {

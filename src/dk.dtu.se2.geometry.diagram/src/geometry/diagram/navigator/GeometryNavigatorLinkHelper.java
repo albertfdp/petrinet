@@ -24,12 +24,19 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.navigator.ILinkHelper;
 import org.eclipse.ui.part.FileEditorInput;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GeometryNavigatorLinkHelper.
+ *
  * @generated
  */
 public class GeometryNavigatorLinkHelper implements ILinkHelper {
 
 	/**
+	 * Gets the editor input.
+	 *
+	 * @param diagram the diagram
+	 * @return the editor input
 	 * @generated
 	 */
 	private static IEditorInput getEditorInput(Diagram diagram) {
@@ -51,6 +58,10 @@ public class GeometryNavigatorLinkHelper implements ILinkHelper {
 	}
 
 	/**
+	 * Find selection.
+	 *
+	 * @param anInput the an input
+	 * @return the i structured selection
 	 * @generated
 	 */
 	public IStructuredSelection findSelection(IEditorInput anInput) {
@@ -73,6 +84,10 @@ public class GeometryNavigatorLinkHelper implements ILinkHelper {
 	}
 
 	/**
+	 * Activate editor.
+	 *
+	 * @param aPage the a page
+	 * @param aSelection the a selection
 	 * @generated
 	 */
 	public void activateEditor(IWorkbenchPage aPage,

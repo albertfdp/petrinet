@@ -6,13 +6,18 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LineItemSemanticEditPolicy.
+ *
  * @generated
  */
 public class LineItemSemanticEditPolicy extends
 		GeometryBaseItemSemanticEditPolicy {
 
 	/**
+	 * Instantiates a new line item semantic edit policy.
+	 *
 	 * @generated
 	 */
 	public LineItemSemanticEditPolicy() {
@@ -20,6 +25,10 @@ public class LineItemSemanticEditPolicy extends
 	}
 
 	/**
+	 * Gets the destroy element command.
+	 *
+	 * @param req the req
+	 * @return the destroy element command
 	 * @generated
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {

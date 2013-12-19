@@ -29,18 +29,37 @@ import geometry.impl.LineImpl;
 import org.eclipse.gmf.runtime.notation.impl.RelativeBendpointsImpl;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The listener interface for receiving position events.
+ * The class that is interested in processing a position
+ * event implements this interface, and the object created
+ * with that class is registered with a component using the
+ * component's <code>addPositionListener<code> method. When
+ * the position event occurs, that object's appropriate
+ * method is invoked.
+ *
+ * @see PositionEvent
+ */
 public class PositionListener extends EContentAdapter {
 	
+	/** The Modified filter. */
 	private NotificationFilter ModifiedFilter;
 	
 	/**
+	 * Instantiates a new position listener.
+	 *
 	 * @generated NOT
 	 * @Mikko_Tuulio
 	 */
 	public PositionListener() {
 		ModifiedFilter = NotificationFilter.createEventTypeFilter(Notification.SET).or(NotificationFilter.createEventTypeFilter(Notification.UNSET)).or(NotificationFilter.createEventTypeFilter(Notification.ADD)).or(NotificationFilter.createEventTypeFilter(Notification.REMOVE));
 	}
+	
 	/**
+	 * Notify changed.
+	 *
+	 * @param notification the notification
 	 * @generated NOT
 	 * @Mikko_Tuulio
 	 */
@@ -77,6 +96,10 @@ public class PositionListener extends EContentAdapter {
 	
 	
 	/**
+	 * Update node bounds.
+	 *
+	 * @param eNotification the e notification
+	 * @param eNotifier the e notifier
 	 * @generated NOT
 	 * @Mikko_Tuulio
 	 */
@@ -87,6 +110,10 @@ public class PositionListener extends EContentAdapter {
 	}
 	
 	/**
+	 * Update node bounds.
+	 *
+	 * @param view the view
+	 * @param modelElement the model element
 	 * @generated NOT
 	 * @Mikko_Tuulio
 	 */
@@ -133,6 +160,10 @@ public class PositionListener extends EContentAdapter {
 	}
 	
 	/**
+	 * Gets the node position.
+	 *
+	 * @param viewNode the view node
+	 * @return the node position
 	 * @generated NOT
 	 * @Mikko_Tuulio
 	 */
@@ -159,6 +190,12 @@ public class PositionListener extends EContentAdapter {
 	}
 	
 	/**
+	 * Update line.
+	 *
+	 * @param eNotification the e notification
+	 * @param eNotifier the e notifier
+	 * @param lineImpl the line impl
+	 * @param edge the edge
 	 * @generated NOT
 	 * @Mikko_Tuulio
 	 */
@@ -177,6 +214,10 @@ public class PositionListener extends EContentAdapter {
 	}
 	
 	/**
+	 * Update bend points.
+	 *
+	 * @param lineImpl the line impl
+	 * @param edge the edge
 	 * @generated NOT
 	 * @Mikko_Tuulio
 	 */
@@ -197,6 +238,10 @@ public class PositionListener extends EContentAdapter {
 	}
 	
 	/**
+	 * Adds the bend point.
+	 *
+	 * @param lineImpl the line impl
+	 * @param edge the edge
 	 * @generated NOT
 	 * @Mikko_Tuulio
 	 */
@@ -231,6 +276,10 @@ public class PositionListener extends EContentAdapter {
 	}
 	
 	/**
+	 * Removes the bend point.
+	 *
+	 * @param lineImpl the line impl
+	 * @param edge the edge
 	 * @generated NOT
 	 * @Mikko_Tuulio
 	 */
@@ -261,6 +310,12 @@ public class PositionListener extends EContentAdapter {
 	}
 	
 	/**
+	 * Creates the bend point at index.
+	 *
+	 * @param ind the ind
+	 * @param x the x
+	 * @param y the y
+	 * @param lineImpl the line impl
 	 * @generated NOT
 	 * @Mikko_Tuulio
 	 */
@@ -275,9 +330,12 @@ public class PositionListener extends EContentAdapter {
 	}
 	
 	/**
+	 * Removes the bend point at index.
+	 *
+	 * @param ind the ind
+	 * @param lineImpl the line impl
 	 * @generated NOT
 	 * @Mikko_Tuulio
-	 * 
 	 */
 	private void removeBendPointAtIndex(int ind, LineImpl lineImpl)
 	{
@@ -286,6 +344,12 @@ public class PositionListener extends EContentAdapter {
 	}
 	
 	/**
+	 * Calculate absolute location at index.
+	 *
+	 * @param index the index
+	 * @param lineImpl the line impl
+	 * @param edge the edge
+	 * @return the vector
 	 * @generated NOT
 	 * @Mikko_Tuulio
 	 */
