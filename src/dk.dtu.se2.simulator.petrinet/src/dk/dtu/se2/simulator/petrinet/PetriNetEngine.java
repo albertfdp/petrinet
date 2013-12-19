@@ -241,4 +241,18 @@ public class PetriNetEngine {
 		}
 		return true;
 	}
+
+	public HashMap<Place, ArrayList<RTToken>> getMarking() {
+		return marking;
+	}
+
+	public HashSet<String> getInputPlaces() {
+		return inputPlaces;
+	}
+
+	public ArrayList<Transition> getTransitions() {
+		return transitions;
+	}
+	
+	
 }

@@ -1,11 +1,11 @@
 package dk.dtu.se2.simulator.petrinet;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +20,6 @@ import dk.dtu.se2.petrinet.AnimationLabel;
 import dk.dtu.se2.petrinet.Arc;
 import dk.dtu.se2.petrinet.GeometryLabel;
 import dk.dtu.se2.petrinet.InputPlace;
-import dk.dtu.se2.petrinet.InputPlaceLabel;
 import dk.dtu.se2.petrinet.PetrinetFactory;
 import dk.dtu.se2.petrinet.Place;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
@@ -146,6 +145,17 @@ public class PetriNetEngineTest {
 	public void testCreateToken() {
 		ArrayList<RTAnimation> animations = petrinetEngine.init(doc);
 		petrinetEngine.createToken("IP");
+		Set<Place> places = petrinetEngine.getMarking().keySet();
+		for (Place place : places) {
+			if (petrinetEngine.getInputPlaces().contains(place)) {
+				assertTrue(place.getTokens().size() == 1);
+			}
+		}
 	}
+	
+	
+	
+	
+	
 
 }
