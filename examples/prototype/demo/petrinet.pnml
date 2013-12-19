@@ -504,8 +504,8 @@
           <graphics>
             <offset x="-143.0" y="-140.0"/>
           </graphics>
-          <structure xsi:type="animation:Move" speed="1"/>
-          <text>move(1)</text>
+          <structure xsi:type="animation:Move" speed="0.5"/>
+          <text>move(0.5)</text>
         </animationLabel>
       </place>
       <place id="p2">
@@ -525,7 +525,7 @@
           <graphics>
             <offset x="-126.0" y="118.0"/>
           </graphics>
-          <structure xsi:type="animation:Move" speed="1"/>
+          <structure xsi:type="animation:Move" speed="1.0"/>
           <text>move(1)</text>
         </animationLabel>
       </place>
@@ -562,7 +562,7 @@
           <graphics>
             <offset x="-203.0" y="1.0"/>
           </graphics>
-          <structure xsi:type="animation:Move" speed="1"/>
+          <structure xsi:type="animation:Move" speed="1.0"/>
           <text>move(1)</text>
         </animationLabel>
         <tokens>
@@ -780,8 +780,8 @@
           <graphics>
             <offset x="-201.0" y="11.0"/>
           </graphics>
-          <structure xsi:type="animation:Move" speed="1"/>
-          <text>move(1)</text>
+          <structure xsi:type="animation:Move" speed="0.1"/>
+          <text>move(0.1)</text>
         </animationLabel>
       </place>
       <arc id="a15" source="p1" target="t5">
@@ -845,8 +845,8 @@
           <graphics>
             <offset x="-75.0" y="-76.0"/>
           </graphics>
-          <structure xsi:type="animation:Move" speed="1"/>
-          <text>move(1)</text>
+          <structure xsi:type="animation:Move" speed="3.75"/>
+          <text>move(3.75)</text>
         </animationLabel>
       </place>
       <arc id="a19" source="p7" target="t7">
