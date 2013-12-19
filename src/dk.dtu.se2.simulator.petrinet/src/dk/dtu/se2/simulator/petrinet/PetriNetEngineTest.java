@@ -1,13 +1,12 @@
 package dk.dtu.se2.simulator.petrinet;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.pnml.tools.epnk.pnmlcoremodel.Object;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
 import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelFactory;
@@ -17,15 +16,9 @@ import dk.dtu.se2.animation.AnimationFactory;
 import dk.dtu.se2.animation.Move;
 import dk.dtu.se2.petrinet.AnimationLabel;
 import dk.dtu.se2.petrinet.Arc;
-import dk.dtu.se2.petrinet.ExtendedPetriNet;
 import dk.dtu.se2.petrinet.GeometryLabel;
 import dk.dtu.se2.petrinet.PetrinetFactory;
-import dk.dtu.se2.petrinet.PetrinetPackage;
 import dk.dtu.se2.petrinet.Place;
-import dk.dtu.se2.petrinet.impl.ExtendedPetriNetImpl;
-import dk.dtu.se2.petrinet.impl.GeometryLabelImpl;
-import dk.dtu.se2.petrinet.impl.PetrinetPackageImpl;
-import dk.dtu.se2.petrinet.impl.PlaceImpl;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
 public class PetriNetEngineTest {
