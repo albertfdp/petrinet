@@ -780,8 +780,8 @@
           <graphics>
             <offset x="-201.0" y="11.0"/>
           </graphics>
-          <structure xsi:type="animation:Move" speed="0.1"/>
-          <text>move(0.1)</text>
+          <structure xsi:type="animation:Move" speed="1.0"/>
+          <text>move(1.0)</text>
         </animationLabel>
       </place>
       <arc id="a15" source="p1" target="t5">
