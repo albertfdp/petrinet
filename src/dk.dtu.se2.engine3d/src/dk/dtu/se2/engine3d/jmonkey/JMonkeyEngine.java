@@ -51,7 +51,6 @@ import com.jme3.util.SkyFactory;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.controls.Button;
-import de.lessvoid.nifty.elements.Element;
 import de.lessvoid.nifty.screen.ScreenController;
 import dk.dtu.se2.animation.Animation;
 import dk.dtu.se2.animation.Appear;
@@ -80,9 +79,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	private Nifty 				nifty;
 	private ScreenController 	screenController;
 	
-	 /* Nifty popup for showing system paused message */
-    private Element enginePopup;
-	
 	/* The listener of the 3D Engine - the simulator */
 	private Engine3DListener listener;
 	
@@ -94,7 +90,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	/* Mapping between lines and tokens appearances */
 	private HashMap<String, String> tokenAppearances;
 	
-	/*  Mapping each token to a specific id (String) and its animation rendering in the visualisation*/
+	/*  Mapping each token to a specific id (String) and its animation rendering in the visualization*/
 	private HashMap<String, JMonkeyMove> allRenderedEvents;
 	
 	/*  Mapping between a specific id for a token and all the token it collides with */
@@ -157,58 +153,13 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
  			this.nifty.fromXml("GUI/NiftyButtons.xml", "start", this.screenController);
  			this.stateManager.attach((AppState) this.nifty.getCurrentScreen().getScreenController());
  			this.nifty.setDebugOptionPanelColors(false);
- 			
- 			this.enginePopup = this.nifty.createPopup("popupSystemPaused");
  			 		 			        
  	/* Attach the Nifty display to the GUI view port as a processor */
  	        guiViewPort.addProcessor(niftyDisplay);
  	        
  	        reset();
 	}
-    
-    @Override
- 	public void reset() {		
-	/* Attach the Nifty display to the GUI view port as a processor */
-	    guiViewPort.addProcessor(niftyDisplay);
-		
- 	/* Initialize all lists, queues and hash maps */
- 		this.lines = new HashMap<String, MotionPath>();
-		this.events = new HashMap<String, JMonkeyMove>();
-		this.tokenAppearances = new HashMap<String, String>();
-		this.inputs = new HashMap<String, Spatial>();
-
-	/* Initialize the data structures used to keep track of the current animations*/
-		this.allCollisions = new HashMap<String, ArrayList<String>>();
-		this.allRenderedEvents = new HashMap<String, JMonkeyMove>();
-
-	/* Pause simulation when the window loses focus */
-		this.setPauseOnLostFocus(false);
-		
-	/* Attaching the input places node to the root node */
-		this.inputPlaces = new Node("InputPlaces");
-		rootNode.attachChild(inputPlaces);
- 		
-    /* Run setups to prepare: 
-     * -- the light
-     * -- the environment (all 3D objects according to the geometry and appearance info)
-     * -- the bounding box
-     * -- the ground
-     * -- the all possible animations
-     * -- the position of the camera ( according to the bounding box)
-     * -- the key events 
-     */
-        this.setUpLight();
-        this.setUpEnvironment();
-        this.setBoundingBox();
-        this.setUpGround();
-		this.setUpAnimations();
-		this.setUpCameraPosition();
-		this.setupKeyMappings();
-				
-	/* Set the state of the engine to STOPPED */
-		this.engineState = State.STOPPED;
- 	}
-    
+        
     /**
      * Setups the geometry objects, input places
      */
@@ -462,7 +413,55 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		cam.setRotation(rotation);
 		
 	}
-	
+	 	 	
+ 	@Override
+ 	public void reset() {		
+ 		
+ 	// AP: enable/disable camera fly - the ability to move the camera with keyboard and mouse
+			flyCam.setEnabled(false); 
+			flyCam.setMoveSpeed(100);
+			flyCam.setRotationSpeed(8);
+			flyCam.setZoomSpeed(50);
+	/* Attach the Nifty display to the GUI view port as a processor */
+	    guiViewPort.addProcessor(niftyDisplay);
+		
+ 	/* Initialize all lists, queues and hash maps */
+ 		this.lines = new HashMap<String, MotionPath>();
+		this.events = new HashMap<String, JMonkeyMove>();
+		this.tokenAppearances = new HashMap<String, String>();
+		this.inputs = new HashMap<String, Spatial>();
+
+	/* Initialize the data structures used to keep track of the current animations*/
+		this.allCollisions = new HashMap<String, ArrayList<String>>();
+		this.allRenderedEvents = new HashMap<String, JMonkeyMove>();
+
+	/* Pause simulation when the window loses focus */
+		this.setPauseOnLostFocus(false);
+		
+	/* Attaching the input places node to the root node */
+		this.inputPlaces = new Node("InputPlaces");
+		rootNode.attachChild(inputPlaces);
+ 		
+    /* Run setups to prepare: 
+     * -- the light
+     * -- the environment (all 3D objects according to the geometry and appearance info)
+     * -- the bounding box
+     * -- the ground
+     * -- the all possible animations
+     * -- the position of the camera ( according to the bounding box)
+     * -- the key events 
+     */
+        this.setUpLight();
+        this.setUpEnvironment();
+        this.setBoundingBox();
+        this.setUpGround();
+		this.setUpAnimations();
+		this.setUpCameraPosition();
+		this.setupKeyMappings();
+				
+	/* Set the state of the engine to STOPPED */
+		this.engineState = State.STOPPED;
+ 	}
  	
 
  	/**
@@ -728,12 +727,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		allCollisions.clear();
 	}
 
-	public void closePopup() {
-		this.nifty.closePopup(enginePopup.getId());
-		enginePopup.setVisible(false);
-		enginePopup.setVisibleToMouseEvents(false);
-	}
-
 	/**
 	 * Starts/Pause the current simulation
 	 */
@@ -776,7 +769,6 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		
 		niftyElement.setText("Start");
 		
-//		this.stopAnimations();
 		this.rootNode.detachAllChildren();
 		this.guiNode.detachAllChildren();
 		this.inputManager.clearMappings();
@@ -817,14 +809,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 			        //Call the simulator to add a token on this place
 			        listener.onUserClick(inputPlaceId);
 		        }
-		        else {
-		        	if (engineState != State.PLAYING) {
-		        		enginePopup.setVisible(true);
-		        		enginePopup.setVisibleToMouseEvents(true);
-		        		nifty.showPopup(nifty.getCurrentScreen(), enginePopup.getId(), null);
-		        	}
-		        }
-		        
+		        		        
 			}
 		}
 		

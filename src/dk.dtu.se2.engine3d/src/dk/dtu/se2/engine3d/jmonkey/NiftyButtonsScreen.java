@@ -56,7 +56,4 @@ public class NiftyButtonsScreen extends AbstractAppState implements ScreenContro
 		  this.engine3D.onResetButtonPressed();
 	  }
 	  
-	  public void closePopup() {
-		  this.engine3D.closePopup();
-	  }
  	}
