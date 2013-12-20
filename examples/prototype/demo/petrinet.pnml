@@ -848,6 +848,9 @@
           <structure xsi:type="animation:Move" speed="3.75"/>
           <text>move(3.75)</text>
         </animationLabel>
+        <tokens>
+          <text>1</text>
+        </tokens>
       </place>
       <arc id="a19" source="p7" target="t7">
         <graphics>
@@ -897,9 +900,6 @@
           <structure xsi:type="animation:Appear" geometry="IP2" appearance="green"/>
           <text>appear(IP2, green)</text>
         </animationLabel>
-        <tokens>
-          <text>1</text>
-        </tokens>
       </place>
       <transition>
         <graphics>
@@ -937,6 +937,9 @@
           <structure xsi:type="animation:Appear" geometry="IP2" appearance="red"/>
           <text>appear(IP2, red)</text>
         </animationLabel>
+        <tokens>
+          <text>1</text>
+        </tokens>
       </place>
       <place id="IP2">
         <graphics>
