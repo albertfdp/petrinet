@@ -1,0 +1,59 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Audience}{section.1}% 2
+\BOOKMARK [1][-]{section.2}{Overall description}{}% 3
+\BOOKMARK [2][-]{subsection.2.1}{What are Petri nets?}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Adding geometry to Petri nets}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.3}{Adding appearance to Petri net objects}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.4}{Configuration}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.5}{Simulating Petri nets}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.6}{Basic functionality}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.7}{General product overview and use}{section.2}% 10
+\BOOKMARK [3][-]{subsubsection.2.7.1}{Motivation for Input Places}{subsection.2.7}% 11
+\BOOKMARK [1][-]{section.3}{System Features}{}% 12
+\BOOKMARK [2][-]{subsection.3.1}{Conventions}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.2}{Petri net editor}{section.3}% 14
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Functional Requirements}{subsection.3.2}% 15
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Use cases}{subsection.3.2}% 16
+\BOOKMARK [2][-]{subsection.3.3}{Geometry editor}{section.3}% 17
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Functional Requirements}{subsection.3.3}% 18
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Use cases}{subsection.3.3}% 19
+\BOOKMARK [2][-]{subsection.3.4}{Appearance Editor}{section.3}% 20
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Functional Requirements}{subsection.3.4}% 21
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Use cases}{subsection.3.4}% 22
+\BOOKMARK [2][-]{subsection.3.5}{Configuration Editor}{section.3}% 23
+\BOOKMARK [3][-]{subsubsection.3.5.1}{Functional Requirements}{subsection.3.5}% 24
+\BOOKMARK [3][-]{subsubsection.3.5.2}{Use cases}{subsection.3.5}% 25
+\BOOKMARK [2][-]{subsection.3.6}{3D Simulator}{section.3}% 26
+\BOOKMARK [3][-]{subsubsection.3.6.1}{Functional Requirements}{subsection.3.6}% 27
+\BOOKMARK [3][-]{subsubsection.3.6.2}{Use cases}{subsection.3.6}% 28
+\BOOKMARK [1][-]{section.4}{Non functional requirements}{}% 29
+\BOOKMARK [2][-]{subsection.4.1}{Implementation constraints}{section.4}% 30
+\BOOKMARK [2][-]{subsection.4.2}{Documentation}{section.4}% 31
+\BOOKMARK [2][-]{subsection.4.3}{Quality Assurance}{section.4}% 32
+\BOOKMARK [2][-]{subsection.4.4}{Performance requirements}{section.4}% 33
+\BOOKMARK [2][-]{subsection.4.5}{Usability requirements}{section.4}% 34
+\BOOKMARK [1][-]{section.5}{User Interface}{}% 35
+\BOOKMARK [2][-]{subsection.5.1}{Technologies}{section.5}% 36
+\BOOKMARK [2][-]{subsection.5.2}{Graphical User Interface}{section.5}% 37
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Introduction to Petri net editor \046 Geometry editor.}{subsection.5.2}% 38
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Petri net editor}{subsection.5.2}% 39
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Geometry editor}{subsection.5.2}% 40
+\BOOKMARK [3][-]{subsubsection.5.2.4}{Appearance editor}{subsection.5.2}% 41
+\BOOKMARK [3][-]{subsubsection.5.2.5}{Configuration editor}{subsection.5.2}% 42
+\BOOKMARK [3][-]{subsubsection.5.2.6}{Simulation tool}{subsection.5.2}% 43
+\BOOKMARK [1][-]{section.6}{Architecture}{}% 44
+\BOOKMARK [2][-]{subsection.6.1}{Petri net editor}{section.6}% 45
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Petri net editor classes}{subsection.6.1}% 46
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Animation}{subsection.6.1}% 47
+\BOOKMARK [3][-]{subsubsection.6.1.3}{PAL: Petri Net Animation Language}{subsection.6.1}% 48
+\BOOKMARK [3][-]{subsubsection.6.1.4}{Graphical Extensions}{subsection.6.1}% 49
+\BOOKMARK [2][-]{subsection.6.2}{Geometry editor}{section.6}% 50
+\BOOKMARK [2][-]{subsection.6.3}{Appearance editor}{section.6}% 51
+\BOOKMARK [3][-]{subsubsection.6.3.1}{Appearance Editor classes}{subsection.6.3}% 52
+\BOOKMARK [2][-]{subsection.6.4}{Configuration editor}{section.6}% 53
+\BOOKMARK [2][-]{subsection.6.5}{Petri net engine}{section.6}% 54
+\BOOKMARK [2][-]{subsection.6.6}{Simulator}{section.6}% 55
+\BOOKMARK [2][-]{subsection.6.7}{3D Engine}{section.6}% 56
+\BOOKMARK [2][-]{subsection.6.8}{The jMonkeyEngine}{section.6}% 57
+\BOOKMARK [3][-]{subsubsection.6.8.1}{Collision Detection}{subsection.6.8}% 58
+\BOOKMARK [1][-]{section.7}{Glossary}{}% 59
