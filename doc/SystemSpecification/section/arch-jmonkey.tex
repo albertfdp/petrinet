@@ -1,32 +1,49 @@
 \subsection{The jMonkeyEngine}
-\writer{Anders, Albert}
+\writer{Anders, Albert, Monica}
 
-The interface that described in Section~\ref{sec:3d-engine} will be implemented using jMonkey library. In the following, the implementation of the interface will be described.
+The interface that was described in Section~\ref{sec:3d-engine} will be implemented using the jMonkey library. In the following, the implementation of the engine will be described.
 
-\textbf{init(Geometry geometry, Appearance appearance)}
-The initialization will put all information about the geometry and appearance into a list of SObjects. An SObject is a line segment, or using Petri Net terms: two transitions and a place. This list of SObjects is then used to set up the animations that will be playable in the simulation. The animations are created using the MotionPath and MotionEvent classes inherited from jMonkey. For each SObject, a MotionPath is created using the points that make up the line segement; this could be a beginning point, a few bend points and an end point. The MotionPath is then used to set up the MotionEvent, which besides needing a MotionPath, also needs some geometry, which in this case will be a shape defined by the SObject. The shape will be the shape of the token on the line segment. All tokens have need to be prepared as jMonkey geometries before creating the MotionEvents.
+Apart from the methods inherited by implementing the Engine3D interface, jMonkeyEngine also inherits some features from the \textit{SimpleApplication} class, specific to the JMonkey library:
 
-When all animations are set up in a list of MotionEvents, the paths will have their shape applied. This will make the Petri Net visible to the user. It will require stretching and duplication of the shapes and textures. Also, the camera will be positioned and oriented to its default position, and default background geometry will be created.
+\textit{simpleInitApp()} - method which sets up general settings of the simulation window such as: 
+\begin{enumerate}
+\item the light
+\item the environment (rendering of all the 3D objects according to the geometry and appearance files)
+\item the bounding box
+\item the ground
+\item the animations (all possible animations received in the initialization)
+\item the position of the camera
+\item the key mappings (keys that will trigger a certain behavior when pressed by the user)   
+\end{enumerate}  
 
-The simulator will produce a list of animations for jMonkey to play. Animations may be added to this list at any time. When animations finish, jMonkey will tell the simulator. This is the main interaction between the simulator and jMonkey. So when the system allows users to play, pause and reset the simulation, the play and pause will be handled by jMonkey alone. The simulator will need to know when the user resets the simulation, because it needs to tell the Petri Net engine to reset. But most of the time, the simulator will just wait for information about which animations have finished, and pass that on to the Petri Net engine, which in return will tell the simulator which animations jMonkey should play.
+ 
+\textit{simpleUpdate()} - called periodically while the simulation is running and verifies the current state of the engine in order to play/pause available animations and check for possible collision.
 
-\textbf{onStart()}
-The MotionEvent system used to set up the animations allows jMonkey to know the status of each animation. When the user opens the simulator, he will need to press play for the animation to begin. This action will cause jMonkey to run the animations that it was instructed to run by the simulator. If the user is pressing play, while the simulation was paused, jMonkey will simply continue playing all the paused MotionEvents.
+ 
+In order to make the 3D visualization possible, the following JMonkey classes have been used to model the predefined geometries and their corresponding appearances: 
+\begin{itemize}
+\item \textbf{Curve} - used to draw lines (tracks) in the 3D simulation based on a CatmullRom spline and the control points (connectors and bend points) from the geometry (see Section \ref{sec:arch-geometry}. 
+\item \textbf{Geometry} - JMonkey object rendered in the simulation and seen by the user
+\item \textbf{Material} - applied to JMonkey geometries for appearance details
+\item \textbf{Texture} - set to the material according to the appearance file
+\item \textbf{MotionPath} - creates a path along a series of control points (the same as for the curve)
+\item \textbf{MotionEvent} - used for \textit{move} animations, requires a MotionPath and a Geometry (such an event will move the given geometry along the given path; e.g. move a train on a track)
+\end{itemize}
 
-\textbf{onPause()}
-When the user presses pause, jMonkey will find the animations that are currently running, and pause them. The pause function is already integrated in the MotionEvent class.
+All the curves, materials, textures, geometries, paths and all possible event will be prepared in the initialization phase, before the GUI start button is actually pressed, in order to improve the performance of the simulation at run time. 
+This will make the Petri Net visible to the user. It will require stretching and duplication of the shapes and textures. Also, the camera will be positioned and oriented to its default position, and a default background geometry will be created.
 
-\textbf{onReset()}
-It the simulation is asked to reset, jMonkey will report to the simulator that it needs to reset the Petri Net engine. This is to ensure that the list of animations is correct.
+All animations are set up in a hash map of ids and MotionEvents and played once the user has pressed the "Start" button. 
+In the beginning, the simulator will provide an initial list of animations to be played. The play and pause actions are dealt with by JMonkey alone but, when an animation has finished, the Simulator is notified and, after receiving the next moves from the Petri net engine, will again provide the list of animations to be run by the 3D engine. 
+This is the main interaction between the simulator and jMonkey. 
 
-\textbf{onUserClick()}
-When a user clicks, a jMonkey listener will pick it up, and the position determined. If the click was on an input place, the name of the input place will be sent to the simulator, which will tell the Petri Net engine. The Petri Net engine will then determine how this affects the logic.
+The buttons in the simulation window are implemented using \textbf{Nifty GUI}, a Java library well integrated with JMonkey and used for building interactive graphical user interfaces. Therefore, the buttons screen is overlaid on the JMonkey visualization and the buttons' screen layout is described in an XML file. The buttons actions are caught by the following two methods: 
+\begin{itemize}
+\item \textit{onStartButtonPressed()}
+\item \textit{onResetButtonPressed()}
+\end{itemize}
+Moreover, all the other interactions of the user with the simulation window are handled with the implementation of an \textit{ActionListener}. 
 
-\textbf{animate(List<Animation> animations)}
-The animations in the simulator are started according to the current list of animations waiting to be played. If the simulator is running, all animations arriving in the list of animations will be started instantly.
-
-\textbf{onAnimationFinished(Animation animation)}
-The simulator needs to know as soon as animations have finished, in order to quickly get the next animation. The state of all animations is checked 60 times per second, and the delay between one animation finishing and the next starting should be low.
 
 \subsubsection{Collision Detection}
 \writer{Thibaud}

@@ -1,6 +1,6 @@
 \subsection{3D Engine}
 \label{sec:3d-engine}
-\writer{Albert}
+\writer{Albert, Monica}
 
 The 3D Engine is the component of the application that handles the animation of objects and displays it on the screen for the user. Its main functions are: 
 
@@ -33,10 +33,15 @@ The Engine3DFactory class will be in charge of creating 3D Engine classes accord
 
 Engine3D is an Interface which will be implemented by the actual 3D Engine of the applicaton, in our case \textbf{JMonkeyEngine}. The following methods will be provided by the Engine3D interface: 
 \begin{itemize}
-\item \textit{init(Geometry geometry, Appearance appearance)} - used to initialize the geometry and appearance models;
-\item \textit{startAnimation(List<Animation> animations} - used by the Simulator to send the list of animations to be performed by the 3D Engine; 
+\item \textit{init(Geometry geometry, Appearance appearance, List<RTAnimation> animations)} - used to initialize the geometry and the appearance models provided by the configuration plus the list of all possible animations;
+\item \textit{setEngine3DListener listener} - sets a class as the engine's listener  
+\item \textit{addToAnimationQueue(List<Animation> animations} - used by the Simulator to send the list of animations to be performed by the 3D Engine; 
+\item \textit{startEngine()} - used by the Simulator to launch the 3D visualization
+\item \textit{destroyRepresentation(String id)} - removes a token from the 3D simulation
+\item \textit{reset()} - used by the Simulator to reset the 3D visualization to the initial configuration
+\textit{reset()} - restores the simulation to its initial representation
 \end{itemize}
 
 \paragraph{JMonkeyEngine3D}
 
-As stated before, the JMonkeyEngine3D class will implement all the methods of the Engine3D interface and will perform all the animations. This class will be described into more details in the next section.
+As stated before, the JMonkeyEngine3D class will implement all the methods of the Engine3D interface and will perform all the animations it's receiving. This class will be described into more details in the next section.

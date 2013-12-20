@@ -16,7 +16,7 @@ The simulator can then interact with the engine by calling one these three metho
   \item \textbf{getAllPossibleAnimations}: This method is called by the simulator during initialization as the Engine 3D needs the list of animations that should be run at any time. 
   \item \textbf{fireTransitions}: This method is called by the simulator whenever an animation is finished. The Petri net engine fires all the transition currently possible and returns a list of \textbf{Animation} objects
   \item \textbf{markTokenAsFinished}: This method is called once an animation corresponding to a Token is finished. It is therefore marked as finished so that the method \textbf{fireTransitions} can know which transitions are possible to execute right away.
-  \item \textbf{createToken}: This method is called by the simulator after an user input on an InputPlace. It creates a Token on the Place clicked by the user.
+  \item \textbf{createToken}: This method is called by the simulator after an user clicks on an InputPlace. It creates a Token on the Place clicked by the user.
 \end{itemize}
  
 \begin{figure}[htp]

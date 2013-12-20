@@ -1,7 +1,7 @@
 \subsection{Petri net editor}
 \writer{Albert}
 
-The Petri net editor is a component which consists of an extension of the ePNK editor. It contains all the functionality that ePNK provides and also adds the features described previously in this document, and that can be summarized in Figure \ref{fig:uml-petrinet-editor}. Its actual implementation is shown in Figure \ref{fig:petri-net-domain-model}.
+The Petri net editor is a component which consists of an extension of the ePNK editor. It contains all the functionality that ePNK provides and also adds the features described previously in this document which is summarized in Figure \ref{fig:uml-petrinet-editor}. The actual implementation of the Petri net editor is shown in Figure \ref{fig:petri-net-domain-model}.
 
 \begin{figure}[htp]
 \begin{center}
@@ -21,7 +21,7 @@ The class Place extends from Place in the \textit{pnmlcoremodel}, and contains t
 
 \begin{itemize}
 	\item \textbf{Token}: an ePNK label to indicate the presence of one or more tokens in this Place.
-	\item \textbf{InputPlaceLabel}: an ePNK boolean attribute to indicate if the place is interactive for the user or not (if tokens can be added by the user during runtime ).
+	\item \textbf{InputPlaceLabel}: an ePNK boolean attribute to indicate if the place is interactive for the user or not (if tokens can be added by the user during runtime).
 	\item \textbf{GeometryLabel}: an ePNK string label to indicate the geometry location of the Place in the simulation.
 	\item \textbf{AnimationLabel}: : an ePNK structured label which contains an Animation object and that contains all the information of the animation or sequence of animations executed when a Token is in this Place.
 \end{itemize}
@@ -38,11 +38,11 @@ As shown in Figure~\ref{fig:petri-net-domain-model}, Places have a defined anima
 \end{center}
 \end{figure}
 
-As shown, there are two possible animations: move or appear. The first one also has speed as a parameter, whilst the second one includes the geometry label of the place of which we want to change the shape on, and the shape we want that place to have. Using this two animations, it is possible to visualize all the necessary animations.
+There are two possible animations: \textbf{move} or \textbf{appear}. The first animation type, move, has speed as a parameter, whilst the second type, appear, includes the geometry label of the place whose shape we want to change, and the name of the shape we want that place to have. Using only these two animations it is possible to visualize all the necessary Petri net behavior.
 
 \subsubsection{PAL: Petri Net Animation Language}
 
-In order to be able to read the animations defined in an animation label in the Petri Net Editor, it has been implemented a language using Xtext. The defined syntax is the following:
+In order to be able to read the animations defined by an animation label in the Petri Net Editor, a language  has been implemented using Xtext. The defined syntax is the following:
 
 \begin{lstlisting}
 	move(2.0)
@@ -54,7 +54,7 @@ In order to be able to read the animations defined in an animation label in the 
 
 \subsubsection{Graphical Extensions}
 
-When extending from the ePNK it has been also necessary to add two graphical extensions in order to provide more usability to the end-user by letting him know in a single look which places have tokens and which are input places. Therefore, we implemented the following method in an inherited class of PlaceFigure, which depending on Place having tokens or having been marked as input place, the shape would change on run time.
+When extending from ePNK it was also necessary to add two graphical extensions in order to provide more usability to the end-user. An example of such an extension is showing differently in the Petri net diagram which places have tokens and which are input places. Therefore, we implemented the following method in an inherited class of PlaceFigure, which changes the shape of a Place at run time depending on whether the Place has tokens or has been marked as an input place.
 \begin{lstlisting}
 protected void fillShape(Graphics graphics) {
 		super.fillShape(graphics);
