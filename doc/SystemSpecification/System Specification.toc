@@ -5,7 +5,7 @@
 \contentsline {subsection}{\numberline {2.2}Adding geometry to Petri nets}{5}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}Adding appearance to Petri net objects}{5}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Configuration}{5}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Simulating Petri nets}{5}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.5}Simulating Petri nets}{6}{subsection.2.5}
 \contentsline {subsection}{\numberline {2.6}Basic functionality}{8}{subsection.2.6}
 \contentsline {subsection}{\numberline {2.7}General product overview and use}{8}{subsection.2.7}
 \contentsline {subsubsection}{\numberline {2.7.1}Motivation for Input Places}{11}{subsubsection.2.7.1}
