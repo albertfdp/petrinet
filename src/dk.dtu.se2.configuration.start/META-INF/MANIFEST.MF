@@ -12,6 +12,5 @@ Require-Bundle: org.eclipse.emf;bundle-version="2.6.0",
  dk.dtu.se2.appearance;bundle-version="1.0.0",
  org.pnml.tools.epnk;bundle-version="1.0.0",
  dk.dtu.se2.geometry;bundle-version="0.1.0",
- dk.dtu.se2.simulator.petrinet,
- org.junit
+ dk.dtu.se2.simulator.petrinet
 Export-Package: dk.dtu.se2.configuration.action

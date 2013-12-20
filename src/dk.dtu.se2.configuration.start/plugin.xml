@@ -16,19 +16,5 @@
                >
          </action>
       </objectContribution>
-      
-      <objectContribution
-      		id="Configuration.startTestsContribution"
-            objectClass="configuration.Configuration"
-            >
-       
-         <action
-         	   id="Configuration.startTest"
-               label="Start test"
-               class="dk.dtu.se2.configuration.action.StartTest"
-               enablesFor="1"
-               >
-         </action>
-      </objectContribution>
    </extension>
 </plugin>
