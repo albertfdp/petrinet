@@ -143,7 +143,7 @@ public class PetriNetEngineTest {
 
 	@Test
 	public void testCreateToken() {
-		ArrayList<RTAnimation> animations = petrinetEngine.init(doc);
+		petrinetEngine.init(doc);
 		petrinetEngine.createToken("IP");
 		Set<Place> places = petrinetEngine.getMarking().keySet();
 		for (Place place : places) {
