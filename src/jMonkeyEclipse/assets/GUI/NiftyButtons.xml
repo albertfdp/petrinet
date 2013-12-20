@@ -10,7 +10,7 @@
       </panel>
       
       <panel id="panel_mid" height="50%" width="100%" align="center" childLayout="center"
-             backgroundColor="#0000">  
+             backgroundColor="#0000"> 
       </panel>
             
       <panel id="panel_bottom" height="25%" width="100%" align="center" childLayout="horizontal" 
