@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.25)  20 DEC 2013 10:15
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.10.25)  20 DEC 2013 10:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -957,13 +957,17 @@ File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 
 LaTeX Warning: Citation `Zurawski:1994' on page 3 undefined on input line 5.
 
+
+LaTeX Warning: Reference `sec:architecture' on page 3 undefined on input line 1
+6.
+
 ) [3
 
 ]
 \openout2 = `section/overall-description.aux'.
 
  (./section/overall-description.tex
-<image/petrinet_diagram_2.png, id=323, 504.88625pt x 287.0725pt>
+<image/petrinet_diagram_2.png, id=326, 504.88625pt x 287.0725pt>
 File: image/petrinet_diagram_2.png Graphic file (type png)
 
 <use image/petrinet_diagram_2.png>
@@ -980,94 +984,94 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 
 
  <./image/petrinet_diagram_2.png>]
-<image/example_petrinet.png, id=334, 676.02562pt x 574.39594pt>
+<image/example_petrinet.png, id=339, 676.02562pt x 574.39594pt>
 File: image/example_petrinet.png Graphic file (type png)
 
 <use image/example_petrinet.png>
-Package pdftex.def Info: image/example_petrinet.png used on input line 61.
+Package pdftex.def Info: image/example_petrinet.png used on input line 60.
 (pdftex.def)             Requested size: 469.75502pt x 399.14703pt.
 
-<image/example_petrinet_geometry.png, id=335, 704.6325pt x 532.99126pt>
+<image/example_petrinet_geometry.png, id=340, 704.6325pt x 532.99126pt>
 File: image/example_petrinet_geometry.png Graphic file (type png)
 
 <use image/example_petrinet_geometry.png>
 Package pdftex.def Info: image/example_petrinet_geometry.png used on input line
- 69.
+ 68.
 (pdftex.def)             Requested size: 469.75502pt x 355.32935pt.
 
-<image/3d.png, id=336, 211.79124pt x 176.66pt>
+<image/3d.png, id=341, 211.79124pt x 176.66pt>
 File: image/3d.png Graphic file (type png)
  <use image/3d.png>
-Package pdftex.def Info: image/3d.png used on input line 78.
+Package pdftex.def Info: image/3d.png used on input line 77.
 (pdftex.def)             Requested size: 187.89914pt x 156.7363pt.
  [5] [6 <./image/example_petrinet.png>] [7 <./image/example_petrinet_geometry.p
-ng> <./image/3d.png>] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 119--122
+ng> <./image/3d.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 118--121
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 
  []
 
-[9] <image/system_design.png, id=368, 511.9125pt x 531.9875pt>
+[8] <image/system_design.png, id=368, 511.9125pt x 531.9875pt>
 File: image/system_design.png Graphic file (type png)
 
 <use image/system_design.png>
-Package pdftex.def Info: image/system_design.png used on input line 161.
+Package pdftex.def Info: image/system_design.png used on input line 160.
 (pdftex.def)             Requested size: 375.80544pt x 390.53937pt.
- [10] [11 <./image/system_design.png>] [12])
+ [9] [10 <./image/system_design.png>] [11])
 \openout2 = `section/system-features.aux'.
 
 
-(./section/system-features.tex (./section/petrinet-editor.tex [13
+(./section/system-features.tex (./section/petrinet-editor.tex [12
 
 
 ]
-<image/uc-petri-net.png, id=400, 786.68906pt x 521.69907pt>
+<image/uc-petri-net.png, id=399, 786.68906pt x 521.69907pt>
 File: image/uc-petri-net.png Graphic file (type png)
 
 <use image/uc-petri-net.png>
 Package pdftex.def Info: image/uc-petri-net.png used on input line 28.
 (pdftex.def)             Requested size: 375.80544pt x 249.2266pt.
-) (./section/geometry-editor.tex [14 <./image/uc-petri-net.png>] <image/uc-geom
+) (./section/geometry-editor.tex [13 <./image/uc-petri-net.png>] <image/uc-geom
 etry.png, id=412, 327.47343pt x 267.24844pt>
 File: image/uc-geometry.png Graphic file (type png)
 
 <use image/uc-geometry.png>
 Package pdftex.def Info: image/uc-geometry.png used on input line 34.
 (pdftex.def)             Requested size: 234.8775pt x 191.68063pt.
-) (./section/appearance-editor.tex [15]
+) (./section/appearance-editor.tex [14]
 <image/uc-appearance.png, id=434, 689.57625pt x 532.99126pt>
 File: image/uc-appearance.png Graphic file (type png)
 
 <use image/uc-appearance.png>
 Package pdftex.def Info: image/uc-appearance.png used on input line 27.
 (pdftex.def)             Requested size: 234.8775pt x 181.53993pt.
-) (./section/configuration-editor.tex [16]
-[17 <./image/uc-geometry.png> <./image/uc-appearance.png>]
+) (./section/configuration-editor.tex [15]
+[16 <./image/uc-geometry.png> <./image/uc-appearance.png>]
 <image/uc-configuration.png, id=463, 1108.8928pt x 693.34032pt>
 File: image/uc-configuration.png Graphic file (type png)
 
 <use image/uc-configuration.png>
 Package pdftex.def Info: image/uc-configuration.png used on input line 28.
 (pdftex.def)             Requested size: 234.8775pt x 146.85414pt.
-) (./section/3d-simulator.tex [18 <./image/uc-configuration.png>] <image/uc-sim
-ulator.png, id=480, 491.58656pt x 597.73312pt>
+) (./section/3d-simulator.tex [17 <./image/uc-configuration.png>] <image/uc-sim
+ulator.png, id=479, 491.58656pt x 597.73312pt>
 File: image/uc-simulator.png Graphic file (type png)
 
 <use image/uc-simulator.png>
 Package pdftex.def Info: image/uc-simulator.png used on input line 26.
 (pdftex.def)             Requested size: 234.8775pt x 285.59526pt.
-)) [19 <./image/uc-simulator.png>]
+)) [18 <./image/uc-simulator.png>]
 \openout2 = `section/non-functional-requirements.aux'.
 
 
-(./section/non-functional-requirements.tex [20
+(./section/non-functional-requirements.tex [19
 
 
-] [21]) [22]
+] [20]) [21]
 \openout2 = `section/user-interface.aux'.
 
 
@@ -1099,33 +1103,33 @@ File: image/ui/geometry_diagram.png Graphic file (type png)
 <use image/ui/geometry_diagram.png>
 Package pdftex.def Info: image/ui/geometry_diagram.png used on input line 53.
 (pdftex.def)             Requested size: 408.54758pt x 250.34547pt.
- [23
+ [22
 
 
-] [24] [25]
-<image/ui/appearance.png, id=557, 911.65594pt x 575.14874pt>
+] [23] [24]
+<image/ui/appearance.png, id=556, 911.65594pt x 575.14874pt>
 File: image/ui/appearance.png Graphic file (type png)
 
 <use image/ui/appearance.png>
 Package pdftex.def Info: image/ui/appearance.png used on input line 134.
 (pdftex.def)             Requested size: 410.24138pt x 258.81454pt.
 
-<image/ui/configuration.png, id=560, 905.63344pt x 575.14874pt>
+<image/ui/configuration.png, id=559, 905.63344pt x 575.14874pt>
 File: image/ui/configuration.png Graphic file (type png)
 
 <use image/ui/configuration.png>
 Package pdftex.def Info: image/ui/configuration.png used on input line 149.
 (pdftex.def)             Requested size: 407.53128pt x 258.81454pt.
 
-<image/ui/simulator.png, id=561, 609.77812pt x 481.8pt>
+<image/ui/simulator.png, id=560, 609.77812pt x 481.8pt>
 File: image/ui/simulator.png Graphic file (type png)
 
 <use image/ui/simulator.png>
 Package pdftex.def Info: image/ui/simulator.png used on input line 157.
 (pdftex.def)             Requested size: 304.8883pt x 240.8994pt.
-) [26] [27 <./image/ui/petrinet_tree.png> <./image/ui/petrinet_diagram.png>] [2
-8 <./image/ui/geometry_tree.png> <./image/ui/geometry_diagram.png>] [29 <./imag
-e/ui/appearance.png> <./image/ui/configuration.png>] [30 <./image/ui/simulator.
+) [25] [26 <./image/ui/petrinet_tree.png> <./image/ui/petrinet_diagram.png>] [2
+7 <./image/ui/geometry_tree.png> <./image/ui/geometry_diagram.png>] [28 <./imag
+e/ui/appearance.png> <./image/ui/configuration.png>] [29 <./image/ui/simulator.
 png>]
 \openout2 = `section/architecture.aux'.
 
@@ -1134,24 +1138,24 @@ png>]
 File: image/cd-architecture.png Graphic file (type png)
 
 <use image/cd-architecture.png>
-Package pdftex.def Info: image/cd-architecture.png used on input line 7.
+Package pdftex.def Info: image/cd-architecture.png used on input line 8.
 (pdftex.def)             Requested size: 375.80544pt x 186.8454pt.
 
 <image/domain.pdf, id=593, 1498.59875pt x 766.865pt>
 File: image/domain.pdf Graphic file (type pdf)
  <use image/domain.pdf>
-Package pdftex.def Info: image/domain.pdf used on input line 15.
+Package pdftex.def Info: image/domain.pdf used on input line 16.
 (pdftex.def)             Requested size: 375.80544pt x 192.30084pt.
 
-(./section/arch-petrinet-editor.tex [31
+(./section/arch-petrinet-editor.tex [30
 
 
  <./image/cd-architecture.png> <./image/domain.pdf>]
 
-LaTeX Warning: Reference `fig:uml-petrinet-editor' on page 32 undefined on inpu
+LaTeX Warning: Reference `fig:uml-petrinet-editor' on page 31 undefined on inpu
 t line 4.
 
-<image/petrinet_editor_domain.png, id=743, 1044.90375pt x 530.98375pt>
+<image/petrinet_editor_domain.png, id=742, 1044.90375pt x 530.98375pt>
 File: image/petrinet_editor_domain.png Graphic file (type png)
 
 <use image/petrinet_editor_domain.png>
@@ -1159,21 +1163,21 @@ Package pdftex.def Info: image/petrinet_editor_domain.png used on input line 8.
 
 (pdftex.def)             Requested size: 375.80544pt x 190.97575pt.
 
-<image/animation_model.png, id=747, 379.4175pt x 204.765pt>
+<image/animation_model.png, id=746, 379.4175pt x 204.765pt>
 File: image/animation_model.png Graphic file (type png)
 
 <use image/animation_model.png>
 Package pdftex.def Info: image/animation_model.png used on input line 35.
 (pdftex.def)             Requested size: 234.8775pt x 126.76237pt.
- [32 <./image/petrinet_editor_domain.png>]
-[33 <./image/animation_model.png>]) (./section/arch-geometry-editor.tex
-<image/geometry_diagram.png, id=771, 318.43968pt x 347.04657pt>
+ [31 <./image/petrinet_editor_domain.png>]
+[32 <./image/animation_model.png>]) (./section/arch-geometry-editor.tex
+<image/geometry_diagram.png, id=770, 318.43968pt x 347.04657pt>
 File: image/geometry_diagram.png Graphic file (type png)
 
 <use image/geometry_diagram.png>
-Package pdftex.def Info: image/geometry_diagram.png used on input line 8.
+Package pdftex.def Info: image/geometry_diagram.png used on input line 9.
 (pdftex.def)             Requested size: 375.80544pt x 409.56435pt.
- [34] [35 <./image/geometry_diagram.png>])
+ [33] [34 <./image/geometry_diagram.png>])
 (./section/arch-appearance-editor.tex
 <image/appearance-model.png, id=807, 341.02406pt x 343.2825pt>
 File: image/appearance-model.png Graphic file (type png)
@@ -1181,23 +1185,23 @@ File: image/appearance-model.png Graphic file (type png)
 <use image/appearance-model.png>
 Package pdftex.def Info: image/appearance-model.png used on input line 10.
 (pdftex.def)             Requested size: 375.80544pt x 378.31903pt.
- [36] [37 <./image/appearance-model.png>])
+ [35] [36 <./image/appearance-model.png>])
 (./section/arch-configuration-editor.tex
-<image/configuration-model.png, id=824, 662.475pt x 521.69907pt>
+<image/configuration-model.png, id=823, 662.475pt x 521.69907pt>
 File: image/configuration-model.png Graphic file (type png)
 
 <use image/configuration-model.png>
 Package pdftex.def Info: image/configuration-model.png used on input line 12.
 (pdftex.def)             Requested size: 375.80544pt x 295.94662pt.
 ) (./section/arch-petrinet-engine.tex
-[38] [39 <./image/configuration-model.png>]
+[37] [38 <./image/configuration-model.png>]
 <image/petrinet_engine.png, id=843, 670.00313pt x 545.78906pt>
 File: image/petrinet_engine.png Graphic file (type png)
 
 <use image/petrinet_engine.png>
 Package pdftex.def Info: image/petrinet_engine.png used on input line 24.
 (pdftex.def)             Requested size: 375.80544pt x 306.13113pt.
-) (./section/arch-simulator.tex [40 <./image/petrinet_engine.png>]
+) (./section/arch-simulator.tex [39 <./image/petrinet_engine.png>]
 <image/ObserverPattern.png, id=850, 856.70062pt x 299.61937pt>
 File: image/ObserverPattern.png Graphic file (type png)
 
@@ -1217,15 +1221,20 @@ File: image/engine_factory.png Graphic file (type png)
 <use image/engine_factory.png>
 Package pdftex.def Info: image/engine_factory.png used on input line 22.
 (pdftex.def)             Requested size: 375.80544pt x 407.71423pt.
- [41 <./image/ObserverPattern.png>] [42 <./image/sequence.png>] [43 <./image/en
+ [40 <./image/ObserverPattern.png>] [41 <./image/sequence.png>] [42 <./image/en
 gine_factory.png>]) (./section/arch-jmonkey.tex
-[44] [45])) [46]
+[43]
+
+LaTeX Warning: Reference `sec:arch-geometry' on page 44 undefined on input line
+ 25.
+
+[44])) [45]
 \openout2 = `section/glossary.aux'.
 
- (./section/glossary.tex [47
+ (./section/glossary.tex [46
 
 
-]) [48]
+]) [47]
 No file "System Specification".bbl.
 No file "System Specification".ind.
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 84.
@@ -1249,13 +1258,13 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 84.
  ) 
 Here is how much of TeX's memory you used:
- 17479 strings out of 493315
- 299473 string characters out of 6137903
- 404337 words of memory out of 5000000
- 20206 multiletter control sequences out of 15000+600000
+ 17487 strings out of 493315
+ 299552 string characters out of 6137903
+ 405337 words of memory out of 5000000
+ 20208 multiletter control sequences out of 15000+600000
  13694 words of font info for 52 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 63i,7n,57p,963b,1837s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,7n,57p,853b,1837s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
@@ -1265,10 +1274,10 @@ sr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr
 /local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
 local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/l
 ocal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on "System Specification.pdf" (48 pages, 2659846 bytes).
+Output written on "System Specification.pdf" (47 pages, 2661347 bytes).
 PDF statistics:
- 988 PDF objects out of 1000 (max. 8388607)
- 806 compressed objects within 9 object streams
- 261 named destinations out of 1000 (max. 500000)
+ 996 PDF objects out of 1000 (max. 8388607)
+ 815 compressed objects within 9 object streams
+ 267 named destinations out of 1000 (max. 500000)
  625 words of extra memory for PDF output out of 10000 (max. 10000000)
 
