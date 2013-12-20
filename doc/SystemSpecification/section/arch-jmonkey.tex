@@ -30,3 +30,13 @@ The simulator needs to know as soon as animations have finished, in order to qui
 
 \subsubsection{Collision Detection}
 \writer{Thibaud}
+
+The collision detection mechanism is straightforward in this simulation. Each time a token is destroyed or created in the Petri net engine, the 3D Engine does the same. Furthermore, each token has a unique ID defined with the help of an atomic counter to prevent concurrent access to the same ID. Since atomic operations take only one instruction of the CPU to execute, we guarantee the thread safety of this property.
+This ID is then used by the simulator to implement the logic behind the collision detection.
+
+First of all, we defined two hashmaps in our 3D Engine: allRenderedEvents (Key: token ID, Value: JMonkeyMove) and allCollisions (Key: token ID, Value: ArrayList of token IDs which collide with this token).
+In the allRenderedEvents HashMap, we put each animation running in the simulation. 
+
+In the SimpleUpdate loop of the application, we try to collide each spatial with all the other rendered spatials. If they collide, we compare their ids. By design, we know that the token who will need to stop is the one with the biggest ID, since it appeared later on the line. Therefore, we get a list of all tokens who collide with each token, pause all those "collided" tokens, and wait for the collisions to disappear. Once they don't collide anymore, we remove them from the allCollisions HashMap and we resume their animation.
+
+Our 3D Engine doesn't support multi-line collisions yet. If we had a function that could return the progress of the MotionEvent, this would have been really easy (pausing the animations that have the smallest progress when animations collide). However, here, for simplicity, only tokens on the same line will have the opportunity to collide.
