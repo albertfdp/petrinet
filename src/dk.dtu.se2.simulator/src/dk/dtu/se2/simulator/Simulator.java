@@ -23,6 +23,8 @@ import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
 public class Simulator implements Engine3DListener {
 	
+	private static final boolean DEBUG_MODE = true;
+	
 	/*
 	 * The three models connected in the configuration
 	 * in order to run the simulation
@@ -113,7 +115,9 @@ public class Simulator implements Engine3DListener {
 	 */
 	@Override
 	public void onAnimationFinished(String geometryLabel) {
-		System.out.println("Animation finished on: " + geometryLabel);
+		if (DEBUG_MODE) {
+			System.out.println("Animation finished on: " + geometryLabel);
+		}
 		
 		this.petrinetEngine.markTokenAsFinished(geometryLabel);
 		this.nextAnimations = this.petrinetEngine.fireTransitions();
@@ -128,7 +132,9 @@ public class Simulator implements Engine3DListener {
 		this.nextAnimations.removeAll(tokensToBeDestroyed);
 		
 		for (RTAnimation animation : this.nextAnimations) {
-			System.out.println("Next animation: " + animation.getGeometryLabel() + " " + animation.getAnimation().toString());
+			if (DEBUG_MODE) {
+				System.out.println("Next animation: " + animation.getGeometryLabel() + " " + animation.getAnimation().toString());
+			}
 		}
 		
 		this.engine3d.addToAnimationQueue(this.nextAnimations);
@@ -140,8 +146,9 @@ public class Simulator implements Engine3DListener {
 	 */
 	@Override
 	public void onUserClick(String geometryLabel) {
-		
-		System.out.println("User click on: " + geometryLabel);
+		if (DEBUG_MODE) {
+			System.out.println("User click on: " + geometryLabel);
+		}
 		
 		this.petrinetEngine.createToken(geometryLabel);
 		this.nextAnimations = this.petrinetEngine.fireTransitions();
@@ -156,7 +163,9 @@ public class Simulator implements Engine3DListener {
 		this.nextAnimations.removeAll(tokensToBeDestroyed);
 		
 		for (RTAnimation animation : this.nextAnimations) {
-			System.out.println("Next animation: " + animation.getGeometryLabel() + " " + animation.getAnimation().toString());
+			if (DEBUG_MODE) {
+				System.out.println("Next animation: " + animation.getGeometryLabel() + " " + animation.getAnimation().toString());
+			}
 		}
 		
 		this.engine3d.addToAnimationQueue(this.nextAnimations);
@@ -174,7 +183,9 @@ public class Simulator implements Engine3DListener {
 		this.nextAnimations.removeAll(tokensToBeDestroyed);
 		
 		for (RTAnimation animation : this.nextAnimations) {
-			System.out.println("Next animation: " + animation.getGeometryLabel() + " " + animation.getAnimation().toString());
+			if (DEBUG_MODE) {
+				System.out.println("Next animation: " + animation.getGeometryLabel() + " " + animation.getAnimation().toString());
+			}
 		}
 		
 		this.engine3d.addToAnimationQueue(this.nextAnimations);

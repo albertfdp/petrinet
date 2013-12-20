@@ -26,6 +26,8 @@ public class PetriNetEngine {
 	private HashSet<String> inputPlaces;
 	private ArrayList<Transition> transitions = new ArrayList<Transition>();
 	
+	private static final boolean DEBUG_MODE = true;
+	
 	public PetriNetEngine() {
 		marking  = new HashMap<Place, ArrayList<RTToken>>();
 		inputPlaces = new HashSet<String>();
@@ -37,8 +39,6 @@ public class PetriNetEngine {
 	 * @return A list of geometry label of places to animate in the 3D Engine
 	 */
 	public ArrayList<RTAnimation> init (PetriNetDoc petrinet) {
-		
-		
 		
 		Iterator<Object> iterator = petrinet.getNet().get(0).getPage().get(0).getObject().iterator();
 		ArrayList<RTAnimation> animations = new ArrayList<RTAnimation>();
@@ -81,6 +81,11 @@ public class PetriNetEngine {
 		return animations;
 	}
 	
+	/**
+	 * Retrieves all the possible animations that could be performed in the 3D Engine
+	 * @param petrinet
+	 * @return All the possible animations in the petri net (move, appear...)
+	 */
 	public ArrayList<RTAnimation> getAllPossibleAnimations(PetriNetDoc petrinet) {
 		ArrayList<RTAnimation> animations = new ArrayList<RTAnimation>();
 		
@@ -110,9 +115,7 @@ public class PetriNetEngine {
 	public ArrayList<RTAnimation> fireTransitions() {
 		ArrayList<RTAnimation> animations = new ArrayList<RTAnimation>();
 		
-		//Iterate through each transition
-		ArrayList<RTAnimation> tokensToRemove = new ArrayList<RTAnimation>();
-		
+		//Iterate through each transition		
 		for (Transition transition : transitions) {
 			if (isTransitionEnabled(transition)) {
 				//The transition is enabled, fire it and get its labels
@@ -138,7 +141,9 @@ public class PetriNetEngine {
 				break;
 			}
 		}
-		System.out.println("Marking place " + placeToMark.toString() + " as finished");
+		if (DEBUG_MODE) {
+			System.out.println("Marking place " + placeToMark.toString() + " as finished");
+		}
 		for (RTToken runtimeToken : marking.get(placeToMark) ) {
 			if (!runtimeToken.isFinished()) {
 				runtimeToken.setFinished(true);
@@ -155,19 +160,22 @@ public class PetriNetEngine {
 		//Search for the place on which the token is created
 		Place placeToDropTokenOn = null;
 		for (Place place : marking.keySet()) {
-			System.out.println("geom label tested:" + place.getGeometryLabel().getText());
 			if (place.getGeometryLabel().getText().equals(geometryLabel) && 
 					(place.getInputPlaceLabel() != null && place.getInputPlaceLabel().isText())) {
 				placeToDropTokenOn = place;
 				break;
 			}
 		}
-		System.out.println("Creating token on: " + placeToDropTokenOn.toString());
-		
-		//Create the token and add it.
-		RTToken newToken = new RTToken();
-		newToken.setFinished(true);
-		marking.get(placeToDropTokenOn).add(newToken);
+		if (placeToDropTokenOn != null) {
+			if (DEBUG_MODE) {
+				System.out.println("Creating token on: " + placeToDropTokenOn.toString());
+			}
+			
+			//Create the token and add it.
+			RTToken newToken = new RTToken();
+			newToken.setFinished(true);
+			marking.get(placeToDropTokenOn).add(newToken);
+		}
 	}
 
 	/**
@@ -186,7 +194,9 @@ public class PetriNetEngine {
 						marking.get(place).remove(runtimeToken);
 						
 						//Add this token to the list of animations to be destroyed
-						System.out.println("Remove token id: " + runtimeToken.getId());
+						if (DEBUG_MODE) {
+							System.out.println("Remove token id: " + runtimeToken.getId());
+						}
 						transitionAnimations.add(new RTAnimation(runtimeToken.getId(), 
 																place.getGeometryLabel().getText(),
 																null,

@@ -10,7 +10,8 @@ import com.jme3.scene.Spatial;
 
 
 /**
- * @author Monica
+ * The JMonkeyMove class shall be used to animate a single token along a path 
+ * @author Monica, Thibaud
  *
  */
 public class JMonkeyMove implements CinematicEventListener{
@@ -26,6 +27,12 @@ public class JMonkeyMove implements CinematicEventListener{
 		//The geometry label
 		private String geometryLabel;
 
+	/**
+	 * Creates a JMonkeyMove using
+	 * @param geometryLabel: The geometry label of the line on which the event takes place
+	 * @param motionEvent: The Motion event of the animation
+	 * @param engine3D: The Engine 3D responsible for this animation
+	 */
 	public JMonkeyMove(String geometryLabel, MotionEvent motionEvent, JMonkeyEngine engine3D) {
 		this.geometryLabel = geometryLabel;
 		this.motionEvent = motionEvent;
@@ -88,11 +95,18 @@ public class JMonkeyMove implements CinematicEventListener{
 		this.motionEvent = motionEvent;
 	}
 	
-	public static JMonkeyMove moveEvent(JMonkeyMove baseObject, MotionPath newPath, Spatial spatialToCopy) {
+	/**
+	 * Clones a JMonkeyMove event
+	 * @param baseObject: The JMonkeyMove object to copy
+	 * @param newPath: The new path on which the move will take place
+	 * @param spatial: The new spatial 
+	 * @return A JMonkeyMove that is a copy of the baseObject
+	 */
+	public static JMonkeyMove moveEvent(JMonkeyMove baseObject, MotionPath newPath, Spatial spatial) {
 		MotionEvent oldMotionEvent = baseObject.getMotionEvent();
 		
 		//Cloning the old motion event 
-		MotionEvent newMotionEvent = new MotionEvent(spatialToCopy, newPath, 10, LoopMode.DontLoop);
+		MotionEvent newMotionEvent = new MotionEvent(spatial, newPath, 10, LoopMode.DontLoop);
 		newMotionEvent.setSpeed(oldMotionEvent.getSpeed());
 		newMotionEvent.setDirectionType(MotionEvent.Direction.Path);
 		
@@ -102,7 +116,6 @@ public class JMonkeyMove implements CinematicEventListener{
 		newMotionEvent.addListener(copy); // add the JMonkeyEngine as a listener to all motion events	
 
 		return copy;
-		
 	}	
 
 	@Override

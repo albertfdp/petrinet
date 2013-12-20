@@ -6,6 +6,12 @@ import appearance.Appearance;
 import java.util.List;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
+/**
+ * This interface provides a set of methods to be implemented by 3D engines for them to be compatible
+ * with our tool.
+ * @author Monica, Albert, Thibaud
+ *
+ */
 public interface Engine3D {
 	
 	/**

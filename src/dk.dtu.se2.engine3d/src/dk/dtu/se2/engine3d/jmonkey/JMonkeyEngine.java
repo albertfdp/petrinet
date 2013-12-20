@@ -60,6 +60,7 @@ import dk.dtu.se2.engine3d.Engine3D;
 import dk.dtu.se2.engine3d.Engine3DListener;
 import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
 
+
 /**
  * 
  * @authors: Albert, Anders, Monica, Thibaud
@@ -123,6 +124,94 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
     private float tokenScale = 1f;  // scales tokens 
     private float inputPointScale = 6f;  // scales input point 3D models
     	
+    @Override
+	public void simpleInitApp() {
+ 		
+ 	// AP: set the background color
+ 			viewPort.setBackgroundColor(ColorRGBA.Gray);
+ 	// AP: enable/disable camera fly - the ability to move the camera with keyboard and mouse
+ 			flyCam.setEnabled(false); 
+ 			flyCam.setMoveSpeed(100);
+ 			flyCam.setRotationSpeed(8);
+ 			flyCam.setZoomSpeed(50);
+ 			
+ 	// AP: toggle statistics window in bottom left
+ 			setDisplayFps(false);
+ 			setDisplayStatView(false);
+ 		 			     	         	    
+ 	 /* Create a new NiftyDisplay for the Start/Pause/Reset buttons GUI */
+ 			this.niftyDisplay = new NiftyJmeDisplay(assetManager, 
+ 													inputManager,
+ 													audioRenderer,
+ 													guiViewPort);
+ 			
+ 	 /* Create a new NiftyGUI object */ 
+ 			this.nifty = this.niftyDisplay.getNifty();
+ 	/* 	Set Nifty GUI to ignore keyboard events so that they are only handled by jMonkey */	
+ 			this.nifty.setIgnoreKeyboardEvents(true);
+ 			
+ 	/* Initialize the controller for the buttons screen */
+ 			this.screenController = new NiftyButtonsScreen("data", this);
+ 		 			
+ 	/* Read the XML and initialize the custom ScreenController */
+ 			this.nifty.fromXml("GUI/NiftyButtons.xml", "start", this.screenController);
+ 			this.stateManager.attach((AppState) this.nifty.getCurrentScreen().getScreenController());
+ 			this.nifty.setDebugOptionPanelColors(false);
+ 			
+ 			this.enginePopup = this.nifty.createPopup("popupSystemPaused");
+ 			 		 			        
+ 	/* Attach the Nifty display to the GUI view port as a processor */
+ 	        guiViewPort.addProcessor(niftyDisplay);
+ 	        
+ 	        reset();
+	}
+    
+    @Override
+ 	public void reset() {		
+	/* Attach the Nifty display to the GUI view port as a processor */
+	    guiViewPort.addProcessor(niftyDisplay);
+		
+ 	/* Initialize all lists, queues and hash maps */
+ 		this.lines = new HashMap<String, MotionPath>();
+		this.events = new HashMap<String, JMonkeyMove>();
+		this.tokenAppearances = new HashMap<String, String>();
+		this.inputs = new HashMap<String, Spatial>();
+
+	/* Initialize the data structures used to keep track of the current animations*/
+		this.allCollisions = new HashMap<String, ArrayList<String>>();
+		this.allRenderedEvents = new HashMap<String, JMonkeyMove>();
+
+	/* Pause simulation when the window loses focus */
+		this.setPauseOnLostFocus(false);
+		
+	/* Attaching the input places node to the root node */
+		this.inputPlaces = new Node("InputPlaces");
+		rootNode.attachChild(inputPlaces);
+ 		
+    /* Run setups to prepare: 
+     * -- the light
+     * -- the environment (all 3D objects according to the geometry and appearance info)
+     * -- the bounding box
+     * -- the ground
+     * -- the all possible animations
+     * -- the position of the camera ( according to the bounding box)
+     * -- the key events 
+     */
+        this.setUpLight();
+        this.setUpEnvironment();
+        this.setBoundingBox();
+        this.setUpGround();
+		this.setUpAnimations();
+		this.setUpCameraPosition();
+		this.setupKeyMappings();
+				
+	/* Set the state of the engine to STOPPED */
+		this.engineState = State.STOPPED;
+ 	}
+    
+    /**
+     * Setups the geometry objects, input places
+     */
 	private void setUpEnvironment() {
 		
 		/* 
@@ -249,6 +338,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		}
 	}
 
+	/**
+	 * Stores all the possible animations of the Petri Net in the 3D Engine
+	 */
 	private void setUpAnimations() {
 		int tokensNr = 0;
 
@@ -303,6 +395,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				
 	}
 	
+	/**
+	 * Sets the lighting on startup
+	 */
 	private void setUpLight() {
 		// AP: setting up skybox
 				rootNode.attachChild(SkyFactory.createSky(
@@ -324,6 +419,9 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		        viewPort.addProcessor(dlsr);
 	}
 	
+	/**
+	 * Sets the ground on startup
+	 */
 	private void setUpGround() {
 		// AP: create ground with volume
 				float groundWidthX  = 2000; //(boundingBox.width/2) * 1.1f;
@@ -341,10 +439,16 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 				rootNode.attachChild(groundGeo);
 	}
 	
+	/**
+	 * Sets the bounding box on startup
+	 */
 	private void setBoundingBox() {
 		boundingBox = new Rectangle(lowX, lowY, highX-lowX, highY-lowY);
 	}
 		
+	/**
+	 * Sets the camera position on startup
+	 */
 	private void setUpCameraPosition() {
 		
 		float heightScaler = 1.1f;
@@ -359,90 +463,7 @@ public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 		
 	}
 	
- 	@Override
-	public void simpleInitApp() {
- 		
- 	// AP: set the background color
- 			viewPort.setBackgroundColor(ColorRGBA.Gray);
- 	// AP: enable/disable camera fly - the ability to move the camera with keyboard and mouse
- 			flyCam.setEnabled(false); 
- 			flyCam.setMoveSpeed(100);
- 			flyCam.setRotationSpeed(8);
- 			flyCam.setZoomSpeed(50);
- 			
- 	// AP: toggle statistics window in bottom left
- 			setDisplayFps(false);
- 			setDisplayStatView(false);
- 		 			     	         	    
- 	 /* Create a new NiftyDisplay for the Start/Pause/Reset buttons GUI */
- 			this.niftyDisplay = new NiftyJmeDisplay(assetManager, 
- 													inputManager,
- 													audioRenderer,
- 													guiViewPort);
- 			
- 	 /* Create a new NiftyGUI object */ 
- 			this.nifty = this.niftyDisplay.getNifty();
- 	/* 	Set Nifty GUI to ignore keyboard events so that they are only handled by jMonkey */	
- 			this.nifty.setIgnoreKeyboardEvents(true);
- 			
- 	/* Initialize the controller for the buttons screen */
- 			this.screenController = new NiftyButtonsScreen("data", this);
- 		 			
- 	/* Read the XML and initialize the custom ScreenController */
- 			this.nifty.fromXml("GUI/NiftyButtons.xml", "start", this.screenController);
- 			this.stateManager.attach((AppState) this.nifty.getCurrentScreen().getScreenController());
- 			this.nifty.setDebugOptionPanelColors(false);
- 			
- 			this.enginePopup = this.nifty.createPopup("popupSystemPaused");
- 			 		 			        
- 	/* Attach the Nifty display to the GUI view port as a processor */
- 	        guiViewPort.addProcessor(niftyDisplay);
- 	        
- 	        reset();
-	}
- 	 	
- 	@Override
- 	public void reset() {		
-	/* Attach the Nifty display to the GUI view port as a processor */
-	    guiViewPort.addProcessor(niftyDisplay);
-		
- 	/* Initialize all lists, queues and hash maps */
- 		this.lines = new HashMap<String, MotionPath>();
-		this.events = new HashMap<String, JMonkeyMove>();
-		this.tokenAppearances = new HashMap<String, String>();
-		this.inputs = new HashMap<String, Spatial>();
-
-	/* Initialize the data structures used to keep track of the current animations*/
-		this.allCollisions = new HashMap<String, ArrayList<String>>();
-		this.allRenderedEvents = new HashMap<String, JMonkeyMove>();
-
-	/* Pause simulation when the window loses focus */
-		this.setPauseOnLostFocus(false);
-		
-	/* Attaching the input places node to the root node */
-		this.inputPlaces = new Node("InputPlaces");
-		rootNode.attachChild(inputPlaces);
- 		
-    /* Run setups to prepare: 
-     * -- the light
-     * -- the environment (all 3D objects according to the geometry and appearance info)
-     * -- the bounding box
-     * -- the ground
-     * -- the all possible animations
-     * -- the position of the camera ( according to the bounding box)
-     * -- the key events 
-     */
-        this.setUpLight();
-        this.setUpEnvironment();
-        this.setBoundingBox();
-        this.setUpGround();
-		this.setUpAnimations();
-		this.setUpCameraPosition();
-		this.setupKeyMappings();
-				
-	/* Set the state of the engine to STOPPED */
-		this.engineState = State.STOPPED;
- 	}
+ 	
 
  	/**
  	 * Setup the engine to register the user inputs on the mouse
