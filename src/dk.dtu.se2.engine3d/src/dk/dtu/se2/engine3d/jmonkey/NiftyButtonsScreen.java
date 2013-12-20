@@ -9,6 +9,12 @@ import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
 
+/**
+ * 
+ * @author Monica
+ *
+ */
+
 public class NiftyButtonsScreen extends AbstractAppState implements ScreenController {
 	 
 	  private Nifty nifty;

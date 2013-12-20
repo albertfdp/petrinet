@@ -67,7 +67,7 @@ import dk.dtu.se2.simulator.petrinet.runtime.RTAnimation;
  */
 public class JMonkeyEngine extends SimpleApplication implements Engine3D {
 	
-	public static final boolean DEBUG_MODE = true; // TRUE/FALSE = Enable/Disable console outputs
+	public static final boolean DEBUG_MODE = false; // TRUE/FALSE = Enable/Disable console outputs
 	
 	/* Geometry and Appearance models, plus list of all possible animations */
 	private geometry.Geometry 	geometry;

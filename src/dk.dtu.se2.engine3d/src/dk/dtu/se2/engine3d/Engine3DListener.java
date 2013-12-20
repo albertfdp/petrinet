@@ -10,6 +10,7 @@ package dk.dtu.se2.engine3d;
  * method is invoked.
  *
  * @see Engine3DEvent
+ * @author Albert
  */
 public interface Engine3DListener {
 	
