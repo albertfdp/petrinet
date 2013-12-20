@@ -1,11 +1,11 @@
 \section{Overall description}
-\writer{Thibaud}
+%\writer{Thibaud}
 
 This section describes the software and provides a brief explanation on how the system works.
 
 \subsection{What are Petri nets?}
 
-Petri nets are a graphical and mathematical modeling tool for describing concurrent and distributed systems. Some examples of their applications are work flow management, embedded systems or traffic control. The main advantages of Petri nets are their graphical notation, their simple semantics and their rich behavioral theory. However, using the graphical notation of Petri nets for understanding a complex system is quite hard and thus, a user-oriented visualization is required so that Petri nets are presented in a way that is understandable to users not necessarily familiar with them.
+Petri nets are a graphical and mathematical modeling tool for describing concurrent and distributed systems. Some examples of their applications are work flow management, embedded systems or traffic control. The main advantages of Petri nets are their graphical notation, their simple semantics, and their rich theory for analyzing their behavior. However, using the graphical notation of Petri nets for understanding a complex system is quite hard, and thus a user-oriented visualization is required in a way that is understandable to users which are not necessarily familiar with Petri nets.
 
 
 \begin{figure}[htp]
@@ -21,21 +21,21 @@ Figure \ref{fig:petrinet} presents an example of a basic Petri net. There are fo
 \begin{itemize}
 \item Places: graphically represented by circles, represent conditions.
 \item Transitions: graphically represented by squares, represent events.
-\item Arcs: indicate which places are preconditions/post-conditions for which transitions.
-\item Tokens: graphically represented by the dots, represent the elements that are created and deleted in the Petri net along the places by firing transitions.
+\item Arcs: indicate which places are preconditions/postconditions for which transitions.
+\item Tokens: graphically represented by the dots, represent the elements that are created and deleted in the Petri net along the places through the transitions.
 \end{itemize}
 
 
-As an example, we can consider Figure \ref{fig:petrinet} aimed at modeling a railway with a traffic light. The token in Place P1 represents a train moving on a railway. When this train arrives to Place P1, the transition T1 will fire if there is also a token in Place P3. The only condition for a transition to be fired is that a token is present on each of the incoming places of the transition.
+As an example we can see Figure \ref{fig:petrinet} as a model for a railway with a traffic light. The token in Place P1 represents a train moving on a railway. When this train arrives to Place P1, the transition T1 will fire if there is also a token in Place P3. The only condition for a transition to be fired is that a token should be present on each of the incoming places of the transition.
 
-In this scenario, the conditions are met, as the required token is present in Place P3. As mentioned above, the visualization of this scenario would be a traffic light with a green light. If instead Place P4 had a token on it and no token in P3, it would be a red light and the train would not be able to move. 
+In this scenario, the conditions are met, as the required token is in Place P3. The visualization of this scenario would be a traffic light with a green light. If instead Place P4 had a token on it and no token in P3, it would be a red light and the train would not be able to move. 
 
 %If a user clicks on the Place I, it would generate a token that will turn the traffic light to green and thus the train will move.
 
-In order to create a visualization of the described scenarios for the above Petri net model, an application tool is needed to allow the user to define where each of the elements should be represented in the 3D world (geometry editor) as well as how these elements should be represented (shape) and how they should behave (animation). 
+With the aim of creating a visualization of the scenarios for the above Petri net model, an application tool is needed in order to allow the user to define where each of the elements are represented in the 3D world (geometry editor) as well as how these elements are represented (shape) and how they behave (animation). 
 
 \subsection{Adding geometry to Petri nets}
-The problem this project is tackled with is simple: We need a way to link the Petri net model to a 3D visualization, that is, to add extra information so that it can be visualized. Once a Petri net model is created and its real life design is well-designed in the user's mind, what we call a "Geometry" and "Appearance" are created. 
+The problem this project is tackled with is simple: We need a way to link the Petri net model to a 3D visualization, this is, to add extra information so that it can be visualized. Once a Petri net model is created and its real life design is well-designed in the user's mind, what we call a "Geometry" and "Appearance" are created. 
 
 Once a Petri net model is created the user will be able to add a geometry and an appearance to it, in order to specify how the Petri net will look in the 3D visualization.
 
@@ -44,20 +44,21 @@ For this purpose, there is a need of a geometry editor which will be used to ass
 \subsection{Adding appearance to Petri net objects}
 \label{sec:appearance}
 
-Once the geometry for the Petri net is defined, a shape for each object should be defined. For instance, places can be represented as tracks and therefore a 3D object or a texture should be linked to that place. The same applies to transitions and tokens and this step can be observed in Figure \ref{fig:example_petrinet_geometry} as appearance labels. 
+Once the geometry for the Petri net is defined, a shape for each object should be defined. For instance, places represent tracks and the 3D object or a shape and a texture should be linked to that place. The same applies to the transitions and tokens.
 
 For this purpose, there is a need of an appearance editor which will be used to assign 3D visualization features to the elements defined in the Petri net.
 
-The next step in visualizing Petri nets is setting up the simulation. With the information provided by the Petri net, the geometry and the appearance, the simulation can be set up.
+The next step in visualizing Petri nets is add descriptive visuals. With the information provided by the Petri net, geometry and appearance as defined in the configuration file, the simulation is set up.
 
 \subsection{Configuration}
-Before running the simulation, a definition of how to connect all the information discussed above is needed. This,as well as the validity check for the Petri net's connections to the geometry and the appearance, is done in the configuration step . 
+
+Before running the simulation, a definition of how the models discussed above are connected is needed. This is done in the configuration step as well as the validity check for the Petri net's connections to the geometry. 
 
 \subsection{Simulating Petri nets}
 
 \begin{figure}[htp]
 \begin{center}
-	\includegraphics[width=\textwidth]{image/example_petrinet.png}
+	\includegraphics[width=0.6\textwidth]{image/example_petrinet.png}
 	\caption{A simple extended Petri net}
 	\label{fig:example_petrinet}
 \end{center}
@@ -65,7 +66,7 @@ Before running the simulation, a definition of how to connect all the informatio
 
 \begin{figure}[htp]
 	\begin{center}
-		\includegraphics[width=\textwidth]{image/example_petrinet_geometry.png}
+		\includegraphics[width=0.6\textwidth]{image/example_petrinet_geometry.png}
 		\caption{A simple geometry}
 		\label{fig:example_petrinet_geometry}
 	\end{center}
@@ -80,43 +81,58 @@ Before running the simulation, a definition of how to connect all the informatio
 \end{center}
 \end{figure}
 
+%\begin{figure}[htp]
+%\begin{center}
+%  \includegraphics[width=0.4\textwidth]{image/example_petrinet.png}
+%  \caption{A simple extended Petri net}
+%  \label{fig:example_petrinet}
+%\end{center}
+%\end{figure}
+%
+%\begin{figure}[htp]
+%\begin{center}
+%  \includegraphics[width=0.4\textwidth]{image/example_petrinet_geometry.png}
+%  \caption{A simple geometry}
+%  \label{fig:example_petrinet_geometry}
+%\end{center}
+%\end{figure}
 
-Using 3D models, textures and animations, the Petri net becomes easier to understand for the users. Continuing with the railway example, tokens become trains that move on tracks, which are places. As the tokens move from place to place, the train is animated in the 3D visualization along the tracks.
+Using 3D models, textures and animations, the Petri net becomes easier to understand for the user. Continuing with the railway example, tokens become trains that move on tracks, which are places. As the tokens move from place to place, the train is animated in the 3D visualization along the tracks.
 
-Figures \ref{fig:example_petrinet} and \ref{fig:example_petrinet_geometry} show how a simple 3D simulation of a train track and a train (Figure \ref{fig:example_3d}) is made out of Petri net model and a simple geometry. For example, in the Petri net model (Figure \ref{fig:example_petrinet}), Place P1 contains a geometry label that references its geometry location L1 in the geometry model (Figure \ref{fig:example_petrinet_geometry}) and since Place P1 contains a token, a train is placed on the corresponding location L1 in the simulation. 
+Figures \ref{fig:example_petrinet} and \ref{fig:example_petrinet_geometry} show how a simple 3D simulation of a train track and a train (Figure \ref{fig:example_3d}) is made out of Petri net model and a simple geometry. For example, in the Petri net model (Figure \ref{fig:example_petrinet}), Place P1 contains a geometry label that references its geometry location L1 in the geometry model (Figure \ref{fig:example_petrinet_geometry}).
 
 \newpage
 
 \subsection{Basic functionality}
-This software allows the engineers to create a Petri net 3D Visualization using a combination of four different editors designed for this purpose.
-The files created with each of the following editors: \newline
-Petri net editor, Geometry editor and Appearance editor are to be combined using the Configuration editor. 
+This software allows the engineers to create a Petri net 3D Visualization using a combination of the different editors built for this project.
+The files created with each of the following editors are to be combined using the configuration editor: \newline
+Petri net editor, Geometry editor, Appearance editor. 
 
 In order to launch a simulation, an user should perform the following actions:
 
 \begin{itemize}
   \item Create a Petri net model using the \textbf{Petri net Editor}. This editor is used to configure the Petri net.
-  \item Create a Geometry model using the \textbf{Geometry editor}. This editor is used to map objects from the Petri net model to a corresponding Geometry. Geometries include information about positions/paths in the 3D space and they will also keep a reference to an Appearance that will define their texture and shape.
-  \item Create an Appearance file using the \textbf{Appearance editor}. This editor is used to link appearance labels to specific 3D models.  
+  \item Create a Geometry model using the \textbf{Geometry editor}. This editor is used to map objects from the Petri net model to a corresponding Geometry. Geometries include informations about positions/paths in the 3D space. They may also keep a reference to an Appearance to define their texture and shape.
+  \item Create an Appearance file using the \textbf{Appearance editor}. This editor is used to link appearance labels to 3D models. A label corresponds to a specific 3D model file. 
 \end{itemize}
 
-Once these three models have been created, the \textbf{Configuration editor} is used by the user to connect them in order to be able to start a Simulation. 
-To run the simulation, a specific "Start" button is added to the Configuration editor, which will start the \textbf{Simulator}.
+Once these three models have been created, the \textbf{Configuration editor} is used by the user to connect every model file previously created in order to be able to start a Simulation. 
+To run the simulation, a specific "Run" button is added to the Configuration editor, which starts the Simulator.
 \newline
 
-The simulator will then initialize the \textbf{3D Engine} with all the information needed for the visualization. The 3D Engine will still rely on the Simulator, after the initialization, to know what is the next move performed by the Petri net and that needs to be visualized. \newline
-To interact with the simulation, the user can either click different buttons in the GUI or press certain keys and change the behavior of the 3D visualization.
+The simulator then initializes the \textbf{3D Engine} with all the informations needed for the visualization. The 3D Engine then relies on the simulator to know which next move it should perform on the Petri net. \newline
+To interact with the simulation, the user can either click or press certain keyboard buttons in the GUI for the visualization or click on some elements in the 3D visualization.
 
 \subsection{General product overview and use}
-The overall description is a brief introduction to how the software is designed. Moreover, it should also contain a description of the actors using the software and of how the software works. \newline
+The overall description is a brief introduction to how our software is designed. For this purpose, it contains a description of the actors involved in its use, and also a description of how the software works. \newline
 
-The following persons are all actors related to the software:
+The following persons are all actors of our software:
 
 \begin{itemize}
   \item Petri net engineer: An engineer whose role is to design and develop a Petri net which suits the company needs. \newline
-  For instance, this could be an engineer working at a railway company who is in charge of modeling the railway system using Petri nets.
-  \item End user: An actor to whom the Petri net 3D visualization would be presented, or an actor who is in charge of presenting the Petri net to another. \newline
-  For instance, this could be a manager wanting to see a Petri net representation. 
+  For instance, this could be an engineer working at a railway company and is in charge of modeling the railway system using Petri nets.
+  \item End user: An actor to whom the Petri net 3D-Visualization would be presented, or an actor who is in charge of presenting the Petri net to another. \newline
+	For instance, this could be a manager wanting to see what a Petri net represents. 
 \end{itemize}
 
 The software is built around three different concepts: 
@@ -125,20 +141,20 @@ The software is built around three different concepts:
   \item Editors: A component responsible for handling the creation and design of one of our models. 
 	\begin{itemize}
 	 \item A Petri net editor to create a Petri net model.
-	 \item A geometry editor to create and edit a geometry model of the Petri net.
-	 \item An appearance editor to set an appearance model of the objects.
+	 \item A geometry editor to create and edit the geometry of the Petri net.
+	 \item An appearance editor to set the appearance of the objects.
 	 \item A configuration editor to configure the simulation.
 	 \end{itemize}
 	An editor is presented to the user as a GUI in an Eclipse window.
   \item Simulator: A simulator is, as its name says, a component capable of simulating a Petri net.
-	The simulator is handling all the decisions regarding the Petri net and its behavior. 
+	The simulator is handling all the decisions regarding the Petri net and its behaviour. 
 	It then communicates the decisions to a 3D Engine responsible for the visualization.
   \item 3D Engine: A 3D Engine is responsible for the visualization of a Petri net in three dimensions.
 	It receives input from the Petri net simulator, and also communicates to the simulator when a user performs a certain type of action. \newline
 	For example: the user clicks on a specific Place of the Petri net, this triggers a message from the 3D Engine to the Petri net simulator 
 \end{itemize}
 
-Figure \ref{fig:system_diagram}. shows the different components of the system and their connections.
+Figure \ref{fig:system_diagram}. shows the different components of our system and their connections.
 
 \begin{figure}[htp]
 \begin{center}
@@ -148,27 +164,28 @@ Figure \ref{fig:system_diagram}. shows the different components of the system an
 \end{center}
 \end{figure}
 
-Moreover, this project also introduces new concepts related to Petri nets, because we are creating an \textbf{Petri net extension} as follows:
+Moreover, this project also introduces new concepts related to Petri nets, because we are creating an extension to Petri nets.
+
+Regarding \textbf{Petri nets}:
 \begin{itemize}
-  \item \textbf{Input Places}: An Input place is a place in which a user can create tokens at Runtime, by interacting with the GUI in the form of a mouse-click. This token can then be used to trigger a transition, for instance.
-  \item \textbf{Geometry label}: A geometry label maps a place to a corresponding Geometry, later defined.
-  A geometry label consists simply of an id.
+  \item \textbf{Input Places}: An Input place is a place on which a user can create a token on Runtime, by interacting with the GUI in the form of a mouseclick. This token can then be used to trigger a transition for instance.
+  \item \textbf{Geometry label}: A geometry label maps a place to a corresponding Geometry, defined later.
+  A geometry label simply consists of an id.
 
   \item \textbf{Animation label}: An animation label describes the event happening on a place when a token is present.
-Animation labels refer to either movement actions or trigger actions.
-\end{itemize}
+Animation labels refer to either movement actions or trigger actions.\end{itemize}
 
-A \textbf{Geometry} allows the user to specify details about the 3D Space, in which the Petri net is going to be rendered. It must contain information about the positions of the objects but also information about their looks. For example, when the user creates a line in the geometry editor, its same position will be translated in the 3D simulation.
+A \textbf{Geometry} allows the user to specify details about the 3D Space, in which the Petri net is going to be rendered. It must present informations about the positions of the objects but also informations about their looks. For example when the user creates a line in the geometry editor, the line will have the same position in the 3D simulation.
 
 \begin{itemize}
-  \item \textbf{Appearance Label}: An appearance label gives the Geometry object the necessary information regarding the appearance of the object in the 3D simulation. This label is used as a link to a specific 3D object.
+  \item \textbf{Appearance Label}: An appearance label gives the Geometry object a label that provides information about the appearance of the object in the 3D simulation. The label is used to specify which 3D object should represent the Geometry object. One can find informations about appearances by reading further in this section.
 \end{itemize}
 
 Finally, an \textbf{Appearance} file maps \textbf{Appearance Labels} to \textbf{3D models}.
-To this end, each appearance label used by a Geometry corresponds to a file on the file system. This file is expected to be a 3D model.
+To this end, each appearance label used by a Geometry corresponds to a file on the file system. The file is expected to be a 3D model.
 
 \subsubsection{Motivation for Input Places}
 
-In the previous section the concept of \textbf{Input places} has been introduced as an extension to the regular Petri Net places for enabling the user to interact with the 3D simulation. It has been conceived as an easy-to-use concept for modeling elements such as traffic lights, switches or creation of new elements (trains, cars, etc.) at run time. These elements correspond to real world inputs which cannot be modeled using a regular Petri net and in this way, by using this extension, we can help the end-user simulate them.
+In the previous section it has been introduced the concept of Input place, an extension to the Petri Net for enabling the user to interact with the 3D simulation. It has been conceived as an easy-to-use concept for modelling elements such as traffic lights, switches or creation of new elements (trains, cars, ...) on run time. These elements correspond to real world inputs which cannot be modelled using a regular Petri Net, and thus this extension can help the end-user to simulate them.
 
 \newpage
