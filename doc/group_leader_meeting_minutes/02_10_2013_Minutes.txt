@@ -1,9 +1,0 @@
-Subject: Group Leaders Meeting 
-Date: 02/01/2013
-Attendant: Albert Fernández
--------------------------------
-- It is important that in the core functionalities at least there are 2 persons working.
-- All the documents we produce should go to the svn
-- On Friday some of us should have read the comments on the project definition in order to discuss it with Ekkart
-- Holidays: who is available to working
-- Email if the presentation would be public or private

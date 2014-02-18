@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<geometry:Geometry xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:geometry="http://geometry/1.0">
-  <gObjects xsi:type="geometry:InputPoint" label="IP1" xLocation="515" yLocation="175" appearanceLabel="green"/>
-  <gObjects xsi:type="geometry:Connector" label="C1" xLocation="515" yLocation="200" out="L1"/>
-  <gObjects xsi:type="geometry:Connector" label="C2" xLocation="501" yLocation="333" in="L1"/>
-  <gObjects xsi:type="geometry:Line" label="L1" begin="C1" end="C2" appearanceLabel="track" tokenAppearanceLabel="train">
-    <bendPoints label="L1_Bendpoint" xLocation="554" yLocation="258"/>
-  </gObjects>
-</geometry:Geometry>
